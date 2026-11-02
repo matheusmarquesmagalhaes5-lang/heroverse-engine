@@ -242,7 +242,7 @@ def native_review(i):
     if reflection:
         need_file(p)
         spec = load(p)
-        need(spec.get("version") == "bible-reflection-v1" and spec.get("long") == reflection.group(1),
+        need(spec.get("version") == "bible-reflection-v2" and spec.get("long") == reflection.group(1),
              "plan", p, "a reflection spec whose long names the file")
         limit = 150_000_000
     elif cuts:

@@ -131,6 +131,14 @@ RATIOS = ("9:16",)                   # Shorts only
 # scene, Keeper and still prompt says so in words (SAFE_AREA) and names no off-centre framing (OFF_CENTRE).
 LONG_FIRST_TRACK = "buzzy-long"
 LONG_FIRST_RATIOS = ("16:9",)
+# Owner 2026-11-02 (DECISIONS "Shorts cadence"): the bottom half of a Keeper reflection Short is the Keeper really
+# speaking, 2-4 Pavo talking clips (one per sentence-safe segment) joined by short crossfades. Each clip is a talking
+# Keeper shot of the same machinery as a long's (shot-probe / approve-shot, E264/E266), framed from the chest up at
+# 1:1 (cropped to the 1080x960 half). A reflection plan carries those shots and nothing else.
+REFLECTION_TRACK = "keeper-reflection"
+REFLECTION_RATIOS = ("1:1",)
+REFLECTION_SEGMENTS = (2, 4)
+REFLECTION_WORDS = (20, 80)          # publish_episode.REFLECTION_WORDS
 SAFE_AREA = re.compile(r"(?i)\bcent(?:er|re)d in the frame\b")
 OFF_CENTRE = re.compile(r"(?i)\boff[- ]cent(?:er|re)\b|\brule of thirds\b|\bsplit[- ]screen\b|"
                         r"\b(?:at|on|to|toward|towards) the (?:far )?(?:left|right) (?:edge|side|third|of the frame)\b|"
@@ -1252,6 +1260,8 @@ def check(plan, chars=None):
         problems.append("EPISODE_ID")
     if type(plan.get("part")) is not int or plan["part"] < 1:
         problems.append("PART")
+    if reflection(plan):
+        return reflection_check(plan, chars, problems, pending)
     if long_first(plan):   # E259: the long-first long is 16:9 only; every other plan keeps the Short's 9:16
         if plan.get("aspect_ratio") not in LONG_FIRST_RATIOS:
             problems.append("ASPECT_RATIO (a long-first plan, track buzzy-long, is 16:9)")
@@ -1281,6 +1291,88 @@ def check(plan, chars=None):
 
 def long_first(plan):
     return isinstance(plan, dict) and plan.get("track") == LONG_FIRST_TRACK
+
+
+def reflection(plan):
+    """A Keeper reflection plan (track keeper-reflection): the talking Keeper clips of a reflection Short's bottom half."""
+    return isinstance(plan, dict) and plan.get("track") == REFLECTION_TRACK
+
+
+def reflection_check(plan, chars, problems, pending):
+    """The reflection plan's own rules (it has no story to tell: no open, climax, scenes or shares). Each of its 2-4
+    shots is a talking Keeper (never a voice-over, never a still motion: the owner rule is the Keeper really
+    speaking) carrying exactly one narration line (kind insight, whole sentences, our own words); every Keeper rule of
+    a talking shot applies (look, wardrobe, he speaks, faces the lens on a static camera, chest-up at 1:1, a line
+    that one 4-12 s clip can carry after the 10 % retime), and episode_build.predict then measures the layout."""
+    if plan.get("aspect_ratio") not in REFLECTION_RATIOS:
+        problems.append("ASPECT_RATIO (a reflection plan is 1:1: the Keeper's face and chest, cropped to the half)")
+    narration, shots = plan.get("narration"), plan.get("shots")
+    if not isinstance(narration, list) or not isinstance(shots, list):
+        return {"problems": problems + ["NARRATION_MISSING" if not isinstance(narration, list) else "SHOTS_MISSING"],
+                "pending": pending, "estimate": {}}
+    low, high = REFLECTION_SEGMENTS
+    if not low <= len(shots) <= high or len(narration) != len(shots):
+        problems.append(f"REFLECTION_SEGMENTS {len(shots)} shots, {len(narration)} lines ({low}-{high} segments, one "
+                        "narration line each)")
+    problems += narration_problems(narration, kinds=("insight",))
+    if any(p.startswith("NARRATION_LINE") for p in problems):
+        return {"problems": problems, "pending": pending, "estimate": {}}
+    seen = set()
+    for i, s in enumerate(shots):
+        if not isinstance(s, dict) or s.get("kind") != "keeper":
+            problems.append(f"SHOT_KIND shot {i} (a reflection plan holds talking Keeper shots only)")
+            continue
+        if not isinstance(s.get("id"), str) or not SHOT_ID.fullmatch(s["id"]) or s["id"] in seen:
+            problems.append(f"SHOT_ID shot {i} (unique, a-z 0-9 -)")
+        seen.add(s.get("id"))
+        if s.get("voiceover") or speaking(s) or s.get("lines") != [i] or s.get("characters") not in (None, [ch.NARRATOR]) \
+                or s.get("seconds") is not None or s.get("window_of") is not None:
+            problems.append(f"REFLECTION_SHOT_FIELDS shot {i} {s.get('id')} (a talking Keeper: no voiceover, speaker, "
+                            f"characters, seconds or window_of; lines [{i}])")
+    if problems:
+        return {"problems": problems, "pending": pending, "estimate": {}}
+    first = {}
+    for i, s in enumerate(shots):
+        if s["prompt"] in first:
+            problems.append(f"PROMPT_REPEATED shot {i} {s['id']} (the same prompt as {first[s['prompt']]}: change his "
+                            "look, never the identity)")
+        first.setdefault(s["prompt"], s["id"])
+    keeper = chars.get(ch.NARRATOR)
+    if not keeper:
+        return {"problems": problems + ["CHARACTER_UNKNOWN keeper (characters.json)"], "pending": pending, "estimate": {}}
+    items, carried = sequence(plan)
+    est = [words(x["text"]) / pace(x) for x in items]
+    for i, s in enumerate(shots):
+        problems += prompt_problems(i, s)
+        problems += keeper_prompt_problems(i, s, keeper, plan.get("aspect_ratio"))
+        problems += safe_area_problems(i, s)   # his face is centred: the half is cropped from the middle
+        gaps = 0.0
+        span = est[i]
+        slowest = words(items[i]["text"]) / slowest_pace(items[i])
+        if slowest > TALK_LINE_MAX:
+            problems.append(f"KEEPER_LINE_TOO_LONG shot {i} {s['id']} (~{slowest:.1f} s at the slowest pace; Pavo input "
+                            f"audio <= {TALK_LINE_MAX:.2f} s: split the segment at a sentence)")
+        if span < talk_min(gaps):
+            problems.append(f"KEEPER_LINE_TOO_SHORT shot {i} {s['id']} (input audio >= {talk_min(gaps):.2f} s: it fills "
+                            "a 4 s clip, E95)")
+        problems += talk_reach_problems(i, s, span, slowest, gaps)
+        if not re.search(r"[.!?][\"')\]]*$", items[i]["text"].strip()):
+            problems.append(f"REFLECTION_SEGMENT_NOT_A_SENTENCE line {i} (a segment ends on . ! or ?: never cut inside a "
+                            "sentence)")
+    total_words = sum(words(x["text"]) for x in items)
+    if not REFLECTION_WORDS[0] <= total_words <= REFLECTION_WORDS[1]:
+        problems.append(f"REFLECTION_LENGTH {total_words} words ({REFLECTION_WORDS[0]}-{REFLECTION_WORDS[1]})")
+    if keeper.get("status") != "APPROVED" or not keeper.get("refs"):
+        pending.append(f"CHARACTER_PENDING keeper ({keeper.get('status')}): Claude reviews his reference sheet and sets "
+                       "APPROVED with kept refs, by PR, before shot-probe.yml can generate")
+    if not problems:   # the layout and the requests the build would make, on this estimate
+        import episode_build
+        bad, _ = episode_build.predict(plan, est)
+        problems += [f"BUILD {p}" for p in bad]
+        problems += [f"BUILD {p}" for p in episode_build.reference_problems(plan, chars)]
+    return {"problems": problems, "pending": pending,
+            "estimate": {"seconds": round(sum(est) + LINE_GAP * (len(est) - 1), 1), "lines": len(items),
+                         "shots": len(shots), "words": total_words}}
 
 
 def motion_problems(plan, shots):
@@ -1434,8 +1526,8 @@ def shot_shape_problems(shots, n):
 def keeper_framing_problems(i, s, aspect):
     """E266: a 16:9 Keeper prompt says KEEPER_FRAMING_16X9 and no medium, full or wide framing (None/9:16: no rule)."""
     p = s.get("prompt", "")
-    if aspect == "16:9" and (KEEPER_FRAMING_16X9 not in p or KEEPER_FRAMING_OFF.search(p)):
-        return [f"KEEPER_FRAMING_16X9 shot {i} {s['id']} (a 16:9 Keeper shot says \"{KEEPER_FRAMING_16X9}\" and no "
+    if aspect in ("16:9", "1:1") and (KEEPER_FRAMING_16X9 not in p or KEEPER_FRAMING_OFF.search(p)):
+        return [f"KEEPER_FRAMING_16X9 shot {i} {s['id']} (a {aspect} Keeper shot says \"{KEEPER_FRAMING_16X9}\" and no "
                 "medium, full or wide framing: his face must fill enough of the frame for the face landmarker)"]
     return []
 
