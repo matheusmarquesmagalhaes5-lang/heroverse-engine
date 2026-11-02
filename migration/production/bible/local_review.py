@@ -44,7 +44,7 @@ SILENCE_DB, SILENCE_MIN = -45, 0.8
 EDGE_FREE_START, EDGE_FREE_END = 0.5, 2.5   # an intended fade in / out
 SHEET_STEP, SHEET_TILE = 2, (6, 5)           # 1 frame per 2 s, 30 frames (60 s) per sheet
 MIN_COVERAGE = 0.95
-MAX_DRIFT = 0.6
+MAX_DRIFT_START, MAX_DRIFT_END = 1.0, 1.5   # whisper's word times jitter by about 0.8 s (flood run 41509047639)
 MIN_VOICE_OVER_MUSIC_DB = 4.0
 FREEZE_MIN = 3.0
 FONT = '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
@@ -126,12 +126,42 @@ def reference_for(plan_path, sha, root=ROOT):
 
 
 # ---------------------------------------------------------------- 1. audio heard
+ONES = ('zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen '
+        'seventeen eighteen nineteen').split()
+TENS = 'zero ten twenty thirty forty fifty sixty seventy eighty ninety'.split()
+ORDINAL = {'one': 'first', 'two': 'second', 'three': 'third', 'five': 'fifth', 'eight': 'eighth', 'nine': 'ninth',
+           'twelve': 'twelfth'}
+
+
+def spell_int(n):
+    if n < 20:
+        return [ONES[n]]
+    if n < 100:
+        return [TENS[n // 10]] + ([ONES[n % 10]] if n % 10 else [])
+    if n < 1000:
+        return [ONES[n // 100], 'hundred'] + (spell_int(n % 100) if n % 100 else [])
+    return spell_int(n // 1000) + ['thousand'] + (spell_int(n % 1000) if n % 1000 else [])
+
+
+def spell_token(t):
+    """'950' -> nine hundred fifty, '17th' -> seventeenth: the script spells numbers, the ASR often writes digits."""
+    m = re.fullmatch(r'(\d{1,6})(st|nd|rd|th)?', t)
+    if not m:
+        return [t]
+    words = spell_int(int(m.group(1)))
+    if m.group(2):
+        last = words[-1]
+        words[-1] = ORDINAL.get(last, last[:-1] + 'ieth' if last.endswith('y') else last + 'th')
+    return words
+
+
 def flatten_heard(segments):
     words = []
     for seg in segments:
         for w in seg.get('words', []):
             for t in norm_tokens(w['word']):
-                words.append({'t': t, 'start': float(w['start']), 'end': float(w['end'])})
+                for piece in spell_token(t):
+                    words.append({'t': piece, 'start': float(w['start']), 'end': float(w['end'])})
     return words
 
 
@@ -434,18 +464,17 @@ def defects(m, duration, needs_captions=True):
         for n, c in cmp_['sentence_coverage'].items():
             if c < 0.8:
                 out.append((a['sentence_starts'].get(n, 0) or 0, 'a', f'sentence {n} only {c:.0%} heard (garbled or cut)'))
-        for g in cmp_['garbled']:
-            out.append((g['at'], 'a', f"heard \"{g['heard']}\" for \"{g['expected']}\" (sentence {g['sentence']})"))
         for g in cmp_['extra']:
             if len(g['words']) >= 4:
                 out.append((g['at'], 'a', f"extra speech not in the script: \"{' '.join(g['words'][:12])}\""))
     first, last = a.get('first_word_start'), a.get('last_word_end')
-    if first is not None and first < 0.08:
+    opens_at_zero = a.get('sentence_starts', {}).get(0) == 0.0   # a cold open that the plan starts on frame 0
+    if first is not None and first < 0.08 and not opens_at_zero:
         out.append((0, 'a', 'speech begins at the very first frame (first word may be cut)'))
     if last is not None and last > duration - 0.08:
         out.append((last, 'a', 'speech runs to the last frame (last word may be cut)'))
     for t in a.get('timing', []):
-        if abs(t['start_offset']) > MAX_DRIFT or abs(t['end_offset']) > MAX_DRIFT:
+        if abs(t['start_offset']) > MAX_DRIFT_START or abs(t['end_offset']) > MAX_DRIFT_END:
             out.append((t['timeline_start'], 'd', f"sentence {t['sentence']} heard {t['start_offset']:+.2f}s / {t['end_offset']:+.2f}s from its caption timeline"))
     for g in a.get('speech_gaps', []):
         out.append((g['start'], 'c', f"{g['seconds']} s of silence inside one sentence"))
@@ -480,6 +509,11 @@ def defects(m, duration, needs_captions=True):
 
 def informational(m):
     notes = []
+    cmp_ = m['audio'].get('compare') or {}
+    for g in cmp_.get('garbled', []):   # one word differently heard: a mispronunciation or an ASR slip, judged by the reviewer
+        notes.append((g['at'], 'info', f"heard \"{g['heard']}\" for \"{g['expected']}\" (sentence {g['sentence']})"))
+    if m['audio'].get('sentence_starts', {}).get(0) == 0.0 and m['audio'].get('first_word_start', 1) < 0.08:
+        notes.append((0, 'info', 'speech opens on frame 0 by plan (cold open); confirm the first word is whole when listening to the sheet times'))
     v = m['video']
     for d in v['frames']['duplicate_runs']:
         notes.append((d['start'], 'info', f"near-identical frames from {clock(d['start'])} to {clock(d['end'])} (still hold; judge on the sheet)"))
