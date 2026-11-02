@@ -29,6 +29,10 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
 - The shared lease was taken and released (idle). No Short is scheduled from this delivery; the bridge Short still
   needs 9:16 stills from the ChatGPT desktop route.
 
+- 2026-11-02 owner order: Pavo talking clips for the Keeper lines; held PR #682 keeps 1m-NUJhkdMY unpublished. Chest-up
+  clips from shot-probe 41534197400 are recorded (k-insight, k-close clean; k-bow needs speech-check); not yet swapped
+  into `shots/` because of the PROBE_REQUIRED (>=6) vs E264 (cap 2) conflict; see DECISIONS.
+
 ## Next moments
 
 - M2 compilation "Complete Story of Noah (Genesis 5-9)" is due 2026-11-04.
