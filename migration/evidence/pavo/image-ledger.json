@@ -90,5 +90,6 @@
  "probe": null,
  "suspended_at": null,
  "suspended_until": null,
+ "unread": [],
  "version": "pavo-image-ledger-v1"
 }

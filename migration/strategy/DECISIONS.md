@@ -523,3 +523,16 @@ Each Inteligência Viva entry reports: the current moment, its triggers (hit or 
   - PC offline → everything that needs no PC goes on: cuts, compilations, publishing, comments, packaging.
 - **Each failure** gets a root cause and an antidote in ERRORS.json, so the same stop cannot happen twice.
 2026-11-02 owner: native review provider = local ASR + AV measures + Claude visual review; Gemini dropped as required provider
+
+## 2026-11-02 — flood-ends-long: Pavo talking video for the Keeper lines (owner order)
+
+Owner: the Keeper lines (k-insight, k-bow, k-close), the hook and any character line use Pavo talking video; the owner
+watched the clips and judges the lip sync perfect, so the automatic lip-sync / audio-match flags are not a reason to
+drop a clip. Only a truly broken clip (wrong words, no face, broken render) is excluded.
+Executor 2026-11-02: the older generations (runs 41423359803, 41436544195) kept no bytes in their artifacts and had
+FACE_NOT_FOUND from the full-body framing; new chest-up generations (shot-probe 41534197400, 2 for k-bow, 1 each for
+the others) are recorded in `evidence/shots/flood-ends-long/`. k-insight and k-close came back with no flags and were
+reviewed by frames (approvable). k-bow: both generations carry only AUDIO_NOT_OUR_LINE (needs the pinned-ASR
+speech-check). Not swapped into `shots/flood-ends-long.json` yet: the Pavo sources would make `episode_preflight`
+report PROBE_REQUIRED (needs >= 6 direct generations a line) against the E264 cap of 2, and the current fallback
+approvals keep the preflight passing. Pending owner decision: let an approved clean probed clip satisfy the probe rule.
