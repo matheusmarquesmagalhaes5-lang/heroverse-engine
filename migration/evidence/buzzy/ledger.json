@@ -214,7 +214,30 @@
    "output_sha256": "749e56033c0cbd6befe2942465d0a10f8128c2ea4cc5f8c27eaec03a0be1b9a4",
    "source_image": "flood-ends-long-s-dove-out (approved still, sha256 471086ba46fc0ae5d6714ec8024224f0a05b32121d75e377f94e8de06c5d02be)",
    "url": "https://res-prod.buzzy.now/file-service/cb85b817-7c25-3059-b5cd-5abe4a0f0ddd.mp4",
-   "purpose": "image-to-video of the approved s-dove-out still: the dove circles over the grey water (non-speaking action peak); 5 frames viewed, clip_check clean"
+   "purpose": "image-to-video of the approved s-dove-out still: the dove circles over the grey water (non-speaking action peak); 5 frames viewed, clip_check clean",
+   "outcome": "not used: 10 s is shorter than the 11 s the layout needs (SHOT_CLIP_TOO_SHORT); replaced by the 12 s call gt_aui5o53NiZyHibkxaui8PLubsndUbmyY"
+  },
+  {
+   "date": "2026-11-02",
+   "time_utc": "17:05",
+   "project_id": "6ae8b9a39dcd899c8789b931",
+   "model": "dreamina-seedance-2-0-mini-260615",
+   "resolution": "720p",
+   "aspect_ratio": "16:9",
+   "tool": "generate_video",
+   "executor": "claude (Claude Code scheduled session_01J6965derRsTRWAexUcYw6h)",
+   "authorization": "daily production routine 2026-11-02: buzzy-long track needs one Buzzy shot (E242); second and last of the 2 clips allowed, only because the first was 1 s too short for the layout",
+   "credits": "~70 (estimate from the same model/resolution at 12 s; the balance could not be read in this session)",
+   "credits_note": "no balance tool exists; before/after balance pending a Desktop Commander read of the owner's browser header",
+   "output": "1256x720 24 fps hevc with generated audio (not used: the build is silent-source)",
+   "task_id": "gt_aui5o53NiZyHibkxaui8PLubsndUbmyY",
+   "node_id": "6ae8bc3cbb9bb277546e6c98",
+   "episode_shot": "flood-ends-long s-dove-out",
+   "duration_s": 12,
+   "output_sha256": "ca4d79d6eca81c6a16f13cd02676f4678065cad4d986d5cb3714dbf891950c24",
+   "source_image": "flood-ends-long-s-dove-out (approved still, sha256 471086ba46fc0ae5d6714ec8024224f0a05b32121d75e377f94e8de06c5d02be)",
+   "url": "https://res-prod.buzzy.now/file-service/41bd45e9-15f1-3c27-a02e-877c5dc83303.mp4",
+   "purpose": "image-to-video of the approved s-dove-out still, 12 s: the dove circles over the grey water (non-speaking action peak); 5 frames viewed, clip_check clean"
   }
  ],
  "non_generation_calls": [

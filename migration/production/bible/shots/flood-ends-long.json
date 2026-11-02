@@ -149,23 +149,19 @@
    "request_sha256": "75502c9153d3053ac4a929ddcea9ae79c1afd402a48d21e08b94b4d581cf7a3f"
   },
   "s-dove-out": {
-   "source": "still_motion",
+   "source": "buzzy",
    "score": 9.5,
-   "note": "Approved ChatGPT-desktop still (viewed in #646) in cinematic camera motion; silent scene.",
+   "note": "Buzzy image-to-video (12 s) of the approved s-dove-out still (5 frames viewed 2026-11-02): the white dove circles over the grey rough water, the family seen from behind at the bottom, no text, no speech (silent source, generated audio unused); non-speaking action peak; clip_check clean.",
    "model": "claude-session-reviewer",
    "approved_at": "2026-11-02",
-   "motion_engine": "cinematic-v2",
-   "still": "flood-ends-long-s-dove-out",
-   "repo_path": "migration/production/bible/stills/flood-ends-long-s-dove-out.jpg",
-   "clip_sha256": null,
-   "still_sha256": "471086ba46fc0ae5d6714ec8024224f0a05b32121d75e377f94e8de06c5d02be",
-   "frame": [
-    2560,
-    1440
-   ],
-   "licence": "apache-2.0",
-   "clip_seconds": 11,
-   "request_sha256": "e82572e9d6f5c126f2ca6c2020c1ab868e7af3a99f901169bc1b55f13813969b"
+   "task_id": "gt_aui5o53NiZyHibkxaui8PLubsndUbmyY",
+   "buzzy_model": "dreamina-seedance-2-0-mini-260615",
+   "buzzy_resolution": "720p",
+   "asset": "shot-flood-ends-long-s-dove-out-sha256-ca4d79d6eca81c6a16f13cd02676f4678065cad4d986d5cb3714dbf891950c24.mp4",
+   "clip_sha256": "ca4d79d6eca81c6a16f13cd02676f4678065cad4d986d5cb3714dbf891950c24",
+   "clip_seconds": 12,
+   "licence": "generated (Buzzy)",
+   "request_sha256": "7ae1cb053a2565776ea9eeb4fa51dba592ba3c3a8436e08f97762812e2bb90ca"
   },
   "s-dry": {
    "source": "still_motion",
