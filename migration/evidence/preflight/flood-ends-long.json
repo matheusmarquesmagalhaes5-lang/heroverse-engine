@@ -1,19 +1,19 @@
 {
  "plan": "migration/production/bible/plans/flood-ends-long.json",
  "episode": "flood-ends-long",
- "checked_at": "2026-11-02T01:07:33Z",
+ "checked_at": "2026-11-02T09:37:32Z",
  "plan_check": {
   "problems": [],
   "pending": [],
   "estimate": {
-   "seconds": 530.0,
-   "keeper_share": 0.064,
-   "lesson_share": 0.066,
+   "seconds": 521.6,
+   "keeper_share": 0.049,
+   "lesson_share": 0.051,
    "establishing_share": 0.0,
    "lines": 52,
    "shots": 33,
    "spoken_lines": 1,
-   "words": 1407
+   "words": 1384
   }
  },
  "characters": [
@@ -41,8 +41,8 @@
  },
  "voice": {
   "ran": true,
-  "reused": true,
-  "checkpoint_sha256": "37c2f662af746e3d90c1fd39be1c411600b8fed07288303f5529b7155bcc3836",
+  "reused": false,
+  "checkpoint_sha256": "0f92ece2ed03c673dfb286204e6362cecebee242ac3fdd029f591587161c6da1",
   "problems": [],
   "pace": {
    "god": [
@@ -51,13 +51,13 @@
    "narration": [
     3.19,
     2.39,
-    2.96,
+    2.97,
     2.56,
     2.88,
     2.86,
-    3.02,
+    3.01,
     2.74,
-    2.94,
+    2.93,
     2.54,
     2.95,
     2.96,
@@ -69,7 +69,7 @@
     2.95,
     2.5,
     3.57,
-    2.52,
+    2.5,
     2.99,
     2.84,
     3.36,
@@ -78,35 +78,41 @@
     2.56,
     2.82,
     3.25,
-    2.73,
-    2.67,
+    2.72,
+    2.69,
     2.71,
-    2.45,
+    2.44,
     3.01,
     3.1,
     2.68,
     3.1,
     3.0,
-    2.46,
-    2.72,
-    2.34,
+    2.47,
+    2.71,
+    2.35,
     2.84,
     3.1,
     3.67,
     2.9,
-    2.93,
+    2.92,
     2.69,
-    2.93,
+    2.74,
     2.71,
     2.84,
-    2.78
+    2.4
    ]
   },
   "measured": {
-   "total": 507.841,
-   "keeper_share": 0.066,
-   "lesson_share": 0.068,
-   "retimed": {}
+   "total": 501.768,
+   "keeper_share": 0.055,
+   "lesson_share": 0.056,
+   "retimed": {
+    "k-insight": {
+     "speech": 9.287,
+     "retimed": 9.55,
+     "atempo": 0.9725
+    }
+   }
   }
  },
  "requests": {
@@ -133,7 +139,7 @@
    "s-release": "ddbcb35baee548ade8aa4563b0a370794ac78570c3cdeb43df799a65fdeb88a7",
    "s-dry": "55676d8cbe048023e929e06f0c82c414886a0cbc779b0174b5d41ebaeecc459a",
    "s-shut": "f1a1a82308c286ab630e7ac6ecce63d985236590f36cf6109fcfe8eec07e6883",
-   "k-insight": "4471b0a903385cb602e9d0a3b3c8a615dd919eb7bcfd242f0f49a022ff6734f0",
+   "k-insight": "495299b6ea6abf0166afb9e12b7bb0eba95da682c8ac2de37daaacf765fb6abb",
    "s-voice-go": "1017f8a8120a3476ebc13989717462670fdc3c3ef2bdb4ab8bb7466f36cffa4a",
    "s-exit": "348146235fc88f0f5eb411cd42ca267ed23302d4c1e8273613331bef61b57157",
    "s-altar": "a215c9fc09b4a68efa97d940dd24d81889e26e0299405259be2ee7c4b1a09acc",
@@ -143,9 +149,9 @@
    "s-promise": "5cb37507e1998f22f0a2719b1c928fc5975295b91ba162fbdc060ce3485bfd2d",
    "s-bow": "a295be252e9d889dc903d3eff32e0059ebb09c24e1431cd964e893b1e6926d89",
    "s-look": "9cb1eb6435988e08fe498edb2b322412750cfb9f2f52832594533dac8437d3bd",
-   "k-bow": "0c8b0788600784af1d99fe56d969499d34513018f6faddc8cee65ed871a8d10f",
+   "k-bow": "a4a6efb036618303179ed369863e3c203cac8af068e140b180b2dd50b72428cc",
    "s-vineyard": "6dd5292ddc03901965f2a7e5abe17cd121dd783666ba5a0367dc7684cf8ec4a5",
-   "k-close": "f47ec6eb87d2b0c1547809287c3e51a5fdda86d109ef944811af84b3d52cd07b"
+   "k-close": "8ddd75036c821ffe29d4c3f7b2b506470aad8e4b181d58c36bcd9dd525bbb766"
   },
   "needs": {
    "s-voice": 8,
@@ -168,7 +174,7 @@
    "s-release": 20,
    "s-dry": 20,
    "s-shut": 11,
-   "k-insight": 12,
+   "k-insight": 10,
    "s-voice-go": 16,
    "s-exit": 19,
    "s-altar": 20,
@@ -178,9 +184,9 @@
    "s-promise": 15,
    "s-bow": 20,
    "s-look": 20,
-   "k-bow": 11,
+   "k-bow": 9,
    "s-vineyard": 20,
-   "k-close": 12
+   "k-close": 10
   }
  },
  "setups": {
@@ -191,40 +197,43 @@
     "probe": "none needed: generated right after the talking shots (risk_order), face check"
    },
    {
-    "kind": "still_mouth",
     "speaker": "keeper",
     "references": {
      "ch-keeper-talk": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
     },
+    "binding": "speaks the words of the audio clip, {pronoun} lips moving in sync with the voice",
+    "line": "most miss this noah saw dry ground and still waited he stepped out when god said go the one who shut the door opened it",
     "shot": "k-insight",
-    "check": "lipsync_check --still-mouth",
+    "kind": "talk",
     "probe": "PROBE_REQUIRED",
     "generations": 0,
-    "minimum": 2
+    "minimum": 6
    },
    {
-    "kind": "still_mouth",
     "speaker": "keeper",
     "references": {
      "ch-keeper-talk": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
     },
+    "binding": "speaks the words of the audio clip, {pronoun} lips moving in sync with the voice",
+    "line": "notice what the rainbow is god hung up his own bow pointing at the sky and not at us mercy is his idea",
     "shot": "k-bow",
-    "check": "lipsync_check --still-mouth",
+    "kind": "talk",
     "probe": "PROBE_REQUIRED",
     "generations": 0,
-    "minimum": 2
+    "minimum": 6
    },
    {
-    "kind": "still_mouth",
     "speaker": "keeper",
     "references": {
      "ch-keeper-talk": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
     },
+    "binding": "speaks the words of the audio clip, {pronoun} lips moving in sync with the voice",
+    "line": "what are you waiting for god to open tell me in the comments next time the tower that reached for the sky subscribe",
     "shot": "k-close",
-    "check": "lipsync_check --still-mouth",
+    "kind": "talk",
     "probe": "PROBE_REQUIRED",
     "generations": 0,
-    "minimum": 2
+    "minimum": 6
    }
   ],
   "probes_required": [
@@ -241,7 +250,7 @@
   "SHOT_NOT_REVIEWED k-insight k-bow k-close (shot-probe.yml, Claude's frame review >= 9.5, episode_build.py approve-shot, by PR)"
  ],
  "binding": {
-  "plan": "007616ba4ddd3291d3e27738beb7449cc49f4560364c0968bb0158a53b398e38",
+  "plan": "aa710f1c493d6749fd4e86d20baa007bfdd1bbccef2b004186323773381bdb9d",
   "characters": "4fa2cce1dc2029a424336c09a7f2b0272aaa0681023b7010d55a44847ca4d047",
   "image_records": {
    "ch-keeper-front.json": "666eb65f6fc26529aa71af95bba873ac4bdb123c599b30d7e2fe7e1986399932",
@@ -249,7 +258,7 @@
   },
   "setups": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "code": {
-   "episode_build.py": "8bfb160f2d4a6a6f8056ae7b2979a3045179b54aaf21aa34824dbe1bf5476f90",
+   "episode_build.py": "1fc6ff86b2502aa204cd94f8c109bd7d291aded801ea4c9fef847244f37e8a56",
    "plan_check.py": "e76079d8c42a0cfa5e6b35392085c3f456e241bc0c9c3d3084043c15679d9316",
    "voice_pace.py": "d4d2850c60e7df3680130725b6d584a83239538ad91f59671fcff4a626837c4b",
    "lipsync_check.py": "8222df7918d027eb2dbe21ca351cf29ae4c5f59bcda377906e4156a2be8dfdc9",
@@ -261,9 +270,9 @@
   }
  },
  "blockers": [
-  "PROBE_REQUIRED k-insight (0 of the >= 2 direct 0-credit Pavo generations of this voice-over Keeper shot, matched on its exact prompt and its talking reference frame, judged by lipsync_check --still-mouth, recorded in evidence/pavo/setups.json)",
-  "PROBE_REQUIRED k-bow (0 of the >= 2 direct 0-credit Pavo generations of this voice-over Keeper shot, matched on its exact prompt and its talking reference frame, judged by lipsync_check --still-mouth, recorded in evidence/pavo/setups.json)",
-  "PROBE_REQUIRED k-close (0 of the >= 2 direct 0-credit Pavo generations of this voice-over Keeper shot, matched on its exact prompt and its talking reference frame, judged by lipsync_check --still-mouth, recorded in evidence/pavo/setups.json)"
+  "PROBE_REQUIRED k-insight (0 of the >= 6 direct 0-credit Pavo generations of this line with its speaker, reference and binding, judged by lipsync_check, recorded in evidence/pavo/setups.json)",
+  "PROBE_REQUIRED k-bow (0 of the >= 6 direct 0-credit Pavo generations of this line with its speaker, reference and binding, judged by lipsync_check, recorded in evidence/pavo/setups.json)",
+  "PROBE_REQUIRED k-close (0 of the >= 6 direct 0-credit Pavo generations of this line with its speaker, reference and binding, judged by lipsync_check, recorded in evidence/pavo/setups.json)"
  ],
  "status": "BLOCKED"
 }
