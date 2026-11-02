@@ -17,16 +17,14 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
   not readable in the session). Preflight PASS (E267).
 - Built: `episode.yml` run 41484825424, report `evidence/episodes/flood-ends-long/report-41484825424.json` (501.83 s,
   -14.4 LUFS, sheet viewed). Pilot `buzzy-long-pilot.yml` run 41500348534: QA PASS; its PR carries pilot-017.
-- BLOCKED at the native review: `native-review.yml` run 41501277357 (full master, Free Tier proof ok) and its single
-  retry 41502101074 both ended provider INTERNAL with no model output; the one allowed retry is used. No audiovisual
-  review exists, so no `claude_review.json`, no approval and no publication yet. Next: a native review of the same
-  master that completes (a new executor/provider session able to hear it, or a later run once the provider recovers),
-  then `claude_review.json` (defects + publish decision), thumbnail A/B from live-plan, `approve.yml` ->
-  `prepublish_gate.py` -> `publish.yml` at 13:30 or 23:30 UTC, then the cuts.
-- 2026-11-02 owner: Gemini is dropped as a required provider (E268). The native review is now `local-review.yml`
-  (plan `plans/flood-ends-long.json`, sha256 `9a2d0f24e74c7117eedcbdd73992fbc284efb9402b6f82dba98f096a64635692`): pinned
-  ASR + ffmpeg measures + timecoded frame sheets; the session reviewer then views the sheets (artifact
-  `local-review-frames`), reads the transcript (artifact `native-review-public-evidence`) and writes `claude_review.json`.
+- 2026-11-02 review done through `local-review.yml` run 41510862169 (E268; 9 frame sheets viewed, ASR 99.06% of the
+  script, -14.4 LUFS; audio judged by transcript and measures, not by ear): `pilot-017/inspection/claude_review.json`
+  (publish decision, no unresolved [a]/[b]/[e]; `long_review.py` PASS). Thumbnail A "THE WATER STOPPED" approved
+  (candidate flood-ends-long-20261102-1, from the approved still s-joy, R16 PASS). Next: PR merge, then `approve.yml` ->
+  `prepublish_gate.py` -> `publish.yml` at the 23:30 UTC slot, `arcs.json`, then the cuts (raven/dove; rainbow covenant)
+  and the first Keeper reflection spec.
+- 2026-11-02 owner: Gemini is dropped as a required provider (E268); native-review runs 41501277357/41502101074 ended
+  provider INTERNAL and are superseded.
 - The shared lease was taken and released (idle). No Short is scheduled from this delivery; the bridge Short still
   needs 9:16 stills from the ChatGPT desktop route.
 

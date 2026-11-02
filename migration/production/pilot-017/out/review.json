@@ -1,0 +1,94 @@
+{
+ "version": "long-review-v3-compilation",
+ "track": "buzzy-long",
+ "pilot_id": "pilot-017",
+ "output_sha256": "9a2d0f24e74c7117eedcbdd73992fbc284efb9402b6f82dba98f096a64635692",
+ "checked_at": "2026-11-02T20:22:04Z",
+ "status": "PASS",
+ "watched_review": {
+  "model": "claude-session-reviewer",
+  "issues": [
+   "04:19.89 [a] sentence 69 only 75% heard (garbled or cut)",
+   "00:43.64 [info] heard \"asswitched\" for \"asswaged\" (sentence 8)",
+   "01:57.56 [info] heard \"scene\" for \"seen\" (sentence 26)",
+   "03:46.42 [info] heard \"into\" for \"in\" (sentence 57)",
+   "03:51.92 [info] heard \"no\" for \"noah\" (sentence 59)",
+   "04:22.06 [info] heard \"anymore\" for \"any\" (sentence 69)",
+   "06:03.48 [info] heard \"anymore\" for \"any\" (sentence 97)",
+   "06:11.62 [info] heard \"everything\" for \"every\" (sentence 99)",
+   "07:18.16 [info] heard \"bell\" for \"bow\" (sentence 118)",
+   "00:00.00 [info] speech opens on frame 0 by plan (cold open); confirm the first word is whole when listening to the sheet times",
+   "00:33.43 [info] longest stretch without a scene change 39.07 s"
+  ],
+  "defects": [
+   {
+    "issue": 0,
+    "category": "a",
+    "resolved": true
+   },
+   {
+    "issue": 1,
+    "category": "info",
+    "resolved": true
+   },
+   {
+    "issue": 2,
+    "category": "info",
+    "resolved": true
+   },
+   {
+    "issue": 3,
+    "category": "info",
+    "resolved": true
+   },
+   {
+    "issue": 4,
+    "category": "info",
+    "resolved": true
+   },
+   {
+    "issue": 5,
+    "category": "info",
+    "resolved": true
+   },
+   {
+    "issue": 6,
+    "category": "info",
+    "resolved": true
+   },
+   {
+    "issue": 7,
+    "category": "info",
+    "resolved": true
+   },
+   {
+    "issue": 8,
+    "category": "info",
+    "resolved": true
+   },
+   {
+    "issue": 9,
+    "category": "info",
+    "resolved": true
+   },
+   {
+    "issue": 10,
+    "category": "info",
+    "resolved": true
+   }
+  ],
+  "publish_decision": {
+   "decision": "publish",
+   "by": "claude-session-reviewer",
+   "note": "No speech cut (the [a] is ASR drift, caption whole), no scene against its line or story order, no policy issue: God is not depicted, KJV exact, Keeper critical layer kept. Keeper shots are Kokoro voice-over on still motion (SOURCE_POLICY fallback, no Pavo)."
+  },
+  "evidence": [
+   "local-review.yml run 41510862169 (E268) on this exact master (sha256 9a2d0f24...): pinned ASR heard the whole 501.8 s audio against the script (1371/1384 words matched, 99.06%); ffmpeg measures -14.4 LUFS, LRA 2.1, -1.3 dBTP, no silence, no speech gap.",
+   "All 9 timecoded frame sheets (0.5 fps, every 2 s over 8:19) viewed by the session reviewer: every scene matches its line and the Genesis 8-9 story order (raven/dove, leaf, dry ground, altar, rainbow, Noah's vineyard); captions and KJV cards readable; Noah and the family keep one face throughout.",
+   "Audio was reviewed through the ASR transcript and measures, not by ear: this session cannot play audio; stated honestly per the owner's E268 route."
+  ],
+  "strongest_moment": "4:00-4:14: the dove returns with the green leaf, Noah holds it, the family cries and laughs as the single leaf passes from hand to hand ('A single leaf. It was the first...').",
+  "reviewed_at": "2026-11-02T20:30:00Z",
+  "overall": 9.5
+ }
+}
