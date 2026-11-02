@@ -488,6 +488,18 @@ Each Inteligência Viva entry reports: the current moment, its triggers (hit or 
   regenerate.
 - Inteligência Viva and production plan to avoid rework: every generation planned must be one that gets used.
 
+### YouTube bonus programs and Shorts cadence (owner, 2026-11-02)
+- Bonuses are separate from the plan and change nothing in it. The plan stays focused on the YPP goal and the
+  deadline.
+- Join a YouTube bonus or program from inside Studio the day it appears. The first one is the Shorts bonus: 16 Shorts
+  a month, join by 11-15. On 11-02 it was not yet shown for HeroVerse in Studio.
+- Inteligência Viva only watches for these offers and reports them.
+- Shorts cadence (owner rule): **4 Shorts a day**:
+  - 2–3 story Shorts: cuts from the long, or a bridge when no cut exists;
+  - plus 1 **Keeper reflection** Short in split screen, about 30 s: the long's moment plays in the top half and the
+    Keeper's reflection is in the bottom half.
+  Slots are chosen by Inteligência Viva; the count is fixed by the owner.
+
 ### Never stop: automation and fallback ladder (owner, 2026-11-02)
 - **Who moves it:**
   - Inteligência Viva (05:17) plans.
