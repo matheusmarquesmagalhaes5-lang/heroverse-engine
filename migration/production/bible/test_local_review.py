@@ -112,6 +112,24 @@ class Script(unittest.TestCase):
     def test_normalisation_ignores_case_curly_quotes_and_hyphens(self):
         self.assertEqual(L.norm_tokens('Thy sons\u2019 WIVES \u2014 go-forth!'), ['thy', 'sons', 'wives', 'go', 'forth'])
 
+    def test_e269_the_asr_writes_numbers_as_digits_and_the_script_spells_them(self):
+        h = L.flatten_heard([{'words': words('in the 600th year and 950 years 40 days the 17th day')}])
+        self.assertEqual([w['t'] for w in h], 'in the six hundredth year and nine hundred fifty years forty days the seventeenth day'.split())
+        c = L.compare([{'text': 'in the six hundredth year and nine hundred and fifty years forty days the seventeenth day'}], h)
+        self.assertEqual((c['garbled'], c['coverage'] >= 0.9), ([], True))
+
+    def test_e269_whisper_word_time_jitter_and_a_planned_cold_open_are_not_defects(self):
+        t = [{'sentence': 1, 'timeline_start': 6.0, 'start_offset': -0.76, 'end_offset': -0.95}]
+        a = dict(measures()['audio'], timing=t, first_word_start=0.0, sentence_starts={0: 0.0})
+        m = measures(); m['audio'] = a
+        self.assertEqual(L.defects(m, 100.0), [])
+        self.assertTrue(any('frame 0 by plan' in x for _, _, x in L.informational(m)))
+        m['audio']['compare'] = dict(a['compare'], garbled=[{'expected': 'bow', 'heard': 'bell', 'sentence': 3, 'at': 9.0}])
+        self.assertEqual(L.defects(m, 100.0), [])
+        self.assertTrue(any('bell' in x for _, _, x in L.informational(m)))
+        m['audio']['timing'] = [dict(t[0], start_offset=1.3)]
+        self.assertTrue(any(c == 'd' for _, c, _ in L.defects(m, 100.0)))
+
     def test_a_sentence_heard_late_is_flagged_against_its_caption_timeline(self):
         h = self.heard('And God said unto Noah go forth of the ark')
         for w in h:
