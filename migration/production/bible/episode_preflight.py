@@ -194,7 +194,7 @@ def probe_rows(plan, chars, probes=None):
     import shot_sources
     plan_b = {}
     if shot_sources.owner_exception(plan):   # the owner's arc-01 exception: plan B, the Kokoro voice over a still
-        # still_motion, or (E266) the Keeper's own night-camp footage: his Kokoro voice over a picture with no face
+        # still_motion, or (E267) the Keeper's own night-camp footage: his Kokoro voice over a picture with no face
         # speaking (shot_sources.fallback_refusal keeper_vo); both show no lips speaking, so no probe is owed
         plan_b = {sid for sid, a in eb.load_approvals(plan).items() if a.get("source") in ("still_motion", "footage")}
     for i, s in enumerate(plan["shots"]):

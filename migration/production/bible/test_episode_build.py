@@ -325,7 +325,7 @@ class Generation(unittest.TestCase):
             made.append(n)
             return {"generation": n}, f"clip-{n}.mp4"
         with self.assertRaises(eb.ShotFailed) as err:
-            eb.make_shot("k-open", attempt, lambda p: (["MOUTH_NOT_IN_SYNC"], {"audio": {}}))
+            eb.make_shot("k-open", attempt, lambda p: (["FACE_NOT_FOUND"], {"audio": {}}))
         self.assertEqual(made, [1, 2, 3])
         self.assertIn("SHOT_FAILED k-open after 3 generations", str(err.exception))
 
@@ -866,6 +866,95 @@ class Gating(unittest.TestCase):
                 f.unlink(missing_ok=True)
             shutil.rmtree(rec)
 
+    def test_e266_every_generation_is_kept_and_only_a_hard_defect_bars_approval(self):
+        # E266 (owner 2026-11-02, generate-compare-use-the-best): flood-ends-long's 10 Keeper generations were all
+        # refused and none was kept, so there was nothing to compare. Now every generation with a video is uploaded
+        # with its flags split by meaning; a soft measure (a small sync offset) or a re-timed line proven by the ASR
+        # is approvable; no face / a wrong line / a broken render never is.
+        flags = iter([["MOUTH_NOT_IN_SYNC"], ["FACE_NOT_FOUND"]])
+        eb.lipsync_flags = lambda py, model, clip, wav: (next(flags), {"audio": {"corr": 0.9}, "mouth": {"sync": {}}})
+        client = FakeClient([{"conversation_id": "10", "status": "submitted"},
+                             {"conversation_id": "11", "status": "submitted"}], {"10": [done("10")], "11": [done("11")]})
+        out, sheets = self.work / "out", []
+        record = eb.probe_step(self.plan, self.work, "py", "model", out, ["s-eve"], 1, client=client,
+                               download=lambda url, dst: Path(dst).write_bytes(url.encode()), sleep=lambda s: None,
+                               sheet=lambda video, sheet: sheets.append(Path(sheet).name))
+        self.assertEqual(len(client.calls), eb.TALK_ATTEMPTS)               # still at most 2 generations
+        clips = record["shots"]["s-eve"]["clips"]
+        self.assertEqual([c["flags"] for c in clips], [["MOUTH_NOT_IN_SYNC"], ["FACE_NOT_FOUND"]])
+        self.assertEqual([(c["hard_flags"], c["soft_flags"]) for c in clips],
+                         [([], ["MOUTH_NOT_IN_SYNC"]), (["FACE_NOT_FOUND"], [])])
+        self.assertEqual(clips[0]["measures"]["lipsync"]["audio"]["corr"], 0.9)
+        self.assertTrue(all((out / c["asset"]).is_file() for c in clips))   # both uploaded, not only a passing one
+        self.assertEqual(len(sheets), 2)
+        import quota
+        self.assertEqual(quota.record_usage(record)[0], 2 * quota.VIDEO_UNITS)   # the quota counts each generation once
+        media = lambda c: {"version": "clip-media-v1", "clip_sha256": c["clip_sha256"], "video_seconds": 7.25,
+                           "audio_seconds": 7.28}
+        records = eb.REPO / "migration" / "evidence" / "shots"
+        records.mkdir(parents=True, exist_ok=True)
+        path, shots = records / f".test-{os.getpid()}-265.json", Path(tempfile.mkdtemp(dir=records.parent,
+                                                                                        prefix=".test-shots-"))
+        try:
+            with patch.object(eb.clip_timing, "measure", side_effect=lambda f: media({"clip_sha256": eb.sha256(f)})):
+                eb.probe_assets(out, self.plan["episode"], "40500000265", path)
+            kw = dict(shots_dir=shots, reviewer="claude-session-reviewer")
+            with self.assertRaisesRegex(SystemExit, "SHOT_CHECKS_FAILED s-eve FACE_NOT_FOUND"):
+                eb.approve_shot(path, "s-eve", clips[1]["asset"], "9.9", "no face", **kw)   # hard: never approvable
+            with self.assertRaises(SystemExit):
+                eb.approve_shot(path, "s-eve", clips[0]["asset"], "9.4", "soft but under the floor", **kw)
+            approved = eb.approve_shot(path, "s-eve", clips[0]["asset"], "9.6", "lips 2 frames early, fixed in the edit",
+                                       **kw)
+            self.assertEqual(approved["accepted_flags"], ["MOUTH_NOT_IN_SYNC"])
+            self.assertEqual(approved["score"], 9.6)
+            # the build checks the approved clip again: exactly the accepted soft flag is waved through, no other
+            sha = clips[0]["clip_sha256"]
+            self.assertEqual(eb.accepted_flags(approved, sha), ["MOUTH_NOT_IN_SYNC"])
+            self.assertEqual(eb.accepted_flags(dict(approved, accepted_flags=["FACE_NOT_FOUND", "MOUTH_NOT_IN_SYNC"]),
+                                               sha), ["MOUTH_NOT_IN_SYNC"])
+            # a re-timed line (AUDIO_NOT_OUR_LINE, an envelope measure) is soft only with the ASR's proof
+            words = " ".join(record["shots"]["s-eve"]["request"]["audio"]["words"])
+            pinned = eb.pavo_native.criteria()["speech"]["asr_model"]["model_bin_sha256"]
+            side = records / self.plan["episode"] / "speech" / f"{sha}.json"
+            doc = json.loads(path.read_text())
+            doc["shots"]["s-eve"]["clips"][0]["flags"] = ["AUDIO_NOT_OUR_LINE", "MOUTH_NOT_IN_SYNC"]
+            path.write_text(json.dumps(doc))
+            with self.assertRaisesRegex(SystemExit, "SHOT_WORDS_UNPROVEN"):
+                eb.approve_shot(path, "s-eve", clips[0]["asset"], "9.6", "re-timed, same words?", **kw)
+            side.parent.mkdir(parents=True, exist_ok=True)
+            side.write_text(json.dumps({"measures": {"asr": {"model_bin_sha256": pinned, "text": "another line"}}}))
+            with self.assertRaisesRegex(SystemExit, "SHOT_WORDS_NOT_OUR_LINE"):
+                eb.approve_shot(path, "s-eve", clips[0]["asset"], "9.6", "other words", **kw)
+            side.write_text(json.dumps({"measures": {"asr": {"model_bin_sha256": pinned, "text": words}}}))
+            proven = eb.approve_shot(path, "s-eve", clips[0]["asset"], "9.6", "same words, re-timed", **kw)
+            self.assertEqual(proven["accepted_flags"], ["AUDIO_NOT_OUR_LINE", "MOUTH_NOT_IN_SYNC"])
+            self.assertEqual(eb.accepted_flags(proven, sha), ["AUDIO_NOT_OUR_LINE", "MOUTH_NOT_IN_SYNC"])
+            self.assertEqual(eb.accepted_flags(dict(proven, words={}), sha), ["MOUTH_NOT_IN_SYNC"])   # no proof: still hard
+            self.assertEqual(eb.accepted_flags(proven, "0" * 64), ["MOUTH_NOT_IN_SYNC"])             # another clip's proof
+        finally:
+            path.unlink(missing_ok=True)
+            shutil.rmtree(shots, ignore_errors=True)
+            side = records / self.plan["episode"] / "speech"
+            shutil.rmtree(side, ignore_errors=True)
+            try:
+                side.parent.rmdir()   # only when this test created it (empty)
+            except OSError:
+                pass
+
+    def test_e266_flags_are_split_by_meaning_and_a_soft_generation_is_not_a_failed_shot(self):
+        self.assertEqual(eb.flag_split(["FACE_NOT_FOUND", "AUDIO_NOT_OUR_LINE", "MOUTH_NOT_IN_SYNC", "AUDIO_OFFSET",
+                                        "GOD_SHOT_FACE", "MOUTH_TALKING", "BLACK_START"]),
+                         {"hard": ["FACE_NOT_FOUND", "GOD_SHOT_FACE", "MOUTH_TALKING", "BLACK_START"],
+                          "words": ["AUDIO_NOT_OUR_LINE"], "soft": ["MOUTH_NOT_IN_SYNC", "AUDIO_OFFSET"]})
+        flags = {"c-1.mp4": ["MOUTH_NOT_IN_SYNC"], "c-2.mp4": ["AUDIO_NOT_OUR_LINE", "AUDIO_OFFSET"]}
+        kept, records = eb.make_shot("k-a", lambda n: ({"generation": n}, f"c-{n}.mp4"), lambda p: (flags[str(p)], None),
+                                     attempts=2)
+        self.assertEqual(len(records), 2)                         # compared, not regenerated beyond the cap
+        self.assertEqual(str(kept), "c-1-fail1.mp4")             # the first one with no hard flag, kept beside the shot
+        with self.assertRaises(eb.ShotFailed):                     # a hard flag on every generation still fails it
+            eb.make_shot("k-a", lambda n: ({"generation": n}, f"c-{n}.mp4"),
+                         lambda p: (["MOUTH_NOT_IN_SYNC", "FACE_NOT_FOUND"], None), attempts=2)
+
     def test_a_clip_a_build_made_and_claude_approved_is_adopted_without_a_generation(self):
         # E114: genesis-08's clips approved inside build runs 40438106839/40460764662 are adopted from the run's
         # artifact: what the run sent (its recorded request, the words of its input audio) must equal the plan's
@@ -973,8 +1062,8 @@ class Gating(unittest.TestCase):
 
     def test_a_failed_shot_keeps_each_refused_generation_and_its_measures_in_the_report(self):
         # E94: run 40278642295 refused k-insight three times; only the flags reached the log, no clip, no measures
-        eb.lipsync_flags = lambda py, model, clip, wav: (["AUDIO_NOT_OUR_LINE"], {"audio": {"corr": 0.2}, "mouth": {}})
-        with self.assertRaises(SystemExit):
+        eb.lipsync_flags = lambda py, model, clip, wav: (["FACE_NOT_FOUND"], {"audio": {"corr": 0.2}, "mouth": {}})
+        with self.assertRaises(SystemExit):   # E266: a HARD flag; a soft or words flag no longer fails the shot
             self.generate(extra=eb.TALK_ATTEMPTS - 1)   # s-eve talks: every one of its generations is refused
         report = json.loads((self.work / "report.json").read_text())
         attempts = report["shots"]["s-eve"]["attempts"]

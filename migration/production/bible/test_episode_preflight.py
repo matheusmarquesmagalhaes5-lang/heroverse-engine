@@ -254,7 +254,7 @@ class Probes(unittest.TestCase):
         failed = [dict(p, passed=0) if p.get("kind") == "still_mouth" else p for p in probes]
         self.assertEqual(pf.probe_rows(plan, chars, probes=failed)[2], vo)
 
-    def test_e266_a_keeper_voice_over_on_his_camp_footage_owes_no_probe(self):
+    def test_e267_a_keeper_voice_over_on_his_camp_footage_owes_no_probe(self):
         # a Keeper shot whose approved source is footage (his Kokoro voice over a faceless night fire) shows no lips
         # speaking, exactly as a still in motion: no still-mouth probe is required
         plan = json.loads((pf.eb.HERE / "plans" / "flood-ends-long.json").read_text())

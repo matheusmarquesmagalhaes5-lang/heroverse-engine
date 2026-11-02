@@ -4,7 +4,7 @@
   "k-bow": {
    "source": "still_motion",
    "score": 9.5,
-   "note": "Approved Keeper still (his look, lips closed) in cinematic camera motion under his Kokoro voice-over; no face motion or lip-sync claimed; no Pavo.",
+   "note": "Approved Keeper still (his look, lips closed; frame viewed) in cinematic camera motion under his Kokoro voice-over; no face motion or lip-sync claimed; no Pavo.",
    "model": "claude-session-reviewer",
    "approved_at": "2026-11-02",
    "motion_engine": "cinematic-v2",
@@ -18,7 +18,7 @@
    ],
    "licence": "Pavo generated (owner-owned)",
    "clip_seconds": 20,
-   "request_sha256": "c5359b493f03a976a170b9bc29c5bbe4c7a0d0be57a6a44c106243a0659b13b0"
+   "request_sha256": "406e9167a9c2cea216e7169aa159b7f041fef91f72c741981c198d9b55757928"
   },
   "k-close": {
    "source": "footage",
@@ -32,12 +32,12 @@
    "licence": "Pixabay Content License",
    "credit": "Footage: KlausHausmann via Pixabay (https://pixabay.com/videos/id-8639/)",
    "clip_seconds": 18,
-   "request_sha256": "07151e234486706fa0baf9b125d5afecbaa2e2d8532c40e3aa6f2fe1750263db"
+   "request_sha256": "1a2146f65d9b077ba211d156888d24cf721b13855e64a3d7cb1f8471c3e2c809"
   },
   "k-insight": {
    "source": "still_motion",
    "score": 9.5,
-   "note": "Approved Keeper still (his look, lips closed) in cinematic camera motion under his Kokoro voice-over; no face motion or lip-sync claimed; no Pavo.",
+   "note": "Approved Keeper still (his look, lips closed; frame viewed) in cinematic camera motion under his Kokoro voice-over; no face motion or lip-sync claimed; no Pavo.",
    "model": "claude-session-reviewer",
    "approved_at": "2026-11-02",
    "motion_engine": "cinematic-v2",
@@ -51,7 +51,7 @@
    ],
    "licence": "Pavo generated (owner-owned)",
    "clip_seconds": 20,
-   "request_sha256": "7048e5e763f9dc49c5d99a6199481ee14e475c657eb10257f99c16509581eb2b"
+   "request_sha256": "7c3fa222f20acb475247778c7513ea2b5cf9a52626e99c045beefe88fce215ce"
   },
   "s-altar": {
    "source": "still_motion",
