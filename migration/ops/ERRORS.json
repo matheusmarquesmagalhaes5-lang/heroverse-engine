@@ -3846,6 +3846,41 @@
      "instrument"
     ]
    }
+  },
+  {
+   "id": "E267",
+   "date": "2026-11-02",
+   "class": [
+    "instrument"
+   ],
+   "prior": [
+    "E120",
+    "E131",
+    "E137",
+    "E139",
+    "E148",
+    "E152",
+    "E166",
+    "E169",
+    "E185",
+    "E186",
+    "E231",
+    "E233",
+    "E238",
+    "E253",
+    "E255",
+    "E262",
+    "E266"
+   ],
+   "error": "flood-ends-long fallback (Keeper voice-over, no Pavo): episode_preflight.probe_rows asked a still-mouth probe (PROBE_REQUIRED k-close) of a Keeper shot whose approved source was the Keeper's own night-camp footage, although shot_sources.fallback_refusal already allows keeper_vo on footage and no lips speak. Also met on the way: episode.yml run 41465187630 refused that clip as ROTATED_PICTURE (clip_check reads a tall flame on a dark ground as a turned picture; fix: choose a clip clean in clip_check, recorded in CURRENT), buzzy-long pilot QA failed buzzy_shot_in_episode (the track needs one ledgered Buzzy shot; plan it before the build), and a 10 s Buzzy clip was SHOT_CLIP_TOO_SHORT for a 9 s shot (the layout needs span + 2 s).",
+   "fix": "episode_preflight.probe_rows treats an approved source of footage like still_motion for a Keeper shot (no probe owed): the Keeper's voice over a faceless picture.",
+   "antidote": {
+    "file": "migration/production/bible/test_episode_preflight.py",
+    "contains": "def test_e267_a_keeper_voice_over_on_his_camp_footage_owes_no_probe",
+    "covers": [
+     "instrument"
+    ]
+   }
   }
  ]
 }
