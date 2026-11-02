@@ -180,6 +180,13 @@ The regular route's existing line/clip retime rules apply before acceptance; an 
 stretched later to fit a replacement. Preserve actual failures and their measures. A good clip from another line
 does not establish synchronization for this line.
 
+**Generation cap and fallback (E264, owner: no rework).** A talking or voice-over shot gets `TALK_ATTEMPTS = 2`
+generations (one and at most 1 regeneration) and at most 1 shot-probe round (`TALK_PROBE_ROUNDS_MAX`; the dispatch
+guard and `probe_ids` refuse `attempts` above 1 for it), so one shot costs at most 2 generations a run and three
+talking shots at most 6 (`long_preflight.planned_units(..., worst=True)`). When a talking Keeper shot fails its
+checks on both generations, the shot falls back to the Keeper voice-over on reviewed still motion of an approved
+Keeper still (DECISIONS "Battle plan to YPP", the fallback ladder below). Never queue more generations for it.
+
 Approved reused clips are selected by their exact hashes and the supported request/reuse binding. Check current
 revocations, aspect, character identity, source coverage and the changed context. Reuse does not imply generation
 and does not create a new review score. Whether repeated imagery harms the episode is judged in the complete result.

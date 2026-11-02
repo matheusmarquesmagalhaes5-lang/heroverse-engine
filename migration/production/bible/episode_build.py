@@ -112,9 +112,12 @@ CUT_MAX = 4.0              # a scene cut every 2-4 s (DECISIONS 2026-10-26)
 ESTABLISHING_HOLD = plan_check.ESTABLISHING_HOLD
 MAX_SLOW = 1.3             # short_engine.MAX_SLOW
 ATTEMPTS = 3               # one generation and at most 2 regenerations
-# E98: a talking clip passes the lips check about 4 times in 10 (evidence/pavo/20261026/keeper-lipsync-rate.json):
-# 3 generations lost a three-Keeper-shot run about half the time; 6 keep a shot at ~95 % (Pavo at 0 credits)
-TALK_ATTEMPTS = 6
+# E98 set 6 generations for a talking clip (it passes the lips check about 4 times in 10); E264 cut it to 2 (one
+# generation and at most 1 regeneration): 6 per shot per round, times rounds, spent up to 36 near-identical Pavo clips
+# for 3 Keeper lines, which is rework. A talking shot that fails both falls back to the Keeper voice-over on a reviewed
+# still motion of an approved Keeper still (DECISIONS "Battle plan to YPP"); no further generation is ever queued.
+TALK_ATTEMPTS = 2
+TALK_PROBE_ROUNDS_MAX = 1  # E264: rounds (shot-probe `attempts`) a talking or voice-over shot may be probed in a run
 POLL_S = 15
 JOB_TIMEOUT_S = 25 * 60
 INCOMPLETE_POLLS = 8       # history can be empty just after submission; then "incomplete" means failed
@@ -135,7 +138,7 @@ HOLD_MARGIN = 0.01         # a talking clip's held last frame is written this mu
 # downloads that exact asset and never generates a shot that has one.
 SHOTS_DIR = HERE / "shots"
 SHOT_REVIEW_MIN = 9.5      # the owner's floor, the same as the review's
-PROBE_ATTEMPTS_MAX = 6     # generations one shot-probe run may spend on one shot (TALK_ATTEMPTS)
+PROBE_ATTEMPTS_MAX = 6     # rounds one shot-probe run may spend on a scene shot; a talking or voice-over shot: TALK_PROBE_ROUNDS_MAX
 SHOT_ASSET = re.compile(r"^shot-[a-z0-9]+(-[a-z0-9]+)*-sha256-[0-9a-f]{64}\.mp4$")
 # E118: Kokoro measures the same voice a few hundredths of a second apart on two machines (genesis-08: 174.0 s local,
 # 173.929 s on the runner, run 40483267526). The build accepts an approved clip that covers what this machine would
@@ -1246,6 +1249,12 @@ def attempts_for(shot):
     return TALK_ATTEMPTS if plan_check.talking(shot) or plan_check.voiceover(shot) else ATTEMPTS
 
 
+def probe_rounds_cap(shot):
+    """E264: the most shot-probe rounds one shot may be probed in: 1 for a talking or voice-over shot (so at most
+    TALK_ATTEMPTS = 2 generations a run), PROBE_ATTEMPTS_MAX for any other."""
+    return TALK_PROBE_ROUNDS_MAX if plan_check.talking(shot) or plan_check.voiceover(shot) else PROBE_ATTEMPTS_MAX
+
+
 def make_shot(shot_id, attempt, check, attempts=ATTEMPTS):
     """attempt(n) -> (record, clip path or None); check(path) -> (flags, measures or None). A failed shot gets a NEW
     generation, at most attempts - 1 times; then the run fails naming the shot. Returns (kept path, records)."""
@@ -1745,6 +1754,11 @@ def probe_ids(plan, text, attempts):
         raise SystemExit("PROBE_WINDOW_SHOT " + " ".join(windows) + " (a window_of shot ships its source's clip)")
     if not re.fullmatch(r"[1-9][0-9]?", str(attempts).strip()) or not 1 <= int(attempts) <= PROBE_ATTEMPTS_MAX:
         raise SystemExit(f"PROBE_ATTEMPTS_REFUSED {attempts!r} (1-{PROBE_ATTEMPTS_MAX})")
+    by_id = {s["id"]: s for s in plan["shots"]}
+    talk = [x for x in ids if int(attempts) > probe_rounds_cap(by_id[x])]
+    if talk:   # E264: no rework: a talking or voice-over shot is probed in one round (2 generations), then the fallback
+        raise SystemExit("PROBE_ATTEMPTS_REFUSED " + " ".join(talk) + f" (a talking or voice-over shot takes at most "
+                         f"{TALK_PROBE_ROUNDS_MAX} round, {TALK_ATTEMPTS} generations)")
     return list(dict.fromkeys(ids)), int(attempts)
 
 

@@ -96,7 +96,7 @@ class Allocation(unittest.TestCase):
         # review of #476: the dispatch guard's worst-case bound, not the expected mean (which would let s-god, s-river
         # and s-pair in too and stop the batch half-way)
         one = long_preflight.planned_units([p["shots"][0]], worst=True)
-        self.assertGreater(one, long_preflight.planned_units(p["shots"][:3]))
+        self.assertLess(one, long_preflight.planned_units(p["shots"][:3], worst=True))   # E264: one talking shot is 2 generations
         got = dict((s["id"], c) for s, c in ss.allocate(p, todo, one))
         self.assertEqual(got, {"s-eve": "pavo", "s-god": "WAIT_PAVO_BUDGET", "s-river": "fallback",
                                "s-pair": "WAIT_PAVO_BUDGET"})
