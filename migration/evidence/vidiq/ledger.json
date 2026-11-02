@@ -1366,6 +1366,22 @@
    "credits": 25,
    "purpose": "structure audit zURuppTrHro (job pending)",
    "saved_to": "evidence/vidiq/20261102/in-niche-outliers.json"
+  },
+  {
+   "date": "2026-11-02",
+   "kind": "read",
+   "tool": "vidiq_outliers",
+   "credits": 5,
+   "purpose": "cross-niche long emotional-narrative outliers (second Intelig\u00eancia Viva run)",
+   "saved_to": "evidence/vidiq/20261102/cross-niche-outliers.json"
+  },
+  {
+   "date": "2026-11-02",
+   "kind": "read",
+   "tool": "vidiq_video_watch",
+   "credits": 25,
+   "purpose": "cross-niche structure audit 93wYHx79Mso (27:51)",
+   "saved_to": "evidence/vidiq/20261102/cross-niche-outliers.json"
   }
  ]
 }
