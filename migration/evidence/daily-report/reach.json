@@ -1,5 +1,5 @@
 {
- "at": "2026-11-01T09:41:23.230669+00:00",
+ "at": "2026-11-02T18:48:31.009433+00:00",
  "days": {
   "2026-08-05": {
    "BaNsd7j64YI": [
@@ -1348,19 +1348,15 @@
     0.0
    ],
    "53Xysf9x46c": [
-    110,
-    0.02727272727272727
+    135,
+    0.022222222222222223
    ],
    "9g2MeIit9ys": [
-    7,
+    6,
     0.0
    ],
    "F8u5dTT_2mM": [
     18,
-    0.0
-   ],
-   "Hy54XVINoiQ": [
-    1,
     0.0
    ],
    "Iegu_RD_wbE": [
@@ -1368,7 +1364,7 @@
     0.3333333333333333
    ],
    "K_ZwsCt-Wg4": [
-    9,
+    4,
     0.0
    ],
    "NGfnyTul-K0": [
@@ -1376,20 +1372,12 @@
     0.0
    ],
    "OYijqQdQq0o": [
-    58,
-    0.0
-   ],
-   "SsgCGkM6knQ": [
-    2,
-    0.0
-   ],
-   "VEbS6pvirTA": [
-    2,
+    51,
     0.0
    ],
    "Vvfw4W4nV7M": [
-    57,
-    0.017543859649122806
+    52,
+    0.038461538461538464
    ],
    "XDwxi4pvllM": [
     5,
@@ -1403,36 +1391,24 @@
     12,
     0.0
    ],
-   "_sUdOLxWy5c": [
-    2,
-    0.0
-   ],
-   "bAsb6Ov0A-A": [
-    1,
-    0.0
-   ],
    "dyuqBS_FXew": [
-    29,
+    22,
     0.0
    ],
    "hwq4qgjreh0": [
-    11,
-    0.0
-   ],
-   "imfvOr3Q0aI": [
-    1,
+    6,
     0.0
    ],
    "jPNjgf-PWHM": [
-    64,
-    0.03125
+    63,
+    0.031746031746031744
    ],
    "ku2MTQKmXaU": [
-    13,
+    8,
     0.0
    ],
    "s9YK37YErRc": [
-    10,
+    1,
     0.0
    ],
    "tri-CUwy_m0": [
@@ -1585,6 +1561,76 @@
    ],
    "tri-CUwy_m0": [
     5,
+    0.0
+   ]
+  },
+  "2026-10-31": {
+   "1bT9pEROuhI": [
+    6,
+    0.0
+   ],
+   "53Xysf9x46c": [
+    90,
+    0.011111111111111112
+   ],
+   "9g2MeIit9ys": [
+    3,
+    0.0
+   ],
+   "F8u5dTT_2mM": [
+    7,
+    0.0
+   ],
+   "Iegu_RD_wbE": [
+    2,
+    0.0
+   ],
+   "K_ZwsCt-Wg4": [
+    8,
+    0.0
+   ],
+   "NGfnyTul-K0": [
+    5,
+    0.0
+   ],
+   "OYijqQdQq0o": [
+    3,
+    0.0
+   ],
+   "Vvfw4W4nV7M": [
+    7,
+    0.14285714285714285
+   ],
+   "XDwxi4pvllM": [
+    2,
+    0.0
+   ],
+   "ZPSxpF-zBl8": [
+    1,
+    0.0
+   ],
+   "dyuqBS_FXew": [
+    3,
+    0.0
+   ],
+   "hwq4qgjreh0": [
+    7,
+    0.0
+   ],
+   "jPNjgf-PWHM": [
+    1,
+    0.0
+   ],
+   "ku2MTQKmXaU": [
+    8,
+    0.0
+   ],
+   "s9YK37YErRc": [
+    1,
+    0.0
+   ],
+   "tri-CUwy_m0": [
+    1,
     0.0
    ]
   }
@@ -2595,18 +2641,18 @@
    "by_kind": {
     "long": {
      "clicks": 4,
-     "ctr": 0.0241,
-     "impressions": 166
+     "ctr": 0.0211,
+     "impressions": 190
     },
     "short": {
-     "clicks": 4,
-     "ctr": 0.0152,
-     "impressions": 264
+     "clicks": 5,
+     "ctr": 0.0237,
+     "impressions": 211
     }
    },
-   "clicks": 8,
-   "ctr": 0.0186,
-   "impressions": 430
+   "clicks": 9,
+   "ctr": 0.0224,
+   "impressions": 401
   },
   "2026-10-29": {
    "by_kind": {
@@ -2641,6 +2687,23 @@
    "clicks": 1,
    "ctr": 0.0096,
    "impressions": 104
+  },
+  "2026-10-31": {
+   "by_kind": {
+    "long": {
+     "clicks": 1,
+     "ctr": 0.0085,
+     "impressions": 117
+    },
+    "short": {
+     "clicks": 1,
+     "ctr": 0.0263,
+     "impressions": 38
+    }
+   },
+   "clicks": 2,
+   "ctr": 0.0129,
+   "impressions": 155
   }
  },
  "per_video": {
@@ -2668,25 +2731,25 @@
   },
   "1bT9pEROuhI": {
    "clicks": 6,
-   "ctr": 0.0227,
+   "ctr": 0.0222,
    "first_day": "2026-10-19",
-   "impressions": 264,
+   "impressions": 270,
    "kind": "long",
-   "last_day": "2026-10-30",
+   "last_day": "2026-10-31",
    "published": "2026-10-20T00:30",
    "title": "Night Prayer of Thanksgiving | His Mercies Are New, Rest in His Faithfulness",
-   "views": 28
+   "views": 29
   },
   "53Xysf9x46c": {
-   "clicks": 23,
-   "ctr": 0.0361,
+   "clicks": 24,
+   "ctr": 0.0319,
    "first_day": "2026-10-26",
-   "impressions": 637,
+   "impressions": 752,
    "kind": "long",
-   "last_day": "2026-10-30",
+   "last_day": "2026-10-31",
    "published": "2026-10-26T10:00",
    "title": "Before Your Family's Day Begins, Cover Them in Prayer 🙏 | Morning Prayer for Your Family",
-   "views": 89
+   "views": 90
   },
   "8tJIVjIPN2Q": {
    "clicks": 0,
@@ -2703,9 +2766,9 @@
    "clicks": 15,
    "ctr": 0.0229,
    "first_day": "2026-10-23",
-   "impressions": 654,
+   "impressions": 656,
    "kind": "long",
-   "last_day": "2026-10-30",
+   "last_day": "2026-10-31",
    "published": "2026-10-24T00:00",
    "title": "Before You Sleep, Give God the Worry You Can't Fix 🌙 | Night Prayer for Anxiety",
    "views": 21
@@ -2734,11 +2797,11 @@
   },
   "F8u5dTT_2mM": {
    "clicks": 1,
-   "ctr": 0.0095,
+   "ctr": 0.0089,
    "first_day": "2026-10-25",
-   "impressions": 105,
+   "impressions": 112,
    "kind": "long",
-   "last_day": "2026-10-30",
+   "last_day": "2026-10-31",
    "published": "2026-10-25T10:00",
    "title": "When You Wake Up Tired, Wait on the Lord 🌅 | Morning Prayer for Strength (Isaiah 40:31)",
    "views": 5
@@ -2758,9 +2821,9 @@
    "clicks": 0,
    "ctr": 0.0,
    "first_day": "2026-09-01",
-   "impressions": 26,
+   "impressions": 25,
    "kind": "short",
-   "last_day": "2026-10-28",
+   "last_day": "2026-10-26",
    "published": "2026-07-19T19:39",
    "title": "The 2026 Warning: What They DON’T Want You to Know. ⚠️📖 #prophecy #christianmotivation #faith",
    "views": 21
@@ -2780,20 +2843,20 @@
    "clicks": 13,
    "ctr": 0.0216,
    "first_day": "2026-10-19",
-   "impressions": 601,
+   "impressions": 603,
    "kind": "long",
-   "last_day": "2026-10-30",
+   "last_day": "2026-10-31",
    "published": "2026-10-19T20:16",
    "title": "Night Prayer Before Sleep | Give God Your Worries, Rest in His Peace",
    "views": 38
   },
   "K_ZwsCt-Wg4": {
    "clicks": 1,
-   "ctr": 0.0149,
+   "ctr": 0.0143,
    "first_day": "2026-10-25",
-   "impressions": 67,
+   "impressions": 70,
    "kind": "short",
-   "last_day": "2026-10-30",
+   "last_day": "2026-10-31",
    "published": "2026-10-25T13:30",
    "title": "Did God Really Say That? 🐍 | The Serpent in Eden, Bible Story (KJV) #shorts",
    "views": 123
@@ -2802,9 +2865,9 @@
    "clicks": 29,
    "ctr": 0.0195,
    "first_day": "2026-10-21",
-   "impressions": 1485,
+   "impressions": 1490,
    "kind": "long",
-   "last_day": "2026-10-30",
+   "last_day": "2026-10-31",
    "published": "2026-10-21T10:00",
    "title": "Morning Prayer with Bible Verses for Peace | Start Your Day in God's Word",
    "views": 94
@@ -2813,9 +2876,9 @@
    "clicks": 0,
    "ctr": 0.0,
    "first_day": "2026-10-26",
-   "impressions": 175,
+   "impressions": 171,
    "kind": "short",
-   "last_day": "2026-10-30",
+   "last_day": "2026-10-31",
    "published": "2026-10-26T13:30",
    "title": "Am I My Brother's Keeper? 🐑 | Cain and Abel, Bible Story (KJV) #shorts",
    "views": 186
@@ -2846,9 +2909,9 @@
    "clicks": 0,
    "ctr": 0.0,
    "first_day": "2026-10-19",
-   "impressions": 44,
+   "impressions": 42,
    "kind": "short",
-   "last_day": "2026-10-28",
+   "last_day": "2026-10-27",
    "published": "2026-10-19T20:17",
    "title": "Rest for the Part of You Still Awake #shorts",
    "views": 212
@@ -2857,31 +2920,31 @@
    "clicks": 0,
    "ctr": 0.0,
    "first_day": "2026-10-20",
-   "impressions": 35,
+   "impressions": 33,
    "kind": "short",
-   "last_day": "2026-10-28",
+   "last_day": "2026-10-27",
    "published": "2026-10-20T21:31",
    "title": "A Prayer for Peace in Your Relationships #shorts",
    "views": 28
   },
   "Vvfw4W4nV7M": {
-   "clicks": 2,
-   "ctr": 0.0126,
+   "clicks": 4,
+   "ctr": 0.0248,
    "first_day": "2026-10-27",
-   "impressions": 159,
+   "impressions": 161,
    "kind": "short",
-   "last_day": "2026-10-30",
+   "last_day": "2026-10-31",
    "published": "2026-10-27T13:30",
    "title": "Why Did God Regret Making Man? 💔 | God Sees the Earth Corrupt, Bible Story (KJV) #shorts",
-   "views": 532
+   "views": 529
   },
   "XDwxi4pvllM": {
    "clicks": 1,
    "ctr": 0.0061,
    "first_day": "2026-10-20",
-   "impressions": 163,
+   "impressions": 165,
    "kind": "long",
-   "last_day": "2026-10-30",
+   "last_day": "2026-10-31",
    "published": "2026-10-20T10:00",
    "title": "Morning Prayer for Protection | Psalm 91 Over You and Your Family",
    "views": 8
@@ -2912,20 +2975,20 @@
    "clicks": 5,
    "ctr": 0.0198,
    "first_day": "2026-10-25",
-   "impressions": 252,
+   "impressions": 253,
    "kind": "long",
-   "last_day": "2026-10-30",
+   "last_day": "2026-10-31",
    "published": "2026-10-26T00:00",
    "title": "Before You Sleep, Let God's Mercy Wash Today Away 🌙 | Night Prayer for Forgiveness",
    "views": 8
   },
   "_sUdOLxWy5c": {
    "clicks": 2,
-   "ctr": 0.04,
+   "ctr": 0.0417,
    "first_day": "2026-10-18",
-   "impressions": 50,
+   "impressions": 48,
    "kind": "short",
-   "last_day": "2026-10-28",
+   "last_day": "2026-10-26",
    "published": "2026-10-18T14:00",
    "title": "The Ultimate Morning Prayer for Peace #shorts",
    "views": 293
@@ -2934,9 +2997,9 @@
    "clicks": 0,
    "ctr": 0.0,
    "first_day": "2026-08-08",
-   "impressions": 30,
+   "impressions": 29,
    "kind": "short",
-   "last_day": "2026-10-28",
+   "last_day": "2026-10-26",
    "published": "2026-07-14T13:04",
    "title": "The 2026 Prophecy: What They Are Hiding From You (Watch Before It’s Too Late) #faith #god",
    "views": 41
@@ -2945,9 +3008,9 @@
    "clicks": 0,
    "ctr": 0.0,
    "first_day": "2026-10-26",
-   "impressions": 81,
+   "impressions": 77,
    "kind": "short",
-   "last_day": "2026-10-30",
+   "last_day": "2026-10-31",
    "published": "2026-10-26T23:30",
    "title": "The Man Who Never Died? ☁️ | Enoch Walked With God, Bible Story (KJV) #shorts",
    "views": 157
@@ -2998,11 +3061,11 @@
   },
   "hwq4qgjreh0": {
    "clicks": 1,
-   "ctr": 0.0074,
+   "ctr": 0.0072,
    "first_day": "2026-10-24",
-   "impressions": 136,
+   "impressions": 138,
    "kind": "short",
-   "last_day": "2026-10-30",
+   "last_day": "2026-10-31",
    "published": "2026-10-24T23:30",
    "title": "God Breathed Into the Dust 🌿 | Garden of Eden Bible Story (KJV) #shorts",
    "views": 302
@@ -3022,9 +3085,9 @@
    "clicks": 0,
    "ctr": 0.0,
    "first_day": "2026-08-08",
-   "impressions": 27,
+   "impressions": 26,
    "kind": "short",
-   "last_day": "2026-10-28",
+   "last_day": "2026-10-26",
    "published": "2026-07-18T20:53",
    "title": "Why God Chose YOU For This Exact Moment In History ⚔️ (Don’t Ignore This) #motivation #faith #god",
    "views": 370
@@ -3035,18 +3098,18 @@
    "first_day": "2026-10-27",
    "impressions": 172,
    "kind": "short",
-   "last_day": "2026-10-30",
+   "last_day": "2026-10-31",
    "published": "2026-10-27T23:30",
    "title": "Noah Built a Ship on Dry Ground 🔨 | Noah Builds the Ark, Bible Story (KJV) #shorts",
-   "views": 328
+   "views": 326
   },
   "ku2MTQKmXaU": {
    "clicks": 3,
-   "ctr": 0.0168,
+   "ctr": 0.0165,
    "first_day": "2026-10-24",
-   "impressions": 179,
+   "impressions": 182,
    "kind": "short",
-   "last_day": "2026-10-30",
+   "last_day": "2026-10-31",
    "published": "2026-10-24T14:44",
    "title": "Before There Was Light, God Spoke ✨ | Genesis 1 Bible Story (KJV) #shorts",
    "views": 129
@@ -3099,20 +3162,20 @@
    "clicks": 0,
    "ctr": 0.0,
    "first_day": "2026-10-25",
-   "impressions": 53,
+   "impressions": 45,
    "kind": "short",
-   "last_day": "2026-10-30",
+   "last_day": "2026-10-31",
    "published": "2026-10-25T23:30",
    "title": "Where Art Thou? 🔥 | Driven Out of Eden, Bible Story (KJV) #shorts",
    "views": 128
   },
   "tri-CUwy_m0": {
    "clicks": 8,
-   "ctr": 0.0261,
+   "ctr": 0.026,
    "first_day": "2026-10-20",
-   "impressions": 307,
+   "impressions": 308,
    "kind": "long",
-   "last_day": "2026-10-30",
+   "last_day": "2026-10-31",
    "published": "2026-10-21T00:00",
    "title": "Night Prayer for Healing | Rest Your Body and Heart in God's Care",
    "views": 15
@@ -3480,8 +3543,8 @@
    "id": "17752537803"
   },
   "2026-10-28": {
-   "created": "2026-10-31T03:00:22.696411Z",
-   "id": "17746825454"
+   "created": "2026-11-01T20:28:34.976172Z",
+   "id": "20716109469"
   },
   "2026-10-29": {
    "created": "2026-10-31T09:09:28.334217Z",
@@ -3490,19 +3553,23 @@
   "2026-10-30": {
    "created": "2026-11-01T05:08:17.613410Z",
    "id": "20712055718"
+  },
+  "2026-10-31": {
+   "created": "2026-11-02T02:32:26.938998Z",
+   "id": "20717780139"
   }
  },
  "split": {
   "long": {
-   "clicks": 137,
-   "ctr": 0.0192,
-   "impressions": 7154,
+   "clicks": 138,
+   "ctr": 0.0189,
+   "impressions": 7295,
    "videos": 12
   },
   "short": {
-   "clicks": 18,
-   "ctr": 0.0125,
-   "impressions": 1437,
+   "clicks": 20,
+   "ctr": 0.0141,
+   "impressions": 1422,
    "videos": 32
   },
   "unclassified": {
