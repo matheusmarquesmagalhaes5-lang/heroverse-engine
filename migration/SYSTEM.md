@@ -91,6 +91,8 @@ The reviewer must receive the complete video's native audio and video, verify it
 and assess the full result. Contact sheets support image inspection; audio measures support technical assessment.
 Neither substitutes for hearing delivery, music, continuity and spoken words.
 
+Owner 2026-11-02 (E268): the DEFAULT native review is `local-review.yml` (pinned local ASR hears the audio, ffmpeg measures audio and picture, the session reviewer looks at the frame sheets); Gemini is optional, never required.
+
 The owner authorized the tested native Gemini route for Short09 on 29 October. `native-review.yml` records the actual
 `gemini-3.8-flash` identity, native audio, explicit 4 fps video sampling, full timeline coverage and saved interaction
 IDs. This is an authorized route for the actual Short, not an exclusive model mandate inherited from another

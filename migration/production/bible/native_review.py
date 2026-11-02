@@ -19,6 +19,10 @@ import time
 import urllib.parse
 import urllib.request
 
+# Owner 2026-11-02 (E268): the native review provider is LOCAL (local_review.py: ASR heard + audio/video measures +
+# the session reviewer's own look at the frame sheets); Gemini below stays as an OPTIONAL second opinion, never required.
+DEFAULT_PROVIDER = 'local'
+GEMINI_REQUIRED = False
 MODEL = 'gemini-3.8-flash'
 API = 'https://generativelanguage.googleapis.com'
 REVISION = '2026-05-20'

@@ -1,0 +1,80 @@
+name: HeroVerse local native review (audio heard + picture seen on the runner; no provider, no secret, nothing published)
+run-name: "local-review: plan=${{ inputs.plan }} sha256=${{ inputs.sha256 }}"
+# Owner 2026-11-02 (E268): the DEFAULT native review. A pinned open-source ASR (faster-whisper small.en, CPU) hears the
+# master's whole audio against the plan's script, ffmpeg measures loudness / true peak / clipping / silence / voice over
+# music, and a timecoded frame sheet (1 frame / 2 s) plus black / frozen / scene detectors cover the picture. The result
+# is native-review-public-v1 (artifact native-review-public-evidence, the shape native-review.yml writes) and the
+# frame sheets are artifact local-review-frames for the session reviewer's own look. Nothing here approves anything:
+# claude_review.json, approve.yml and prepublish_gate.py stay the gates. native-review.yml (Gemini) is now optional.
+on:
+  workflow_dispatch:
+    inputs:
+      plan:
+        description: Existing Bible plan, compilation plan, cuts spec or reflection spec (review does not replace or approve it)
+        required: true
+        default: migration/production/bible/plans/flood-ends-long.json
+      sha256:
+        description: SHA256 of the exact master (a release asset bible-*-sha256-<sha>.mp4)
+        required: true
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: heroverse-subject-${{ inputs.plan }}
+  cancel-in-progress: false
+jobs:
+  review:
+    if: github.repository == 'matheusmagah-cpu/heroverse-engine' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    permissions:
+      contents: read
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SHA: ${{ inputs.sha256 }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - name: Inputs (an existing plan, an exact hash)
+        run: python3 -I -B migration/production/bible/local_review.py check
+      - name: Pinned tools (ffmpeg, DejaVu, faster-whisper 1.2.1)
+        run: |
+          APT_UPDATE_TIMEOUT=300s APT_INSTALL_TIMEOUT=600s bash migration/ci/apt_install.sh ffmpeg fonts-dejavu-core
+          timeout 120s python3 -m venv "$RUNNER_TEMP/rv"
+          timeout 900s "$RUNNER_TEMP/rv/bin/pip" install --disable-pip-version-check --timeout 60 -q faster-whisper==1.2.1 av==16.0.1 numpy==2.2.6
+      - name: The exact master from the release (sha256 verified)
+        run: |
+          [[ "$SHA" =~ ^[0-9a-f]{64}$ ]] || { echo "HASH_INVALID"; exit 1; }
+          d="$RUNNER_TEMP/dl"; mkdir -p "$d"
+          bash migration/ci/assets.sh download --repo "$GITHUB_REPOSITORY" --pattern "bible-*-sha256-$SHA.mp4" -D "$d" --clobber \
+            || bash migration/ci/assets.sh download --repo "$GITHUB_REPOSITORY" --pattern "*-sha256-$SHA.mp4" -D "$d" --clobber
+          f=$(ls "$d"/*.mp4 | head -1)
+          echo "$SHA  $f" | sha256sum -c -
+          mv "$f" "$RUNNER_TEMP/master.mp4"
+      - name: Pinned ASR model (hash-verified before use)
+        run: |
+          m="$RUNNER_TEMP/models/whisper"; mkdir -p "$m"
+          for name in config.json tokenizer.json vocabulary.txt model.bin; do
+            curl -fsSL --retry 3 --max-time 900 -o "$m/$name" "https://huggingface.co/Systran/faster-whisper-small.en/resolve/d1d751a5f8271d482d14ca55d9e2deeebbae577f/$name"
+          done
+          echo "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a  $m/model.bin" | sha256sum -c -
+      - name: Hear and see the whole master (ASR vs script, loudness, silence, frames, black / frozen / scenes)
+        run: '"$RUNNER_TEMP/rv/bin/python" -I -B migration/production/bible/local_review.py analyze'
+      - name: Preserve public evidence (no media, no secrets); the same artifact name native-review.yml uses
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: native-review-public-evidence
+          path: ${{ runner.temp }}/local-review/public/public-evidence.json
+          retention-days: 90
+          if-no-files-found: ignore
+      - name: Frame sheets for the session reviewer (1 frame / 2 s, timecoded)
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: local-review-frames
+          path: ${{ runner.temp }}/local-review/frames
+          retention-days: 14
+          if-no-files-found: ignore
+      - name: Remove the master from the runner
+        if: always()
+        run: rm -f -- "$RUNNER_TEMP/master.mp4" "$RUNNER_TEMP"/dl/*
