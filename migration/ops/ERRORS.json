@@ -3993,6 +3993,30 @@
      "cheap-vs-expensive"
     ]
    }
+  },
+  {
+   "id": "E272",
+   "date": "2026-11-02",
+   "class": [
+    "direction"
+   ],
+   "prior": [
+    "E209",
+    "E212",
+    "E218",
+    "E223",
+    "E237",
+    "E261"
+   ],
+   "error": "flood-ends-long was rebuilt without what the owner ordered (cancelled build 41544175353): plan_check refused a Keeper as the first shot (KEEPER_OPENS, KEEPER_BEFORE_CLIMAX, KEEPER_LINE_KIND), so the long had no talking hook, and the long's compose joined every Pavo talking clip to its neighbours by a hard cut (the report said crossfade_seconds 0.0). k-bow's insight line (23 words, three sentences) failed the pinned ASR words check on both generations.",
+   "fix": "plan_check.keeper_hook: in a long-first (16:9) plan only the very first shot may be a talking Keeper hook (any later Keeper keeps the after-the-climax and insight/close rules; a Short or a voice-over Keeper still gets KEEPER_OPENS). flood-ends-long opens on k-hook (two stacked 'What if' questions, the exact line is in the plan), the narration lines renumbered. short_engine.transitions/join_with_crossfades: the long's compose (episode_build.LONG_XFADE = 0.3 s) blends the PICTURE into and out of each talking shot, frame for frame (the picture keeps its length and every cut point), inside the silence next to his words (shortened to the gap, a plain cut under 0.15 s, XFADE_OVER_SPEECH if a word were inside); the voice track is never touched; the Shorts get no 'crossfade' key and keep cuts only (hookify block-shorts-fade-wipe). k-bow rewritten to two short plain sentences for its own 2-generation request (E264).",
+   "antidote": {
+    "file": "migration/production/bible/test_long_first.py",
+    "contains": "def test_a_long_may_open_on_a_talking_keeper_hook_and_nothing_else_may",
+    "covers": [
+     "direction"
+    ]
+   }
   }
  ]
 }

@@ -107,5 +107,99 @@ class Plan(unittest.TestCase):
         self.assertIn('who.update(kind="scripture", reference=items[k]["reference"])', src)
 
 
+
+class Crossfades(unittest.TestCase):
+    """Owner 2026-11-02: a long-first long blends the picture into and out of each talking shot, in the silence next to
+    his words; the Shorts keep cuts only."""
+
+    SCENE_A = {"start": 0.0, "end": 5.0, "kind": "scene"}
+    TALK = {"start": 5.0, "end": 8.6, "kind": "keeper", "talk": {"start": 5.0, "end": 8.6}}
+    SCENE_B = {"start": 8.6, "end": 14.0, "kind": "scene"}
+
+    def shots(self):
+        return [dict(self.SCENE_A), dict(self.TALK), dict(self.SCENE_B)]
+
+    def test_a_window_lies_in_the_silence_next_to_a_talking_shot(self):
+        said = [{"start": 0.4, "end": 4.4}, {"start": 5.0, "end": 8.6}, {"start": 9.0, "end": 13.0}]
+        found = se.transitions(self.shots(), said, 0.3)
+        self.assertEqual([(w["between"], w["side"], w["frames"]) for w in found], [(0, "into", 9), (1, "out", 9)])
+        self.assertEqual((found[0]["start"], found[0]["end"]), (4.7, 5.0))   # ends on his first word
+        self.assertEqual((found[1]["start"], found[1]["end"]), (8.6, 8.9))   # starts on his last word's end
+        self.assertEqual(se.transition_problems(found, said), [])
+
+    def test_no_window_without_the_option_between_scenes_or_without_room(self):
+        said = [{"start": 5.0, "end": 8.6}]
+        self.assertEqual(se.transitions(self.shots(), said, 0), [])          # the Shorts: cuts only
+        self.assertEqual(se.transitions(self.shots(), said, None), [])
+        two = [dict(self.SCENE_A), dict(self.SCENE_B, start=5.0)]
+        self.assertEqual(se.transitions(two, said, 0.3), [])                 # scene to scene stays a cut
+        tight = [{"start": 0.4, "end": 4.9}, {"start": 5.0, "end": 8.6}, {"start": 8.7, "end": 12.0}]    # a gap too small for a clean blend
+        self.assertEqual(se.transitions(self.shots(), tight, 0.3), [])
+        near = [{"start": 0.4, "end": 4.0}, {"start": 5.0, "end": 8.6}, {"start": 8.8, "end": 12.0}]     # 0.2 s of silence: a shorter window
+        out = [w for w in se.transitions(self.shots(), near, 0.3) if w["side"] == "out"]
+        self.assertEqual(out[0]["frames"], 5)
+        self.assertLessEqual(out[0]["end"], 8.8 - se.XFADE_CLEAR + 1e-6)
+        self.assertEqual(se.transitions(self.shots(), [], 9.0)[0]["frames"], round(se.XFADE_MAX * se.FPS))
+
+    def test_a_window_over_a_word_is_refused(self):
+        bad = [{"between": 0, "side": "into", "start": 4.7, "end": 5.0, "frames": 9}]
+        self.assertEqual(se.transition_problems(bad, [{"start": 4.8, "end": 6.0}]), ["XFADE_OVER_SPEECH 0 into"])
+
+    def test_the_blend_keeps_every_frame_count_and_leaves_the_words_untouched(self):
+        import shutil
+        import subprocess
+        if not shutil.which("ffmpeg"):
+            self.skipTest("ffmpeg missing")
+        fps, w, h = se.FPS, 160, 90
+        with tempfile.TemporaryDirectory() as d:
+            d = Path(d)
+
+            def clip(name, colour, seconds):
+                path = d / name
+                subprocess.run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-f", "lavfi", "-i",
+                                f"color=c={colour}:s={w}x{h}:r={fps}:d={seconds}", "-c:v", "libx264", "-pix_fmt",
+                                "yuv420p", str(path)], check=True)
+                return path
+            red, blue, green = clip("a.mp4", "red", 6), clip("b.mp4", "blue", 6), clip("c.mp4", "green", 6)
+            shots = self.shots()
+            shots[0].update(clip=str(red), src_start=0.0)
+            shots[1].update(clip=str(blue), src_start=0.0, speed=1.0)
+            shots[2].update(clip=str(green), src_start=0.0)
+            parts = []
+            for i, s in enumerate(shots):
+                part = d / f"p{i}.mp4"
+                se.encode(Path(s["clip"]), part, round((s["end"] - s["start"]) * fps))
+                parts.append(part)
+            said = [{"start": 0.4, "end": 4.4}, {"start": 5.0, "end": 8.6}, {"start": 9.0, "end": 13.0}]
+            windows = se.transitions(shots, said, 0.3)
+            joined = se.join_with_crossfades(d, parts, shots, windows, w, h)
+            self.assertEqual(sum(se.frame_count(p) for p in joined), sum(se.frame_count(p) for p in parts))
+            (d / "list.txt").write_text("".join(f"file '{p}'\n" for p in joined))
+            whole = d / "whole.mp4"
+            subprocess.run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i",
+                            str(d / "list.txt"), "-c", "copy", str(whole)], check=True)
+
+            def pixel(t):   # the (R, G, B) centre pixel at time t
+                raw = subprocess.run(["ffmpeg", "-nostdin", "-v", "error", "-ss", f"{t:.4f}", "-i", str(whole), "-frames:v",
+                                      "1", "-vf", "crop=1:1:80:45,format=rgb24", "-f", "rawvideo", "-"],
+                                     capture_output=True, check=True).stdout
+                return tuple(raw[:3])
+            red_px, blue_px, green_px = pixel(1.0), pixel(6.0), pixel(12.0)
+            self.assertGreater(red_px[0], 200)
+            self.assertGreater(blue_px[2], 200)
+            self.assertGreater(green_px[1], 100)
+            # inside the first window (4.7-5.0) red gives way to blue, never to black
+            early, mid, late = pixel(4.7 + 1.0 / fps), pixel(4.85), pixel(4.98)
+            self.assertGreater(early[0], late[0])
+            self.assertGreater(late[2], early[2])
+            self.assertGreater(mid[0] + mid[2], 150)
+            # the first word and everything after it is the talker's own picture; the shot before is untouched until 4.7
+            self.assertGreater(pixel(5.05)[2], 200)
+            self.assertGreater(pixel(4.65)[0], 200)
+            # out of the talker: blue to green inside 8.6-8.9, then green
+            self.assertGreater(pixel(8.55)[2], 200)
+            self.assertGreater(pixel(8.9 + 2.0 / fps)[1], 100)
+            self.assertGreater(pixel(8.75)[0] + pixel(8.75)[1] + pixel(8.75)[2], 120)
+
 if __name__ == "__main__":
     unittest.main()

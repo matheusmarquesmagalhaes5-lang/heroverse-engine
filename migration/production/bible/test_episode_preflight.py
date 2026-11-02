@@ -260,7 +260,7 @@ class Probes(unittest.TestCase):
         plan = json.loads((pf.eb.HERE / "plans" / "flood-ends-long.json").read_text())
         chars = pf.ch.registry()
         ids = [s["id"] for s in plan["shots"] if s.get("kind") == "keeper"]
-        self.assertEqual(ids, ["k-insight", "k-bow", "k-close"])
+        self.assertEqual(ids, ["k-hook", "k-insight", "k-bow", "k-close"])
         for source, expect in (("footage", []), ("still_motion", []), ("pavo", ids)):
             with mock.patch.object(pf.eb, "load_approvals", return_value={i: {"source": source} for i in ids}):
                 self.assertEqual(pf.probe_rows(plan, chars, probes=[])[1], expect, source)
@@ -271,7 +271,7 @@ class Probes(unittest.TestCase):
         # approved clip is the evidence. A shot with no approved clip, or one approved for another request, keeps it
         plan = json.loads((pf.eb.HERE / "plans" / "flood-ends-long.json").read_text())
         chars = pf.ch.registry()
-        ids = ["k-insight", "k-bow", "k-close"]
+        ids = ["k-hook", "k-insight", "k-bow", "k-close"]
         digests = {i: f"{k + 1:064x}" for k, i in enumerate(ids)}
         good = {"clip_sha256": "c" * 64, "request_sha256": None, "score": 9.5, "model": "claude-session-reviewer"}
         approvals = {i: dict(good, request_sha256=digests[i]) for i in ids}

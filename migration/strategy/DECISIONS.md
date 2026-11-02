@@ -542,3 +542,9 @@ under the E264 cap. k-insight and k-close are approved on the chest-up Pavo clip
 medium.en speech-check heard neither generation say the line (SPEECH_WORDS_NOT_EXACT: garbled and dropped words), so it is
 a hard SHOT_WORDS_NOT_OUR_LINE and keeps the approved Kokoro voice-over on still motion; no third generation (E264). The long's
 compose has no per-shot transition setting (crossfade_seconds 0.0), so the Pavo clips join by cut.
+Executor 2026-11-02 (E272, owner order for flood-ends-long): the HOOK, the speaking lines and the Keeper lines are Pavo talking
+video, joined to their neighbours by a short picture crossfade, never a hard jump. `plan_check.keeper_hook` lets a long-first
+(16:9) plan open on a talking Keeper hook (first shot only; every other Keeper rule is unchanged). The long's compose
+(`episode_build.LONG_XFADE` 0.3 s, `short_engine.transitions`) blends the picture into and out of each talking shot inside the
+silence next to his words, so no word is cut, faded or overlapped; the Shorts keep cuts only (hookify block-shorts-fade-wipe).
+God's voice (s-voice) stays a scene: God is never shown with a face, and Genesis 8-9 has no other on-screen speaker.
