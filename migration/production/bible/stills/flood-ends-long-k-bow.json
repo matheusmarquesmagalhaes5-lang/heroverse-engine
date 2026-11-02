@@ -1,0 +1,41 @@
+{
+ "id": "flood-ends-long-k-bow",
+ "episode": "flood-ends-long",
+ "shot": "k-bow",
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Close-up, his face large. The Keeper, an elderly storyteller with a long silver-white beard under a hooded brown wool robe, listens in silence under a starry desert sky at night, centred in the frame, his lips closed in a faint knowing smile, looking warmly into the camera. The subject is centred in the frame. The campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and searching. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/flood-ends-long-k-bow.jpg",
+ "sha256": "d06d4d2eb4d0120dc4dfdab01b737d4d14a57dd52759e60e3284826973e5636f",
+ "size": [
+  1920,
+  1080
+ ],
+ "candidate": "flood-ends-long-k-bow-2026110201-1",
+ "engine": "reuse-approved-keeper-still",
+ "references": [
+  {
+   "record": "ch-keeper-front",
+   "sha256": "eea5e96cd78f5dadc98b87f93384fc90cc6172b2021be2711ee7ebf568816098"
+  }
+ ],
+ "pavo": {
+  "generate": {
+   "model": "agnes-image",
+   "conversation_id": "373663884764253248",
+   "input_images": 1
+  },
+  "job": {
+   "conversation_id": "373663884764253248",
+   "status": "completed"
+  }
+ },
+ "approved": {
+  "date": "2026-11-02",
+  "score": 9.5,
+  "note": "Actual 16:9 frame viewed (bytes of the approved Keeper still, ch-keeper-front look): face centred, lips closed and silent, warm firelight on a starry desert night, no text or logos; for his Kokoro voice-over on still motion.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "55265d172a7dc1b17945075b5e19ddca155eede78fa90707cad429044c51625f",
+  "references_sha256": "7b032aa4aa71714631d2a59653f855ca58d50340d1b092028fdec18003d012b3"
+ }
+}

@@ -499,7 +499,8 @@
    "lines": [
     30
    ],
-   "ambience": "the open desert at night: a small campfire crackling softly and a light night wind"
+   "ambience": "the open desert at night: a small campfire crackling softly and a light night wind",
+   "audio_route": "kokoro"
   },
   {
    "id": "s-voice-go",
@@ -623,7 +624,8 @@
    "lines": [
     47
    ],
-   "ambience": "the open desert at night: a small campfire crackling softly and a light night wind"
+   "ambience": "the open desert at night: a small campfire crackling softly and a light night wind",
+   "audio_route": "kokoro"
   },
   {
    "id": "s-vineyard",
@@ -645,7 +647,8 @@
    "lines": [
     50
    ],
-   "ambience": "the open desert at night: a small campfire crackling softly and a light night wind"
+   "ambience": "the open desert at night: a small campfire crackling softly and a light night wind",
+   "audio_route": "kokoro"
   }
  ],
  "criteria": "story-qa-criteria-v5",
