@@ -474,3 +474,22 @@ Moments (UTC). Each has a trigger and an action.
 - **M6 — 2026-11-15 and 2026-12-01:** deadline reviews, with honest measured numbers against the goal.
 
 Each Inteligência Viva entry reports: the current moment, its triggers (hit or not), and the action taken.
+
+### Never stop: automation and fallback ladder (owner, 2026-11-02)
+- **Who moves it:**
+  - Inteligência Viva (05:17) plans.
+  - Production (06:43 and 16:43) executes.
+  - The light clock (every 3 h) continues: it fires production when a run has ended and the long or a failure is
+    pending, and it merges green data-only PRs.
+  - No step waits for the coordinator or the owner.
+- **Short buffer:** keep at least 2 days of Shorts scheduled ahead on YouTube, using cuts first and bridge Shorts
+  second. A day without a Short can then happen only if production is down for more than 48 h.
+- **Fallback ladder:** when a source fails, take the next step instead of stopping. The quality bar stays the same.
+  - stills: ChatGPT app → close, wait 5 min, reopen (×3) → FLUX → Buzzy image within ≤100/day;
+  - Keeper speaking line: Pavo talking Keeper → Keeper voice-over on reviewed still motion of an approved Keeper
+    still (no Pavo needed);
+  - hook: Pavo → the strongest approved still with motion and the hook line;
+  - a long blocked >24 h at one stage → publish cuts and a compilation from approved media meanwhile, so hours and
+    Shorts keep flowing;
+  - PC offline → everything that needs no PC goes on: cuts, compilations, publishing, comments, packaging.
+- **Each failure** gets a root cause and an antidote in ERRORS.json, so the same stop cannot happen twice.
