@@ -1,0 +1,41 @@
+{
+ "version": "bible-buzzy-long-manifest-v1",
+ "pilot_id": "pilot-017",
+ "episode": "flood-ends-long",
+ "output_sha256": "9a2d0f24e74c7117eedcbdd73992fbc284efb9402b6f82dba98f096a64635692",
+ "output_seconds": 501.832,
+ "criteria_version": "buzzy-long-qa-criteria-v1",
+ "burned_captions": "16:9 captions from the sentence timeline (short_engine)",
+ "clean_master": {
+  "output_sha256": "95307e831eee4c06f826715b5d974a6fcdcacfe6029e6e57bcb8879d777b1eea",
+  "seconds": 501.83,
+  "release_asset": "bible-flood-ends-long-clean-sha256-95307e831eee4c06f826715b5d974a6fcdcacfe6029e6e57bcb8879d777b1eea.mp4"
+ },
+ "build_run": "41484825424",
+ "chapters": [
+  [
+   0,
+   "The door that God shut"
+  ],
+  [
+   33.493,
+   "The waters go down"
+  ],
+  [
+   130.362,
+   "The raven and the dove"
+  ],
+  [
+   273.973,
+   "Dry ground, shut door"
+  ],
+  [
+   338.74,
+   "The altar"
+  ],
+  [
+   382.254,
+   "The rainbow"
+  ]
+ ]
+}
