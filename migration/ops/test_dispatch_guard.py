@@ -605,7 +605,7 @@ class PavoBudget(unittest.TestCase):
 
     def test_e262_a_buzzy_long_probe_is_not_charged_to_the_shorts_share(self):
         plan = "migration/production/bible/plans/flood-ends-long.json"
-        facts = g.shot_probe({"plan": plan, "shots": "k-insight,k-bow,k-close", "attempts": "2", "adopt_run": ""})
+        facts = g.shot_probe({"plan": plan, "shots": "k-insight,k-bow,k-close", "attempts": "1", "adopt_run": ""})
         self.assertFalse(facts["short"])
     def test_capacity_checks_the_budget_and_the_probe_gets_the_count(self):
         with mock.patch.object(g, "pavo_budget", return_value=57) as budget:

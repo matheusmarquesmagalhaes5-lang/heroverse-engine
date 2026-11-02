@@ -811,7 +811,7 @@
    "fix": "Talking shots (the Keeper, a speaking character) get TALK_ATTEMPTS = 6 generations (scenes keep 3; Pavo at 0 credits), about 95 % per shot; plan_check KEEPER_POSE requires a talking Keeper prompt to say 'static camera' and 'looks straight into the camera'; genesis-07's three Keeper shots rewritten so. The lips-check thresholds are unchanged. Residual risk stated, not closed: at ~0.4 a clip each talking shot passes ~95 %, so a run with three Keeper shots ~86 % and with five talking shots ~79 %; a failed run resumes (resume_run) keeping every clip made.",
    "antidote": {
     "file": "migration/production/bible/test_episode_build.py",
-    "contains": "def test_a_talking_shot_gets_six_generations_a_scene_three"
+    "contains": "def test_a_talking_shot_gets_two_generations_a_scene_three"
    }
   },
   {
@@ -3744,6 +3744,28 @@
    "antidote": {
     "file": "migration/ops/test_read_guard.py",
     "contains": "def test_errors_json_needs_limit",
+    "covers": [
+     "cheap-vs-expensive"
+    ]
+   }
+  },
+  {
+   "id": "E264",
+   "date": "2026-11-02",
+   "class": [
+    "cheap-vs-expensive"
+   ],
+   "error": "Rework (owner: no rework): episode_build.TALK_ATTEMPTS = 6 generations per talking or voice-over shot per round, and shot-probe was run with attempts=2 rounds, so 3 Keeper lines could spend up to 36 near-identical Pavo clips (run 41423359803, cancelled). The same lines were regenerated again and again instead of falling back to a cheaper source.",
+   "fix": "TALK_ATTEMPTS = 2 (one generation and at most 1 regeneration) and TALK_PROBE_ROUNDS_MAX = 1: probe_ids and dispatch_guard.shot_probe refuse more than 1 round for a talking or voice-over shot (episode_build.probe_rounds_cap), planned_units/shot_minutes/queue clamp to it, so one shot costs at most 2 generations a run and 3 talking shots at most 6. A talking Keeper shot that fails both falls back to the Keeper voice-over on a reviewed still motion of an approved Keeper still (DECISIONS 'Battle plan to YPP'); no more generations are queued. shot-probe.yml attempts defaults to 1.",
+   "prior": [
+    "E106",
+    "E127",
+    "E135",
+    "E263"
+   ],
+   "antidote": {
+    "file": "migration/production/bible/test_episode_build.py",
+    "contains": "def test_e264_a_talking_shot_costs_two_generations_and_one_probe_round",
     "covers": [
      "cheap-vs-expensive"
     ]

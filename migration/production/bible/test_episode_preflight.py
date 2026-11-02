@@ -226,7 +226,7 @@ class Probes(unittest.TestCase):
             p["references"] = {"ch-keeper-talk": "0" * 64}
         self.assertEqual(pf.probe_rows(plan, chars, probes=changed)[1], talking)
         # lines that pass like line-01 are not blocked
-        good = [dict(p, passed=7, generations=14) for p in probes]
+        good = [dict(p, passed=14, generations=14) for p in probes]   # E264: 2 attempts need a rate of ~0.7 to clear 0.9
         _, missing, low, chance = pf.probe_rows(plan, chars, probes=good)
         self.assertEqual((missing, low), ([], []))
         self.assertGreater(chance, 0.9)
@@ -244,7 +244,7 @@ class Probes(unittest.TestCase):
         self.assertEqual((missing, low), ([], []))
         self.assertEqual({r["shot"]: r["check"] for r in rows if r.get("kind") == "still_mouth"},
                          {k: "lipsync_check --still-mouth" for k in vo})
-        self.assertGreater(chance, 0.99)
+        self.assertGreater(chance, 0.8)   # E264: 3 shots of 2 attempts at 0.75 each
         # the prompt decides the face (keeper-vo/calibration.json): a changed prompt has no probe yet
         changed = copy.deepcopy(plan)
         changed["shots"][-1]["prompt"] = changed["shots"][-1]["prompt"].replace("faint warm smile", "warm smile")

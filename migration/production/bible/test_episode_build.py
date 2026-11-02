@@ -335,20 +335,36 @@ class Generation(unittest.TestCase):
         self.assertEqual(path, "clip-2.mp4")
         self.assertEqual([r["flags"] for r in records], [["BLACK_START"], []])
 
-    def test_a_talking_shot_gets_six_generations_a_scene_three(self):
+    def test_a_talking_shot_gets_two_generations_a_scene_three(self):
         # E98: genesis-07 run 40297987571 refused k-insight 3 times on the lips check; measured, a talking clip passes
-        # it about 4 times in 10, so 3 generations failed half the runs with three Keeper shots
+        # it about 4 times in 10. E264: 6 generations a shot a round was rework (up to 36 near-identical clips for 3
+        # lines); a talking shot gets 2, then falls back to the Keeper voice-over on a still motion
         talk = {"id": "k-a", "kind": "keeper", "lines": [0]}
         scene = {"id": "s-a", "kind": "scene", "lines": [1]}
         self.assertEqual(eb.attempts_for(talk), eb.TALK_ATTEMPTS)
         self.assertEqual(eb.attempts_for(scene), eb.ATTEMPTS)
-        self.assertGreaterEqual(eb.TALK_ATTEMPTS, 6)
+        self.assertEqual(eb.TALK_ATTEMPTS, 2)
         n = []
         with self.assertRaises(eb.ShotFailed):
             eb.make_shot("k-a", lambda i: (n.append(i) or {"generation": i}, None), lambda p: ([], None),
                          attempts=eb.attempts_for(talk))
         self.assertEqual(len(n), eb.TALK_ATTEMPTS)
         # generate_step itself giving a talking shot TALK_ATTEMPTS generations: the E94 failed-shot test (s-eve)
+
+    def test_e264_a_talking_shot_costs_two_generations_and_one_probe_round(self):
+        # E264 (no rework): 6 generations x rounds spent up to 36 near-identical clips for 3 Keeper lines
+        import long_preflight as lp
+        talk = {"id": "k-a", "kind": "keeper", "lines": [0]}
+        scene = {"id": "s-a", "kind": "scene", "lines": [1]}
+        self.assertEqual((eb.TALK_ATTEMPTS, eb.TALK_PROBE_ROUNDS_MAX), (2, 1))
+        self.assertEqual((eb.probe_rounds_cap(talk), eb.probe_rounds_cap(scene)), (1, eb.PROBE_ATTEMPTS_MAX))
+        with self.assertRaises(SystemExit) as err:
+            eb.probe_ids({"episode": "x", "shots": [talk]}, "k-a", "2")
+        self.assertIn("PROBE_ATTEMPTS_REFUSED k-a", str(err.exception))
+        three = [dict(talk, id=f"k-{i}") for i in range(3)]
+        for rounds in (1, 2, 6):   # whatever the input says, the worst case is 1 round of 2 generations a shot
+            self.assertEqual(lp.planned_units(three, rounds, worst=True), 3 * 2 * 2)
+        self.assertEqual(lp.planned_units(three, 1, worst=True) // 2, 6)   # 6 generations for 3 talking shots (was 36)
 
     def test_a_generation_with_no_video_counts_as_a_failed_attempt(self):
         with self.assertRaises(eb.ShotFailed):
@@ -763,8 +779,9 @@ class Gating(unittest.TestCase):
     def test_a_probe_generates_the_build_request_and_approval_copies_its_hashes(self):
         # E114: shot-probe.yml generates exactly the request the build sends, with the build's checks; approve-shot
         # copies the reviewed clip's hashes from the sealed probe record (nobody hand-edits them), only at 9.5-10
-        ids, n = eb.probe_ids(self.plan, f" {self.plan['shots'][0]['id']} ", "2")
-        for text, attempts in (("", "2"), ("x;y", "2"), ("no-such-shot", "2"), (ids[0], "0"), (ids[0], "7")):
+        ids, n = eb.probe_ids(self.plan, f" {self.plan['shots'][0]['id']} ", "1")   # a talking shot: 1 round (E264)
+        for text, attempts in (("", "1"), ("x;y", "1"), ("no-such-shot", "1"), (ids[0], "0"), (ids[0], "7"),
+                               (ids[0], "2")):
             with self.assertRaises(SystemExit):
                 eb.probe_ids(self.plan, text, attempts)
         client = FakeClient([{"conversation_id": str(i), "status": "submitted"} for i in range(n)],
@@ -776,10 +793,10 @@ class Gating(unittest.TestCase):
                                sheet=lambda video, sheet: sheets.append(Path(sheet).name))
         layout, refs = json.loads((self.work / "layout.json").read_text()), json.loads((self.work / "refs.json").read_text())
         build_req = eb.request(self.plan["shots"][0], 0, self.plan, layout, refs)
-        self.assertEqual(client.calls, [build_req, build_req])
+        self.assertEqual(client.calls, [build_req])   # E264: one round for a talking shot
         entry = record["shots"][ids[0]]
         self.assertEqual(entry["request_sha256"], eb.request_identity(self.plan["shots"][0], 0, self.plan, layout, refs)[0])
-        self.assertEqual((len(entry["clips"]), len(sheets)), (2, 2))
+        self.assertEqual((len(entry["clips"]), len(sheets)), (1, 1))
         clip = entry["clips"][0]
         self.assertEqual(clip["clip_sha256"], eb.sha256(out / clip["asset"]))
         self.assertEqual(clip["asset"], eb.shot_asset_name(self.plan["episode"], ids[0], clip["clip_sha256"]))

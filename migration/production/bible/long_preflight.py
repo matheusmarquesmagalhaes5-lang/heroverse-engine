@@ -58,8 +58,9 @@ PROBE_SETUP_MINUTES = 30
 PROBE_BATCH_SHARE = 0.7
 PROBE_ROUNDS = 2              # shot-probe.yml's default attempts: two clean candidates for Claude to choose from
 # expected generations a round makes for one shot (make_shot regenerates a failed clip): a scene ~1.2 (E108/E114 frame
-# misses happen after the checks, at the review), a talking clip 1 / its lips pass rate, ~0.4 (keeper-lipsync-rate)
-GENERATIONS_PER_ROUND = {"talking": 2.5, "voice_over": 1.2, "scene": 1.2}
+# misses happen after the checks, at the review), a talking clip: 1 generation plus a second 6 times in 10 (its lips
+# pass rate ~0.4, keeper-lipsync-rate), capped at TALK_ATTEMPTS = 2 (E264)
+GENERATIONS_PER_ROUND = {"talking": 1.6, "voice_over": 1.2, "scene": 1.2}
 sys.path.insert(0, str(REPO / "migration" / "integrations" / "pavo"))
 import quota  # noqa: E402  (E128: the shared free-model budget; stdlib only)
 
@@ -143,6 +144,7 @@ def shot_minutes(shot, rounds=PROBE_ROUNDS):
     time a generation (lpc.PAVO_SCENE_S, PAVO_TALK_S with lipsync_check and SyncNet), one after another."""
     kind = kind_of(shot)
     each = lpc.PAVO_TALK_S if kind == "talking" else lpc.PAVO_SCENE_S
+    rounds = min(rounds, eb.probe_rounds_cap(shot))   # E264
     return rounds * GENERATIONS_PER_ROUND[kind] * each / 60
 
 
@@ -151,9 +153,11 @@ def planned_units(shots, rounds=PROBE_ROUNDS, worst=False):
     (GENERATIONS_PER_ROUND, the same mean the minutes use) x quota.VIDEO_UNITS, rounded up; with worst, rounds x every
     generation make_shot may spend (eb.attempts_for) x VIDEO_UNITS, the bound a batch must fit before it starts so it
     never stops half-way for the budget (review of #475)."""
+    # E264: a talking or voice-over shot runs one round whatever `rounds` says (the guard refuses more)
     if worst:
-        return sum(rounds * eb.attempts_for(s) for s in shots) * quota.VIDEO_UNITS
-    return math.ceil(sum(rounds * GENERATIONS_PER_ROUND[kind_of(s)] for s in shots) * quota.VIDEO_UNITS)
+        return sum(min(rounds, eb.probe_rounds_cap(s)) * eb.attempts_for(s) for s in shots) * quota.VIDEO_UNITS
+    return math.ceil(sum(min(rounds, eb.probe_rounds_cap(s)) * GENERATIONS_PER_ROUND[kind_of(s)] for s in shots)
+                     * quota.VIDEO_UNITS)
 
 
 def batch_budget():
@@ -198,12 +202,14 @@ def queue(plan, digests, approvals, needs=None, max_minutes=None, rounds=PROBE_R
         todo.append(s)
     batches, cur, used, rank = [], [], 0.0, None
     def close():
-        batches.append({"shots": ",".join(x["id"] for x in cur), "attempts": rounds, "minutes_est": round(used),
+        batches.append({"shots": ",".join(x["id"] for x in cur), "attempts": min(rounds, eb.probe_rounds_cap(cur[0])),
+                        "minutes_est": round(used),
                         "rank": rank, "pavo_units_est": planned_units(cur, rounds),
                         "pavo_units_max": planned_units(cur, rounds, worst=True)})
     for s in todo:
         m = shot_minutes(s, rounds)
-        if cur and (used + m > max_minutes or eb.risk_rank(s) != rank or planned_units(cur + [s], rounds, worst=True) > max_units):
+        if cur and (used + m > max_minutes or eb.risk_rank(s) != rank
+                    or eb.probe_rounds_cap(s) != eb.probe_rounds_cap(cur[0]) or planned_units(cur + [s], rounds, worst=True) > max_units):
             close()
             cur, used = [], 0.0
         cur.append(s)

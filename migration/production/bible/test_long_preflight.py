@@ -208,7 +208,7 @@ class ApprovedShots(Scratch):
         with self.assertRaises(SystemExit) as c:
             eb.probe_ids(self.plan, f"s-open,{window}", 2)
         self.assertTrue(str(c.exception).startswith("PROBE_WINDOW_SHOT"))
-        self.assertEqual(eb.probe_ids(self.plan, "s-open", 2), (["s-open"], 2))
+        self.assertEqual(eb.probe_ids(self.plan, "s-open", 1), (["s-open"], 1))   # E264: a talking shot, 1 round
         import dispatch_guard as g
         with self.assertRaises(g.Refusal):
             g.WORKFLOWS["shot-probe.yml"][1]({"plan": "migration/production/bible/plans/arc-01-long.json",
@@ -420,7 +420,7 @@ class PavoBudgetQueue(Scratch):
             self.assertEqual(b["pavo_units_est"], lp.planned_units(shots, b["attempts"]))
             self.assertEqual(b["pavo_units_max"], sum(b["attempts"] * eb.attempts_for(s) for s in shots) * 2)
             self.assertLessEqual(b["pavo_units_max"], cap)      # review of #475: the worst case fits a day
-            self.assertLess(b["pavo_units_est"], b["pavo_units_max"])
+            self.assertLessEqual(b["pavo_units_est"], b["pavo_units_max"])   # E264: a lone talking shot: 1.6 x 2 rounds up to its 2 generations
         small = lp.queue(self.plan, {}, {}, max_units=30)
         self.assertTrue(all(b["pavo_units_max"] <= 30 for b in small["batches"]), small["batches"])
         self.assertEqual(sum(len(b["shots"].split(",")) for b in small["batches"]), q["to_probe"])

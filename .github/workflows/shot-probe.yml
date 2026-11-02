@@ -18,9 +18,9 @@ on:
         description: Comma list of the plan's shot ids to probe
         required: true
       attempts:
-        description: Generations per shot (1-6), every one kept for the review
+        description: Rounds per shot (1-6; a talking or voice-over shot takes 1, E264: 2 generations at most), every clean one kept for the review
         required: false
-        default: "2"
+        default: "1"
       adopt_run:
         description: Instead of generating, adopt the listed shots' clips from this episode.yml run's artifact (clips Claude already approved; request recomputed and equal to the plan's now); empty = generate
         required: false
