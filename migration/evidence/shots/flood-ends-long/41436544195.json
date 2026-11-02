@@ -1,0 +1,256 @@
+{
+ "episode": "flood-ends-long",
+ "plan_sha256": "aa710f1c493d6749fd4e86d20baa007bfdd1bbccef2b004186323773381bdb9d",
+ "attempts": 1,
+ "shots": {
+  "k-insight": {
+   "kind": "keeper",
+   "request_sha256": "495299b6ea6abf0166afb9e12b7bb0eba95da682c8ac2de37daaacf765fb6abb",
+   "request": {
+    "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium shot, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a calm kind look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Tender and grave. No text, no logos.",
+    "aspect_ratio": "16:9",
+    "sound": false,
+    "references": [
+     {
+      "image": "ch-keeper-talk",
+      "sha256": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
+     }
+    ],
+    "audio": {
+     "speaker": "keeper",
+     "voice": {
+      "voice_id": "am_michael",
+      "speed": 1.0
+     },
+     "words": [
+      "most",
+      "miss",
+      "this",
+      "noah",
+      "saw",
+      "dry",
+      "ground",
+      "and",
+      "still",
+      "waited",
+      "he",
+      "stepped",
+      "out",
+      "when",
+      "god",
+      "said",
+      "go",
+      "the",
+      "one",
+      "who",
+      "shut",
+      "the",
+      "door",
+      "opened",
+      "it"
+     ]
+    }
+   },
+   "clips": [
+    {
+     "round": 1,
+     "error": "SHOT_FAILED k-insight after 2 generations: AUDIO_NOT_OUR_LINE,FACE_NOT_FOUND,MOUTH_NOT_IN_SYNC; FACE_NOT_FOUND",
+     "generations": [
+      {
+       "generation": 1,
+       "conversation_id": "375607679126898752",
+       "submission": "submitted",
+       "quoted_credits": 0,
+       "source": {
+        "width": 1280.0,
+        "height": 720.0,
+        "seconds": 10.0
+       },
+       "flags": [
+        "AUDIO_NOT_OUR_LINE",
+        "FACE_NOT_FOUND",
+        "MOUTH_NOT_IN_SYNC"
+       ],
+       "lipsync": {
+        "audio": {
+         "corr": 0.71,
+         "lag_ms": 0
+        },
+        "mouth": {
+         "corr": -1.0,
+         "lag_ms": 0,
+         "speak_to_pause": 0.0,
+         "face_frames": 0.0,
+         "sync": null
+        }
+       },
+       "clip": "k-insight-fail1.mp4"
+      },
+      {
+       "generation": 2,
+       "conversation_id": "375609423521705472",
+       "submission": "submitted",
+       "quoted_credits": 0,
+       "source": {
+        "width": 1280.0,
+        "height": 720.0,
+        "seconds": 10.0
+       },
+       "flags": [
+        "FACE_NOT_FOUND"
+       ],
+       "lipsync": {
+        "audio": {
+         "corr": 0.984,
+         "lag_ms": 0
+        },
+        "mouth": {
+         "corr": 0.406,
+         "lag_ms": 0,
+         "speak_to_pause": 1.66,
+         "face_frames": 0.73,
+         "sync": {
+          "offset": -1,
+          "conf": 7.038,
+          "min_dist": 8.088,
+          "windows": 248
+         }
+        }
+       },
+       "clip": "k-insight-fail2.mp4"
+      }
+     ]
+    }
+   ],
+   "clip_seconds": 10
+  },
+  "k-bow": {
+   "kind": "keeper",
+   "request_sha256": "a4a6efb036618303179ed369863e3c203cac8af068e140b180b2dd50b72428cc",
+   "request": {
+    "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium shot, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level, looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a gentle questioning look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and searching. No text, no logos.",
+    "aspect_ratio": "16:9",
+    "sound": false,
+    "references": [
+     {
+      "image": "ch-keeper-talk",
+      "sha256": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
+     }
+    ],
+    "audio": {
+     "speaker": "keeper",
+     "voice": {
+      "voice_id": "am_michael",
+      "speed": 1.0
+     },
+     "words": [
+      "notice",
+      "what",
+      "the",
+      "rainbow",
+      "is",
+      "god",
+      "hung",
+      "up",
+      "his",
+      "own",
+      "bow",
+      "pointing",
+      "at",
+      "the",
+      "sky",
+      "and",
+      "not",
+      "at",
+      "us",
+      "mercy",
+      "is",
+      "his",
+      "idea"
+     ]
+    }
+   },
+   "clips": [
+    {
+     "round": 1,
+     "error": "SHOT_FAILED k-bow after 2 generations: AUDIO_NOT_OUR_LINE,FACE_NOT_FOUND; AUDIO_NOT_OUR_LINE",
+     "generations": [
+      {
+       "generation": 1,
+       "conversation_id": "375611213218089024",
+       "submission": "submitted",
+       "quoted_credits": 0,
+       "source": {
+        "width": 1280.0,
+        "height": 720.0,
+        "seconds": 9.0
+       },
+       "flags": [
+        "AUDIO_NOT_OUR_LINE",
+        "FACE_NOT_FOUND"
+       ],
+       "lipsync": {
+        "audio": {
+         "corr": 0.474,
+         "lag_ms": 0
+        },
+        "mouth": {
+         "corr": 0.467,
+         "lag_ms": -40,
+         "speak_to_pause": 1.53,
+         "face_frames": 0.44,
+         "sync": {
+          "offset": -1,
+          "conf": 6.977,
+          "min_dist": 8.365,
+          "windows": 230
+         }
+        }
+       },
+       "clip": "k-bow-fail1.mp4"
+      },
+      {
+       "generation": 2,
+       "conversation_id": "375612991045110848",
+       "submission": "submitted",
+       "quoted_credits": 0,
+       "source": {
+        "width": 1280.0,
+        "height": 720.0,
+        "seconds": 9.0
+       },
+       "flags": [
+        "AUDIO_NOT_OUR_LINE"
+       ],
+       "lipsync": {
+        "audio": {
+         "corr": 0.339,
+         "lag_ms": 0
+        },
+        "mouth": {
+         "corr": 0.35,
+         "lag_ms": -40,
+         "speak_to_pause": 1.81,
+         "face_frames": 0.88,
+         "sync": {
+          "offset": -1,
+          "conf": 6.631,
+          "min_dist": 8.433,
+          "windows": 230
+         }
+        }
+       },
+       "clip": "k-bow-fail2.mp4"
+      }
+     ]
+    }
+   ],
+   "clip_seconds": 9
+  }
+ },
+ "pavo_budget": {
+  "units_before": 12,
+  "units_this_run": 8
+ },
+ "run_id": "41436544195"
+}
