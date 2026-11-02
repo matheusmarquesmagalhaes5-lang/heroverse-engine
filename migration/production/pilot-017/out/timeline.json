@@ -1,0 +1,2274 @@
+{
+ "output_sha256": "9a2d0f24e74c7117eedcbdd73992fbc284efb9402b6f82dba98f096a64635692",
+ "sentences": [
+  {
+   "segment": "n00",
+   "text": "Go forth of the ark, thou, and thy wife, and thy sons, and thy sons’ wives with thee.",
+   "start": 0.0,
+   "end": 5.653,
+   "speaker": "god",
+   "kind": "scripture",
+   "reference": "Genesis 8:16 (KJV)",
+   "line": 0,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n01",
+   "text": "What if you had been shut inside a wooden ship for more than a year, with every animal on earth breathing around you in the dark?",
+   "start": 6.003,
+   "end": 13.79,
+   "line": 1,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n01",
+   "text": "What if the water finally began to fall, and still nobody told you when you could walk out?",
+   "start": 13.97,
+   "end": 19.794,
+   "line": 1,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n02",
+   "text": "Eight people.",
+   "start": 20.144,
+   "end": 21.339,
+   "line": 2,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n02",
+   "text": "One door, shut by God Himself.",
+   "start": 21.519,
+   "end": 24.015,
+   "line": 2,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n02",
+   "text": "And outside, nothing but grey water to every horizon.",
+   "start": 24.195,
+   "end": 28.184,
+   "line": 2,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n02",
+   "text": "Stay with me, because the way this story ends will change what waiting means.",
+   "start": 28.364,
+   "end": 33.143,
+   "line": 2,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n03",
+   "text": "And God remembered Noah, and every living thing, and all the cattle that was with him in the ark:",
+   "start": 33.493,
+   "end": 39.871,
+   "kind": "scripture",
+   "reference": "Genesis 8:1 (KJV)",
+   "line": 3,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n03",
+   "text": "and God made a wind to pass over the earth, and the waters asswaged;",
+   "start": 40.051,
+   "end": 44.638,
+   "kind": "scripture",
+   "reference": "Genesis 8:1 (KJV)",
+   "line": 3,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n04",
+   "text": "Remembered.",
+   "start": 44.988,
+   "end": 46.033,
+   "line": 4,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n04",
+   "text": "Not because God had forgotten them, but because the next move was His.",
+   "start": 46.213,
+   "end": 50.672,
+   "line": 4,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n04",
+   "text": "A wind swept over the earth, and the great ocean began, slowly, to sink.",
+   "start": 50.852,
+   "end": 55.929,
+   "line": 4,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n05",
+   "text": "The fountains also of the deep and the windows of heaven were stopped, and the rain from heaven was restrained;",
+   "start": 56.279,
+   "end": 63.213,
+   "kind": "scripture",
+   "reference": "Genesis 8:2 (KJV)",
+   "line": 5,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n06",
+   "text": "A hundred and fifty days of water.",
+   "start": 63.563,
+   "end": 66.059,
+   "line": 6,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n06",
+   "text": "Imagine counting every one of them in the dark, the hull creaking, never knowing if it would end.",
+   "start": 66.239,
+   "end": 72.319,
+   "line": 6,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n07",
+   "text": "And the waters returned from off the earth continually:",
+   "start": 72.669,
+   "end": 75.783,
+   "kind": "scripture",
+   "reference": "Genesis 8:3 (KJV)",
+   "line": 7,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n07",
+   "text": "and after the end of the hundred and fifty days the waters were abated.",
+   "start": 75.963,
+   "end": 80.273,
+   "kind": "scripture",
+   "reference": "Genesis 8:3 (KJV)",
+   "line": 7,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n08",
+   "text": "The water went down, not in a day, but in a long steady retreat.",
+   "start": 80.623,
+   "end": 84.847,
+   "line": 8,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n08",
+   "text": "And then, one morning, something shuddered through the whole ark.",
+   "start": 85.027,
+   "end": 88.824,
+   "line": 8,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n08",
+   "text": "It stopped moving.",
+   "start": 89.004,
+   "end": 90.476,
+   "line": 8,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n09",
+   "text": "And the ark rested in the seventh month, on the seventeenth day of the month, upon the mountains of Ararat.",
+   "start": 90.826,
+   "end": 97.631,
+   "kind": "scripture",
+   "reference": "Genesis 8:4 (KJV)",
+   "line": 9,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n10",
+   "text": "The ark scraped rock and stopped.",
+   "start": 97.981,
+   "end": 100.285,
+   "line": 10,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n10",
+   "text": "Everyone froze.",
+   "start": 100.465,
+   "end": 102.023,
+   "line": 10,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n10",
+   "text": "They had landed.",
+   "start": 102.203,
+   "end": 103.568,
+   "line": 10,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n10",
+   "text": "But when they looked out, there was still nothing but water, and no ground to stand on.",
+   "start": 103.748,
+   "end": 108.996,
+   "line": 10,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n11",
+   "text": "And the waters decreased continually until the tenth month:",
+   "start": 109.346,
+   "end": 113.101,
+   "kind": "scripture",
+   "reference": "Genesis 8:5 (KJV)",
+   "line": 11,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n11",
+   "text": "in the tenth month, on the first day of the month, were the tops of the mountains seen.",
+   "start": 113.281,
+   "end": 118.507,
+   "kind": "scripture",
+   "reference": "Genesis 8:5 (KJV)",
+   "line": 11,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n12",
+   "text": "Two more months of waiting, and then the first grey peaks rose out of the water like islands.",
+   "start": 118.857,
+   "end": 124.575,
+   "line": 12,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n12",
+   "text": "The world was coming back.",
+   "start": 124.755,
+   "end": 126.589,
+   "line": 12,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n12",
+   "text": "But coming back is not the same as being ready.",
+   "start": 126.769,
+   "end": 130.012,
+   "line": 12,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n13",
+   "text": "And it came to pass at the end of forty days, that Noah opened the window of the ark which he had made:",
+   "start": 130.362,
+   "end": 136.719,
+   "kind": "scripture",
+   "reference": "Genesis 8:6 (KJV)",
+   "line": 13,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n14",
+   "text": "Forty days later Noah did something small and brave.",
+   "start": 137.069,
+   "end": 140.547,
+   "line": 14,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n14",
+   "text": "He opened the window.",
+   "start": 140.727,
+   "end": 142.348,
+   "line": 14,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n14",
+   "text": "And what he sent out first was a raven.",
+   "start": 142.528,
+   "end": 145.152,
+   "line": 14,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n15",
+   "text": "And he sent forth a raven, which went forth to and fro, until the waters were dried up from off the earth.",
+   "start": 145.502,
+   "end": 152.35,
+   "kind": "scripture",
+   "reference": "Genesis 8:7 (KJV)",
+   "line": 15,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n16",
+   "text": "It flew back and forth over the water, and it never came home.",
+   "start": 152.7,
+   "end": 156.903,
+   "line": 16,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n16",
+   "text": "No answer.",
+   "start": 157.083,
+   "end": 158.256,
+   "line": 16,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n16",
+   "text": "No news.",
+   "start": 158.436,
+   "end": 159.588,
+   "line": 16,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n16",
+   "text": "Only the sound of wings, and then silence.",
+   "start": 159.768,
+   "end": 162.797,
+   "line": 16,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n17",
+   "text": "Also he sent forth a dove from him, to see if the waters were abated from off the face of the ground;",
+   "start": 163.147,
+   "end": 169.526,
+   "kind": "scripture",
+   "reference": "Genesis 8:8 (KJV)",
+   "line": 17,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n18",
+   "text": "So he took the gentlest bird he had.",
+   "start": 169.876,
+   "end": 172.5,
+   "line": 18,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n18",
+   "text": "A dove.",
+   "start": 172.68,
+   "end": 173.683,
+   "line": 18,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n18",
+   "text": "If there was any dry place left in the world, she would find it.",
+   "start": 173.863,
+   "end": 178.023,
+   "line": 18,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n19",
+   "text": "Hour after hour the family watched the sky.",
+   "start": 178.373,
+   "end": 181.658,
+   "line": 19,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n19",
+   "text": "Nothing came back, until the evening.",
+   "start": 181.838,
+   "end": 184.462,
+   "line": 19,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n19",
+   "text": "And the dove did return, but with nothing at all.",
+   "start": 184.642,
+   "end": 187.97,
+   "line": 19,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n20",
+   "text": "But the dove found no rest for the sole of her foot, and she returned unto him into the ark, for the waters were on the face of the whole earth:",
+   "start": 188.32,
+   "end": 197.024,
+   "kind": "scripture",
+   "reference": "Genesis 8:9 (KJV)",
+   "line": 20,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n20",
+   "text": "then he put forth his hand, and took her, and pulled her in unto him into the ark.",
+   "start": 197.204,
+   "end": 202.047,
+   "kind": "scripture",
+   "reference": "Genesis 8:9 (KJV)",
+   "line": 20,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n21",
+   "text": "Still only water.",
+   "start": 202.397,
+   "end": 204.018,
+   "line": 21,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n21",
+   "text": "Still no place to land.",
+   "start": 204.198,
+   "end": 206.033,
+   "line": 21,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n21",
+   "text": "And yet Noah did not shout, and did not give up.",
+   "start": 206.213,
+   "end": 209.477,
+   "line": 21,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n21",
+   "text": "He waited.",
+   "start": 209.657,
+   "end": 210.766,
+   "line": 21,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n22",
+   "text": "And he stayed yet other seven days;",
+   "start": 211.116,
+   "end": 213.676,
+   "kind": "scripture",
+   "reference": "Genesis 8:10 (KJV)",
+   "line": 22,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n22",
+   "text": "and again he sent forth the dove out of the ark;",
+   "start": 213.856,
+   "end": 217.141,
+   "kind": "scripture",
+   "reference": "Genesis 8:10 (KJV)",
+   "line": 22,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n23",
+   "text": "Seven more days.",
+   "start": 217.491,
+   "end": 218.921,
+   "line": 23,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n23",
+   "text": "He counted them one by one.",
+   "start": 219.101,
+   "end": 221.255,
+   "line": 23,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n23",
+   "text": "Then he let her go again, and the whole family held their breath.",
+   "start": 221.435,
+   "end": 225.211,
+   "line": 23,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n24",
+   "text": "And the dove came in to him in the evening;",
+   "start": 225.561,
+   "end": 228.1,
+   "kind": "scripture",
+   "reference": "Genesis 8:11 (KJV)",
+   "line": 24,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n24",
+   "text": "and, lo, in her mouth was an olive leaf pluckt off:",
+   "start": 228.28,
+   "end": 231.459,
+   "kind": "scripture",
+   "reference": "Genesis 8:11 (KJV)",
+   "line": 24,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n24",
+   "text": "so Noah knew that the waters were abated from off the earth.",
+   "start": 231.639,
+   "end": 235.436,
+   "kind": "scripture",
+   "reference": "Genesis 8:11 (KJV)",
+   "line": 24,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n25",
+   "text": "One green leaf.",
+   "start": 235.786,
+   "end": 237.173,
+   "line": 25,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n25",
+   "text": "Somewhere out there, something was growing again.",
+   "start": 237.353,
+   "end": 240.531,
+   "line": 25,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n25",
+   "text": "And when Noah held it, he knew:",
+   "start": 240.711,
+   "end": 242.759,
+   "line": 25,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n25",
+   "text": "the waters were really going.",
+   "start": 242.939,
+   "end": 244.817,
+   "line": 25,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n26",
+   "text": "Eight people who had not smiled in months passed that leaf from hand to hand like treasure.",
+   "start": 245.167,
+   "end": 250.649,
+   "line": 26,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n26",
+   "text": "A single leaf.",
+   "start": 250.829,
+   "end": 252.237,
+   "line": 26,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n26",
+   "text": "It was the first word of the new world.",
+   "start": 252.417,
+   "end": 254.828,
+   "line": 26,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n27",
+   "text": "And he stayed yet other seven days;",
+   "start": 255.178,
+   "end": 257.738,
+   "kind": "scripture",
+   "reference": "Genesis 8:12 (KJV)",
+   "line": 27,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n27",
+   "text": "and sent forth the dove;",
+   "start": 257.918,
+   "end": 259.71,
+   "kind": "scripture",
+   "reference": "Genesis 8:12 (KJV)",
+   "line": 27,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n27",
+   "text": "which returned not again unto him any more.",
+   "start": 259.89,
+   "end": 263.005,
+   "kind": "scripture",
+   "reference": "Genesis 8:12 (KJV)",
+   "line": 27,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n28",
+   "text": "Seven days later he sent her out one last time.",
+   "start": 263.355,
+   "end": 266.811,
+   "line": 28,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n28",
+   "text": "And she never came back.",
+   "start": 266.991,
+   "end": 268.761,
+   "line": 28,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n28",
+   "text": "That silence was the best news of all:",
+   "start": 268.941,
+   "end": 271.608,
+   "line": 28,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n28",
+   "text": "the dove had found a home.",
+   "start": 271.788,
+   "end": 273.623,
+   "line": 28,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n29",
+   "text": "And it came to pass in the six hundredth and first year, in the first month, the first day of the month, the waters were dried up from off the earth:",
+   "start": 273.973,
+   "end": 282.975,
+   "kind": "scripture",
+   "reference": "Genesis 8:13 (KJV)",
+   "line": 29,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n29",
+   "text": "and Noah removed the covering of the ark, and looked, and, behold, the face of the ground was dry.",
+   "start": 283.155,
+   "end": 289.363,
+   "kind": "scripture",
+   "reference": "Genesis 8:13 (KJV)",
+   "line": 29,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n30",
+   "text": "Dry ground at last, right before his eyes.",
+   "start": 289.713,
+   "end": 292.849,
+   "line": 30,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n30",
+   "text": "And still the door stayed shut.",
+   "start": 293.029,
+   "end": 295.141,
+   "line": 30,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n30",
+   "text": "The One who closed it had not yet said open.",
+   "start": 295.321,
+   "end": 298.521,
+   "line": 30,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n31",
+   "text": "Most miss this:",
+   "start": 298.871,
+   "end": 300.341,
+   "line": 31,
+   "line_kind": "insight"
+  },
+  {
+   "segment": "n31",
+   "text": "Noah saw dry ground and still waited.",
+   "start": 300.527,
+   "end": 303.225,
+   "line": 31,
+   "line_kind": "insight"
+  },
+  {
+   "segment": "n31",
+   "text": "He stepped out when God said go.",
+   "start": 303.41,
+   "end": 305.822,
+   "line": 31,
+   "line_kind": "insight"
+  },
+  {
+   "segment": "n31",
+   "text": "The One who shut the door opened it.",
+   "start": 306.008,
+   "end": 308.421,
+   "line": 31,
+   "line_kind": "insight"
+  },
+  {
+   "segment": "n32",
+   "text": "Two months more, until the earth was fully dry.",
+   "start": 308.771,
+   "end": 311.907,
+   "line": 32,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n32",
+   "text": "Then, at last, the voice came.",
+   "start": 312.087,
+   "end": 314.156,
+   "line": 32,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n32",
+   "text": "Not a shout.",
+   "start": 314.336,
+   "end": 315.616,
+   "line": 32,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n32",
+   "text": "A word.",
+   "start": 315.796,
+   "end": 316.863,
+   "line": 32,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n32",
+   "text": "And with it, the door that no one else could open.",
+   "start": 317.043,
+   "end": 320.222,
+   "line": 32,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n33",
+   "text": "And God spake unto Noah, saying,",
+   "start": 320.572,
+   "end": 323.025,
+   "kind": "scripture",
+   "reference": "Genesis 8:15 (KJV)",
+   "line": 33,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n34",
+   "text": "And Noah went forth, and his sons, and his wife, and his sons’ wives with him:",
+   "start": 323.375,
+   "end": 328.687,
+   "kind": "scripture",
+   "reference": "Genesis 8:18 (KJV)",
+   "line": 34,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n35",
+   "text": "Out they walked, a whole world of animals, one by one, down onto the washed new earth.",
+   "start": 329.037,
+   "end": 334.712,
+   "line": 35,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n35",
+   "text": "Noah was the last of his family to step off the boat.",
+   "start": 334.892,
+   "end": 338.39,
+   "line": 35,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n36",
+   "text": "And Noah builded an altar unto the Lord;",
+   "start": 338.74,
+   "end": 341.706,
+   "kind": "scripture",
+   "reference": "Genesis 8:20 (KJV)",
+   "line": 36,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n36",
+   "text": "and took of every clean beast, and of every clean fowl, and offered burnt offerings on the altar.",
+   "start": 341.886,
+   "end": 348.435,
+   "kind": "scripture",
+   "reference": "Genesis 8:20 (KJV)",
+   "line": 36,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n37",
+   "text": "Before building a house, before planting a field, Noah built an altar.",
+   "start": 348.785,
+   "end": 353.265,
+   "line": 37,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n37",
+   "text": "The first thing he did on the new earth was say thank you.",
+   "start": 353.445,
+   "end": 356.88,
+   "line": 37,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n38",
+   "text": "And the Lord smelled a sweet savour;",
+   "start": 357.23,
+   "end": 359.534,
+   "kind": "scripture",
+   "reference": "Genesis 8:21 (KJV)",
+   "line": 38,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n38",
+   "text": "and the Lord said in his heart, I will not again curse the ground any more for man’s sake;",
+   "start": 359.714,
+   "end": 365.218,
+   "kind": "scripture",
+   "reference": "Genesis 8:21 (KJV)",
+   "line": 38,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n38",
+   "text": "for the imagination of man’s heart is evil from his youth;",
+   "start": 365.398,
+   "end": 369.408,
+   "kind": "scripture",
+   "reference": "Genesis 8:21 (KJV)",
+   "line": 38,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n38",
+   "text": "neither will I again smite any more every thing living, as I have done.",
+   "start": 369.588,
+   "end": 374.239,
+   "kind": "scripture",
+   "reference": "Genesis 8:21 (KJV)",
+   "line": 38,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n39",
+   "text": "And God answered with a promise.",
+   "start": 374.589,
+   "end": 376.85,
+   "line": 39,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n39",
+   "text": "He knew the human heart was still broken.",
+   "start": 377.03,
+   "end": 379.761,
+   "line": 39,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n39",
+   "text": "He chose mercy anyway.",
+   "start": 379.941,
+   "end": 381.904,
+   "line": 39,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n40",
+   "text": "And God blessed Noah and his sons, and said unto them, Be fruitful, and multiply, and replenish the earth.",
+   "start": 382.254,
+   "end": 389.251,
+   "kind": "scripture",
+   "reference": "Genesis 9:1 (KJV)",
+   "line": 40,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n41",
+   "text": "A blessing.",
+   "start": 389.601,
+   "end": 390.732,
+   "line": 41,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n41",
+   "text": "The very words God spoke to Adam at the beginning:",
+   "start": 390.912,
+   "end": 394.261,
+   "line": 41,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n41",
+   "text": "be fruitful and multiply.",
+   "start": 394.441,
+   "end": 396.66,
+   "line": 41,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n41",
+   "text": "A second beginning for a broken world.",
+   "start": 396.84,
+   "end": 399.421,
+   "line": 41,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n42",
+   "text": "But the first time a dark cloud gathered over the hills, imagine the fear.",
+   "start": 399.771,
+   "end": 404.656,
+   "line": 42,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n42",
+   "text": "Would the water come back?",
+   "start": 404.836,
+   "end": 406.522,
+   "line": 42,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n42",
+   "text": "Every child who had heard the stories would look up and wonder.",
+   "start": 406.702,
+   "end": 410.67,
+   "line": 42,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n43",
+   "text": "And I will establish my covenant with you;",
+   "start": 411.02,
+   "end": 413.836,
+   "kind": "scripture",
+   "reference": "Genesis 9:11 (KJV)",
+   "line": 43,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n43",
+   "text": "neither shall all flesh be cut off any more by the waters of a flood;",
+   "start": 414.016,
+   "end": 418.474,
+   "kind": "scripture",
+   "reference": "Genesis 9:11 (KJV)",
+   "line": 43,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n43",
+   "text": "neither shall there any more be a flood to destroy the earth.",
+   "start": 418.654,
+   "end": 422.324,
+   "kind": "scripture",
+   "reference": "Genesis 9:11 (KJV)",
+   "line": 43,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n44",
+   "text": "I do set my bow in the cloud, and it shall be for a token of a covenant between me and the earth.",
+   "start": 422.674,
+   "end": 428.946,
+   "kind": "scripture",
+   "reference": "Genesis 9:13 (KJV)",
+   "line": 44,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n45",
+   "text": "And there it was, for the very first time:",
+   "start": 429.296,
+   "end": 432.026,
+   "line": 45,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n45",
+   "text": "a bow of colour, bending over the whole sky.",
+   "start": 432.206,
+   "end": 435.278,
+   "line": 45,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n45",
+   "text": "Not a weapon pointed at us.",
+   "start": 435.458,
+   "end": 437.528,
+   "line": 45,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n45",
+   "text": "A war bow, hung up.",
+   "start": 437.708,
+   "end": 439.308,
+   "line": 45,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n46",
+   "text": "And the bow shall be in the cloud;",
+   "start": 439.658,
+   "end": 441.727,
+   "kind": "scripture",
+   "reference": "Genesis 9:16 (KJV)",
+   "line": 46,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n46",
+   "text": "and I will look upon it, that I may remember the everlasting covenant between God and every living creature of all flesh that is upon the earth.",
+   "start": 441.907,
+   "end": 451.614,
+   "kind": "scripture",
+   "reference": "Genesis 9:16 (KJV)",
+   "line": 46,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n47",
+   "text": "Read that again.",
+   "start": 451.964,
+   "end": 453.372,
+   "line": 47,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n47",
+   "text": "The sign is not only for us to see.",
+   "start": 453.552,
+   "end": 456.368,
+   "line": 47,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n47",
+   "text": "God says He Himself will look upon it, and remember.",
+   "start": 456.548,
+   "end": 460.26,
+   "line": 47,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n47",
+   "text": "He holds the promise in His own hands.",
+   "start": 460.44,
+   "end": 463.106,
+   "line": 47,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n48",
+   "text": "Notice what the rainbow is.",
+   "start": 463.456,
+   "end": 465.44,
+   "line": 48,
+   "line_kind": "insight"
+  },
+  {
+   "segment": "n48",
+   "text": "God hung up His own bow, pointing at the sky and not at us.",
+   "start": 465.62,
+   "end": 469.844,
+   "line": 48,
+   "line_kind": "insight"
+  },
+  {
+   "segment": "n48",
+   "text": "Mercy is His idea.",
+   "start": 470.024,
+   "end": 471.838,
+   "line": 48,
+   "line_kind": "insight"
+  },
+  {
+   "segment": "n49",
+   "text": "The Bible does not pretend Noah became perfect.",
+   "start": 472.188,
+   "end": 475.58,
+   "line": 49,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n49",
+   "text": "Later he planted a vineyard, and failed again, the way people do.",
+   "start": 475.76,
+   "end": 480.069,
+   "line": 49,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n49",
+   "text": "Grace did not make him a god.",
+   "start": 480.249,
+   "end": 482.51,
+   "line": 49,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n49",
+   "text": "It made him a man who was carried.",
+   "start": 482.69,
+   "end": 485.08,
+   "line": 49,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n50",
+   "text": "And all the days of Noah were nine hundred and fifty years:",
+   "start": 485.43,
+   "end": 489.312,
+   "kind": "scripture",
+   "reference": "Genesis 9:29 (KJV)",
+   "line": 50,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n50",
+   "text": "and he died.",
+   "start": 489.492,
+   "end": 490.708,
+   "kind": "scripture",
+   "reference": "Genesis 9:29 (KJV)",
+   "line": 50,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n51",
+   "text": "What are you waiting for God to open?",
+   "start": 491.058,
+   "end": 493.576,
+   "line": 51,
+   "line_kind": "cta"
+  },
+  {
+   "segment": "n51",
+   "text": "Tell me in the comments.",
+   "start": 493.756,
+   "end": 495.377,
+   "line": 51,
+   "line_kind": "cta"
+  },
+  {
+   "segment": "n51",
+   "text": "Next time:",
+   "start": 495.557,
+   "end": 496.794,
+   "line": 51,
+   "line_kind": "cta"
+  },
+  {
+   "segment": "n51",
+   "text": "the tower that reached for the sky.",
+   "start": 496.974,
+   "end": 499.236,
+   "line": 51,
+   "line_kind": "cta"
+  },
+  {
+   "segment": "n51",
+   "text": "Subscribe.",
+   "start": 499.416,
+   "end": 500.632,
+   "line": 51,
+   "line_kind": "cta"
+  }
+ ],
+ "shots": [
+  {
+   "shot": "s-voice",
+   "kind": "scene",
+   "start": 0.0,
+   "end": 3.002,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-voice",
+   "kind": "scene",
+   "start": 3.002,
+   "end": 6.003,
+   "src_start": 4.998,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-hold",
+   "kind": "scene",
+   "start": 6.003,
+   "end": 9.538,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-hold",
+   "kind": "scene",
+   "start": 9.538,
+   "end": 13.073,
+   "src_start": 4.822,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-hold",
+   "kind": "scene",
+   "start": 13.073,
+   "end": 16.609,
+   "src_start": 9.643,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-hold",
+   "kind": "scene",
+   "start": 16.609,
+   "end": 20.144,
+   "src_start": 14.465,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-door",
+   "kind": "scene",
+   "start": 20.144,
+   "end": 23.481,
+   "src_start": 0.0,
+   "speed": 1.0268
+  },
+  {
+   "shot": "s-door",
+   "kind": "scene",
+   "start": 23.481,
+   "end": 26.819,
+   "src_start": 3.25,
+   "speed": 1.0268
+  },
+  {
+   "shot": "s-door",
+   "kind": "scene",
+   "start": 26.819,
+   "end": 30.156,
+   "src_start": 6.5,
+   "speed": 1.0268
+  },
+  {
+   "shot": "s-door",
+   "kind": "scene",
+   "start": 30.156,
+   "end": 33.493,
+   "src_start": 9.75,
+   "speed": 1.0268
+  },
+  {
+   "shot": "s-wind",
+   "kind": "scene",
+   "start": 33.493,
+   "end": 37.291,
+   "src_start": 0.0,
+   "speed": 1.1393
+  },
+  {
+   "shot": "s-wind",
+   "kind": "scene",
+   "start": 37.291,
+   "end": 41.088,
+   "src_start": 3.333,
+   "speed": 1.1393
+  },
+  {
+   "shot": "s-wind",
+   "kind": "scene",
+   "start": 41.088,
+   "end": 44.886,
+   "src_start": 6.667,
+   "speed": 1.1393
+  },
+  {
+   "shot": "s-wind",
+   "kind": "scene",
+   "start": 44.886,
+   "end": 48.684,
+   "src_start": 10.0,
+   "speed": 1.1393
+  },
+  {
+   "shot": "s-wind",
+   "kind": "scene",
+   "start": 48.684,
+   "end": 52.481,
+   "src_start": 13.333,
+   "speed": 1.1393
+  },
+  {
+   "shot": "s-wind",
+   "kind": "scene",
+   "start": 52.481,
+   "end": 56.279,
+   "src_start": 16.667,
+   "speed": 1.1393
+  },
+  {
+   "shot": "s-fountains",
+   "kind": "scene",
+   "start": 56.279,
+   "end": 59.557,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-fountains",
+   "kind": "scene",
+   "start": 59.557,
+   "end": 62.835,
+   "src_start": 3.931,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-fountains",
+   "kind": "scene",
+   "start": 62.835,
+   "end": 66.113,
+   "src_start": 7.861,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-fountains",
+   "kind": "scene",
+   "start": 66.113,
+   "end": 69.391,
+   "src_start": 11.792,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-fountains",
+   "kind": "scene",
+   "start": 69.391,
+   "end": 72.669,
+   "src_start": 15.722,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-lines",
+   "kind": "scene",
+   "start": 72.669,
+   "end": 76.3,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-lines",
+   "kind": "scene",
+   "start": 76.3,
+   "end": 79.932,
+   "src_start": 4.092,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-lines",
+   "kind": "scene",
+   "start": 79.932,
+   "end": 83.563,
+   "src_start": 8.184,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-lines",
+   "kind": "scene",
+   "start": 83.563,
+   "end": 87.195,
+   "src_start": 12.276,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-lines",
+   "kind": "scene",
+   "start": 87.195,
+   "end": 90.826,
+   "src_start": 16.369,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-ararat",
+   "kind": "scene",
+   "start": 90.826,
+   "end": 94.53,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-ararat",
+   "kind": "scene",
+   "start": 94.53,
+   "end": 98.234,
+   "src_start": 4.074,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-ararat",
+   "kind": "scene",
+   "start": 98.234,
+   "end": 101.938,
+   "src_start": 8.148,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-ararat",
+   "kind": "scene",
+   "start": 101.938,
+   "end": 105.642,
+   "src_start": 12.222,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-ararat",
+   "kind": "scene",
+   "start": 105.642,
+   "end": 109.346,
+   "src_start": 16.296,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-peaks",
+   "kind": "scene",
+   "start": 109.346,
+   "end": 112.849,
+   "src_start": 0.0,
+   "speed": 1.0508
+  },
+  {
+   "shot": "s-peaks",
+   "kind": "scene",
+   "start": 112.849,
+   "end": 116.351,
+   "src_start": 3.333,
+   "speed": 1.0508
+  },
+  {
+   "shot": "s-peaks",
+   "kind": "scene",
+   "start": 116.351,
+   "end": 119.854,
+   "src_start": 6.667,
+   "speed": 1.0508
+  },
+  {
+   "shot": "s-peaks",
+   "kind": "scene",
+   "start": 119.854,
+   "end": 123.357,
+   "src_start": 10.0,
+   "speed": 1.0508
+  },
+  {
+   "shot": "s-peaks",
+   "kind": "scene",
+   "start": 123.357,
+   "end": 126.859,
+   "src_start": 13.333,
+   "speed": 1.0508
+  },
+  {
+   "shot": "s-peaks",
+   "kind": "scene",
+   "start": 126.859,
+   "end": 130.362,
+   "src_start": 16.667,
+   "speed": 1.0508
+  },
+  {
+   "shot": "s-window",
+   "kind": "scene",
+   "start": 130.362,
+   "end": 134.147,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-window",
+   "kind": "scene",
+   "start": 134.147,
+   "end": 137.932,
+   "src_start": 5.072,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-window",
+   "kind": "scene",
+   "start": 137.932,
+   "end": 141.717,
+   "src_start": 10.143,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-window",
+   "kind": "scene",
+   "start": 141.717,
+   "end": 145.502,
+   "src_start": 15.215,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-raven",
+   "kind": "scene",
+   "start": 145.502,
+   "end": 149.031,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-raven",
+   "kind": "scene",
+   "start": 149.031,
+   "end": 152.56,
+   "src_start": 3.868,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-raven",
+   "kind": "scene",
+   "start": 152.56,
+   "end": 156.089,
+   "src_start": 7.736,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-raven",
+   "kind": "scene",
+   "start": 156.089,
+   "end": 159.618,
+   "src_start": 11.603,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-raven",
+   "kind": "scene",
+   "start": 159.618,
+   "end": 163.147,
+   "src_start": 15.471,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-hands",
+   "kind": "scene",
+   "start": 163.147,
+   "end": 166.953,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-hands",
+   "kind": "scene",
+   "start": 166.953,
+   "end": 170.76,
+   "src_start": 5.064,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-hands",
+   "kind": "scene",
+   "start": 170.76,
+   "end": 174.566,
+   "src_start": 10.129,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-hands",
+   "kind": "scene",
+   "start": 174.566,
+   "end": 178.373,
+   "src_start": 15.194,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-dove-out",
+   "kind": "scene",
+   "start": 178.373,
+   "end": 181.689,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-dove-out",
+   "kind": "scene",
+   "start": 181.689,
+   "end": 185.004,
+   "src_start": 4.39,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-dove-out",
+   "kind": "scene",
+   "start": 185.004,
+   "end": 188.32,
+   "src_start": 8.78,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-return",
+   "kind": "scene",
+   "start": 188.32,
+   "end": 191.839,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-return",
+   "kind": "scene",
+   "start": 191.839,
+   "end": 195.358,
+   "src_start": 5.494,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-return",
+   "kind": "scene",
+   "start": 195.358,
+   "end": 198.878,
+   "src_start": 10.987,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-return",
+   "kind": "scene",
+   "start": 198.878,
+   "end": 202.397,
+   "src_start": 16.481,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-family",
+   "kind": "scene",
+   "start": 202.397,
+   "end": 205.303,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-family",
+   "kind": "scene",
+   "start": 205.303,
+   "end": 208.21,
+   "src_start": 3.047,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-family",
+   "kind": "scene",
+   "start": 208.21,
+   "end": 211.116,
+   "src_start": 6.094,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-wait7",
+   "kind": "scene",
+   "start": 211.116,
+   "end": 214.727,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-wait7",
+   "kind": "scene",
+   "start": 214.727,
+   "end": 218.339,
+   "src_start": 4.463,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-wait7",
+   "kind": "scene",
+   "start": 218.339,
+   "end": 221.95,
+   "src_start": 8.926,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-wait7",
+   "kind": "scene",
+   "start": 221.95,
+   "end": 225.561,
+   "src_start": 13.389,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-leaf",
+   "kind": "scene",
+   "start": 225.561,
+   "end": 229.482,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-leaf",
+   "kind": "scene",
+   "start": 229.482,
+   "end": 233.403,
+   "src_start": 4.02,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-leaf",
+   "kind": "scene",
+   "start": 233.403,
+   "end": 237.325,
+   "src_start": 8.039,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-leaf",
+   "kind": "scene",
+   "start": 237.325,
+   "end": 241.246,
+   "src_start": 12.059,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-leaf",
+   "kind": "scene",
+   "start": 241.246,
+   "end": 245.167,
+   "src_start": 16.079,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-joy",
+   "kind": "scene",
+   "start": 245.167,
+   "end": 248.504,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-joy",
+   "kind": "scene",
+   "start": 248.504,
+   "end": 251.841,
+   "src_start": 4.332,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-joy",
+   "kind": "scene",
+   "start": 251.841,
+   "end": 255.178,
+   "src_start": 8.663,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-release",
+   "kind": "scene",
+   "start": 255.178,
+   "end": 258.937,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-release",
+   "kind": "scene",
+   "start": 258.937,
+   "end": 262.696,
+   "src_start": 4.06,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-release",
+   "kind": "scene",
+   "start": 262.696,
+   "end": 266.455,
+   "src_start": 8.12,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-release",
+   "kind": "scene",
+   "start": 266.455,
+   "end": 270.214,
+   "src_start": 12.181,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-release",
+   "kind": "scene",
+   "start": 270.214,
+   "end": 273.973,
+   "src_start": 16.241,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-dry",
+   "kind": "scene",
+   "start": 273.973,
+   "end": 277.908,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-dry",
+   "kind": "scene",
+   "start": 277.908,
+   "end": 281.843,
+   "src_start": 5.355,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-dry",
+   "kind": "scene",
+   "start": 281.843,
+   "end": 285.778,
+   "src_start": 10.71,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-dry",
+   "kind": "scene",
+   "start": 285.778,
+   "end": 289.713,
+   "src_start": 16.065,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-shut",
+   "kind": "scene",
+   "start": 289.713,
+   "end": 292.766,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-shut",
+   "kind": "scene",
+   "start": 292.766,
+   "end": 295.818,
+   "src_start": 3.974,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-shut",
+   "kind": "scene",
+   "start": 295.818,
+   "end": 298.871,
+   "src_start": 7.947,
+   "speed": 1.0
+  },
+  {
+   "shot": "k-insight",
+   "kind": "keeper",
+   "start": 298.871,
+   "end": 308.421,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-voice-go",
+   "kind": "scene",
+   "start": 308.421,
+   "end": 312.159,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-voice-go",
+   "kind": "scene",
+   "start": 312.159,
+   "end": 315.898,
+   "src_start": 4.087,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-voice-go",
+   "kind": "scene",
+   "start": 315.898,
+   "end": 319.637,
+   "src_start": 8.174,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-voice-go",
+   "kind": "scene",
+   "start": 319.637,
+   "end": 323.375,
+   "src_start": 12.261,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-exit",
+   "kind": "scene",
+   "start": 323.375,
+   "end": 327.216,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-exit",
+   "kind": "scene",
+   "start": 327.216,
+   "end": 331.058,
+   "src_start": 5.053,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-exit",
+   "kind": "scene",
+   "start": 331.058,
+   "end": 334.899,
+   "src_start": 10.106,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-exit",
+   "kind": "scene",
+   "start": 334.899,
+   "end": 338.74,
+   "src_start": 15.159,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-altar",
+   "kind": "scene",
+   "start": 338.74,
+   "end": 342.438,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-altar",
+   "kind": "scene",
+   "start": 342.438,
+   "end": 346.136,
+   "src_start": 4.075,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-altar",
+   "kind": "scene",
+   "start": 346.136,
+   "end": 349.834,
+   "src_start": 8.151,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-altar",
+   "kind": "scene",
+   "start": 349.834,
+   "end": 353.532,
+   "src_start": 12.226,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-altar",
+   "kind": "scene",
+   "start": 353.532,
+   "end": 357.23,
+   "src_start": 16.302,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-smoke",
+   "kind": "scene",
+   "start": 357.23,
+   "end": 360.805,
+   "src_start": 0.0,
+   "speed": 1.2512
+  },
+  {
+   "shot": "s-smoke",
+   "kind": "scene",
+   "start": 360.805,
+   "end": 364.38,
+   "src_start": 2.857,
+   "speed": 1.2512
+  },
+  {
+   "shot": "s-smoke",
+   "kind": "scene",
+   "start": 364.38,
+   "end": 367.955,
+   "src_start": 5.714,
+   "speed": 1.2512
+  },
+  {
+   "shot": "s-smoke",
+   "kind": "scene",
+   "start": 367.955,
+   "end": 371.529,
+   "src_start": 8.571,
+   "speed": 1.2512
+  },
+  {
+   "shot": "s-smoke",
+   "kind": "scene",
+   "start": 371.529,
+   "end": 375.104,
+   "src_start": 11.429,
+   "speed": 1.2512
+  },
+  {
+   "shot": "s-smoke",
+   "kind": "scene",
+   "start": 375.104,
+   "end": 378.679,
+   "src_start": 14.286,
+   "speed": 1.2512
+  },
+  {
+   "shot": "s-smoke",
+   "kind": "scene",
+   "start": 378.679,
+   "end": 382.254,
+   "src_start": 17.143,
+   "speed": 1.2512
+  },
+  {
+   "shot": "s-bless",
+   "kind": "scene",
+   "start": 382.254,
+   "end": 385.757,
+   "src_start": 0.0,
+   "speed": 1.0304
+  },
+  {
+   "shot": "s-bless",
+   "kind": "scene",
+   "start": 385.757,
+   "end": 389.261,
+   "src_start": 3.4,
+   "speed": 1.0304
+  },
+  {
+   "shot": "s-bless",
+   "kind": "scene",
+   "start": 389.261,
+   "end": 392.764,
+   "src_start": 6.8,
+   "speed": 1.0304
+  },
+  {
+   "shot": "s-bless",
+   "kind": "scene",
+   "start": 392.764,
+   "end": 396.268,
+   "src_start": 10.2,
+   "speed": 1.0304
+  },
+  {
+   "shot": "s-bless",
+   "kind": "scene",
+   "start": 396.268,
+   "end": 399.771,
+   "src_start": 13.6,
+   "speed": 1.0304
+  },
+  {
+   "shot": "s-storm",
+   "kind": "scene",
+   "start": 399.771,
+   "end": 403.521,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-storm",
+   "kind": "scene",
+   "start": 403.521,
+   "end": 407.27,
+   "src_start": 4.625,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-storm",
+   "kind": "scene",
+   "start": 407.27,
+   "end": 411.02,
+   "src_start": 9.25,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-promise",
+   "kind": "scene",
+   "start": 411.02,
+   "end": 414.905,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-promise",
+   "kind": "scene",
+   "start": 414.905,
+   "end": 418.789,
+   "src_start": 5.558,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-promise",
+   "kind": "scene",
+   "start": 418.789,
+   "end": 422.674,
+   "src_start": 11.115,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-bow",
+   "kind": "scene",
+   "start": 422.674,
+   "end": 426.071,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-bow",
+   "kind": "scene",
+   "start": 426.071,
+   "end": 429.468,
+   "src_start": 4.151,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-bow",
+   "kind": "scene",
+   "start": 429.468,
+   "end": 432.864,
+   "src_start": 8.302,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-bow",
+   "kind": "scene",
+   "start": 432.864,
+   "end": 436.261,
+   "src_start": 12.452,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-bow",
+   "kind": "scene",
+   "start": 436.261,
+   "end": 439.658,
+   "src_start": 16.603,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-look",
+   "kind": "scene",
+   "start": 439.658,
+   "end": 443.624,
+   "src_start": 0.0,
+   "speed": 1.1899
+  },
+  {
+   "shot": "s-look",
+   "kind": "scene",
+   "start": 443.624,
+   "end": 447.591,
+   "src_start": 3.333,
+   "speed": 1.1899
+  },
+  {
+   "shot": "s-look",
+   "kind": "scene",
+   "start": 447.591,
+   "end": 451.557,
+   "src_start": 6.667,
+   "speed": 1.1899
+  },
+  {
+   "shot": "s-look",
+   "kind": "scene",
+   "start": 451.557,
+   "end": 455.523,
+   "src_start": 10.0,
+   "speed": 1.1899
+  },
+  {
+   "shot": "s-look",
+   "kind": "scene",
+   "start": 455.523,
+   "end": 459.49,
+   "src_start": 13.333,
+   "speed": 1.1899
+  },
+  {
+   "shot": "s-look",
+   "kind": "scene",
+   "start": 459.49,
+   "end": 463.456,
+   "src_start": 16.667,
+   "speed": 1.1899
+  },
+  {
+   "shot": "k-bow",
+   "kind": "keeper",
+   "start": 463.456,
+   "end": 471.838,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-vineyard",
+   "kind": "scene",
+   "start": 471.838,
+   "end": 475.682,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-vineyard",
+   "kind": "scene",
+   "start": 475.682,
+   "end": 479.526,
+   "src_start": 4.039,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-vineyard",
+   "kind": "scene",
+   "start": 479.526,
+   "end": 483.37,
+   "src_start": 8.078,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-vineyard",
+   "kind": "scene",
+   "start": 483.37,
+   "end": 487.214,
+   "src_start": 12.117,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-vineyard",
+   "kind": "scene",
+   "start": 487.214,
+   "end": 491.058,
+   "src_start": 16.156,
+   "speed": 1.0
+  },
+  {
+   "shot": "k-close",
+   "kind": "keeper",
+   "start": 491.058,
+   "end": 501.832,
+   "src_start": 0.0,
+   "speed": 1.0
+  }
+ ]
+}

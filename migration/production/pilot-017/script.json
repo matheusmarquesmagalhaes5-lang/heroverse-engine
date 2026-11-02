@@ -1,0 +1,294 @@
+{
+ "version": "bible-buzzy-long-script-v1",
+ "pilot_id": "pilot-017",
+ "archetype": "bible-buzzy-long",
+ "series": "buzzy-long",
+ "episode": "flood-ends-long",
+ "working_title": "The Flood Ends: The Raven, the Dove and the Rainbow (Genesis 8-9, KJV)",
+ "criteria_version": "buzzy-long-qa-criteria-v1",
+ "segments": [
+  {
+   "id": "n00",
+   "kind": "scripture",
+   "text": "Go forth of the ark, thou, and thy wife, and thy sons, and thy sons’ wives with thee.",
+   "reference": "Genesis 8:16 (KJV)"
+  },
+  {
+   "id": "n01",
+   "kind": "story",
+   "text": "What if you had been shut inside a wooden ship for more than a year, with every animal on earth breathing around you in the dark? What if the water finally began to fall, and still nobody told you when you could walk out?"
+  },
+  {
+   "id": "n02",
+   "kind": "story",
+   "text": "Eight people. One door, shut by God Himself. And outside, nothing but grey water to every horizon. Stay with me, because the way this story ends will change what waiting means."
+  },
+  {
+   "id": "n03",
+   "kind": "scripture",
+   "text": "And God remembered Noah, and every living thing, and all the cattle that was with him in the ark: and God made a wind to pass over the earth, and the waters asswaged;",
+   "reference": "Genesis 8:1 (KJV)"
+  },
+  {
+   "id": "n04",
+   "kind": "story",
+   "text": "Remembered. Not because God had forgotten them, but because the next move was His. A wind swept over the earth, and the great ocean began, slowly, to sink."
+  },
+  {
+   "id": "n05",
+   "kind": "scripture",
+   "text": "The fountains also of the deep and the windows of heaven were stopped, and the rain from heaven was restrained;",
+   "reference": "Genesis 8:2 (KJV)"
+  },
+  {
+   "id": "n06",
+   "kind": "story",
+   "text": "A hundred and fifty days of water. Imagine counting every one of them in the dark, the hull creaking, never knowing if it would end."
+  },
+  {
+   "id": "n07",
+   "kind": "scripture",
+   "text": "And the waters returned from off the earth continually: and after the end of the hundred and fifty days the waters were abated.",
+   "reference": "Genesis 8:3 (KJV)"
+  },
+  {
+   "id": "n08",
+   "kind": "story",
+   "text": "The water went down, not in a day, but in a long steady retreat. And then, one morning, something shuddered through the whole ark. It stopped moving."
+  },
+  {
+   "id": "n09",
+   "kind": "scripture",
+   "text": "And the ark rested in the seventh month, on the seventeenth day of the month, upon the mountains of Ararat.",
+   "reference": "Genesis 8:4 (KJV)"
+  },
+  {
+   "id": "n10",
+   "kind": "story",
+   "text": "The ark scraped rock and stopped. Everyone froze. They had landed. But when they looked out, there was still nothing but water, and no ground to stand on."
+  },
+  {
+   "id": "n11",
+   "kind": "scripture",
+   "text": "And the waters decreased continually until the tenth month: in the tenth month, on the first day of the month, were the tops of the mountains seen.",
+   "reference": "Genesis 8:5 (KJV)"
+  },
+  {
+   "id": "n12",
+   "kind": "story",
+   "text": "Two more months of waiting, and then the first grey peaks rose out of the water like islands. The world was coming back. But coming back is not the same as being ready."
+  },
+  {
+   "id": "n13",
+   "kind": "scripture",
+   "text": "And it came to pass at the end of forty days, that Noah opened the window of the ark which he had made:",
+   "reference": "Genesis 8:6 (KJV)"
+  },
+  {
+   "id": "n14",
+   "kind": "story",
+   "text": "Forty days later Noah did something small and brave. He opened the window. And what he sent out first was a raven."
+  },
+  {
+   "id": "n15",
+   "kind": "scripture",
+   "text": "And he sent forth a raven, which went forth to and fro, until the waters were dried up from off the earth.",
+   "reference": "Genesis 8:7 (KJV)"
+  },
+  {
+   "id": "n16",
+   "kind": "story",
+   "text": "It flew back and forth over the water, and it never came home. No answer. No news. Only the sound of wings, and then silence."
+  },
+  {
+   "id": "n17",
+   "kind": "scripture",
+   "text": "Also he sent forth a dove from him, to see if the waters were abated from off the face of the ground;",
+   "reference": "Genesis 8:8 (KJV)"
+  },
+  {
+   "id": "n18",
+   "kind": "story",
+   "text": "So he took the gentlest bird he had. A dove. If there was any dry place left in the world, she would find it."
+  },
+  {
+   "id": "n19",
+   "kind": "story",
+   "text": "Hour after hour the family watched the sky. Nothing came back, until the evening. And the dove did return, but with nothing at all."
+  },
+  {
+   "id": "n20",
+   "kind": "scripture",
+   "text": "But the dove found no rest for the sole of her foot, and she returned unto him into the ark, for the waters were on the face of the whole earth: then he put forth his hand, and took her, and pulled her in unto him into the ark.",
+   "reference": "Genesis 8:9 (KJV)"
+  },
+  {
+   "id": "n21",
+   "kind": "story",
+   "text": "Still only water. Still no place to land. And yet Noah did not shout, and did not give up. He waited."
+  },
+  {
+   "id": "n22",
+   "kind": "scripture",
+   "text": "And he stayed yet other seven days; and again he sent forth the dove out of the ark;",
+   "reference": "Genesis 8:10 (KJV)"
+  },
+  {
+   "id": "n23",
+   "kind": "story",
+   "text": "Seven more days. He counted them one by one. Then he let her go again, and the whole family held their breath."
+  },
+  {
+   "id": "n24",
+   "kind": "scripture",
+   "text": "And the dove came in to him in the evening; and, lo, in her mouth was an olive leaf pluckt off: so Noah knew that the waters were abated from off the earth.",
+   "reference": "Genesis 8:11 (KJV)"
+  },
+  {
+   "id": "n25",
+   "kind": "story",
+   "text": "One green leaf. Somewhere out there, something was growing again. And when Noah held it, he knew: the waters were really going."
+  },
+  {
+   "id": "n26",
+   "kind": "story",
+   "text": "Eight people who had not smiled in months passed that leaf from hand to hand like treasure. A single leaf. It was the first word of the new world."
+  },
+  {
+   "id": "n27",
+   "kind": "scripture",
+   "text": "And he stayed yet other seven days; and sent forth the dove; which returned not again unto him any more.",
+   "reference": "Genesis 8:12 (KJV)"
+  },
+  {
+   "id": "n28",
+   "kind": "story",
+   "text": "Seven days later he sent her out one last time. And she never came back. That silence was the best news of all: the dove had found a home."
+  },
+  {
+   "id": "n29",
+   "kind": "scripture",
+   "text": "And it came to pass in the six hundredth and first year, in the first month, the first day of the month, the waters were dried up from off the earth: and Noah removed the covering of the ark, and looked, and, behold, the face of the ground was dry.",
+   "reference": "Genesis 8:13 (KJV)"
+  },
+  {
+   "id": "n30",
+   "kind": "story",
+   "text": "Dry ground at last, right before his eyes. And still the door stayed shut. The One who closed it had not yet said open."
+  },
+  {
+   "id": "n31",
+   "kind": "insight",
+   "text": "Most miss this: Noah saw dry ground and still waited. He stepped out when God said go. The One who shut the door opened it."
+  },
+  {
+   "id": "n32",
+   "kind": "story",
+   "text": "Two months more, until the earth was fully dry. Then, at last, the voice came. Not a shout. A word. And with it, the door that no one else could open."
+  },
+  {
+   "id": "n33",
+   "kind": "scripture",
+   "text": "And God spake unto Noah, saying,",
+   "reference": "Genesis 8:15 (KJV)"
+  },
+  {
+   "id": "n34",
+   "kind": "scripture",
+   "text": "And Noah went forth, and his sons, and his wife, and his sons’ wives with him:",
+   "reference": "Genesis 8:18 (KJV)"
+  },
+  {
+   "id": "n35",
+   "kind": "story",
+   "text": "Out they walked, a whole world of animals, one by one, down onto the washed new earth. Noah was the last of his family to step off the boat."
+  },
+  {
+   "id": "n36",
+   "kind": "scripture",
+   "text": "And Noah builded an altar unto the Lord; and took of every clean beast, and of every clean fowl, and offered burnt offerings on the altar.",
+   "reference": "Genesis 8:20 (KJV)"
+  },
+  {
+   "id": "n37",
+   "kind": "story",
+   "text": "Before building a house, before planting a field, Noah built an altar. The first thing he did on the new earth was say thank you."
+  },
+  {
+   "id": "n38",
+   "kind": "scripture",
+   "text": "And the Lord smelled a sweet savour; and the Lord said in his heart, I will not again curse the ground any more for man’s sake; for the imagination of man’s heart is evil from his youth; neither will I again smite any more every thing living, as I have done.",
+   "reference": "Genesis 8:21 (KJV)"
+  },
+  {
+   "id": "n39",
+   "kind": "story",
+   "text": "And God answered with a promise. He knew the human heart was still broken. He chose mercy anyway."
+  },
+  {
+   "id": "n40",
+   "kind": "scripture",
+   "text": "And God blessed Noah and his sons, and said unto them, Be fruitful, and multiply, and replenish the earth.",
+   "reference": "Genesis 9:1 (KJV)"
+  },
+  {
+   "id": "n41",
+   "kind": "story",
+   "text": "A blessing. The very words God spoke to Adam at the beginning: be fruitful and multiply. A second beginning for a broken world."
+  },
+  {
+   "id": "n42",
+   "kind": "story",
+   "text": "But the first time a dark cloud gathered over the hills, imagine the fear. Would the water come back? Every child who had heard the stories would look up and wonder."
+  },
+  {
+   "id": "n43",
+   "kind": "scripture",
+   "text": "And I will establish my covenant with you; neither shall all flesh be cut off any more by the waters of a flood; neither shall there any more be a flood to destroy the earth.",
+   "reference": "Genesis 9:11 (KJV)"
+  },
+  {
+   "id": "n44",
+   "kind": "scripture",
+   "text": "I do set my bow in the cloud, and it shall be for a token of a covenant between me and the earth.",
+   "reference": "Genesis 9:13 (KJV)"
+  },
+  {
+   "id": "n45",
+   "kind": "story",
+   "text": "And there it was, for the very first time: a bow of colour, bending over the whole sky. Not a weapon pointed at us. A war bow, hung up."
+  },
+  {
+   "id": "n46",
+   "kind": "scripture",
+   "text": "And the bow shall be in the cloud; and I will look upon it, that I may remember the everlasting covenant between God and every living creature of all flesh that is upon the earth.",
+   "reference": "Genesis 9:16 (KJV)"
+  },
+  {
+   "id": "n47",
+   "kind": "story",
+   "text": "Read that again. The sign is not only for us to see. God says He Himself will look upon it, and remember. He holds the promise in His own hands."
+  },
+  {
+   "id": "n48",
+   "kind": "insight",
+   "text": "Notice what the rainbow is. God hung up His own bow, pointing at the sky and not at us. Mercy is His idea."
+  },
+  {
+   "id": "n49",
+   "kind": "story",
+   "text": "The Bible does not pretend Noah became perfect. Later he planted a vineyard, and failed again, the way people do. Grace did not make him a god. It made him a man who was carried."
+  },
+  {
+   "id": "n50",
+   "kind": "scripture",
+   "text": "And all the days of Noah were nine hundred and fifty years: and he died.",
+   "reference": "Genesis 9:29 (KJV)"
+  },
+  {
+   "id": "n51",
+   "kind": "cta",
+   "text": "What are you waiting for God to open? Tell me in the comments. Next time: the tower that reached for the sky. Subscribe."
+  }
+ ]
+}
