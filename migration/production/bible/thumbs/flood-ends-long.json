@@ -1,0 +1,18 @@
+{
+ "version": "thumb-spec-v1",
+ "episode": "flood-ends-long",
+ "format": "long",
+ "story": "The Flood Ends (Genesis 8-9): the dove, dry ground and the rainbow",
+ "character": "noah",
+ "emotion": "relief",
+ "framing": "close-up",
+ "scene": "Noah's tearful face lit by the first sunlight after the flood, a soft rainbow glowing in the clouds behind his head",
+ "text": "THE FLOOD ENDS",
+ "period": "the-flood",
+ "prompt": "Extreme close-up portrait, only his face from brow to chin filling the frame edge to edge, nothing else in the picture: a strong broad-shouldered elderly man of about seventy with Middle Eastern features, weathered olive skin, a long grey beard, short grey hair on a bare head, deep-set dark eyes under heavy brows, a plain brown wool robe belted with a rope, his dark eyes lifted to a breaking sky in tearful relief and quiet joy, a faint smile, tears on his weathered cheeks and grey beard, his mouth closed. Behind his head there is only a soft sky of parting clouds with a faint rainbow, nothing else at all. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. Warm golden morning light bathes his face in rich warm orange and amber, vivid saturated colour, high contrast, photorealistic cinematic film still, sharp focus on the eyes, film grain, no text, no lettering, no signature, no watermark.",
+ "variant": null,
+ "status": "DRAFT",
+ "evidence": "live-plan 2026-11-02 thumbnail_line THE WATER STOPPED (B); A = THE FLOOD ENDS; DECISIONS 27/10 thumbnail rules",
+ "note": "Long flood-ends-long (pilot-017); Noah relief close-up, made through the ChatGPT desktop route (owner 2026-11-01), not Pavo.",
+ "repo_path": "migration/production/bible/thumbs/genesis-09-short.jpg"
+}
