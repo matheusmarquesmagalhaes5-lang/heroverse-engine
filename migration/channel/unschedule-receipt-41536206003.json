@@ -1,0 +1,21 @@
+{
+ "version": "channel-unschedule-receipt-v1",
+ "channel_id": "UCuMF6pJQkyMzaVoAxFL86yA",
+ "plan": "hold-plan.json",
+ "undo": "set each video back to its 'before'",
+ "already_public_not_changed": [],
+ "changes": [
+  {
+   "video_id": "1m-NUJhkdMY",
+   "before": {
+    "privacy": "private",
+    "publishAt": "2026-11-02T23:30:00Z"
+   },
+   "after": {
+    "privacy": "private",
+    "publishAt": null
+   },
+   "result": "UNSCHEDULED"
+  }
+ ]
+}
