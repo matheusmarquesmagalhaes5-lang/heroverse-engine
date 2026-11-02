@@ -10,20 +10,17 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
 - 30 stills approved as sources (#646, #649). ChatGPT stills are available: the 1 Nov limit applied only to the
   Codex/Work tab. All stills use ONE chat, "HeroVerse — stills" (if a limit or error appears: close the app, wait
   5 min, reopen, continue in the same chat).
-- Talking Keeper shots are Pavo, max 2 generations per line and 1 probe round (E264, #658). Correction 2026-11-02
-  (checked against the run records, no clip was approved): NO Pavo clip passed its checks. k-close (run
-  41423359803) failed all 6 generations; k-insight and k-bow (run 41436544195) failed both generations each
-  (AUDIO_NOT_OUR_LINE / FACE_NOT_FOUND / MOUTH_NOT_IN_SYNC; no clip was kept in the artifact or the release).
-  There is nothing to compare or `approve-shot`; `shots/flood-ends-long.json` holds no k-* entry.
 - 2026-11-02 (E266): shot-probe now keeps and uploads EVERY generation (hard defects stay non-approvable; a small sync
   offset or a re-timed line proven by `speech-check` is approvable) and the three flood Keeper prompts are framed
   "Close-up from the chest up" (plan_check, every 16:9 plan). The preflight must be re-measured before any new probe.
-- Next (fallback ladder, PROMPT_GUIDE "Generation cap and fallback"): the three Keeper shots become Keeper
-  voice-over on reviewed still motion of an approved Keeper still (ChatGPT desktop route, 16:9, "centred in the
-  frame", 1-2 stills, then `scene_stills.py approve` by PR); edit the plan accordingly (`voiceover` / still_motion),
-  no new Pavo generation. Then re-run preflight (stale after #658), build, actual audiovisual review, native review
-  (Free Tier proof), `approve.yml` -> `prepublish_gate.py` -> `publish.yml` at 13:30 or 23:30 UTC, then the cuts.
-- 2026-11-02 run: the Desktop Commander device was online but a PowerShell read timed out (60 s); no still was made.
+- 2026-11-02 (fallback taken, #663 merged): no Pavo shot is left. k-insight and k-bow are the Keeper's Kokoro voice-over
+  on still motion of stills that reuse the bytes of the approved Keeper stills (arc-01-long k-promise-2/3, frames
+  viewed); k-close is his voice-over on a vetted night campfire clip (a third Keeper image would break the 300 s
+  image-repeat rule). `episode_preflight` no longer asks a still-mouth probe of a Keeper shot on `footage` (E267, test).
+  Preflight of the plan is PASS (committed, `verify-preflight` ok).
+- Next: PR with the preflight + E267 fix, `episode.yml` (needs a main run), merge report, `buzzy-long-pilot.yml`,
+  `native-review.yml` (Free Tier proof on the owner's PC), `claude_review.json`, thumbnail (title A/B in live-plan),
+  `approve.yml` -> `prepublish_gate.py` -> `publish.yml` at 13:30 or 23:30 UTC, then the cuts.
 
 ## Next moments
 

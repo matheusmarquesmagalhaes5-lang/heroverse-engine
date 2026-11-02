@@ -3,6 +3,7 @@
 the preflight names each talking setup that needs a direct 0-credit Pavo probe first."""
 import copy
 import json
+from unittest import mock
 from pathlib import Path
 import shutil
 import subprocess
@@ -252,6 +253,17 @@ class Probes(unittest.TestCase):
         # a prompt that failed its probes is PROBE_RATE_LOW
         failed = [dict(p, passed=0) if p.get("kind") == "still_mouth" else p for p in probes]
         self.assertEqual(pf.probe_rows(plan, chars, probes=failed)[2], vo)
+
+    def test_e267_a_keeper_voice_over_on_his_camp_footage_owes_no_probe(self):
+        # a Keeper shot whose approved source is footage (his Kokoro voice over a faceless night fire) shows no lips
+        # speaking, exactly as a still in motion: no still-mouth probe is required
+        plan = json.loads((pf.eb.HERE / "plans" / "flood-ends-long.json").read_text())
+        chars = pf.ch.registry()
+        ids = [s["id"] for s in plan["shots"] if s.get("kind") == "keeper"]
+        self.assertEqual(ids, ["k-insight", "k-bow", "k-close"])
+        for source, expect in (("footage", []), ("still_motion", []), ("pavo", ids)):
+            with mock.patch.object(pf.eb, "load_approvals", return_value={i: {"source": source} for i in ids}):
+                self.assertEqual(pf.probe_rows(plan, chars, probes=[])[1], expect, source)
 
     def test_the_committed_genesis_07_report_passes_on_its_voice_over_probes(self):
         report = json.loads((pf.REPORTS / "genesis-07-short.json").read_text())
