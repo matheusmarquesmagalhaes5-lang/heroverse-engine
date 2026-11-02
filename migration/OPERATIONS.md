@@ -69,6 +69,26 @@ still animation").
 The 9.5 story long (`approve.yml` on story-qa-criteria), the Short episode route, the compilation and every frozen
 QA file keep their rules; the buzzy-long and buzzy-cut tracks apply only to their own criteria and records.
 
+## Keeper reflection Short (one a day, about 30 s)
+
+Owner, 2026-11-02 (DECISIONS.md "Shorts cadence"): 9:16 1080x1920 in two 1080x960 halves. TOP: a moment of one of our
+own published longs (its caption-free master, re-framed to fill, its audio ducked under the reflection or muted).
+BOTTOM: an approved Keeper still (`stills/<id>.json`, a `k-*` shot) moved by `motion.py` while the Keeper's reflection
+(ours, 20-80 words) is spoken in the pinned Kokoro voice `am_michael` and captioned. No Pavo, no Buzzy: zero credits.
+KJV appears only if the spec shows it (`verse`, exact by `kjv_check`).
+
+| Step | Entry point |
+|---|---|
+| Spec | `reflections/<long>-<n>.json` (`bible-reflection-v1`, id `<long>-reflection-<n>`): `long`, `pilot`, `report` (the long's build report), `clip` {start, end, x, audio duck/mute}, `reflection.text`, optional `verse`, `keeper_image` (a still id), optional `motion`, `title`, `description` (public domain, AI, "full story"), `first_comment` (holds `https://youtu.be/<the long's video id>`) |
+| Check | `python3 -I -B production/bible/reflection_shorts.py check SPEC` refuses a long that is not long-first or not in `publish/ledger.json` under `<pilot>:<master sha256>`, a clip outside 20-40 s or starting/ending inside a spoken sentence (the cuts' `boundaries`), a reflection outside 20-80 words, not whole sentences, with a banned word or a voice (140 wpm) that does not fit the clip, an unapproved or non-Keeper still, an inexact verse |
+| Render | `reflection-shorts.yml` (dispatch on main, spec path): check, caption-free master by sha256, Kokoro voice (`pilot_render.py voice`), `reflection_shorts.py render` (measured voice must fit with a 0.6 s tail and sit in 115-165 wpm; -14 LUFS gain, fades), `bible-<id>-sha256-<sha>.mp4` in the release, draft `episodes/<id>.json` and the measures on `claude/reflection-<id>-<run>` (PR) |
+| Review and publish | `native-review.yml` with plan = the spec and the Short's own sha256, then the session reviewer's `review` in the record (`overall` >= 9.5: track `keeper-reflection` keeps the standard Short floor; no Buzzy shot is asked of its parent), `episode_build.py check-record`, `publish-episode.yml`; `arc_links.py` links it to its long through `parent.pilot` |
+
+A reflection record has `track: keeper-reflection`, `layout: keeper-reflection`, `parent` {long, pilot, clean_master_sha256,
+start, end} and no review. A new file is a new review; the long's score is never copied. Today only a long-first long with
+a caption-free master and sentence timeline can be the source (a compilation, as the Noah one, keeps chapter cards and
+has no sentence timeline of its own).
+
 ## Sources and private provider work
 
 Reuse approved matching material first. Existing source tools include `shot-probe.yml`, `scene-stills.yml`,

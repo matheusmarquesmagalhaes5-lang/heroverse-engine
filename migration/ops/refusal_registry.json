@@ -2801,6 +2801,22 @@
   "SHOT_WORDS_NOT_OUR_LINE": {
    "class": "N",
    "why": "E266: approve-shot is the review's own local command: the ASR did not hear the line's words on this clip, so it is a hard defect the review never approves; it stops no generation, voice or render"
+  },
+  "REFLECTION_LENGTH": {
+   "class": "A",
+   "early": [
+    "migration/production/bible/episode_preflight.py::plan_check.publish_episode.problems(episode, video)",
+    "migration/production/bible/reflection_shorts.py::def check(spec"
+   ],
+   "note": "Keeper reflection Short (owner 2026-11-02); check-record (episode_build.py -> publish_episode.problems) refuses it before publish-episode.yml is dispatched, the same function runs again at upload; reflection_shorts.py check refuses the spec before any voice or render"
+  },
+  "REFLECTION_WORDS": {
+   "class": "A",
+   "early": [
+    "migration/production/bible/episode_preflight.py::plan_check.publish_episode.problems(episode, video)",
+    "migration/production/bible/reflection_shorts.py::def check(spec"
+   ],
+   "note": "Keeper reflection Short (owner 2026-11-02); check-record (episode_build.py -> publish_episode.problems) refuses it before publish-episode.yml is dispatched, the same function runs again at upload; reflection_shorts.py check refuses the spec before any voice or render"
   }
  },
  "review": {

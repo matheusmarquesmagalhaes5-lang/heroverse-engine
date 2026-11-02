@@ -92,7 +92,7 @@ def resolve(arcs, ledger, episodes_dir):
     for path in sorted(Path(episodes_dir).glob("*.json")):
         rec = read_json(path, {}) or {}
         parent = rec.get("parent") if isinstance(rec, dict) else None
-        if rec.get("track") == "buzzy-cut" and isinstance(parent, dict) and parent.get("pilot") and rec.get("id"):
+        if rec.get("track") in ("buzzy-cut", "keeper-reflection") and isinstance(parent, dict) and parent.get("pilot") and rec.get("id"):
             cuts.setdefault(parent["pilot"], []).append(rec["id"])
     for a in arcs["arcs"]:
         pilot = (a.get("long") or {}).get("pilot")

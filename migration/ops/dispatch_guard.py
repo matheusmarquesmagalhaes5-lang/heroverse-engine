@@ -238,7 +238,14 @@ def native_review(i):
     p = i.get("plan", "")
     compilation = re.fullmatch(rf"migration/production/bible/compilations/({SLUG})\.json", p)   # E255 (E253's route)
     cuts = re.fullmatch(rf"migration/production/bible/cuts/({SLUG})\.json", p)   # E259: a Short cut of a long-first long
-    if cuts:
+    reflection = re.fullmatch(rf"migration/production/bible/reflections/({SLUG})-[1-9][0-9]*\.json", p)   # the Keeper reflection Short
+    if reflection:
+        need_file(p)
+        spec = load(p)
+        need(spec.get("version") == "bible-reflection-v1" and spec.get("long") == reflection.group(1),
+             "plan", p, "a reflection spec whose long names the file")
+        limit = 150_000_000
+    elif cuts:
         need_file(p)
         spec = load(p)
         need(spec.get("version") == "bible-cuts-v1" and spec.get("long") == cuts.group(1),
