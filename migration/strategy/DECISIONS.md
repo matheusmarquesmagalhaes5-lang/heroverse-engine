@@ -488,25 +488,17 @@ Each Inteligência Viva entry reports: the current moment, its triggers (hit or 
   regenerate.
 - Inteligência Viva and production plan to avoid rework: every generation planned must be one that gets used.
 
-### YouTube bonus programs (owner, 2026-11-02)
-- The owner wants to join the YouTube **Shorts bonus**: 16 Shorts a month for 3 months, USD 300 guaranteed plus a
-  performance bonus, join by 2026-11-15.
-  - On 2026-11-02 it was NOT shown in HeroVerse's Studio Earn page. The channel is not in YPP yet. Studio showed
-    301/500 subscribers, 27/3,000 public watch hours and 1.1k/3M Shorts views (90 d).
-  - Join only from inside Studio, the day it appears. Never through an outside link.
-- **YPP paths (measured in Studio on 2026-11-02).** Inteligência Viva must plan with all of them and pick the fastest:
-  - fan-funding tier: 500 subs plus 3,000 public long watch hours in 365 d, or 3M Shorts views in 90 d (Studio's
-    current milestone);
-  - full YPP: 1,000 subs plus 4,000 hours, or 10M Shorts views in 90 d.
-  - The Shorts-views route is a real alternative to the hours constraint. Weigh it by measured Shorts views per day.
-- Floor: at least **16 qualifying Shorts per calendar month**, original cuts or bridges from our own media. The daily
-  ≥1 Short rule already exceeds it.
-- Inteligência Viva counts the month's qualifying Shorts every day and reports "Shorts bonus: N/16 this month". If
-  the pace would fall short, it raises the day's Short quantity.
-- Production treats a missed bonus Short as a failure.
-- Inteligência Viva also watches for any YouTube bonus, program or monetization offer, whether in Studio or in the
-  official YouTube Creator news. It reports the offer and its terms to the owner the day it appears. The owner
-  accepts any terms.
+### YouTube bonus programs and Shorts cadence (owner, 2026-11-02)
+- Bonuses are separate from the plan and change nothing in it. The plan stays focused on the YPP goal and the
+  deadline.
+- Join a YouTube bonus or program from inside Studio the day it appears. The first one is the Shorts bonus: 16 Shorts
+  a month, join by 11-15. On 11-02 it was not yet shown for HeroVerse in Studio.
+- Inteligência Viva only watches for these offers and reports them.
+- Shorts cadence (owner rule): **4 Shorts a day**:
+  - 2–3 story Shorts: cuts from the long, or a bridge when no cut exists;
+  - plus 1 **Keeper reflection** Short in split screen, about 30 s: the long's moment plays in the top half and the
+    Keeper's reflection is in the bottom half.
+  Slots are chosen by Inteligência Viva; the count is fixed by the owner.
 
 ### Never stop: automation and fallback ladder (owner, 2026-11-02)
 - **Who moves it:**
