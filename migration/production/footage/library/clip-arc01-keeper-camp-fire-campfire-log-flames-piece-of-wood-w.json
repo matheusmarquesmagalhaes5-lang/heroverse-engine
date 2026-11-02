@@ -37,6 +37,6 @@
  "vetting_black_run_s": 0.0,
  "release_asset": "footage-clip-arc01-keeper-camp-fire-campfire-log-flames-piece-of-wood-w-sha256-acfae37d0288ff71985f271d5c9bcecd837bac4e0ea3e002326c845b52fee415.mp4",
  "release_tag": "v0.0.0-cloud-assets-20261025",
- "claude_seen": true,
- "claude_seen_note": "2026-11-02 flood-ends-long k-close: 3 frames (1/8/16 s) viewed by claude-session-reviewer: night campfire flames on a dark ground, no person, text, logo or modern object"
+ "claude_seen": false,
+ "claude_seen_note": "2026-11-02 viewed, then refused by clip_check ROTATED_PICTURE (a vertical flame on dark ground reads as a turned picture)"
 }

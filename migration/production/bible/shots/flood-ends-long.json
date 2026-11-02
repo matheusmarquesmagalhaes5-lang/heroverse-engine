@@ -23,16 +23,16 @@
   "k-close": {
    "source": "footage",
    "score": 9.5,
-   "note": "Night campfire flames on a dark ground (3 frames viewed 2026-11-02), no person or face, under the Keeper's Kokoro closing voice-over at his camp; no lip-sync claimed.",
+   "note": "Logs burning in a warm hearth fire (3 frames viewed 2026-11-02; clip_check clean), no person or face, under the Keeper's Kokoro closing voice-over at his camp fire; no lip-sync claimed.",
    "model": "claude-session-reviewer",
    "approved_at": "2026-11-02",
-   "footage": "clip-arc01-keeper-camp-fire-campfire-log-flames-piece-of-wood-w",
-   "asset": "footage-clip-arc01-keeper-camp-fire-campfire-log-flames-piece-of-wood-w-sha256-acfae37d0288ff71985f271d5c9bcecd837bac4e0ea3e002326c845b52fee415.mp4",
-   "clip_sha256": "acfae37d0288ff71985f271d5c9bcecd837bac4e0ea3e002326c845b52fee415",
+   "footage": "clip-arc01-keeper-camp-fire-fireplace-campfire-bonfire-christma",
+   "asset": "footage-clip-arc01-keeper-camp-fire-fireplace-campfire-bonfire-christma-sha256-f237a27b5cf11a474c8a72e89adb9945152b44a66f455f284306bc7d7a5941ac.mp4",
+   "clip_sha256": "f237a27b5cf11a474c8a72e89adb9945152b44a66f455f284306bc7d7a5941ac",
    "licence": "Pixabay Content License",
-   "credit": "Footage: KlausHausmann via Pixabay (https://pixabay.com/videos/id-8639/)",
-   "clip_seconds": 18,
-   "request_sha256": "1a2146f65d9b077ba211d156888d24cf721b13855e64a3d7cb1f8471c3e2c809"
+   "credit": "Footage: BFCMUSIC via Pixabay (https://pixabay.com/videos/id-239514/)",
+   "clip_seconds": 20,
+   "request_sha256": "3350b475e9616b51b03dd3ab21c6806e9a0d83746493598b0522ae87ec0d9211"
   },
   "k-insight": {
    "source": "still_motion",

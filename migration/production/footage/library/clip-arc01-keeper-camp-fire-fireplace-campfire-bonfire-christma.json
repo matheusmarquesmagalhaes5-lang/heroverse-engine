@@ -36,5 +36,7 @@
  ],
  "vetting_black_run_s": 0.0,
  "release_asset": "footage-clip-arc01-keeper-camp-fire-fireplace-campfire-bonfire-christma-sha256-f237a27b5cf11a474c8a72e89adb9945152b44a66f455f284306bc7d7a5941ac.mp4",
- "release_tag": "v0.0.0-cloud-assets-20261025"
+ "release_tag": "v0.0.0-cloud-assets-20261025",
+ "claude_seen": true,
+ "claude_seen_note": "2026-11-02 flood-ends-long k-close: 3 frames (1/9/17 s) viewed by claude-session-reviewer: logs burning in a hearth, warm flames, no person, text, logo or modern object; clip_check clean"
 }
