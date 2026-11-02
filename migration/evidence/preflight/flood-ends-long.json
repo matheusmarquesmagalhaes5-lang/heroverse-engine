@@ -1,7 +1,7 @@
 {
  "plan": "migration/production/bible/plans/flood-ends-long.json",
  "episode": "flood-ends-long",
- "checked_at": "2026-11-02T14:33:19Z",
+ "checked_at": "2026-11-02T14:42:54Z",
  "plan_check": {
   "problems": [],
   "pending": [],
@@ -41,7 +41,7 @@
  },
  "voice": {
   "ran": true,
-  "reused": false,
+  "reused": true,
   "checkpoint_sha256": "ed4db798d9f9cb30b28fad010a44684538aef40e33fe61d3dfd674b366e5f42e",
   "problems": [],
   "pace": {
@@ -139,7 +139,7 @@
    "s-release": "ddbcb35baee548ade8aa4563b0a370794ac78570c3cdeb43df799a65fdeb88a7",
    "s-dry": "55676d8cbe048023e929e06f0c82c414886a0cbc779b0174b5d41ebaeecc459a",
    "s-shut": "f1a1a82308c286ab630e7ac6ecce63d985236590f36cf6109fcfe8eec07e6883",
-   "k-insight": "495299b6ea6abf0166afb9e12b7bb0eba95da682c8ac2de37daaacf765fb6abb",
+   "k-insight": "754d57835ee320915adb1f94e82ec9a2292b90fcb2dd17fcc698890e472bd279",
    "s-voice-go": "1017f8a8120a3476ebc13989717462670fdc3c3ef2bdb4ab8bb7466f36cffa4a",
    "s-exit": "348146235fc88f0f5eb411cd42ca267ed23302d4c1e8273613331bef61b57157",
    "s-altar": "a215c9fc09b4a68efa97d940dd24d81889e26e0299405259be2ee7c4b1a09acc",
@@ -149,9 +149,9 @@
    "s-promise": "5cb37507e1998f22f0a2719b1c928fc5975295b91ba162fbdc060ce3485bfd2d",
    "s-bow": "a295be252e9d889dc903d3eff32e0059ebb09c24e1431cd964e893b1e6926d89",
    "s-look": "9cb1eb6435988e08fe498edb2b322412750cfb9f2f52832594533dac8437d3bd",
-   "k-bow": "a4a6efb036618303179ed369863e3c203cac8af068e140b180b2dd50b72428cc",
+   "k-bow": "cc68a76be25d5a5798120d8496ccc6d0e3db1c32ea6557dce80a1d025e16076e",
    "s-vineyard": "6dd5292ddc03901965f2a7e5abe17cd121dd783666ba5a0367dc7684cf8ec4a5",
-   "k-close": "8ddd75036c821ffe29d4c3f7b2b506470aad8e4b181d58c36bcd9dd525bbb766"
+   "k-close": "d8f00c692cc06745d2c296b447e4e178cb01e83e0358c5462c05812a215ba9ae"
   },
   "needs": {
    "s-voice": 8,
@@ -220,7 +220,7 @@
  },
  "shot_review": [],
  "binding": {
-  "plan": "27b89a50c87ce113a206d7fede943e4d0015b9b476faae42341bd81c4db43838",
+  "plan": "16576bb35b2b1b53b2b4c031b14dd9750bd5b20b26c50b2c32e9c953de912265",
   "characters": "4fa2cce1dc2029a424336c09a7f2b0272aaa0681023b7010d55a44847ca4d047",
   "image_records": {
    "ch-keeper-front.json": "666eb65f6fc26529aa71af95bba873ac4bdb123c599b30d7e2fe7e1986399932",
@@ -228,12 +228,12 @@
   },
   "setups": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "code": {
-   "episode_build.py": "0a16d5d8fe59a3e4fd4469c89da2f0b11f14356c02b414141612cc0835619f16",
-   "plan_check.py": "e76079d8c42a0cfa5e6b35392085c3f456e241bc0c9c3d3084043c15679d9316",
+   "episode_build.py": "d946286d9e94880a073b5317d26ae2761aa30e6bb034aa5fada3daec7afabe09",
+   "plan_check.py": "d9f78ab9ce6ef166f28c8c6b712532f23126da1edb656ad32dee3c831ccdeb0e",
    "voice_pace.py": "d4d2850c60e7df3680130725b6d584a83239538ad91f59671fcff4a626837c4b",
    "lipsync_check.py": "8222df7918d027eb2dbe21ca351cf29ae4c5f59bcda377906e4156a2be8dfdc9",
    "syncnet.py": "0f6e65316b50850629e488e6167ad7159efc3b2480d27ced3166311e054633f7",
-   "episode_preflight.py": "638a099b8ac6147f0033770fa813455fb5a3e3f24945b6d02d91ed1aa180229f",
+   "episode_preflight.py": "0a8e3391be564d8681922175cfaef08b843136a4e77aaa8c3b0ef7351d646d55",
    "clip_timing.py": "44626ba6ea7f807a62a99dcabcca3751d55c01ce452718efe1fc1b9e6db73509",
    "reviewer_identity.py": "b813ceb46a450e21f7fd3fd08b38fe77094f1b3fafaec8db3251f56f954be24d",
    "owner_quality_policy.py": "093de8b9883d18d6e6f8eb08989696d180bb890556cc89de34aecb5fdcedb3ca"
