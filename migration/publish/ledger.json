@@ -274,6 +274,14 @@
    },
    "video_id": "X2LPFriRn3M",
    "uploaded_at": "2026-11-01T16:04:44.356589+00:00"
+  },
+  "pilot-017:9a2d0f24e74c7117eedcbdd73992fbc284efb9402b6f82dba98f096a64635692": {
+   "steps": {
+    "thumbnail": true,
+    "first_comment": "PENDING: HTTP_403 forbidden: The comment thread could not be created due to insufficient permissions. The request might not be properly authorized."
+   },
+   "video_id": "1m-NUJhkdMY",
+   "uploaded_at": "2026-11-02T21:02:41.798047+00:00"
   }
  },
  "owner_exceptions": {
