@@ -2793,6 +2793,14 @@
   "STILL_MOTION_DIRECTION_MISSING": {
    "class": "I",
    "guard": "migration/production/test_motion.py::def test_a_long_first_approval_renders_only_a_direction"
+  },
+  "SHOT_WORDS_UNPROVEN": {
+   "class": "N",
+   "why": "E266: approve-shot is the review's own local command: a clip flagged AUDIO_NOT_OUR_LINE (an envelope measure that also fires on a re-timed line) is approved only after episode_build.py speech-check shows the pinned ASR heard its line; it stops no generation, voice or render"
+  },
+  "SHOT_WORDS_NOT_OUR_LINE": {
+   "class": "N",
+   "why": "E266: approve-shot is the review's own local command: the ASR did not hear the line's words on this clip, so it is a hard defect the review never approves; it stops no generation, voice or render"
   }
  },
  "review": {
