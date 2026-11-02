@@ -427,3 +427,7 @@ Market (vidIQ, in-niche, 11-02): small channels reach 20-57K views with a 'Why..
 Strategy (live-plan.json): (1) demand-backed 15-20 min long, (2) Short -> long funnel, (3) title/thumbnail A/B,
 (4) 1 Short a day. flood-ends-long publishes at the first 13:30/23:30 UTC after the gate (preferred 13:30; low confidence).
 No structure was validated. vidIQ: 45 credits (10 wasted on off-topic queries), 25 more pending a video_watch job.
+
+## 2026-11-02 — Inteligência Viva (second run)
+
+Measured: unchanged since the first run (subs 300/1,000; long hours 27.9/4,000 own estimate; hours bind). No new daily report, no experiment readable yet. Cross-niche pool mined (8 emotional-narrative long winners, breakout 40-126): dominated by one cowboy-romance cluster, no weak contrasts, so NOT validated; only the title mechanic (emotional turn + withheld reveal) is carried as a title-B test. 2h+ lengths are not copied. vidIQ today: 80/150 credits. Strategy and deadline unchanged (live-plan.json).

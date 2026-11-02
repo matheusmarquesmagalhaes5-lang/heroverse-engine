@@ -1,6 +1,6 @@
 {
  "date": "2026-11-02",
- "run": "extra (owner request), before flood-ends-long is published",
+ "run": "daily Inteligência Viva (second run of 11-02; no new daily report, main unchanged, so goal numbers and experiments carry over from the first run)",
  "deadline": {
   "target": "2026-11-15",
   "max": "2026-12-01"
@@ -78,7 +78,7 @@
   }
  ],
  "experiments_review": [
-  "No live-plan existed before today: no experiments to evaluate. Baselines recorded above."
+  "Experiments from the first 11-02 run are <1 day old, no readings yet: flood-ends-long unpublished, funnel and A/B not started. All kept (status unchanged)."
  ],
  "quantities": {
   "longs": 1,
@@ -137,7 +137,7 @@
   "buzzy": "41,994 credits measured 11-01; ledger has no newer balance; ceiling 100/day",
   "pavo": "0-credit quote only; the pavo MCP did not connect this run",
   "token_budget": "agent_mining check passed",
-  "vidiq": "45 of 150 credits used today (10 wasted on two off-topic queries); balance 3,164 -> ~3,119",
+  "vidiq": "80 of 150 credits used today (45 first run + 5 outliers + 25 video_watch audit pending); balance ~3,089 on 11-18 renewal",
   "pc": "owner's PC availability not verified this run"
  },
  "why": "Hours bind by two orders of magnitude; the only lever that moves them is longs people find and watch. Test one demand-backed long, wire the funnel, test packaging, and keep subscribers moving with the daily Short. Volume is last.",
@@ -146,5 +146,5 @@
   "strategy": "low-medium: the only demand evidence is competitor outliers; first own test is flood-ends-long",
   "slot": "low"
  },
- "cross_niche_status": "no valid cross-niche data today (query returned off-topic); pool counts not advanced; no structure promoted"
+ "cross_niche_status": "2026-11-02 cross-niche pool (evidence/vidiq/20261102/cross-niche-outliers.json): 8 winners, breakout 40-126, but 6 of 8 are one cowboy-romance cluster and no weak contrasts yet -> NOT validated, test only. Transferable test: title = emotional turn + withheld reveal, as title B packaging test; 2h+ length not copied. Structure audit of 93wYHx79Mso submitted; result still pending at write time."
 }
