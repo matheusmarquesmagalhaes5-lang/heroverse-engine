@@ -265,6 +265,37 @@ class Probes(unittest.TestCase):
             with mock.patch.object(pf.eb, "load_approvals", return_value={i: {"source": source} for i in ids}):
                 self.assertEqual(pf.probe_rows(plan, chars, probes=[])[1], expect, source)
 
+    def test_e271_an_approved_clip_owes_no_probe_and_no_rate(self):
+        # owner 2026-11-02 "Pavo: generate, compare, use the best" and E264 (a line costs at most 2 generations): a
+        # shot whose clip is approved for the request the plan sends now needs no >= 6 probes and no rate; the
+        # approved clip is the evidence. A shot with no approved clip, or one approved for another request, keeps it
+        plan = json.loads((pf.eb.HERE / "plans" / "flood-ends-long.json").read_text())
+        chars = pf.ch.registry()
+        ids = ["k-insight", "k-bow", "k-close"]
+        digests = {i: f"{k + 1:064x}" for k, i in enumerate(ids)}
+        good = {"clip_sha256": "c" * 64, "request_sha256": None, "score": 9.5, "model": "claude-session-reviewer"}
+        approvals = {i: dict(good, request_sha256=digests[i]) for i in ids}
+        with mock.patch.object(pf.eb, "load_approvals", return_value=approvals):
+            rows, missing, low, chance = pf.probe_rows(plan, chars, probes=[], digests=digests)
+            self.assertEqual((missing, low), ([], []))
+            self.assertEqual({r["shot"]: r["kind"] for r in rows if r["shot"] in ids}, {i: "approved_clip" for i in ids})
+            self.assertEqual(chance, 1.0)
+            # no digests (a report written before them), or another request: the probe requirement stays
+            self.assertEqual(pf.probe_rows(plan, chars, probes=[])[1], ids)
+            self.assertEqual(pf.probe_rows(plan, chars, probes=[], digests=dict(digests, **{"k-bow": "0" * 64}))[1],
+                             ["k-bow"])
+            # a fallback source, an unknown reviewer, a score under the floor or no clip is not an approved clip
+            for bad in ({"source": "pavo_reuse"}, {"model": "nobody"}, {"score": 9.0}, {"clip_sha256": None}):
+                broken = dict(approvals, **{"k-close": dict(approvals["k-close"], **bad)})
+                with mock.patch.object(pf.eb, "load_approvals", return_value=broken):
+                    self.assertEqual(pf.probe_rows(plan, chars, probes=[], digests=digests)[1], ["k-close"], bad)
+        # the shot with no approval at all keeps PROBE_REQUIRED
+        with mock.patch.object(pf.eb, "load_approvals", return_value={i: approvals[i] for i in ids[:1]}):
+            self.assertEqual(pf.probe_rows(plan, chars, probes=[], digests=digests)[1], ids[1:])
+        # the binding follows the same rule, so a verified report and the preflight read the same rows
+        with mock.patch.object(pf.eb, "load_approvals", return_value=approvals):
+            self.assertIn("setups", pf.binding(pf.eb.HERE / "plans" / "flood-ends-long.json", plan, digests=digests))
+
     def test_the_committed_genesis_07_report_passes_on_its_voice_over_probes(self):
         report = json.loads((pf.REPORTS / "genesis-07-short.json").read_text())
         self.assertEqual((report["status"], report["blockers"]), ("PASS", []))

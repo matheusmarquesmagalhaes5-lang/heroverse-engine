@@ -119,7 +119,8 @@ def probe_gate(plan_path):
     if report is None:
         return (f"LONG_PROBE_PREFLIGHT {path.name} missing (episode_build.py preflight PLAN --voice ... --refs --write, "
                 "by PR, before any of the long's shots is probed)")
-    changed = [p for p in pf.stale_parts(report.get("binding"), pf.binding(plan_path, plan))
+    digests = (report.get("requests") or {}).get("digests")
+    changed = [p for p in pf.stale_parts(report.get("binding"), pf.binding(plan_path, plan, digests=digests))
                if p.split(":")[0] not in PROBE_STALE_TOLERATED]
     if changed:
         return f"LONG_PROBE_PREFLIGHT stale: {', '.join(changed)} changed after the preflight; run it again"
