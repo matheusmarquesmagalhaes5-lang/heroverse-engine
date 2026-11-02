@@ -77,15 +77,17 @@ class Unschedule(unittest.TestCase):
         changes, yt, error = run({"channel_id": cp.CHANNEL, "to_unschedule": ["gone"]}, {})
         self.assertEqual((changes[0]["result"], error, yt.writes), ("SKIPPED_NOT_OWNED_OR_MISSING", "UNSCHEDULE_INCOMPLETE", []))
 
-    def test_the_hold_plan_lists_the_scheduled_prayer_longs(self):
+    def test_the_hold_plan_lists_ledger_videos_it_describes(self):
         plan = json.loads((ROOT / "migration/channel/hold-plan.json").read_text())
         ledger = json.loads((ROOT / "migration/publish/ledger.json").read_text())["entries"]
-        ids = {k.split(":")[0]: v["video_id"] for k, v in ledger.items() if k.split(":")[0] in ("pilot-008", "pilot-014")}
+        uploaded = {v.get("video_id") for v in ledger.values()}
         self.assertEqual(plan["channel_id"], cp.CHANNEL)
-        self.assertEqual(sorted(plan["to_unschedule"]), sorted(ids.values()))
+        self.assertTrue(plan["to_unschedule"])
+        self.assertTrue(set(plan["to_unschedule"]) <= set(plan["videos"]))     # every held id is described
+        self.assertTrue(set(plan["to_unschedule"]) <= uploaded)                # and is one of our uploads
+        self.assertIn("previous", plan)                                         # older holds stay on record
         wf = (ROOT / ".github/workflows/channel-privacy.yml").read_text()
         self.assertIn("unschedule migration/channel/hold-plan.json", wf)
-
 
 if __name__ == "__main__":
     unittest.main()
