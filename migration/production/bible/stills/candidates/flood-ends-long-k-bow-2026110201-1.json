@@ -1,0 +1,35 @@
+{
+ "id": "flood-ends-long-k-bow-2026110201-1",
+ "still": "flood-ends-long-k-bow",
+ "episode": "flood-ends-long",
+ "shot": "k-bow",
+ "run": "2026110201",
+ "status": "DRAFT",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Close-up, his face large. The Keeper, an elderly storyteller with a long silver-white beard under a hooded brown wool robe, listens in silence under a starry desert sky at night, centred in the frame, his lips closed in a faint knowing smile, looking warmly into the camera. The subject is centred in the frame. The campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and searching. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "engine": "reuse-approved-keeper-still",
+ "source": "bytes of the approved still arc-01-long-k-promise-3 (2026-10-28, 9.5, Keeper ch-keeper-front reference); no new generation, no spend; its Pavo image read-back is the original's (373663884764253248)",
+ "references": [
+  {
+   "record": "ch-keeper-front",
+   "sha256": "eea5e96cd78f5dadc98b87f93384fc90cc6172b2021be2711ee7ebf568816098"
+  }
+ ],
+ "aspect_ratio": "16:9",
+ "size": [
+  1920,
+  1080
+ ],
+ "repo_path": "migration/production/bible/stills/candidates/flood-ends-long-k-bow-2026110201-1.jpg",
+ "sha256": "d06d4d2eb4d0120dc4dfdab01b737d4d14a57dd52759e60e3284826973e5636f",
+ "pavo": {
+  "generate": {
+   "model": "agnes-image",
+   "conversation_id": "373663884764253248",
+   "input_images": 1
+  },
+  "job": {
+   "conversation_id": "373663884764253248",
+   "status": "completed"
+  }
+ }
+}

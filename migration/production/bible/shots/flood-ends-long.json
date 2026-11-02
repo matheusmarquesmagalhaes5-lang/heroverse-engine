@@ -1,6 +1,58 @@
 {
  "episode": "flood-ends-long",
  "shots": {
+  "k-bow": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved Keeper still (his look, lips closed) in cinematic camera motion under his Kokoro voice-over; no face motion or lip-sync claimed; no Pavo.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-02",
+   "motion_engine": "cinematic-v2",
+   "still": "flood-ends-long-k-bow",
+   "repo_path": "migration/production/bible/stills/flood-ends-long-k-bow.jpg",
+   "clip_sha256": null,
+   "still_sha256": "d06d4d2eb4d0120dc4dfdab01b737d4d14a57dd52759e60e3284826973e5636f",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "Pavo generated (owner-owned)",
+   "clip_seconds": 20,
+   "request_sha256": "c5359b493f03a976a170b9bc29c5bbe4c7a0d0be57a6a44c106243a0659b13b0"
+  },
+  "k-close": {
+   "source": "footage",
+   "score": 9.5,
+   "note": "Night campfire flames on a dark ground (3 frames viewed 2026-11-02), no person or face, under the Keeper's Kokoro closing voice-over at his camp; no lip-sync claimed.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-02",
+   "footage": "clip-arc01-keeper-camp-fire-campfire-log-flames-piece-of-wood-w",
+   "asset": "footage-clip-arc01-keeper-camp-fire-campfire-log-flames-piece-of-wood-w-sha256-acfae37d0288ff71985f271d5c9bcecd837bac4e0ea3e002326c845b52fee415.mp4",
+   "clip_sha256": "acfae37d0288ff71985f271d5c9bcecd837bac4e0ea3e002326c845b52fee415",
+   "licence": "Pixabay Content License",
+   "credit": "Footage: KlausHausmann via Pixabay (https://pixabay.com/videos/id-8639/)",
+   "clip_seconds": 18,
+   "request_sha256": "07151e234486706fa0baf9b125d5afecbaa2e2d8532c40e3aa6f2fe1750263db"
+  },
+  "k-insight": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved Keeper still (his look, lips closed) in cinematic camera motion under his Kokoro voice-over; no face motion or lip-sync claimed; no Pavo.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-02",
+   "motion_engine": "cinematic-v2",
+   "still": "flood-ends-long-k-insight",
+   "repo_path": "migration/production/bible/stills/flood-ends-long-k-insight.jpg",
+   "clip_sha256": null,
+   "still_sha256": "fd3ffd3708872b1b662c649649b917cfc95f9f2c49f6d047b3105c2d98542065",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "Pavo generated (owner-owned)",
+   "clip_seconds": 20,
+   "request_sha256": "7048e5e763f9dc49c5d99a6199481ee14e475c657eb10257f99c16509581eb2b"
+  },
   "s-altar": {
    "source": "still_motion",
    "score": 9.5,
