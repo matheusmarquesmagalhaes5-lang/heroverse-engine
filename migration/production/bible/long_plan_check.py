@@ -130,8 +130,8 @@ def owner_exception(plan):
 
 # E130: the long's Keeper at 16:9, framed from the chest up (a "Medium close-up" with his seated wardrobe drew him
 # full body and the landmarker lost his face)
-KEEPER_FRAMING = "Close-up from the chest up, his face large in the centre of the frame"
-KEEPER_FRAMING_OFF = re.compile(r"(?i)\b(?:medium close-up|medium shot|full[- ]body|full shot|wide shot)\b")
+KEEPER_FRAMING = pc.KEEPER_FRAMING_16X9   # E266: one template for every 16:9 plan (plan_check.keeper_framing_problems)
+KEEPER_FRAMING_OFF = pc.KEEPER_FRAMING_OFF
 FACELESS = ("its",)         # characters.json pronoun of a speaker with no human face (lipsync_check cannot judge it)
 ARCS = HERE / "arcs.json"
 # the build holds the cold open's last frame (under the music) until the Keeper starts at gate.cold_open_s; more than

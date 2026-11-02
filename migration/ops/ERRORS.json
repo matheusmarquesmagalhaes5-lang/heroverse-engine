@@ -3805,6 +3805,47 @@
      "fragile-input"
     ]
    }
+  },
+  {
+   "id": "E266",
+   "date": "2026-11-02",
+   "class": [
+    "cheap-vs-expensive",
+    "instrument"
+   ],
+   "prior": [
+    "E106",
+    "E120",
+    "E127",
+    "E131",
+    "E135",
+    "E137",
+    "E139",
+    "E148",
+    "E152",
+    "E166",
+    "E169",
+    "E185",
+    "E186",
+    "E231",
+    "E233",
+    "E238",
+    "E253",
+    "E255",
+    "E262",
+    "E263",
+    "E264"
+   ],
+   "error": "flood-ends-long: every talking Keeper generation (k-close 6, k-insight 2, k-bow 2) failed the automatic checks (AUDIO_NOT_OUR_LINE, FACE_NOT_FOUND, MOUTH_NOT_IN_SYNC) and none was kept: the arc-01-long talking probes already passed 1 in 22. Root causes: (1) episode_build.make_shot raised SHOT_FAILED on any flag and probe_step uploaded only the clean clip of a round, so a refused generation stayed in the artifact's -fail copy and never reached the release or the probe record: nothing to compare, approve-shot (SHOT_CHECKS_FAILED on any flag) could not choose, the long fell back to still motion, against the owner's 2026-11-02 rule 'generate, compare, use the best'. (2) All flags were one hard bar although the instrument cannot tell them apart: lipsync_check's AUDIO_NOT_OUR_LINE is an RMS-envelope correlation (lipsync_check.audio_match), so a line Pavo re-timed reads like other words, and a small MOUTH_NOT_IN_SYNC offset is fixed in the edit. (3) FACE_NOT_FOUND: E130 framed the 16:9 Keeper from the chest up only in long_plan_check (bible-long-plan-v1); flood-ends-long is bible-plan-v2 at 16:9, checked by plan_check, whose Keeper prompt still said 'Medium shot' with his seated wardrobe: drawn full body, face too small for the landmarker.",
+   "fix": "episode_build.flag_split: HARD (any flag that is not soft or words: FACE_NOT_FOUND, clip_check, NO_VIDEO, MOUTH_TALKING, GOD_SHOT_FACE), WORDS (AUDIO_NOT_OUR_LINE, soft only when speech-check shows the pinned ASR heard the line: pavo_native.words_flags) and SOFT (MOUTH_NOT_IN_SYNC, AUDIO_OFFSET). make_shot keeps every generation (record['clip']) and no longer fails a shot that has a generation with no hard flag; probe_step uploads every generation with hard_flags/words_flags/soft_flags/measures (keep_generations; the quota still counts each once); approve_shot refuses only a hard defect or unproven words, records accepted_flags (+ words proof bound to the clip sha256) and generate_step ignores exactly those on that clip (accepted_flags); the review floor, native review and speech checks are unchanged. plan_check.keeper_framing_problems: every 16:9 plan's Keeper prompt says KEEPER_FRAMING_16X9 ('Close-up from the chest up, his face large in the centre of the frame', the E130 wording that replaced 'Medium close-up', which drew him full body at 16:9) and no medium/full/wide framing; long_plan_check shares the constant; the flood-ends-long Keeper prompts and PROMPT_GUIDE follow the template.",
+   "antidote": {
+    "file": "migration/production/bible/test_episode_build.py",
+    "contains": "def test_e266_every_generation_is_kept_and_only_a_hard_defect_bars_approval",
+    "covers": [
+     "cheap-vs-expensive",
+     "instrument"
+    ]
+   }
   }
  ]
 }

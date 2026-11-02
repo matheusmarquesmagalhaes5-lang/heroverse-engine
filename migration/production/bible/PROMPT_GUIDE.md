@@ -187,6 +187,25 @@ talking shots at most 6 (`long_preflight.planned_units(..., worst=True)`). When 
 checks on both generations, the shot falls back to the Keeper voice-over on reviewed still motion of an approved
 Keeper still (DECISIONS "Battle plan to YPP", the fallback ladder below). Never queue more generations for it.
 
+**Keep every generation; hard and soft defects (E266, owner 2026-11-02: generate, compare, use the best).**
+shot-probe uploads EVERY generation that has a video, with its flags and measures (`hard_flags`, `words_flags`,
+`soft_flags`, `measures` in the record), so approve-shot chooses among them by the real review; a refused clip was
+never kept before, so there was nothing to compare. A shot is a failed shot only when every generation has a hard flag.
+- HARD (never approvable): `FACE_NOT_FOUND`, a broken render (clip_check flags, `NO_VIDEO`), `MOUTH_TALKING` on a
+  voice-over Keeper, `GOD_SHOT_FACE`, a policy block, and a clip that does not say our words.
+- WORDS: `AUDIO_NOT_OUR_LINE` is an RMS-envelope measure: it fires on a line Pavo re-timed as well as on other words.
+  It stays hard until `episode_build.py speech-check` shows the pinned ASR heard the clip say the line; then
+  approve-shot accepts it (`accepted_flags` + `words`, bound to the clip's sha256).
+- SOFT (visible, not a bar): `MOUTH_NOT_IN_SYNC`, `AUDIO_OFFSET`, a small offset fixed in the edit (trim, hold, cut
+  point, B-roll). approve-shot records them as `accepted_flags`; the build ignores exactly those on that clip.
+The review floor (>= 9.5), the native review and the speech checks are unchanged.
+
+**Keeper framing at 16:9 (E266, E130 for every 16:9 plan).** At 16:9 a seated "Medium shot" or "Medium close-up" Keeper
+is drawn full body and his face is too small for the landmarker (`FACE_NOT_FOUND`: arc-01 long, then all 10
+flood-ends-long generations). A 16:9 talking or voice-over Keeper prompt says "Close-up from the chest up, his face
+large in the centre of the frame" (`plan_check.KEEPER_FRAMING_16X9`) and no medium, full or wide framing
+(`KEEPER_FRAMING_16X9`, checked by plan_check and long_plan_check).
+
 Approved reused clips are selected by their exact hashes and the supported request/reuse binding. Check current
 revocations, aspect, character identity, source coverage and the changed context. Reuse does not imply generation
 and does not create a new review score. Whether repeated imagery harms the episode is judged in the complete result.

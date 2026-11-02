@@ -1255,10 +1255,38 @@ def probe_rounds_cap(shot):
     return TALK_PROBE_ROUNDS_MAX if plan_check.talking(shot) or plan_check.voiceover(shot) else PROBE_ATTEMPTS_MAX
 
 
+# E266 (owner 2026-11-02, "Pavo: generate, compare, use the best"): what a check flag means for a clip that is kept.
+#   HARD   no face, a broken render, a talking mouth where none is wanted, a face in God's shot, no video: the clip is
+#          kept and uploaded so the reviewer sees it, but approve-shot never approves it.
+#   WORDS  AUDIO_NOT_OUR_LINE: lipsync_check compares RMS envelopes, so it fires on a re-timed line (Pavo stretches the
+#          input voice) as well as on other words. It stays a hard stop until the pinned ASR heard the clip say the
+#          line's words (speech-check; WORDS_OK), then it is soft.
+#   SOFT   a small offset of the lips or the audio (MOUTH_NOT_IN_SYNC, AUDIO_OFFSET): kept, shown to the reviewer with
+#          its measures, fixed in the edit (trim, hold, cut point), never a reason by itself to regenerate or refuse.
+SOFT_FLAGS = pavo_native.SOFT_LIPS   # MOUTH_NOT_IN_SYNC, AUDIO_OFFSET
+WORDS_FLAGS = ("AUDIO_NOT_OUR_LINE",)
+
+
+def flag_split(flags):
+    """{hard, words, soft}: the flags of one generation by what they mean (E266). Any other flag is hard."""
+    flags = list(flags or [])
+    return {"hard": [f for f in flags if f not in SOFT_FLAGS and f not in WORDS_FLAGS],
+            "words": [f for f in flags if f in WORDS_FLAGS], "soft": [f for f in flags if f in SOFT_FLAGS]}
+
+
+def reviewable(flags):
+    """E266: a generation with no hard flag is worth the reviewer's eyes (it may still need its words proven)."""
+    return not flag_split(flags)["hard"]
+
+
 def make_shot(shot_id, attempt, check, attempts=ATTEMPTS):
-    """attempt(n) -> (record, clip path or None); check(path) -> (flags, measures or None). A failed shot gets a NEW
-    generation, at most attempts - 1 times; then the run fails naming the shot. Returns (kept path, records)."""
-    records = []
+    """attempt(n) -> (record, clip path or None); check(path) -> (flags, measures or None). A clean generation ends the
+    shot at once. Otherwise the shot goes on to its next generation (at most `attempts` in all) and EVERY generation is
+    kept: a flagged one beside the shot (E94) with record["clip"] naming its file, so the probe uploads it. E266: when no
+    generation is clean but one has no hard flag (flag_split: a small sync offset, a re-timed line) the shot is kept
+    for the reviewer to choose among the generations (returns the first such clip); with none the run fails naming the
+    shot. Returns (kept path, records)."""
+    records, where = [], None
     for n in range(1, attempts + 1):
         try:
             record, path = attempt(n)
@@ -1266,6 +1294,7 @@ def make_shot(shot_id, attempt, check, attempts=ATTEMPTS):
             exc.records = records
             raise
         if path is not None:
+            where = Path(path).parent
             record["flags"], measures = check(path)
             if measures:
                 if "faces" in measures:
@@ -1275,16 +1304,20 @@ def make_shot(shot_id, attempt, check, attempts=ATTEMPTS):
                 else:
                     record["lipsync"] = measures
             if not record["flags"]:
+                record["clip"] = Path(path).name
                 records.append(record)
                 return path, records
             # E94: a refused generation is kept beside the shot, so the failure-evidence job can show what failed
             kept = Path(path).with_name(f"{Path(path).stem}-fail{n}{Path(path).suffix}")
             if Path(path).is_file():
                 shutil.copyfile(path, kept)
-                record["clip"] = kept.name
+            record["clip"] = kept.name
         else:
             record.setdefault("flags", ["NO_VIDEO"])
         records.append(record)
+    usable = next((r for r in records if r.get("clip") and reviewable(r["flags"])), None)
+    if usable:
+        return where / usable["clip"], records
     failed = ShotFailed(f"SHOT_FAILED {shot_id} after {attempts} generations: "
                         + "; ".join(",".join(r["flags"]) for r in records))
     failed.records = records   # the measures of every attempt reach the report (E94)
@@ -1531,6 +1564,16 @@ def voice_reference_step(record_path, shot_id, asset, score, note, voices_path=N
     return data["voices"][who]["reference"]
 
 
+def accepted_flags(approved, clip_sha):
+    """E266: the soft flags (and, with the ASR's proof on this very clip, AUDIO_NOT_OUR_LINE) an approval recorded;
+    anything else it lists is ignored, so a hard flag can never be waved through."""
+    got = [f for f in approved.get("accepted_flags") or [] if f in SOFT_FLAGS + WORDS_FLAGS]
+    proof = approved.get("words") or {}
+    if proof.get("clip_sha256") != clip_sha or proof.get("flags") != []:
+        got = [f for f in got if f not in WORDS_FLAGS]
+    return got
+
+
 def speech_record_flags(approved, clip_sha):
     """A native speech clip ships only with the speech checks its approval recorded for this exact clip, all passed
     (story QA v4 rights.ai_video.speech_checks): SPEECH_UNCHECKED otherwise."""
@@ -1604,7 +1647,7 @@ def generate_clips(plan, work, lip_python, face_model, ids=None, client=None, do
             entry.update(speaker=shot["speaker"], line=shot["line"])
         try:
             try:
-                _, records = make_shot(shot["id"], attempt, check, attempts=attempts_for(shot))
+                kept, records = make_shot(shot["id"], attempt, check, attempts=attempts_for(shot))
             except ShotFailed as exc:
                 if not (str(exc).startswith("PAVO_PROMPT_BLOCKED") and native_speech(req, shot)):
                     raise
@@ -1622,7 +1665,7 @@ def generate_clips(plan, work, lip_python, face_model, ids=None, client=None, do
                                                               lip_python, face_model, sleep, progress)
                 entry["request"] = {k: v for k, v in req.items()}
                 entry["route"] = pavo_native.KOKORO
-                _, records = make_shot(shot["id"], attempt, check, attempts=attempts_for(shot))
+                kept, records = make_shot(shot["id"], attempt, check, attempts=attempts_for(shot))
         except (ShotFailed, SystemExit) as exc:
             entry["error"] = str(exc)
             # review of #475: every submitted generation (progress), also one whose wait was cut short
@@ -1632,7 +1675,7 @@ def generate_clips(plan, work, lip_python, face_model, ids=None, client=None, do
             save(report_path, in_plan_order(report, plan))
             raise SystemExit(str(exc))
         entry["attempts"] = records
-        entry["clip"] = final.name
+        entry["clip"] = Path(kept).name   # the clean clip, or (E266) the first with no hard flag
         report["shots"][shot["id"]] = entry
         save(report_path, in_plan_order(report, plan))
         print(json.dumps({"shot": shot["id"], "generations": len(records)}))
@@ -1718,13 +1761,18 @@ def generate_step(plan, work, lip_python, face_model, approvals=None, fetch=fetc
             flags, measures = clip_flags(final, plan.get("aspect_ratio", "9:16")), None
         else:
             flags, measures = check(final)
+            ok = accepted_flags(approved, sha256(final))   # E266: soft measures the approval recorded, this clip only
+            if ok:
+                entry["accepted_flags"] = ok
+            flags = [f for f in flags if f not in ok]
             if native_speech(req, shot):   # story QA v4: the speech checks Claude's approval was given on
                 flags = flags + speech_record_flags(approved, sha256(final))
         entry["source"] = source
         entry["approved"] = {k: approved.get(k) for k in ("asset", "clip_sha256", "request_sha256", "score", "source",
                                "footage", "still", "still_sha256", "repo_path", "frame", "motion", "motion_engine", "still_from",
                                "clip_from", "clip_seconds", "crop_to", "url", "inventory", "licence", "credit", "speech",
-                               "attribution", "picture_sha256", "task_id", "buzzy_model", "buzzy_resolution")
+                               "attribution", "picture_sha256", "task_id", "buzzy_model", "buzzy_resolution", "accepted_flags",
+                               "words")
                              if k in approved}
         entry["checks"] = {"flags": flags, "measures": measures}
         report["shots"][shot["id"]] = entry
@@ -1764,6 +1812,37 @@ def probe_ids(plan, text, attempts):
 
 def shot_asset_name(episode, shot_id, clip_sha):
     return f"shot-{episode}-{shot_id}-sha256-{clip_sha}.mp4"
+
+
+def keep_generations(sid, n, gens, work, out, episode, sheet, first=None):
+    """E266: EVERY generation of a round with a video goes to OUT under its content-hash asset name with a frame sheet,
+    its flags split by meaning (flag_split) and its measures beside them, so approve-shot can choose among them by the
+    reviewer's real review; a hard flag only makes that clip non-approvable. `first` (the clip the round returned) is
+    listed first. Quota counts the round's generations once, on its first entry (the others hold none)."""
+    rows, seen = [], set()
+    for g in gens:
+        name = g.get("clip")
+        src = Path(work) / "clips" / name if name else None
+        if not name or not src.is_file():
+            continue
+        sha = sha256(src)
+        if sha in seen:
+            continue
+        seen.add(sha)
+        asset = shot_asset_name(episode, sid, sha)
+        shutil.copyfile(src, Path(out) / asset)
+        label = f"{sid}-{n}-{g.get('generation', len(rows) + 1)}.jpg"
+        sheet(Path(out) / asset, Path(out) / label)
+        split = flag_split(g.get("flags"))
+        measures = {k: g[k] for k in ("lipsync", "faces", "still_mouth") if k in g}
+        rows.append({"round": n, "generation": g.get("generation"), "asset": asset, "clip_sha256": sha,
+                     "flags": list(g.get("flags") or []), "hard_flags": split["hard"], "words_flags": split["words"],
+                     "soft_flags": split["soft"], "measures": measures, "generations": [], "sheet": label,
+                     "_name": name})
+    rows.sort(key=lambda r: r["_name"] != first)
+    for r in rows:
+        del r["_name"]
+    return rows
 
 
 def probe_step(plan, work, lip_python, face_model, out, ids, attempts, client=None, download=None,
@@ -1808,6 +1887,9 @@ def probe_step(plan, work, lip_python, face_model, out, ids, attempts, client=No
                         raise   # a broken tool or a refused request stops the probe (E89)
                     failed = load(work / f"probe-{sid}-{n}.json")["shots"].get(sid, {})
                     entry["clips"].append({"round": n, "error": str(exc), "generations": failed.get("attempts", [])})
+                    # E266: a refused round's clips are kept too (a hard flag only makes them non-approvable)
+                    entry["clips"] += keep_generations(sid, n, failed.get("attempts", []), work, out, plan["episode"],
+                                                       sheet)
                     if failed.get("prompt_blocked"):
                         record.setdefault("prompt_blocks", []).append(failed["prompt_blocked"])
                     if str(exc).startswith("PAVO_PROMPT_BLOCKED"):   # the same prompt would be refused again
@@ -1827,14 +1909,13 @@ def probe_step(plan, work, lip_python, face_model, out, ids, attempts, client=No
                     sha, canonical = request_identity(shot, index[sid], plan, layout, refs)
                     entry.update(request_sha256=sha, request=canonical, prompt_blocked=built["prompt_blocked"],
                                  clip_seconds=shot_seconds(shot, index[sid], plan, layout))
-                path = work / "clips" / built["clip"]
-                clip_sha = sha256(path)
-                asset = shot_asset_name(plan["episode"], sid, clip_sha)
-                shutil.copyfile(path, out / asset)
-                sheet(out / asset, out / f"{sid}-{n}.jpg")
-                last = built["attempts"][-1]
-                entry["clips"].append({"round": n, "asset": asset, "clip_sha256": clip_sha, "flags": last["flags"],
-                                       "generations": built["attempts"], "sheet": f"{sid}-{n}.jpg"})
+                rows = keep_generations(sid, n, built["attempts"], work, out, plan["episode"], sheet,
+                                        first=built["clip"])
+                if rows:   # the returned clip first, with the round's generations (the quota counts them there)
+                    rows[0]["generations"] = built["attempts"]
+                else:
+                    rows = [{"round": n, "generations": built["attempts"]}]
+                entry["clips"] += rows
                 inflight = None
                 save(out / "probe.json", record)
     finally:
@@ -1990,8 +2071,11 @@ def approve_shot(record_path, shot_id, asset, score, note, shots_dir=None, today
         raise SystemExit(f"SHOT_CLIP_NOT_IN_RECORD {shot_id} {asset}")
     if clip.get("uploaded") is not True:
         raise SystemExit(f"SHOT_CLIP_NOT_UPLOADED {shot_id} {asset} (shot-probe.yml's record job uploads every clip)")
-    if clip.get("flags"):
-        raise SystemExit(f"SHOT_CHECKS_FAILED {shot_id} {','.join(clip['flags'])} (the build would refuse this clip)")
+    split = flag_split(clip.get("flags"))
+    if split["hard"]:   # E266: wrong line, no face, a broken render, a policy problem: never approvable
+        raise SystemExit(f"SHOT_CHECKS_FAILED {shot_id} {','.join(split['hard'])} (a hard defect: the build would "
+                         "refuse this clip)")
+    words_proof = None   # a soft measure stays visible: the review decides, the approval records what it accepted
     revoked = revocation_problems(record["episode"], {shot_id: {"clip_sha256": clip.get("clip_sha256")}},
                                   shots_dir=shots_dir)
     if revoked:
@@ -2014,6 +2098,19 @@ def approve_shot(record_path, shot_id, asset, score, note, shots_dir=None, today
     seconds = media["video_seconds"]
     speech = None
     audio = (entry.get("request") or {}).get("audio") or {}
+    if split["words"]:
+        # E266: AUDIO_NOT_OUR_LINE is the envelope measure; it is accepted only when the pinned ASR heard this exact
+        # clip say the line's words (episode_build.py speech-check), i.e. a re-timed line, not another line
+        side = root / str(record["episode"]) / "speech" / f"{clip['clip_sha256']}.json"
+        line = " ".join(audio.get("words") or [])
+        if not side.is_file() or not line:
+            raise SystemExit(f"SHOT_WORDS_UNPROVEN {shot_id} {asset} ({','.join(split['words'])}: run "
+                             f"episode_build.py speech-check on this clip, the ASR must hear the line: {rel(side)})")
+        heard = pavo_native.words_flags(load(side).get("measures") or {}, line)
+        if heard:
+            raise SystemExit(f"SHOT_WORDS_NOT_OUR_LINE {shot_id} {asset} {','.join(heard)} (the clip does not say our "
+                             "line: a hard defect)")
+        words_proof = {"clip_sha256": clip["clip_sha256"], "flags": [], "criteria": pavo_native.criteria()["version"]}
     if audio.get("route") == pavo_native.NATIVE:
         # story QA v4 (owner 27/10, R4): a clip that keeps Pavo's speech is approved only with its speech checks
         # measured on this exact clip (episode_build.py speech-check) and passed, the verdict recomputed here
@@ -2023,12 +2120,14 @@ def approve_shot(record_path, shot_id, asset, score, note, shots_dir=None, today
                              f"{rel(side)})")
         speech = pavo_native.speech_record(clip["clip_sha256"], load(side).get("measures") or {},
                                            " ".join(audio.get("words") or []),
-                                           binding=pavo_native.voice_binding(audio.get("speaker")))
+                                           binding=pavo_native.voice_binding(audio.get("speaker")),
+                                           accepted=split["soft"])
         if speech["flags"]:
             raise SystemExit(f"SPEECH_CHECKS_FAILED {shot_id} {','.join(speech['flags'])}")
         outside = clip_timing.speech_problem(shot_id, speech, media)
         if outside:
             raise SystemExit(outside)
+    accepted = [f for f in clip["flags"] if f in SOFT_FLAGS + WORDS_FLAGS]   # all proven or soft by now
     model = reviewer_identity.require(reviewer)
     path = Path(shots_dir or SHOTS_DIR) / f"{record['episode']}.json"
     data = load(path) if path.exists() else {"episode": record["episode"], "shots": {}}
@@ -2041,6 +2140,10 @@ def approve_shot(record_path, shot_id, asset, score, note, shots_dir=None, today
                               "approved_at": today or time.strftime("%Y-%m-%d", time.gmtime()), "model": model}
     if speech:
         data["shots"][shot_id]["speech"] = speech
+    if accepted:   # E266: what the reviewer saw and accepted on this exact clip; the build ignores exactly these
+        data["shots"][shot_id]["accepted_flags"] = accepted
+        if words_proof:
+            data["shots"][shot_id]["words"] = words_proof
     data["shots"] = dict(sorted(data["shots"].items()))
     save(path, data)
     return data["shots"][shot_id]

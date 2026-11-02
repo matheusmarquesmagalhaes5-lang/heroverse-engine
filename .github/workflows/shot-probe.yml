@@ -8,6 +8,9 @@ run-name: "shot-probe: plan=${{ inputs.plan }} shots=${{ inputs.shots }} attempt
 # release under its content-hash name; its frame sheet and the record (request sha256, clip sha256, checks) go to
 # branch claude/shot-probe-<episode>-<run>. Claude reviews the sheets and approves one clip per shot with
 # `episode_build.py approve-shot` (shots/<episode>.json, by PR); episode.yml then ships those exact clips.
+# E266 (owner 2026-11-02, generate-compare-use-the-best): EVERY generation with a video is kept, flagged ones too (their
+# hard / words / soft flags and measures in the record); approve-shot refuses only a hard defect (no face, a wrong line,
+# a broken render), so the reviewer compares the generations instead of the run discarding them.
 on:
   workflow_dispatch:
     inputs:

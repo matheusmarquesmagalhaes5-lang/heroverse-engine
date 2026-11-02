@@ -183,6 +183,11 @@ NO_PEOPLE_TAIL = re.compile(r"(?i)\bno (people|person|faces?|figures?)\b")
 SPEAKS = re.compile(r"(?i)\bspeak")
 # E98: the lips check found the face and the lips only when the Keeper faced the lens on a still frame
 KEEPER_POSE = ("static camera", "looks straight into the camera")
+# E266 (E130 for every 16:9 plan, not only bible-long-plan-v1): at 16:9 a seated "Medium shot" Keeper is drawn full
+# body, his face too small for the landmarker (FACE_NOT_FOUND on the arc-01 long's probes and on all 10 flood-ends-long
+# generations), so a 16:9 talking or voice-over Keeper is framed from the chest up, his face large in the frame
+KEEPER_FRAMING_16X9 = "Close-up from the chest up, his face large in the centre of the frame"
+KEEPER_FRAMING_OFF = re.compile(r"(?i)\b(?:medium close-up|medium shot|full[- ]body|full shot|wide shot)\b")
 KEEPER_POSE_OFF = re.compile(r"(?i)push-in|pull(?:s|ing)?[ -]back|\bleans?\b|\bbow(?:s|ing)?\b|tracking shot|\borbit")
 # a line without a `reference` that quotes the KJV anyway: 8 consecutive words of the KJV (kjv_check's text)
 KJV_RUN = 8
@@ -1426,10 +1431,19 @@ def shot_shape_problems(shots, n):
     return problems, bad_lines
 
 
-def keeper_prompt_problems(i, s, keeper):
+def keeper_framing_problems(i, s, aspect):
+    """E266: a 16:9 Keeper prompt says KEEPER_FRAMING_16X9 and no medium, full or wide framing (None/9:16: no rule)."""
+    p = s.get("prompt", "")
+    if aspect == "16:9" and (KEEPER_FRAMING_16X9 not in p or KEEPER_FRAMING_OFF.search(p)):
+        return [f"KEEPER_FRAMING_16X9 shot {i} {s['id']} (a 16:9 Keeper shot says \"{KEEPER_FRAMING_16X9}\" and no "
+                "medium, full or wide framing: his face must fill enough of the frame for the face landmarker)"]
+    return []
+
+
+def keeper_prompt_problems(i, s, keeper, aspect=None):
     """A Keeper shot's prompt: his look and one wardrobe variant word for word, he speaks, and he faces the lens on a
     static camera (E98) (shared with long_plan_check)."""
-    problems = []
+    problems = keeper_framing_problems(i, s, aspect)
     if keeper["look"] not in s.get("prompt", ""):
         problems.append(f"CHARACTER_LOOK_CHANGED shot {i}: keeper (the prompt must carry its look word for word)")
     if not any(w in s.get("prompt", "") for w in keeper.get("wardrobe", {}).values()):
@@ -1641,7 +1655,7 @@ def _check_shots(plan, chars, narration, shots, problems, pending):
             if not keeper:
                 problems.append("CHARACTER_UNKNOWN keeper (characters.json)")
                 continue
-            problems += keeper_prompt_problems(i, s, keeper)
+            problems += keeper_prompt_problems(i, s, keeper, plan.get("aspect_ratio"))
             continue
         lesson.update(k for k in idx if items[k]["kind"] in LESSON_KINDS)
         cids = s.get("characters", [])

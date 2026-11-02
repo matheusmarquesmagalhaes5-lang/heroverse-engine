@@ -45,6 +45,7 @@ VOICES = HERE / "voices.json"
 BLOCKS = REPO / "migration" / "evidence" / "pavo" / "prompt-blocks.json"
 NATIVE_BINDING = "pavo native speech (story QA v4)"   # episode_preflight's probe key for a native talking line
 WORD = re.compile(r"[a-z0-9']+")
+SOFT_LIPS = ("MOUTH_NOT_IN_SYNC", "AUDIO_OFFSET")   # E266: the lipsync_check flags that do not by themselves bar a clip
 # hints the probe sent (prompt A); "gavest" was heard by medium.en on Pavo and on Kokoro
 PRONOUNCE = {"thy": '"thy" rhymes with "high"', "thee": '"thee" rhymes with "see"', "thou": '"thou" rhymes with "now"',
              "wast": '"wast" rhymes with "lost"', "hast": '"hast" rhymes with "last"',
@@ -264,7 +265,23 @@ def voice_binding(speaker_id, voices=None):
     return {"reference": voice_reference(speaker_id, voices), "others": others}
 
 
-def speech_verdict(measures, line, crit=None, binding=None):
+def words_flags(measures, line, crit=None):
+    """E266: only the words check of speech_verdict: the pinned ASR heard exactly the line (empty: it did). It proves
+    a clip says our words when lipsync_check's envelope measure (AUDIO_NOT_OUR_LINE) only saw a re-timed voice."""
+    crit = criteria() if crit is None else crit
+    checks = crit["rights"]["ai_video"]["speech_checks"]
+    pinned = crit["speech"]["asr_model"]["model_bin_sha256"]
+    asr = measures.get("asr") or {}
+    if asr.get("model_bin_sha256") != pinned:
+        return ["ASR_MODEL_NOT_PINNED"]
+    if asr.get("text") is None:
+        return ["SPEECH_NOT_HEARD"]
+    if wer(line, asr["text"]) > checks["exact_words_wer_max"] + 1e-9:
+        return ["SPEECH_WORDS_NOT_EXACT"]
+    return []
+
+
+def speech_verdict(measures, line, crit=None, binding=None, accepted=()):
     """Flags of one Pavo speech clip under story QA v4 (empty: it passes). `measures`: asr {model_bin_sha256, text},
     voice {reference (sha256 or None), same (cosine to its character's reference), others (cosines to the other
     characters' references)}, lufs (integrated, the clip's speech), music, singing (YAMNet shares), lips (the flags of
@@ -275,14 +292,7 @@ def speech_verdict(measures, line, crit=None, binding=None):
     crit = criteria() if crit is None else crit
     checks = crit["rights"]["ai_video"]["speech_checks"]
     pinned = crit["speech"]["asr_model"]["model_bin_sha256"]
-    flags = []
-    asr = measures.get("asr") or {}
-    if asr.get("model_bin_sha256") != pinned:
-        flags.append("ASR_MODEL_NOT_PINNED")
-    elif asr.get("text") is None:
-        flags.append("SPEECH_NOT_HEARD")
-    elif wer(line, asr["text"]) > checks["exact_words_wer_max"] + 1e-9:
-        flags.append("SPEECH_WORDS_NOT_EXACT")
+    flags = words_flags(measures, line, crit)
     voice = measures.get("voice") or {}
     binding = binding or {}
     others, measured = voice.get("others") or [], voice.get("others_references") or []
@@ -312,7 +322,7 @@ def speech_verdict(measures, line, crit=None, binding=None):
     if lips is None:
         flags.append("LIPS_NOT_CHECKED")
     else:
-        flags += list(lips)
+        flags += [f for f in lips if not (f in accepted and f in SOFT_LIPS)]   # E266: a soft lip flag the reviewer accepted
     return flags
 
 
@@ -379,11 +389,11 @@ def measure(clip, whisper_dir, yamnet, references, speaker_id, lips, run=None):
             "lips": list(lips) if lips is not None else None}
 
 
-def speech_record(clip_sha, measures, line, crit=None, binding=None):
+def speech_record(clip_sha, measures, line, crit=None, binding=None, accepted=()):
     """What approve-shot copies into a native clip's approval: the verdict recomputed from the measures (never a
     recorded `flags` field), the speech span and the one gain to the common level."""
     crit = criteria() if crit is None else crit
-    flags = speech_verdict(measures, line, crit, binding)
+    flags = speech_verdict(measures, line, crit, binding, accepted)
     onset, end = speech_span(measures) if not flags else ((measures.get("asr") or {}).get("speech_span") or [None, None])
     return {"clip_sha256": clip_sha, "flags": flags, "onset": onset, "end": end, "lufs": measures.get("lufs"),
             "gain_db": clip_gain_db(measures.get("lufs"), crit["rights"]["ai_video"]["speech_checks"]),

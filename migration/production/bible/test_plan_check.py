@@ -1436,6 +1436,41 @@ class KeeperStill(unittest.TestCase):
         self.assertIn("SCENE_WRITING", found)
 
 
+class KeeperFraming16x9(unittest.TestCase):
+    """E266: flood-ends-long (bible-plan-v2 at 16:9, so plan_check, not long_plan_check) sent its three talking Keeper
+    shots as a seated "Medium shot"; Pavo drew him full body and every generation (10 of 10) was FACE_NOT_FOUND.
+    The 16:9 close-up framing E130 made for bible-long-plan-v1 is now the template of every 16:9 plan."""
+
+    def plan(self):
+        return json.loads((HERE / "plans" / "flood-ends-long.json").read_text())
+
+    def test_a_16x9_keeper_shot_is_framed_from_the_chest_up_at_template_level(self):
+        plan = self.plan()
+        self.assertEqual(plan["aspect_ratio"], "16:9")
+        self.assertNotIn("KEEPER_FRAMING_16X9", " ".join(pc.check(plan)["problems"]))
+        keepers = [s for s in plan["shots"] if s["kind"] == "keeper"]
+        self.assertTrue(keepers)
+        for s in keepers:
+            self.assertIn(pc.KEEPER_FRAMING_16X9, s["prompt"])
+        for old in ("Medium shot", "Medium close-up", "Wide shot", "full body"):
+            bad = copy.deepcopy(plan)
+            k = next(s for s in bad["shots"] if s["kind"] == "keeper")
+            k["prompt"] = k["prompt"].replace(pc.KEEPER_FRAMING_16X9, old)
+            self.assertIn("KEEPER_FRAMING_16X9", " ".join(pc.check(bad)["problems"]), old)
+        nine = copy.deepcopy(plan)   # a 9:16 Short keeps its own "Medium close-up"
+        for s in nine["shots"]:
+            if s["kind"] == "keeper":
+                s["prompt"] = s["prompt"].replace(pc.KEEPER_FRAMING_16X9, "Medium close-up")
+        nine["aspect_ratio"] = "9:16"
+        self.assertNotIn("KEEPER_FRAMING_16X9", " ".join(pc.check(nine)["problems"]))
+
+    def test_the_long_plan_check_uses_the_same_template(self):
+        import long_plan_check as lc
+        self.assertIs(lc.KEEPER_FRAMING, pc.KEEPER_FRAMING_16X9)
+        self.assertIs(lc.KEEPER_FRAMING_OFF, pc.KEEPER_FRAMING_OFF)
+        self.assertIn("16:9", (HERE / "PROMPT_GUIDE.md").read_text().split("Keeper framing at 16:9")[1][:600])
+
+
 # the long's plan (bible-long-plan-v1) and story QA v2/v3 run here too, so pr-checks.yml runs them unchanged
 from test_long_plan_check import DraftArc1, Grammar as LongGrammar, NoRendererReadsTheNewQaYet, StoryQa  # noqa: E402,F401,E501
 
