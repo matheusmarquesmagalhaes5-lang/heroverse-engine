@@ -151,17 +151,17 @@
   "s-dove-out": {
    "source": "buzzy",
    "score": 9.5,
-   "note": "Buzzy image-to-video of the approved s-dove-out still (5 frames viewed 2026-11-02): the white dove circles over the grey rough water, the family seen from behind at the bottom, no text, no speech (silent source, generated audio unused); non-speaking action peak; clip_check clean.",
+   "note": "Buzzy image-to-video (12 s) of the approved s-dove-out still (5 frames viewed 2026-11-02): the white dove circles over the grey rough water, the family seen from behind at the bottom, no text, no speech (silent source, generated audio unused); non-speaking action peak; clip_check clean.",
    "model": "claude-session-reviewer",
    "approved_at": "2026-11-02",
-   "task_id": "gt_aui5o53NiZyHibkxaui5o8K0dzYj6lyn",
+   "task_id": "gt_aui5o53NiZyHibkxaui8PLubsndUbmyY",
    "buzzy_model": "dreamina-seedance-2-0-mini-260615",
    "buzzy_resolution": "720p",
-   "asset": "shot-flood-ends-long-s-dove-out-sha256-749e56033c0cbd6befe2942465d0a10f8128c2ea4cc5f8c27eaec03a0be1b9a4.mp4",
-   "clip_sha256": "749e56033c0cbd6befe2942465d0a10f8128c2ea4cc5f8c27eaec03a0be1b9a4",
-   "clip_seconds": 10,
+   "asset": "shot-flood-ends-long-s-dove-out-sha256-ca4d79d6eca81c6a16f13cd02676f4678065cad4d986d5cb3714dbf891950c24.mp4",
+   "clip_sha256": "ca4d79d6eca81c6a16f13cd02676f4678065cad4d986d5cb3714dbf891950c24",
+   "clip_seconds": 12,
    "licence": "generated (Buzzy)",
-   "request_sha256": "fad554f828f9897276c23bc6dcb7643317bd1bc8a02a99742454e90dbbef93f4"
+   "request_sha256": "7ae1cb053a2565776ea9eeb4fa51dba592ba3c3a8436e08f97762812e2bb90ca"
   },
   "s-dry": {
    "source": "still_motion",
