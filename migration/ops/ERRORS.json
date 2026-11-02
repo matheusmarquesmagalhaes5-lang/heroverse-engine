@@ -3770,6 +3770,41 @@
      "cheap-vs-expensive"
     ]
    }
+  },
+  {
+   "id": "E265",
+   "date": "2026-11-02",
+   "class": [
+    "fragile-input"
+   ],
+   "error": "shot-probe.yml became invalid YAML in #658 (an unquoted 'E264: 2 generations' inside the attempts description). GitHub then reported 'Workflow does not have workflow_dispatch trigger' and the routine could not dispatch the one more probe the owner allowed for flood-ends-long.",
+   "fix": "Quoted the description; test_schedules.py now parses every workflow as YAML and requires the trigger block to contain workflow_dispatch when the file declares it.",
+   "prior": [
+    "E101",
+    "E125",
+    "E143",
+    "E148",
+    "E188",
+    "E205",
+    "E208",
+    "E219",
+    "E220",
+    "E221",
+    "E222",
+    "E224",
+    "E225",
+    "E226",
+    "E229",
+    "E230",
+    "E241"
+   ],
+   "antidote": {
+    "file": "migration/ops/test_schedules.py",
+    "contains": "def test_e265_every_workflow_is_valid_yaml_and_dispatchable",
+    "covers": [
+     "fragile-input"
+    ]
+   }
   }
  ]
 }
