@@ -99,6 +99,42 @@ class PlanTrack(unittest.TestCase):
         self.assertTrue(any(p.startswith("SAFE_AREA_UNSTATED") for p in
                             pc.still_prompt_problems("s-x/st-1", "A wide view of the ark at dusk.", plan)))
 
+    def test_a_long_may_open_on_a_talking_keeper_hook_and_nothing_else_may(self):
+        # owner 2026-11-02 (flood-ends-long): hook, speaking character and Keeper lines on Pavo talking video. Only the
+        # very first shot of a long-first plan, and only a talking one: the Shorts and every later Keeper keep the rules
+        real = json.loads((HERE / "plans/flood-ends-long.json").read_text())
+        found = lambda plan: [x for x in pc.check(plan)["problems"] if x.split()[0] in
+                              ("KEEPER_OPENS", "KEEPER_BEFORE_CLIMAX", "KEEPER_LINE_KIND", "OPEN_NOT_SPOKEN")]
+        self.assertEqual(real["shots"][0]["id"], "k-hook")
+        self.assertEqual(found(real), [])
+        self.assertTrue(pc.keeper_hook(real, 0, real["shots"][0]))
+        self.assertFalse(pc.keeper_hook(real, 1, real["shots"][0]))
+        self.assertFalse(pc.keeper_hook(real, 0, dict(real["shots"][0], voiceover=True)))
+        self.assertFalse(pc.keeper_hook(real, 0, real["shots"][1]))
+        later = copy.deepcopy(real)
+        later["shots"][0], later["shots"][1] = later["shots"][1], later["shots"][0]   # the hook is not the first shot
+        self.assertTrue([x for x in found(later) if x.startswith("KEEPER_BEFORE_CLIMAX")])
+        short = copy.deepcopy(real)
+        short.update(track="bible-short", aspect_ratio="9:16")
+        self.assertFalse(pc.keeper_hook(short, 0, short["shots"][0]))
+        self.assertTrue([x for x in found(short) if x.startswith("KEEPER_OPENS")])
+        voiced = copy.deepcopy(real)
+        voiced["shots"][0]["voiceover"] = True
+        self.assertTrue([x for x in found(voiced) if x.startswith("KEEPER_OPENS")])
+
+    def test_only_the_long_composes_with_a_crossfade_around_talking_shots(self):
+        import inspect
+        src = inspect.getsource(eb.compose_step)
+        self.assertIn("crossfade=LONG_XFADE", src)
+        self.assertRegex(src, r"if long_first:[^\n]*\n\s+compose_plan\.update\([^\n]*crossfade=LONG_XFADE")
+        self.assertLessEqual(eb.LONG_XFADE, eb.LINE_GAP)          # inside the silence between two lines
+        self.assertLessEqual(eb.LONG_XFADE, se.XFADE_MAX)
+        self.assertGreaterEqual(eb.LONG_XFADE, 0.3)
+        # a Short's compose plan carries no crossfade, so short_engine finds no window: cuts only
+        shots = [{"start": 0.0, "end": 5.0, "kind": "scene"},
+                 {"start": 5.0, "end": 8.6, "kind": "keeper", "talk": {"start": 5.0, "end": 8.6}}]
+        self.assertEqual(se.transitions(shots, [{"start": 5.0, "end": 8.6}], None), [])
+
     def test_other_tracks_are_unchanged(self):
         short = json.loads(SHORT_PLAN.read_text())
         self.assertEqual(pc.check(short)["problems"], [])

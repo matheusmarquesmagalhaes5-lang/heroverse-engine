@@ -1289,6 +1289,13 @@ def check(plan, chars=None):
     return _check_shots(plan, chars, narration, shots, problems, pending)
 
 
+def keeper_hook(plan, i, shot):
+    """Owner order 2026-11-02 (flood-ends-long): a long-first long (16:9) may open on a talking-Keeper hook, its very
+    first shot. Only that shot, only a talking one (Pavo lips on our audio): any other Keeper shot keeps the rule that
+    he comes after the climax and speaks only the insight and the close."""
+    return long_first(plan) and i == 0 and shot.get("kind") == "keeper" and not voiceover(shot)
+
+
 def long_first(plan):
     return isinstance(plan, dict) and plan.get("track") == LONG_FIRST_TRACK
 
@@ -1674,9 +1681,9 @@ def _check_shots(plan, chars, narration, shots, problems, pending):
                         "text": x["text"]} for x in items]})]
 
     # the open: a spoken line from 0 s, never the Keeper
-    if shots[0]["kind"] == "keeper":
+    if shots[0]["kind"] == "keeper" and not keeper_hook(plan, 0, shots[0]):
         problems.append("KEEPER_OPENS (the first shot is a scene: the conflict spoken by a character or God's voice)")
-    elif not speaking(shots[0]):
+    elif not speaking(shots[0]) and not keeper_hook(plan, 0, shots[0]):
         problems.append("OPEN_NOT_SPOKEN (the first shot carries a spoken line from 0 s: a character's challenge or "
                         "plea, or God's voice)")
     if shots[-1]["kind"] != "keeper":
@@ -1719,9 +1726,10 @@ def _check_shots(plan, chars, narration, shots, problems, pending):
             keeper_used = True
             keeper_seconds += span
             lesson.update(idx)
-            if i < last_climax:
+            hook = keeper_hook(plan, i, s)   # owner 2026-11-02: a long-first long opens on a talking-Keeper hook
+            if i < last_climax and not hook:
                 problems.append(f"KEEPER_BEFORE_CLIMAX shot {i} {s['id']} (the Keeper comes only after the climax)")
-            if any(items[k]["kind"] not in LESSON_KINDS for k in idx):
+            if not hook and any(items[k]["kind"] not in LESSON_KINDS for k in idx):
                 problems.append(f"KEEPER_LINE_KIND shot {i} {s['id']} (the Keeper speaks only the insight and the "
                                 "close)")
             if voiceover(s):

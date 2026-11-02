@@ -13,6 +13,10 @@
  "narration": [
   {
    "kind": "story",
+   "text": "What if the water was falling and the door stayed shut? What if only the One who shut it could open it?"
+  },
+  {
+   "kind": "story",
    "text": "What if you had been shut inside a wooden ship for more than a year, with every animal on earth breathing around you in the dark? What if the water finally began to fall, and still nobody told you when you could walk out?"
   },
   {
@@ -222,7 +226,7 @@
   },
   {
    "kind": "insight",
-   "text": "Notice what the rainbow is. God hung up His own bow, pointing at the sky and not at us. Mercy is His idea."
+   "text": "God hung His bow in the sky, pointed away from us. Mercy was His idea."
   },
   {
    "kind": "story",
@@ -240,6 +244,16 @@
  ],
  "shots": [
   {
+   "kind": "keeper",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks to the camera, his lips moving clearly with every word, a grave, intent look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Hushed and urgent. No text, no logos.",
+   "id": "k-hook",
+   "lines": [
+    0
+   ],
+   "ambience": "the open desert at night: a small campfire crackling softly and a light night wind",
+   "audio_route": "kokoro"
+  },
+  {
    "id": "s-voice",
    "speaker": "god",
    "reference": "Genesis 8:16 (KJV)",
@@ -256,7 +270,7 @@
    "figures": "anonymous",
    "conflict": true,
    "lines": [
-    0
+    1
    ],
    "seconds": 18,
    "kind": "scene",
@@ -268,7 +282,7 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow pull back. A massive closed wooden door in the dark timber shelter, a single beam of grey light along its edge, a man in silhouette standing before it with one hand flat on the wood, centred in the frame. The subject is centred in the frame. Cold grey light, deep shadow. Tense and uncertain. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
    "figures": "anonymous",
    "lines": [
-    1
+    2
    ],
    "seconds": 13,
    "kind": "scene",
@@ -280,8 +294,8 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow push-in. A strong wind ruffles the endless grey water and tears the low clouds open above a great dark shape that rides alone on the water, centred in the frame. A few small figures stand in silhouette, seen from behind. The subject is centred in the frame. Grey morning, wind and torn cloud. Turning and hopeful. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
    "figures": "anonymous",
    "lines": [
-    2,
-    3
+    3,
+    4
    ],
    "seconds": 20,
    "kind": "scene",
@@ -293,8 +307,8 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow pan. Dark fountains of water sink back into the deep and the last curtains of rain thin out against a clearing sky over a great dark shape floating on the water, centred in the frame. A few small figures stand in silhouette, seen from behind. The subject is centred in the frame. Soft silver light breaking through cloud. Quiet and relieved. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
    "figures": "anonymous",
    "lines": [
-    4,
-    5
+    5,
+    6
    ],
    "seconds": 19,
    "kind": "scene",
@@ -306,8 +320,8 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow tilt down. In a dark timber shelter a son seen in silhouette scratches a tally of marks into a wooden post with a stone, rows and rows of them, the family asleep in the straw behind him, centred in the frame. The subject is centred in the frame. Dim lamp light and shadow. Weary and patient. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
    "figures": "anonymous",
    "lines": [
-    6,
-    7
+    7,
+    8
    ],
    "seconds": 20,
    "kind": "scene",
@@ -320,8 +334,8 @@
    "climax": false,
    "figures": "anonymous",
    "lines": [
-    8,
-    9
+    9,
+    10
    ],
    "seconds": 20,
    "kind": "scene",
@@ -333,8 +347,8 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow tilt up. The first grey mountain peaks push up out of the water like islands in a vast silver sea, birds-eye calm, centred in the frame. A few small figures stand in silhouette, seen from behind. The subject is centred in the frame. Soft morning light and low mist. Hope rising slowly. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
    "figures": "anonymous",
    "lines": [
-    10,
-    11
+    11,
+    12
    ],
    "seconds": 20,
    "kind": "scene",
@@ -346,8 +360,8 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow push-in. A man in silhouette reaches up and pushes open a small square opening high in the dark planking, a bright slice of daylight falling on his hands, centred in the frame. The subject is centred in the frame. Bright daylight against deep shadow. Anxious and brave. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
    "figures": "anonymous",
    "lines": [
-    12,
-    13
+    13,
+    14
    ],
    "seconds": 19,
    "kind": "scene",
@@ -359,8 +373,8 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow tilt up. A black raven beats away over the empty water into a grey sky, shrinking to a dot, the small dark opening far behind it, centred in the frame. A few small figures stand in silhouette, seen from behind. The subject is centred in the frame. Flat grey light. Lonely and uncertain. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
    "figures": "anonymous",
    "lines": [
-    14,
-    15
+    15,
+    16
    ],
    "seconds": 19,
    "kind": "scene",
@@ -372,8 +386,8 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Close-up, slow push-in. Two weathered hands in rough wool sleeves lift a white dove from a small wooden cage, the bird calm and bright against the dark, centred in the frame. A few small figures stand in silhouette, seen from behind. The subject is centred in the frame. Soft opening light on white feathers. Tender and fearful. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
    "figures": "anonymous",
    "lines": [
-    16,
-    17
+    17,
+    18
    ],
    "seconds": 19,
    "kind": "scene",
@@ -385,7 +399,7 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow pull back. A white dove circles above endless grey water, searching, wings tilted, nothing but waves beneath her, centred in the frame. A few small figures stand in silhouette, seen from behind. The subject is centred in the frame. Cold pale light on the water. Searching and desperate. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
    "figures": "anonymous",
    "lines": [
-    18
+    19
    ],
    "seconds": 11,
    "kind": "scene",
@@ -397,7 +411,7 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow push-in. A man in silhouette stretches his arm out of the dark opening into the dusk and the tired white dove settles into his open hand, centred in the frame. The subject is centred in the frame. Dusk light, last gold on the water. Heavy with disappointment. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
    "figures": "anonymous",
    "lines": [
-    19
+    20
    ],
    "seconds": 20,
    "kind": "scene",
@@ -409,7 +423,7 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, static camera. The family in silhouette huddled near the dark opening at dusk, a mother's arm around a young wife's shoulders, heads bowed, all turned toward the empty sky, centred in the frame. The subject is centred in the frame. Fading blue dusk. Grief and quiet resolve. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
    "figures": "anonymous",
    "lines": [
-    20
+    21
    ],
    "seconds": 9,
    "kind": "scene",
@@ -421,8 +435,8 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow pan. Seven evenings pass over the great dark shape: the same horizon, the same flat water, a thin line of smoke from a small cooking fire inside rising from the opening, centred in the frame. A few small figures stand in silhouette, seen from behind. The subject is centred in the frame. Slow moving dusk light. Patient and hollow. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
    "figures": "anonymous",
    "lines": [
-    21,
-    22
+    22,
+    23
    ],
    "seconds": 17,
    "kind": "scene",
@@ -434,8 +448,8 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Close-up, slow push-in. The dove in an open hand at evening, a small fresh green olive leaf in her beak, wet and bright, centred in the frame. A few small figures stand in silhouette, seen from behind. The subject is centred in the frame. Warm gold evening light on a green leaf. Wonder and joy. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
    "figures": "anonymous",
    "lines": [
-    23,
-    24
+    24,
+    25
    ],
    "seconds": 20,
    "kind": "scene",
@@ -447,7 +461,7 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow pull back. In a dim straw-floored shelter the family in silhouette passes the single olive leaf from hand to hand, sons and wives pressed close, arms rising in relief, centred in the frame. The subject is centred in the frame. Warm lamp glow and opening light. Breathless joy. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
    "figures": "anonymous",
    "lines": [
-    25
+    26
    ],
    "seconds": 12,
    "kind": "scene",
@@ -460,8 +474,8 @@
    "figures": "anonymous",
    "climax": true,
    "lines": [
-    26,
-    27
+    27,
+    28
    ],
    "seconds": 20,
    "kind": "scene",
@@ -473,7 +487,7 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow push-in. Flat roof boards pulled back, a man in silhouette standing at the opening looking out over a wide green and brown earth steaming in the sun, centred in the frame. The subject is centred in the frame. Bright morning sun on drying earth. Overwhelmed and amazed. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
    "figures": "anonymous",
    "lines": [
-    28
+    29
    ],
    "seconds": 20,
    "kind": "scene",
@@ -485,7 +499,7 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow push-in. A man in silhouette stands at the shut great door with his hand flat on the planks, dry hills glowing through a crack beside him, centred in the frame. The subject is centred in the frame. Gold light through a crack, deep shadow. Restraint and longing. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
    "figures": "anonymous",
    "lines": [
-    29
+    30
    ],
    "seconds": 11,
    "kind": "scene",
@@ -497,7 +511,7 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks to the camera, his lips moving clearly with every word, a calm kind look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Tender and grave. No text, no logos.",
    "id": "k-insight",
    "lines": [
-    30
+    31
    ],
    "ambience": "the open desert at night: a small campfire crackling softly and a light night wind",
    "audio_route": "kokoro"
@@ -507,8 +521,8 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow push-in. Light breaks through parting cloud over the great dark shape on the mountain, a wide shaft of gold reaching the closed door, no person in sight, centred in the frame. A few small figures stand in silhouette, seen from behind. The subject is centred in the frame. Dawn, golden shaft of light. Hushed and holy. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
    "figures": "anonymous",
    "lines": [
-    31,
-    32
+    32,
+    33
    ],
    "seconds": 16,
    "kind": "scene",
@@ -520,8 +534,8 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow pull back. A great side door swings down like a ramp onto the hillside, people and animals in silhouette streaming out in a long line into golden light, centred in the frame. The subject is centred in the frame. Golden morning light on wet grass. Joyful release. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
    "figures": "anonymous",
    "lines": [
-    33,
-    34
+    34,
+    35
    ],
    "seconds": 19,
    "kind": "scene",
@@ -533,8 +547,8 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow push-in. A man in silhouette kneels before a rough altar of fieldstones he has just built, a small flame catching on dry wood, smoke rising straight up, centred in the frame. The subject is centred in the frame. Warm firelight against the clear dusk. Reverent and grateful. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
    "figures": "anonymous",
    "lines": [
-    35,
-    36
+    36,
+    37
    ],
    "seconds": 20,
    "kind": "scene",
@@ -546,8 +560,8 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow tilt up. The smoke from the altar fire rises in a thin steady column into a vast clearing evening sky, the family small in silhouette around it, centred in the frame. The subject is centred in the frame. Warm glow low, deep blue sky above. Tender and solemn. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
    "figures": "anonymous",
    "lines": [
-    37,
-    38
+    38,
+    39
    ],
    "seconds": 20,
    "kind": "scene",
@@ -559,8 +573,8 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow pull back. The family in silhouette stands on a hillside at sunrise with arms open, the green valley below them, warm light on their shoulders, centred in the frame. The subject is centred in the frame. Golden sunrise light. Blessing and new life. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
    "figures": "anonymous",
    "lines": [
-    39,
-    40
+    40,
+    41
    ],
    "seconds": 17,
    "kind": "scene",
@@ -572,7 +586,7 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow push-in. Dark rain clouds gathering over the hills, the family small in silhouette looking up in fear, one child clinging to a mother's robe, centred in the frame. The subject is centred in the frame. Dark storm light, heavy sky. Fear returning. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
    "figures": "anonymous",
    "lines": [
-    41
+    42
    ],
    "seconds": 13,
    "kind": "scene",
@@ -584,7 +598,7 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow push-in. Storm clouds above a bare hilltop, a break of golden light opening in the cloud, no person in sight, centred in the frame. A few small figures stand in silhouette, seen from behind. The subject is centred in the frame. Dramatic storm light with a golden break. Solemn and tender. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
    "figures": "anonymous",
    "lines": [
-    42
+    43
    ],
    "seconds": 15,
    "kind": "scene",
@@ -596,8 +610,8 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow tilt up. A vast rainbow arcs across a dark clearing storm sky above the washed green hills, the great dark shape small on the mountain, centred in the frame. A few small figures stand in silhouette, seen from behind. The subject is centred in the frame. Golden sunlight against dark cloud, full spectrum colour. Awe and wonder. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
    "figures": "anonymous",
    "lines": [
-    43,
-    44
+    44,
+    45
    ],
    "seconds": 20,
    "kind": "scene",
@@ -609,8 +623,8 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow pull back. The family in silhouette stands together on the hilltop under the rainbow, small against the glowing sky, heads tilted up in wonder, centred in the frame. The subject is centred in the frame. Warm rainbow light after rain. Joy and peace. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
    "figures": "anonymous",
    "lines": [
-    45,
-    46
+    46,
+    47
    ],
    "seconds": 20,
    "kind": "scene",
@@ -622,7 +636,7 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level, looks straight into the camera and speaks to the camera, his lips moving clearly with every word, a gentle questioning look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and searching. No text, no logos.",
    "id": "k-bow",
    "lines": [
-    47
+    48
    ],
    "ambience": "the open desert at night: a small campfire crackling softly and a light night wind",
    "audio_route": "kokoro"
@@ -632,8 +646,8 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow drift. An old man in silhouette works among rows of young vines on a sunlit hillside, the hills green behind him, centred in the frame. The subject is centred in the frame. Soft afternoon light. Calm and human. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
    "figures": "anonymous",
    "lines": [
-    48,
-    49
+    49,
+    50
    ],
    "seconds": 20,
    "kind": "scene",
@@ -645,7 +659,7 @@
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks to the camera, his lips moving clearly with every word, a warm expectant look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and expectant. No text, no logos.",
    "id": "k-close",
    "lines": [
-    50
+    51
    ],
    "ambience": "the open desert at night: a small campfire crackling softly and a light night wind",
    "audio_route": "kokoro"
@@ -669,7 +683,7 @@
   "first_comment": "Noah saw dry ground and still waited for God's word before he stepped out. What are you waiting for God to open right now?",
   "chapters": [
    {
-    "shot": "s-voice",
+    "shot": "k-hook",
     "title": "The door that God shut"
    },
    {

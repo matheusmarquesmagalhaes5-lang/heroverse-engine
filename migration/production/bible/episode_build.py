@@ -107,6 +107,7 @@ import existing_edit  # noqa: E402
 
 VOICE = {"voice_id": "am_michael", "speed": 1.0}   # the pinned engine voice (qa_pilot.voice_model_pinned)
 LINE_GAP = plan_check.LINE_GAP
+LONG_XFADE = 0.3   # owner 2026-11-02: the long's picture blends into and out of a talking shot over this long (<= the 0.35 s line gap); the Shorts keep cuts
 TAIL = plan_check.TAIL
 CUT_MAX = 4.0              # a scene cut every 2-4 s (DECISIONS 2026-10-26)
 ESTABLISHING_HOLD = plan_check.ESTABLISHING_HOLD
@@ -2320,7 +2321,7 @@ def compose_step(plan, work, music, out):
     frame = list(short_engine.LONG_FIRST_FRAME if long_first else (short_engine.W, short_engine.H))
     clean = Path(out).with_name(Path(out).stem + ".clean.mp4")
     if long_first:   # E259: 1920x1080, and the caption-free master the Short cuts are made from
-        compose_plan.update(frame=frame, clean_out=str(clean))
+        compose_plan.update(frame=frame, clean_out=str(clean), crossfade=LONG_XFADE)   # owner 2026-11-02: talking shots blend
     save(work / "compose-plan.json", compose_plan)
     short_engine.main(str(work / "compose-plan.json"), str(out))
     runs = clip_check.black_runs(str(out))
@@ -2336,8 +2337,10 @@ def compose_step(plan, work, music, out):
         "lufs": lufs, "keeper_share": layout["keeper_share"], "lesson_share": layout.get("lesson_share"),
         "spoken": {**layout.get("speakers", {}), **layout.get("voice_over", {})},
         "establishing_share": establishing_share(plan, shots, layout["total"]),
-        "cuts": len(shots), "timeline": [{k: c[k] for k in ("shot", "kind", "start", "end", "src_start", "speed")}
-                                         for c in shots]}
+        "cuts": len(shots),
+        "crossfades": short_engine.transitions(shots, load(work / "compose-timeline.json")["sentences"],
+                                               compose_plan.get("crossfade")),
+        "timeline": [{k: c[k] for k in ("shot", "kind", "start", "end", "src_start", "speed")} for c in shots]}
     if long_first:   # E259: what the cuts need, bound to this master in its report: the clean file and the timelines
         items, _ = plan_check.sequence(plan)
         sentences = load(work / "compose-timeline.json")["sentences"]
