@@ -10,13 +10,17 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
 - 30 stills approved as sources (#646, #649). ChatGPT stills are available: the 1 Nov limit applied only to the
   Codex/Work tab. All stills use ONE chat, "HeroVerse — stills" (if a limit or error appears: close the app, wait
   5 min, reopen, continue in the same chat).
-- Talking Keeper shots are Pavo, max 2 generations per line and 1 probe round (E264, #658).
-  `k-close` has a kept Pavo clip from shot-probe 41423359803 (cancelled; artifact
-  `shot-probe-flood-ends-long-41423359803`). `k-insight` and `k-bow` were probed in run 41436544195 (attempts 1;
-  finished successfully, clips not yet compared).
-- Next: approve the best clip of each (fix in the edit, never regenerate), re-run preflight (stale after #658),
-  build, actual audiovisual review, `approve.yml` → `prepublish_gate.py` → `publish.yml` at the live-plan slot
-  (13:30 or 23:30 UTC after the gate), then the cuts.
+- Talking Keeper shots are Pavo, max 2 generations per line and 1 probe round (E264, #658). Correction 2026-11-02
+  (checked against the run records, no clip was approved): NO Pavo clip passed its checks. k-close (run
+  41423359803) failed all 6 generations; k-insight and k-bow (run 41436544195) failed both generations each
+  (AUDIO_NOT_OUR_LINE / FACE_NOT_FOUND / MOUTH_NOT_IN_SYNC; no clip was kept in the artifact or the release).
+  There is nothing to compare or `approve-shot`; `shots/flood-ends-long.json` holds no k-* entry.
+- Next (fallback ladder, PROMPT_GUIDE "Generation cap and fallback"): the three Keeper shots become Keeper
+  voice-over on reviewed still motion of an approved Keeper still (ChatGPT desktop route, 16:9, "centred in the
+  frame", 1-2 stills, then `scene_stills.py approve` by PR); edit the plan accordingly (`voiceover` / still_motion),
+  no new Pavo generation. Then re-run preflight (stale after #658), build, actual audiovisual review, native review
+  (Free Tier proof), `approve.yml` -> `prepublish_gate.py` -> `publish.yml` at 13:30 or 23:30 UTC, then the cuts.
+- 2026-11-02 run: the Desktop Commander device was online but a PowerShell read timed out (60 s); no still was made.
 
 ## Next moments
 
