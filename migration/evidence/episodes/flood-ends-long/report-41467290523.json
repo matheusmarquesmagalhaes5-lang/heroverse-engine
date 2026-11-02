@@ -1,0 +1,5048 @@
+{
+ "episode": "flood-ends-long",
+ "shots": {
+  "s-voice": {
+   "kind": "scene",
+   "lines": null,
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow push-in. Morning light breaks through the parting clouds and slides across the still water and the bare mountain top, mist lifting slowly off the slopes, the great dark shape on the peak unmoving, centred in the frame. Dawn, golden light after rain. Hushed and hopeful. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No people, no text, no logos. No stone buildings, towers, churches, glass lanterns, modern clothing or roads.",
+    "seconds": 8,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-voice.jpg"
+   },
+   "speaker": "god",
+   "line": "Go forth of the ark, thou, and thy wife, and thy sons, and thy sons’ wives with thee.",
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "push_in",
+    "source": "director",
+    "ease": "settle",
+    "strength": 0.6325,
+    "hold": null,
+    "dir": 1,
+    "atmosphere": [
+     "rain",
+     "mist"
+    ],
+    "atmosphere_why": [
+     "rain in the prompt",
+     "haze for the prompt's mist or smoke"
+    ],
+    "beat": "hook",
+    "emotion": "awe",
+    "span": 8.0,
+    "reason": "beat hook; emotion awe; span 8 s; the prompt names push_in; clear near/far depth: parallax; subject wider than the band: centred",
+    "subject": [
+     -0.0949,
+     -0.35,
+     0.0949,
+     0.35
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.08,
+      0.0,
+      0.0,
+      "settle"
+     ],
+     [
+      1.0,
+      1.174875,
+      0.0,
+      0.0,
+      "settle"
+     ]
+    ],
+    "seed": 3963325214
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "83c680bec9971f677554a4c214b34e9596233859eaed56382d72062c1de97f4a",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-voice",
+    "still_sha256": "c1a4978685a58bbc13e742aab800483bae90d68d39d342e3e016f6a48cd1d404",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-voice.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 8,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-hold": {
+   "kind": "scene",
+   "lines": [
+    0
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow push-in. The family in silhouette sits close together in the dark among the straw and the resting animals, watching a thin line of grey daylight, centred in the frame. The subject is centred in the frame. Dim grey light in deep shadow. Weary and waiting. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 18,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-hold.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "parallax_2_5d",
+    "source": "director",
+    "ease": "gentle",
+    "strength": 0.888,
+    "hold": null,
+    "dir": -1,
+    "atmosphere": [
+     "mist",
+     "vignette",
+     "film_grain"
+    ],
+    "atmosphere_why": [
+     "haze for dread",
+     "a breathing vignette for the dark",
+     "grain holds the dark gradients"
+    ],
+    "beat": "escalation",
+    "emotion": "dread",
+    "span": 18.0,
+    "reason": "beat escalation; emotion dread; span 18 s; the prompt names push_in; clear near/far depth: parallax; after push_in: varied; subject wider than the band: centred",
+    "subject": [
+     -0.0949,
+     -0.35,
+     0.0949,
+     0.35
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.11,
+      0.010656,
+      0.0,
+      "gentle"
+     ],
+     [
+      1.0,
+      1.14552,
+      -0.010656,
+      0.0,
+      "gentle"
+     ]
+    ],
+    "seed": 1080401920
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "48abc54e2fdc035426363ac9131e5b3ee613869789dacba9151114041d5b7734",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-hold",
+    "still_sha256": "cb592cdb79401e81e826fe119ececd503be80e6fef6e9744aac94b5a8511f258",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-hold.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 18,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-door": {
+   "kind": "scene",
+   "lines": [
+    1
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow pull back. A massive closed wooden door in the dark timber shelter, a single beam of grey light along its edge, a man in silhouette standing before it with one hand flat on the wood, centred in the frame. The subject is centred in the frame. Cold grey light, deep shadow. Tense and uncertain. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 13,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-door.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "pan_right",
+    "source": "director",
+    "ease": "build",
+    "strength": 0.7505,
+    "hold": null,
+    "dir": 1,
+    "atmosphere": [
+     "vignette",
+     "film_grain"
+    ],
+    "atmosphere_why": [
+     "a breathing vignette for the dark",
+     "grain holds the dark gradients"
+    ],
+    "beat": "escalation",
+    "emotion": "tension",
+    "span": 13.0,
+    "reason": "beat escalation; emotion tension; span 13 s; the prompt names pull_back; clear near/far depth: parallax; after parallax_2_5d: varied",
+    "subject": [
+     0.0002,
+     -0.1773,
+     0.1901,
+     0.6227
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.182515,
+      0.064635,
+      0.076246,
+      "build"
+     ],
+     [
+      1.0,
+      1.19002,
+      0.079318,
+      0.078913,
+      "build"
+     ]
+    ],
+    "seed": 1876040370
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "75502c9153d3053ac4a929ddcea9ae79c1afd402a48d21e08b94b4d581cf7a3f",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-door",
+    "still_sha256": "07fa7268838d1023b71aa42aeffc8b46c8dd128bf8dae7f994c83d487f680d00",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-door.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 13,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-wind": {
+   "kind": "scene",
+   "lines": [
+    2,
+    3
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow push-in. A strong wind ruffles the endless grey water and tears the low clouds open above a great dark shape that rides alone on the water, centred in the frame. A few small figures stand in silhouette, seen from behind. The subject is centred in the frame. Grey morning, wind and torn cloud. Turning and hopeful. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 20,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-wind.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "push_in",
+    "source": "director",
+    "ease": "in_out",
+    "strength": 1.035,
+    "hold": null,
+    "dir": -1,
+    "atmosphere": [
+     "mist",
+     "vignette"
+    ],
+    "atmosphere_why": [
+     "haze for joy",
+     "a breathing vignette for the kjv"
+    ],
+    "beat": "kjv",
+    "emotion": "joy",
+    "span": 20.0,
+    "reason": "beat kjv; emotion joy; span 20 s; the prompt names push_in; clear near/far depth: parallax; after pan_right: varied",
+    "subject": [
+     -0.0603,
+     0.1474,
+     0.1295,
+     0.5363
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.06,
+      0.027781,
+      0.027376,
+      "in_out"
+     ],
+     [
+      1.0,
+      1.21525,
+      0.0346,
+      0.087636,
+      "in_out"
+     ]
+    ],
+    "seed": 1968700425
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "28bffae799dca0ed4096392b483521151a9bd535346ed8819bdc7a96c06a59be",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-wind",
+    "still_sha256": "40eded1664e88f49ba711bf6a8f865e83459cebbadd5cc23c17125f0026140e5",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-wind.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 20,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-fountains": {
+   "kind": "scene",
+   "lines": [
+    4,
+    5
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow pan. Dark fountains of water sink back into the deep and the last curtains of rain thin out against a clearing sky over a great dark shape floating on the water, centred in the frame. A few small figures stand in silhouette, seen from behind. The subject is centred in the frame. Soft silver light breaking through cloud. Quiet and relieved. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 19,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-fountains.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "parallax_2_5d",
+    "source": "director",
+    "ease": "gentle",
+    "strength": 0.828,
+    "hold": null,
+    "dir": 1,
+    "atmosphere": [
+     "rain",
+     "mist",
+     "vignette"
+    ],
+    "atmosphere_why": [
+     "rain in the prompt",
+     "haze for calm",
+     "a breathing vignette for the kjv"
+    ],
+    "beat": "kjv",
+    "emotion": "calm",
+    "span": 19.0,
+    "reason": "beat kjv; emotion calm; span 19 s; clear near/far depth: parallax; after push_in: varied",
+    "subject": [
+     -0.0168,
+     0.0589,
+     0.1731,
+     0.6145
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.16,
+      0.055977,
+      0.06804,
+      "gentle"
+     ],
+     [
+      1.0,
+      1.19312,
+      0.067942,
+      0.080005,
+      "gentle"
+     ]
+    ],
+    "seed": 2743371692
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "1a8f298724686f347551ed88b20054a71c055538507dc5261c824f645d962edd",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-fountains",
+    "still_sha256": "7363ca7f6c564d4f54384b58e04649267a86c98451346000e3f2e2d3bb36c9d1",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-fountains.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 19,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-lines": {
+   "kind": "scene",
+   "lines": [
+    6,
+    7
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow tilt down. In a dark timber shelter a son seen in silhouette scratches a tally of marks into a wooden post with a stone, rows and rows of them, the family asleep in the straw behind him, centred in the frame. The subject is centred in the frame. Dim lamp light and shadow. Weary and patient. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 20,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-lines.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "hold_then_push",
+    "source": "director",
+    "ease": "gentle",
+    "strength": 0.828,
+    "hold": 0.3,
+    "dir": -1,
+    "atmosphere": [
+     "torch_flicker",
+     "embers",
+     "vignette"
+    ],
+    "atmosphere_why": [
+     "a lamp or torch in the prompt",
+     "fire in the picture",
+     "a breathing vignette for the kjv"
+    ],
+    "beat": "kjv",
+    "emotion": "calm",
+    "span": 20.0,
+    "reason": "beat kjv; emotion calm; span 20 s; the prompt names tilt_down; clear near/far depth: parallax; after parallax_2_5d: varied; subject wider than the band: centred",
+    "subject": [
+     -0.0949,
+     -0.35,
+     0.0949,
+     0.35
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.08,
+      0.0,
+      0.0,
+      "gentle"
+     ],
+     [
+      0.3,
+      1.08,
+      0.0,
+      0.0,
+      "gentle"
+     ],
+     [
+      1.0,
+      1.21662,
+      0.0,
+      0.0,
+      "in_out"
+     ]
+    ],
+    "seed": 849089292
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "3e205dc93d447fa03617147c523ebd7bbf89d8f69b833e4385bf42f27cd322d3",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-lines",
+    "still_sha256": "8c8641dbc57d4573d1ecf09505e55e39a917fa1de25545fce38bd4b6df23ed30",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-lines.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 20,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-ararat": {
+   "kind": "scene",
+   "lines": [
+    8,
+    9
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow push-in. A great dark shape has settled onto a bare rocky mountain top, tilted a little, grey water on every side, mist rising, centred in the frame. A few small figures stand in silhouette, seen from behind. The subject is centred in the frame. Pale dawn light over wet rock. Awestruck and hushed. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 20,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-ararat.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "tilt_up",
+    "source": "director",
+    "ease": "in_out",
+    "strength": 1.035,
+    "hold": null,
+    "dir": 1,
+    "atmosphere": [
+     "god_rays",
+     "mist",
+     "embers"
+    ],
+    "atmosphere_why": [
+     "light from above for awe",
+     "haze for the prompt's mist or smoke",
+     "fire in the picture"
+    ],
+    "beat": "kjv",
+    "emotion": "awe",
+    "span": 20.0,
+    "reason": "beat kjv; emotion awe; span 20 s; the prompt names push_in; clear near/far depth: parallax; after hold_then_push: varied; subject wider than the band: centred",
+    "subject": [
+     -0.0949,
+     -0.35,
+     0.0949,
+     0.35
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.17105,
+      0.0,
+      0.046225,
+      "in_out"
+     ],
+     [
+      1.0,
+      1.1814,
+      0.0,
+      -0.046225,
+      "in_out"
+     ]
+    ],
+    "seed": 3925719291
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "fb5739f47f2050f1008052b0067877d6a84f3b9f40f78ee97339ab3dea27e7df",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-ararat",
+    "still_sha256": "53581da935004d83b548f31a0412069befd672df1f14b0f8edc1b6ed5c03513a",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-ararat.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 20,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-peaks": {
+   "kind": "scene",
+   "lines": [
+    10,
+    11
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow tilt up. The first grey mountain peaks push up out of the water like islands in a vast silver sea, birds-eye calm, centred in the frame. A few small figures stand in silhouette, seen from behind. The subject is centred in the frame. Soft morning light and low mist. Hope rising slowly. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 20,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-peaks.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "parallax_2_5d",
+    "source": "director",
+    "ease": "gentle",
+    "strength": 1.035,
+    "hold": null,
+    "dir": -1,
+    "atmosphere": [
+     "mist",
+     "embers",
+     "vignette"
+    ],
+    "atmosphere_why": [
+     "haze for the prompt's mist or smoke",
+     "fire in the picture",
+     "a breathing vignette for the kjv"
+    ],
+    "beat": "kjv",
+    "emotion": "joy",
+    "span": 20.0,
+    "reason": "beat kjv; emotion joy; span 20 s; the prompt names tilt_up; clear near/far depth: parallax; after tilt_up: varied",
+    "subject": [
+     -0.1928,
+     0.3335,
+     -0.0029,
+     0.5002
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.25,
+      -0.08543,
+      0.099074,
+      "gentle"
+     ],
+     [
+      1.0,
+      1.2914,
+      -0.098592,
+      0.111897,
+      "gentle"
+     ]
+    ],
+    "seed": 426061074
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "169af02bd59860b5bc81963aedc55f2f847a7170dd84ae67a40381f0e2da360b",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-peaks",
+    "still_sha256": "6eca5e70e099562fe17bd50648cbb4fe72026ddcd2953b1d141d0e5dd6d46089",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-peaks.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 20,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-window": {
+   "kind": "scene",
+   "lines": [
+    12,
+    13
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow push-in. A man in silhouette reaches up and pushes open a small square opening high in the dark planking, a bright slice of daylight falling on his hands, centred in the frame. The subject is centred in the frame. Bright daylight against deep shadow. Anxious and brave. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 19,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-window.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "push_in",
+    "source": "director",
+    "ease": "build",
+    "strength": 0.9315,
+    "hold": null,
+    "dir": 1,
+    "atmosphere": [
+     "mist",
+     "vignette",
+     "film_grain"
+    ],
+    "atmosphere_why": [
+     "haze for dread",
+     "a breathing vignette for the kjv",
+     "grain holds the dark gradients"
+    ],
+    "beat": "kjv",
+    "emotion": "dread",
+    "span": 19.0,
+    "reason": "beat kjv; emotion dread; span 19 s; the prompt names push_in; after parallax_2_5d: varied",
+    "subject": [
+     -0.0781,
+     -0.2648,
+     0.1118,
+     0.1629
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.06,
+      0.01685,
+      -0.027376,
+      "build"
+     ],
+     [
+      1.0,
+      1.199725,
+      0.01685,
+      -0.05095,
+      "build"
+     ]
+    ],
+    "seed": 1873617243
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "96e399e2b62b8847bdc1ff5f45c3a6069297c1582dbe816c24a2f20027f55bb6",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-window",
+    "still_sha256": "d154550d52cffdabac1e8f276a3b693de8a74d6f6972ea9be8959268f9586743",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-window.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 19,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-raven": {
+   "kind": "scene",
+   "lines": [
+    14,
+    15
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow tilt up. A black raven beats away over the empty water into a grey sky, shrinking to a dot, the small dark opening far behind it, centred in the frame. A few small figures stand in silhouette, seen from behind. The subject is centred in the frame. Flat grey light. Lonely and uncertain. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 19,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-raven.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "tilt_up",
+    "source": "director",
+    "ease": "gentle",
+    "strength": 0.828,
+    "hold": null,
+    "dir": -1,
+    "atmosphere": [
+     "water_shimmer",
+     "mist",
+     "vignette"
+    ],
+    "atmosphere_why": [
+     "water in the prompt and in the lower frame",
+     "haze for grief",
+     "a breathing vignette for the kjv"
+    ],
+    "beat": "kjv",
+    "emotion": "grief",
+    "span": 19.0,
+    "reason": "beat kjv; emotion grief; span 19 s; the prompt names tilt_up; clear near/far depth: parallax; after push_in: varied; subject wider than the band: centred",
+    "subject": [
+     -0.0949,
+     -0.35,
+     0.0949,
+     0.35
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.16484,
+      0.0,
+      0.03898,
+      "gentle"
+     ],
+     [
+      1.0,
+      1.17312,
+      0.0,
+      -0.03898,
+      "gentle"
+     ]
+    ],
+    "seed": 3063400296
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "dbc912d12148110fa0b1df6053af7f01265bc0b7ed9d6cd7dd77d1468d177f0f",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-raven",
+    "still_sha256": "f25095789a2e3e9cd2302de6159d1a0d7a9fd813f9f447db21233db35780766a",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-raven.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 19,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-hands": {
+   "kind": "scene",
+   "lines": [
+    16,
+    17
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Close-up, slow push-in. Two weathered hands in rough wool sleeves lift a white dove from a small wooden cage, the bird calm and bright against the dark, centred in the frame. A few small figures stand in silhouette, seen from behind. The subject is centred in the frame. Soft opening light on white feathers. Tender and fearful. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 19,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-hands.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "push_in",
+    "source": "director",
+    "ease": "build",
+    "strength": 0.9315,
+    "hold": null,
+    "dir": 1,
+    "atmosphere": [
+     "mist",
+     "vignette",
+     "film_grain"
+    ],
+    "atmosphere_why": [
+     "haze for dread",
+     "a breathing vignette for the kjv",
+     "grain holds the dark gradients"
+    ],
+    "beat": "kjv",
+    "emotion": "dread",
+    "span": 19.0,
+    "reason": "beat kjv; emotion dread; span 19 s; the prompt names push_in; clear near/far depth: parallax; after tilt_up: varied",
+    "subject": [
+     -0.072,
+     -0.3189,
+     0.1179,
+     0.4311
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.06,
+      0.02295,
+      0.027376,
+      "build"
+     ],
+     [
+      1.0,
+      1.199725,
+      0.02295,
+      0.0561,
+      "build"
+     ]
+    ],
+    "seed": 1341205471
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "cdd5510028d392ce65a10c2a1e7020c4bf27481b1ca8d50c0654b05f75a24247",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-hands",
+    "still_sha256": "1a003609ffdabdeea58972e71bb2760e90f7d2cd28e2fbf9c7f7d5e71d8c22aa",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-hands.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 19,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-dove-out": {
+   "kind": "scene",
+   "lines": [
+    18
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow pull back. A white dove circles above endless grey water, searching, wings tilted, nothing but waves beneath her, centred in the frame. A few small figures stand in silhouette, seen from behind. The subject is centred in the frame. Cold pale light on the water. Searching and desperate. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 11,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-dove-out.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "parallax_2_5d",
+    "source": "director",
+    "ease": "gentle",
+    "strength": 0.7908,
+    "hold": null,
+    "dir": -1,
+    "atmosphere": [
+     "water_shimmer"
+    ],
+    "atmosphere_why": [
+     "water in the prompt and in the lower frame"
+    ],
+    "beat": "escalation",
+    "emotion": "urgency",
+    "span": 11.0,
+    "reason": "beat escalation; emotion urgency; span 11 s; the prompt names pull_back; clear near/far depth: parallax; after push_in: varied",
+    "subject": [
+     -0.2196,
+     0.0037,
+     -0.0298,
+     0.6148
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.36,
+      -0.11521,
+      0.131427,
+      "gentle"
+     ],
+     [
+      1.0,
+      1.391632,
+      -0.127944,
+      0.139784,
+      "gentle"
+     ]
+    ],
+    "seed": 986639892
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "e82572e9d6f5c126f2ca6c2020c1ab868e7af3a99f901169bc1b55f13813969b",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-dove-out",
+    "still_sha256": "471086ba46fc0ae5d6714ec8024224f0a05b32121d75e377f94e8de06c5d02be",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-dove-out.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 11,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-return": {
+   "kind": "scene",
+   "lines": [
+    19
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow push-in. A man in silhouette stretches his arm out of the dark opening into the dusk and the tired white dove settles into his open hand, centred in the frame. The subject is centred in the frame. Dusk light, last gold on the water. Heavy with disappointment. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 20,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-return.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "hold_then_push",
+    "source": "director",
+    "ease": "gentle",
+    "strength": 0.828,
+    "hold": 0.3,
+    "dir": 1,
+    "atmosphere": [
+     "embers",
+     "mist",
+     "vignette"
+    ],
+    "atmosphere_why": [
+     "fire in the picture",
+     "haze for grief",
+     "a breathing vignette for the kjv"
+    ],
+    "beat": "kjv",
+    "emotion": "grief",
+    "span": 20.0,
+    "reason": "beat kjv; emotion grief; span 20 s; the prompt names push_in; clear near/far depth: parallax; after parallax_2_5d: varied",
+    "subject": [
+     -0.1963,
+     -0.3017,
+     -0.0064,
+     0.2816
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.13,
+      -0.057001,
+      -0.01005,
+      "gentle"
+     ],
+     [
+      0.3,
+      1.13,
+      -0.057001,
+      -0.01005,
+      "gentle"
+     ],
+     [
+      1.0,
+      1.26662,
+      -0.10135,
+      -0.01005,
+      "in_out"
+     ]
+    ],
+    "seed": 3947859009
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "811ffe335986915587925d2764f8788f51364a9718a74a9cbd1804e44168d484",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-return",
+    "still_sha256": "5220fb8981377e66349c9ed1f66cde90afd802fdc230e4f3187d2083776c1f25",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-return.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 20,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-family": {
+   "kind": "scene",
+   "lines": [
+    20
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, static camera. The family in silhouette huddled near the dark opening at dusk, a mother's arm around a young wife's shoulders, heads bowed, all turned toward the empty sky, centred in the frame. The subject is centred in the frame. Fading blue dusk. Grief and quiet resolve. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 9,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-family.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "pull_back",
+    "source": "director",
+    "ease": "gentle",
+    "strength": 0.4577,
+    "hold": null,
+    "dir": -1,
+    "atmosphere": [
+     "mist",
+     "vignette",
+     "film_grain"
+    ],
+    "atmosphere_why": [
+     "haze for grief",
+     "a breathing vignette for the dark",
+     "grain holds the dark gradients"
+    ],
+    "beat": "escalation",
+    "emotion": "grief",
+    "span": 9.0,
+    "reason": "beat escalation; emotion grief; span 9 s; after hold_then_push: varied",
+    "subject": [
+     -0.2477,
+     -0.2327,
+     -0.0578,
+     0.5173
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.428655,
+      -0.1495,
+      0.1423,
+      "gentle"
+     ],
+     [
+      1.0,
+      1.36,
+      -0.131832,
+      0.131427,
+      "gentle"
+     ]
+    ],
+    "seed": 1744891278
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "39b888a36ad31c8ed9212f00d86cf30454ea29a10fe0385525cf490005fccd20",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-family",
+    "still_sha256": "6cbba38c01c4ad9e092ae2ea4b3461ca6071ad672c3dc86bacc73e88eb0802bd",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-family.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 9,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-wait7": {
+   "kind": "scene",
+   "lines": [
+    21,
+    22
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow pan. Seven evenings pass over the great dark shape: the same horizon, the same flat water, a thin line of smoke from a small cooking fire inside rising from the opening, centred in the frame. A few small figures stand in silhouette, seen from behind. The subject is centred in the frame. Slow moving dusk light. Patient and hollow. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 17,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-wait7.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "parallax_2_5d",
+    "source": "director",
+    "ease": "gentle",
+    "strength": 0.816,
+    "hold": null,
+    "dir": 1,
+    "atmosphere": [
+     "embers",
+     "mist",
+     "vignette"
+    ],
+    "atmosphere_why": [
+     "fire in the prompt",
+     "haze for the prompt's mist or smoke",
+     "a breathing vignette for the kjv"
+    ],
+    "beat": "kjv",
+    "emotion": "calm",
+    "span": 17.0,
+    "reason": "beat kjv; emotion calm; span 17 s; clear near/far depth: parallax; after pull_back: varied; subject wider than the band: centred",
+    "subject": [
+     -0.0949,
+     -0.35,
+     0.0949,
+     0.35
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.11,
+      -0.009792,
+      0.0,
+      "gentle"
+     ],
+     [
+      1.0,
+      1.14264,
+      0.009792,
+      0.0,
+      "gentle"
+     ]
+    ],
+    "seed": 3165239539
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "fd2975e719055e1ee41375f7e2a8071b47db67e2fc93ef38ac467fea6fcc0a70",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-wait7",
+    "still_sha256": "f13af1c1bf1d3684ecd01d78b288bf53e058e3c93c46f36d9a098e2170c7b0f6",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-wait7.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 17,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-leaf": {
+   "kind": "scene",
+   "lines": [
+    23,
+    24
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Close-up, slow push-in. The dove in an open hand at evening, a small fresh green olive leaf in her beak, wet and bright, centred in the frame. A few small figures stand in silhouette, seen from behind. The subject is centred in the frame. Warm gold evening light on a green leaf. Wonder and joy. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 20,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-leaf.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "push_in",
+    "source": "director",
+    "ease": "in_out",
+    "strength": 1.035,
+    "hold": null,
+    "dir": -1,
+    "atmosphere": [
+     "embers",
+     "vignette",
+     "film_grain"
+    ],
+    "atmosphere_why": [
+     "fire in the picture",
+     "a breathing vignette for the kjv",
+     "grain holds the dark gradients"
+    ],
+    "beat": "kjv",
+    "emotion": "awe",
+    "span": 20.0,
+    "reason": "beat kjv; emotion awe; span 20 s; the prompt names push_in; clear near/far depth: parallax; after parallax_2_5d: varied",
+    "subject": [
+     -0.1841,
+     -0.2979,
+     0.0057,
+     0.2854
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.09,
+      -0.040764,
+      -0.00625,
+      "in_out"
+     ],
+     [
+      1.0,
+      1.24525,
+      -0.0892,
+      -0.00625,
+      "in_out"
+     ]
+    ],
+    "seed": 728352162
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "0dc122e2a20f13427661c9fe42f13033617b32b6d0ab694641ef10d3866ceed5",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-leaf",
+    "still_sha256": "ee1a681f47edcc36569ad49a776bde699ea18bb38092fa5f10d59d346896d121",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-leaf.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 20,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-joy": {
+   "kind": "scene",
+   "lines": [
+    25
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow pull back. In a dim straw-floored shelter the family in silhouette passes the single olive leaf from hand to hand, sons and wives pressed close, arms rising in relief, centred in the frame. The subject is centred in the frame. Warm lamp glow and opening light. Breathless joy. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 12,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-joy.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "pan_to_subject",
+    "source": "director",
+    "ease": "settle",
+    "strength": 0.782,
+    "hold": null,
+    "dir": 1,
+    "atmosphere": [
+     "torch_flicker",
+     "embers",
+     "vignette"
+    ],
+    "atmosphere_why": [
+     "a lamp or torch in the prompt",
+     "fire in the picture",
+     "a breathing vignette for the dark"
+    ],
+    "beat": "escalation",
+    "emotion": "joy",
+    "span": 12.0,
+    "reason": "beat escalation; emotion joy; span 12 s; the prompt names pull_back; a face off centre: the pan lands on it; clear near/far depth: parallax; after push_in: varied",
+    "subject": [
+     -0.165,
+     -0.4194,
+     -0.035,
+     -0.1306
+    ],
+    "subject_from": "face",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.09,
+      -0.040764,
+      -0.040358,
+      "settle"
+     ],
+     [
+      1.0,
+      1.1291,
+      -0.056649,
+      -0.056244,
+      "settle"
+     ]
+    ],
+    "seed": 1897430043
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "ace4dd54bccd49bf72d8599248ef2363cb4e54ce6043efdeacbfefc8dff48485",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-joy",
+    "still_sha256": "5716f46b060934db747ad47d6cb086d644f3d5e10a4856d92259ac74622a6dd3",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-joy.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 12,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-release": {
+   "kind": "scene",
+   "lines": [
+    26,
+    27
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow tilt up. Cupped hands open at the dark opening and the dove flies up and away into the bright sky, figures in silhouette following it with their eyes, centred in the frame. The subject is centred in the frame. Clear morning light. Letting go. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 20,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-release.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "hold_then_push",
+    "source": "director",
+    "ease": "in_out",
+    "strength": 1.3455,
+    "hold": 0.35,
+    "dir": -1,
+    "atmosphere": [
+     "vignette",
+     "embers",
+     "mist"
+    ],
+    "atmosphere_why": [
+     "a breathing vignette for the climax",
+     "fire in the picture",
+     "haze for dread"
+    ],
+    "beat": "climax",
+    "emotion": "dread",
+    "span": 20.0,
+    "reason": "beat climax; emotion dread; span 20 s; the prompt names tilt_up; clear near/far depth: parallax; after pan_to_subject: varied",
+    "subject": [
+     -0.1132,
+     -0.0697,
+     0.0766,
+     0.4581
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.06,
+      -0.0183,
+      0.027376,
+      "in_out"
+     ],
+     [
+      0.35,
+      1.06,
+      -0.0183,
+      0.027376,
+      "in_out"
+     ],
+     [
+      1.0,
+      1.282007,
+      -0.0183,
+      0.109061,
+      "in_out"
+     ]
+    ],
+    "seed": 941607263
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "f3b773506fdd1b7077e4026b812815b98641ad753dd8ac3787213b7d18d1fce8",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-release",
+    "still_sha256": "89485af2f0a37e998e6bacdea61872d4964d33b6adbb050535f508d4e4480870",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-release.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 20,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-dry": {
+   "kind": "scene",
+   "lines": [
+    28
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow push-in. Flat roof boards pulled back, a man in silhouette standing at the opening looking out over a wide green and brown earth steaming in the sun, centred in the frame. The subject is centred in the frame. Bright morning sun on drying earth. Overwhelmed and amazed. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 20,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-dry.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "pull_back",
+    "source": "director",
+    "ease": "settle",
+    "strength": 0.92,
+    "hold": null,
+    "dir": 1,
+    "atmosphere": [
+     "vignette",
+     "film_grain"
+    ],
+    "atmosphere_why": [
+     "a breathing vignette for the dark",
+     "grain holds the dark gradients"
+    ],
+    "beat": "aftermath",
+    "emotion": "awe",
+    "span": 20.0,
+    "reason": "beat aftermath; emotion awe; span 20 s; the prompt names push_in; clear near/far depth: parallax; after hold_then_push: varied",
+    "subject": [
+     0.008,
+     -0.3144,
+     0.1978,
+     0.2411
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.278,
+      0.1029,
+      -0.03665,
+      "settle"
+     ],
+     [
+      1.0,
+      1.14,
+      0.060883,
+      -0.03665,
+      "settle"
+     ]
+    ],
+    "seed": 108616550
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "50e291df70a7653e2164e50c9c9f5c6d3c06ec7f34b0029ffff04ba46f06464e",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-dry",
+    "still_sha256": "69e00bca8a04483c241a0cd3190ad7059d79c36b052cafbd44f3771e09083599",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-dry.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 20,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-shut": {
+   "kind": "scene",
+   "lines": [
+    29
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow push-in. A man in silhouette stands at the shut great door with his hand flat on the planks, dry hills glowing through a crack beside him, centred in the frame. The subject is centred in the frame. Gold light through a crack, deep shadow. Restraint and longing. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 11,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-shut.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "push_in",
+    "source": "director",
+    "ease": "settle",
+    "strength": 0.5867,
+    "hold": null,
+    "dir": -1,
+    "atmosphere": [
+     "dust",
+     "embers",
+     "vignette"
+    ],
+    "atmosphere_why": [
+     "dust or wind in the prompt",
+     "fire in the picture",
+     "a breathing vignette for the dark"
+    ],
+    "beat": "aftermath",
+    "emotion": "neutral",
+    "span": 11.0,
+    "reason": "beat aftermath; emotion neutral; span 11 s; the prompt names push_in; after pull_back: varied",
+    "subject": [
+     -0.1973,
+     -0.2546,
+     -0.0075,
+     0.4954
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.14,
+      -0.060883,
+      0.060478,
+      "settle"
+     ],
+     [
+      1.0,
+      1.228005,
+      -0.092315,
+      0.09191,
+      "settle"
+     ]
+    ],
+    "seed": 3883627151
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "0ee336ea0777397bd1ac01e91f1e880dd9505aa55883e3af895ffdeea01e0a93",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-shut",
+    "still_sha256": "250ff57eecaeb7c729a77d262b0ae7413df0b35f3e33c2128b1314f66ad65883",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-shut.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 11,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "k-insight": {
+   "kind": "keeper",
+   "lines": [
+    30
+   ],
+   "request": {
+    "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a calm kind look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Tender and grave. No text, no logos.",
+    "seconds": 10,
+    "aspect_ratio": "16:9",
+    "references": [
+     ".episode/flood-ends-long/refs/ch-keeper-talk.jpg"
+    ],
+    "audios": [
+     ".episode/flood-ends-long/keeper/k-insight.wav"
+    ],
+    "sound": false
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "parallax_2_5d",
+    "source": "director",
+    "ease": "gentle",
+    "strength": 0.4,
+    "hold": null,
+    "dir": 1,
+    "atmosphere": [
+     "embers",
+     "dust",
+     "vignette"
+    ],
+    "atmosphere_why": [
+     "fire in the picture",
+     "dust or wind in the prompt",
+     "a breathing vignette for the keeper"
+    ],
+    "beat": "keeper",
+    "emotion": "calm",
+    "span": 10.0,
+    "reason": "beat keeper; emotion calm; span 10 s; a face off centre: the pan lands on it; clear near/far depth: parallax; after push_in: varied; subject wider than the band: centred",
+    "subject": [
+     -0.0949,
+     -0.35,
+     0.0949,
+     0.35
+    ],
+    "subject_from": "face",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.11,
+      -0.0048,
+      0.0,
+      "gentle"
+     ],
+     [
+      1.0,
+      1.126,
+      0.0048,
+      0.0,
+      "gentle"
+     ]
+    ],
+    "seed": 1388853233
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "7c3fa222f20acb475247778c7513ea2b5cf9a52626e99c045beefe88fce215ce",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-k-insight",
+    "still_sha256": "fd3ffd3708872b1b662c649649b917cfc95f9f2c49f6d047b3105c2d98542065",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-k-insight.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 20,
+    "licence": "Pavo generated (owner-owned)"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-voice-go": {
+   "kind": "scene",
+   "lines": [
+    31,
+    32
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow push-in. Light breaks through parting cloud over the great dark shape on the mountain, a wide shaft of gold reaching the closed door, no person in sight, centred in the frame. A few small figures stand in silhouette, seen from behind. The subject is centred in the frame. Dawn, golden shaft of light. Hushed and holy. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 16,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-voice-go.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "pull_back",
+    "source": "director",
+    "ease": "settle",
+    "strength": 0.8533,
+    "hold": null,
+    "dir": -1,
+    "atmosphere": [
+     "god_rays",
+     "embers",
+     "mist"
+    ],
+    "atmosphere_why": [
+     "light from above for awe",
+     "fire in the picture",
+     "haze for awe"
+    ],
+    "beat": "aftermath",
+    "emotion": "awe",
+    "span": 16.0,
+    "reason": "beat aftermath; emotion awe; span 16 s; the prompt names push_in; clear near/far depth: parallax; after parallax_2_5d: varied",
+    "subject": [
+     -0.0357,
+     0.1768,
+     0.1542,
+     0.5657
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.187995,
+      0.05925,
+      0.078197,
+      "settle"
+     ],
+     [
+      1.0,
+      1.06,
+      0.027781,
+      0.027376,
+      "settle"
+     ]
+    ],
+    "seed": 1613503629
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "077d0e9047717e85186693c9354e3ad354c35730eef01111b65fbae2db2a7898",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-voice-go",
+    "still_sha256": "71fdf5397bbf3d375a7eaf132e99f737b65a9d803571e9e26a574847c0e6fc18",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-voice-go.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 16,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-exit": {
+   "kind": "scene",
+   "lines": [
+    33,
+    34
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow pull back. A great side door swings down like a ramp onto the hillside, people and animals in silhouette streaming out in a long line into golden light, centred in the frame. The subject is centred in the frame. Golden morning light on wet grass. Joyful release. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 19,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-exit.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "tilt_up",
+    "source": "director",
+    "ease": "settle",
+    "strength": 0.92,
+    "hold": null,
+    "dir": 1,
+    "atmosphere": [
+     "embers"
+    ],
+    "atmosphere_why": [
+     "fire in the picture"
+    ],
+    "beat": "aftermath",
+    "emotion": "joy",
+    "span": 19.0,
+    "reason": "beat aftermath; emotion joy; span 19 s; the prompt names pull_back; clear near/far depth: parallax; after pull_back: varied",
+    "subject": [
+     -0.1516,
+     0.1566,
+     0.0383,
+     0.49
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.1476,
+      -0.05665,
+      0.063382,
+      "settle"
+     ],
+     [
+      1.0,
+      1.1568,
+      -0.05665,
+      0.066847,
+      "settle"
+     ]
+    ],
+    "seed": 1458813765
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "3399fb071344356145ef23ad7025032a826a6d49b41de7bd1a8688cebc9fa93c",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-exit",
+    "still_sha256": "6a696004df17713fe288d7fada15fc5006189f4d2673e87023c8f238dd9cfb74",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-exit.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 19,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-altar": {
+   "kind": "scene",
+   "lines": [
+    35,
+    36
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow push-in. A man in silhouette kneels before a rough altar of fieldstones he has just built, a small flame catching on dry wood, smoke rising straight up, centred in the frame. The subject is centred in the frame. Warm firelight against the clear dusk. Reverent and grateful. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 20,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-altar.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "parallax_2_5d",
+    "source": "director",
+    "ease": "gentle",
+    "strength": 0.92,
+    "hold": null,
+    "dir": -1,
+    "atmosphere": [
+     "torch_flicker",
+     "embers",
+     "mist"
+    ],
+    "atmosphere_why": [
+     "a lamp or torch in the prompt",
+     "fire in the prompt",
+     "haze for the prompt's mist or smoke"
+    ],
+    "beat": "aftermath",
+    "emotion": "awe",
+    "span": 20.0,
+    "reason": "beat aftermath; emotion awe; span 20 s; the prompt names push_in; clear near/far depth: parallax; after tilt_up: varied",
+    "subject": [
+     -0.141,
+     -0.1431,
+     0.0489,
+     0.468
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.09,
+      -0.027744,
+      0.040358,
+      "gentle"
+     ],
+     [
+      1.0,
+      1.1268,
+      -0.042725,
+      0.05534,
+      "gentle"
+     ]
+    ],
+    "seed": 1543706430
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "2096e1c6b32934f11e82627e532b3b4ebc330354269bb58ad7c2c3ebff711a45",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-altar",
+    "still_sha256": "1a4e71ba4384b59d006b542e945b9740ec6a15c3f6da5b41ab165e690a97014e",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-altar.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 20,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-smoke": {
+   "kind": "scene",
+   "lines": [
+    37,
+    38
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow tilt up. The smoke from the altar fire rises in a thin steady column into a vast clearing evening sky, the family small in silhouette around it, centred in the frame. The subject is centred in the frame. Warm glow low, deep blue sky above. Tender and solemn. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 20,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-smoke.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "drift",
+    "source": "director",
+    "ease": "gentle",
+    "strength": 0.736,
+    "hold": null,
+    "dir": 1,
+    "atmosphere": [
+     "embers",
+     "mist",
+     "vignette"
+    ],
+    "atmosphere_why": [
+     "fire in the prompt",
+     "haze for the prompt's mist or smoke",
+     "a breathing vignette for the dark"
+    ],
+    "beat": "aftermath",
+    "emotion": "calm",
+    "span": 20.0,
+    "reason": "beat aftermath; emotion calm; span 20 s; the prompt names tilt_up; clear near/far depth: parallax; after parallax_2_5d: varied",
+    "subject": [
+     -0.206,
+     0.2281,
+     -0.0162,
+     0.5059
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.19,
+      -0.079311,
+      0.078906,
+      "gentle"
+     ],
+     [
+      1.0,
+      1.21576,
+      -0.088214,
+      0.087809,
+      "gentle"
+     ]
+    ],
+    "seed": 2845436279
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "b8d82deb5fdda293c4fa1490ae3c0e65e7d9d541fed30bab384f9d70002f45c4",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-smoke",
+    "still_sha256": "6a12ca59e52a09bb8e40c0f10c13731fa330cfd0ac2ecf86e5cc6093555e96fc",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-smoke.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 20,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-bless": {
+   "kind": "scene",
+   "lines": [
+    39,
+    40
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow pull back. The family in silhouette stands on a hillside at sunrise with arms open, the green valley below them, warm light on their shoulders, centred in the frame. The subject is centred in the frame. Golden sunrise light. Blessing and new life. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 17,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-bless.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "pull_back",
+    "source": "director",
+    "ease": "settle",
+    "strength": 0.9067,
+    "hold": null,
+    "dir": -1,
+    "atmosphere": [
+     "embers"
+    ],
+    "atmosphere_why": [
+     "fire in the picture"
+    ],
+    "beat": "aftermath",
+    "emotion": "neutral",
+    "span": 17.0,
+    "reason": "beat aftermath; emotion neutral; span 17 s; the prompt names pull_back; clear near/far depth: parallax; after drift: varied; subject wider than the band: centred",
+    "subject": [
+     -0.0949,
+     -0.35,
+     0.0949,
+     0.35
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.216005,
+      0.0,
+      0.0,
+      "settle"
+     ],
+     [
+      1.0,
+      1.08,
+      0.0,
+      0.0,
+      "settle"
+     ]
+    ],
+    "seed": 871799603
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "c00591c142f254cb1e44d4add35f16502a2f5ea68fe2d599b98f58de21b8bb00",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-bless",
+    "still_sha256": "40da2889621f6c521b8ae53690d2b7bdd9fc934376a807c6622cb8c378f8ad23",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-bless.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 17,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-storm": {
+   "kind": "scene",
+   "lines": [
+    41
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow push-in. Dark rain clouds gathering over the hills, the family small in silhouette looking up in fear, one child clinging to a mother's robe, centred in the frame. The subject is centred in the frame. Dark storm light, heavy sky. Fear returning. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 13,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-storm.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "push_in",
+    "source": "director",
+    "ease": "build",
+    "strength": 0.624,
+    "hold": null,
+    "dir": 1,
+    "atmosphere": [
+     "rain",
+     "mist",
+     "vignette"
+    ],
+    "atmosphere_why": [
+     "rain in the prompt",
+     "haze for dread",
+     "a breathing vignette for the dark"
+    ],
+    "beat": "aftermath",
+    "emotion": "dread",
+    "span": 13.0,
+    "reason": "beat aftermath; emotion dread; span 13 s; the prompt names push_in; clear near/far depth: parallax; after pull_back: varied; subject wider than the band: centred",
+    "subject": [
+     -0.0949,
+     -0.35,
+     0.0949,
+     0.35
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.08,
+      0.0,
+      0.0,
+      "build"
+     ],
+     [
+      1.0,
+      1.1736,
+      0.0,
+      0.0,
+      "build"
+     ]
+    ],
+    "seed": 4110810675
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "dbbeff56a391105d7f5da2b16dc2bdea8642e99574d03680ec622405b159a371",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-storm",
+    "still_sha256": "30d0f356f5304b56cfff9ac58d59ba525f13416652d5b90955b72c96bdef8929",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-storm.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 13,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-promise": {
+   "kind": "scene",
+   "lines": [
+    42
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow push-in. Storm clouds above a bare hilltop, a break of golden light opening in the cloud, no person in sight, centred in the frame. A few small figures stand in silhouette, seen from behind. The subject is centred in the frame. Dramatic storm light with a golden break. Solemn and tender. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 15,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-promise.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "parallax_2_5d",
+    "source": "director",
+    "ease": "gentle",
+    "strength": 0.64,
+    "hold": null,
+    "dir": -1,
+    "atmosphere": [
+     "rain",
+     "mist"
+    ],
+    "atmosphere_why": [
+     "rain in the prompt",
+     "haze for calm"
+    ],
+    "beat": "aftermath",
+    "emotion": "calm",
+    "span": 15.0,
+    "reason": "beat aftermath; emotion calm; span 15 s; the prompt names push_in; clear near/far depth: parallax; after push_in: varied",
+    "subject": [
+     -0.0605,
+     0.1175,
+     0.1293,
+     0.5064
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.09,
+      0.029424,
+      0.040358,
+      "gentle"
+     ],
+     [
+      1.0,
+      1.1156,
+      0.02672,
+      0.050885,
+      "gentle"
+     ]
+    ],
+    "seed": 4153832933
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "19185c9782ce70db916769d74753b892303db45bfb4efc84e9a669c63b114148",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-promise",
+    "still_sha256": "c74511a00a6947d23be9fa68752478fb372834e9e2b31fb0cf830581c0399a46",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-promise.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 15,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-bow": {
+   "kind": "scene",
+   "lines": [
+    43,
+    44
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow tilt up. A vast rainbow arcs across a dark clearing storm sky above the washed green hills, the great dark shape small on the mountain, centred in the frame. A few small figures stand in silhouette, seen from behind. The subject is centred in the frame. Golden sunlight against dark cloud, full spectrum colour. Awe and wonder. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 20,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-bow.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "tilt_up",
+    "source": "director",
+    "ease": "settle",
+    "strength": 0.92,
+    "hold": null,
+    "dir": 1,
+    "atmosphere": [
+     "rain",
+     "mist"
+    ],
+    "atmosphere_why": [
+     "rain in the prompt",
+     "haze for awe"
+    ],
+    "beat": "aftermath",
+    "emotion": "awe",
+    "span": 20.0,
+    "reason": "beat aftermath; emotion awe; span 20 s; the prompt names tilt_up; clear near/far depth: parallax; after parallax_2_5d: varied; subject wider than the band: centred",
+    "subject": [
+     -0.0949,
+     -0.35,
+     0.0949,
+     0.35
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.1676,
+      0.0,
+      0.0422,
+      "settle"
+     ],
+     [
+      1.0,
+      1.1768,
+      0.0,
+      -0.0422,
+      "settle"
+     ]
+    ],
+    "seed": 3617278956
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "65c5d5b08193cdfac5b949350c5da611e7a89760de7c9b6821cb56bfe2c2570d",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-bow",
+    "still_sha256": "b26ff93fc06ece3b1841cb04a386d63bc7ac2cc20b37b0f667c1a221f6e70ed2",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-bow.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 20,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-look": {
+   "kind": "scene",
+   "lines": [
+    45,
+    46
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow pull back. The family in silhouette stands together on the hilltop under the rainbow, small against the glowing sky, heads tilted up in wonder, centred in the frame. The subject is centred in the frame. Warm rainbow light after rain. Joy and peace. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 20,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-look.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "pull_back",
+    "source": "director",
+    "ease": "gentle",
+    "strength": 0.736,
+    "hold": null,
+    "dir": -1,
+    "atmosphere": [
+     "rain"
+    ],
+    "atmosphere_why": [
+     "rain in the prompt"
+    ],
+    "beat": "aftermath",
+    "emotion": "calm",
+    "span": 20.0,
+    "reason": "beat aftermath; emotion calm; span 20 s; the prompt names pull_back; clear near/far depth: parallax; after tilt_up: varied",
+    "subject": [
+     -0.241,
+     0.17,
+     -0.0511,
+     0.5311
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.4404,
+      -0.14605,
+      0.151948,
+      "gentle"
+     ],
+     [
+      1.0,
+      1.33,
+      -0.123539,
+      0.123134,
+      "gentle"
+     ]
+    ],
+    "seed": 1897978362
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "60b6d3090397ee6ade699c52b9fabc8d417fe8bd65209c69340fed588149e7ec",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-look",
+    "still_sha256": "dd0b5186e423d3ce87ce0786b593c3700236c12e434505d788874a72da3120e5",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-look.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 20,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "k-bow": {
+   "kind": "keeper",
+   "lines": [
+    47
+   ],
+   "request": {
+    "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level, looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a gentle questioning look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and searching. No text, no logos.",
+    "seconds": 9,
+    "aspect_ratio": "16:9",
+    "references": [
+     ".episode/flood-ends-long/refs/ch-keeper-talk.jpg"
+    ],
+    "audios": [
+     ".episode/flood-ends-long/keeper/k-bow.wav"
+    ],
+    "sound": false
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "parallax_2_5d",
+    "source": "director",
+    "ease": "gentle",
+    "strength": 0.4,
+    "hold": null,
+    "dir": 1,
+    "atmosphere": [
+     "embers",
+     "dust",
+     "vignette"
+    ],
+    "atmosphere_why": [
+     "fire in the picture",
+     "dust or wind in the prompt",
+     "a breathing vignette for the keeper"
+    ],
+    "beat": "keeper",
+    "emotion": "calm",
+    "span": 9.0,
+    "reason": "beat keeper; emotion calm; span 9 s; a face off centre: the pan lands on it; clear near/far depth: parallax; after pull_back: varied; subject wider than the band: centred",
+    "subject": [
+     -0.0949,
+     -0.35,
+     0.0949,
+     0.35
+    ],
+    "subject_from": "face",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.11,
+      -0.0048,
+      0.0,
+      "gentle"
+     ],
+     [
+      1.0,
+      1.126,
+      0.0048,
+      0.0,
+      "gentle"
+     ]
+    ],
+    "seed": 1201431072
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "406e9167a9c2cea216e7169aa159b7f041fef91f72c741981c198d9b55757928",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-k-bow",
+    "still_sha256": "d06d4d2eb4d0120dc4dfdab01b737d4d14a57dd52759e60e3284826973e5636f",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-k-bow.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 20,
+    "licence": "Pavo generated (owner-owned)"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-vineyard": {
+   "kind": "scene",
+   "lines": [
+    48,
+    49
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow drift. An old man in silhouette works among rows of young vines on a sunlit hillside, the hills green behind him, centred in the frame. The subject is centred in the frame. Soft afternoon light. Calm and human. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+    "seconds": 20,
+    "aspect_ratio": "16:9",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/flood-ends-long-s-vineyard.jpg"
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "drift",
+    "source": "director",
+    "ease": "gentle",
+    "strength": 0.736,
+    "hold": null,
+    "dir": -1,
+    "atmosphere": [
+     "embers"
+    ],
+    "atmosphere_why": [
+     "fire in the picture"
+    ],
+    "beat": "aftermath",
+    "emotion": "calm",
+    "span": 20.0,
+    "reason": "beat aftermath; emotion calm; span 20 s; the prompt names drift; clear near/far depth: parallax; after parallax_2_5d: varied",
+    "subject": [
+     -0.0828,
+     0.2196,
+     0.107,
+     0.4973
+    ],
+    "subject_from": "saliency",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.08,
+      0.025348,
+      0.036111,
+      "gentle"
+     ],
+     [
+      1.0,
+      1.10576,
+      -0.001148,
+      0.046896,
+      "gentle"
+     ]
+    ],
+    "seed": 3224812089
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "6b97ddc9fa93aebc6b9efd06ffcbd6b60b71af33bc87dd1071a144d042058f13",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-s-vineyard",
+    "still_sha256": "6a579e0873b45f51db746e33a41bac439940c870580aff2032321bdbd69dd4ec",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-s-vineyard.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 20,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "k-close": {
+   "kind": "keeper",
+   "lines": [
+    50
+   ],
+   "request": {
+    "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a warm expectant look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and expectant. No text, no logos.",
+    "seconds": 10,
+    "aspect_ratio": "16:9",
+    "references": [
+     ".episode/flood-ends-long/refs/ch-keeper-talk.jpg"
+    ],
+    "audios": [
+     ".episode/flood-ends-long/keeper/k-close.wav"
+    ],
+    "sound": false
+   },
+   "source": "footage",
+   "approved": {
+    "asset": "footage-clip-arc01-keeper-camp-fire-fireplace-campfire-bonfire-christma-sha256-f237a27b5cf11a474c8a72e89adb9945152b44a66f455f284306bc7d7a5941ac.mp4",
+    "clip_sha256": "f237a27b5cf11a474c8a72e89adb9945152b44a66f455f284306bc7d7a5941ac",
+    "request_sha256": "3350b475e9616b51b03dd3ab21c6806e9a0d83746493598b0522ae87ec0d9211",
+    "score": 9.5,
+    "source": "footage",
+    "footage": "clip-arc01-keeper-camp-fire-fireplace-campfire-bonfire-christma",
+    "clip_seconds": 20,
+    "licence": "Pixabay Content License",
+    "credit": "Footage: BFCMUSIC via Pixabay (https://pixabay.com/videos/id-239514/)"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  }
+ },
+ "composed": {
+  "output_sha256": "2d8368d89e07d2d2e08360751f9bf6addecdb3710b941c1b4c7ee497560722b6",
+  "seconds": 501.68,
+  "frame": [
+   1920,
+   1080
+  ],
+  "black_check": {
+   "black_starts": [],
+   "unexpected": [],
+   "intended_dips": [
+    500.88
+   ]
+  },
+  "lufs": -14.4,
+  "keeper_share": 0.055,
+  "lesson_share": 0.056,
+  "spoken": {
+   "s-voice": {
+    "start": 0.0,
+    "end": 5.653,
+    "seconds": 5.653,
+    "speaker": "god"
+   }
+  },
+  "establishing_share": 0.0,
+  "cuts": 134,
+  "timeline": [
+   {
+    "shot": "s-voice",
+    "kind": "scene",
+    "start": 0.0,
+    "end": 3.002,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-voice",
+    "kind": "scene",
+    "start": 3.002,
+    "end": 6.003,
+    "src_start": 4.998,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-hold",
+    "kind": "scene",
+    "start": 6.003,
+    "end": 9.538,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-hold",
+    "kind": "scene",
+    "start": 9.538,
+    "end": 13.073,
+    "src_start": 4.822,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-hold",
+    "kind": "scene",
+    "start": 13.073,
+    "end": 16.609,
+    "src_start": 9.643,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-hold",
+    "kind": "scene",
+    "start": 16.609,
+    "end": 20.144,
+    "src_start": 14.465,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-door",
+    "kind": "scene",
+    "start": 20.144,
+    "end": 23.481,
+    "src_start": 0.0,
+    "speed": 1.0268
+   },
+   {
+    "shot": "s-door",
+    "kind": "scene",
+    "start": 23.481,
+    "end": 26.819,
+    "src_start": 3.25,
+    "speed": 1.0268
+   },
+   {
+    "shot": "s-door",
+    "kind": "scene",
+    "start": 26.819,
+    "end": 30.156,
+    "src_start": 6.5,
+    "speed": 1.0268
+   },
+   {
+    "shot": "s-door",
+    "kind": "scene",
+    "start": 30.156,
+    "end": 33.493,
+    "src_start": 9.75,
+    "speed": 1.0268
+   },
+   {
+    "shot": "s-wind",
+    "kind": "scene",
+    "start": 33.493,
+    "end": 37.287,
+    "src_start": 0.0,
+    "speed": 1.1382
+   },
+   {
+    "shot": "s-wind",
+    "kind": "scene",
+    "start": 37.287,
+    "end": 41.081,
+    "src_start": 3.333,
+    "speed": 1.1382
+   },
+   {
+    "shot": "s-wind",
+    "kind": "scene",
+    "start": 41.081,
+    "end": 44.876,
+    "src_start": 6.667,
+    "speed": 1.1382
+   },
+   {
+    "shot": "s-wind",
+    "kind": "scene",
+    "start": 44.876,
+    "end": 48.67,
+    "src_start": 10.0,
+    "speed": 1.1382
+   },
+   {
+    "shot": "s-wind",
+    "kind": "scene",
+    "start": 48.67,
+    "end": 52.464,
+    "src_start": 13.333,
+    "speed": 1.1382
+   },
+   {
+    "shot": "s-wind",
+    "kind": "scene",
+    "start": 52.464,
+    "end": 56.258,
+    "src_start": 16.667,
+    "speed": 1.1382
+   },
+   {
+    "shot": "s-fountains",
+    "kind": "scene",
+    "start": 56.258,
+    "end": 59.54,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-fountains",
+    "kind": "scene",
+    "start": 59.54,
+    "end": 62.822,
+    "src_start": 3.929,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-fountains",
+    "kind": "scene",
+    "start": 62.822,
+    "end": 66.105,
+    "src_start": 7.859,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-fountains",
+    "kind": "scene",
+    "start": 66.105,
+    "end": 69.387,
+    "src_start": 11.788,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-fountains",
+    "kind": "scene",
+    "start": 69.387,
+    "end": 72.669,
+    "src_start": 15.718,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-lines",
+    "kind": "scene",
+    "start": 72.669,
+    "end": 76.3,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-lines",
+    "kind": "scene",
+    "start": 76.3,
+    "end": 79.932,
+    "src_start": 4.092,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-lines",
+    "kind": "scene",
+    "start": 79.932,
+    "end": 83.563,
+    "src_start": 8.184,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-lines",
+    "kind": "scene",
+    "start": 83.563,
+    "end": 87.195,
+    "src_start": 12.276,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-lines",
+    "kind": "scene",
+    "start": 87.195,
+    "end": 90.826,
+    "src_start": 16.369,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-ararat",
+    "kind": "scene",
+    "start": 90.826,
+    "end": 94.53,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-ararat",
+    "kind": "scene",
+    "start": 94.53,
+    "end": 98.234,
+    "src_start": 4.074,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-ararat",
+    "kind": "scene",
+    "start": 98.234,
+    "end": 101.938,
+    "src_start": 8.148,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-ararat",
+    "kind": "scene",
+    "start": 101.938,
+    "end": 105.642,
+    "src_start": 12.222,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-ararat",
+    "kind": "scene",
+    "start": 105.642,
+    "end": 109.346,
+    "src_start": 16.296,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-peaks",
+    "kind": "scene",
+    "start": 109.346,
+    "end": 112.849,
+    "src_start": 0.0,
+    "speed": 1.0508
+   },
+   {
+    "shot": "s-peaks",
+    "kind": "scene",
+    "start": 112.849,
+    "end": 116.351,
+    "src_start": 3.333,
+    "speed": 1.0508
+   },
+   {
+    "shot": "s-peaks",
+    "kind": "scene",
+    "start": 116.351,
+    "end": 119.854,
+    "src_start": 6.667,
+    "speed": 1.0508
+   },
+   {
+    "shot": "s-peaks",
+    "kind": "scene",
+    "start": 119.854,
+    "end": 123.357,
+    "src_start": 10.0,
+    "speed": 1.0508
+   },
+   {
+    "shot": "s-peaks",
+    "kind": "scene",
+    "start": 123.357,
+    "end": 126.859,
+    "src_start": 13.333,
+    "speed": 1.0508
+   },
+   {
+    "shot": "s-peaks",
+    "kind": "scene",
+    "start": 126.859,
+    "end": 130.362,
+    "src_start": 16.667,
+    "speed": 1.0508
+   },
+   {
+    "shot": "s-window",
+    "kind": "scene",
+    "start": 130.362,
+    "end": 134.147,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-window",
+    "kind": "scene",
+    "start": 134.147,
+    "end": 137.932,
+    "src_start": 5.072,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-window",
+    "kind": "scene",
+    "start": 137.932,
+    "end": 141.717,
+    "src_start": 10.143,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-window",
+    "kind": "scene",
+    "start": 141.717,
+    "end": 145.502,
+    "src_start": 15.215,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-raven",
+    "kind": "scene",
+    "start": 145.502,
+    "end": 149.031,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-raven",
+    "kind": "scene",
+    "start": 149.031,
+    "end": 152.56,
+    "src_start": 3.868,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-raven",
+    "kind": "scene",
+    "start": 152.56,
+    "end": 156.089,
+    "src_start": 7.736,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-raven",
+    "kind": "scene",
+    "start": 156.089,
+    "end": 159.618,
+    "src_start": 11.603,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-raven",
+    "kind": "scene",
+    "start": 159.618,
+    "end": 163.147,
+    "src_start": 15.471,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-hands",
+    "kind": "scene",
+    "start": 163.147,
+    "end": 166.959,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-hands",
+    "kind": "scene",
+    "start": 166.959,
+    "end": 170.77,
+    "src_start": 5.063,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-hands",
+    "kind": "scene",
+    "start": 170.77,
+    "end": 174.582,
+    "src_start": 10.125,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-hands",
+    "kind": "scene",
+    "start": 174.582,
+    "end": 178.394,
+    "src_start": 15.188,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-dove-out",
+    "kind": "scene",
+    "start": 178.394,
+    "end": 181.703,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-dove-out",
+    "kind": "scene",
+    "start": 181.703,
+    "end": 185.011,
+    "src_start": 3.846,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-dove-out",
+    "kind": "scene",
+    "start": 185.011,
+    "end": 188.32,
+    "src_start": 7.691,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-return",
+    "kind": "scene",
+    "start": 188.32,
+    "end": 191.839,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-return",
+    "kind": "scene",
+    "start": 191.839,
+    "end": 195.358,
+    "src_start": 5.494,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-return",
+    "kind": "scene",
+    "start": 195.358,
+    "end": 198.878,
+    "src_start": 10.987,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-return",
+    "kind": "scene",
+    "start": 198.878,
+    "end": 202.397,
+    "src_start": 16.481,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-family",
+    "kind": "scene",
+    "start": 202.397,
+    "end": 205.303,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-family",
+    "kind": "scene",
+    "start": 205.303,
+    "end": 208.21,
+    "src_start": 3.047,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-family",
+    "kind": "scene",
+    "start": 208.21,
+    "end": 211.116,
+    "src_start": 6.094,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-wait7",
+    "kind": "scene",
+    "start": 211.116,
+    "end": 214.722,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-wait7",
+    "kind": "scene",
+    "start": 214.722,
+    "end": 218.328,
+    "src_start": 4.465,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-wait7",
+    "kind": "scene",
+    "start": 218.328,
+    "end": 221.934,
+    "src_start": 8.929,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-wait7",
+    "kind": "scene",
+    "start": 221.934,
+    "end": 225.54,
+    "src_start": 13.394,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-leaf",
+    "kind": "scene",
+    "start": 225.54,
+    "end": 229.44,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-leaf",
+    "kind": "scene",
+    "start": 229.44,
+    "end": 233.34,
+    "src_start": 4.025,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-leaf",
+    "kind": "scene",
+    "start": 233.34,
+    "end": 237.239,
+    "src_start": 8.05,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-leaf",
+    "kind": "scene",
+    "start": 237.239,
+    "end": 241.139,
+    "src_start": 12.075,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-leaf",
+    "kind": "scene",
+    "start": 241.139,
+    "end": 245.039,
+    "src_start": 16.1,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-joy",
+    "kind": "scene",
+    "start": 245.039,
+    "end": 248.369,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-joy",
+    "kind": "scene",
+    "start": 248.369,
+    "end": 251.699,
+    "src_start": 4.335,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-joy",
+    "kind": "scene",
+    "start": 251.699,
+    "end": 255.029,
+    "src_start": 8.67,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-release",
+    "kind": "scene",
+    "start": 255.029,
+    "end": 258.788,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-release",
+    "kind": "scene",
+    "start": 258.788,
+    "end": 262.547,
+    "src_start": 4.06,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-release",
+    "kind": "scene",
+    "start": 262.547,
+    "end": 266.305,
+    "src_start": 8.121,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-release",
+    "kind": "scene",
+    "start": 266.305,
+    "end": 270.064,
+    "src_start": 12.181,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-release",
+    "kind": "scene",
+    "start": 270.064,
+    "end": 273.823,
+    "src_start": 16.241,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-dry",
+    "kind": "scene",
+    "start": 273.823,
+    "end": 277.758,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-dry",
+    "kind": "scene",
+    "start": 277.758,
+    "end": 281.693,
+    "src_start": 5.355,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-dry",
+    "kind": "scene",
+    "start": 281.693,
+    "end": 285.629,
+    "src_start": 10.71,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-dry",
+    "kind": "scene",
+    "start": 285.629,
+    "end": 289.564,
+    "src_start": 16.065,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-shut",
+    "kind": "scene",
+    "start": 289.564,
+    "end": 292.617,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-shut",
+    "kind": "scene",
+    "start": 292.617,
+    "end": 295.669,
+    "src_start": 3.974,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-shut",
+    "kind": "scene",
+    "start": 295.669,
+    "end": 298.722,
+    "src_start": 7.947,
+    "speed": 1.0
+   },
+   {
+    "shot": "k-insight",
+    "kind": "keeper",
+    "start": 298.722,
+    "end": 308.272,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-voice-go",
+    "kind": "scene",
+    "start": 308.272,
+    "end": 312.016,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-voice-go",
+    "kind": "scene",
+    "start": 312.016,
+    "end": 315.76,
+    "src_start": 4.085,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-voice-go",
+    "kind": "scene",
+    "start": 315.76,
+    "end": 319.503,
+    "src_start": 8.171,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-voice-go",
+    "kind": "scene",
+    "start": 319.503,
+    "end": 323.247,
+    "src_start": 12.256,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-exit",
+    "kind": "scene",
+    "start": 323.247,
+    "end": 327.088,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-exit",
+    "kind": "scene",
+    "start": 327.088,
+    "end": 330.93,
+    "src_start": 5.053,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-exit",
+    "kind": "scene",
+    "start": 330.93,
+    "end": 334.771,
+    "src_start": 10.106,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-exit",
+    "kind": "scene",
+    "start": 334.771,
+    "end": 338.612,
+    "src_start": 15.159,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-altar",
+    "kind": "scene",
+    "start": 338.612,
+    "end": 342.306,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-altar",
+    "kind": "scene",
+    "start": 342.306,
+    "end": 345.999,
+    "src_start": 4.077,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-altar",
+    "kind": "scene",
+    "start": 345.999,
+    "end": 349.693,
+    "src_start": 8.153,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-altar",
+    "kind": "scene",
+    "start": 349.693,
+    "end": 353.386,
+    "src_start": 12.23,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-altar",
+    "kind": "scene",
+    "start": 353.386,
+    "end": 357.08,
+    "src_start": 16.306,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-smoke",
+    "kind": "scene",
+    "start": 357.08,
+    "end": 360.652,
+    "src_start": 0.0,
+    "speed": 1.2502
+   },
+   {
+    "shot": "s-smoke",
+    "kind": "scene",
+    "start": 360.652,
+    "end": 364.224,
+    "src_start": 2.857,
+    "speed": 1.2502
+   },
+   {
+    "shot": "s-smoke",
+    "kind": "scene",
+    "start": 364.224,
+    "end": 367.796,
+    "src_start": 5.714,
+    "speed": 1.2502
+   },
+   {
+    "shot": "s-smoke",
+    "kind": "scene",
+    "start": 367.796,
+    "end": 371.367,
+    "src_start": 8.571,
+    "speed": 1.2502
+   },
+   {
+    "shot": "s-smoke",
+    "kind": "scene",
+    "start": 371.367,
+    "end": 374.939,
+    "src_start": 11.429,
+    "speed": 1.2502
+   },
+   {
+    "shot": "s-smoke",
+    "kind": "scene",
+    "start": 374.939,
+    "end": 378.511,
+    "src_start": 14.286,
+    "speed": 1.2502
+   },
+   {
+    "shot": "s-smoke",
+    "kind": "scene",
+    "start": 378.511,
+    "end": 382.083,
+    "src_start": 17.143,
+    "speed": 1.2502
+   },
+   {
+    "shot": "s-bless",
+    "kind": "scene",
+    "start": 382.083,
+    "end": 385.591,
+    "src_start": 0.0,
+    "speed": 1.0317
+   },
+   {
+    "shot": "s-bless",
+    "kind": "scene",
+    "start": 385.591,
+    "end": 389.099,
+    "src_start": 3.4,
+    "speed": 1.0317
+   },
+   {
+    "shot": "s-bless",
+    "kind": "scene",
+    "start": 389.099,
+    "end": 392.606,
+    "src_start": 6.8,
+    "speed": 1.0317
+   },
+   {
+    "shot": "s-bless",
+    "kind": "scene",
+    "start": 392.606,
+    "end": 396.114,
+    "src_start": 10.2,
+    "speed": 1.0317
+   },
+   {
+    "shot": "s-bless",
+    "kind": "scene",
+    "start": 396.114,
+    "end": 399.622,
+    "src_start": 13.6,
+    "speed": 1.0317
+   },
+   {
+    "shot": "s-storm",
+    "kind": "scene",
+    "start": 399.622,
+    "end": 403.371,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-storm",
+    "kind": "scene",
+    "start": 403.371,
+    "end": 407.121,
+    "src_start": 4.625,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-storm",
+    "kind": "scene",
+    "start": 407.121,
+    "end": 410.87,
+    "src_start": 9.251,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-promise",
+    "kind": "scene",
+    "start": 410.87,
+    "end": 414.755,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-promise",
+    "kind": "scene",
+    "start": 414.755,
+    "end": 418.639,
+    "src_start": 5.558,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-promise",
+    "kind": "scene",
+    "start": 418.639,
+    "end": 422.524,
+    "src_start": 11.115,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-bow",
+    "kind": "scene",
+    "start": 422.524,
+    "end": 425.925,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-bow",
+    "kind": "scene",
+    "start": 425.925,
+    "end": 429.326,
+    "src_start": 4.15,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-bow",
+    "kind": "scene",
+    "start": 429.326,
+    "end": 432.728,
+    "src_start": 8.299,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-bow",
+    "kind": "scene",
+    "start": 432.728,
+    "end": 436.129,
+    "src_start": 12.449,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-bow",
+    "kind": "scene",
+    "start": 436.129,
+    "end": 439.53,
+    "src_start": 16.599,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-look",
+    "kind": "scene",
+    "start": 439.53,
+    "end": 443.496,
+    "src_start": 0.0,
+    "speed": 1.1899
+   },
+   {
+    "shot": "s-look",
+    "kind": "scene",
+    "start": 443.496,
+    "end": 447.463,
+    "src_start": 3.333,
+    "speed": 1.1899
+   },
+   {
+    "shot": "s-look",
+    "kind": "scene",
+    "start": 447.463,
+    "end": 451.429,
+    "src_start": 6.667,
+    "speed": 1.1899
+   },
+   {
+    "shot": "s-look",
+    "kind": "scene",
+    "start": 451.429,
+    "end": 455.395,
+    "src_start": 10.0,
+    "speed": 1.1899
+   },
+   {
+    "shot": "s-look",
+    "kind": "scene",
+    "start": 455.395,
+    "end": 459.362,
+    "src_start": 13.333,
+    "speed": 1.1899
+   },
+   {
+    "shot": "s-look",
+    "kind": "scene",
+    "start": 459.362,
+    "end": 463.328,
+    "src_start": 16.667,
+    "speed": 1.1899
+   },
+   {
+    "shot": "k-bow",
+    "kind": "keeper",
+    "start": 463.328,
+    "end": 471.688,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-vineyard",
+    "kind": "scene",
+    "start": 471.688,
+    "end": 475.532,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-vineyard",
+    "kind": "scene",
+    "start": 475.532,
+    "end": 479.376,
+    "src_start": 4.039,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-vineyard",
+    "kind": "scene",
+    "start": 479.376,
+    "end": 483.221,
+    "src_start": 8.078,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-vineyard",
+    "kind": "scene",
+    "start": 483.221,
+    "end": 487.065,
+    "src_start": 12.117,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-vineyard",
+    "kind": "scene",
+    "start": 487.065,
+    "end": 490.909,
+    "src_start": 16.156,
+    "speed": 1.0
+   },
+   {
+    "shot": "k-close",
+    "kind": "keeper",
+    "start": 490.909,
+    "end": 501.682,
+    "src_start": 0.0,
+    "speed": 1.0
+   }
+  ],
+  "clean": {
+   "output_sha256": "49515d40aa8681af10c0ac446bf5a54333fa618f264f4cb2d0ca8a926d79af43",
+   "seconds": 501.68,
+   "release_asset": "bible-flood-ends-long-clean-sha256-49515d40aa8681af10c0ac446bf5a54333fa618f264f4cb2d0ca8a926d79af43.mp4"
+  },
+  "sentences": [
+   {
+    "segment": "n00",
+    "text": "Go forth of the ark, thou, and thy wife, and thy sons, and thy sons’ wives with thee.",
+    "start": 0.0,
+    "end": 5.653,
+    "speaker": "god",
+    "kind": "scripture",
+    "reference": "Genesis 8:16 (KJV)",
+    "line": 0,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n01",
+    "text": "What if you had been shut inside a wooden ship for more than a year, with every animal on earth breathing around you in the dark?",
+    "start": 6.003,
+    "end": 13.79,
+    "line": 1,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n01",
+    "text": "What if the water finally began to fall, and still nobody told you when you could walk out?",
+    "start": 13.97,
+    "end": 19.794,
+    "line": 1,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n02",
+    "text": "Eight people.",
+    "start": 20.144,
+    "end": 21.339,
+    "line": 2,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n02",
+    "text": "One door, shut by God Himself.",
+    "start": 21.519,
+    "end": 24.015,
+    "line": 2,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n02",
+    "text": "And outside, nothing but grey water to every horizon.",
+    "start": 24.195,
+    "end": 28.184,
+    "line": 2,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n02",
+    "text": "Stay with me, because the way this story ends will change what waiting means.",
+    "start": 28.364,
+    "end": 33.143,
+    "line": 2,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n03",
+    "text": "And God remembered Noah, and every living thing, and all the cattle that was with him in the ark:",
+    "start": 33.493,
+    "end": 39.871,
+    "kind": "scripture",
+    "reference": "Genesis 8:1 (KJV)",
+    "line": 3,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n03",
+    "text": "and God made a wind to pass over the earth, and the waters asswaged;",
+    "start": 40.051,
+    "end": 44.617,
+    "kind": "scripture",
+    "reference": "Genesis 8:1 (KJV)",
+    "line": 3,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n04",
+    "text": "Remembered.",
+    "start": 44.967,
+    "end": 46.012,
+    "line": 4,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n04",
+    "text": "Not because God had forgotten them, but because the next move was His.",
+    "start": 46.192,
+    "end": 50.651,
+    "line": 4,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n04",
+    "text": "A wind swept over the earth, and the great ocean began, slowly, to sink.",
+    "start": 50.831,
+    "end": 55.908,
+    "line": 4,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n05",
+    "text": "The fountains also of the deep and the windows of heaven were stopped, and the rain from heaven was restrained;",
+    "start": 56.258,
+    "end": 63.213,
+    "kind": "scripture",
+    "reference": "Genesis 8:2 (KJV)",
+    "line": 5,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n06",
+    "text": "A hundred and fifty days of water.",
+    "start": 63.563,
+    "end": 66.059,
+    "line": 6,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n06",
+    "text": "Imagine counting every one of them in the dark, the hull creaking, never knowing if it would end.",
+    "start": 66.239,
+    "end": 72.319,
+    "line": 6,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n07",
+    "text": "And the waters returned from off the earth continually:",
+    "start": 72.669,
+    "end": 75.783,
+    "kind": "scripture",
+    "reference": "Genesis 8:3 (KJV)",
+    "line": 7,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n07",
+    "text": "and after the end of the hundred and fifty days the waters were abated.",
+    "start": 75.963,
+    "end": 80.273,
+    "kind": "scripture",
+    "reference": "Genesis 8:3 (KJV)",
+    "line": 7,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n08",
+    "text": "The water went down, not in a day, but in a long steady retreat.",
+    "start": 80.623,
+    "end": 84.847,
+    "line": 8,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n08",
+    "text": "And then, one morning, something shuddered through the whole ark.",
+    "start": 85.027,
+    "end": 88.824,
+    "line": 8,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n08",
+    "text": "It stopped moving.",
+    "start": 89.004,
+    "end": 90.476,
+    "line": 8,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n09",
+    "text": "And the ark rested in the seventh month, on the seventeenth day of the month, upon the mountains of Ararat.",
+    "start": 90.826,
+    "end": 97.631,
+    "kind": "scripture",
+    "reference": "Genesis 8:4 (KJV)",
+    "line": 9,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n10",
+    "text": "The ark scraped rock and stopped.",
+    "start": 97.981,
+    "end": 100.285,
+    "line": 10,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n10",
+    "text": "Everyone froze.",
+    "start": 100.465,
+    "end": 102.023,
+    "line": 10,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n10",
+    "text": "They had landed.",
+    "start": 102.203,
+    "end": 103.568,
+    "line": 10,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n10",
+    "text": "But when they looked out, there was still nothing but water, and no ground to stand on.",
+    "start": 103.748,
+    "end": 108.996,
+    "line": 10,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n11",
+    "text": "And the waters decreased continually until the tenth month:",
+    "start": 109.346,
+    "end": 113.101,
+    "kind": "scripture",
+    "reference": "Genesis 8:5 (KJV)",
+    "line": 11,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n11",
+    "text": "in the tenth month, on the first day of the month, were the tops of the mountains seen.",
+    "start": 113.281,
+    "end": 118.507,
+    "kind": "scripture",
+    "reference": "Genesis 8:5 (KJV)",
+    "line": 11,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n12",
+    "text": "Two more months of waiting, and then the first grey peaks rose out of the water like islands.",
+    "start": 118.857,
+    "end": 124.575,
+    "line": 12,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n12",
+    "text": "The world was coming back.",
+    "start": 124.755,
+    "end": 126.589,
+    "line": 12,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n12",
+    "text": "But coming back is not the same as being ready.",
+    "start": 126.769,
+    "end": 130.012,
+    "line": 12,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n13",
+    "text": "And it came to pass at the end of forty days, that Noah opened the window of the ark which he had made:",
+    "start": 130.362,
+    "end": 136.719,
+    "kind": "scripture",
+    "reference": "Genesis 8:6 (KJV)",
+    "line": 13,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n14",
+    "text": "Forty days later Noah did something small and brave.",
+    "start": 137.069,
+    "end": 140.547,
+    "line": 14,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n14",
+    "text": "He opened the window.",
+    "start": 140.727,
+    "end": 142.348,
+    "line": 14,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n14",
+    "text": "And what he sent out first was a raven.",
+    "start": 142.528,
+    "end": 145.152,
+    "line": 14,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n15",
+    "text": "And he sent forth a raven, which went forth to and fro, until the waters were dried up from off the earth.",
+    "start": 145.502,
+    "end": 152.35,
+    "kind": "scripture",
+    "reference": "Genesis 8:7 (KJV)",
+    "line": 15,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n16",
+    "text": "It flew back and forth over the water, and it never came home.",
+    "start": 152.7,
+    "end": 156.903,
+    "line": 16,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n16",
+    "text": "No answer.",
+    "start": 157.083,
+    "end": 158.256,
+    "line": 16,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n16",
+    "text": "No news.",
+    "start": 158.436,
+    "end": 159.588,
+    "line": 16,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n16",
+    "text": "Only the sound of wings, and then silence.",
+    "start": 159.768,
+    "end": 162.797,
+    "line": 16,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n17",
+    "text": "Also he sent forth a dove from him, to see if the waters were abated from off the face of the ground;",
+    "start": 163.147,
+    "end": 169.526,
+    "kind": "scripture",
+    "reference": "Genesis 8:8 (KJV)",
+    "line": 17,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n18",
+    "text": "So he took the gentlest bird he had.",
+    "start": 169.876,
+    "end": 172.5,
+    "line": 18,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n18",
+    "text": "A dove.",
+    "start": 172.68,
+    "end": 173.704,
+    "line": 18,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n18",
+    "text": "If there was any dry place left in the world, she would find it.",
+    "start": 173.884,
+    "end": 178.044,
+    "line": 18,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n19",
+    "text": "Hour after hour the family watched the sky.",
+    "start": 178.394,
+    "end": 181.679,
+    "line": 19,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n19",
+    "text": "Nothing came back, until the evening.",
+    "start": 181.859,
+    "end": 184.483,
+    "line": 19,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n19",
+    "text": "And the dove did return, but with nothing at all.",
+    "start": 184.663,
+    "end": 187.97,
+    "line": 19,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n20",
+    "text": "But the dove found no rest for the sole of her foot, and she returned unto him into the ark, for the waters were on the face of the whole earth:",
+    "start": 188.32,
+    "end": 197.024,
+    "kind": "scripture",
+    "reference": "Genesis 8:9 (KJV)",
+    "line": 20,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n20",
+    "text": "then he put forth his hand, and took her, and pulled her in unto him into the ark.",
+    "start": 197.204,
+    "end": 202.047,
+    "kind": "scripture",
+    "reference": "Genesis 8:9 (KJV)",
+    "line": 20,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n21",
+    "text": "Still only water.",
+    "start": 202.397,
+    "end": 204.018,
+    "line": 21,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n21",
+    "text": "Still no place to land.",
+    "start": 204.198,
+    "end": 206.054,
+    "line": 21,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n21",
+    "text": "And yet Noah did not shout, and did not give up.",
+    "start": 206.234,
+    "end": 209.498,
+    "line": 21,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n21",
+    "text": "He waited.",
+    "start": 209.678,
+    "end": 210.766,
+    "line": 21,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n22",
+    "text": "And he stayed yet other seven days;",
+    "start": 211.116,
+    "end": 213.676,
+    "kind": "scripture",
+    "reference": "Genesis 8:10 (KJV)",
+    "line": 22,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n22",
+    "text": "and again he sent forth the dove out of the ark;",
+    "start": 213.856,
+    "end": 217.12,
+    "kind": "scripture",
+    "reference": "Genesis 8:10 (KJV)",
+    "line": 22,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n23",
+    "text": "Seven more days.",
+    "start": 217.47,
+    "end": 218.899,
+    "line": 23,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n23",
+    "text": "He counted them one by one.",
+    "start": 219.079,
+    "end": 221.234,
+    "line": 23,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n23",
+    "text": "Then he let her go again, and the whole family held their breath.",
+    "start": 221.414,
+    "end": 225.19,
+    "line": 23,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n24",
+    "text": "And the dove came in to him in the evening;",
+    "start": 225.54,
+    "end": 228.057,
+    "kind": "scripture",
+    "reference": "Genesis 8:11 (KJV)",
+    "line": 24,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n24",
+    "text": "and, lo, in her mouth was an olive leaf pluckt off:",
+    "start": 228.237,
+    "end": 231.416,
+    "kind": "scripture",
+    "reference": "Genesis 8:11 (KJV)",
+    "line": 24,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n24",
+    "text": "so Noah knew that the waters were abated from off the earth.",
+    "start": 231.596,
+    "end": 235.351,
+    "kind": "scripture",
+    "reference": "Genesis 8:11 (KJV)",
+    "line": 24,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n25",
+    "text": "One green leaf.",
+    "start": 235.701,
+    "end": 237.087,
+    "line": 25,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n25",
+    "text": "Somewhere out there, something was growing again.",
+    "start": 237.267,
+    "end": 240.446,
+    "line": 25,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n25",
+    "text": "And when Noah held it, he knew:",
+    "start": 240.626,
+    "end": 242.674,
+    "line": 25,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n25",
+    "text": "the waters were really going.",
+    "start": 242.854,
+    "end": 244.689,
+    "line": 25,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n26",
+    "text": "Eight people who had not smiled in months passed that leaf from hand to hand like treasure.",
+    "start": 245.039,
+    "end": 250.521,
+    "line": 26,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n26",
+    "text": "A single leaf.",
+    "start": 250.701,
+    "end": 252.088,
+    "line": 26,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n26",
+    "text": "It was the first word of the new world.",
+    "start": 252.268,
+    "end": 254.679,
+    "line": 26,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n27",
+    "text": "And he stayed yet other seven days;",
+    "start": 255.029,
+    "end": 257.589,
+    "kind": "scripture",
+    "reference": "Genesis 8:12 (KJV)",
+    "line": 27,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n27",
+    "text": "and sent forth the dove;",
+    "start": 257.769,
+    "end": 259.561,
+    "kind": "scripture",
+    "reference": "Genesis 8:12 (KJV)",
+    "line": 27,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n27",
+    "text": "which returned not again unto him any more.",
+    "start": 259.741,
+    "end": 262.855,
+    "kind": "scripture",
+    "reference": "Genesis 8:12 (KJV)",
+    "line": 27,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n28",
+    "text": "Seven days later he sent her out one last time.",
+    "start": 263.205,
+    "end": 266.661,
+    "line": 28,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n28",
+    "text": "And she never came back.",
+    "start": 266.841,
+    "end": 268.612,
+    "line": 28,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n28",
+    "text": "That silence was the best news of all:",
+    "start": 268.792,
+    "end": 271.459,
+    "line": 28,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n28",
+    "text": "the dove had found a home.",
+    "start": 271.639,
+    "end": 273.473,
+    "line": 28,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n29",
+    "text": "And it came to pass in the six hundredth and first year, in the first month, the first day of the month, the waters were dried up from off the earth:",
+    "start": 273.823,
+    "end": 282.826,
+    "kind": "scripture",
+    "reference": "Genesis 8:13 (KJV)",
+    "line": 29,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n29",
+    "text": "and Noah removed the covering of the ark, and looked, and, behold, the face of the ground was dry.",
+    "start": 283.006,
+    "end": 289.214,
+    "kind": "scripture",
+    "reference": "Genesis 8:13 (KJV)",
+    "line": 29,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n30",
+    "text": "Dry ground at last, right before his eyes.",
+    "start": 289.564,
+    "end": 292.7,
+    "line": 30,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n30",
+    "text": "And still the door stayed shut.",
+    "start": 292.88,
+    "end": 294.992,
+    "line": 30,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n30",
+    "text": "The One who closed it had not yet said open.",
+    "start": 295.172,
+    "end": 298.372,
+    "line": 30,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n31",
+    "text": "Most miss this:",
+    "start": 298.722,
+    "end": 300.191,
+    "line": 31,
+    "line_kind": "insight"
+   },
+   {
+    "segment": "n31",
+    "text": "Noah saw dry ground and still waited.",
+    "start": 300.377,
+    "end": 303.075,
+    "line": 31,
+    "line_kind": "insight"
+   },
+   {
+    "segment": "n31",
+    "text": "He stepped out when God said go.",
+    "start": 303.26,
+    "end": 305.673,
+    "line": 31,
+    "line_kind": "insight"
+   },
+   {
+    "segment": "n31",
+    "text": "The One who shut the door opened it.",
+    "start": 305.859,
+    "end": 308.272,
+    "line": 31,
+    "line_kind": "insight"
+   },
+   {
+    "segment": "n32",
+    "text": "Two months more, until the earth was fully dry.",
+    "start": 308.622,
+    "end": 311.758,
+    "line": 32,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n32",
+    "text": "Then, at last, the voice came.",
+    "start": 311.938,
+    "end": 314.007,
+    "line": 32,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n32",
+    "text": "Not a shout.",
+    "start": 314.187,
+    "end": 315.467,
+    "line": 32,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n32",
+    "text": "A word.",
+    "start": 315.647,
+    "end": 316.714,
+    "line": 32,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n32",
+    "text": "And with it, the door that no one else could open.",
+    "start": 316.894,
+    "end": 320.072,
+    "line": 32,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n33",
+    "text": "And God spake unto Noah, saying,",
+    "start": 320.422,
+    "end": 322.897,
+    "kind": "scripture",
+    "reference": "Genesis 8:15 (KJV)",
+    "line": 33,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n34",
+    "text": "And Noah went forth, and his sons, and his wife, and his sons’ wives with him:",
+    "start": 323.247,
+    "end": 328.559,
+    "kind": "scripture",
+    "reference": "Genesis 8:18 (KJV)",
+    "line": 34,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n35",
+    "text": "Out they walked, a whole world of animals, one by one, down onto the washed new earth.",
+    "start": 328.909,
+    "end": 334.584,
+    "line": 35,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n35",
+    "text": "Noah was the last of his family to step off the boat.",
+    "start": 334.764,
+    "end": 338.262,
+    "line": 35,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n36",
+    "text": "And Noah builded an altar unto the Lord;",
+    "start": 338.612,
+    "end": 341.578,
+    "kind": "scripture",
+    "reference": "Genesis 8:20 (KJV)",
+    "line": 36,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n36",
+    "text": "and took of every clean beast, and of every clean fowl, and offered burnt offerings on the altar.",
+    "start": 341.758,
+    "end": 348.307,
+    "kind": "scripture",
+    "reference": "Genesis 8:20 (KJV)",
+    "line": 36,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n37",
+    "text": "Before building a house, before planting a field, Noah built an altar.",
+    "start": 348.657,
+    "end": 353.158,
+    "line": 37,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n37",
+    "text": "The first thing he did on the new earth was say thank you.",
+    "start": 353.338,
+    "end": 356.73,
+    "line": 37,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n38",
+    "text": "And the Lord smelled a sweet savour;",
+    "start": 357.08,
+    "end": 359.384,
+    "kind": "scripture",
+    "reference": "Genesis 8:21 (KJV)",
+    "line": 38,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n38",
+    "text": "and the Lord said in his heart, I will not again curse the ground any more for man’s sake;",
+    "start": 359.564,
+    "end": 365.068,
+    "kind": "scripture",
+    "reference": "Genesis 8:21 (KJV)",
+    "line": 38,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n38",
+    "text": "for the imagination of man’s heart is evil from his youth;",
+    "start": 365.248,
+    "end": 369.259,
+    "kind": "scripture",
+    "reference": "Genesis 8:21 (KJV)",
+    "line": 38,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n38",
+    "text": "neither will I again smite any more every thing living, as I have done.",
+    "start": 369.439,
+    "end": 374.09,
+    "kind": "scripture",
+    "reference": "Genesis 8:21 (KJV)",
+    "line": 38,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n39",
+    "text": "And God answered with a promise.",
+    "start": 374.44,
+    "end": 376.701,
+    "line": 39,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n39",
+    "text": "He knew the human heart was still broken.",
+    "start": 376.881,
+    "end": 379.59,
+    "line": 39,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n39",
+    "text": "He chose mercy anyway.",
+    "start": 379.77,
+    "end": 381.733,
+    "line": 39,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n40",
+    "text": "And God blessed Noah and his sons, and said unto them, Be fruitful, and multiply, and replenish the earth.",
+    "start": 382.083,
+    "end": 389.102,
+    "kind": "scripture",
+    "reference": "Genesis 9:1 (KJV)",
+    "line": 40,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n41",
+    "text": "A blessing.",
+    "start": 389.452,
+    "end": 390.582,
+    "line": 41,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n41",
+    "text": "The very words God spoke to Adam at the beginning:",
+    "start": 390.762,
+    "end": 394.112,
+    "line": 41,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n41",
+    "text": "be fruitful and multiply.",
+    "start": 394.292,
+    "end": 396.51,
+    "line": 41,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n41",
+    "text": "A second beginning for a broken world.",
+    "start": 396.69,
+    "end": 399.272,
+    "line": 41,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n42",
+    "text": "But the first time a dark cloud gathered over the hills, imagine the fear.",
+    "start": 399.622,
+    "end": 404.507,
+    "line": 42,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n42",
+    "text": "Would the water come back?",
+    "start": 404.687,
+    "end": 406.372,
+    "line": 42,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n42",
+    "text": "Every child who had heard the stories would look up and wonder.",
+    "start": 406.552,
+    "end": 410.52,
+    "line": 42,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n43",
+    "text": "And I will establish my covenant with you;",
+    "start": 410.87,
+    "end": 413.686,
+    "kind": "scripture",
+    "reference": "Genesis 9:11 (KJV)",
+    "line": 43,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n43",
+    "text": "neither shall all flesh be cut off any more by the waters of a flood;",
+    "start": 413.866,
+    "end": 418.325,
+    "kind": "scripture",
+    "reference": "Genesis 9:11 (KJV)",
+    "line": 43,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n43",
+    "text": "neither shall there any more be a flood to destroy the earth.",
+    "start": 418.505,
+    "end": 422.174,
+    "kind": "scripture",
+    "reference": "Genesis 9:11 (KJV)",
+    "line": 43,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n44",
+    "text": "I do set my bow in the cloud, and it shall be for a token of a covenant between me and the earth.",
+    "start": 422.524,
+    "end": 428.796,
+    "kind": "scripture",
+    "reference": "Genesis 9:13 (KJV)",
+    "line": 44,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n45",
+    "text": "And there it was, for the very first time:",
+    "start": 429.146,
+    "end": 431.877,
+    "line": 45,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n45",
+    "text": "a bow of colour, bending over the whole sky.",
+    "start": 432.057,
+    "end": 435.129,
+    "line": 45,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n45",
+    "text": "Not a weapon pointed at us.",
+    "start": 435.309,
+    "end": 437.378,
+    "line": 45,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n45",
+    "text": "A war bow, hung up.",
+    "start": 437.558,
+    "end": 439.18,
+    "line": 45,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n46",
+    "text": "And the bow shall be in the cloud;",
+    "start": 439.53,
+    "end": 441.599,
+    "kind": "scripture",
+    "reference": "Genesis 9:16 (KJV)",
+    "line": 46,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n46",
+    "text": "and I will look upon it, that I may remember the everlasting covenant between God and every living creature of all flesh that is upon the earth.",
+    "start": 441.779,
+    "end": 451.486,
+    "kind": "scripture",
+    "reference": "Genesis 9:16 (KJV)",
+    "line": 46,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n47",
+    "text": "Read that again.",
+    "start": 451.836,
+    "end": 453.244,
+    "line": 47,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n47",
+    "text": "The sign is not only for us to see.",
+    "start": 453.424,
+    "end": 456.24,
+    "line": 47,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n47",
+    "text": "God says He Himself will look upon it, and remember.",
+    "start": 456.42,
+    "end": 460.132,
+    "line": 47,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n47",
+    "text": "He holds the promise in His own hands.",
+    "start": 460.312,
+    "end": 462.978,
+    "line": 47,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n48",
+    "text": "Notice what the rainbow is.",
+    "start": 463.328,
+    "end": 465.291,
+    "line": 48,
+    "line_kind": "insight"
+   },
+   {
+    "segment": "n48",
+    "text": "God hung up His own bow, pointing at the sky and not at us.",
+    "start": 465.471,
+    "end": 469.695,
+    "line": 48,
+    "line_kind": "insight"
+   },
+   {
+    "segment": "n48",
+    "text": "Mercy is His idea.",
+    "start": 469.875,
+    "end": 471.688,
+    "line": 48,
+    "line_kind": "insight"
+   },
+   {
+    "segment": "n49",
+    "text": "The Bible does not pretend Noah became perfect.",
+    "start": 472.038,
+    "end": 475.43,
+    "line": 49,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n49",
+    "text": "Later he planted a vineyard, and failed again, the way people do.",
+    "start": 475.61,
+    "end": 479.92,
+    "line": 49,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n49",
+    "text": "Grace did not make him a god.",
+    "start": 480.1,
+    "end": 482.361,
+    "line": 49,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n49",
+    "text": "It made him a man who was carried.",
+    "start": 482.541,
+    "end": 484.93,
+    "line": 49,
+    "line_kind": "story"
+   },
+   {
+    "segment": "n50",
+    "text": "And all the days of Noah were nine hundred and fifty years:",
+    "start": 485.28,
+    "end": 489.163,
+    "kind": "scripture",
+    "reference": "Genesis 9:29 (KJV)",
+    "line": 50,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n50",
+    "text": "and he died.",
+    "start": 489.343,
+    "end": 490.559,
+    "kind": "scripture",
+    "reference": "Genesis 9:29 (KJV)",
+    "line": 50,
+    "line_kind": "scripture"
+   },
+   {
+    "segment": "n51",
+    "text": "What are you waiting for God to open?",
+    "start": 490.909,
+    "end": 493.426,
+    "line": 51,
+    "line_kind": "cta"
+   },
+   {
+    "segment": "n51",
+    "text": "Tell me in the comments.",
+    "start": 493.606,
+    "end": 495.228,
+    "line": 51,
+    "line_kind": "cta"
+   },
+   {
+    "segment": "n51",
+    "text": "Next time:",
+    "start": 495.408,
+    "end": 496.645,
+    "line": 51,
+    "line_kind": "cta"
+   },
+   {
+    "segment": "n51",
+    "text": "the tower that reached for the sky.",
+    "start": 496.825,
+    "end": 499.086,
+    "line": 51,
+    "line_kind": "cta"
+   },
+   {
+    "segment": "n51",
+    "text": "Subscribe.",
+    "start": 499.266,
+    "end": 500.482,
+    "line": 51,
+    "line_kind": "cta"
+   }
+  ],
+  "release_asset": "bible-flood-ends-long-sha256-2d8368d89e07d2d2e08360751f9bf6addecdb3710b941c1b4c7ee497560722b6.mp4",
+  "release_tag": "v0.0.0-cloud-assets-20261025",
+  "run_id": "41467290523"
+ }
+}
