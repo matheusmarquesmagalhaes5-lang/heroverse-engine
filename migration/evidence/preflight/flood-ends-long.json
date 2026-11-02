@@ -1,7 +1,7 @@
 {
  "plan": "migration/production/bible/plans/flood-ends-long.json",
  "episode": "flood-ends-long",
- "checked_at": "2026-11-02T14:42:54Z",
+ "checked_at": "2026-11-02T22:57:27Z",
  "plan_check": {
   "problems": [],
   "pending": [],
@@ -41,8 +41,8 @@
  },
  "voice": {
   "ran": true,
-  "reused": true,
-  "checkpoint_sha256": "ed4db798d9f9cb30b28fad010a44684538aef40e33fe61d3dfd674b366e5f42e",
+  "reused": false,
+  "checkpoint_sha256": "323cf10dd8c1d4397852be60549461e67a8697b45f6f726ede5dceb855f3ba48",
   "problems": [],
   "pace": {
    "god": [
@@ -51,8 +51,8 @@
    "narration": [
     3.19,
     2.38,
-    2.97,
-    2.55,
+    2.96,
+    2.56,
     2.88,
     2.86,
     3.01,
@@ -66,22 +66,22 @@
     3.21,
     2.48,
     3.45,
-    2.95,
+    2.94,
     2.5,
     3.57,
     2.52,
-    2.99,
+    3.0,
     2.84,
-    3.34,
+    3.36,
     2.44,
     3.0,
     2.56,
-    2.82,
+    2.83,
     3.25,
-    2.72,
+    2.73,
     2.69,
     2.71,
-    2.45,
+    2.44,
     3.01,
     3.1,
     2.68,
@@ -95,15 +95,15 @@
     3.67,
     2.9,
     2.92,
-    2.69,
+    2.7,
     2.75,
     2.71,
-    2.84,
+    2.83,
     2.4
    ]
   },
   "measured": {
-   "total": 501.874,
+   "total": 501.789,
    "keeper_share": 0.055,
    "lesson_share": 0.056,
    "retimed": {
@@ -197,9 +197,10 @@
     "probe": "none needed: generated right after the talking shots (risk_order), face check"
    },
    {
-    "kind": "plan_b_still",
+    "kind": "approved_clip",
     "shot": "k-insight",
-    "probe": "none needed: the Kokoro voice over its approved still in motion (owner exception, arc-01 long); no lips are shown speaking"
+    "clip_sha256": "640affc8b05a4986e4223474858bb83aca9447a2a80ac7df2b784c8260e2c279",
+    "probe": "none needed: the approved clip of this exact request is the evidence (approve-shot, E271); the build fetches that clip"
    },
    {
     "kind": "plan_b_still",
@@ -207,9 +208,10 @@
     "probe": "none needed: the Kokoro voice over its approved still in motion (owner exception, arc-01 long); no lips are shown speaking"
    },
    {
-    "kind": "plan_b_still",
+    "kind": "approved_clip",
     "shot": "k-close",
-    "probe": "none needed: the Kokoro voice over its approved still in motion (owner exception, arc-01 long); no lips are shown speaking"
+    "clip_sha256": "4a18040be39f9db519bb699a492b14d3411b12c67b1af84d6c83944ebd242f3c",
+    "probe": "none needed: the approved clip of this exact request is the evidence (approve-shot, E271); the build fetches that clip"
    }
   ],
   "probes_required": [],
@@ -228,12 +230,12 @@
   },
   "setups": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "code": {
-   "episode_build.py": "d946286d9e94880a073b5317d26ae2761aa30e6bb034aa5fada3daec7afabe09",
-   "plan_check.py": "d9f78ab9ce6ef166f28c8c6b712532f23126da1edb656ad32dee3c831ccdeb0e",
+   "episode_build.py": "4a8e51d8290b0517a7b8da0789174af94fe70ebd817514d5732433d80411ab1f",
+   "plan_check.py": "d37bba3a21e4cadde0f9446a4b0c20db959aec13961db80e1a8abb14e56251e8",
    "voice_pace.py": "d4d2850c60e7df3680130725b6d584a83239538ad91f59671fcff4a626837c4b",
    "lipsync_check.py": "8222df7918d027eb2dbe21ca351cf29ae4c5f59bcda377906e4156a2be8dfdc9",
    "syncnet.py": "0f6e65316b50850629e488e6167ad7159efc3b2480d27ced3166311e054633f7",
-   "episode_preflight.py": "0a8e3391be564d8681922175cfaef08b843136a4e77aaa8c3b0ef7351d646d55",
+   "episode_preflight.py": "f0835f14e3ddb16d551382c0cb443602837dd3ff5ff8463cd114d4a480c60231",
    "clip_timing.py": "44626ba6ea7f807a62a99dcabcca3751d55c01ce452718efe1fc1b9e6db73509",
    "reviewer_identity.py": "b813ceb46a450e21f7fd3fd08b38fe77094f1b3fafaec8db3251f56f954be24d",
    "owner_quality_policy.py": "093de8b9883d18d6e6f8eb08989696d180bb890556cc89de34aecb5fdcedb3ca"

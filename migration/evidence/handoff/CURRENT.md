@@ -30,8 +30,9 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
   needs 9:16 stills from the ChatGPT desktop route.
 
 - 2026-11-02 owner order: Pavo talking clips for the Keeper lines; held PR #682 keeps 1m-NUJhkdMY unpublished. Chest-up
-  clips from shot-probe 41534197400 are recorded (k-insight, k-close clean; k-bow needs speech-check); not yet swapped
-  into `shots/` because of the PROBE_REQUIRED (>=6) vs E264 (cap 2) conflict; see DECISIONS.
+  clips from shot-probe 41534197400: k-insight and k-close are approved in `shots/` (E271: an approved clip owes no
+  probe; preflight PASS). k-bow failed the pinned ASR words check on both generations and stays on the Kokoro
+  voice-over fallback; see DECISIONS. Next: `episode.yml` rebuild, then the review of the new master.
 
 ## Next moments
 

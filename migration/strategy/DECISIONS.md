@@ -536,3 +536,9 @@ reviewed by frames (approvable). k-bow: both generations carry only AUDIO_NOT_OU
 speech-check). Not swapped into `shots/flood-ends-long.json` yet: the Pavo sources would make `episode_preflight`
 report PROBE_REQUIRED (needs >= 6 direct generations a line) against the E264 cap of 2, and the current fallback
 approvals keep the preflight passing. Pending owner decision: let an approved clean probed clip satisfy the probe rule.
+Executor 2026-11-02 (E271): applied by the rule above. A shot whose clip is approved (approve-shot, bound to the request
+digest and clip sha256) owes no probe and no rate in `episode_preflight`; a shot with no approved clip keeps PROBE_REQUIRED
+under the E264 cap. k-insight and k-close are approved on the chest-up Pavo clips (frames viewed, no flags). k-bow: the pinned
+medium.en speech-check heard neither generation say the line (SPEECH_WORDS_NOT_EXACT: garbled and dropped words), so it is
+a hard SHOT_WORDS_NOT_OUR_LINE and keeps the approved Kokoro voice-over on still motion; no third generation (E264). The long's
+compose has no per-shot transition setting (crossfade_seconds 0.0), so the Pavo clips join by cut.

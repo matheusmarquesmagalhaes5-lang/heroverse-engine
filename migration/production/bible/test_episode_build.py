@@ -751,7 +751,10 @@ class Gating(unittest.TestCase):
         # E118: coverage reads the seconds an approved clip was generated at; an approval without them covers nothing
         for path in sorted(eb.SHOTS_DIR.glob("*.json")):
             for sid, a in json.loads(path.read_text())["shots"].items():
-                self.assertTrue(isinstance(a.get("clip_seconds"), int) and a["clip_seconds"] > 0, f"{path.name} {sid}")
+                # E152 approve-shot records the measured seconds of the approved bytes (a float, 10.125); E271
+                c = a.get("clip_seconds")
+                self.assertTrue(isinstance(c, (int, float)) and not isinstance(c, bool) and 0 < c < float("inf"),
+                                f"{path.name} {sid}")
 
     def test_the_request_digest_ignores_measured_seconds_but_not_the_words(self):
         # E114 (review of #442): Kokoro measures differ between the local preflight and the runners by a few ms; the

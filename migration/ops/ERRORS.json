@@ -3969,6 +3969,30 @@
      "drift"
     ]
    }
+  },
+  {
+   "id": "E271",
+   "date": "2026-11-02",
+   "class": [
+    "cheap-vs-expensive"
+   ],
+   "prior": [
+    "E106",
+    "E127",
+    "E135",
+    "E263",
+    "E264",
+    "E266"
+   ],
+   "error": "flood-ends-long: putting the approved chest-up Pavo Keeper clips (shot-probe 41534197400) in the plan made episode_preflight report PROBE_REQUIRED (>= 6 direct generations a line, MIN_PROBE_GENERATIONS, then PROBE_RATE_LOW by MIN_SHOT_CHANCE) while E264 caps a talking line at 2 generations in 1 round: the rule could never be met, and it ignored the approve-shot record of the exact clip the build ships. Production stopped and asked the owner, against 'Pavo: generate, compare, use the best' (DECISIONS 2026-11-02).",
+   "fix": "episode_preflight.approved_clips: a talking or voice-over shot whose approve-shot record in shots/<episode>.json (no fallback source, clip sha256, valid reviewer, score >= SHOT_REVIEW_MIN) is bound to the request digest the plan sends now owes no probe and no rate (row kind approved_clip); probe_rows and binding take the report's request digests, verify and long_preflight.probe_gate pass them. A shot with no approved clip, or one approved for another request, keeps PROBE_REQUIRED / PROBE_RATE_LOW unchanged; the E264 cap is untouched. flood-ends-long: k-insight and k-close approved on the Pavo clips; k-bow's two generations failed the pinned medium.en speech-check (SPEECH_WORDS_NOT_EXACT: SHOT_WORDS_NOT_OUR_LINE), so it stays on the approved Kokoro voice-over fallback.",
+   "antidote": {
+    "file": "migration/production/bible/test_episode_preflight.py",
+    "contains": "def test_e271_an_approved_clip_owes_no_probe_and_no_rate",
+    "covers": [
+     "cheap-vs-expensive"
+    ]
+   }
   }
  ]
 }

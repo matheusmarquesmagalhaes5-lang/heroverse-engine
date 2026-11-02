@@ -183,12 +183,33 @@ def load_probes():
     return json.loads(SETUPS.read_text())["probes"] if SETUPS.exists() else []
 
 
-def probe_rows(plan, chars, probes=None):
+def approved_clips(plan, digests):
+    """E271: {shot id: approved clip} of the shots whose approve-shot record (shots/<episode>.json: the clip's sha256,
+    a valid reviewer, the review floor) is bound to the request digest the plan sends now. A fallback source (still
+    motion, footage, Buzzy, reuse) is not a generated clip: its own rules apply (plan B, shot_sources). With no
+    digests nothing is approved: the probe requirement stays."""
+    if not digests:
+        return {}
+    out = {}
+    for sid, a in eb.load_approvals(plan).items():
+        if (isinstance(a, dict) and "source" not in a and isinstance(a.get("clip_sha256"), str) and a["clip_sha256"]
+                and a.get("request_sha256") == digests.get(sid) and eb.reviewer_identity.valid(a)
+                and isinstance(a.get("score"), (int, float)) and a["score"] >= eb.SHOT_REVIEW_MIN):
+            out[sid] = a
+    return out
+
+
+def probe_rows(plan, chars, probes=None, digests=None):
     """Each talking shot with the recorded probes of its own line (speaker, references and binding equal), and each
     voice-over Keeper shot with the still-mouth probes of its own prompt and reference; none, or fewer than the
     minimum, is PROBE_REQUIRED, and a recorded rate whose chance within the shot's attempts is under MIN_SHOT_CHANCE
-    is PROBE_RATE_LOW. Returns (rows, required, low, run chance or None while a shot is unprobed)."""
+    is PROBE_RATE_LOW. E271: a shot whose clip is APPROVED for the request the plan sends now (`digests`, approved_clips)
+    owes no probe and no rate: the approved clip is the evidence and the build fetches exactly that clip (owner
+    2026-11-02, "generate, compare, use the best"; E264 caps a line at 2 generations, so >= 6 probes could never be
+    met). A shot with no approved clip keeps its requirement. Returns (rows, required, low, run chance or None while
+    a shot is unprobed)."""
     probes = load_probes() if probes is None else probes
+    approved = approved_clips(plan, digests)
     items, carried = plan_check.sequence(plan)
     rows, missing, low, run_chance = [], [], [], 1.0
     import shot_sources
@@ -202,6 +223,11 @@ def probe_rows(plan, chars, probes=None):
         if (talks or silent) and s["id"] in plan_b:
             rows.append({"kind": "plan_b_still", "shot": s["id"], "probe": "none needed: the Kokoro voice over its "
                          "approved still in motion (owner exception, arc-01 long); no lips are shown speaking"})
+            continue
+        if (talks or silent) and s["id"] in approved:
+            rows.append({"kind": "approved_clip", "shot": s["id"], "clip_sha256": approved[s["id"]]["clip_sha256"],
+                         "probe": "none needed: the approved clip of this exact request is the evidence (approve-shot, "
+                         "E271); the build fetches that clip"})
             continue
         if talks or silent:
             if talks:
@@ -239,7 +265,7 @@ def probe_rows(plan, chars, probes=None):
     return rows, missing, low, (round(run_chance, 3) if not missing else None)
 
 
-def binding(plan_path, plan, chars_raw=None, probes=None, registry=None):
+def binding(plan_path, plan, chars_raw=None, probes=None, registry=None, digests=None):
     """Review of #422: what a report vouches for, part by part, so a STALE refusal names what changed and a change
     the plan does not use (another character approved) leaves it valid: the plan's bytes; the characters.json
     entries it uses (God's voice included when He speaks); their image records; the setups.json probes its talking
@@ -250,7 +276,7 @@ def binding(plan_path, plan, chars_raw=None, probes=None, registry=None):
     if any(plan_check.speaking(s) and s["speaker"] == ch.GOD for s in plan["shots"]):
         entries[ch.GOD] = data.get("god")
     records = {p.name: sha256(p) for cid in used for p in sorted((ch.HERE / "images").glob(f"ch-{cid}-*.json"))}
-    rows = probe_rows(plan, data["characters"], probes)[0]
+    rows = probe_rows(plan, data["characters"], probes, digests)[0]
     matched = sorted((digest(x) for r in rows for x in r.get("matched", [])))
     out = {"plan": sha256(plan_path), "characters": digest(entries), "image_records": records,
            "setups": digest(matched), "code": {p.name: sha256(p) for p in CODE}}
@@ -498,7 +524,7 @@ def preflight(plan_path, voice=None, refs=False, chars=None, setups=None, today_
                               "why": "needs --refs, a clean plan and a clean measured voice" if refs else "no --refs given"}
         blockers.append("REQUESTS_NOT_CHECKED (run with --refs once the plan and the voice are clean)")
     if sound:
-        rows, missing, low, chance = probe_rows(plan, chars, setups)
+        rows, missing, low, chance = probe_rows(plan, chars, setups, report["requests"].get("digests"))
         for r in rows:
             r.pop("matched", None)
         report["setups"] = {"shots": rows, "probes_required": missing, "rate_low": low,
@@ -513,7 +539,7 @@ def preflight(plan_path, voice=None, refs=False, chars=None, setups=None, today_
     digests = report["requests"].get("digests")
     report["shot_review"] = (eb.review_problems(plan, digests, needs=report["requests"].get("needs") or {})
                              if digests else ["REQUESTS_NOT_CHECKED"])
-    report["binding"] = binding(plan_path, plan, probes=setups, registry=registry)
+    report["binding"] = binding(plan_path, plan, probes=setups, registry=registry, digests=digests)
     report["blockers"] = blockers
     if eb.is_long(plan):   # E127: and no review row of the long open (long_preflight.py)
         import long_preflight
@@ -543,7 +569,7 @@ def verify(plan_path, approvals=None):
         return (f"PREFLIGHT_MISSING {path.name} in {REPORTS.name}/ (episode_build.py preflight PLAN --voice ... "
                 "--refs --write, by PR)")
     report = json.loads(path.read_text())
-    changed = stale_parts(report.get("binding"), binding(plan_path, plan))
+    changed = stale_parts(report.get("binding"), binding(plan_path, plan, digests=(report.get("requests") or {}).get("digests")))
     if changed:
         return f"PREFLIGHT_STALE {', '.join(changed)} changed after the preflight; run it again"
     if report.get("status") != "PASS":
