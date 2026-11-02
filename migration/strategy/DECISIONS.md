@@ -431,3 +431,46 @@ No structure was validated. vidIQ: 45 credits (10 wasted on off-topic queries), 
 ## 2026-11-02 — Inteligência Viva (second run)
 
 Measured: unchanged since the first run (subs 300/1,000; long hours 27.9/4,000 own estimate; hours bind). No new daily report, no experiment readable yet. Cross-niche pool mined (8 emotional-narrative long winners, breakout 40-126): dominated by one cowboy-romance cluster, no weak contrasts, so NOT validated; only the title mechanic (emotional turn + withheld reveal) is carried as a title-B test. 2h+ lengths are not copied. vidIQ today: 80/150 credits. Strategy and deadline unchanged (live-plan.json).
+
+## 2026-11-02 — Battle plan to YPP: clear moments, triggers and actions (coordinator, owner's order)
+
+The binding constraint is long watch hours: 27.9 of 4,000 (estimated), +2.1 h/day. More of the same output cannot
+close that gap. Hours scale with minutes watched per viewer and with sessions, so the plan uses levers that multiply
+hours. Inteligência Viva evaluates each checkpoint every day in its entry and live-plan. Production executes the
+actions. Nothing here loosens a gate or a pillar.
+
+Levers, ranked by hours per unit of capacity:
+1. **Long compilations from approved media (zero generation cost).** Arc marathons of 40–90 min built through the
+   compilation track (E251): the full Noah story Genesis 5–9, then Creation→Fall→Cain, Abraham, and so on. One
+   viewer session gives 20–60 min instead of 3–6, and they are the best end-screen target for every Short and long.
+2. **One new long per story, 15–20 min**, packaged as a question (live-plan A/B). It feeds the next compilation.
+3. **Funnel everything into the longest video:**
+   - every Short, cut, pinned comment, end screen and playlist points to the newest compilation or long;
+   - every long ends on the next long;
+   - one series playlist per arc.
+4. **External qualified traffic**: own Facebook Page (Reels and the long), Telegram and WhatsApp channels, and
+   value-first posts in groups that allow it. This is measured by external-source watch time.
+5. **Packaging refresh of every under-performing video**: title and thumbnail only, never the accepted media.
+
+Moments (UTC). Each has a trigger and an action.
+- **M1 — 2026-11-02/03:**
+  - flood-ends-long published at the live-plan slot;
+  - 2 cuts plus 1 Short a day with funnel links;
+  - Facebook Page receives the long.
+  - Trigger: the long is not public by 11-03 23:30 → it is the only priority in the next production run.
+- **M2 — 2026-11-04:** the first arc compilation, "The Complete Story of Noah (Genesis 5–9) KJV", 40–60 min, is
+  built from the approved G06–G09 media, the Noah compilation and flood-ends-long, and published. Every live Short's
+  pinned comment and related video then points to it.
+- **M3 — 2026-11-05 checkpoint (48 h data):**
+  - long CTR <2% → swap to title B or a new thumbnail;
+  - average view duration <3 min → shorten the hook and move the strongest beat to the first 30 s;
+  - long views from Shorts = 0 → move the funnel to end screens and playlist.
+- **M4 — 2026-11-06 to 11-10:** one new story long a day (Genesis 11 onward), plus a second compilation (Creation →
+  Cain) by 11-08. External distribution runs daily.
+- **M5 — 2026-11-10 checkpoint:**
+  - project the date the hours are reached, from the measured 3-day hours per day;
+  - if it lands after 12-01, scale whichever lever measured the most hours per capacity unit (compilations,
+    lengths or distribution) and drop the weakest.
+- **M6 — 2026-11-15 and 2026-12-01:** deadline reviews, with honest measured numbers against the goal.
+
+Each Inteligência Viva entry reports: the current moment, its triggers (hit or not), and the action taken.
