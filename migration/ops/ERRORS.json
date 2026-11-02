@@ -3928,6 +3928,25 @@
      "threshold"
     ]
    }
+  },
+  {
+   "id": "E270",
+   "date": "2026-11-02",
+   "class": [
+    "process"
+   ],
+   "prior": [
+    "E259"
+   ],
+   "error": "flood-ends-long: approve.yml's preflight failed THUMB_NOT_APPROVED (the pilot's inspection/thumbnail.jpg was the build's own image, not the approved one), and after the fix publish.yml failed publication_binding BUZZY_LONG_HANDOFF_INVALID because I set publish_at in schedule.json, a file the long's handoff hashes.",
+   "fix": "Copy the approved thumbnail into inspection/thumbnail.jpg; leave schedule.json as built (publish_at null) and pass the time as publish.yml's publish_at input.",
+   "antidote": {
+    "file": "migration/production/bible/test_buzzy_long_handoff.py",
+    "contains": "def test_e270_the_handoff_binds_schedule_json_so_the_time_is_a_publish_input",
+    "covers": [
+     "process"
+    ]
+   }
   }
  ]
 }
