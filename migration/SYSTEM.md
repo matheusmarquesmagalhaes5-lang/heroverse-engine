@@ -141,6 +141,8 @@ delivery. Comments and other outward messages follow their existing authorizatio
 
 ## 8. Automation, cost and learning
 
+Routines and the operating loop: see `OPERATIONS.md`, "Automation map (2026-11-02)".
+
 Use the existing heartbeat, durable requests and shared supervisors. The heartbeat can hand a qualified plan to
 an existing build and discover its evidence; source/perceptual review still requires an available authorized
 executor. Verify each surface from runs and receipts before describing it as autonomous. No extra clock.
