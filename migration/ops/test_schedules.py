@@ -37,6 +37,16 @@ class Schedules(unittest.TestCase):
         self.assertEqual(crons, {"heartbeat.yml", "tiktok.yml"})
         self.assertNotIn("channel-privacy.yml", dispatched_by_heartbeat())   # by hand only (a finished job)
 
+    def test_e265_every_workflow_is_valid_yaml_and_dispatchable(self):
+        # E265: an unquoted ": " in a description made shot-probe.yml invalid YAML, GitHub then reported "no
+        # workflow_dispatch trigger" and nothing could be dispatched.
+        import yaml
+        for wf in sorted(WORKFLOWS.glob("*.yml")):
+            doc = yaml.safe_load(wf.read_text())
+            on = doc.get("on", doc.get(True))
+            if "workflow_dispatch:" in wf.read_text().split("jobs:")[0]:
+                self.assertIn("workflow_dispatch", on, f"{wf.name}: invalid trigger block")
+
     def test_the_parser_sees_a_schedule(self):
         self.assertTrue(scheduled("name: x\non:\n  schedule:\n    - cron: '0 * * * *'\n  workflow_dispatch:\njobs:\n"))
         self.assertFalse(scheduled("name: x\non:\n  workflow_dispatch:\njobs:\n  a:\n    schedule: no\n"))

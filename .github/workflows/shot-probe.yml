@@ -18,7 +18,7 @@ on:
         description: Comma list of the plan's shot ids to probe
         required: true
       attempts:
-        description: Rounds per shot (1-6; a talking or voice-over shot takes 1, E264: 2 generations at most), every clean one kept for the review
+        description: "Rounds per shot (1-6; a talking or voice-over shot takes 1, E264 - 2 generations at most), every clean one kept for the review"
         required: false
         default: "1"
       adopt_run:
