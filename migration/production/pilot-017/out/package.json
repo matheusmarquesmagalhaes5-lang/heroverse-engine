@@ -1,0 +1,30 @@
+{
+ "version": "pilot-package-v1",
+ "pilot_id": "pilot-017",
+ "series": "buzzy-long",
+ "episode": "flood-ends-long",
+ "thumb_episode": "flood-ends-long",
+ "title": "The Flood Ends: The Raven, the Dove and the Rainbow (Genesis 8-9, KJV)",
+ "title_length": 70,
+ "description": "Genesis 8-9 (King James Version, public domain), dramatized with AI-generated visuals; the scenes are imagined, the quoted words are the KJV.\n\n0:00 The door that God shut\n0:33 The waters go down\n2:10 The raven and the dove\n4:33 Dry ground, shut door\n5:38 The altar\n6:22 The rainbow\n\nWhat are you waiting for God to open? Tell me in the comments.",
+ "tags": [
+  "noah",
+  "flood",
+  "rainbow",
+  "genesis",
+  "bible story",
+  "kjv"
+ ],
+ "category_id": "29",
+ "playlist": null,
+ "default_language": "en",
+ "made_for_kids": false,
+ "privacy_on_upload": "private",
+ "thumbnail": "thumbnail.jpg",
+ "ai_generated_visuals": true,
+ "altered_or_synthetic_disclosure": "Bible-story reconstruction with synthetic narration; synthetic disclosure on.",
+ "first_comment": "Noah saw dry ground and still waited for God's word before he stepped out. What are you waiting for God to open right now?",
+ "output_sha256": "2d8368d89e07d2d2e08360751f9bf6addecdb3710b941c1b4c7ee497560722b6",
+ "upload_performed": false,
+ "publication_performed": false
+}

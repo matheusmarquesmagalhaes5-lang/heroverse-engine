@@ -1,0 +1,25 @@
+{
+ "version": "buzzy-long-qa-v1",
+ "criteria_version": "buzzy-long-qa-criteria-v1",
+ "criteria_sha256": "ce5c05e29cf697782efb59a4bdfadb2d09dc035a727ee24e505403706843831a",
+ "output_sha256": "2d8368d89e07d2d2e08360751f9bf6addecdb3710b941c1b4c7ee497560722b6",
+ "status": "FAIL",
+ "checks": {
+  "full_decode_without_errors": true,
+  "video_format_1920x1080_30fps": true,
+  "length_8_to_12_minutes": true,
+  "integrated_lufs_band": true,
+  "true_peak_ceiling": true,
+  "build_report_for_this_file": true,
+  "caption_free_master_kept": true,
+  "sentence_timeline_kept": true,
+  "buzzy_shot_in_episode": false,
+  "music_and_voice_owned": true
+ },
+ "measured": {
+  "seconds": 501.682,
+  "lufs": -14.4,
+  "true_peak_dbfs": -1.1,
+  "frame_rate": "30/1"
+ }
+}

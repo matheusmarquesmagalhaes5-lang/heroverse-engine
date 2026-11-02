@@ -1,0 +1,24 @@
+{
+ "version": "buzzy-long-handoff-v1",
+ "pilot_id": "pilot-017",
+ "episode": "flood-ends-long",
+ "output_sha256": "2d8368d89e07d2d2e08360751f9bf6addecdb3710b941c1b4c7ee497560722b6",
+ "source_plan": {
+  "file": "migration/production/bible/plans/flood-ends-long.json",
+  "sha256": "16576bb35b2b1b53b2b4c031b14dd9750bd5b20b26c50b2c32e9c953de912265"
+ },
+ "build_report": {
+  "file": "migration/evidence/episodes/flood-ends-long/report-41467290523.json",
+  "sha256": "d4bc177952de4929e779ff3c6d8beea119be0c61c5382cbf1bba9ceefe21bae3"
+ },
+ "release_asset": "pilot-017-sha256-2d8368d89e07d2d2e08360751f9bf6addecdb3710b941c1b4c7ee497560722b6.mp4",
+ "files": {
+  "script.json": "849863b94faccd2f9b7b84cacdac0f80a8b223186cbfa90fc454614170918274",
+  "schedule.json": "f3159f8e8578383b7c1acb00e96c71e6950d3d19af8c860390f3e981d78e9503",
+  "out/manifest.json": "5687756fc9114eb50b3f250be8c47838374b1464df5f0155d90e3d9d21fd6d97",
+  "out/timeline.json": "d0d1b257868b07a4dd2d1bdc16275e5497cf8be7fe41037c81541fba3b52b195",
+  "out/package.json": "8990b76a5cb0995edcbd33080dcde64be4eb427f1a55981c967d33e3c5c89bbc"
+ },
+ "review_status": "AWAITING_REVIEW",
+ "approval_created": false
+}
