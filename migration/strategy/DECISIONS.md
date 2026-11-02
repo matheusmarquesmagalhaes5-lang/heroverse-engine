@@ -475,6 +475,19 @@ Moments (UTC). Each has a trigger and an action.
 
 Each Inteligência Viva entry reports: the current moment, its triggers (hit or not), and the action taken.
 
+### Pavo: generate, compare, use the best — never discard and regenerate (owner, 2026-11-02)
+- The owner's finding: Pavo clips are almost always good and already meet our standard. Producing a clip and not
+  using it is waste.
+- Each talking line gets at most 2 generations, in 1 round (E264). Claude compares the generated clips side by side
+  and approves the best one by real review (approve-shot). Selection replaces regeneration.
+- A minor imperfection (a small lip offset, a pause, a frame) is fixed in the EDIT and the montage: trim, hold, speed,
+  cut point, B-roll over the weak part. It is never regenerated.
+- The still-motion voice-over fallback applies only when NO clip is usable. Usable means the wrong audio or line, no
+  face, a broken render, or a policy problem.
+- Nothing here loosens a gate. Review and the native review stay; the change is choose-and-edit instead of
+  regenerate.
+- Inteligência Viva and production plan to avoid rework: every generation planned must be one that gets used.
+
 ### Never stop: automation and fallback ladder (owner, 2026-11-02)
 - **Who moves it:**
   - Inteligência Viva (05:17) plans.
