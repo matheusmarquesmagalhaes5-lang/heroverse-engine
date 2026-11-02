@@ -14,7 +14,7 @@ provider URLs and recovery keys stay outside public code, logs and handoffs.
 | Check the current regular build | `episode_build.py preflight PLAN --voice VOICE_PYTHON PREPARED_WORK --refs --write`, then `verify-preflight PLAN` |
 | Assemble approved shots | `episode.yml` → `episode_build.py` → `short_engine.py`; no new generation inside assembly |
 | Inspect a private draft | `episode_build.py render-imported WORK OUT` / `production/draft_render.py`; DRAFT only, not a publication qualification |
-| Native audiovisual evidence | `native-review.yml` → `production/bible/native_review.py`; actual complete master audio/video and saved result identity |
+| Native audiovisual evidence | DEFAULT `local-review.yml` → `production/bible/local_review.py` (pinned ASR hears the audio, ffmpeg measures, timecoded frame sheets; no secret, no PC; E268); optional second opinion `native-review.yml` → `production/bible/native_review.py` (Gemini); actual complete master audio/video and saved result identity |
 | Thumbnail | `production/bible/thumbs.py`: check/refs/finalize/sheet/approve; required for BibleShort part 9 onward |
 | Check publication record | `episode_build.py check-record EPISODE_JSON [VIDEO]` → `episode_preflight.record_problems` → `publish_episode.problems` |
 | Publish and reconcile | `publish-episode.yml` → `publish/publish_episode.py`; existing `publish/ledger.json`, episode record and `publish/receipts/` |
@@ -56,9 +56,9 @@ story is made once as a 16:9 long, and the Shorts are coherent 9:16 cuts of it. 
 | Sources, preflight, build | the Short's own route: `shot-probe.yml` / `scene_stills.py` / `shot_sources.py` at 16:9, `episode_build.py preflight … --write`, `episode.yml` (1920x1080, 16:9 captions, owned music, -14 LUFS) |
 | What the cuts need | `episode.yml` record job: master `bible-<id>-sha256-<sha>.mp4` and caption-free master `bible-<id>-clean-sha256-<sha>.mp4` in the release; `evidence/episodes/<id>/report-<run>.json` binds both hashes, the sentence timeline (`composed.sentences`) and the shot timeline (`composed.timeline`) |
 | The long's pilot | merge the report, then `buzzy-long-pilot.yml` (plan, report) → `buzzy_long.py qa` (buzzy-long-qa-criteria-v1) + `materialize` → `<pilot>-sha256-<sha>.mp4` alias and the pilot on `claude/long-<id>-<run>` (PR) |
-| Review and publish the long | `native-review.yml` (plan = the long's plan, defect finder) as evidence; the session reviewer writes `inspection/claude_review.json` (defects, publish decision); thumbnail approved through `thumbs.py` (format long); then `approve.yml` → `prepublish_gate.py` → `publish.yml`, on the defect-gated buzzy-long track |
+| Review and publish the long | `local-review.yml` (plan = the long's plan, sha256 = its master; defect finder; `native-review.yml` is optional); the session reviewer writes `inspection/claude_review.json` (defects, publish decision); thumbnail approved through `thumbs.py` (format long); then `approve.yml` → `prepublish_gate.py` → `publish.yml`, on the defect-gated buzzy-long track |
 | Cut the Shorts | `cuts/<long>.json` (bible-cuts-v1, track buzzy-cut, pilot, report, cuts: id, start, end, optional x, title, description with "full story", tags, first_comment); `short_cuts.py check SPEC` refuses a cut inside speech, off sentence edges or outside 20–179 s; `short-cuts.yml` renders them (centre 9:16, Short captions, gain-only -14 LUFS, fades), puts `bible-<cut>-sha256-<sha>.mp4` in the release and draft `episodes/<cut>.json` (track buzzy-cut, parent long) on `claude/cuts-<long>-<run>` |
-| Review and publish each cut | `native-review.yml` with plan = the cuts spec and the cut's own sha256 (never the long's score), the session reviewer's `review` (defects, publish decision) in its record, `episode_build.py check-record`, then `publish-episode.yml`; `arc_links.py` links each cut to its long through `parent.pilot` |
+| Review and publish each cut | `local-review.yml` with plan = the cuts spec and the cut's own sha256 (never the long's score), the session reviewer's `review` (defects, publish decision) in its record, `episode_build.py check-record`, then `publish-episode.yml`; `arc_links.py` links each cut to its long through `parent.pilot` |
 
 Long-first stills move by need (E261): `episode.yml` maps each approved still's depth (Depth Anything V2 Small, ONNX
 on CPU, sha256-pinned; unreachable model: a depth proxy, recorded) and `episode_build.py generate` renders every still
@@ -82,7 +82,7 @@ KJV appears only if the spec shows it (`verse`, exact by `kjv_check`).
 | Spec | `reflections/<long>-<n>.json` (`bible-reflection-v1`, id `<long>-reflection-<n>`): `long`, `pilot`, `report` (the long's build report), `clip` {start, end, x, audio duck/mute}, `reflection.text`, optional `verse`, `keeper_image` (a still id), optional `motion`, `title`, `description` (public domain, AI, "full story"), `first_comment` (holds `https://youtu.be/<the long's video id>`) |
 | Check | `python3 -I -B production/bible/reflection_shorts.py check SPEC` refuses a long that is not long-first or not in `publish/ledger.json` under `<pilot>:<master sha256>`, a clip outside 20-40 s or starting/ending inside a spoken sentence (the cuts' `boundaries`), a reflection outside 20-80 words, not whole sentences, with a banned word or a voice (140 wpm) that does not fit the clip, an unapproved or non-Keeper still, an inexact verse |
 | Render | `reflection-shorts.yml` (dispatch on main, spec path): check, caption-free master by sha256, Kokoro voice (`pilot_render.py voice`), `reflection_shorts.py render` (measured voice must fit with a 0.6 s tail and sit in 115-165 wpm; -14 LUFS gain, fades), `bible-<id>-sha256-<sha>.mp4` in the release, draft `episodes/<id>.json` and the measures on `claude/reflection-<id>-<run>` (PR) |
-| Review and publish | `native-review.yml` with plan = the spec and the Short's own sha256, then the session reviewer's `review` in the record (`overall` >= 9.5: track `keeper-reflection` keeps the standard Short floor; no Buzzy shot is asked of its parent), `episode_build.py check-record`, `publish-episode.yml`; `arc_links.py` links it to its long through `parent.pilot` |
+| Review and publish | `local-review.yml` with plan = the spec and the Short's own sha256, then the session reviewer's `review` in the record (`overall` >= 9.5: track `keeper-reflection` keeps the standard Short floor; no Buzzy shot is asked of its parent), `episode_build.py check-record`, `publish-episode.yml`; `arc_links.py` links it to its long through `parent.pilot` |
 
 A reflection record has `track: keeper-reflection`, `layout: keeper-reflection`, `parent` {long, pilot, clean_master_sha256,
 start, end} and no review. A new file is a new review; the long's score is never copied. Today only a long-first long with
@@ -101,7 +101,16 @@ reconciled by GET, never resubmitted because a caller timed out. A claim without
 Any bounded retry must satisfy the existing helper/workflow's recorded failure and eligibility checks; elapsed
 time does not prove capacity. These paths return source evidence, not final audiovisual approval.
 
-`native-review.yml` uses the existing operator certificate and configured provider credential without exposing the
+`local-review.yml` (owner 2026-11-02, E268) is the default native review for every track (buzzy-long, compilation, cuts,
+keeper-reflection, Shorts): inputs `plan` and `sha256` only. It downloads the master from the release by sha256, hears the
+whole audio with a pinned faster-whisper small.en against the script (report sentences, else the episode record or the
+plan), measures loudness / true peak / clipping / silence / voice over music with ffmpeg, and writes a timecoded frame
+sheet (1 frame / 2 s), black / frozen / duplicate-frame and scene-change evidence. Artifact `native-review-public-evidence`
+(the `native-review-public-v1` shape, issues as `MM:SS [category] text`, rubric scores null: a machine measure is not a
+score) and artifact `local-review-frames`. The session reviewer downloads both, views the sheets, reads the transcript
+and writes `claude_review.json` / the record `review` from what it saw and heard. No secret, no PC, no Free Tier proof.
+
+`native-review.yml` (Gemini, optional second opinion) uses the existing operator certificate and configured provider credential without exposing the
 credential to the caller. Verify current Free Tier eligibility before submission. Preserve upload/interaction IDs,
 raw answers, exact model identity and media binding. Reconcile uncertain outcomes rather than repeating a POST.
 Every run also writes non-sensitive score evidence (status, provider error codes, overall, per-criterion scores and

@@ -47,7 +47,18 @@ Each sub-9.5 score names its issue and timestamp with grounded evidence. Preserv
 reviews. Correct the demonstrated defect and review the changed file. Do not repeat an unchanged master to seek a
 higher score, copy a score across hashes, omit unfavorable findings or fill an absent measure with PASS.
 
-## Native Gemini evidence
+## Native evidence: local (default) and Gemini (optional)
+
+Owner 2026-11-02 (E268): `local-review.yml` -> `production/bible/local_review.py` is the default native review. It needs
+no provider: a pinned faster-whisper small.en (CPU) transcribes the master's whole audio with word timestamps and compares
+it with the script (missing, extra, garbled words, speech cut at the edges, drift against the caption timeline); ffmpeg
+gives integrated loudness (target -14 LUFS), true peak, clipping, dropouts, silence inside speech and voice over music;
+a timecoded frame sheet (1 frame / 2 s) with black, frozen, duplicate and scene-change detection covers the picture.
+It never scores and never approves: `visual_review_required` is always true. The session reviewer must open the
+`local-review-frames` sheets and read the timestamped transcript of `native-review-public-evidence`, then write the
+review from what it saw and heard (state the sampling: 1 frame / 2 s; detectors on every frame at 320x180).
+
+## Native Gemini evidence (optional second opinion)
 
 `native-review.yml` → `production/bible/native_review.py` obtains exact-file native audio/video evidence with the
 existing configured key and a fresh key-bound Free Tier readback. Upload sessions and evidence are encrypted to

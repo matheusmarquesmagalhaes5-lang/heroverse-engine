@@ -23,6 +23,10 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
   master that completes (a new executor/provider session able to hear it, or a later run once the provider recovers),
   then `claude_review.json` (defects + publish decision), thumbnail A/B from live-plan, `approve.yml` ->
   `prepublish_gate.py` -> `publish.yml` at 13:30 or 23:30 UTC, then the cuts.
+- 2026-11-02 owner: Gemini is dropped as a required provider (E268). The native review is now `local-review.yml`
+  (plan `plans/flood-ends-long.json`, sha256 `9a2d0f24e74c7117eedcbdd73992fbc284efb9402b6f82dba98f096a64635692`): pinned
+  ASR + ffmpeg measures + timecoded frame sheets; the session reviewer then views the sheets (artifact
+  `local-review-frames`), reads the transcript (artifact `native-review-public-evidence`) and writes `claude_review.json`.
 - The shared lease was taken and released (idle). No Short is scheduled from this delivery; the bridge Short still
   needs 9:16 stills from the ChatGPT desktop route.
 

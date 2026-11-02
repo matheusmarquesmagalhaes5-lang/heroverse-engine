@@ -58,6 +58,7 @@ def hand_copied_shot_ids(root=ROOT):
     return out
 # workflow_dispatch workflows the guard does not cover, each with its reason (a new one must be listed or guarded)
 EXEMPT = {
+    "local-review.yml": "E268: the default native review: a pinned CPU ASR and ffmpeg measures over a release master by sha256; no provider call, no secret, no generation, zero credits, nothing published; one run per subject (heroverse-subject-<plan>); approval stays with approve.yml",
     "buzzy-cloud-readiness.yml": "bounded allowlisted GET-only account inspection; no deploy, generation, render, upload or billing mutation",
     "buzzy-long-pilot.yml": "E259: QA and publication inputs of a built long-first long (master by the report's sha256); no provider call, no secret, no generation; one run at a time (heroverse-long-build); approval stays with approve.yml",
     "short-cuts.yml": "E259: ffmpeg 9:16 cuts of a long-first long's caption-free master by sha256, refused inside speech; no provider call, no secret, no generation; review and publication stay with native-review.yml and publish-episode.yml",

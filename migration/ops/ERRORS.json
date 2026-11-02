@@ -3881,6 +3881,26 @@
      "instrument"
     ]
    }
+  },
+  {
+   "id": "E268",
+   "date": "2026-11-02",
+   "class": [
+    "external"
+   ],
+   "prior": [
+    "E239",
+    "E240"
+   ],
+   "error": "flood-ends-long could not be published at its 23:30 UTC slot because the native review had ONE required external provider. native-review.yml (Gemini, E248 flow) failed with NATIVE_READBACK_PROVIDER_FAILED (run 41502101074) and needed a fresh Free Tier proof, an encrypted receipt and the master bytes sent from the owner's PC: one fragile provider, one PC, blocked a whole delivery (owner: 'exclude Gemini and find another that does this; it cannot be tomorrow').",
+   "fix": "The default native review is local and needs no secret, no PC and no proof: local-review.yml (same plan and sha256 inputs) downloads the master by sha256, a pinned faster-whisper small.en (version, commit and file hashes) hears the whole audio against the script (missing, extra, garbled, cut words; caption timeline drift), ffmpeg measures loudness, true peak, clipping, silence and voice over music, and a 1 frame / 2 s timecoded sheet plus black, frozen and scene detectors cover the picture. It writes native-review-public-v1 under the same artifact name; the session reviewer's claude_review reads the transcript and the frame sheets. native_review.DEFAULT_PROVIDER = 'local' and GEMINI_REQUIRED = False; the Gemini code stays as an optional second opinion.",
+   "antidote": {
+    "file": "migration/production/bible/test_local_review.py",
+    "contains": "def test_e268_a_single_external_provider_cannot_block_the_native_review",
+    "covers": [
+     "external"
+    ]
+   }
   }
  ]
 }

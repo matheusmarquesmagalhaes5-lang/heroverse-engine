@@ -518,3 +518,4 @@ Each Inteligência Viva entry reports: the current moment, its triggers (hit or 
     Shorts keep flowing;
   - PC offline → everything that needs no PC goes on: cuts, compilations, publishing, comments, packaging.
 - **Each failure** gets a root cause and an antidote in ERRORS.json, so the same stop cannot happen twice.
+2026-11-02 owner: native review provider = local ASR + AV measures + Claude visual review; Gemini dropped as required provider
