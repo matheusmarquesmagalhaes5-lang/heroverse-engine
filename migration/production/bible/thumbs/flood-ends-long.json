@@ -1,0 +1,29 @@
+{
+ "version": "thumb-spec-v1",
+ "episode": "flood-ends-long",
+ "format": "long",
+ "story": "The water stopped: the flood ends (Genesis 8-9; flood-ends-long)",
+ "character": "noah",
+ "emotion": "relief",
+ "framing": "close-up",
+ "scene": "Noah's face as the dove returns with the olive leaf (Genesis 8:11): tearful relief and a first smile, warm sunset light, family around him; made from the approved still flood-ends-long-s-joy, cropped to his face",
+ "text": "THE WATER STOPPED",
+ "period": "the-flood",
+ "prompt": "Extreme close-up portrait, only his face from brow to chin filling the frame edge to edge, nothing else in the picture: a strong broad-shouldered elderly man of about seventy with Middle Eastern features, weathered olive skin, a long grey beard, short grey hair on a bare head, deep-set dark eyes under heavy brows, a plain brown wool robe belted with a rope, his dark eyes wet with tears of relief and a first small smile as a dove returns with a green olive leaf, his mouth closed. Behind his head there is only a calm golden sunset sky, nothing else at all. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. Warm amber light from the last sunset glow bathes his face in rich warm orange and amber against the soft gold sky, vivid saturated colour, high contrast, photorealistic cinematic film still, sharp focus on the eyes, film grain, no text, no lettering, no signature, no watermark.",
+ "variant": null,
+ "status": "APPROVED",
+ "evidence": "migration/strategy/live-plan.json next_longs[0].thumbnail_line",
+ "note": "Coordinator 2026-11-02: no new generation; built from the approved still flood-ends-long-s-joy (PR #646/#649), cropped to Noah, text from live-plan thumbnail_line (title A).",
+ "repo_path": "migration/production/bible/thumbs/flood-ends-long.jpg",
+ "approved": {
+  "sha256": "2602fed79dac20ac1dc0f6e3473ecf8e4cc09ffad0027bce75c7e00605c62717",
+  "spec_sha256": "aa1469acb2566b28075e3efb68a0392f194162c81a5beeeac8998bd6dba57e65",
+  "candidate": "flood-ends-long-20261102-1",
+  "score": 9.5,
+  "note": "Full-resolution view of the final cropped and graded candidate: Noah's tearful relief as the dove returns with the leaf, family joy around him, text THE WATER STOPPED (live-plan title A) readable at small size, face above the text; built from the approved still flood-ends-long-s-joy, no new generation; R16 PASS.",
+  "date": "2026-11-02",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "reviewed_sha256": "2602fed79dac20ac1dc0f6e3473ecf8e4cc09ffad0027bce75c7e00605c62717"
+ }
+}
