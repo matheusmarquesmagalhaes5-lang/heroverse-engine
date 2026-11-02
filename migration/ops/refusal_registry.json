@@ -2817,6 +2817,11 @@
     "migration/production/bible/reflection_shorts.py::def check(spec"
    ],
    "note": "Keeper reflection Short (owner 2026-11-02); check-record (episode_build.py -> publish_episode.problems) refuses it before publish-episode.yml is dispatched, the same function runs again at upload; reflection_shorts.py check refuses the spec before any voice or render"
+  },
+  "XFADE_OVER_SPEECH": {
+   "class": "I",
+   "guard": "migration/production/bible/test_short_engine.py::def test_a_window_over_a_word_is_refused",
+   "note": "E272: short_engine.transitions shortens a crossfade to the silence next to a talking shot's words (a plain cut under 0.15 s), so no plan can put one over a word; transition_problems refuses it if one were"
   }
  },
  "review": {
