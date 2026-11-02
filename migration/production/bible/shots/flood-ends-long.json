@@ -21,37 +21,46 @@
    "request_sha256": "406e9167a9c2cea216e7169aa159b7f041fef91f72c741981c198d9b55757928"
   },
   "k-close": {
-   "source": "footage",
+   "asset": "shot-flood-ends-long-k-close-sha256-4a18040be39f9db519bb699a492b14d3411b12c67b1af84d6c83944ebd242f3c.mp4",
+   "clip_sha256": "4a18040be39f9db519bb699a492b14d3411b12c67b1af84d6c83944ebd242f3c",
+   "request_sha256": "d8f00c692cc06745d2c296b447e4e178cb01e83e0358c5462c05812a215ba9ae",
+   "clip_seconds": 10.125,
+   "requested_clip_seconds": 10,
+   "media": {
+    "version": "clip-media-v1",
+    "clip_sha256": "4a18040be39f9db519bb699a492b14d3411b12c67b1af84d6c83944ebd242f3c",
+    "video_seconds": 10.125,
+    "audio_seconds": 10.144,
+    "instrument": "ffprobe stream durations"
+   },
    "score": 9.5,
-   "note": "Logs burning in a warm hearth fire (3 frames viewed 2026-11-02; clip_check clean), no person or face, under the Keeper's Kokoro closing voice-over at his camp fire; no lip-sync claimed.",
-   "model": "claude-session-reviewer",
+   "note": "Frames reviewed (20-frame sheet): Keeper close-up by the fire, face lit and centred, mouth moving with the line, warm expectant look, no artifacts; no flags, audio corr 0.93, face 98%.",
+   "probe_record": "migration/evidence/shots/flood-ends-long/41534197400.json",
+   "run_id": "41534197400",
+   "source_run": null,
    "approved_at": "2026-11-02",
-   "footage": "clip-arc01-keeper-camp-fire-fireplace-campfire-bonfire-christma",
-   "asset": "footage-clip-arc01-keeper-camp-fire-fireplace-campfire-bonfire-christma-sha256-f237a27b5cf11a474c8a72e89adb9945152b44a66f455f284306bc7d7a5941ac.mp4",
-   "clip_sha256": "f237a27b5cf11a474c8a72e89adb9945152b44a66f455f284306bc7d7a5941ac",
-   "licence": "Pixabay Content License",
-   "credit": "Footage: BFCMUSIC via Pixabay (https://pixabay.com/videos/id-239514/)",
-   "clip_seconds": 20,
-   "request_sha256": "3350b475e9616b51b03dd3ab21c6806e9a0d83746493598b0522ae87ec0d9211"
+   "model": "claude-session-reviewer"
   },
   "k-insight": {
-   "source": "still_motion",
+   "asset": "shot-flood-ends-long-k-insight-sha256-640affc8b05a4986e4223474858bb83aca9447a2a80ac7df2b784c8260e2c279.mp4",
+   "clip_sha256": "640affc8b05a4986e4223474858bb83aca9447a2a80ac7df2b784c8260e2c279",
+   "request_sha256": "754d57835ee320915adb1f94e82ec9a2292b90fcb2dd17fcc698890e472bd279",
+   "clip_seconds": 10.125,
+   "requested_clip_seconds": 10,
+   "media": {
+    "version": "clip-media-v1",
+    "clip_sha256": "640affc8b05a4986e4223474858bb83aca9447a2a80ac7df2b784c8260e2c279",
+    "video_seconds": 10.125,
+    "audio_seconds": 10.144,
+    "instrument": "ffprobe stream durations"
+   },
    "score": 9.5,
-   "note": "Approved Keeper still (his look, lips closed; frame viewed) in cinematic camera motion under his Kokoro voice-over; no face motion or lip-sync claimed; no Pavo.",
-   "model": "claude-session-reviewer",
+   "note": "Frames reviewed (20-frame sheet): chest-up close-up, face large and centred, mouth moving through the line, scroll in hand, warm fire light, no artifacts; no flags, audio corr 0.87, face 94%.",
+   "probe_record": "migration/evidence/shots/flood-ends-long/41534197400.json",
+   "run_id": "41534197400",
+   "source_run": null,
    "approved_at": "2026-11-02",
-   "motion_engine": "cinematic-v2",
-   "still": "flood-ends-long-k-insight",
-   "repo_path": "migration/production/bible/stills/flood-ends-long-k-insight.jpg",
-   "clip_sha256": null,
-   "still_sha256": "fd3ffd3708872b1b662c649649b917cfc95f9f2c49f6d047b3105c2d98542065",
-   "frame": [
-    2560,
-    1440
-   ],
-   "licence": "Pavo generated (owner-owned)",
-   "clip_seconds": 20,
-   "request_sha256": "7c3fa222f20acb475247778c7513ea2b5cf9a52626e99c045beefe88fce215ce"
+   "model": "claude-session-reviewer"
   },
   "s-altar": {
    "source": "still_motion",
