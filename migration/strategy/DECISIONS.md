@@ -489,8 +489,16 @@ Each Inteligência Viva entry reports: the current moment, its triggers (hit or 
 - Inteligência Viva and production plan to avoid rework: every generation planned must be one that gets used.
 
 ### YouTube bonus programs (owner, 2026-11-02)
-- The owner joins the YouTube **Shorts bonus**: 16 Shorts a month for 3 months, USD 300 guaranteed plus a performance
-  bonus, join by 2026-11-15. The Studio opt-in status is recorded in CURRENT.md.
+- The owner wants to join the YouTube **Shorts bonus**: 16 Shorts a month for 3 months, USD 300 guaranteed plus a
+  performance bonus, join by 2026-11-15.
+  - On 2026-11-02 it was NOT shown in HeroVerse's Studio Earn page. The channel is not in YPP yet. Studio showed
+    301/500 subscribers, 27/3,000 public watch hours and 1.1k/3M Shorts views (90 d).
+  - Join only from inside Studio, the day it appears. Never through an outside link.
+- **YPP paths (measured in Studio on 2026-11-02).** Inteligência Viva must plan with all of them and pick the fastest:
+  - fan-funding tier: 500 subs plus 3,000 public long watch hours in 365 d, or 3M Shorts views in 90 d (Studio's
+    current milestone);
+  - full YPP: 1,000 subs plus 4,000 hours, or 10M Shorts views in 90 d.
+  - The Shorts-views route is a real alternative to the hours constraint. Weigh it by measured Shorts views per day.
 - Floor: at least **16 qualifying Shorts per calendar month**, original cuts or bridges from our own media. The daily
   ≥1 Short rule already exceeds it.
 - Inteligência Viva counts the month's qualifying Shorts every day and reports "Shorts bonus: N/16 this month". If
