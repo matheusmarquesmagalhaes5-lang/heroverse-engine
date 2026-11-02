@@ -55,6 +55,14 @@ def short_length(part):
 CUT_TRACK = "buzzy-cut"
 CUT_SECONDS = (20.0, 179.0)
 
+# Owner, 2026-11-02 (DECISIONS.md "Shorts cadence"): the Keeper reflection split-screen Short (reflection_shorts.py), one
+# a day: a moment of our own published long on top, the Keeper's reflection (ours, 20-80 words) below. It has no Buzzy
+# video, so it keeps the standard Short review floor (SHORT_FLOOR, the default branch of review_problems) and takes only
+# its own length (20-40 s) and parent rules; the parent long's revocations and attributions still apply.
+REFLECTION_TRACK = "keeper-reflection"
+REFLECTION_SECONDS = (20.0, 40.0)
+REFLECTION_WORDS = (20, 80)
+
 
 def cut_problems(episode):
     out = []
@@ -84,6 +92,21 @@ def cut_problems(episode):
     return out
 
 
+def reflection_problems(episode):
+    """The parent long, the 20-40 s Short and the reflection (kind insight, 20-80 words, our own) of a Keeper
+    reflection Short; its description sends the viewer to the full story."""
+    out = [p.replace("CUT_", "REFLECTION_", 1) for p in cut_problems(dict(episode, seconds=CUT_SECONDS[0]))
+           if not p.startswith("CUT_LENGTH")]
+    seconds = episode.get("seconds")
+    if type(seconds) not in (int, float) or not REFLECTION_SECONDS[0] <= seconds <= REFLECTION_SECONDS[1]:
+        out.append(f"REFLECTION_LENGTH {seconds} s (need {REFLECTION_SECONDS[0]:.0f}-{REFLECTION_SECONDS[1]:.0f})")
+    lines = [x for x in episode.get("narration") or [] if x.get("kind") == "insight"]
+    words = sum(len(x.get("text", "").split()) for x in lines)
+    if not REFLECTION_WORDS[0] <= words <= REFLECTION_WORDS[1]:
+        out.append(f"REFLECTION_WORDS {words} (the Keeper's reflection, {REFLECTION_WORDS[0]}-{REFLECTION_WORDS[1]})")
+    return out
+
+
 def short_problems(episode):
     """Owner, 2026-10-25: Shorts of 1 minute or more with a strong layer of originality, authenticity, critique and a
     clear direction to the long video, so neither TikTok nor YouTube can read them as reused or unoriginal content.
@@ -91,6 +114,8 @@ def short_problems(episode):
     insight (our own observation or critique of the passage), cta (where to go next)."""
     if episode.get("track") == CUT_TRACK:   # E259: a cut of a long-first long has its own rules (cut_problems)
         return cut_problems(episode)
+    if episode.get("track") == REFLECTION_TRACK:   # 2026-11-02: the Keeper reflection split-screen Short
+        return reflection_problems(episode)
     if episode.get("format") != "short" or episode.get("part", 0) < SHORT_RULES_FROM_PART:
         return []
     out = []
@@ -213,7 +238,7 @@ def review_problems(episode, shots_dir=None, ledger=None):
         return ["REVIEW_MISSING"]
     out = []
     track = episode.get("track")
-    if track is not None and track not in BUZZY_TRACKS + (CUT_TRACK,):
+    if track is not None and track not in BUZZY_TRACKS + (CUT_TRACK, REFLECTION_TRACK):
         out.append("TRACK_UNKNOWN")
     if track in BUZZY_TRACKS:
         out += buzzy_shot_problems(episode, shots_dir, ledger) + buzzy_decision_problems(review)
@@ -245,7 +270,7 @@ def problems(episode, video=None):
         import episode_build
         out += episode_build.revocation_problems(episode["id"])
         out += attribution_problems(episode)
-        if episode.get("track") == CUT_TRACK and parent_of(episode):   # E259: the cut shows its parent long's shots
+        if episode.get("track") in (CUT_TRACK, REFLECTION_TRACK) and parent_of(episode):   # E259: it shows its parent long's shots
             out += episode_build.revocation_problems(parent_of(episode))
             out += attribution_problems(dict(episode, id=parent_of(episode)))
     if video is not None and sha256_file(video) != episode["output_sha256"]:

@@ -1,0 +1,83 @@
+name: HeroVerse Keeper reflection Short (a published long's moment over the Keeper's reflection, 9:16 split screen; zero credits, nothing published)
+run-name: "reflection-shorts: spec=${{ inputs.spec }}"
+# Owner, 2026-11-02 (DECISIONS.md "Shorts cadence": one a day): the TOP half is a sentence-safe moment of one of our own
+# published longs (the long's caption-free master, downloaded by the report's sha256), the BOTTOM half is an approved
+# Keeper still moved by the cinematic engine (motion.py) while the Keeper's reflection is spoken in the pinned Kokoro
+# voice (am_michael, the long's Keeper) and captioned. No Pavo, no Buzzy, no secret, no generation. A spec outside the
+# 20-40 s window, off sentence edges, from an unpublished long or with a voice that does not fit is refused before any
+# render. The Short goes into the release as bible-<id>-sha256-<sha>.mp4 (the name publish-episode.yml downloads) and its
+# draft episode record (no review) onto claude/reflection-<id>-<run>. native-review.yml (plan = the spec; the standard
+# review floor), the session reviewer's review in the record, episode_build.py check-record and publish-episode.yml follow.
+on:
+  workflow_dispatch:
+    inputs:
+      spec:
+        description: Reflection spec (migration/production/bible/reflections/<long episode>-<n>.json, bible-reflection-v1)
+        required: true
+permissions:
+  contents: read
+concurrency:
+  group: heroverse-subject-${{ inputs.spec }}
+  cancel-in-progress: false
+jobs:
+  reflection:
+    if: github.repository == 'matheusmagah-cpu/heroverse-engine' && github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    permissions:
+      contents: write   # release assets (assets.sh) and the evidence branch; no secret in this job
+    env:
+      SPEC: ${{ inputs.spec }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - name: Spec (path, published long, clip on sentence edges, 20-40 s, reflection and voice fit, approved Keeper still)
+        run: |
+          [[ "$SPEC" =~ ^migration/production/bible/reflections/[a-z0-9]+(-[a-z0-9]+)*-[1-9][0-9]*\.json$ ]] || { echo "SPEC_PATH_REFUSED"; exit 1; }
+          test -f "$SPEC" || { echo "SPEC_MISSING"; exit 1; }
+          python3 -I -B migration/production/bible/reflection_shorts.py check "$SPEC"
+      - name: Tools (ffmpeg, OpenCV for the motion engine, espeak), the pinned Kokoro voice runtime and the caption-free master (sha256 = the report's)
+        run: |
+          APT_UPDATE_TIMEOUT=300s APT_INSTALL_TIMEOUT=600s bash migration/ci/apt_install.sh ffmpeg espeak-ng fonts-dejavu-core python3-numpy python3-opencv opencv-data
+          python3 -m venv "$RUNNER_TEMP/voice"
+          "$RUNNER_TEMP/voice/bin/pip" install --disable-pip-version-check -q 'kokoro-onnx==0.4.9' 'onnxruntime==1.20.1' 'numpy==2.2.6' 'espeakng-loader==0.2.4' 'soundfile==0.13.1'
+          report=$(python3 -I -c "import json,sys;print(json.load(open(sys.argv[1]))['report'])" "$SPEC")
+          asset=$(python3 -I -c "import json,sys;print(json.load(open(sys.argv[1]))['composed']['clean']['release_asset'])" "$report")
+          sha=$(python3 -I -c "import json,sys;print(json.load(open(sys.argv[1]))['composed']['clean']['output_sha256'])" "$report")
+          [[ "$asset" =~ ^bible-[a-z0-9-]+-clean-sha256-[0-9a-f]{64}\.mp4$ ]] || { echo "ASSET_REFUSED"; exit 1; }
+          bash migration/ci/assets.sh download --repo "$GITHUB_REPOSITORY" --pattern "$asset" -O "$RUNNER_TEMP/clean.mp4" --clobber
+          echo "$sha  $RUNNER_TEMP/clean.mp4" | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/work" "$RUNNER_TEMP/out"
+      - name: The Keeper's voice (Kokoro, am_michael, the reflection's sentences)
+        run: |
+          W="$RUNNER_TEMP/work"
+          python3 -I -B migration/production/bible/reflection_shorts.py voice-script "$SPEC" "$W/voice-script.json"
+          python3 -I -B migration/production/pilot_render.py prepare "$W" HeroVerse_Linux_Source_Ready_20261013_v2.zip
+          ESPEAK_DATA_PATH=$("$RUNNER_TEMP/voice/bin/python" -I -c "import espeakng_loader as e;print(e.get_data_path())")
+          test -d "$ESPEAK_DATA_PATH" || { echo "ESPEAK_DATA_MISSING"; exit 1; }
+          export ESPEAK_DATA_PATH
+          "$RUNNER_TEMP/voice/bin/python" -I -B migration/production/pilot_render.py voice "$W" "$W/voice-script.json"
+      - name: Render and measure (halves, motion, ducked clip, captions, -14 LUFS, the voice fits)
+        run: python3 -I -B migration/production/bible/reflection_shorts.py render "$SPEC" "$RUNNER_TEMP/clean.mp4" "$RUNNER_TEMP/work" "$RUNNER_TEMP/out"
+      - name: The Short into the release by its sha256; draft record and measures on claude/reflection-<id>-<run>
+        run: |
+          id=$(python3 -I -c "import json,sys;print(json.load(open(sys.argv[1]))['id'])" "$SPEC")
+          long=$(python3 -I -c "import json,sys;print(json.load(open(sys.argv[1]))['long'])" "$SPEC")
+          [[ "$id" =~ ^[a-z0-9]+(-[a-z0-9]+)*$ ]] || { echo "ID_REFUSED"; exit 1; }
+          j="$RUNNER_TEMP/out/$id.json"
+          sha=$(sha256sum "$RUNNER_TEMP/out/$id.mp4" | cut -d' ' -f1)
+          python3 -I -c "import json,sys;sys.exit(0 if json.load(open(sys.argv[1]))['output_sha256']==sys.argv[2] else 'SHORT_SHA256_MISMATCH')" "$j" "$sha"
+          cp "$RUNNER_TEMP/out/$id.mp4" "$RUNNER_TEMP/bible-$id-sha256-$sha.mp4"
+          bash migration/ci/assets.sh upload "$RUNNER_TEMP/bible-$id-sha256-$sha.mp4" --repo "$GITHUB_REPOSITORY" --clobber
+          d="migration/evidence/episodes/$long/reflection-$GITHUB_RUN_ID"; mkdir -p "$d"
+          cp "$j" "$d/$id.json"
+          python3 -I -B migration/production/bible/reflection_shorts.py record "$SPEC" "$j"
+          echo "ASSET bible-$id-sha256-$sha.mp4"
+          branch="claude/reflection-$id-$GITHUB_RUN_ID"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -q -b "$branch"
+          git add "$d" migration/production/bible/episodes
+          git commit -q -m "Keeper reflection Short $id (run $GITHUB_RUN_ID): measures and draft record for its own review"
+          git push -q origin "HEAD:refs/heads/$branch"
+          echo "BRANCH $branch"

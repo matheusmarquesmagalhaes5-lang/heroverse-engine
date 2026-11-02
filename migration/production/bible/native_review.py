@@ -110,7 +110,7 @@ def inputs():
     event = json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text())
     i = event['inputs']
     compilation = re.fullmatch(r'migration/production/bible/compilations/[a-z0-9-]+\.json', i['plan'])   # E253
-    cuts = re.fullmatch(r'migration/production/bible/cuts/[a-z0-9-]+\.json', i['plan'])   # E259: a Short cut
+    cuts = re.fullmatch(r'migration/production/bible/(cuts|reflections)/[a-z0-9-]+\.json', i['plan'])   # E259: a Short cut; the Keeper reflection Short
     require(compilation or cuts or re.fullmatch(r'migration/production/bible/plans/[a-z0-9-]+\.json', i['plan']),
             'PLAN_INVALID')
     compilation = compilation or track_for(i['plan']) == 'buzzy-long'   # E259: a 8-12 min 16:9 long
