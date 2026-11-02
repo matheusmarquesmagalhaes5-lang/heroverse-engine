@@ -93,6 +93,33 @@ exact master bytes once to the receipt's `upload_url` (`X-Goog-Upload-Command: u
 then the provider has no file and `Await exact-byte upload` can only time out. If a run timed out that way, upload
 to its saved `upload_url` and dispatch `resume_before_inference=<run>` with a fresh Free Tier proof.
 
+## Automation map (2026-11-02)
+
+Three Claude scheduled tasks (routines) run the loop; no other clock is added. Each routine's final answer reaches
+the owner as a push notification; routines do not message the coordinator session.
+
+| Routine | When | Model | Role |
+|---|---|---|---|
+| Inteligência Viva | daily 05:17 UTC | Sonnet | Measures the goal gap, mines the market, sets strategy and battle-plan moment; writes `strategy/live-plan.json` and a DECISIONS entry |
+| Produção | 06:43 and 16:43 UTC | Sonnet | Executes live-plan and the battle plan: longs, compilations, cuts, Shorts with a 48 h buffer, comments; follows the fallback ladder and never stops |
+| Relógio leve | every 3 h | Haiku | Heartbeat; Pavo/Buzzy spend watchdog (cancels a shot-probe over attempts × attempts_for); merges green data-only PRs (`migration/strategy`, `migration/evidence`); fires production when a long or a failure is pending |
+
+Sources of truth (link, do not copy):
+
+- Today's plan: `strategy/live-plan.json`.
+- Moments, fallbacks and the Pavo choose-best rule: `strategy/DECISIONS.md`, "2026-11-02 — Battle plan to YPP".
+- Current delivery: `evidence/handoff/CURRENT.md`. Root causes: `ops/ERRORS.json` (query with `ops/errors_query.py`).
+
+Token rules: `ops/token_budget.py` (budget in `SYSTEM.md`), the `ops/read_guard.py` Read hook, `ops/ci_digest.py`
+for runs, `ops/errors_query.py` for errors. Model routing: Haiku checks, Sonnet production and intelligence, Opus
+only coordination.
+
+Free compute first: GitHub Actions, the owner's PC (ChatGPT app stills in the single chat "HeroVerse — stills"),
+Gemini free tier. Pavo only at 0-credit quotes, max 2 generations per talking line (E264); Buzzy at most 100/day.
+
+Owner-only steps that need a login: Buffer, TikTok `runner.py login`, the Telegram bot token secret, YouTube Studio
+related-video links.
+
 ## Existing automation and its limits
 
 | Surface | Existing responsibility | Evidence of operation |

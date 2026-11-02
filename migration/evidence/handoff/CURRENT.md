@@ -1,51 +1,37 @@
 # HeroVerse: current continuation
 
-Read `../../SYSTEM.md` for the operating contract and `../../OPERATIONS.md` for existing entry points.
-This is the only active public handoff. Media, private provider identifiers and exact receipts stay out of it.
+Read `../../SYSTEM.md` for the operating contract and `../../OPERATIONS.md` ("Automation map (2026-11-02)") for
+the routines and entry points. This is the only active public handoff. Media, private provider identifiers and
+exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; moments and fallbacks are in
+`../../strategy/DECISIONS.md` ("2026-11-02 — Battle plan to YPP").
 
-## Current delivery
+## Current delivery: flood-ends-long (Genesis 8-9, buzzy-long, plan `plans/flood-ends-long.json`)
 
-**genesis-09-short is public**: https://youtube.com/shorts/IYSxVKTikSs (went public 2026-11-01 13:30 UTC; readback
-`publish-episode.yml` run 41312558551 shows privacy public and the first comment posted). It was built on the owner's
-posting flow (2026-11-01 in `../../strategy/DECISIONS.md`): Buzzy/Pavo clips edited for pacing (speed, trim, hold;
-no regeneration), the Keeper's interpretive layer for authenticity and originality, then the Gemini native review as a
-defect finder only (`track: buzzy`; unresolved cut speech, scene mismatch or policy defects block; the reviewing
-session decides publish).
+- 30 stills approved as sources (#646, #649). ChatGPT stills are available: the 1 Nov limit applied only to the
+  Codex/Work tab. All stills use ONE chat, "HeroVerse — stills" (if a limit or error appears: close the app, wait
+  5 min, reopen, continue in the same chat).
+- Talking Keeper shots are Pavo, max 2 generations per line and 1 probe round (E264, #658).
+  `k-close` has a kept Pavo clip from shot-probe 41423359803 (cancelled; artifact
+  `shot-probe-flood-ends-long-41423359803`). `k-insight` and `k-bow` were probed in run 41436544195 (attempts 1;
+  finished successfully, clips not yet compared).
+- Next: approve the best clip of each (fix in the edit, never regenerate), re-run preflight (stale after #658),
+  build, actual audiovisual review, `approve.yml` → `prepublish_gate.py` → `publish.yml` at the live-plan slot
+  (13:30 or 23:30 UTC after the gate), then the cuts.
 
-## Next action
+## Next moments
 
-1. genesis-10-short on the same flow, at the next free slot (13:30 / 23:30 UTC). The production routine (two runs a
-   day) produces it. Do not start a second producer for the same episode.
-2. The arc-02 Noah compilation long (G06–G09) goes through its own route: new Pavo hook and close from mining,
-   compilation build, native review, `approve.yml` → `prepublish_gate.py` → `publish.yml`.
-3. TikTok mirrors each public Short through `tiktok.yml`.
+- M2 compilation "Complete Story of Noah (Genesis 5-9)" is due 2026-11-04.
+- genesis-09-short is public (https://youtube.com/shorts/IYSxVKTikSs). The bridge Short genesis-10 continues only
+  if stills exist; Short slots after the long is public. TikTok mirrors each public Short through `tiktok.yml`.
 
-## Daily routine state (2026-11-01 17:30 UTC)
+## Brand
 
-No Short was scheduled for the next 24 h, so genesis-10-short (bridge) was started: plan now `track: buzzy` (#635).
-FLUX allocation for the day is exhausted (scene-stills run 41331046448: CF_DAILY_ALLOCATION_EXHAUSTED HTTP 429), so no
-stills exist yet; no Buzzy or Pavo credit was spent. Next run after 00:00 UTC: scene-stills.yml for the 16 FLUX shots
-(s-hold ... s-door-shut, candidates 1); s-voice and s-ararat name the ark prop and need the Pavo engine (E122) or the
-plan's fallback (mountain top, no ark). Then approve stills by PR, episode preflight/build, native review, publish at
-13:30 UTC. No long-first long exists yet, so there are no cuts. TikTok runner: `playwright` missing on the PC.
+The new avatar and banner ("the Keeper by the fire") are live on YouTube and on the Facebook Page
+(id 61595804835184).
 
 ## Keep the established rules
 
-Pavo is used only for the hook, speaking characters and the Keeper's close, with a fresh exact zero-credit quote,
-GET-only reconciliation of saved jobs, no retry and at most two unread jobs. God's words stay exact KJV on Kokoro and
-God is never depicted. No source or final score is invented. The long uses its separate route.
-
-The existing heartbeat and supervisors remain; no new clock or queue is needed. Update this handoff at the next
-accepted boundary, keeping historical receipts as evidence only.
-
-## Long-first long: flood-ends-long (2026-11-01 evening, branch claude/stoic-edison-gii4wc)
-
-Plan `plans/flood-ends-long.json` (buzzy-long, Genesis 8-9, 33 shots, ~515 s est.) passes `plan_check --strict` except
-UPDATE 2026-11-02: all 30 stills were generated in the ChatGPT Chat tab (single chat "HeroVerse — stills") and approved (#646, #649). The 1 Nov "Codex/Work usage limit (reset 4 Nov 07:01)" applied only to the Codex/Work tab, which a script had mistyped into. The Chat tab was never blocked: it made 24 more stills and 6 brand images after that message. ChatGPT stills are AVAILABLE. Rule: if a limit or error appears, close the app, wait 5 min, reopen it, and continue in the same chat.
-
-Relayed by the coordinator session (owner preference, not yet confirmed by the owner in this run): use ONE ChatGPT chat named
-"HeroVerse — stills" for all stills (create it once, send every prompt in it, download from each reply, same style line);
-do not delete existing chats. `one.ps1`/`send.ps1` still open a new chat per still and must change before resuming.
-
-Cleanup (relayed, apply only after ALL 30 stills are downloaded): delete the project's per-image chats ("Create ... Image"
-titles opened today) via "..." > Excluir; keep "HeroVerse — stills" and every owner chat; ambiguous titles stay. Report the count.
+Pavo only at a fresh exact zero-credit quote with GET-only reconciliation of saved jobs and no retry. God's words
+stay exact KJV on Kokoro and God is never depicted. No source or final score is invented. The long uses its
+separate route. The existing heartbeat and supervisors remain; no new clock. Update this handoff at the next
+accepted boundary.
