@@ -15,10 +15,10 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
   "Close-up from the chest up" (plan_check, every 16:9 plan). The preflight must be re-measured before any new probe.
 - 2026-11-02 (fallback taken, #663 merged): no Pavo shot is left. k-insight and k-bow are the Keeper's Kokoro voice-over
   on still motion of stills that reuse the bytes of the approved Keeper stills (arc-01-long k-promise-2/3, frames
-  viewed); k-close is his voice-over on a vetted night campfire clip (a third Keeper image would break the 300 s
+  viewed); k-close is his voice-over on a vetted hearth-fire clip (the first campfire clip was refused by clip_check ROTATED_PICTURE in episode.yml run 41465187630) (a third Keeper image would break the 300 s
   image-repeat rule). `episode_preflight` no longer asks a still-mouth probe of a Keeper shot on `footage` (E267, test).
   Preflight of the plan is PASS (committed, `verify-preflight` ok).
-- Next: PR with the preflight + E267 fix, `episode.yml` (needs a main run), merge report, `buzzy-long-pilot.yml`,
+- Next: merge this PR, rerun `episode.yml` (main), merge report, `buzzy-long-pilot.yml`,
   `native-review.yml` (Free Tier proof on the owner's PC), `claude_review.json`, thumbnail (title A/B in live-plan),
   `approve.yml` -> `prepublish_gate.py` -> `publish.yml` at 13:30 or 23:30 UTC, then the cuts.
 
