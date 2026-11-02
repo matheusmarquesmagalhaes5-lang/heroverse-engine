@@ -30,6 +30,13 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
 - The shared lease was taken and released (idle). No Short is scheduled from this delivery; the bridge Short still
   needs 9:16 stills from the ChatGPT desktop route.
 
+- 2026-11-02 (evening): local review viewed (run 41510862169, 9 sheets + transcript): no real defect; session review
+  written on branch claude/stoic-edison-wrdxsp (`pilot-017/inspection/claude_review.json`, 9.5) but NOT on main yet, so
+  approve.yml has not started. BLOCKER: no approved thumbnail (THUMB_NOT_APPROVED): spec `bible/thumbs/flood-ends-long.json`
+  (Noah, relief) passes `thumbs.py check`; the candidate image needs the ChatGPT desktop route (owner's PC was in
+  active use, automation aborted) or a Pavo agnes-image at a 0-credit quote (owner decision: the routine bans Pavo
+  stills). Then finalize, sheet, approve (>=9.5) by PR, merge with the review, approve.yml -> publish.yml.
+
 ## Next moments
 
 - M2 compilation "Complete Story of Noah (Genesis 5-9)" is due 2026-11-04.
