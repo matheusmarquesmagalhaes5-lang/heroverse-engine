@@ -1,0 +1,216 @@
+{
+ "episode": "flood-ends-long",
+ "shots": {
+  "k-insight": {
+   "kind": "keeper",
+   "lines": [
+    30
+   ],
+   "request": {
+    "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a calm kind look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Tender and grave. No text, no logos.",
+    "seconds": 10,
+    "aspect_ratio": "16:9",
+    "references": [
+     ".episode/flood-ends-long/refs/ch-keeper-talk.jpg"
+    ],
+    "audios": [
+     ".episode/flood-ends-long/keeper/k-insight.wav"
+    ],
+    "sound": false
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "parallax_2_5d",
+    "source": "director",
+    "ease": "gentle",
+    "strength": 0.4,
+    "hold": null,
+    "dir": 1,
+    "atmosphere": [
+     "embers",
+     "dust",
+     "vignette"
+    ],
+    "atmosphere_why": [
+     "fire in the picture",
+     "dust or wind in the prompt",
+     "a breathing vignette for the keeper"
+    ],
+    "beat": "keeper",
+    "emotion": "calm",
+    "span": 10.0,
+    "reason": "beat keeper; emotion calm; span 10 s; a face off centre: the pan lands on it; clear near/far depth: parallax; after push_in: varied; subject wider than the band: centred",
+    "subject": [
+     -0.0949,
+     -0.35,
+     0.0949,
+     0.35
+    ],
+    "subject_from": "face",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.11,
+      -0.0048,
+      0.0,
+      "gentle"
+     ],
+     [
+      1.0,
+      1.126,
+      0.0048,
+      0.0,
+      "gentle"
+     ]
+    ],
+    "seed": 1388853233
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "7c3fa222f20acb475247778c7513ea2b5cf9a52626e99c045beefe88fce215ce",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-k-insight",
+    "still_sha256": "fd3ffd3708872b1b662c649649b917cfc95f9f2c49f6d047b3105c2d98542065",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-k-insight.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 20,
+    "licence": "Pavo generated (owner-owned)"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "k-bow": {
+   "kind": "keeper",
+   "lines": [
+    47
+   ],
+   "request": {
+    "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level, looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a gentle questioning look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and searching. No text, no logos.",
+    "seconds": 9,
+    "aspect_ratio": "16:9",
+    "references": [
+     ".episode/flood-ends-long/refs/ch-keeper-talk.jpg"
+    ],
+    "audios": [
+     ".episode/flood-ends-long/keeper/k-bow.wav"
+    ],
+    "sound": false
+   },
+   "motion_direction": {
+    "engine": "cinematic-v2",
+    "move": "parallax_2_5d",
+    "source": "director",
+    "ease": "gentle",
+    "strength": 0.4,
+    "hold": null,
+    "dir": 1,
+    "atmosphere": [
+     "embers",
+     "dust",
+     "vignette"
+    ],
+    "atmosphere_why": [
+     "fire in the picture",
+     "dust or wind in the prompt",
+     "a breathing vignette for the keeper"
+    ],
+    "beat": "keeper",
+    "emotion": "calm",
+    "span": 9.0,
+    "reason": "beat keeper; emotion calm; span 9 s; a face off centre: the pan lands on it; clear near/far depth: parallax; after pull_back: varied; subject wider than the band: centred",
+    "subject": [
+     -0.0949,
+     -0.35,
+     0.0949,
+     0.35
+    ],
+    "subject_from": "face",
+    "depth": "depth-anything-v2-small",
+    "keys": [
+     [
+      0.0,
+      1.11,
+      -0.0048,
+      0.0,
+      "gentle"
+     ],
+     [
+      1.0,
+      1.126,
+      0.0048,
+      0.0,
+      "gentle"
+     ]
+    ],
+    "seed": 1201431072
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "406e9167a9c2cea216e7169aa159b7f041fef91f72c741981c198d9b55757928",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "flood-ends-long-k-bow",
+    "still_sha256": "d06d4d2eb4d0120dc4dfdab01b737d4d14a57dd52759e60e3284826973e5636f",
+    "repo_path": "migration/production/bible/stills/flood-ends-long-k-bow.jpg",
+    "frame": [
+     2560,
+     1440
+    ],
+    "motion_engine": "cinematic-v2",
+    "clip_seconds": 20,
+    "licence": "Pavo generated (owner-owned)"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "k-close": {
+   "kind": "keeper",
+   "lines": [
+    50
+   ],
+   "request": {
+    "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a warm expectant look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and expectant. No text, no logos.",
+    "seconds": 10,
+    "aspect_ratio": "16:9",
+    "references": [
+     ".episode/flood-ends-long/refs/ch-keeper-talk.jpg"
+    ],
+    "audios": [
+     ".episode/flood-ends-long/keeper/k-close.wav"
+    ],
+    "sound": false
+   },
+   "source": "footage",
+   "approved": {
+    "asset": "footage-clip-arc01-keeper-camp-fire-campfire-log-flames-piece-of-wood-w-sha256-acfae37d0288ff71985f271d5c9bcecd837bac4e0ea3e002326c845b52fee415.mp4",
+    "clip_sha256": "acfae37d0288ff71985f271d5c9bcecd837bac4e0ea3e002326c845b52fee415",
+    "request_sha256": "1a2146f65d9b077ba211d156888d24cf721b13855e64a3d7cb1f8471c3e2c809",
+    "score": 9.5,
+    "source": "footage",
+    "footage": "clip-arc01-keeper-camp-fire-campfire-log-flames-piece-of-wood-w",
+    "clip_seconds": 18,
+    "licence": "Pixabay Content License",
+    "credit": "Footage: KlausHausmann via Pixabay (https://pixabay.com/videos/id-8639/)"
+   },
+   "checks": {
+    "flags": [
+     "ROTATED_PICTURE"
+    ],
+    "measures": null
+   },
+   "error": "SHOT_APPROVED_CLIP_FAILED k-close ROTATED_PICTURE"
+  }
+ }
+}
