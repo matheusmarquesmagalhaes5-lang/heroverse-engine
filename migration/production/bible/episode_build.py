@@ -395,6 +395,10 @@ def plan_layout(plan, layout, voice_seconds=None, problems=()):
             record["speaker"] = s["speaker"]
         into[s["id"]] = record   # God: mixed as a voice-over in the track; no clip audio, no lipsync check
     share = keeper_seconds / total
+    if plan_check.reflection(plan):   # the Keeper is the whole plan: no share, no Short length (reflection_shorts fits D)
+        return {"lines": [{"start": a, "end": b} for a, b in layout], "voice_seconds": voice_seconds, "total": total,
+                "keeper": keeper, "speakers": speakers, "voice_over": voice_over, "keeper_share": round(share, 3),
+                "lesson_share": None, "retimed": {}, "problems": problems}
     if is_long(plan):   # E127: the long's own gate (structures/bible-story-long.json), measured; no lesson share
         import long_plan_check
         g = long_plan_check.gate()
@@ -436,6 +440,8 @@ def compose_prediction(plan, layout, clip_seconds=None):
     if clip_seconds is None:
         clip_seconds = {s["id"]: float(shot_seconds(s, i, plan, layout)) for i, s in enumerate(plan["shots"])
                         if not is_window(s)}
+    if plan_check.reflection(plan):   # its clips are never composed here: reflection_shorts joins them with crossfades
+        return []
     if is_long(plan):   # LONG_DESIGN slice 3: one cut a shot at the story QA's 4-7 s holds, windows on their source
         import long_build
         return long_build.compose_problems(plan, layout, clip_seconds)

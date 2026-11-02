@@ -1,7 +1,9 @@
-"""The Keeper reflection split-screen Short (reflection_shorts.py): the spec checker (duration window, a published
-approved long, the reflection's length and voice, no speech of the clip cut), the render (two 1080x960 halves, the
-Keeper's still in motion, the voice over the ducked clip, captions, -14 LUFS) on a fixture long, and the
-unchanged downstream: publish_episode's track rules (the standard 9.5 review floor stays), native-review and arc-links."""
+"""The Keeper reflection split-screen Short (reflection_shorts.py), owner rule 02/11: the bottom half is the Keeper really
+speaking, 2-4 approved Pavo talking clips. The reflection plan (plan_check, track keeper-reflection, 1:1 chest-up talking
+Keeper shots), the spec checker (duration window, a published approved long, the segments' words, the approved clips, the
+E266 flag split: hard flags and wrong words block, the lip-sync / audio-offset flags do not), the render (two 1080x960
+halves, the clips joined by crossfades, their own audio, captions, -14 LUFS) on fixture clips, and the unchanged
+downstream: publish_episode's track rules (the standard 9.5 review floor stays), native-review and arc-links."""
 import copy
 import json
 from pathlib import Path
@@ -18,34 +20,47 @@ sys.path.insert(0, str(ROOT / "migration/publish"))
 sys.path.insert(0, str(ROOT / "migration/production"))
 import compilation_long as cl  # noqa: E402
 import buzzy_long as bl  # noqa: E402
+import episode_build as eb  # noqa: E402
 import native_review as nr  # noqa: E402
+import plan_check as pc  # noqa: E402
 import publish_episode as pe  # noqa: E402
 import reflection_shorts as rs  # noqa: E402
 import test_long_first as tlf  # noqa: E402
 
 FFMPEG = shutil.which("ffmpeg") is not None
-try:
-    import cv2  # noqa: F401
-    import numpy  # noqa: F401
-    MOTION = True
-except ImportError:
-    MOTION = False
 
 VIDEO_ID = "AbCdEfGhIjK"
-STILL = "genesis-long-test-k-insight"
 VERSE = ("Genesis 7:4 (KJV)", "For yet seven days, and I will cause it to rain upon the earth forty days and forty nights; "
          "and every living substance that I have made will I destroy from off the face of the earth.")
-REFLECTION = ("Seven days of warning, and he spent them building. Notice what the story leaves out: no argument, no "
-              "plea. Obedience here is quiet, slow work done before anyone can see why. I find that harder than "
-              "any miracle.")
+SEG1 = "Seven days of warning, and he spent them building. Notice what the story leaves out: no argument, no plea."
+SEG2 = "Obedience here is quiet, slow work done before anyone can see why. I find that harder than any miracle."
+EPISODE = "genesis-long-test-reflection-1"
+KEEPER_PROMPT = (
+    "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the "
+    "chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of "
+    "about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set "
+    "brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by "
+    "a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame "
+    "holds his head level and looks straight into the camera and speaks to the camera, his lips moving clearly with every "
+    "word, LOOK. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind "
+    "him. Tender and grave. No text, no logos.")
+LOOKS = ("a calm kind look", "a gentle questioning look", "a warm expectant look", "a grave tender look")
+
+
+def reflection_plan(texts=(SEG1, SEG2), episode=EPISODE):
+    return {"source_policy": "pavo_speech_stock", "track": pc.REFLECTION_TRACK, "version": "bible-plan-v2", "episode": episode,
+            "part": 1, "aspect_ratio": "1:1", "narration": [{"kind": "insight", "text": t} for t in texts],
+            "shots": [{"kind": "keeper", "id": f"k-r{i + 1}", "lines": [i], "audio_route": "kokoro",
+                       "prompt": KEEPER_PROMPT.replace("LOOK", LOOKS[i % len(LOOKS)])} for i in range(len(texts))]}
 
 
 def spec_of(**kw):
-    spec = {"version": rs.VERSION, "track": rs.TRACK, "layout": rs.LAYOUT, "id": "genesis-long-test-reflection-1",
+    spec = {"version": rs.VERSION, "track": rs.TRACK, "layout": rs.LAYOUT, "id": EPISODE,
             "long": "genesis-long-test", "pilot": "pilot-099",
             "report": "migration/evidence/episodes/genesis-long-test/report-1.json",
             "clip": {"start": 0.2, "end": 22.2, "x": 0.5, "audio": "duck"},
-            "reflection": {"text": REFLECTION}, "keeper_image": STILL,
+            "plan": f"migration/production/bible/plans/{EPISODE}.json",
+            "segments": [{"shot": "k-r1", "text": SEG1}, {"shot": "k-r2", "text": SEG2}],
             "title": "What Noah never said #shorts",
             "description": "The Keeper on Genesis 7 (public domain), AI visuals. The full story: the long video.",
             "tags": ["noah", "bible"], "first_comment": f"The whole story, in the long video: https://youtu.be/{VIDEO_ID}"}
@@ -53,24 +68,50 @@ def spec_of(**kw):
     return spec
 
 
-def make_root(t, spec=None, published=True, still_status="APPROVED", shot="k-insight"):
+def make_clip(path, freq, seconds=10.0, speech=9.4):
+    """A 1:1 Pavo-like clip: tone for `speech` s (the Keeper's line), silence after (the pad that Pavo keeps)."""
+    tlf.ff("-f", "lavfi", "-i", f"testsrc2=size=640x640:rate=30:duration={seconds}", "-f", "lavfi",
+           "-i", f"sine=frequency={freq}:sample_rate=48000:duration={seconds}", "-af",
+           f"volume=-18dB,volume=0:enable='gt(t,{speech})'", "-c:v", "libx264", "-preset", "ultrafast", "-pix_fmt", "yuv420p",
+           "-c:a", "aac", "-shortest", path)
+
+
+def make_root(t, spec=None, published=True, flags=None, accepted=None, score=9.6, make_clips=True, said=None, words_proof=None):
+    """flags: {shot: [flags]} of the probe record; accepted / words_proof: what the approval recorded."""
     root, base, _ = tlf.cut_root(t, [])
+    spec = spec or spec_of()
     (root / "migration/production/bible/reflections").mkdir(parents=True, exist_ok=True)
     (root / "migration/publish").mkdir(parents=True, exist_ok=True)
     ledger = {"entries": {f"pilot-099:{tlf.SHA}": {"video_id": VIDEO_ID}} if published else {}}
     (root / "migration/publish/ledger.json").write_text(json.dumps(ledger))
-    stills = root / rs.STILLS
-    stills.mkdir(parents=True, exist_ok=True)
-    img = stills / f"{STILL}.jpg"
-    if FFMPEG:
-        tlf.ff("-f", "lavfi", "-i", "testsrc2=size=640x360:rate=1", "-frames:v", "1", img)
-    else:
-        img.write_bytes(b"x")
-    (stills / f"{STILL}.json").write_text(json.dumps({
-        "id": STILL, "episode": "genesis-long-test", "shot": shot, "status": still_status, "prompt": "The narrator. Warm and grave.",
-        "repo_path": f"migration/production/bible/stills/{STILL}.jpg", "sha256": cl.sha256(img), "size": [640, 360],
-        "approved": {"score": 9.5, "by": "Claude's still review"}}))
-    spec = spec or spec_of()
+    plan = reflection_plan([s["text"] for s in spec["segments"]], spec["id"])
+    plan["shots"] = plan["shots"][:len(spec["segments"])]
+    (root / "migration/production/bible/plans" / f"{spec['id']}.json").write_text(json.dumps(plan))
+    approvals, probe = {}, {"episode": spec["id"], "run_id": "123456", "shots": {}}
+    clips = root / "clips"
+    clips.mkdir()
+    for i, seg in enumerate(spec["segments"]):
+        sid = seg["shot"]
+        path = clips / f"{sid}.mp4"
+        if FFMPEG and make_clips:
+            make_clip(path, 200 + 40 * i)
+        else:
+            path.write_bytes(f"clip {i}".encode())
+        sha = cl.sha256(path)
+        asset = eb.shot_asset_name(spec["id"], sid, sha)
+        probe["shots"][sid] = {"request": {"audio": {"words": said if said is not None else eb.spoken_words(seg["text"])}},
+                               "clips": [{"asset": asset, "clip_sha256": sha, "flags": (flags or {}).get(sid, [])}]}
+        approvals[sid] = {"asset": asset, "clip_sha256": sha, "clip_seconds": 10.0, "score": score, "model": "claude-session-reviewer",
+                          "note": "watched and heard the clip: the Keeper says the line, lips on the words",
+                          "probe_record": f"migration/evidence/shots/{spec['id']}/123456.json"}
+        if accepted and sid in accepted:
+            approvals[sid]["accepted_flags"] = accepted[sid]
+        if words_proof and sid in words_proof:
+            approvals[sid]["words"] = {"clip_sha256": sha, "flags": []}
+    (root / "migration/evidence/shots" / spec["id"]).mkdir(parents=True)
+    (root / "migration/evidence/shots" / spec["id"] / "123456.json").write_text(json.dumps(probe))
+    (root / rs.SHOTS).mkdir(parents=True, exist_ok=True)
+    (root / rs.SHOTS / f"{spec['id']}.json").write_text(json.dumps({"episode": spec["id"], "shots": approvals}))
     path = root / f"migration/production/bible/reflections/{spec['id'].replace('-reflection-', '-')}.json"
     path.write_text(json.dumps(spec))
     return root, spec, path
@@ -78,6 +119,69 @@ def make_root(t, spec=None, published=True, still_status="APPROVED", shot="k-ins
 
 def codes(result):
     return [p.split()[0] for p in result["problems"]]
+
+
+class ReflectionPlan(unittest.TestCase):
+    def test_a_keeper_reflection_plan_is_two_to_four_talking_keeper_shots_at_1_1(self):
+        got = pc.check(reflection_plan())
+        self.assertEqual(got["problems"], [])
+        self.assertEqual(got["estimate"]["shots"], 2)
+        self.assertEqual(pc.check(reflection_plan((SEG1, SEG2, SEG1.replace("Seven", "Eight"))) )["problems"], [])
+        self.assertEqual(pc.REFLECTION_RATIOS, ("1:1",))
+        self.assertEqual(pc.RATIOS, ("9:16",))   # the Shorts keep 9:16
+        self.assertIn("REFLECTION_SEGMENTS", " ".join(pc.check(reflection_plan((SEG1,)))["problems"]))
+        five = reflection_plan((SEG1,) * 5)
+        self.assertTrue(any(p.startswith("REFLECTION_SEGMENTS") for p in pc.check(five)["problems"]))
+
+    def test_each_shot_is_a_talking_keeper_framed_chest_up(self):
+        for edit, code in ((lambda p: p.update(aspect_ratio="9:16"), "ASPECT_RATIO"),
+                           (lambda p: p["shots"][0].update(voiceover=True), "REFLECTION_SHOT_FIELDS"),
+                           (lambda p: p["shots"][0].update(kind="scene"), "SHOT_KIND"),
+                           (lambda p: p["shots"][0].update(lines=[1]), "REFLECTION_SHOT_FIELDS"),
+                           (lambda p: p["shots"][0].update(prompt=p["shots"][0]["prompt"].replace("Close-up from the chest up",
+                                                                                                "Medium shot")), "KEEPER_FRAMING_16X9"),
+                           (lambda p: p["shots"][0].update(prompt=p["shots"][0]["prompt"].replace(", his lips moving clearly with every word", "")
+                                                           .replace("speaks to the camera", "")), "KEEPER_NOT_SPEAKING"),
+                           (lambda p: p["shots"][1].update(prompt=p["shots"][0]["prompt"]), "PROMPT_REPEATED"),
+                           (lambda p: p["narration"][0].update(kind="story"), "NARRATION_LINE"),
+                           (lambda p: p["narration"][1].update(text="Obedience is quiet work, slow and plain and unseen"),
+                            "REFLECTION_SEGMENT_NOT_A_SENTENCE"),
+                           (lambda p: p["narration"][1].update(text="Yes."), "KEEPER_LINE_TOO_SHORT")):
+            plan = reflection_plan()
+            edit(plan)
+            self.assertTrue(any(p.startswith(code) for p in pc.check(plan)["problems"]), (code, pc.check(plan)["problems"]))
+
+    def test_a_segment_one_clip_cannot_carry_is_refused(self):
+        long_line = " ".join(["Obedience is quiet, slow work."] * 8)
+        self.assertTrue(any(p.startswith("KEEPER_LINE_TOO_LONG") for p in pc.check(reflection_plan((SEG1, long_line)))["problems"]))
+
+    def test_the_build_measures_it_without_a_short_story_shape(self):
+        got = eb.predict(reflection_plan(), [8.0, 8.0])
+        self.assertEqual(got[0], [])
+        self.assertTrue(pc.reflection(reflection_plan()) and not pc.reflection({}))
+        # a Short plan (9:16, scenes, a climax) is still judged by the Short's rules
+        self.assertEqual(pc.check(json.loads(tlf.SHORT_PLAN.read_text()))["problems"], [])
+
+
+class Scaffold(unittest.TestCase):
+    def test_the_probe_plan_comes_from_the_longs_keeper_and_passes_plan_check(self):
+        with tempfile.TemporaryDirectory() as t:
+            root, spec, _ = make_root(t)
+            long_plan = tlf.long_plan()
+            long_plan["shots"][-1].update(kind="keeper", prompt=KEEPER_PROMPT.replace("LOOK", "a calm kind look"))
+            (root / "migration/production/bible/plans/genesis-long-test.json").write_text(json.dumps(long_plan))
+            plan = rs.scaffold(spec, root)
+            self.assertEqual(pc.check(plan)["problems"], [])
+            self.assertEqual([s["id"] for s in plan["shots"]], ["k-r1", "k-r2"])
+            self.assertEqual((plan["track"], plan["aspect_ratio"], plan["episode"]), (pc.REFLECTION_TRACK, "1:1", EPISODE))
+            self.assertNotEqual(plan["shots"][0]["prompt"], plan["shots"][1]["prompt"])
+            self.assertEqual([x["text"] for x in plan["narration"]], [SEG1, SEG2])
+            self.assertIn("a gentle questioning look", plan["shots"][1]["prompt"])
+            noisy = tlf.long_plan()
+            noisy["shots"] = [s for s in noisy["shots"] if s["kind"] != "keeper"]
+            (root / "migration/production/bible/plans/genesis-long-test.json").write_text(json.dumps(noisy))
+            with self.assertRaisesRegex(SystemExit, "LONG_HAS_NO_TALKING_KEEPER_PROMPT"):
+                rs.scaffold(spec, root)
 
 
 class Check(unittest.TestCase):
@@ -88,10 +192,21 @@ class Check(unittest.TestCase):
             self.assertEqual(got["problems"], [])
             self.assertEqual((got["reflection"]["first"], got["reflection"]["last"]), (0, 3))
             self.assertEqual((got["reflection"]["words"], got["reflection"]["long_video_id"]), (38, VIDEO_ID))
+            self.assertEqual(got["reflection"]["segments"], 2)
+            self.assertEqual(got["reflection"]["offsets"], [0.3, 10.1])
+            self.assertAlmostEqual(got["reflection"]["bottom_end"], 20.1)
             self.assertAlmostEqual(got["reflection"]["seconds"], 22.0)
             spec["clip"].update(audio="mute")
             spec["verse"] = {"reference": VERSE[0], "text": VERSE[1], "start": 0.5, "end": 5.0}
             self.assertEqual(rs.check(spec, root)["problems"], [])
+
+    def test_v1_the_still_motion_bottom_half_is_retired(self):
+        with tempfile.TemporaryDirectory() as t:
+            root, spec, _ = make_root(t)
+            old = dict(spec, version="bible-reflection-v1")
+            self.assertEqual(codes(rs.check(old, root)), ["SPEC_VERSION_RETIRED"])
+            for field in ({"keeper_image": "x-k-insight"}, {"motion": "push_in"}, {"reflection": {"text": SEG1 + " " + SEG2}}):
+                self.assertIn("SPEC_STILL_FIELDS", codes(rs.check(dict(spec, **field), root)), field)
 
     def test_the_clip_is_in_the_window_and_never_cut_in_speech(self):
         with tempfile.TemporaryDirectory() as t:
@@ -103,13 +218,6 @@ class Check(unittest.TestCase):
                                ({"start": 0.2, "end": 22.2, "x": 1.5}, "CLIP_X"),
                                ({"start": 0.2, "end": 22.2, "audio": "loud"}, "CLIP_AUDIO")):
                 self.assertIn(code, codes(rs.check(dict(spec, clip=clip), root)), clip)
-            # a clip over 40 s is refused even on sentence edges
-            rep = json.loads((root / spec["report"]).read_text())
-            rep["composed"]["seconds"] = 70.0
-            rep["composed"]["sentences"].append(dict(rep["composed"]["sentences"][-1], start=24.35, end=69.0, text="Then the rain came."))
-            (root / spec["report"]).write_text(json.dumps(rep))
-            long_clip = dict(spec, clip={"start": 0.2, "end": 69.5})
-            self.assertIn("CLIP_LENGTH", codes(rs.check(long_clip, root)))
             self.assertEqual(rs.SECONDS, (20.0, 40.0))
 
     def test_the_clip_comes_from_an_approved_published_long(self):
@@ -126,21 +234,95 @@ class Check(unittest.TestCase):
             self.assertIn("SPEC_PATH", codes(rs.check(spec, root, spec_path="migration/production/bible/reflections/other-1.json")))
             self.assertIn("SPEC_VERSION", codes(rs.check(dict(spec, track="buzzy-cut"), root)))
 
-    def test_the_reflection_length_voice_and_words(self):
+    def test_the_segments_are_whole_sentences_in_the_plan_and_the_reflection_has_its_length(self):
         with tempfile.TemporaryDirectory() as t:
             root, spec, _ = make_root(t)
-            too_short = "The Keeper waits. He is patient."
-            too_many = " ".join(["Obedience is slow work."] * 25)
-            sixty = " ".join(["Obedience is slow, quiet work done before the rain."] * 7)   # 63 words: 22 s cannot hold it
-            for text, code in ((too_short, "REFLECTION_LENGTH"), (too_many, "REFLECTION_LENGTH"),
-                               (sixty, "REFLECTION_TOO_LONG_FOR_CLIP"), (REFLECTION[:-1], "REFLECTION_NOT_A_SENTENCE"),
-                               (REFLECTION + " Shocking.", "REFLECTION_BANNED_WORDS"), ("", "REFLECTION_MISSING")):
-                self.assertIn(code, codes(rs.check(dict(spec, reflection={"text": text}), root)), text[:30])
-            eighty = " ".join(["word"] * 79) + "."
+            cases = ((dict(segments=spec["segments"][:1]), "SEGMENTS"),
+                     (dict(segments=[spec["segments"][0], {"shot": "k-r2", "text": SEG2.replace("miracle", "wonder")}]), "SEGMENT_NOT_IN_PLAN"),
+                     (dict(segments=[spec["segments"][0], {"shot": "k-r1", "text": SEG2}]), "SEGMENTS_SHOT_REPEATED"),
+                     (dict(segments="no"), "SEGMENTS"), (dict(plan="migration/production/bible/plans/other.json"), "PLAN_PATH"))
+            for kw, code in cases:
+                self.assertIn(code, codes(rs.check(dict(spec, **kw), root)), kw)
+            one = spec_of(segments=[{"shot": "k-r1", "text": SEG1}])
+            self.assertIn("SEGMENTS", codes(rs.check(one, root)))   # 2-4 segments
+            self.assertEqual(rs.SEGMENTS, (2, 4))
             self.assertEqual(rs.WORDS, (20, 80))
-            self.assertIn("REFLECTION_TOO_LONG_FOR_CLIP", codes(rs.check(dict(spec, reflection={"text": eighty}), root)))
-            # the voice fills the clip: 20 words in a 22 s clip leave dead air
-            self.assertIn("REFLECTION_TOO_SHORT_FOR_CLIP", codes(rs.check(dict(spec, reflection={"text": " ".join(["Slow work, done well."] * 5)}), root)))
+            short = dict(spec, segments=[{"shot": "k-r1", "text": "Wait."}, {"shot": "k-r2", "text": "Listen."}])
+            self.assertIn("REFLECTION_LENGTH", codes(rs.check(short, root)))
+        with tempfile.TemporaryDirectory() as t:
+            banned = spec_of(segments=[{"shot": "k-r1", "text": SEG1}, {"shot": "k-r2", "text": SEG2 + " Shocking."}])
+            root, spec, _ = make_root(t, banned)
+            self.assertIn("REFLECTION_BANNED_WORDS", codes(rs.check(spec, root)))
+
+    def test_every_segment_has_an_approved_pavo_clip_of_its_own_words(self):
+        with tempfile.TemporaryDirectory() as t:
+            root, spec, _ = make_root(t, score=9.0)
+            self.assertIn("SEGMENT_CLIP_SCORE", codes(rs.check(spec, root)))
+        with tempfile.TemporaryDirectory() as t:
+            root, spec, _ = make_root(t)
+            f = root / rs.SHOTS / f"{EPISODE}.json"
+            doc = json.loads(f.read_text())
+            gone = doc["shots"].pop("k-r2")
+            f.write_text(json.dumps(doc))
+            self.assertIn("SEGMENT_CLIP_NOT_APPROVED", codes(rs.check(spec, root)))
+            doc["shots"]["k-r2"] = dict(gone, source="footage")   # a footage / still-motion source is not a talking Keeper
+            f.write_text(json.dumps(doc))
+            self.assertIn("SEGMENT_CLIP_NOT_PAVO", codes(rs.check(spec, root)))
+            doc["shots"]["k-r2"] = dict(gone, revocation={"by": "claude-session-reviewer", "reason": "mouth wrong"})
+            f.write_text(json.dumps(doc))
+            self.assertIn("SHOT_REVIEW_REVOKED", codes(rs.check(spec, root)))
+            doc["shots"]["k-r2"] = dict(gone, clip_seconds=2.0)
+            f.write_text(json.dumps(doc))
+            self.assertIn("SEGMENT_CLIP_SECONDS", codes(rs.check(spec, root)))
+            doc["shots"]["k-r2"] = dict(gone, model="someone")
+            f.write_text(json.dumps(doc))
+            self.assertIn("SEGMENT_CLIP_REVIEW", codes(rs.check(spec, root)))
+            doc["shots"]["k-r2"] = dict(gone, asset="shot-x.mp4")
+            f.write_text(json.dumps(doc))
+            self.assertIn("SEGMENT_CLIP_ASSET", codes(rs.check(spec, root)))
+        with tempfile.TemporaryDirectory() as t:   # wrong words: the clip was made for another line
+            root, spec, _ = make_root(t, said=["other", "words"])
+            self.assertIn("SEGMENT_CLIP_WRONG_WORDS", codes(rs.check(spec, root)))
+        with tempfile.TemporaryDirectory() as t:
+            root, spec, _ = make_root(t)
+            (root / "migration/evidence/shots" / EPISODE / "123456.json").unlink()
+            self.assertIn("SEGMENT_PROBE_RECORD", codes(rs.check(spec, root)))
+
+    def test_the_flag_split_for_a_talking_clip(self):
+        # soft (lips a little off, the audio offset) and a words flag with the ASR's proof: informative, the clip ships
+        with tempfile.TemporaryDirectory() as t:
+            root, spec, _ = make_root(t, flags={"k-r1": ["MOUTH_NOT_IN_SYNC", "AUDIO_OFFSET"], "k-r2": ["AUDIO_NOT_OUR_LINE"]},
+                                      accepted={"k-r1": ["MOUTH_NOT_IN_SYNC"], "k-r2": ["AUDIO_NOT_OUR_LINE"]},
+                                      words_proof={"k-r2": True})
+            got = rs.check(spec, root)
+            self.assertEqual(got["problems"], [])
+            clips = got["reflection"]["clips"]
+            self.assertEqual(clips[0]["flags"]["soft"], ["MOUTH_NOT_IN_SYNC", "AUDIO_OFFSET"])
+            self.assertEqual(clips[1]["flags"]["words"], ["AUDIO_NOT_OUR_LINE"])
+            self.assertEqual(clips[1]["accepted_flags"], ["AUDIO_NOT_OUR_LINE"])
+        # AUDIO_NOT_OUR_LINE without the pinned ASR's proof on that clip blocks (the words may differ)
+        with tempfile.TemporaryDirectory() as t:
+            root, spec, _ = make_root(t, flags={"k-r2": ["AUDIO_NOT_OUR_LINE"]}, accepted={"k-r2": ["AUDIO_NOT_OUR_LINE"]})
+            self.assertIn("SEGMENT_CLIP_WORDS_UNPROVEN", codes(rs.check(spec, root)))
+        # hard: no face, a broken render, a policy problem, a talking mouth where none is wanted
+        for flag in ("FACE_NOT_FOUND", "NO_VIDEO", "GOD_SHOT_FACE", "MOUTH_TALKING"):
+            with tempfile.TemporaryDirectory() as t:
+                root, spec, _ = make_root(t, flags={"k-r1": [flag, "MOUTH_NOT_IN_SYNC"]}, accepted={"k-r1": ["MOUTH_NOT_IN_SYNC", flag]})
+                self.assertIn("SEGMENT_CLIP_HARD_FLAG", codes(rs.check(spec, root)), flag)
+
+    def test_the_keeper_clips_fit_the_top_clip(self):
+        with tempfile.TemporaryDirectory() as t:
+            root, spec, _ = make_root(t)
+            f = root / rs.SHOTS / f"{EPISODE}.json"
+            doc = json.loads(f.read_text())
+            for k in doc["shots"]:
+                doc["shots"][k]["clip_seconds"] = 12.0
+            f.write_text(json.dumps(doc))
+            self.assertIn("REFLECTION_TOO_LONG_FOR_CLIP", codes(rs.check(spec, root)))   # 24 s of clips in 22 s
+            for k in doc["shots"]:
+                doc["shots"][k]["clip_seconds"] = 6.0
+            f.write_text(json.dumps(doc))
+            self.assertIn("REFLECTION_TOO_SHORT_FOR_CLIP", codes(rs.check(spec, root)))   # a frozen last frame, little speech
 
     def test_the_verse_is_quoted_only_exactly_and_only_if_shown(self):
         with tempfile.TemporaryDirectory() as t:
@@ -151,19 +333,6 @@ class Check(unittest.TestCase):
             self.assertIn("VERSE_INVALID", codes(rs.check(late, root)))
             self.assertIn("VERSE_INVALID", codes(rs.check(dict(spec, verse={"reference": VERSE[0]}), root)))
 
-    def test_the_keeper_image_is_an_approved_keeper_still(self):
-        with tempfile.TemporaryDirectory() as t:
-            root, spec, _ = make_root(t, still_status="DRAFT")
-            self.assertIn("KEEPER_IMAGE_NOT_APPROVED", codes(rs.check(spec, root)))
-        with tempfile.TemporaryDirectory() as t:
-            root, spec, _ = make_root(t, shot="s-c1-dawn")
-            self.assertIn("KEEPER_IMAGE_NOT_THE_KEEPER", codes(rs.check(spec, root)))
-        with tempfile.TemporaryDirectory() as t:
-            root, spec, _ = make_root(t)
-            self.assertIn("KEEPER_IMAGE_UNKNOWN", codes(rs.check(dict(spec, keeper_image="no-such-still"), root)))
-            (root / rs.STILLS / f"{STILL}.jpg").write_bytes(b"another file")
-            self.assertIn("KEEPER_IMAGE_SHA256_MISMATCH", codes(rs.check(spec, root)))
-
     def test_the_package_points_to_the_long(self):
         with tempfile.TemporaryDirectory() as t:
             root, spec, _ = make_root(t)
@@ -171,75 +340,109 @@ class Check(unittest.TestCase):
                              (dict(description="The Keeper on Genesis 7 (public domain KJV), AI visuals."), "DESCRIPTION_NOT_TO_THE_LONG"),
                              (dict(description="The full story, the long video."), "DISCLOSURE_MISSING"),
                              (dict(title=""), "TITLE_MISSING"), (dict(title="t" * 101), "TITLE_LENGTH"),
-                             (dict(motion="no_such_move"), "MOTION_UNKNOWN")):
+                             (dict(bottom={"y": 2}), "BOTTOM_Y")):
                 self.assertIn(code, codes(rs.check(dict(spec, **kw), root)), kw)
 
-    def test_voice_script_uses_the_pinned_keeper_voice(self):
-        got = rs.voice_script(spec_of())
-        self.assertEqual(got["voice"]["voice_id"], "am_michael")   # episode_build.VOICE: the long's Keeper
-        self.assertEqual([s["text"] for s in got["segments"]], [REFLECTION])
 
-
-def voice_fixture(work, speech=15.0):
-    """What pilot_render.py voice writes (voice.wav, timeline.json), as a tone: the same shape, no Kokoro."""
-    work.mkdir(parents=True, exist_ok=True)
-    total = rs.LEAD_IN + speech + 0.3
-    tlf.ff("-f", "lavfi", "-i", "sine=frequency=180:sample_rate=24000", "-t", f"{total:.2f}", "-af", "volume=-18dB", "-c:a", "pcm_s16le",
-           work / "voice.wav")
-    sentences, t0 = [], rs.LEAD_IN
-    for i, s in enumerate(rs.speech_sentences(REFLECTION)):
-        span = speech * len(s) / len(REFLECTION)
-        sentences.append({"segment": "r00", "text": s, "start": round(t0, 3), "end": round(t0 + span - 0.18, 3)})
-        t0 += span
-    (work / "timeline.json").write_text(json.dumps({"segments": [{"id": "r00", "start": rs.LEAD_IN, "end": t0}], "sentences": sentences,
-                                                    "voice_seconds": round(total, 3), "sample_rate": 24000, "voice_id": "am_michael", "speed": 1.0}))
-
-
-@unittest.skipUnless(FFMPEG and MOTION, "ffmpeg, numpy and OpenCV")
+@unittest.skipUnless(FFMPEG, "ffmpeg")
 class Render(unittest.TestCase):
-    def prepare(self, t, spec=None):
-        root, spec, path = make_root(t, spec)
+    def prepare(self, t, spec=None, **kw):
+        root, spec, path = make_root(t, spec, **kw)
         clean = Path(t) / "clean.mp4"
         tlf.ff("-f", "lavfi", "-i", "testsrc2=size=1280x720:rate=30", "-f", "lavfi", "-i", "sine=frequency=300", "-t", "25",
                "-af", "volume=-20dB", "-pix_fmt", "yuv420p", "-c:v", "libx264", "-preset", "ultrafast", "-shortest", clean)
         rep = json.loads((root / spec["report"]).read_text())
         rep["composed"]["clean"].update(output_sha256=cl.sha256(clean), release_asset=bl.clean_asset("genesis-long-test", cl.sha256(clean)))
         (root / spec["report"]).write_text(json.dumps(rep))
-        voice_fixture(Path(t) / "work")
-        return root, spec, path, clean
+        work = Path(t) / "work"
+        (work / "clips").mkdir(parents=True)
+        for sid in ("k-r1", "k-r2"):
+            shutil.copy(root / "clips" / f"{sid}.mp4", work / "clips" / f"{sid}.mp4")
+        return root, spec, path, clean, work
 
-    def test_render_is_two_halves_with_the_voice_captions_and_gain(self):
+    def test_the_speech_span_of_a_clip(self):
+        with tempfile.TemporaryDirectory() as t:
+            clip = Path(t) / "c.mp4"
+            make_clip(clip, 220)
+            first, last, seconds, tail = rs.speech_span(clip)
+            self.assertEqual(first, 0.0)
+            self.assertAlmostEqual(last, 9.4, delta=0.2)
+            self.assertAlmostEqual(tail, 0.6, delta=0.25)
+
+    def test_render_is_two_halves_with_the_keeper_clips_captions_and_gain(self):
         with tempfile.TemporaryDirectory() as t:
             spec = spec_of(verse={"reference": VERSE[0], "text": VERSE[1], "start": 0.5, "end": 5.0})
-            root, spec, path, clean = self.prepare(t, spec)
-            rec = rs.render(path, clean, Path(t) / "work", Path(t) / "out", root=root)
+            root, spec, path, clean, work = self.prepare(t, spec)
+            rec = rs.render(path, clean, work, Path(t) / "out", root=root)
             self.assertTrue(all(rec["checks"].values()), rec["checks"])
             self.assertEqual(rec["frame"], [1080, 1920])
             self.assertAlmostEqual(rec["seconds"], 22.0, delta=0.2)
             self.assertEqual(rec["output_sha256"], cl.sha256(Path(t) / "out" / f"{spec['id']}.mp4"))
-            self.assertEqual(rec["voice"]["voice_id"], "am_michael")
-            self.assertEqual(rec["keeper_image"]["id"], STILL)
-            self.assertEqual(rec["sentences"][0]["start"], round(rs.LEAD_IN + rs.VOICE_AT, 3))
-            self.assertTrue(rec["motion_direction"]["move"])
-            # the halves: the top is the clip (testsrc2 is busy), the bottom the Keeper still (no pixel is black bars)
-            frame = Path(t) / "f.png"
-            tlf.ff("-i", Path(t) / "out" / f"{spec['id']}.mp4", "-ss", "10", "-frames:v", "1", frame)
-            self.assertTrue(frame.stat().st_size > 10_000)
+            self.assertEqual([s["shot"] for s in rec["segments"]], ["k-r1", "k-r2"])
+            self.assertEqual([s["start"] for s in rec["segments"]], [0.3, 10.1])
+            self.assertEqual(rec["voice"]["source"], "pavo-talking-clips")
+            self.assertEqual(rec["sentences"][0]["start"], 0.3)
+            self.assertEqual(rec["sentences"][-1]["segment"], "r01")
+            self.assertEqual(rec["bottom"]["crossfade"], rs.XFADE)
+            # the halves: the top is the clip (testsrc2 is busy), the bottom the Keeper clips (not black, not still)
+            frames = []
+            for at in ("3", "15"):
+                frame = Path(t) / f"f{at}.png"
+                tlf.ff("-i", Path(t) / "out" / f"{spec['id']}.mp4", "-ss", at, "-frames:v", "1", "-vf", "crop=1080:960:0:960", frame)
+                frames.append(frame.read_bytes())
+                self.assertTrue(frame.stat().st_size > 10_000)
+            self.assertNotEqual(frames[0], frames[1])   # clip 1 at 3 s, clip 2 at 15 s
             with self.assertRaisesRegex(SystemExit, "CLEAN_MASTER_SHA256_MISMATCH"):
-                rs.render(path, Path(t) / "out" / f"{spec['id']}.mp4", Path(t) / "work", Path(t) / "out2", root=root)
-            # a voice that does not fit the clip is refused, never faster
-            voice_fixture(Path(t) / "work2", speech=22.0)
-            with self.assertRaisesRegex(SystemExit, "VOICE_TOO_LONG_FOR_CLIP"):
-                rs.render(path, clean, Path(t) / "work2", Path(t) / "out3", root=root)
+                rs.render(path, Path(t) / "out" / f"{spec['id']}.mp4", work, Path(t) / "out2", root=root)
             # the record: its own, no review, the track rules of publish_episode pass
             episode = json.loads(rs.record(path, Path(t) / "out" / f"{spec['id']}.json", root=root).read_text())
             self.assertEqual((episode["track"], episode["layout"], episode["parent"]["long"]), (rs.TRACK, rs.LAYOUT, "genesis-long-test"))
-            self.assertEqual([x["kind"] for x in episode["narration"]], ["insight"])
+            self.assertEqual([x["kind"] for x in episode["narration"]], ["insight", "insight"])
+            self.assertEqual([s["shot"] for s in episode["segments"]], ["k-r1", "k-r2"])
             self.assertEqual(episode["scripture"], [{"reference": VERSE[0], "text": VERSE[1]}])
-            self.assertEqual(episode["credits"], {"vidiq": 0, "pavo": 0})
+            self.assertNotIn("keeper_image", episode)
             self.assertNotIn("review", episode)
             self.assertEqual(pe.short_problems(episode), [])
             self.assertEqual(pe.problems(dict(episode, part=1))[:1], ["REVIEW_MISSING"])   # reviewed on its own master next
+
+    def test_render_refuses_a_missing_or_other_clip_and_a_crossfade_over_a_word(self):
+        with tempfile.TemporaryDirectory() as t:
+            root, spec, path, clean, work = self.prepare(t)
+            (work / "clips" / "k-r2.mp4").write_bytes(b"another file")
+            with self.assertRaisesRegex(SystemExit, "CLIP_FILE_MISSING k-r2"):
+                rs.render(path, clean, work, Path(t) / "out", root=root)
+            (work / "clips" / "k-r2.mp4").unlink()
+            shutil.copy(root / "clips" / "k-r2.mp4", work / "clips" / "k-r2.mp4")
+            # a first clip whose speech runs to its last frame: the crossfade would fade his last word
+            tight = root / "clips" / "tight.mp4"
+            make_clip(tight, 260, speech=9.95)
+            sha = cl.sha256(tight)
+            f = root / rs.SHOTS / f"{EPISODE}.json"
+            doc = json.loads(f.read_text())
+            doc["shots"]["k-r1"].update(clip_sha256=sha, asset=eb.shot_asset_name(EPISODE, "k-r1", sha))
+            f.write_text(json.dumps(doc))
+            probe = root / "migration/evidence/shots" / EPISODE / "123456.json"
+            rec = json.loads(probe.read_text())
+            rec["shots"]["k-r1"]["clips"][0].update(clip_sha256=sha, asset=doc["shots"]["k-r1"]["asset"])
+            probe.write_text(json.dumps(rec))
+            shutil.copy(tight, work / "clips" / "k-r1.mp4")
+            with self.assertRaisesRegex(SystemExit, "SEGMENT_TAIL_TOO_SHORT k-r1"):
+                rs.render(path, clean, work, Path(t) / "out", root=root)
+
+    def test_fetch_clips_takes_the_approved_bytes_by_their_asset_names(self):
+        with tempfile.TemporaryDirectory() as t:
+            root, spec, path, clean, work = self.prepare(t)
+            got = {}
+
+            def fetch(name, dst):
+                got[name] = dst
+                shutil.copy(root / "clips" / ("k-r1.mp4" if "k-r1" in name else "k-r2.mp4"), dst)
+            self.assertEqual(rs.fetch_clips(path, Path(t) / "w2", root=root, fetch=fetch), ["k-r1", "k-r2"])
+            self.assertEqual(len(got), 2)
+            self.assertTrue(all(n.startswith("shot-genesis-long-test-reflection-1-k-r") for n in got))
+            wrong = lambda name, dst: Path(dst).write_bytes(b"not the clip")   # noqa: E731
+            with self.assertRaisesRegex(SystemExit, "SHOT_CLIP_SHA256_MISMATCH"):
+                rs.fetch_clips(path, Path(t) / "w3", root=root, fetch=wrong)
 
 
 class Downstream(unittest.TestCase):
@@ -247,7 +450,7 @@ class Downstream(unittest.TestCase):
         rec = {"id": "genesis-long-test-reflection-1", "format": "short", "track": pe.REFLECTION_TRACK, "part": 1, "seconds": 30.0,
                "output_sha256": tlf.SHA, "title": "t", "description": "Genesis 7 (public domain), AI. The full story: the long video.",
                "parent": {"long": "genesis-long-test", "pilot": "pilot-099", "clean_master_sha256": tlf.CLEAN},
-               "narration": [{"kind": "insight", "text": REFLECTION}]}
+               "narration": [{"kind": "insight", "text": SEG1}, {"kind": "insight", "text": SEG2}]}
         rec.update(kw)
         return rec
 
@@ -294,6 +497,7 @@ class Downstream(unittest.TestCase):
         guard = (ROOT / "migration/ops/dispatch_guard.py").read_text()
         review = (HERE / "native_review.py").read_text()
         self.assertIn("bible/reflections/", guard)
+        self.assertIn("bible-reflection-v2", guard)
         self.assertIn("(cuts|reflections)", review)
         self.assertTrue(re.fullmatch(r"migration/production/bible/(cuts|reflections)/[a-z0-9-]+\.json",
                                      "migration/production/bible/reflections/flood-ends-long-1.json"))

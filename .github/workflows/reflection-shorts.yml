@@ -1,18 +1,22 @@
-name: HeroVerse Keeper reflection Short (a published long's moment over the Keeper's reflection, 9:16 split screen; zero credits, nothing published)
+name: HeroVerse Keeper reflection Short (a published long's moment over the Keeper really speaking, 9:16 split screen; zero credits, nothing published)
 run-name: "reflection-shorts: spec=${{ inputs.spec }}"
-# Owner, 2026-11-02 (DECISIONS.md "Shorts cadence": one a day): the TOP half is a sentence-safe moment of one of our own
-# published longs (the long's caption-free master, downloaded by the report's sha256), the BOTTOM half is an approved
-# Keeper still moved by the cinematic engine (motion.py) while the Keeper's reflection is spoken in the pinned Kokoro
-# voice (am_michael, the long's Keeper) and captioned. No Pavo, no Buzzy, no secret, no generation. A spec outside the
-# 20-40 s window, off sentence edges, from an unpublished long or with a voice that does not fit is refused before any
-# render. The Short goes into the release as bible-<id>-sha256-<sha>.mp4 (the name publish-episode.yml downloads) and its
-# draft episode record (no review) onto claude/reflection-<id>-<run>. native-review.yml (plan = the spec; the standard
-# review floor), the session reviewer's review in the record, episode_build.py check-record and publish-episode.yml follow.
+# Owner, 2026-11-02 (DECISIONS.md "Shorts cadence": one a day; the same day's rule: the bottom half is a Pavo talking Keeper,
+# never a still motion): the TOP half is a sentence-safe moment of one of our own published longs (the long's caption-free
+# master, downloaded by the report's sha256), the BOTTOM half is the Keeper speaking the reflection in 2-4 sentence-safe
+# segments, each an APPROVED Pavo talking clip (plans/<id>.json probed by shot-probe.yml, approved by episode_build.py
+# approve-shot after Claude watched and heard it; shots/<id>.json), cropped to 1080x960 with the face centred and joined
+# by short crossfades; the audio is the clips' own (our Kokoro line, lip-synced by Pavo, as in a long's talking shot).
+# No Pavo generation, no Buzzy, no secret here: the clips are downloaded by their content-hash names and sha256 checked.
+# A spec outside the 20-40 s window, off sentence edges, from an unpublished long, with a segment that has no approved
+# clip of its words or whose clips do not fit is refused before any render. The Short goes into the release as
+# bible-<id>-sha256-<sha>.mp4 (the name publish-episode.yml downloads) and its draft episode record (no review) onto
+# claude/reflection-<id>-<run>. local-review.yml (plan = the spec; the standard review floor), the session reviewer's
+# review in the record, episode_build.py check-record and publish-episode.yml follow.
 on:
   workflow_dispatch:
     inputs:
       spec:
-        description: Reflection spec (migration/production/bible/reflections/<long episode>-<n>.json, bible-reflection-v1)
+        description: Reflection spec (migration/production/bible/reflections/<long episode>-<n>.json, bible-reflection-v2)
         required: true
 permissions:
   contents: read
@@ -31,16 +35,14 @@ jobs:
       GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
-      - name: Spec (path, published long, clip on sentence edges, 20-40 s, reflection and voice fit, approved Keeper still)
+      - name: Spec (path, published long, clip on sentence edges, 20-40 s, the plan's segments, an approved Pavo clip of each, the clips fit)
         run: |
           [[ "$SPEC" =~ ^migration/production/bible/reflections/[a-z0-9]+(-[a-z0-9]+)*-[1-9][0-9]*\.json$ ]] || { echo "SPEC_PATH_REFUSED"; exit 1; }
           test -f "$SPEC" || { echo "SPEC_MISSING"; exit 1; }
           python3 -I -B migration/production/bible/reflection_shorts.py check "$SPEC"
-      - name: Tools (ffmpeg, OpenCV for the motion engine, espeak), the pinned Kokoro voice runtime and the caption-free master (sha256 = the report's)
+      - name: Tools (ffmpeg, fonts) and the caption-free master (sha256 = the report's)
         run: |
-          APT_UPDATE_TIMEOUT=300s APT_INSTALL_TIMEOUT=600s bash migration/ci/apt_install.sh ffmpeg espeak-ng fonts-dejavu-core python3-numpy python3-opencv opencv-data
-          python3 -m venv "$RUNNER_TEMP/voice"
-          "$RUNNER_TEMP/voice/bin/pip" install --disable-pip-version-check -q 'kokoro-onnx==0.4.9' 'onnxruntime==1.20.1' 'numpy==2.2.6' 'espeakng-loader==0.2.4' 'soundfile==0.13.1'
+          APT_UPDATE_TIMEOUT=300s APT_INSTALL_TIMEOUT=600s bash migration/ci/apt_install.sh ffmpeg fonts-dejavu-core
           report=$(python3 -I -c "import json,sys;print(json.load(open(sys.argv[1]))['report'])" "$SPEC")
           asset=$(python3 -I -c "import json,sys;print(json.load(open(sys.argv[1]))['composed']['clean']['release_asset'])" "$report")
           sha=$(python3 -I -c "import json,sys;print(json.load(open(sys.argv[1]))['composed']['clean']['output_sha256'])" "$report")
@@ -48,16 +50,11 @@ jobs:
           bash migration/ci/assets.sh download --repo "$GITHUB_REPOSITORY" --pattern "$asset" -O "$RUNNER_TEMP/clean.mp4" --clobber
           echo "$sha  $RUNNER_TEMP/clean.mp4" | sha256sum -c -
           mkdir -p "$RUNNER_TEMP/work" "$RUNNER_TEMP/out"
-      - name: The Keeper's voice (Kokoro, am_michael, the reflection's sentences)
-        run: |
-          W="$RUNNER_TEMP/work"
-          python3 -I -B migration/production/bible/reflection_shorts.py voice-script "$SPEC" "$W/voice-script.json"
-          python3 -I -B migration/production/pilot_render.py prepare "$W" HeroVerse_Linux_Source_Ready_20261013_v2.zip
-          ESPEAK_DATA_PATH=$("$RUNNER_TEMP/voice/bin/python" -I -c "import espeakng_loader as e;print(e.get_data_path())")
-          test -d "$ESPEAK_DATA_PATH" || { echo "ESPEAK_DATA_MISSING"; exit 1; }
-          export ESPEAK_DATA_PATH
-          "$RUNNER_TEMP/voice/bin/python" -I -B migration/production/pilot_render.py voice "$W" "$W/voice-script.json"
-      - name: Render and measure (halves, motion, ducked clip, captions, -14 LUFS, the voice fits)
+      - name: The approved Pavo clips of the segments (content-hash names from the release, sha256 checked)
+        env:
+          GH_REPO: ${{ github.repository }}
+        run: python3 -I -B migration/production/bible/reflection_shorts.py fetch-clips "$SPEC" "$RUNNER_TEMP/work"
+      - name: Render and measure (halves, Keeper clips and crossfades, ducked clip, captions, -14 LUFS, the clips fit)
         run: python3 -I -B migration/production/bible/reflection_shorts.py render "$SPEC" "$RUNNER_TEMP/clean.mp4" "$RUNNER_TEMP/work" "$RUNNER_TEMP/out"
       - name: The Short into the release by its sha256; draft record and measures on claude/reflection-<id>-<run>
         run: |

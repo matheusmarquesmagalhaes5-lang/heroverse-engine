@@ -498,6 +498,10 @@ Each Inteligência Viva entry reports: the current moment, its triggers (hit or 
   - 2–3 story Shorts: cuts from the long, or a bridge when no cut exists;
   - plus 1 **Keeper reflection** Short in split screen, about 30 s: the long's moment plays in the top half and the
     Keeper's reflection is in the bottom half.
+  - Keeper reflection bottom half = Pavo talking Keeper, 2–4 clips, owner rule (the reflection is cut at sentence
+    edges into 2–4 segments, each with its own approved Pavo talking clip, joined with short crossfades; never a
+    still motion; the top half keeps the long's clip). The lip-sync and audio-match flags are informative for a talking
+    clip; only a hard defect (wrong words, no face, a broken render, a policy problem) excludes it (E266).
   Slots are chosen by Inteligência Viva; the count is fixed by the owner.
 
 ### Never stop: automation and fallback ladder (owner, 2026-11-02)

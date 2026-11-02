@@ -73,21 +73,56 @@ QA file keep their rules; the buzzy-long and buzzy-cut tracks apply only to thei
 
 Owner, 2026-11-02 (DECISIONS.md "Shorts cadence"): 9:16 1080x1920 in two 1080x960 halves. TOP: a moment of one of our
 own published longs (its caption-free master, re-framed to fill, its audio ducked under the reflection or muted).
-BOTTOM: an approved Keeper still (`stills/<id>.json`, a `k-*` shot) moved by `motion.py` while the Keeper's reflection
-(ours, 20-80 words) is spoken in the pinned Kokoro voice `am_michael` and captioned. No Pavo, no Buzzy: zero credits.
-KJV appears only if the spec shows it (`verse`, exact by `kjv_check`).
+BOTTOM (owner rule, same day): the Keeper really speaking, never a still motion. The reflection (ours, 20-80 words) is
+split into 2-4 sentence-safe segments; each segment is an approved Pavo talking clip (about 10-12 s, the same machinery
+as a long's Keeper lines), cropped to 1080x960 with the face centred and joined by 0.2 s crossfades. The audio is the
+clips' own: our Kokoro line `am_michael` that Pavo lip-synced, exactly as in a long's talking shot. Captions in the series
+style. KJV appears only if the spec shows it (`verse`, exact by `kjv_check`). `bible-reflection-v1` (a still moved by
+`motion.py`) is retired: the checker refuses it.
 
-| Step | Entry point |
-|---|---|
-| Spec | `reflections/<long>-<n>.json` (`bible-reflection-v1`, id `<long>-reflection-<n>`): `long`, `pilot`, `report` (the long's build report), `clip` {start, end, x, audio duck/mute}, `reflection.text`, optional `verse`, `keeper_image` (a still id), optional `motion`, `title`, `description` (public domain, AI, "full story"), `first_comment` (holds `https://youtu.be/<the long's video id>`) |
-| Check | `python3 -I -B production/bible/reflection_shorts.py check SPEC` refuses a long that is not long-first or not in `publish/ledger.json` under `<pilot>:<master sha256>`, a clip outside 20-40 s or starting/ending inside a spoken sentence (the cuts' `boundaries`), a reflection outside 20-80 words, not whole sentences, with a banned word or a voice (140 wpm) that does not fit the clip, an unapproved or non-Keeper still, an inexact verse |
-| Render | `reflection-shorts.yml` (dispatch on main, spec path): check, caption-free master by sha256, Kokoro voice (`pilot_render.py voice`), `reflection_shorts.py render` (measured voice must fit with a 0.6 s tail and sit in 115-165 wpm; -14 LUFS gain, fades), `bible-<id>-sha256-<sha>.mp4` in the release, draft `episodes/<id>.json` and the measures on `claude/reflection-<id>-<run>` (PR) |
-| Review and publish | `local-review.yml` with plan = the spec and the Short's own sha256, then the session reviewer's `review` in the record (`overall` >= 9.5: track `keeper-reflection` keeps the standard Short floor; no Buzzy shot is asked of its parent), `episode_build.py check-record`, `publish-episode.yml`; `arc_links.py` links it to its long through `parent.pilot` |
+How production makes one:
+
+1. Spec `reflections/<long>-<n>.json` (`bible-reflection-v2`, id `<long>-reflection-<n>`): `long`, `pilot`, `report`,
+   `clip` {start, end, x, audio duck/mute}, `plan` (`plans/<id>.json`), `segments` [{shot `k-r1`..`k-r4`, text}],
+   optional `bottom` {y}, optional `verse`, `title`, `description` (public domain, AI, "full story"), `first_comment`
+   (holds `https://youtu.be/<the long's video id>`).
+2. `reflection_shorts.py scaffold SPEC` writes the probe plan: `bible-plan-v2`, `track: keeper-reflection`,
+   `aspect_ratio: 1:1`, one talking Keeper shot per segment (the long's own Keeper prompt: his look, wardrobe, chest-up
+   framing, `talk_refs` reference; only his expression differs). `plan_check.py --strict` judges it (`reflection_check`:
+   2-4 talking Keeper shots, one insight line each, whole sentences, each line one 4-12 s clip can carry after the 10 %
+   retime, 20-80 words; no voice-over, scene, share or Short length rule).
+3. `shot-probe.yml` on the plan (all segments, `attempts: 1`): exact 0-credit quote, at most 2 generations a segment (E264),
+   every generation kept with its flags (E266). Claude watches and hears each clip, then `episode_build.py approve-shot`
+   (`shots/<id>.json`, by PR).
+4. `reflection_shorts.py check SPEC` (also the first step of `reflection-shorts.yml`) refuses a long that is not long-first
+   or not in `publish/ledger.json` under `<pilot>:<master sha256>`, a top clip outside 20-40 s or inside a spoken sentence,
+   a plan that fails `plan_check`, segments that are not the plan's lines word for word, a segment without an approved
+   Pavo clip (score >= 9.5, named reviewer, no retraction, 4-12 s, a probe record whose request carried exactly these
+   words), a Keeper timeline that does not fit the top clip (clips + 0.6 s tail <= clip, last frame held at most 3 s,
+   speech >= 45 % of the Short), a banned word, an inexact verse.
+5. `reflection-shorts.yml` (dispatch on main, spec path): check, caption-free master by sha256, `fetch-clips` (the approved
+   clips by their content-hash names, sha256 checked), `reflection_shorts.py render` (clips cropped, crossfaded, each
+   placed so the crossfade runs in the previous clip's silent tail; a tail under 0.22 s refuses the render; 115-165 wpm;
+   -14 LUFS gain, fades), `bible-<id>-sha256-<sha>.mp4` in the release, draft `episodes/<id>.json` (with `segments`) and the
+   measures on `claude/reflection-<id>-<run>` (PR).
+6. `local-review.yml` with plan = the spec and the Short's own sha256, then the session reviewer's `review` in the record
+   after watching and hearing the Short (`overall` >= 9.5: track `keeper-reflection` keeps the standard Short floor; no
+   Buzzy shot is asked of its parent), `episode_build.py check-record`, `publish-episode.yml`; `arc_links.py` links it to
+   its long through `parent.pilot`.
+
+Flags on a talking clip (E266, `episode_build.flag_split`; the owner judged the Pavo lip sync perfect, so the automatic
+lip-sync and audio-match measures only inform): HARD (`FACE_NOT_FOUND`, `clip_check`, `NO_VIDEO`, `MOUTH_TALKING`,
+`GOD_SHOT_FACE`) is never approved or shipped; WORDS (`AUDIO_NOT_OUR_LINE`) is approvable once Claude's review confirms the
+words and `speech-check` (pinned faster-whisper) heard the line: `approve-shot` records `accepted_flags` + `words`, and a
+clip whose ASR words differ stays a hard `SHOT_WORDS_NOT_OUR_LINE`; SOFT (`MOUTH_NOT_IN_SYNC`, `AUDIO_OFFSET`) never blocks,
+the approval records it. `reflection_shorts.py check` repeats it per segment (`SEGMENT_CLIP_HARD_FLAG`,
+`SEGMENT_CLIP_WORDS_UNPROVEN`, `SEGMENT_CLIP_WRONG_WORDS`). A Keeper segment that fails both generations falls back to the
+DECISIONS ladder only for a long; a reflection without all its clips is not made that day (the cuts and bridge Shorts go on).
 
 A reflection record has `track: keeper-reflection`, `layout: keeper-reflection`, `parent` {long, pilot, clean_master_sha256,
-start, end} and no review. A new file is a new review; the long's score is never copied. Today only a long-first long with
-a caption-free master and sentence timeline can be the source (a compilation, as the Noah one, keeps chapter cards and
-has no sentence timeline of its own).
+start, end}, `segments` [{shot, asset, clip_sha256}] and no review. A new file is a new review; the long's score is never
+copied. Today only a long-first long with a caption-free master and sentence timeline can be the source (a compilation, as
+the Noah one, keeps chapter cards and has no sentence timeline of its own).
 
 ## Sources and private provider work
 
