@@ -23,6 +23,10 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
   master that completes (a new executor/provider session able to hear it, or a later run once the provider recovers),
   then `claude_review.json` (defects + publish decision), thumbnail A/B from live-plan, `approve.yml` ->
   `prepublish_gate.py` -> `publish.yml` at 13:30 or 23:30 UTC, then the cuts.
+- 2026-11-02 diagnosis (public evidence of run 41502101074): status PROVIDER_FAILED, provider_status failed, error codes
+  INTERNAL, INTERNAL, retry_count 1, coverage full_input/native_audio. Upload and Free Tier proof were accepted (the
+  provider answered), so it is the Gemini side, not E248. No retry left on these runs; 23:30 UTC slot not met. A fresh
+  upload run with a new proof is the only path; gate stays closed until a real review exists.
 - The shared lease was taken and released (idle). No Short is scheduled from this delivery; the bridge Short still
   needs 9:16 stills from the ChatGPT desktop route.
 
