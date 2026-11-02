@@ -488,6 +488,18 @@ Each Inteligência Viva entry reports: the current moment, its triggers (hit or 
   regenerate.
 - Inteligência Viva and production plan to avoid rework: every generation planned must be one that gets used.
 
+### YouTube bonus programs (owner, 2026-11-02)
+- The owner joins the YouTube **Shorts bonus**: 16 Shorts a month for 3 months, USD 300 guaranteed plus a performance
+  bonus, join by 2026-11-15. The Studio opt-in status is recorded in CURRENT.md.
+- Floor: at least **16 qualifying Shorts per calendar month**, original cuts or bridges from our own media. The daily
+  ≥1 Short rule already exceeds it.
+- Inteligência Viva counts the month's qualifying Shorts every day and reports "Shorts bonus: N/16 this month". If
+  the pace would fall short, it raises the day's Short quantity.
+- Production treats a missed bonus Short as a failure.
+- Inteligência Viva also watches for any YouTube bonus, program or monetization offer, whether in Studio or in the
+  official YouTube Creator news. It reports the offer and its terms to the owner the day it appears. The owner
+  accepts any terms.
+
 ### Never stop: automation and fallback ladder (owner, 2026-11-02)
 - **Who moves it:**
   - Inteligência Viva (05:17) plans.
