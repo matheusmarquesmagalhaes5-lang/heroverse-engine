@@ -1,0 +1,109 @@
+{
+ "version": "bible-cut-v1",
+ "id": "flood-ends-landing-cut",
+ "spec": "migration/production/bible/cuts/flood-ends-long.json",
+ "parent": {
+  "long": "flood-ends-long",
+  "pilot": "pilot-017",
+  "report": "migration/evidence/episodes/flood-ends-long/report-41484825424.json",
+  "clean_master_sha256": "95307e831eee4c06f826715b5d974a6fcdcacfe6029e6e57bcb8879d777b1eea",
+  "start": 97.74,
+  "end": 130.27,
+  "x": 0.5
+ },
+ "output_sha256": "a18c7aa267ea0d155a05030cd0da290fa43fe53d21cc2b87b2beb18f8d8d4d30",
+ "seconds": 32.533,
+ "frame": [
+  1080,
+  1920
+ ],
+ "lufs": -14.0,
+ "true_peak_dbfs": -1.8,
+ "sentences": [
+  {
+   "segment": "n10",
+   "text": "The ark scraped rock and stopped.",
+   "start": 0.241,
+   "end": 2.545,
+   "line": 10,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n10",
+   "text": "Everyone froze.",
+   "start": 2.725,
+   "end": 4.283,
+   "line": 10,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n10",
+   "text": "They had landed.",
+   "start": 4.463,
+   "end": 5.828,
+   "line": 10,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n10",
+   "text": "But when they looked out, there was still nothing but water, and no ground to stand on.",
+   "start": 6.008,
+   "end": 11.256,
+   "line": 10,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n11",
+   "text": "And the waters decreased continually until the tenth month:",
+   "start": 11.606,
+   "end": 15.361,
+   "kind": "scripture",
+   "reference": "Genesis 8:5 (KJV)",
+   "line": 11,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n11",
+   "text": "in the tenth month, on the first day of the month, were the tops of the mountains seen.",
+   "start": 15.541,
+   "end": 20.767,
+   "kind": "scripture",
+   "reference": "Genesis 8:5 (KJV)",
+   "line": 11,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n12",
+   "text": "Two more months of waiting, and then the first grey peaks rose out of the water like islands.",
+   "start": 21.117,
+   "end": 26.835,
+   "line": 12,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n12",
+   "text": "The world was coming back.",
+   "start": 27.015,
+   "end": 28.849,
+   "line": 12,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n12",
+   "text": "But coming back is not the same as being ready.",
+   "start": 29.029,
+   "end": 32.272,
+   "line": 12,
+   "line_kind": "story"
+  }
+ ],
+ "advice": [
+  "ends on a story line: a KJV line or the Keeper's insight closes a cut best"
+ ],
+ "checks": {
+  "frame_1080x1920": true,
+  "lufs_band": true,
+  "true_peak_ceiling": true,
+  "length": true
+ }
+}
