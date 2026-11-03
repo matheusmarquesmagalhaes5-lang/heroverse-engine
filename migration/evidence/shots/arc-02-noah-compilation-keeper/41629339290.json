@@ -1,0 +1,429 @@
+{
+ "episode": "arc-02-noah-compilation-keeper",
+ "plan_sha256": "3a3954d4ed7c5822ae2abd96f3661be2fd99471c1e29671b1bda5ba4fcd3a57e",
+ "attempts": 1,
+ "shots": {
+  "k-hook": {
+   "kind": "keeper",
+   "request_sha256": "5d228a66106e9db0a29ba50cd38bebe0f65d8351aa265893723d84dd84c46efd",
+   "request": {
+    "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a grave, intent look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Hushed and urgent. No text, no logos.",
+    "aspect_ratio": "16:9",
+    "sound": false,
+    "references": [
+     {
+      "image": "ch-keeper-talk",
+      "sha256": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
+     }
+    ],
+    "audio": {
+     "speaker": "keeper",
+     "voice": {
+      "voice_id": "am_michael",
+      "speed": 1.0
+     },
+     "words": [
+      "what",
+      "if",
+      "obeying",
+      "god",
+      "meant",
+      "building",
+      "a",
+      "ship",
+      "with",
+      "no",
+      "rain",
+      "in",
+      "sight",
+      "here",
+      "is",
+      "noah's",
+      "whole",
+      "story",
+      "genesis",
+      "five",
+      "to",
+      "nine"
+     ]
+    }
+   },
+   "clips": [
+    {
+     "round": 1,
+     "generation": 1,
+     "asset": "shot-arc-02-noah-compilation-keeper-k-hook-sha256-9ba6e7eee0aa213846a99e66c60af579ea5672a3c3ad20e18dbbd97aeb629f0b.mp4",
+     "clip_sha256": "9ba6e7eee0aa213846a99e66c60af579ea5672a3c3ad20e18dbbd97aeb629f0b",
+     "flags": [
+      "AUDIO_NOT_OUR_LINE"
+     ],
+     "hard_flags": [],
+     "words_flags": [
+      "AUDIO_NOT_OUR_LINE"
+     ],
+     "soft_flags": [],
+     "measures": {
+      "lipsync": {
+       "audio": {
+        "corr": 0.831,
+        "lag_ms": 0
+       },
+       "mouth": {
+        "corr": 0.385,
+        "lag_ms": 0,
+        "speak_to_pause": 1.84,
+        "face_frames": 1.0,
+        "sync": {
+         "offset": -1,
+         "conf": 7.146,
+         "min_dist": 8.753,
+         "windows": 230
+        }
+       }
+      }
+     },
+     "generations": [
+      {
+       "generation": 1,
+       "conversation_id": "375972935007472320",
+       "submission": "submitted",
+       "quoted_credits": 0,
+       "source": {
+        "width": 1280.0,
+        "height": 720.0,
+        "seconds": 9.0
+       },
+       "flags": [
+        "AUDIO_NOT_OUR_LINE"
+       ],
+       "lipsync": {
+        "audio": {
+         "corr": 0.831,
+         "lag_ms": 0
+        },
+        "mouth": {
+         "corr": 0.385,
+         "lag_ms": 0,
+         "speak_to_pause": 1.84,
+         "face_frames": 1.0,
+         "sync": {
+          "offset": -1,
+          "conf": 7.146,
+          "min_dist": 8.753,
+          "windows": 230
+         }
+        }
+       },
+       "clip": "k-hook-fail1.mp4"
+      },
+      {
+       "generation": 2,
+       "conversation_id": "375974356956020544",
+       "submission": "submitted",
+       "quoted_credits": 0,
+       "source": {
+        "width": 1280.0,
+        "height": 720.0,
+        "seconds": 9.0
+       },
+       "flags": [
+        "AUDIO_NOT_OUR_LINE"
+       ],
+       "lipsync": {
+        "audio": {
+         "corr": 0.846,
+         "lag_ms": 0
+        },
+        "mouth": {
+         "corr": 0.458,
+         "lag_ms": 0,
+         "speak_to_pause": 1.89,
+         "face_frames": 0.98,
+         "sync": {
+          "offset": -1,
+          "conf": 7.872,
+          "min_dist": 8.127,
+          "windows": 230
+         }
+        }
+       },
+       "clip": "k-hook-fail2.mp4"
+      }
+     ],
+     "sheet": "41629339290-k-hook-1-1.jpg",
+     "media": {
+      "version": "clip-media-v1",
+      "clip_sha256": "9ba6e7eee0aa213846a99e66c60af579ea5672a3c3ad20e18dbbd97aeb629f0b",
+      "video_seconds": 9.416667,
+      "audio_seconds": 9.44,
+      "instrument": "ffprobe stream durations"
+     },
+     "uploaded": true
+    },
+    {
+     "round": 1,
+     "generation": 2,
+     "asset": "shot-arc-02-noah-compilation-keeper-k-hook-sha256-5a28e1162ba9e850fe8b84cdd92e1d5e59598290d08cc39737100f2aaca7d746.mp4",
+     "clip_sha256": "5a28e1162ba9e850fe8b84cdd92e1d5e59598290d08cc39737100f2aaca7d746",
+     "flags": [
+      "AUDIO_NOT_OUR_LINE"
+     ],
+     "hard_flags": [],
+     "words_flags": [
+      "AUDIO_NOT_OUR_LINE"
+     ],
+     "soft_flags": [],
+     "measures": {
+      "lipsync": {
+       "audio": {
+        "corr": 0.846,
+        "lag_ms": 0
+       },
+       "mouth": {
+        "corr": 0.458,
+        "lag_ms": 0,
+        "speak_to_pause": 1.89,
+        "face_frames": 0.98,
+        "sync": {
+         "offset": -1,
+         "conf": 7.872,
+         "min_dist": 8.127,
+         "windows": 230
+        }
+       }
+      }
+     },
+     "generations": [],
+     "sheet": "41629339290-k-hook-1-2.jpg",
+     "media": {
+      "version": "clip-media-v1",
+      "clip_sha256": "5a28e1162ba9e850fe8b84cdd92e1d5e59598290d08cc39737100f2aaca7d746",
+      "video_seconds": 9.416667,
+      "audio_seconds": 9.44,
+      "instrument": "ffprobe stream durations"
+     },
+     "uploaded": true
+    }
+   ],
+   "clip_seconds": 9
+  },
+  "k-close": {
+   "kind": "keeper",
+   "request_sha256": "9a2d6bf3c2fabb35a17e62059ca23aa4cc711333c3c91187145737979e522ef0",
+   "request": {
+    "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level, looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a gentle questioning look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and searching. No text, no logos.",
+    "aspect_ratio": "16:9",
+    "sound": false,
+    "references": [
+     {
+      "image": "ch-keeper-talk",
+      "sha256": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
+     }
+    ],
+    "audio": {
+     "speaker": "keeper",
+     "voice": {
+      "voice_id": "am_michael",
+      "speed": 1.0
+     },
+     "words": [
+      "noah",
+      "did",
+      "all",
+      "that",
+      "god",
+      "commanded",
+      "him",
+      "before",
+      "one",
+      "drop",
+      "fell",
+      "so",
+      "what",
+      "is",
+      "god",
+      "asking",
+      "of",
+      "you",
+      "that",
+      "you",
+      "cannot",
+      "yet",
+      "see"
+     ]
+    }
+   },
+   "clips": [
+    {
+     "round": 1,
+     "generation": 2,
+     "asset": "shot-arc-02-noah-compilation-keeper-k-close-sha256-1fcff33b087a7459cb3a6d4476c002efbbe9bd98da7c3193ec27d92904f5068a.mp4",
+     "clip_sha256": "1fcff33b087a7459cb3a6d4476c002efbbe9bd98da7c3193ec27d92904f5068a",
+     "flags": [
+      "AUDIO_NOT_OUR_LINE"
+     ],
+     "hard_flags": [],
+     "words_flags": [
+      "AUDIO_NOT_OUR_LINE"
+     ],
+     "soft_flags": [],
+     "measures": {
+      "lipsync": {
+       "audio": {
+        "corr": 0.709,
+        "lag_ms": 0
+       },
+       "mouth": {
+        "corr": 0.442,
+        "lag_ms": 0,
+        "speak_to_pause": 1.95,
+        "face_frames": 0.82,
+        "sync": {
+         "offset": -1,
+         "conf": 7.958,
+         "min_dist": 7.76,
+         "windows": 230
+        }
+       }
+      }
+     },
+     "generations": [
+      {
+       "generation": 1,
+       "conversation_id": "375976099236347712",
+       "submission": "submitted",
+       "quoted_credits": 0,
+       "source": {
+        "width": 1280.0,
+        "height": 720.0,
+        "seconds": 9.0
+       },
+       "flags": [
+        "AUDIO_NOT_OUR_LINE",
+        "AUDIO_OFFSET",
+        "FACE_NOT_FOUND"
+       ],
+       "lipsync": {
+        "audio": {
+         "corr": 0.018,
+         "lag_ms": -120
+        },
+        "mouth": {
+         "corr": 0.144,
+         "lag_ms": 40,
+         "speak_to_pause": 1.03,
+         "face_frames": 0.09,
+         "sync": {
+          "offset": -1,
+          "conf": 7.186,
+          "min_dist": 7.991,
+          "windows": 230
+         }
+        }
+       },
+       "clip": "k-close-fail1.mp4"
+      },
+      {
+       "generation": 2,
+       "conversation_id": "375977586163222592",
+       "submission": "submitted",
+       "quoted_credits": 0,
+       "source": {
+        "width": 1280.0,
+        "height": 720.0,
+        "seconds": 9.0
+       },
+       "flags": [
+        "AUDIO_NOT_OUR_LINE"
+       ],
+       "lipsync": {
+        "audio": {
+         "corr": 0.709,
+         "lag_ms": 0
+        },
+        "mouth": {
+         "corr": 0.442,
+         "lag_ms": 0,
+         "speak_to_pause": 1.95,
+         "face_frames": 0.82,
+         "sync": {
+          "offset": -1,
+          "conf": 7.958,
+          "min_dist": 7.76,
+          "windows": 230
+         }
+        }
+       },
+       "clip": "k-close-fail2.mp4"
+      }
+     ],
+     "sheet": "41629339290-k-close-1-2.jpg",
+     "media": {
+      "version": "clip-media-v1",
+      "clip_sha256": "1fcff33b087a7459cb3a6d4476c002efbbe9bd98da7c3193ec27d92904f5068a",
+      "video_seconds": 9.416667,
+      "audio_seconds": 9.44,
+      "instrument": "ffprobe stream durations"
+     },
+     "uploaded": true
+    },
+    {
+     "round": 1,
+     "generation": 1,
+     "asset": "shot-arc-02-noah-compilation-keeper-k-close-sha256-15cf615c6f9bfcca9d82be7ea14206c2dc46b6361fa88fadfc4a8810533d8784.mp4",
+     "clip_sha256": "15cf615c6f9bfcca9d82be7ea14206c2dc46b6361fa88fadfc4a8810533d8784",
+     "flags": [
+      "AUDIO_NOT_OUR_LINE",
+      "AUDIO_OFFSET",
+      "FACE_NOT_FOUND"
+     ],
+     "hard_flags": [
+      "FACE_NOT_FOUND"
+     ],
+     "words_flags": [
+      "AUDIO_NOT_OUR_LINE"
+     ],
+     "soft_flags": [
+      "AUDIO_OFFSET"
+     ],
+     "measures": {
+      "lipsync": {
+       "audio": {
+        "corr": 0.018,
+        "lag_ms": -120
+       },
+       "mouth": {
+        "corr": 0.144,
+        "lag_ms": 40,
+        "speak_to_pause": 1.03,
+        "face_frames": 0.09,
+        "sync": {
+         "offset": -1,
+         "conf": 7.186,
+         "min_dist": 7.991,
+         "windows": 230
+        }
+       }
+      }
+     },
+     "generations": [],
+     "sheet": "41629339290-k-close-1-1.jpg",
+     "media": {
+      "version": "clip-media-v1",
+      "clip_sha256": "15cf615c6f9bfcca9d82be7ea14206c2dc46b6361fa88fadfc4a8810533d8784",
+      "video_seconds": 9.416667,
+      "audio_seconds": 9.44,
+      "instrument": "ffprobe stream durations"
+     },
+     "uploaded": true
+    }
+   ],
+   "clip_seconds": 9
+  }
+ },
+ "pavo_budget": {
+  "units_before": 34,
+  "units_this_run": 8
+ },
+ "run_id": "41629339290"
+}
