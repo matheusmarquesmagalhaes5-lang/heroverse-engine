@@ -10,7 +10,8 @@
  "upload_status": "uploaded",
  "steps": {
   "thumbnail": true,
-  "first_comment": "PENDING: HTTP_403 forbidden: The comment thread could not be created due to insufficient permissions. The request might not be properly authorized."
+  "first_comment": "UgxGNLqql393NQ0bUit4AaABAg"
  },
- "verified_at": "2026-11-02T21:02:46.630822+00:00"
+ "verified_at": "2026-11-02T21:02:46.630822+00:00",
+ "first_comment_checked_at": "2026-11-03T09:55:05.275123+00:00"
 }
