@@ -1,0 +1,64 @@
+name: HeroVerse voice pace (a Kokoro voice's words a second, measured in CI; no local model, no spend)
+run-name: "voice-pace: lines=${{ inputs.lines }}"
+# Owner, 2026-11-03: no Kokoro is downloaded locally. A new speaker's pace (voice_pace.py, E104) and any speech check that
+# needs the pinned voice run here, with the hash-pinned Kokoro v1.0 assets (verify_public_voice_asset.ASSETS), the same
+# runtime as shot-probe/episode. The run voices Cain's recorded lines first (calibration, METHOD_DRIFT when the method
+# differs) and then the lines of the file. It writes a measure record as an artifact; the record is committed by PR.
+on:
+  workflow_dispatch:
+    inputs:
+      lines:
+        description: "Lines file (migration/evidence/voice/<date>/<name>.json: {voices: {who: {voice_id, speed, lines}}})"
+        required: true
+permissions:
+  contents: read
+concurrency:
+  group: heroverse-voice-pace
+  cancel-in-progress: false
+jobs:
+  measure:
+    if: github.repository == 'matheusmagah-cpu/heroverse-engine' && github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      LINES: ${{ inputs.lines }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - name: Lines file path
+        run: |
+          [[ "$LINES" =~ ^migration/evidence/voice/[0-9]{8}/[a-z0-9-]+\.json$ ]] || { echo "LINES_PATH_REFUSED"; exit 1; }
+          test -f "$LINES" || { echo "LINES_MISSING"; exit 1; }
+      - name: Pinned voice runtime and the hash-pinned Kokoro assets
+        run: |
+          APT_UPDATE_TIMEOUT=300s APT_INSTALL_TIMEOUT=600s bash migration/ci/apt_install.sh espeak-ng
+          python3 -m venv "$RUNNER_TEMP/voice"
+          "$RUNNER_TEMP/voice/bin/pip" install --disable-pip-version-check -q 'kokoro-onnx==0.4.9' 'onnxruntime==1.20.1' 'numpy==2.2.6' 'espeakng-loader==0.2.4' 'soundfile==0.13.1'
+          mkdir -p "$RUNNER_TEMP/models"
+          python3 -I - "$RUNNER_TEMP/models" <<'PY'
+          import hashlib, sys, urllib.request
+          sys.path.insert(0, "migration")
+          from verify_public_voice_asset import ASSETS
+          for a in ASSETS:
+              path = f"{sys.argv[1]}/{a['name']}"
+              with urllib.request.urlopen(a["url"], timeout=60) as r, open(path, "wb") as out:
+                  for block in iter(lambda: r.read(1 << 20), b""):
+                      out.write(block)
+              data = open(path, "rb").read()
+              assert len(data) == a["size"] and hashlib.sha256(data).hexdigest() == a["sha256"], "VOICE_ASSET_IDENTITY_MISMATCH"
+          print("VOICE_ASSETS_VERIFIED")
+          PY
+      - name: Measure
+        run: |
+          mkdir -p "$RUNNER_TEMP/out"
+          "$RUNNER_TEMP/voice/bin/python" -I -B migration/production/bible/voice_pace_measure.py "$LINES" \
+            "$RUNNER_TEMP/models/kokoro-v1.0.fp16.onnx" "$RUNNER_TEMP/models/voices-v1.0.bin" "$RUNNER_TEMP/out/voice-pace.json"
+          cat "$RUNNER_TEMP/out/voice-pace.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: voice-pace-${{ github.run_id }}
+          path: ${{ runner.temp }}/out
+          if-no-files-found: ignore
+          retention-days: 14
