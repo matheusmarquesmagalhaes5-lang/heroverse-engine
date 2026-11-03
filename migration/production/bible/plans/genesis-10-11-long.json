@@ -259,10 +259,6 @@
    "reference": "Genesis 12:2 (KJV)"
   },
   {
-   "kind": "insight",
-   "text": "They said, make us a name. God told Abram, I will make thy name great. Only one lasts."
-  },
-  {
    "kind": "cta",
    "text": "What are you building your name on? Tell me below. Next: the man who left everything. Subscribe."
   }
@@ -718,25 +714,9 @@
   },
   {
    "kind": "keeper",
-   "id": "k-name",
-   "lines": [
-    51
-   ],
-   "ambience": "the open desert at night: a small campfire crackling softly and a light night wind",
-   "audio_route": "kokoro",
-   "pavo": {
-    "emotion": "warm expectant",
-    "setting": "Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him.",
-    "wardrobe": "fire",
-    "gaze": "straight into the camera"
-   },
-   "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a warm expectant look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and expectant. No text, no logos."
-  },
-  {
-   "kind": "keeper",
    "id": "k-close",
    "lines": [
-    52
+    51
    ],
    "ambience": "the open desert at night: a small campfire crackling softly and a light night wind",
    "audio_route": "kokoro",
@@ -802,8 +782,8 @@
    "line2": "Genesis 11"
   },
   "reflection_window": {
-   "start": 362,
-   "end": 386
+   "start": 410,
+   "end": 431
   }
  }
 }
