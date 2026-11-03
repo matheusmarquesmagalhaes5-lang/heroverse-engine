@@ -30,6 +30,22 @@ def words(text):               # plan_check.words
     return len(text.split())
 
 
+class _FloatSpeed:
+    """The v1.0 fp16 model takes `speed` as a float tensor; kokoro-onnx 0.4.9 sends int32 (the repo's own adapter,
+    hero_engine KokoroFloatSpeed, casts it the same way)."""
+    def __init__(self, sess):
+        self._sess = sess
+
+    def run(self, names, inputs, *args, **kwargs):
+        inputs = dict(inputs)
+        if "speed" in inputs:
+            inputs["speed"] = inputs["speed"].astype("float32")
+        return self._sess.run(names, inputs, *args, **kwargs)
+
+    def __getattr__(self, name):
+        return getattr(self._sess, name)
+
+
 def voiced(kokoro, voice, speed, line):
     """Seconds from the first sentence's start to the last sentence's end, with the gaps between sentences."""
     total, parts = 0.0, sentences(line)
@@ -57,6 +73,7 @@ def main(argv):
         raise SystemExit(__doc__)
     from kokoro_onnx import Kokoro
     kokoro = Kokoro(argv[2], argv[3])
+    kokoro.sess = _FloatSpeed(kokoro.sess)
     spec = json.loads(Path(argv[1]).read_text())
     cain = json.loads(CAIN.read_text())["pace_by_voice_words_per_s"]["cain"]
     calibration = measure(kokoro, "am_eric", 1.0, [e["line"] for e in cain["each"]])
