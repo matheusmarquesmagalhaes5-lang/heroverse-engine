@@ -231,5 +231,6 @@
    }
   ],
   "process": "local-review.yml run 41583119894 (pinned local ASR + ffmpeg measures + frame sheets) of this exact master (sha256 a1f99c4f...), built by episode.yml run 41581203357; the sheets of both runs were viewed (20-frame build sheet at full size; the 1 frame / 2 s review sheets). Audio was judged from the faster-whisper small.en transcript with word times (it matches the script word for word, apart from the slips listed) and the ffmpeg measures (-14.5 LUFS, true peak -1.3 dBTP, no silence gap, no black or frozen frame); I did NOT listen to the sound, so delivery, diction and music taste are not claimed (E268 basis). Picture: 17 approved ChatGPT-desktop stills in camera motion, faces turned away or small, God never shown; the Keeper close-ups at the end match the series look."
- }
+ },
+ "video_id": "B5H2n_iyYV4"
 }
