@@ -23,3 +23,5 @@ never an intention. A rule here never loosens a gate; SYSTEM, PROMPT_GUIDE and E
 - **failed** Two Shorts of one long were planned on overlapping footage and speech (reflection top clip inside the rainbow cut). Evidence: E279
 - **rule** The hook, every on-screen character line and every Keeper line are Pavo talking shots; prompts come only from `pavo_prompt.build`, with a 0.3 s silence pad after our line. Evidence: E290
 - **rule** What Pavo generates is used: tails are trimmed at the last word (E273), joins crossfade inside silence (E272), a fast set is retimed by at most 10 % (E286); a second generation only for a visual defect. Evidence: E287, E290
+- **rule** Close the silences between Keeper clips to 0.3 s at most: a clip's picture outlasts our line, so the joins leave 0.9-1.3 s of dead mix that reads as a dropout. Evidence: reflection-shorts run 41660551928, local-review 41661153948
+- **rule** Re-measure sync (SyncNet and face) on the clips AFTER any retime (E286): the x0.92 slowing of reflection 1 was applied but only the unslowed clips were measured. Evidence: reflection-shorts run 41660551928, shot-remux run 41654835246
