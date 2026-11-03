@@ -127,6 +127,13 @@
    "target_video_id": "1m-NUJhkdMY",
    "reason": "short genesis-10-short: its source long",
    "target_title": "The Flood Ends: The Raven, the Dove and the Rainbow (Genesis 8-9, KJV)"
+  },
+  {
+   "video_id": "JlKX5Tw3kjM",
+   "action": "related_video",
+   "target_video_id": "1m-NUJhkdMY",
+   "reason": "short flood-ends-grace-cut: its source long",
+   "target_title": "The Flood Ends: The Raven, the Dove and the Rainbow (Genesis 8-9, KJV)"
   }
  ]
 }
