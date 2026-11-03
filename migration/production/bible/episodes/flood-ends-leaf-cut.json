@@ -89,5 +89,49 @@
   "compose": "engine",
   "structure": "bible-story-cut"
  },
- "slot": "2026-11-05T13:30:00Z"
+ "slot": "2026-11-05T13:30:00Z",
+ "review": {
+  "overall": 9.2,
+  "reviewer": "claude-session-reviewer",
+  "output_sha256": "b1ab37e9f698ae5d42e7e60bcfae5b0508457e1b8535fa3580e8fe76c257a448",
+  "scores": {
+   "opening_and_promise": 9.0,
+   "picture_quality": 9.0,
+   "figure_and_background_integrity": 9.0,
+   "captions_readable_and_synced": 9.0,
+   "audio_clarity_and_mix": 9.0,
+   "pacing_and_visual_variety": 9.0,
+   "scripture_on_screen": 9.0,
+   "policy_safe": 10.0
+  },
+  "issues": [
+   "00:00 The local review flagged speech at the first frame (category a). The cut was made 0.25 s clear of the first word (short_cuts.check, E275), so the first word is intact; the flag is the recognizer's timestamp, not a cut-off word.",
+   "00:19 to 00:38 About 19 s on the dove over the water with slow camera motion; no defect, the long's own pacing.",
+   "00:00 to 00:10 The ASR dropped punctuation and wrote 'set' for 'said' in the last line; the caption frames show the narrated words. Not verified by ear."
+  ],
+  "defects": [
+   {
+    "issue": 0,
+    "category": "info",
+    "resolved": false
+   },
+   {
+    "issue": 1,
+    "category": "info",
+    "resolved": false
+   },
+   {
+    "issue": 2,
+    "category": "info",
+    "resolved": false
+   }
+  ],
+  "publish_decision": {
+   "decision": "publish",
+   "by": "claude-session-reviewer",
+   "note": "Defect list of local review 41639836811 and the frame sheet of this exact master (sha256 b1ab37e9...): no speech cut off (0.25 s clear on both sides; first words 'One green leaf', last 'had not yet said open'), pictures fit the lines (the dove with the leaf, the family sharing it, Noah releasing the dove, Noah at the window looking at dry ground), no audio error (-14.1 LUFS, true peak -1.5 dBTP, no silence inside speech), no policy issue. Peak is the first scene change at 9 s from the dove close-up to the family: the emotional peak is 'passed that leaf from hand to hand like treasure'. It ends on an open loop: the door stays shut until God says open, which the long answers. Range 235.54-298.77 s is inside no other cut or reflection clip of the long beyond the fade margin (E279)."
+  },
+  "process": "local-review.yml run 41639836811 (pinned local ASR + ffmpeg measures + session reviewer's own look at the frame sheet) of this exact cut master, rendered by short-cuts.yml run 41639141270 from the clean master of the published long flood-ends-long; E250 defect-gated track buzzy-cut. Scores are information and are not the gate. Audio was judged from the faster-whisper small.en transcript with word times plus ffmpeg loudness/peak/silence measures; I did not listen to the sound, so delivery, diction and music taste are not claimed. Picture: the 1 frame / 2 s sheet was viewed; detectors ran on every frame at 320x180.",
+  "run_id": "41639836811"
+ }
 }
