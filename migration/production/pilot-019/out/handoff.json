@@ -1,0 +1,21 @@
+{
+ "version": "compilation-handoff-v1",
+ "pilot_id": "pilot-019",
+ "episode": "arc-02-noah-complete-pavo-compilation",
+ "output_sha256": "b9b154760b8280be6a142d3922a74aaf02c42a9d93597e91a4f6bac038e2119c",
+ "source_plan": {
+  "file": "migration/production/bible/compilations/arc-02-noah-complete-pavo-compilation.json",
+  "sha256": "7b8cf6cb3a98dea863ca47da3d1f961167ad181f877bb981893c5b82a47116e8"
+ },
+ "release_asset": "pilot-019-sha256-b9b154760b8280be6a142d3922a74aaf02c42a9d93597e91a4f6bac038e2119c.mp4",
+ "files": {
+  "script.json": "f4357b7d3175fe07035bf8f8c6c4911c6e0e14b4bff82f3daf99bd413f6a56aa",
+  "schedule.json": "3148b00cb2788d22b31ce9ccb9c0438d6d053778ea40698622b926ac1ecc51d5",
+  "out/manifest.json": "28a884be565cfaaa37455ecc8c224fc25588deb7396c1b1cddb6ddc74093d86f",
+  "out/timeline.json": "7a5c069fa4891ba33c7c8ad308551392e6eaaec5e45e3cf4a26ff04270cb98c7",
+  "out/package.json": "b0f51365bd1e1775279a761d4c89935ae7e1d1f2443b5d5c966a9f96cb01b7e8",
+  "inspection/thumbnail.jpg": "21c78a14617436c89105c8e10676c7221b3bbba90125ef8c4594889772fc513f"
+ },
+ "review_status": "AWAITING_REVIEW",
+ "approval_created": false
+}

@@ -1,0 +1,57 @@
+{
+ "version": "bible-compilation-script-v1",
+ "pilot_id": "pilot-019",
+ "archetype": "bible-compilation-long",
+ "series": "compilation",
+ "episode": "arc-02-noah-complete-pavo-compilation",
+ "working_title": "The Complete Story of Noah (Genesis 5-9) KJV",
+ "criteria_version": "compilation-qa-criteria-v1",
+ "shorts": [
+  "genesis-06-short",
+  "genesis-07-short",
+  "genesis-08-short",
+  "genesis-09-short",
+  "flood-ends-long"
+ ],
+ "hook": {
+  "text": "What if obeying God meant building a ship with no rain in sight? Here is Noah's whole story, Genesis five to nine."
+ },
+ "close": {
+  "text": "Noah did all that God commanded him, before one drop fell. So what is God asking of you, that you cannot yet see?"
+ },
+ "segments": [
+  {
+   "kind": "hook",
+   "text": "What if obeying God meant building a ship with no rain in sight? Here is Noah's whole story, Genesis five to nine."
+  },
+  {
+   "kind": "short",
+   "short": "genesis-06-short",
+   "text": "Enoch Walked With God"
+  },
+  {
+   "kind": "short",
+   "short": "genesis-07-short",
+   "text": "The end of all flesh is come before me; for the earth is filled with violence through them. I will destroy man whom I have created from the face of the earth; For it repenteth me that I have made them."
+  },
+  {
+   "kind": "short",
+   "short": "genesis-08-short",
+   "text": "And, behold, I, even I, do bring a flood of waters upon the earth, to destroy all flesh But with thee will I establish my covenant; and thou shalt come into the ark,"
+  },
+  {
+   "kind": "short",
+   "short": "genesis-09-short",
+   "text": "For yet seven days, and I will cause it to rain upon the earth forty days and forty nights;"
+  },
+  {
+   "kind": "long",
+   "short": "flood-ends-long",
+   "text": "The Flood Ends: The Raven, the Dove and the Rainbow"
+  },
+  {
+   "kind": "close",
+   "text": "Noah did all that God commanded him, before one drop fell. So what is God asking of you, that you cannot yet see?"
+  }
+ ]
+}

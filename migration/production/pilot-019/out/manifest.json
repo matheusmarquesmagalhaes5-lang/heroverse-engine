@@ -1,0 +1,156 @@
+{
+ "version": "bible-compilation-manifest-v1",
+ "pilot_id": "pilot-019",
+ "compilation": "arc-02-noah-complete-pavo-compilation",
+ "output_sha256": "b9b154760b8280be6a142d3922a74aaf02c42a9d93597e91a4f6bac038e2119c",
+ "output_seconds": 1084.854,
+ "criteria_version": "compilation-qa-criteria-v1",
+ "burned_captions": "kept from the Shorts",
+ "sources": [
+  {
+   "short": "genesis-06-short",
+   "asset": "bible-genesis-06-short-sha256-e9e6aacaab5564ddf691e09e63909ddfa57df810b36b5c239c0dd63eed43b609.mp4",
+   "sha256": "e9e6aacaab5564ddf691e09e63909ddfa57df810b36b5c239c0dd63eed43b609",
+   "video_id": "dyuqBS_FXew",
+   "seconds": 85.5
+  },
+  {
+   "short": "genesis-07-short",
+   "asset": "bible-genesis-07-short-sha256-da4c5f629dd8e8715a2a840395635b779beeda0917fcf2bc7860964b6cbcd6ea.mp4",
+   "sha256": "da4c5f629dd8e8715a2a840395635b779beeda0917fcf2bc7860964b6cbcd6ea",
+   "video_id": "Vvfw4W4nV7M",
+   "seconds": 173.8
+  },
+  {
+   "short": "genesis-08-short",
+   "asset": "bible-genesis-08-short-sha256-00462a4c1d9de5c3dfd7c8cf8e131f52f462ced71e97598b066fcf4a3d500a23.mp4",
+   "sha256": "00462a4c1d9de5c3dfd7c8cf8e131f52f462ced71e97598b066fcf4a3d500a23",
+   "video_id": "jPNjgf-PWHM",
+   "seconds": 175.11
+  },
+  {
+   "short": "genesis-09-short",
+   "asset": "bible-genesis-09-short-sha256-57e8768c53fd572b92750908fabdab37297ce74ec0438d3ed1ab3665e3a41829.mp4",
+   "sha256": "57e8768c53fd572b92750908fabdab37297ce74ec0438d3ed1ab3665e3a41829",
+   "video_id": "IYSxVKTikSs",
+   "seconds": 174.79
+  },
+  {
+   "short": "flood-ends-long",
+   "asset": "bible-flood-ends-long-sha256-9a2d0f24e74c7117eedcbdd73992fbc284efb9402b6f82dba98f096a64635692.mp4",
+   "sha256": "9a2d0f24e74c7117eedcbdd73992fbc284efb9402b6f82dba98f096a64635692",
+   "video_id": "1m-NUJhkdMY",
+   "seconds": 501.832
+  }
+ ],
+ "segments": [
+  {
+   "kind": "hook",
+   "name": "hook",
+   "seconds": 10.433,
+   "start": 0.0,
+   "end": 10.433
+  },
+  {
+   "kind": "short",
+   "name": "genesis-06-short",
+   "seconds": 70.6,
+   "source_sha256": "e9e6aacaab5564ddf691e09e63909ddfa57df810b36b5c239c0dd63eed43b609",
+   "chapter": "Enoch Walked With God",
+   "end_s": 70.6,
+   "start": 10.433,
+   "end": 81.033
+  },
+  {
+   "kind": "short",
+   "name": "genesis-07-short",
+   "seconds": 165.9,
+   "source_sha256": "da4c5f629dd8e8715a2a840395635b779beeda0917fcf2bc7860964b6cbcd6ea",
+   "chapter": "God Sees the Earth Corrupt",
+   "end_s": 165.9,
+   "start": 81.033,
+   "end": 246.933
+  },
+  {
+   "kind": "short",
+   "name": "genesis-08-short",
+   "seconds": 168.0,
+   "source_sha256": "00462a4c1d9de5c3dfd7c8cf8e131f52f462ced71e97598b066fcf4a3d500a23",
+   "chapter": "Noah Builds the Ark",
+   "end_s": 168.0,
+   "start": 246.933,
+   "end": 414.933
+  },
+  {
+   "kind": "short",
+   "name": "genesis-09-short",
+   "seconds": 165.7,
+   "source_sha256": "57e8768c53fd572b92750908fabdab37297ce74ec0438d3ed1ab3665e3a41829",
+   "chapter": "The Flood Begins",
+   "end_s": 165.7,
+   "start": 414.933,
+   "end": 580.633
+  },
+  {
+   "kind": "long",
+   "name": "flood-ends-long",
+   "seconds": 493.767,
+   "source_sha256": "9a2d0f24e74c7117eedcbdd73992fbc284efb9402b6f82dba98f096a64635692",
+   "chapter": "The Flood Ends: The Raven, the Dove and the Rainbow",
+   "end_s": 493.74,
+   "start": 580.633,
+   "end": 1074.4
+  },
+  {
+   "kind": "close",
+   "name": "close",
+   "seconds": 10.433,
+   "start": 1074.4,
+   "end": 1084.833
+  }
+ ],
+ "chapters": [
+  [
+   0,
+   "The Keeper's question"
+  ],
+  [
+   10.433,
+   "Enoch Walked With God"
+  ],
+  [
+   81.033,
+   "God Sees the Earth Corrupt"
+  ],
+  [
+   246.933,
+   "Noah Builds the Ark"
+  ],
+  [
+   414.933,
+   "The Flood Begins"
+  ],
+  [
+   580.633,
+   "The Flood Ends: The Raven, the Dove and the Rainbow"
+  ],
+  [
+   1074.4,
+   "The Keeper's honest question"
+  ]
+ ],
+ "keeper_clips": {
+  "hook": {
+   "conversation_id": "375974356956020544",
+   "quote": "0 credits (exact, fresh)",
+   "video_sha256": "01d5ddfe25fb30d0fb787c091f5cca9388b2698ec5791d268f4108c59c4bc40e",
+   "audio_sha256": "225a2cc2219deeb41be3ce170c747ed2b0a9b0fa887171e5cf6ebdc190c2d960"
+  },
+  "close": {
+   "conversation_id": "375977586163222592",
+   "quote": "0 credits (exact, fresh)",
+   "video_sha256": "41da3980ad476dc4c75b7198b83003b4e2b304e6230d406a584d278a849ad4b8",
+   "audio_sha256": "9c4d8c47617177f9519e6dc65d8575692fde20a9d4cff8a4fba39654c16eb701"
+  }
+ }
+}
