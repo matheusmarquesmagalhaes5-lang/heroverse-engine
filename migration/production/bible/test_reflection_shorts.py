@@ -509,6 +509,33 @@ class Render(unittest.TestCase):
             self.assertTrue(rs.XFADE_MIN <= rec["bottom"]["crossfades"][0] <= rs.XFADE)
             self.assertAlmostEqual(second["start"], 0.3 + first["seconds"] - rec["bottom"]["crossfades"][0], delta=0.01)
 
+    def test_e283_a_clip_set_faster_than_the_band_is_retimed_by_at_most_ten_percent(self):
+        with tempfile.TemporaryDirectory() as t:
+            clip = Path(t) / "c.mp4"
+            make_clip(clip, 220, seconds=8.0, speech=6.0)
+            slow = rs.retime_media(clip, 0.9, Path(t) / "slow.mp4")
+            self.assertAlmostEqual(cl.duration(slow), 8.0 / 0.9, delta=0.12)   # picture and voice stretched together
+            self.assertTrue(rs.has_audio(slow))
+            first, last, _, _ = rs.speech_span(slow)
+            self.assertAlmostEqual(last - first, 6.0 / 0.9, delta=0.25)
+        with tempfile.TemporaryDirectory() as t:
+            root, spec, path, clean, work = self.prepare(t)
+            for i, sid in enumerate(("k-r1", "k-r2")):
+                fast = root / "clips" / f"fast{i}.mp4"
+                make_clip(fast, 260 + i, speech=3.0)
+                sha = cl.sha256(fast)
+                f = root / rs.SHOTS / f"{EPISODE}.json"
+                doc = json.loads(f.read_text())
+                doc["shots"][sid].update(clip_sha256=sha, asset=eb.shot_asset_name(EPISODE, sid, sha))
+                f.write_text(json.dumps(doc))
+                probe = root / "migration/evidence/shots" / EPISODE / "123456.json"
+                rec = json.loads(probe.read_text())
+                rec["shots"][sid]["clips"][0].update(clip_sha256=sha, asset=doc["shots"][sid]["asset"])
+                probe.write_text(json.dumps(rec))
+                shutil.copy(fast, work / "clips" / f"{sid}.mp4")
+            with self.assertRaisesRegex(SystemExit, "VOICE_PACE .*needs x"):
+                rs.render(path, clean, work, Path(t) / "out", root=root)
+
     def test_fetch_clips_takes_the_approved_bytes_by_their_asset_names(self):
         with tempfile.TemporaryDirectory() as t:
             root, spec, path, clean, work = self.prepare(t)
