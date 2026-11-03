@@ -3,7 +3,7 @@ run-name: "speech-check: record=${{ inputs.record }} clips=${{ inputs.clips }}"
 # E281 (M2, Noah compilation): a session without local models (no medium.en, YAMNet, resemblyzer, MediaPipe) could not run
 # `episode_build.py speech-check`, the only authority that lets approve-shot accept a clip flagged AUDIO_NOT_OUR_LINE
 # (E266). This runs the SAME function (episode_build.speech_check_step) on the runner with the same pins as long-build.yml
-# (medium.en model.bin sha256 11b22077...), shot-probe.yml (MediaPipe face model, SyncNet-free) and the voice references
+# (medium.en model.bin sha256 11b22077...), shot-probe.yml (MediaPipe face model, SyncNet weights) and the voice references
 # voices.json holds by sha256. The sidecars (migration/evidence/shots/<episode>/speech/<clip sha256>.json) go to branch
 # claude/speech-<episode>-<run> for a PR; approve-shot still recomputes the verdict and Claude still reviews the clip.
 # No Pavo call, no secret, no generation, nothing approved or published.
@@ -60,6 +60,10 @@ jobs:
           curl -fsSL --retry 3 -o "$RUNNER_TEMP/face_landmarker.task" https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task
           sha=$(python3 -I -c "import re,sys;print(re.search(r'MODEL_SHA256 = \"([0-9a-f]{64})\"',open(sys.argv[1]).read()).group(1))" migration/production/bible/lipsync_check.py)
           echo "$sha  $RUNNER_TEMP/face_landmarker.task" | sha256sum -c -
+          # the lips check of a talking clip is SyncNet (E120): its pinned weights, as shot-probe.yml fetches them
+          sha=$(python3 -I -c "import re,sys;print(re.search(r'SYNCNET_SHA256 = \"([0-9a-f]{64})\"',open(sys.argv[1]).read()).group(1))" migration/production/bible/syncnet.py)
+          bash migration/ci/pinned_asset.sh fetch "syncnet_v2-$sha.model" "$sha" "$RUNNER_TEMP/syncnet_v2.model" https://www.robots.ox.ac.uk/~vgg/software/lipsync/data/syncnet_v2.model
+          echo "$sha  $RUNNER_TEMP/syncnet_v2.model" | sha256sum -c -
       - name: YAMNet and the story ASR from frozen pins (medium.en)
         run: |
           mkdir -p "$RUNNER_TEMP/models/whisper"
