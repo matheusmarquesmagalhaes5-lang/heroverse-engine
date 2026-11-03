@@ -1,0 +1,1199 @@
+{
+ "episode": "genesis-10-11-long",
+ "plan_sha256": "92f7d0eec86687e5ae84ac43f6e08899fbd00f94c1efc02978aaab653b6039db",
+ "attempts": 1,
+ "shots": {
+  "k-hook": {
+   "kind": "keeper",
+   "request_sha256": "884449f2f106a727d8f26f12f428cf4adad2600f5c332ab50e52968bb7be04ba",
+   "request": {
+    "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a grave, intent look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Hushed and urgent. No text, no logos.",
+    "aspect_ratio": "16:9",
+    "sound": false,
+    "references": [
+     {
+      "image": "ch-keeper-talk",
+      "sha256": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
+     }
+    ],
+    "audio": {
+     "speaker": "keeper",
+     "voice": {
+      "voice_id": "am_michael",
+      "speed": 1.0
+     },
+     "words": [
+      "one",
+      "language",
+      "one",
+      "plan",
+      "one",
+      "tower",
+      "to",
+      "reach",
+      "the",
+      "sky",
+      "then",
+      "god",
+      "came",
+      "down",
+      "why"
+     ],
+     "tail_pad": "pavo-talk-v2"
+    }
+   },
+   "clips": [
+    {
+     "round": 1,
+     "generation": 2,
+     "asset": "shot-genesis-10-11-long-k-hook-sha256-5ba6ab4c8cac066eb529ededd5fa50c0519301bc283c9e354845b9f6a3a1012c.mp4",
+     "clip_sha256": "5ba6ab4c8cac066eb529ededd5fa50c0519301bc283c9e354845b9f6a3a1012c",
+     "flags": [],
+     "hard_flags": [],
+     "words_flags": [],
+     "soft_flags": [],
+     "measures": {
+      "lipsync": {
+       "audio": {
+        "corr": 1.0,
+        "lag_ms": 0
+       },
+       "mouth": {
+        "corr": 0.572,
+        "lag_ms": 40,
+        "speak_to_pause": 1.93,
+        "face_frames": 0.97,
+        "sync": {
+         "offset": -1,
+         "conf": 8.461,
+         "min_dist": 7.672,
+         "windows": 195
+        }
+       }
+      }
+     },
+     "generations": [
+      {
+       "generation": 1,
+       "conversation_id": "376113233335222080",
+       "submission": "submitted",
+       "quoted_credits": 0,
+       "flags": [
+        "NO_VIDEO"
+       ]
+      },
+      {
+       "generation": 2,
+       "conversation_id": "376113480787114688",
+       "submission": "submitted",
+       "quoted_credits": 0,
+       "source": {
+        "width": 1280.0,
+        "height": 720.0,
+        "seconds": 8.0
+       },
+       "audio": {
+        "route": "pavo",
+        "sha256": "cc537f9ded3125879a160f8c56916f4262f95125160bcd3de6f169d4f952c034",
+        "samples": 352800,
+        "seconds": 8.0,
+        "lufs": -23.6,
+        "true_peak_db": -7.8,
+        "narration_lufs": -26.0
+       },
+       "flags": [],
+       "lipsync": {
+        "audio": {
+         "corr": 1.0,
+         "lag_ms": 0
+        },
+        "mouth": {
+         "corr": 0.572,
+         "lag_ms": 40,
+         "speak_to_pause": 1.93,
+         "face_frames": 0.97,
+         "sync": {
+          "offset": -1,
+          "conf": 8.461,
+          "min_dist": 7.672,
+          "windows": 195
+         }
+        }
+       },
+       "clip": "k-hook.mp4"
+      }
+     ],
+     "sheet": "41714272567-k-hook-1-2.jpg",
+     "audio": {
+      "route": "pavo",
+      "sha256": "cc537f9ded3125879a160f8c56916f4262f95125160bcd3de6f169d4f952c034",
+      "samples": 352800,
+      "seconds": 8.0,
+      "lufs": -23.6,
+      "true_peak_db": -7.8,
+      "narration_lufs": -26.0
+     },
+     "media": {
+      "version": "clip-media-v1",
+      "clip_sha256": "5ba6ab4c8cac066eb529ededd5fa50c0519301bc283c9e354845b9f6a3a1012c",
+      "video_seconds": 8.0,
+      "audio_seconds": 8.0,
+      "instrument": "ffprobe stream durations"
+     },
+     "uploaded": true
+    }
+   ],
+   "clip_seconds": 8,
+   "kjv_quote": false
+  },
+  "b-brick": {
+   "kind": "scene",
+   "request_sha256": "c471d6ab1158eb92a0d813612119149266eca0ac13cf2f92cc797880b9fab44a",
+   "request": {
+    "prompt": "Image 1 is The builder. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium close-up, static camera. The builder, a lean wiry man of about thirty-five with Middle Eastern features, sun-darkened tan skin, a long narrow face, deep-set dark eyes with crow's feet, straight black hair tied back at the nape with a strip of cloth, a thin black moustache and a stubbled chin, sinewy forearms, a plain sleeveless undyed linen tunic belted with a twisted cord, his forearms and tunic spattered with wet grey-brown clay, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a eager proud look. A brickyard on the plain at dawn, a kiln's orange glow and drifting smoke behind him, soft morning light on his face. Eager and driven. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "aspect_ratio": "16:9",
+    "sound": false,
+    "references": [
+     {
+      "image": "ch-builder-front",
+      "sha256": "2e569bc474691e2113df210a7afa1075f6a1bb1a7fb9d955d15b4a260851562f"
+     }
+    ],
+    "audio": {
+     "speaker": "builder",
+     "voice": {
+      "voice_id": "bm_lewis",
+      "speed": 1.0
+     },
+     "words": [
+      "go",
+      "to",
+      "let",
+      "us",
+      "make",
+      "brick",
+      "and",
+      "burn",
+      "them",
+      "throughly",
+      "and",
+      "they",
+      "had",
+      "brick",
+      "for",
+      "stone",
+      "and",
+      "slime",
+      "had",
+      "they",
+      "for",
+      "morter"
+     ],
+     "tail_pad": "pavo-talk-v2"
+    }
+   },
+   "clips": [
+    {
+     "round": 1,
+     "generation": 1,
+     "asset": "shot-genesis-10-11-long-b-brick-sha256-9e9a877241ad73c1a3efe8e91b74930729e65fc2c4ad8518ffa1226172b85aff.mp4",
+     "clip_sha256": "9e9a877241ad73c1a3efe8e91b74930729e65fc2c4ad8518ffa1226172b85aff",
+     "flags": [],
+     "hard_flags": [],
+     "words_flags": [],
+     "soft_flags": [],
+     "measures": {
+      "lipsync": {
+       "audio": {
+        "corr": 1.0,
+        "lag_ms": 0
+       },
+       "mouth": {
+        "corr": 0.227,
+        "lag_ms": -40,
+        "speak_to_pause": 1.16,
+        "face_frames": 1.0,
+        "sync": {
+         "offset": -1,
+         "conf": 9.593,
+         "min_dist": 6.664,
+         "windows": 177
+        }
+       }
+      }
+     },
+     "generations": [
+      {
+       "generation": 1,
+       "conversation_id": "376109426082115072",
+       "submission": "submitted",
+       "quoted_credits": 0,
+       "source": {
+        "width": 1280.0,
+        "height": 720.0,
+        "seconds": 7.0
+       },
+       "audio": {
+        "route": "pavo",
+        "sha256": "f9ca94911f8c5a8603d794a3e83b7b137739ebafd68e2de2fa6ff9f335dcb204",
+        "samples": 323165,
+        "seconds": 7.328,
+        "lufs": -21.6,
+        "true_peak_db": -7.5,
+        "narration_lufs": -26.5
+       },
+       "flags": [],
+       "lipsync": {
+        "audio": {
+         "corr": 1.0,
+         "lag_ms": 0
+        },
+        "mouth": {
+         "corr": 0.227,
+         "lag_ms": -40,
+         "speak_to_pause": 1.16,
+         "face_frames": 1.0,
+         "sync": {
+          "offset": -1,
+          "conf": 9.593,
+          "min_dist": 6.664,
+          "windows": 177
+         }
+        }
+       },
+       "clip": "b-brick.mp4"
+      }
+     ],
+     "sheet": "41714272567-b-brick-1-1.jpg",
+     "audio": {
+      "route": "pavo",
+      "sha256": "f9ca94911f8c5a8603d794a3e83b7b137739ebafd68e2de2fa6ff9f335dcb204",
+      "samples": 323165,
+      "seconds": 7.328,
+      "lufs": -21.6,
+      "true_peak_db": -7.5,
+      "narration_lufs": -26.5
+     },
+     "media": {
+      "version": "clip-media-v1",
+      "clip_sha256": "9e9a877241ad73c1a3efe8e91b74930729e65fc2c4ad8518ffa1226172b85aff",
+      "video_seconds": 7.291667,
+      "audio_seconds": 7.328,
+      "instrument": "ffprobe stream durations"
+     },
+     "uploaded": true
+    }
+   ],
+   "clip_seconds": 7,
+   "kjv_quote": true
+  },
+  "b-tower": {
+   "kind": "scene",
+   "request_sha256": "be64ae9ff1bcba1cad99906aa61bdc800065d63b3a245a943f7785e316cde641",
+   "request": {
+    "prompt": "Image 1 is The builder. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium close-up, static camera. The builder, a lean wiry man of about thirty-five with Middle Eastern features, sun-darkened tan skin, a long narrow face, deep-set dark eyes with crow's feet, straight black hair tied back at the nape with a strip of cloth, a thin black moustache and a stubbled chin, sinewy forearms, the same plain linen tunic, a coil of rope over one shoulder, pale mud-brick dust on his face and hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a defiant proud look. High on a brick scaffold in the late afternoon, the unfinished tower behind him, warm low sun on his face and dust in the air. Bold and defiant. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "aspect_ratio": "16:9",
+    "sound": false,
+    "references": [
+     {
+      "image": "ch-builder-front",
+      "sha256": "2e569bc474691e2113df210a7afa1075f6a1bb1a7fb9d955d15b4a260851562f"
+     }
+    ],
+    "audio": {
+     "speaker": "builder",
+     "voice": {
+      "voice_id": "bm_lewis",
+      "speed": 1.0
+     },
+     "words": [
+      "go",
+      "to",
+      "let",
+      "us",
+      "build",
+      "us",
+      "a",
+      "city",
+      "and",
+      "a",
+      "tower",
+      "whose",
+      "top",
+      "may",
+      "reach",
+      "unto",
+      "heaven"
+     ],
+     "tail_pad": "pavo-talk-v2"
+    }
+   },
+   "clips": [
+    {
+     "round": 1,
+     "generation": 1,
+     "asset": "shot-genesis-10-11-long-b-tower-sha256-c6b9882bdbf295a41469cb5fb7e0e262f903c023165de535dbd0867d60c46e68.mp4",
+     "clip_sha256": "c6b9882bdbf295a41469cb5fb7e0e262f903c023165de535dbd0867d60c46e68",
+     "flags": [],
+     "hard_flags": [],
+     "words_flags": [],
+     "soft_flags": [],
+     "measures": {
+      "lipsync": {
+       "audio": {
+        "corr": 1.0,
+        "lag_ms": 0
+       },
+       "mouth": {
+        "corr": 0.232,
+        "lag_ms": -40,
+        "speak_to_pause": 1.15,
+        "face_frames": 1.0,
+        "sync": {
+         "offset": -1,
+         "conf": 8.598,
+         "min_dist": 6.676,
+         "windows": 124
+        }
+       }
+      }
+     },
+     "generations": [
+      {
+       "generation": 1,
+       "conversation_id": "376110924177901632",
+       "submission": "submitted",
+       "quoted_credits": 0,
+       "source": {
+        "width": 1280.0,
+        "height": 720.0,
+        "seconds": 5.0
+       },
+       "audio": {
+        "route": "pavo",
+        "sha256": "a4090d66770eae8076463e37301e4aaea6886995be798b50fbad2c2bc75b4557",
+        "samples": 228615,
+        "seconds": 5.184,
+        "lufs": -22.9,
+        "true_peak_db": -5.2,
+        "narration_lufs": -27.5
+       },
+       "flags": [],
+       "lipsync": {
+        "audio": {
+         "corr": 1.0,
+         "lag_ms": 0
+        },
+        "mouth": {
+         "corr": 0.232,
+         "lag_ms": -40,
+         "speak_to_pause": 1.15,
+         "face_frames": 1.0,
+         "sync": {
+          "offset": -1,
+          "conf": 8.598,
+          "min_dist": 6.676,
+          "windows": 124
+         }
+        }
+       },
+       "clip": "b-tower.mp4"
+      }
+     ],
+     "sheet": "41714272567-b-tower-1-1.jpg",
+     "audio": {
+      "route": "pavo",
+      "sha256": "a4090d66770eae8076463e37301e4aaea6886995be798b50fbad2c2bc75b4557",
+      "samples": 228615,
+      "seconds": 5.184,
+      "lufs": -22.9,
+      "true_peak_db": -5.2,
+      "narration_lufs": -27.5
+     },
+     "media": {
+      "version": "clip-media-v1",
+      "clip_sha256": "c6b9882bdbf295a41469cb5fb7e0e262f903c023165de535dbd0867d60c46e68",
+      "video_seconds": 5.166667,
+      "audio_seconds": 5.184,
+      "instrument": "ffprobe stream durations"
+     },
+     "uploaded": true
+    }
+   ],
+   "clip_seconds": 5,
+   "kjv_quote": true
+  },
+  "b-name": {
+   "kind": "scene",
+   "request_sha256": "cb82e22522ea990ea1f8038a71c1b6e7d30702ea86daa9fc6b7a4a7783ac37c2",
+   "request": {
+    "prompt": "Image 1 is The builder. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium close-up, static camera. The builder, a lean wiry man of about thirty-five with Middle Eastern features, sun-darkened tan skin, a long narrow face, deep-set dark eyes with crow's feet, straight black hair tied back at the nape with a strip of cloth, a thin black moustache and a stubbled chin, sinewy forearms, the same plain linen tunic, a coil of rope over one shoulder, pale mud-brick dust on his face and hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a fearful tense look. High on a brick scaffold in the late afternoon, the unfinished tower behind him, warm low sun on his face and dust in the air. Tense and fearful. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "aspect_ratio": "16:9",
+    "sound": false,
+    "references": [
+     {
+      "image": "ch-builder-front",
+      "sha256": "2e569bc474691e2113df210a7afa1075f6a1bb1a7fb9d955d15b4a260851562f"
+     }
+    ],
+    "audio": {
+     "speaker": "builder",
+     "voice": {
+      "voice_id": "bm_lewis",
+      "speed": 1.0
+     },
+     "words": [
+      "and",
+      "let",
+      "us",
+      "make",
+      "us",
+      "a",
+      "name",
+      "lest",
+      "we",
+      "be",
+      "scattered",
+      "abroad",
+      "upon",
+      "the",
+      "face",
+      "of",
+      "the",
+      "whole",
+      "earth"
+     ],
+     "tail_pad": "pavo-talk-v2"
+    }
+   },
+   "clips": [
+    {
+     "round": 1,
+     "generation": 1,
+     "asset": "shot-genesis-10-11-long-b-name-sha256-2a6f55fb7b99ba6a8ad7950519353dacab7be95503aa91cb7ecef8d5e0ea5f67.mp4",
+     "clip_sha256": "2a6f55fb7b99ba6a8ad7950519353dacab7be95503aa91cb7ecef8d5e0ea5f67",
+     "flags": [],
+     "hard_flags": [],
+     "words_flags": [],
+     "soft_flags": [],
+     "measures": {
+      "lipsync": {
+       "audio": {
+        "corr": 1.0,
+        "lag_ms": 0
+       },
+       "mouth": {
+        "corr": 0.473,
+        "lag_ms": 0,
+        "speak_to_pause": 1.86,
+        "face_frames": 1.0,
+        "sync": {
+         "offset": -1,
+         "conf": 9.595,
+         "min_dist": 6.817,
+         "windows": 124
+        }
+       }
+      }
+     },
+     "generations": [
+      {
+       "generation": 1,
+       "conversation_id": "376111938113112704",
+       "submission": "submitted",
+       "quoted_credits": 0,
+       "source": {
+        "width": 1280.0,
+        "height": 720.0,
+        "seconds": 5.0
+       },
+       "audio": {
+        "route": "pavo",
+        "sha256": "0a053a66531dee3b27d1369b62d8d68c3ea5ace96a53e37b67e3409b3abb8252",
+        "samples": 228615,
+        "seconds": 5.184,
+        "lufs": -22.7,
+        "true_peak_db": -5.3,
+        "narration_lufs": -27.4
+       },
+       "flags": [],
+       "lipsync": {
+        "audio": {
+         "corr": 1.0,
+         "lag_ms": 0
+        },
+        "mouth": {
+         "corr": 0.473,
+         "lag_ms": 0,
+         "speak_to_pause": 1.86,
+         "face_frames": 1.0,
+         "sync": {
+          "offset": -1,
+          "conf": 9.595,
+          "min_dist": 6.817,
+          "windows": 124
+         }
+        }
+       },
+       "clip": "b-name.mp4"
+      }
+     ],
+     "sheet": "41714272567-b-name-1-1.jpg",
+     "audio": {
+      "route": "pavo",
+      "sha256": "0a053a66531dee3b27d1369b62d8d68c3ea5ace96a53e37b67e3409b3abb8252",
+      "samples": 228615,
+      "seconds": 5.184,
+      "lufs": -22.7,
+      "true_peak_db": -5.3,
+      "narration_lufs": -27.4
+     },
+     "media": {
+      "version": "clip-media-v1",
+      "clip_sha256": "2a6f55fb7b99ba6a8ad7950519353dacab7be95503aa91cb7ecef8d5e0ea5f67",
+      "video_seconds": 5.166667,
+      "audio_seconds": 5.184,
+      "instrument": "ffprobe stream durations"
+     },
+     "uploaded": true
+    }
+   ],
+   "clip_seconds": 5,
+   "kjv_quote": true
+  },
+  "k-restrain": {
+   "kind": "keeper",
+   "request_sha256": "e0c0ea62c03d1416b5fae7313df41627d8741ba2ce82947d00b8b84bac9ce2bc",
+   "request": {
+    "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a grave knowing look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Tender and grave. No text, no logos.",
+    "aspect_ratio": "16:9",
+    "sound": false,
+    "references": [
+     {
+      "image": "ch-keeper-talk",
+      "sha256": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
+     }
+    ],
+    "audio": {
+     "speaker": "keeper",
+     "voice": {
+      "voice_id": "am_michael",
+      "speed": 1.0
+     },
+     "words": [
+      "he",
+      "said",
+      "nothing",
+      "would",
+      "be",
+      "restrained",
+      "from",
+      "them",
+      "so",
+      "after",
+      "water",
+      "he",
+      "chose",
+      "distance"
+     ],
+     "tail_pad": "pavo-talk-v2"
+    }
+   },
+   "clips": [
+    {
+     "round": 1,
+     "generation": 1,
+     "asset": "shot-genesis-10-11-long-k-restrain-sha256-a14c4fb38f2032217f2671ba7e253f12d5183a73f9e1763a44a74d3dd0c014af.mp4",
+     "clip_sha256": "a14c4fb38f2032217f2671ba7e253f12d5183a73f9e1763a44a74d3dd0c014af",
+     "flags": [],
+     "hard_flags": [],
+     "words_flags": [],
+     "soft_flags": [],
+     "measures": {
+      "lipsync": {
+       "audio": {
+        "corr": 1.0,
+        "lag_ms": 0
+       },
+       "mouth": {
+        "corr": 0.359,
+        "lag_ms": -40,
+        "speak_to_pause": 1.2,
+        "face_frames": 0.88,
+        "sync": {
+         "offset": -1,
+         "conf": 8.39,
+         "min_dist": 7.406,
+         "windows": 159
+        }
+       }
+      }
+     },
+     "generations": [
+      {
+       "generation": 1,
+       "conversation_id": "376114918698813504",
+       "submission": "submitted",
+       "quoted_credits": 0,
+       "source": {
+        "width": 1280.0,
+        "height": 720.0,
+        "seconds": 6.0
+       },
+       "audio": {
+        "route": "pavo",
+        "sha256": "173cc49728a41b672f6eeba07543d19070228df0c421fc76ba4e772737017ab0",
+        "samples": 290708,
+        "seconds": 6.592,
+        "lufs": -18.2,
+        "true_peak_db": -2.7,
+        "narration_lufs": -26.0
+       },
+       "flags": [],
+       "lipsync": {
+        "audio": {
+         "corr": 1.0,
+         "lag_ms": 0
+        },
+        "mouth": {
+         "corr": 0.359,
+         "lag_ms": -40,
+         "speak_to_pause": 1.2,
+         "face_frames": 0.88,
+         "sync": {
+          "offset": -1,
+          "conf": 8.39,
+          "min_dist": 7.406,
+          "windows": 159
+         }
+        }
+       },
+       "clip": "k-restrain.mp4"
+      }
+     ],
+     "sheet": "41714272567-k-restrain-1-1.jpg",
+     "audio": {
+      "route": "pavo",
+      "sha256": "173cc49728a41b672f6eeba07543d19070228df0c421fc76ba4e772737017ab0",
+      "samples": 290708,
+      "seconds": 6.592,
+      "lufs": -18.2,
+      "true_peak_db": -2.7,
+      "narration_lufs": -26.0
+     },
+     "media": {
+      "version": "clip-media-v1",
+      "clip_sha256": "a14c4fb38f2032217f2671ba7e253f12d5183a73f9e1763a44a74d3dd0c014af",
+      "video_seconds": 6.583333,
+      "audio_seconds": 6.592,
+      "instrument": "ffprobe stream durations"
+     },
+     "uploaded": true
+    }
+   ],
+   "clip_seconds": 6,
+   "kjv_quote": false
+  },
+  "k-irony": {
+   "kind": "keeper",
+   "request_sha256": "9123cc7ce018b7c263033096efb6095a3e498ba978065af64b884b63b92a09a5",
+   "request": {
+    "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a calm kind look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Tender and grave. No text, no logos.",
+    "aspect_ratio": "16:9",
+    "sound": false,
+    "references": [
+     {
+      "image": "ch-keeper-talk",
+      "sha256": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
+     }
+    ],
+    "audio": {
+     "speaker": "keeper",
+     "voice": {
+      "voice_id": "am_michael",
+      "speed": 1.0
+     },
+     "words": [
+      "they",
+      "built",
+      "the",
+      "tower",
+      "to",
+      "avoid",
+      "being",
+      "scattered",
+      "the",
+      "tower",
+      "is",
+      "what",
+      "scattered",
+      "them"
+     ],
+     "tail_pad": "pavo-talk-v2"
+    }
+   },
+   "clips": [
+    {
+     "round": 1,
+     "generation": 1,
+     "asset": "shot-genesis-10-11-long-k-irony-sha256-fdf48035d572b51a1992327a0496272bfa5cf30385341c5e769fef098dbef8fe.mp4",
+     "clip_sha256": "fdf48035d572b51a1992327a0496272bfa5cf30385341c5e769fef098dbef8fe",
+     "flags": [],
+     "hard_flags": [],
+     "words_flags": [],
+     "soft_flags": [],
+     "measures": {
+      "lipsync": {
+       "audio": {
+        "corr": 1.0,
+        "lag_ms": 0
+       },
+       "mouth": {
+        "corr": 0.284,
+        "lag_ms": -120,
+        "speak_to_pause": 1.23,
+        "face_frames": 1.0,
+        "sync": {
+         "offset": -1,
+         "conf": 9.723,
+         "min_dist": 7.061,
+         "windows": 124
+        }
+       }
+      }
+     },
+     "generations": [
+      {
+       "generation": 1,
+       "conversation_id": "376116357618265600",
+       "submission": "submitted",
+       "quoted_credits": 0,
+       "source": {
+        "width": 1280.0,
+        "height": 720.0,
+        "seconds": 5.0
+       },
+       "audio": {
+        "route": "pavo",
+        "sha256": "2383e7d1bdd7c44d97f05797c054f82ebd0b403e5422ac612d308b59386ce43c",
+        "samples": 228615,
+        "seconds": 5.184,
+        "lufs": -20.9,
+        "true_peak_db": -5.7,
+        "narration_lufs": -26.8
+       },
+       "flags": [],
+       "lipsync": {
+        "audio": {
+         "corr": 1.0,
+         "lag_ms": 0
+        },
+        "mouth": {
+         "corr": 0.284,
+         "lag_ms": -120,
+         "speak_to_pause": 1.23,
+         "face_frames": 1.0,
+         "sync": {
+          "offset": -1,
+          "conf": 9.723,
+          "min_dist": 7.061,
+          "windows": 124
+         }
+        }
+       },
+       "clip": "k-irony.mp4"
+      }
+     ],
+     "sheet": "41714272567-k-irony-1-1.jpg",
+     "audio": {
+      "route": "pavo",
+      "sha256": "2383e7d1bdd7c44d97f05797c054f82ebd0b403e5422ac612d308b59386ce43c",
+      "samples": 228615,
+      "seconds": 5.184,
+      "lufs": -20.9,
+      "true_peak_db": -5.7,
+      "narration_lufs": -26.8
+     },
+     "media": {
+      "version": "clip-media-v1",
+      "clip_sha256": "fdf48035d572b51a1992327a0496272bfa5cf30385341c5e769fef098dbef8fe",
+      "video_seconds": 5.166667,
+      "audio_seconds": 5.184,
+      "instrument": "ffprobe stream durations"
+     },
+     "uploaded": true
+    }
+   ],
+   "clip_seconds": 5,
+   "kjv_quote": false
+  },
+  "k-name": {
+   "kind": "keeper",
+   "request_sha256": "326f59b7b95ee0fda921fdd84bd50c95286e171bea79c1fee68a53d31db9cc49",
+   "request": {
+    "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a warm expectant look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and expectant. No text, no logos.",
+    "aspect_ratio": "16:9",
+    "sound": false,
+    "references": [
+     {
+      "image": "ch-keeper-talk",
+      "sha256": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
+     }
+    ],
+    "audio": {
+     "speaker": "keeper",
+     "voice": {
+      "voice_id": "am_michael",
+      "speed": 1.0
+     },
+     "words": [
+      "they",
+      "said",
+      "make",
+      "us",
+      "a",
+      "name",
+      "god",
+      "told",
+      "abram",
+      "i",
+      "will",
+      "make",
+      "thy",
+      "name",
+      "great",
+      "only",
+      "one",
+      "lasts"
+     ],
+     "tail_pad": "pavo-talk-v2"
+    }
+   },
+   "clips": [
+    {
+     "round": 1,
+     "generation": 2,
+     "asset": "shot-genesis-10-11-long-k-name-sha256-e5ca2d7fce4aa273c0f3b2930dbd7a1220fd6029627f7796fbefa5915a8cc3f4.mp4",
+     "clip_sha256": "e5ca2d7fce4aa273c0f3b2930dbd7a1220fd6029627f7796fbefa5915a8cc3f4",
+     "flags": [],
+     "hard_flags": [],
+     "words_flags": [],
+     "soft_flags": [],
+     "measures": {
+      "lipsync": {
+       "audio": {
+        "corr": 1.0,
+        "lag_ms": 0
+       },
+       "mouth": {
+        "corr": 0.374,
+        "lag_ms": -80,
+        "speak_to_pause": 1.8,
+        "face_frames": 0.94,
+        "sync": {
+         "offset": -1,
+         "conf": 7.759,
+         "min_dist": 8.006,
+         "windows": 195
+        }
+       }
+      }
+     },
+     "generations": [
+      {
+       "generation": 1,
+       "conversation_id": "376117712214857408",
+       "submission": "submitted",
+       "quoted_credits": 0,
+       "source": {
+        "width": 1280.0,
+        "height": 720.0,
+        "seconds": 8.0
+       },
+       "audio": {
+        "route": "pavo",
+        "sha256": "53fd6acb2321c8f39f43618d748834ae2a6ddabdab8453ec84f4ae6e0d6aa6ee",
+        "samples": 352800,
+        "seconds": 8.0,
+        "lufs": -21.1,
+        "true_peak_db": -6.8,
+        "narration_lufs": -26.5
+       },
+       "flags": [
+        "FACE_NOT_FOUND",
+        "MOUTH_NOT_IN_SYNC"
+       ],
+       "lipsync": {
+        "audio": {
+         "corr": 1.0,
+         "lag_ms": 0
+        },
+        "mouth": {
+         "corr": -1.0,
+         "lag_ms": 0,
+         "speak_to_pause": 0.0,
+         "face_frames": 0.0,
+         "sync": null
+        }
+       },
+       "clip": "k-name-fail1.mp4"
+      },
+      {
+       "generation": 2,
+       "conversation_id": "376118826427514432",
+       "submission": "submitted",
+       "quoted_credits": 0,
+       "source": {
+        "width": 1280.0,
+        "height": 720.0,
+        "seconds": 8.0
+       },
+       "audio": {
+        "route": "pavo",
+        "sha256": "054b8c6858750d0ef1892cd5375dad6076765f78c7885ea786187ea81d529726",
+        "samples": 352800,
+        "seconds": 8.0,
+        "lufs": -21.4,
+        "true_peak_db": -7.3,
+        "narration_lufs": -26.5
+       },
+       "flags": [],
+       "lipsync": {
+        "audio": {
+         "corr": 1.0,
+         "lag_ms": 0
+        },
+        "mouth": {
+         "corr": 0.374,
+         "lag_ms": -80,
+         "speak_to_pause": 1.8,
+         "face_frames": 0.94,
+         "sync": {
+          "offset": -1,
+          "conf": 7.759,
+          "min_dist": 8.006,
+          "windows": 195
+         }
+        }
+       },
+       "clip": "k-name.mp4"
+      }
+     ],
+     "sheet": "41714272567-k-name-1-2.jpg",
+     "audio": {
+      "route": "pavo",
+      "sha256": "054b8c6858750d0ef1892cd5375dad6076765f78c7885ea786187ea81d529726",
+      "samples": 352800,
+      "seconds": 8.0,
+      "lufs": -21.4,
+      "true_peak_db": -7.3,
+      "narration_lufs": -26.5
+     },
+     "media": {
+      "version": "clip-media-v1",
+      "clip_sha256": "e5ca2d7fce4aa273c0f3b2930dbd7a1220fd6029627f7796fbefa5915a8cc3f4",
+      "video_seconds": 8.0,
+      "audio_seconds": 8.0,
+      "instrument": "ffprobe stream durations"
+     },
+     "uploaded": true
+    },
+    {
+     "round": 1,
+     "generation": 1,
+     "asset": "shot-genesis-10-11-long-k-name-sha256-d0919d1746ee6e0e87e90b1f021c57af3ce9725d8842e2c735466be961cd60f7.mp4",
+     "clip_sha256": "d0919d1746ee6e0e87e90b1f021c57af3ce9725d8842e2c735466be961cd60f7",
+     "flags": [
+      "FACE_NOT_FOUND",
+      "MOUTH_NOT_IN_SYNC"
+     ],
+     "hard_flags": [
+      "FACE_NOT_FOUND"
+     ],
+     "words_flags": [],
+     "soft_flags": [
+      "MOUTH_NOT_IN_SYNC"
+     ],
+     "measures": {
+      "lipsync": {
+       "audio": {
+        "corr": 1.0,
+        "lag_ms": 0
+       },
+       "mouth": {
+        "corr": -1.0,
+        "lag_ms": 0,
+        "speak_to_pause": 0.0,
+        "face_frames": 0.0,
+        "sync": null
+       }
+      }
+     },
+     "generations": [],
+     "sheet": "41714272567-k-name-1-1.jpg",
+     "audio": {
+      "route": "pavo",
+      "sha256": "53fd6acb2321c8f39f43618d748834ae2a6ddabdab8453ec84f4ae6e0d6aa6ee",
+      "samples": 352800,
+      "seconds": 8.0,
+      "lufs": -21.1,
+      "true_peak_db": -6.8,
+      "narration_lufs": -26.5
+     },
+     "media": {
+      "version": "clip-media-v1",
+      "clip_sha256": "d0919d1746ee6e0e87e90b1f021c57af3ce9725d8842e2c735466be961cd60f7",
+      "video_seconds": 8.0,
+      "audio_seconds": 8.0,
+      "instrument": "ffprobe stream durations"
+     },
+     "uploaded": true
+    }
+   ],
+   "clip_seconds": 8,
+   "kjv_quote": false
+  },
+  "k-close": {
+   "kind": "keeper",
+   "request_sha256": "0d99df4fa382ec421d43e1dd281ef669eb8d0e28d563f52761e020db8d56d984",
+   "request": {
+    "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a gentle questioning look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and searching. No text, no logos.",
+    "aspect_ratio": "16:9",
+    "sound": false,
+    "references": [
+     {
+      "image": "ch-keeper-talk",
+      "sha256": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
+     }
+    ],
+    "audio": {
+     "speaker": "keeper",
+     "voice": {
+      "voice_id": "am_michael",
+      "speed": 1.0
+     },
+     "words": [
+      "what",
+      "are",
+      "you",
+      "building",
+      "your",
+      "name",
+      "on",
+      "tell",
+      "me",
+      "below",
+      "next",
+      "the",
+      "man",
+      "who",
+      "left",
+      "everything",
+      "subscribe"
+     ],
+     "tail_pad": "pavo-talk-v2"
+    }
+   },
+   "clips": [
+    {
+     "round": 1,
+     "generation": 1,
+     "asset": "shot-genesis-10-11-long-k-close-sha256-553a24b8cc3345a6a5ea1cff1715f4e90d5cccec7e0cce09a994757d2e0a01cc.mp4",
+     "clip_sha256": "553a24b8cc3345a6a5ea1cff1715f4e90d5cccec7e0cce09a994757d2e0a01cc",
+     "flags": [],
+     "hard_flags": [],
+     "words_flags": [],
+     "soft_flags": [],
+     "measures": {
+      "lipsync": {
+       "audio": {
+        "corr": 1.0,
+        "lag_ms": 0
+       },
+       "mouth": {
+        "corr": 0.274,
+        "lag_ms": -40,
+        "speak_to_pause": 1.37,
+        "face_frames": 0.9,
+        "sync": {
+         "offset": -2,
+         "conf": 7.373,
+         "min_dist": 8.039,
+         "windows": 230
+        }
+       }
+      }
+     },
+     "generations": [
+      {
+       "generation": 1,
+       "conversation_id": "376120682130216640",
+       "submission": "submitted",
+       "quoted_credits": 0,
+       "source": {
+        "width": 1280.0,
+        "height": 720.0,
+        "seconds": 9.0
+       },
+       "audio": {
+        "route": "pavo",
+        "sha256": "1bd14197b1a88a1259dff79085f7ac49a5667a732e04edb5e4331c92d3556d62",
+        "samples": 416304,
+        "seconds": 9.44,
+        "lufs": -23.2,
+        "true_peak_db": -6.9,
+        "narration_lufs": -25.7
+       },
+       "flags": [],
+       "lipsync": {
+        "audio": {
+         "corr": 1.0,
+         "lag_ms": 0
+        },
+        "mouth": {
+         "corr": 0.274,
+         "lag_ms": -40,
+         "speak_to_pause": 1.37,
+         "face_frames": 0.9,
+         "sync": {
+          "offset": -2,
+          "conf": 7.373,
+          "min_dist": 8.039,
+          "windows": 230
+         }
+        }
+       },
+       "clip": "k-close.mp4"
+      }
+     ],
+     "sheet": "41714272567-k-close-1-1.jpg",
+     "audio": {
+      "route": "pavo",
+      "sha256": "1bd14197b1a88a1259dff79085f7ac49a5667a732e04edb5e4331c92d3556d62",
+      "samples": 416304,
+      "seconds": 9.44,
+      "lufs": -23.2,
+      "true_peak_db": -6.9,
+      "narration_lufs": -25.7
+     },
+     "media": {
+      "version": "clip-media-v1",
+      "clip_sha256": "553a24b8cc3345a6a5ea1cff1715f4e90d5cccec7e0cce09a994757d2e0a01cc",
+      "video_seconds": 9.416667,
+      "audio_seconds": 9.44,
+      "instrument": "ffprobe stream durations"
+     },
+     "uploaded": true
+    }
+   ],
+   "clip_seconds": 9,
+   "kjv_quote": false
+  }
+ },
+ "pavo_audio": "pavo",
+ "pavo_budget": {
+  "units_before": 54,
+  "units_this_run": 20
+ },
+ "run_id": "41714272567"
+}
