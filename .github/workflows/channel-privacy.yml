@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "plan (read-only list), apply (set the reviewed plan videos to private), unschedule (hold-plan.json - private, no publishAt), captions-audit (read-only: every caption track and its status) or captions-repair (re-upload the tracks of the reviewed captions-repair-plan.json)"
+        description: "plan (read-only list), apply (set the reviewed plan videos to private), unschedule (hold-plan.json - private, no publishAt), release (release-plan.json - a held, approved upload goes public now), captions-audit (read-only: every caption track and its status) or captions-repair (re-upload the tracks of the reviewed captions-repair-plan.json)"
         required: true
         default: plan
       max_changes:
@@ -48,6 +48,8 @@ jobs:
                    "$RUNNER_TEMP/venv/bin/python" -I -B migration/channel/channel_privacy.py apply migration/channel/privacy-plan.json "migration/channel/privacy-receipt-$GITHUB_RUN_ID.json" ;;
             unschedule) test -f migration/channel/hold-plan.json
                    "$RUNNER_TEMP/venv/bin/python" -I -B migration/channel/channel_privacy.py unschedule migration/channel/hold-plan.json "migration/channel/unschedule-receipt-$GITHUB_RUN_ID.json" ;;
+            release) test -f migration/channel/release-plan.json
+                   "$RUNNER_TEMP/venv/bin/python" -I -B migration/channel/channel_privacy.py release migration/channel/release-plan.json "migration/channel/release-receipt-$GITHUB_RUN_ID.json" ;;
             # E107: read-only (GET only); the receipt holds ids, statuses and counts, never the token
             captions-audit) "$RUNNER_TEMP/venv/bin/python" -I -B migration/channel/captions_audit.py audit \
                    "migration/channel/captions-audit-$GITHUB_RUN_ID.json" migration/publish/ledger.json "$CAPTIONS_SCOPE" "$CAPTIONS_UNITS_MAX" ;;

@@ -89,5 +89,74 @@ class Unschedule(unittest.TestCase):
         wf = (ROOT / ".github/workflows/channel-privacy.yml").read_text()
         self.assertIn("unschedule migration/channel/hold-plan.json", wf)
 
+
+class Release(unittest.TestCase):
+    """channel-privacy.yml mode release (owner 2026-11-03): a held, approved upload goes public; nothing else."""
+
+    PLAN = {"channel_id": cp.CHANNEL, "releases": [{"video_id": "v1", "pilot": "pilot-017"}]}
+
+    def run_release(self, status, hold=None, binding=(), ledger_vid=None):
+        yt = FakeYouTube({"v1": status})
+        sha = json.loads((ROOT / "migration/production/pilot-017/out/qa.json").read_text())["output_sha256"]
+        ledger = {"entries": {f"pilot-017:{sha}": {"video_id": ledger_vid or "v1", "steps": {}}}}
+        with tempfile.TemporaryDirectory() as t:
+            t = Path(t)
+            (t / "plan.json").write_text(json.dumps(self.PLAN))
+            (t / "hold.json").write_text(json.dumps(hold or {"to_unschedule": ["other"]}))
+            (t / "ledger.json").write_text(json.dumps(ledger))
+            error = None
+            with patch.object(cp, "token", return_value="fixture"), patch.object(cp, "call", yt), \
+                    patch.object(cp, "publication_binding", lambda pilot: list(binding)), \
+                    patch.object(cp, "LEDGER", t / "ledger.json"), patch.object(cp, "HOLD_PLAN", t / "hold.json"), \
+                    patch.object(cp, "PUBLICATION_HOLD", t / "none"), contextlib.redirect_stdout(io.StringIO()):
+                try:
+                    cp.release(t / "plan.json", t / "receipt.json")
+                except SystemExit as e:
+                    error = str(e)
+            return json.loads((t / "receipt.json").read_text())["changes"][0], yt, error, json.loads((t / "ledger.json").read_text())
+
+    def test_a_held_private_upload_goes_public_with_read_back_and_a_ledger_entry(self):
+        change, yt, error, ledger = self.run_release({"privacyStatus": "private", "uploadStatus": "uploaded",
+                                                      "containsSyntheticMedia": True})
+        self.assertIsNone(error)
+        self.assertEqual(change["result"], "RELEASED")
+        self.assertEqual(change["after"]["privacy"], "public")
+        self.assertEqual(yt.writes[0]["status"]["privacyStatus"], "public")
+        self.assertNotIn("publishAt", yt.writes[0]["status"])
+        self.assertTrue(yt.writes[0]["status"]["containsSyntheticMedia"])           # the AI disclosure is kept
+        self.assertEqual(next(iter(ledger["entries"].values()))["released"]["privacy"], "public")
+
+    def test_already_public_is_not_written(self):
+        change, yt, error, _ = self.run_release({"privacyStatus": "public", "uploadStatus": "processed"})
+        self.assertEqual((change["result"], yt.writes, error), ("ALREADY_PUBLIC", [], None))
+
+    def test_refused_while_still_in_the_hold_plan(self):
+        change, yt, error, _ = self.run_release({"privacyStatus": "private", "uploadStatus": "uploaded"},
+                                                hold={"to_unschedule": ["v1"]})
+        self.assertIn("VIDEO_STILL_IN_HOLD_PLAN", change["problems"])
+        self.assertEqual((yt.writes, error), ([], "RELEASE_INCOMPLETE"))
+
+    def test_refused_when_the_ledger_upload_is_another_video(self):
+        change, yt, error, _ = self.run_release({"privacyStatus": "private", "uploadStatus": "uploaded"}, ledger_vid="other")
+        self.assertIn("VIDEO_NOT_THE_LEDGER_UPLOAD_OF_THIS_FILE", change["problems"])
+        self.assertEqual(yt.writes, [])
+
+    def test_refused_when_the_publication_evidence_no_longer_binds_the_file(self):
+        change, yt, error, _ = self.run_release({"privacyStatus": "private", "uploadStatus": "uploaded"},
+                                                binding=["PUBLICATION_BINDING_FAILED x"])
+        self.assertEqual((change["result"], yt.writes), ("REFUSED", []))
+
+    def test_a_video_still_uploading_is_refused(self):
+        change, yt, error, _ = self.run_release({"privacyStatus": "private", "uploadStatus": "failed"})
+        self.assertEqual((change["problems"], yt.writes), (["UPLOAD_NOT_USABLE"], []))
+
+    def test_the_release_plan_and_workflow_are_wired(self):
+        plan = json.loads((ROOT / "migration/channel/release-plan.json").read_text())
+        hold = json.loads((ROOT / "migration/channel/hold-plan.json").read_text())
+        self.assertEqual(plan["channel_id"], cp.CHANNEL)
+        self.assertFalse({r["video_id"] for r in plan["releases"]} & set(hold["to_unschedule"]))   # released = not held
+        self.assertIn("release migration/channel/release-plan.json", (ROOT / ".github/workflows/channel-privacy.yml").read_text())
+
+
 if __name__ == "__main__":
     unittest.main()
