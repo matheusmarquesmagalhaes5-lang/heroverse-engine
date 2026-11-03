@@ -1,0 +1,32 @@
+{
+ "shot": "k-insight",
+ "clip_sha256": "950e4db3902f4a925ef64d4290d6c6eef023a950420a6d9c3d2791d66a3d605f",
+ "measures": {
+  "asr": {
+   "model_bin_sha256": "11b220779aea4c6f3ce9d2549c8a95ea869ed84066864b999531ef53e594fe5b",
+   "text": "Most miss this. Noah saw dry ground and still waited. The God who shut the door was the God who still opened it.",
+   "speech_span": [
+    0.0,
+    8.0
+   ]
+  },
+  "music": 0.0,
+  "singing": 0.0,
+  "lufs": -24.0,
+  "voice": {
+   "reference": "392c43b242eb01e9e39b29f911b0282619504067217a279a36c6041acb61546d",
+   "same": 0.7518,
+   "others": [
+    0.7386
+   ],
+   "others_references": [
+    "d4f416826b28b66d5386226a4ec49ed48e1c18cedcc96ce9a2a78ece9633fe8f"
+   ]
+  },
+  "lips": []
+ },
+ "verdict": [
+  "SPEECH_WORDS_NOT_EXACT",
+  "VOICE_NOT_CONSISTENT"
+ ]
+}

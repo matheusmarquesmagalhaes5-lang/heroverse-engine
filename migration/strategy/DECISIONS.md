@@ -606,3 +606,20 @@ the Keeper's lit "Most miss this" line. Both earlier masters stay on record (evi
   mining runs, 10 PR cycles. Rebuilt with `token_budget.py plan --write`: long 83.3M, Shorts 147.2M, clocks 51.5M,
   reviews/PRs 62.1M, reserve 86.0M. The hook still enforces the total and each allocation; the coordinator re-balances
   again by PR if one activity runs dry while others sit idle.
+
+## 2026-11-03 — genesis-10-short Pavo Keeper clips: pinned-ASR check (executor, Claude)
+
+- Owner rule (Pavo lip sync "perfect", flags are not a reason to drop, at most 2 generations a line, never regenerate)
+  applied to the 4 clips of shot-probe 41574608645. `episode_build.py speech-check` (medium.en, model.bin sha256 11b22077…,
+  YAMNet, Keeper and Adam references) ran on each; sidecars are in `evidence/shots/genesis-10-short/speech/`.
+- Words (strict, WER 0): k-insight g1 "Most missed this, was missed it. Noah saw dry ground and still God who waited. Was
+  the God and still dopend it." (garbled); k-insight g2 "...the God who shut the door was the God who STILL opened it."
+  (one inserted word in the middle, no trim can remove it); k-close g1 "...part 11 tomorrow, the living of the rainbow."
+  and g2 "...part 11, Tau and Rainbow, but the rain, Viggo." (wrong). All four are SPEECH_WORDS_NOT_EXACT (and the voice
+  cosine is within 0.02 of Adam's, VOICE_NOT_CONSISTENT). The flag was right on all four: nothing to approve, no trim fixes it.
+  The Kokoro voice-over fallback (#710) stays for k-insight and k-close; no third generation (E264).
+- AUDIO_NOT_OUR_LINE audit over every probe record (82 clips, 14 flagged): ASR measured on 9 of the 14: 1 exact (flood-ends
+  k-hook g1, corr 0.687, approved with trim_out_s), 8 wrong words (corr up to 0.80); 5 never measured. The envelope
+  correlation is therefore not shown to be a false-positive generator, and it cannot be the authority anyway: corr 0.769 and
+  0.802 clips said the wrong words. The gate already makes the pinned ASR the authority (E266: `approve-shot` accepts the
+  flag only with a sidecar whose words are exact for the same clip and trim). No gate or tolerance changed.
