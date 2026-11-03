@@ -92,3 +92,11 @@ Pavo only at a fresh exact zero-credit quote with GET-only reconciliation of sav
 stay exact KJV on Kokoro and God is never depicted. No source or final score is invented. The long uses its
 separate route. The existing heartbeat and supervisors remain; no new clock. Update this handoff at the next
 accepted boundary.
+
+- 2026-11-03 owner PC items (Desktop Commander, device Matheus, executor Claude): (1) Buffer: browser shows the Buffer login
+  (email + password), so Facebook Page channel NOT connected and the Facebook mirror code NOT started; owner signs in to
+  Buffer once, then Channels -> Connect channel -> Facebook Page (HeroVerse). (2) TikTok `runner.py login`: status
+  NOT_LOGGED_IN; tiktok.com/login offers only QR / phone / Facebook / Google / Apple (no "continue as"), left open for the
+  owner (QR scan on his phone). (3) Telegram Desktop is not installed on the PC, so no bot or `TELEGRAM_BOT_TOKEN`.
+  (4) Studio "Vídeo relacionado" set to the long 1m-NUJhkdMY and saved ("Alterações salvas") on the three flood cuts
+  ESuoDa9sGng, v1ssTLntv8Y, qENUe7ZAu6k. Screenshots deleted from the PC.
