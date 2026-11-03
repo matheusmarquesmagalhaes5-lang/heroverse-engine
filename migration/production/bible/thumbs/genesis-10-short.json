@@ -1,0 +1,17 @@
+{
+ "version": "thumb-spec-v1",
+ "episode": "genesis-10-short",
+ "format": "short",
+ "story": "The dove and the olive leaf (SERIES.md episode 10; Genesis 8)",
+ "character": "noah",
+ "emotion": "relief",
+ "framing": "close-up",
+ "scene": "Noah's face as the dove returns with the olive leaf (Genesis 8:11): tearful relief and a first smile; no ark in the picture",
+ "text": "ONE GREEN LEAF",
+ "period": "the-flood",
+ "prompt": "Extreme close-up portrait, only his face from brow to chin filling the frame edge to edge, nothing else in the picture: a strong broad-shouldered elderly man of about seventy with Middle Eastern features, weathered olive skin, a long grey beard, short grey hair on a bare head, deep-set dark eyes under heavy brows, a plain brown wool robe belted with a rope, his dark eyes wide and shining with tearful relief, a first trembling smile breaking through his grey beard, a tear running down his weathered cheek, his mouth slightly open. Behind his head there is only a soft golden sky of low sunset clouds, nothing else at all. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. Warm amber light from the setting sun bathes his face in rich warm orange and amber against the soft golden-teal sky, vivid saturated colour, high contrast, photorealistic cinematic film still, sharp focus on the eyes, film grain, no text, no lettering, no signature, no watermark.",
+ "variant": null,
+ "status": "DRAFT",
+ "evidence": "migration/strategy/DECISIONS.md 2026-11-03 coordinator: genesis-10 thumbnail through the ChatGPT desktop route",
+ "note": "Text-only candidate from the ChatGPT desktop route (the approved Noah references cannot be attached there); text drawn by thumbs.py."
+}
