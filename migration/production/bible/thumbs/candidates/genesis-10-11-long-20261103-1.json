@@ -1,0 +1,89 @@
+{
+ "id": "genesis-10-11-long-20261103-1",
+ "episode": "genesis-10-11-long",
+ "run": "20261103",
+ "status": "DRAFT",
+ "format": "long",
+ "size": [
+  1280,
+  720
+ ],
+ "spec_sha256": "f30f9337726fca8371fb84371ec8be7f012c556631a0a84f51cd3268cc4d279d",
+ "prompt": "Extreme close-up portrait, his face filling the frame from brow to chin, nothing else in the picture: a lean wiry man of about thirty-five with Middle Eastern features, sun-darkened tan skin, a long narrow face, deep-set dark eyes with crow's feet, straight black hair tied back at the nape with a strip of cloth, a thin black moustache and a stubbled chin, sinewy forearms, a plain sleeveless undyed linen tunic belted with a twisted cord, his forearms and tunic spattered with wet grey-brown clay, a grave, resolute look straight into the camera, his mouth closed. Behind his head there is only a softly blurred brickyard at dawn with a faint orange kiln glow. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. Warm amber dawn light on his face, photorealistic cinematic film still, sharp focus on the eyes, film grain, no text, no logos.",
+ "text": "WHY GOD SCATTERED THEM",
+ "text_by": "thumbs.py overlay (DejaVu Sans Bold), never the image model",
+ "source": "approved reference ch-builder-front (reused, no new generation)",
+ "model": "existing approved reference (ChatGPT desktop route)",
+ "ratio": "16:9",
+ "resolution": "1920x1080",
+ "conversation_id": null,
+ "quote": null,
+ "references": [],
+ "references_live": null,
+ "source_size": [
+  1920,
+  1080
+ ],
+ "source_sha256": "2e569bc474691e2113df210a7afa1075f6a1bb1a7fb9d955d15b4a260851562f",
+ "crop": {
+  "box": [
+   360,
+   0,
+   1200,
+   675
+  ],
+  "source_size": [
+   1920,
+   1080
+  ],
+  "source_sha256": "2e569bc474691e2113df210a7afa1075f6a1bb1a7fb9d955d15b4a260851562f",
+  "cropped_sha256": "893a9292ed849cec550cd1665e761c817f08b39225fe0cc4eec94fff47614b38",
+  "upscale": 1.067,
+  "resize": "crop [360, 0, 1200, 675], Lanczos to 1280x720"
+ },
+ "grade": {
+  "factors": {
+   "saturation": 1.15,
+   "contrast": 1.05
+  },
+  "order": [
+   "saturation",
+   "contrast"
+  ],
+  "bounds": {
+   "saturation": [
+    1.0,
+    1.6
+   ],
+   "contrast": [
+    1.0,
+    1.2
+   ]
+  },
+  "by": "thumbs.py apply_grade (PIL ImageEnhance), after crop/resize, before the text",
+  "pre_grade_path": "migration/production/bible/thumbs/candidates/genesis-10-11-long-20261103-1-ungraded.jpg",
+  "pre_grade_sha256": "893a9292ed849cec550cd1665e761c817f08b39225fe0cc4eec94fff47614b38",
+  "graded_sha256": "5b6ac6f7be067defd067002822128c413ec6aa48a13944bcdc2cdf6beb3f8a78"
+ },
+ "base_path": "migration/production/bible/thumbs/candidates/genesis-10-11-long-20261103-1-base.jpg",
+ "base_sha256": "5b6ac6f7be067defd067002822128c413ec6aa48a13944bcdc2cdf6beb3f8a78",
+ "repo_path": "migration/production/bible/thumbs/candidates/genesis-10-11-long-20261103-1.jpg",
+ "sha256": "ff4b8da59042397128eee3923d97a8a0cae5bbd071ae88d78edd380214ab798f",
+ "r16": {
+  "status": "PASS",
+  "fails": [],
+  "metrics": {
+   "brightness": 0.291,
+   "contrast": 0.244,
+   "saturation": 0.57,
+   "colourfulness": 0.214,
+   "edge_density": 0.132,
+   "warm_share": 0.486,
+   "blue_share": 0.0,
+   "dark_share": 0.403,
+   "bright_share": 0.057,
+   "yellow_text_like": 0.0
+  }
+ },
+ "generated_by": "HeroVerse pipeline (AI-generated image)"
+}
