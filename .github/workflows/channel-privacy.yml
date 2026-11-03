@@ -36,8 +36,18 @@ jobs:
       CAPTIONS_UNITS_MAX: ${{ inputs.captions_units_max || '3000' }}
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - name: Evidence trees of the upload commits (release only)
+        if: env.MODE == 'release'
+        run: |
+          for sha in $(python3 -I -c "import json;print(' '.join(r['evidence_commit'] for r in json.load(open('migration/channel/release-plan.json'))['releases'] if r.get('evidence_commit')))"); do
+            case "$sha" in *[!0-9a-f]*|"") exit 1;; esac
+            test "${#sha}" = 40
+            git fetch -q --depth=1 origin "$sha"
+            git worktree add -q --detach "$RUNNER_TEMP/evidence/$sha" "$sha"
+          done
       - name: Plan or apply
         env:
+          EVIDENCE_DIR: ${{ runner.temp }}/evidence
           HERO_YT_AUTHORIZED_USER_JSON: ${{ secrets.HERO_YT_AUTHORIZED_USER_JSON }}
         run: |
           python3 -m venv "$RUNNER_TEMP/venv"
