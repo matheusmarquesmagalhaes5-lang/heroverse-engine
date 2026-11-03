@@ -70,6 +70,30 @@ def episode(short_id, episodes=EPISODES):
     return load(Path(episodes) / f"{short_id}.json")
 
 
+def is_long(c):
+    """A chapter is a public Short (key `short`) or, since 2026-11-03, a public 16:9 long (key `long`: id, pilot,
+    video_id, sha256 of the accepted master, seconds). The long's master is the release asset <pilot>-sha256-<sha>.mp4."""
+    return isinstance(c, dict) and "long" in c
+
+
+def chapter_id(c):
+    return c["long"]["id"] if is_long(c) else c["short"]
+
+
+def chapter_record(c, episodes=EPISODES):
+    """The episode-like record of a chapter: video_id, output_sha256, seconds (and part, for a Short)."""
+    if is_long(c):
+        l = c["long"]
+        return {"format": "long", "video_id": l.get("video_id"), "output_sha256": l.get("sha256", ""),
+                "seconds": l.get("seconds"), "pilot": l.get("pilot")}
+    return episode(c["short"], episodes)
+
+
+def chapter_url(c, episodes=EPISODES):
+    vid = chapter_record(c, episodes)["video_id"]
+    return f"https://www.youtube.com/watch?v={vid}" if is_long(c) else f"https://www.youtube.com/shorts/{vid}"
+
+
 def plan_problems(plan, episodes=EPISODES, root=ROOT):
     """Everything that stops a build: schema, canonical order, public Shorts of one arc, the Keeper clips' record."""
     bad = []
@@ -88,18 +112,28 @@ def plan_problems(plan, episodes=EPISODES, root=ROOT):
     parts = []
     for c in chapters:
         try:
-            ep = episode(c["short"], episodes)
+            ep = chapter_record(c, episodes)
+            cid = chapter_id(c)
         except (OSError, ValueError, KeyError, TypeError):
             bad.append("unknown short " + str(c.get("short") if isinstance(c, dict) else c))
             continue
-        parts.append(ep.get("part"))
-        if ep.get("format") != "short" or not ep.get("video_id") or not re.fullmatch(r"[0-9a-f]{64}", ep.get("output_sha256", "")):
-            bad.append(f"{c['short']} is not a public Short with a master sha256")
+        if is_long(c):
+            l = c["long"]
+            if not (isinstance(l.get("id"), str) and re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", l["id"])
+                    and isinstance(l.get("pilot"), str) and re.fullmatch(r"pilot-\d{3}", l["pilot"])
+                    and isinstance(l.get("video_id"), str) and re.fullmatch(r"[A-Za-z0-9_-]{11}", l["video_id"])
+                    and re.fullmatch(r"[0-9a-f]{64}", str(l.get("sha256", "")))
+                    and type(l.get("seconds")) in (int, float) and l["seconds"] > 10):
+                bad.append(f"{cid} is not a public long with pilot, video_id, master sha256 and seconds")
+        else:
+            parts.append(ep.get("part"))
+            if ep.get("format") != "short" or not ep.get("video_id") or not re.fullmatch(r"[0-9a-f]{64}", ep.get("output_sha256", "")):
+                bad.append(f"{cid} is not a public Short with a master sha256")
         if not all(isinstance(c.get(k), str) and c[k].strip() for k in ("title", "reference")):
-            bad.append(f"{c['short']} chapter needs title and reference")
+            bad.append(f"{cid} chapter needs title and reference")
         end = c.get("end_s")   # E254: cut the Short's own series CTA ("the full story is in the long video", "part N tomorrow")
         if end is not None and not (type(end) in (int, float) and 10 <= end < float(ep.get("seconds") or 0)):
-            bad.append(f"{c['short']} end_s must be a number from 10 s up to the Short's length")
+            bad.append(f"{cid} end_s must be a number from 10 s up to the Short's length")
     if parts != sorted(parts) or len(set(parts)) != len(parts) or any(b - a != 1 for a, b in zip(parts, parts[1:])):
         bad.append("shorts are not consecutive parts in canonical order")
     for key in ("hook", "close"):
@@ -121,8 +155,10 @@ def sources(plan, episodes=EPISODES):
     """[(short id, asset name, sha256, record)] in the plan's canonical order."""
     out = []
     for c in plan["chapters"]:
-        ep = episode(c["short"], episodes)
-        out.append((c["short"], f"bible-{c['short']}-sha256-{ep['output_sha256']}.mp4", ep["output_sha256"], ep))
+        ep = chapter_record(c, episodes)
+        asset = (f"{ep['pilot']}-sha256-{ep['output_sha256']}.mp4" if is_long(c)
+                 else f"bible-{c['short']}-sha256-{ep['output_sha256']}.mp4")
+        out.append((chapter_id(c), asset, ep["output_sha256"], ep))
     return out
 
 
@@ -181,6 +217,24 @@ def render_short(src, out, end=None, card=None):
         files.append(p)
     graph = (f"[0:v]split[a][b];[a]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=40:6,"
              f"eq=brightness=-0.28[bg];[b]scale=-2:{H}[fg];[bg][fg]overlay=(W-w)/2:0,setsar=1{card_overlay(card, files)},{v}[v];"
+             f"[0:a]aresample=48000,aformat=channel_layouts=stereo,{gain_filter(src)},{a}[a]")
+    run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", src, "-filter_complex", graph, "-map", "[v]", "-map", "[a]",
+         "-t", f"{d:.3f}", *ENC, out])
+    for p in files:
+        p.unlink()
+
+
+def render_long(src, out, end=None, card=None):
+    """A public 16:9 long as a chapter: no blurred framing (it already is 1920x1080), same card, fades and gain."""
+    d = duration(src) if end is None else min(duration(src), float(end))
+    v, a = fades(d)
+    files = []
+    for n, t in enumerate(card or ()):
+        p = Path(f"{Path(out).with_suffix('')}.card{n}.txt")
+        p.write_text(t)
+        files.append(p)
+    graph = (f"[0:v]scale={W}:{H}:force_original_aspect_ratio=decrease,pad={W}:{H}:(ow-iw)/2:(oh-ih)/2,setsar=1"
+             f"{card_overlay(card, files)},{v}[v];"
              f"[0:a]aresample=48000,aformat=channel_layouts=stereo,{gain_filter(src)},{a}[a]")
     run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", src, "-filter_complex", graph, "-map", "[v]", "-map", "[a]",
          "-t", f"{d:.3f}", *ENC, out])
@@ -250,8 +304,9 @@ def build(plan_path, src_dir, out_dir):
         verified.append({"short": sid, "asset": asset, "sha256": sha, "video_id": ep["video_id"], "seconds": ep["seconds"]})
         c = plan["chapters"][k - 1]
         card = (f"PART {k} OF {len(plan['chapters'])}", c["title"], c["reference"] + " (KJV)")
-        render_short(master, seg / f"{k:02d}b-short.mp4", c.get("end_s"), card)
-        add("short", sid, seg / f"{k:02d}b-short.mp4", source_sha256=sha, chapter=c["title"],
+        kind = "long" if is_long(c) else "short"
+        (render_long if is_long(c) else render_short)(master, seg / f"{k:02d}b-short.mp4", c.get("end_s"), card)
+        add(kind, sid, seg / f"{k:02d}b-short.mp4", source_sha256=sha, chapter=c["title"],
             **({"end_s": c["end_s"]} if c.get("end_s") else {}))
     render_keeper(ROOT / plan["close"]["video"], ROOT / plan["close"]["audio"], seg / "99-close.mp4")
     add("close", "close", seg / "99-close.mp4")
@@ -288,7 +343,7 @@ def qa(plan_path, out_dir):
     lufs, peak = loudness(master)
     dur = duration(master)
     expected = sum(r["seconds"] for r in tl["segments"])
-    shorts = [r for r in tl["segments"] if r["kind"] == "short"]
+    shorts = [r for r in tl["segments"] if r["kind"] in ("short", "long")]
     checks = {
         "full_decode_without_errors": dec.returncode == 0 and not dec.stderr.strip(),
         "video_format_1920x1080_30fps": (probe["width"], probe["height"]) == (W, H) and abs(fps(probe["avg_frame_rate"]) - FPS) < FPS_TOLERANCE,
@@ -296,9 +351,9 @@ def qa(plan_path, out_dir):
         "no_padding": dur <= sum(s["seconds"] for s in src) + 30 + len(src) * (CARD + 1.0),
         "integrated_lufs_band": LUFS_BAND[0] <= lufs <= LUFS_BAND[1],
         "true_peak_ceiling": peak <= TRUE_PEAK_MAX,
-        "sources_are_the_public_masters_by_sha": [s["short"] for s in src] == [c["short"] for c in plan["chapters"]]
+        "sources_are_the_public_masters_by_sha": [s["short"] for s in src] == [chapter_id(c) for c in plan["chapters"]]
         and all(len(s["sha256"]) == 64 for s in src) and [r["source_sha256"] for r in shorts] == [s["sha256"] for s in src],
-        "canonical_order": [r["kind"] for r in tl["segments"]] == ["hook"] + ["short"] * len(src) + ["close"]
+        "canonical_order": [r["kind"] for r in tl["segments"]] == ["hook"] + ["long" if is_long(c) else "short" for c in plan["chapters"]] + ["close"]
         and [r.get("chapter") for r in shorts] == [c["title"] for c in plan["chapters"]],   # E258: card over each Short
         "keeper_clips_zero_credit": plan["hook"]["quote"] == plan["close"]["quote"] == "0 credits (exact, fresh)",
         "music_and_voice_owned": True,   # the Shorts' own recorded sources (Kokoro voice, owned music) and our Kokoro hook/close
@@ -314,11 +369,11 @@ def qa(plan_path, out_dir):
 
 def description(plan, tl):
     rows = [(0, plan["chapter_zero"])] + [(r["start"], plan["chapters"][i]["title"])
-                                          for i, r in enumerate(x for x in tl["segments"] if x["kind"] == "short")]
+                                          for i, r in enumerate(x for x in tl["segments"] if x["kind"] in ("short", "long"))]
     close = next(r for r in tl["segments"] if r["kind"] == "close")
     rows.append((close["start"], plan["chapter_last"]))
     chapters = "\n".join(f"{clock(t)} {name}" for t, name in rows)
-    links = "\n".join(f"- {c['title']} ({c['reference']}): https://www.youtube.com/shorts/{episode(c['short'])['video_id']}"
+    links = "\n".join(f"- {c['title']} ({c['reference']}): {chapter_url(c)}"
                       for c in plan["chapters"])
     return plan["description"].format(chapters=chapters, links=links), rows
 
@@ -327,11 +382,11 @@ def script_segments(plan, root=ROOT):
     """The spoken text in order: the Keeper's hook, each Short's planned lines (where its plan exists), the close."""
     segs = [{"kind": "hook", "text": plan["hook"]["text"]}]
     for c in plan["chapters"]:
-        p = Path(root) / "migration/production/bible/plans" / f"{c['short']}.json"
+        p = Path(root) / "migration/production/bible/plans" / f"{chapter_id(c)}.json"
         lines = []
-        if p.is_file():
+        if p.is_file() and not is_long(c):
             lines = [s["line"] for s in load(p).get("shots", []) if isinstance(s.get("line"), str) and s["line"].strip()]
-        segs.append({"kind": "short", "short": c["short"], "text": " ".join(lines) or c["title"]})
+        segs.append({"kind": "long" if is_long(c) else "short", "short": chapter_id(c), "text": " ".join(lines) or c["title"]})
     segs.append({"kind": "close", "text": plan["close"]["text"]})
     return segs
 
@@ -353,7 +408,7 @@ def materialize(plan_path, out_dir, root=ROOT):
     dur = duration(out / f"{plan['id']}.mp4")
     script = {"version": "bible-compilation-script-v1", "pilot_id": plan["pilot"], "archetype": ARCHETYPE, "series": SERIES,
               "episode": plan["id"], "working_title": plan["title"], "criteria_version": CRITERIA,
-              "shorts": [c["short"] for c in plan["chapters"]],
+              "shorts": [chapter_id(c) for c in plan["chapters"]],
               "hook": {"text": plan["hook"]["text"]}, "close": {"text": plan["close"]["text"]},
               "segments": script_segments(plan, root)}   # E258: three_stage critique reads the whole spoken text
     manifest = {"version": MANIFEST_VERSION, "pilot_id": plan["pilot"], "compilation": plan["id"], "output_sha256": sha,
