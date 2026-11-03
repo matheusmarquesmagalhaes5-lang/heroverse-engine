@@ -23,22 +23,22 @@
    "model": "claude-session-reviewer"
   },
   "k-r2": {
-   "asset": "shot-flood-ends-long-reflection-1-k-r2-sha256-3a1695926490792fb7531f0c398bb1aaa2340ff693155402133a4c469678ebc0.mp4",
-   "clip_sha256": "3a1695926490792fb7531f0c398bb1aaa2340ff693155402133a4c469678ebc0",
-   "request_sha256": "24056b406b6f5f4ff7e849e035ad7ae13633a24454b690c52636f8df8ab30683",
+   "asset": "shot-flood-ends-long-reflection-1-k-r2-sha256-7f043fe271892146064b903aaf532c1aa48412d2638705960b09503547fd00e2.mp4",
+   "clip_sha256": "7f043fe271892146064b903aaf532c1aa48412d2638705960b09503547fd00e2",
+   "request_sha256": "b436f9591e3230dc59b72a04ee062c452054b90fc6cfd988c65da3f2c799060e",
    "clip_seconds": 5.166667,
    "requested_clip_seconds": 5,
    "media": {
     "version": "clip-media-v1",
-    "clip_sha256": "3a1695926490792fb7531f0c398bb1aaa2340ff693155402133a4c469678ebc0",
+    "clip_sha256": "7f043fe271892146064b903aaf532c1aa48412d2638705960b09503547fd00e2",
     "video_seconds": 5.166667,
     "audio_seconds": 5.152,
     "instrument": "ffprobe stream durations"
    },
    "score": 9.5,
-   "note": "Generation 2 of 2 (generation 1 flagged AUDIO_NOT_OUR_LINE). Frame sheet of the actual clip viewed at full size: one consistent Keeper, mouth moves with the line, steady chest-up framing, campfire light, no artefacts. Audio judged by the pinned ASR words check (no words flag) and measures (audio corr 0.987, SyncNet conf 7.7), NOT by ear: this session cannot play audio.",
-   "probe_record": "migration/evidence/shots/flood-ends-long-reflection-1/41562885923.json",
-   "run_id": "41562885923",
+   "note": "Single generation, no flags. Frame sheet of the actual clip viewed at full size: same Keeper, mouth follows the line, no artefacts. Audio judged by the pinned ASR words check (clean) and measures (audio corr 0.87, SyncNet conf 5.9), NOT by ear: this session cannot play audio.",
+   "probe_record": "migration/evidence/shots/flood-ends-long-reflection-1/41572178956.json",
+   "run_id": "41572178956",
    "source_run": null,
    "approved_at": "2026-11-03",
    "model": "claude-session-reviewer"
