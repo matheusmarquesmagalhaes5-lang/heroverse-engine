@@ -116,6 +116,14 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
   out: owner/coordinator accepts the E286 retime ceiling in plan_check for plans whose clips all exist, or one more passing 4th clip. Top range
   chosen for it: 62.65-84.x s of flood-ends-long (s-fountains, s-lines; unused by any cut), two shots of 10 s. slot 2026-11-05T05:30Z still free.
 
+- 2026-11-03 (reflection 1, three clips on OUR audio, E288): plan_check now judges a reflection's pace after the render's own retime (one factor,
+  `plan_check.reflection_retime`; PR #758). Spec = k-r1, k-r2, k-r4 (k-r3 fails sync on our audio), top clip 56.28-80.27 s. Master
+  `08276e85...` (24.0 s, 164.2 wpm heard after x0.92, -14.2 LUFS; run 41660551928), local-review 41661153948: ASR hears exactly the three lines. Honest
+  review 9.3, decision HOLD, NOT published (slot 2026-11-05T05:30Z still free): pacing 9.0 (a 16.2 s held still of the ark, then 7.8 s), audio 9.0
+  (not heard by ear; two ~1 s silences between clips; sync after the x0.92 retime not re-measured). The old 9.3 master's record is archived under
+  `evidence/episodes/flood-ends-long-reflection-1/`. Raising it: a top half with 3+ shots (this long has none in a sentence-safe 24 s window) or the
+  owner accepting it; the studio_jobs related-video entry for 1m-NUJhkdMY waits for the publish.
+
 ## Next moments
 
 - M2 compilation "Complete Story of Noah (Genesis 5-9)" is due 2026-11-04.
