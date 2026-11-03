@@ -1566,13 +1566,15 @@ def pavo_bridge(episode="genesis-90-short"):
     for i, s in enumerate(plan["shots"]):
         if s["kind"] == "keeper":
             s.pop("voiceover", None)
-            s["pavo"] = {"emotion": ("calm", "grave", "warm")[i % 3], "setting": KEEPER_SETTING, "wardrobe": "fire"}
+            s["pavo"] = {"emotion": ("calm kind", "grave, intent", "warm expectant")[i % 3], "setting": KEEPER_SETTING,
+                         "wardrobe": "fire"}
             s["prompt"] = pavo_prompt.build(s, plan)
     hook = plan["shots"][0]
     for k in ("seconds", "first_frame", "pavo_hook"):
         hook.pop(k, None)
     hook.update(speaker="noah", characters=["noah"], pavo={
-        "emotion": "solemn", "setting": "Dawn on the wet hillside, pale gold light on his face, mist behind him."})
+        "emotion": "solemn", "mood": "Solemn and grave",
+        "setting": "Dawn on the wet hillside, pale gold light on his face, mist behind him."})
     hook["prompt"] = pavo_prompt.build(hook, plan)
     return plan
 
@@ -1602,7 +1604,7 @@ class PavoCoverage(unittest.TestCase):
         told["narration"][0]["text"] = "And God spake unto Noah, saying, Go forth of the ark."
         self.assertNotIn("CHARACTER_LINE_NOT_PAVO", self.found(told))
         adhoc = copy.deepcopy(good)
-        adhoc["shots"][-1]["prompt"] = adhoc["shots"][-1]["prompt"].replace("warm look", "kind look")
+        adhoc["shots"][-1]["prompt"] = adhoc["shots"][-1]["prompt"].replace(" look. ", " gaze. ")
         self.assertEqual(self.found(adhoc), ["PAVO_PROMPT_NOT_STANDARD"])
         bare = copy.deepcopy(good)
         bare["shots"][-1].pop("pavo")

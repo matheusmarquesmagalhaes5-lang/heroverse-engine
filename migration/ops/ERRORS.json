@@ -4719,6 +4719,29 @@
      "process"
     ]
    }
+  },
+  {
+   "id": "E293",
+   "date": "2026-11-03",
+   "class": [
+    "process"
+   ],
+   "prior": [
+    "E287",
+    "E288",
+    "E290",
+    "E291",
+    "E292"
+   ],
+   "error": "Owner 2026-11-03: \"There is no scenario where the clip does not pass. The issue is the PROMPT... Always model the prompt on the way it was done the time it passed.\" pavo_prompt.build (pavo-talk-v1, E290) composed a prompt that no Pavo generation had ever been sent: it appended ', the speaker centred in the frame' to the framing, moved the setting before the action, added 'his lips move only while the voice speaks, his mouth closed and still before the first word and after the last word, no extra words, no humming, no mouthing after the line', turned the emotion into a separate one-adjective sentence, dropped the mood sentence ('Tender and grave.'), extended the negatives ('no second person, no hand over the mouth, no head turn away'), used the chest-up framing at 9:16 where only 'Medium close-up' had passed, and added a 0.3 s silence pad no passing input had. Of 71 talking generations of record (evidence/pavo-prompt-analysis/20261103.json, 45 PASS / 26 FAIL) none used that wording. Root cause: the builder was designed from intentions (what we wanted Pavo not to do), not from the prompts that passed; nothing compared its output with a passing request.",
+   "fix": "pavo_prompt.build v2 (pavo-talk-v2) fills TEMPLATE, the passing prompt of record word for word: 'Image 1 is <label>. STYLE <framing>, static camera. <Label>, <look>, <wardrobe>, <pose> speaks the words of the audio clip, his lips moving in sync with the voice, a <look> look. <setting> <Mood>.[ <period setting> <period exclusion>] No text, no logos.' Framing: the Keeper at 16:9/1:1 chest-up (22/31; 'Medium shot' 0/10), the Keeper at 9:16 and characters 'Medium close-up'; pose per aspect as sent; emotion one of PASSING_LOOKS with its mood (or an explicit `mood`); a line above LINE_WORDS_MAX 25 words is refused (PAVO_LINE_WORDS; 12-17 words passed 26 of 31); TAIL_PAD 0. test_pavo_prompt rebuilds seven passing requests of record byte for byte from their fields, so any future change that leaves the passing wording fails CI. No plan carried v1 fields, so no approved clip's request digest changes. PROMPT_GUIDE table 'Modelled on passing prompts' and pavo_lessons rules record the evidence.",
+   "antidote": {
+    "file": "migration/production/bible/test_pavo_prompt.py",
+    "contains": "def test_e293_the_keeper_prompt_is_the_passing_prompt_of_record_word_for_word",
+    "covers": [
+     "process"
+    ]
+   }
   }
  ]
 }
