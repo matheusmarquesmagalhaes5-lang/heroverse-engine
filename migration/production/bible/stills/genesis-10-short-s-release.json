@@ -2,6 +2,25 @@
  "id": "genesis-10-short-s-release",
  "episode": "genesis-10-short",
  "shot": "s-release",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. Weathered cupped hands in rough undyed wool sleeves, seen from behind a figure in silhouette, open at a dark square opening in rough pitch-black timber as a white dove flies up into a bright sky. Clear morning light. Letting go. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. Weathered cupped hands in rough undyed wool sleeves, seen from behind a figure in silhouette, open at a dark square opening in rough pitch-black timber as a white dove flies up into a bright sky. Clear morning light. Letting go. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-10-short-s-release.jpg",
+ "sha256": "20aea8029748df15efc2b5608dde348d2694f058c15c20fb14f881ffb14d2842",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-10-short-s-release-2026110301-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-03",
+  "score": 9.5,
+  "note": "ChatGPT desktop 9:16 candidate, viewed in a contact sheet: painterly Old-Master light, period-correct, no text or modern objects, faces turned away or small, centred subject. Single candidate per still.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "311dae8ce1e442e8114c33788bd81a5d3312e825d6e517ac6da55094229a51ab",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

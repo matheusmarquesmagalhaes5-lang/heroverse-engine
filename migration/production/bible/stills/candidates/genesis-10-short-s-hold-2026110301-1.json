@@ -1,0 +1,37 @@
+{
+ "id": "genesis-10-short-s-hold-2026110301-1",
+ "still": "genesis-10-short-s-hold",
+ "episode": "genesis-10-short",
+ "shot": "s-hold",
+ "run": "2026110301",
+ "status": "DRAFT",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. A family of eight seen from behind, their faces never visible, in ankle-length rough undyed wool robes and head-cloths, barefoot, sits close together on straw on a plank floor in the dark, sheep and goats resting around them, all looking up at a thin line of grey daylight above. Dim grey light in deep shadow. Weary and waiting. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "sent_prompt": "Create an image, 9:16 vertical portrait, no text. Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. A family of eight seen from behind, their faces never visible, in ankle-length rough undyed wool robes and head-cloths, barefoot, sits close together on straw on a plank floor in the dark, sheep and goats resting around them, all looking up at a thin line of grey daylight above. Dim grey light in deep shadow. Weary and waiting. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "engine": "chatgpt-desktop",
+ "models": [
+  "chatgpt-images"
+ ],
+ "generated_by": "ChatGPT Windows app on the owner's PC (Create image), one request at a time",
+ "source": "chatgpt-desktop",
+ "download": {
+  "file": "genesis-10-short-s-hold.png",
+  "sha256": "869c38e93bf3c4b4835a8e07bbbdfed9f81fd02485386f696dddc3bc0a4625c6",
+  "size_bytes": 2679629,
+  "pixels": [
+   941,
+   1672
+  ]
+ },
+ "references": [],
+ "licence": {
+  "note": "OpenAI Terms of Use: the user owns the Output; made at the owner's request in his own session (README Licence and account risk)"
+ },
+ "upscaler": "System.Drawing HighQualityBicubic centre crop to 9:16 -> 1080x1920, JPEG quality 93",
+ "aspect_ratio": "9:16",
+ "size": [
+  1080,
+  1920
+ ],
+ "repo_path": "migration/production/bible/stills/candidates/genesis-10-short-s-hold-2026110301-1.jpg",
+ "sha256": "8f40a59c3bee54aada35ed7cc0436572f35f24b5ec927fafaf537a5a999748f6"
+}

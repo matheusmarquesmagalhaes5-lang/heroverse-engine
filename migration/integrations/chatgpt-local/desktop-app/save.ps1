@@ -1,7 +1,7 @@
-param([string]$still, [int]$sy = 504, [string]$aspect = '16:9', [string]$branch = 'claude/stoic-edison-gii4wc')
+param([string]$still, [int]$sy = 504, [string]$aspect = '16:9', [string]$branch = 'claude/stoic-edison-gii4wc', [string]$run = '')
 $ui = 'C:\HeroVerse\ui.ps1'
 $png = "C:\HeroVerse\gpt-images\$still.png"
-$run = if ($aspect -eq '9:16') { '2026110301' } else { '2026110101' }
+if (-not $run) { $run = if ($aspect -eq '9:16') { '2026110301' } else { '2026110101' } }
 $cand = "$still-$run-1"
 $jpg = "C:\HeroVerse\gpt-images\$cand.jpg"
 if ($sy -gt 0) {

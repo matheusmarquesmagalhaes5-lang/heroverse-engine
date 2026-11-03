@@ -1,0 +1,37 @@
+{
+ "id": "genesis-10-short-s-ararat-2026110302-1",
+ "still": "genesis-10-short-s-ararat",
+ "episode": "genesis-10-short",
+ "shot": "s-ararat",
+ "run": "2026110302",
+ "status": "DRAFT",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. A few figures in silhouette, their backs to the camera, stand on the bare rocky top of a mountain, centred in the frame, flood water lying all around below them to the horizon. Grey day, mist on the peaks. Still and vast. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No boats, no text, no logos.",
+ "sent_prompt": "Create an image, 9:16 vertical portrait, no text. Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. A few figures in silhouette, their backs to the camera, stand on the bare rocky top of a mountain, centred in the frame, flood water lying all around below them to the horizon. Grey day, mist on the peaks. Still and vast. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No boats, no text, no logos.",
+ "engine": "chatgpt-desktop",
+ "models": [
+  "chatgpt-images"
+ ],
+ "generated_by": "ChatGPT Windows app on the owner's PC (Create image), one request at a time",
+ "source": "chatgpt-desktop",
+ "download": {
+  "file": "genesis-10-short-s-ararat.png",
+  "sha256": "94f037c95e1876d7f51ab96c4abfde9d978101420f6da0b81207b4717ba0d2e7",
+  "size_bytes": 2120455,
+  "pixels": [
+   941,
+   1672
+  ]
+ },
+ "references": [],
+ "licence": {
+  "note": "OpenAI Terms of Use: the user owns the Output; made at the owner's request in his own session (README Licence and account risk)"
+ },
+ "upscaler": "System.Drawing HighQualityBicubic centre crop to 9:16 -> 1080x1920, JPEG quality 93",
+ "aspect_ratio": "9:16",
+ "size": [
+  1080,
+  1920
+ ],
+ "repo_path": "migration/production/bible/stills/candidates/genesis-10-short-s-ararat-2026110302-1.jpg",
+ "sha256": "bc143ad62d87fd2f088f450d82ba6b5490acc5c2273cc4e0b0705b6486c8cdf7"
+}

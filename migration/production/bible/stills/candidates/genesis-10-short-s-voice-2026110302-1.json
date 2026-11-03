@@ -1,0 +1,37 @@
+{
+ "id": "genesis-10-short-s-voice-2026110302-1",
+ "still": "genesis-10-short-s-voice",
+ "episode": "genesis-10-short",
+ "shot": "s-voice",
+ "run": "2026110302",
+ "status": "DRAFT",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. Morning light breaks through parting clouds over the still flood water and the bare rocky top of a mountain, mist lifting slowly off the slopes, a lone rock ledge in the centre of the frame. Dawn, golden light after rain. Hushed and hopeful. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No boats, no people, no text, no logos.",
+ "sent_prompt": "Create an image, 9:16 vertical portrait, no text. Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. Morning light breaks through parting clouds over the still flood water and the bare rocky top of a mountain, mist lifting slowly off the slopes, a lone rock ledge in the centre of the frame. Dawn, golden light after rain. Hushed and hopeful. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No boats, no people, no text, no logos.",
+ "engine": "chatgpt-desktop",
+ "models": [
+  "chatgpt-images"
+ ],
+ "generated_by": "ChatGPT Windows app on the owner's PC (Create image), one request at a time",
+ "source": "chatgpt-desktop",
+ "download": {
+  "file": "genesis-10-short-s-voice.png",
+  "sha256": "43f5f6fe4af1cc109b2be000e18916bd0911dad9bfb925405168044c042023fc",
+  "size_bytes": 2165861,
+  "pixels": [
+   941,
+   1672
+  ]
+ },
+ "references": [],
+ "licence": {
+  "note": "OpenAI Terms of Use: the user owns the Output; made at the owner's request in his own session (README Licence and account risk)"
+ },
+ "upscaler": "System.Drawing HighQualityBicubic centre crop to 9:16 -> 1080x1920, JPEG quality 93",
+ "aspect_ratio": "9:16",
+ "size": [
+  1080,
+  1920
+ ],
+ "repo_path": "migration/production/bible/stills/candidates/genesis-10-short-s-voice-2026110302-1.jpg",
+ "sha256": "e7edb9955aa3e661d92ca3724a6c42de9821fab8c6ae5d34d64ac3096cd3028e"
+}

@@ -2,6 +2,25 @@
  "id": "genesis-10-short-s-green",
  "episode": "genesis-10-short",
  "shot": "s-green",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. Young olive trees and green shoots on a washed muddy hillside shining in the sun, the water gone, and a family in silhouette, in ankle-length rough undyed wool robes and head-cloths, barefoot, looking down on it from the top of the slope, their backs to the camera. Bright morning after rain. Hopeful. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. Young olive trees and green shoots on a washed muddy hillside shining in the sun, the water gone, and a family in silhouette, in ankle-length rough undyed wool robes and head-cloths, barefoot, looking down on it from the top of the slope, their backs to the camera. Bright morning after rain. Hopeful. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-10-short-s-green.jpg",
+ "sha256": "0934c2d86556c302d84c7a0dd9e00b78bb608292c41e6f3587459caaf10b927a",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-10-short-s-green-2026110301-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-03",
+  "score": 9.5,
+  "note": "ChatGPT desktop 9:16 candidate, viewed in a contact sheet: painterly Old-Master light, period-correct, no text or modern objects, faces turned away or small, centred subject. Single candidate per still.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "d86dceb0c7a582ad36a379a396103c5db6c14b93f3994d5959299369fa26afe1",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

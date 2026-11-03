@@ -2,6 +2,25 @@
  "id": "genesis-10-short-s-dusk",
  "episode": "genesis-10-short",
  "shot": "s-dusk",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. A family of eight seen from behind, their faces never visible, in ankle-length rough undyed wool robes and head-cloths, barefoot, sit together at a dark square opening in rough pitch-black timber and watch an empty evening sky over still water. Evening, warm low light on the water. Waiting. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. A family of eight seen from behind, their faces never visible, in ankle-length rough undyed wool robes and head-cloths, barefoot, sit together at a dark square opening in rough pitch-black timber and watch an empty evening sky over still water. Evening, warm low light on the water. Waiting. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-10-short-s-dusk.jpg",
+ "sha256": "6019e7116ef33c0e2b7f5543d55f8693c394a7427db62e368eef6d2ec749f639",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-10-short-s-dusk-2026110301-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-03",
+  "score": 9.5,
+  "note": "ChatGPT desktop 9:16 candidate, viewed in a contact sheet: painterly Old-Master light, period-correct, no text or modern objects, faces turned away or small, centred subject. Single candidate per still.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "2f486ca0129d56923055dcbd95cda9afab5b4147d0a2d316c6c774059e370212",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

@@ -1,0 +1,37 @@
+{
+ "id": "genesis-10-short-s-door-shut-2026110301-1",
+ "still": "genesis-10-short-s-door-shut",
+ "episode": "genesis-10-short",
+ "shot": "s-door-shut",
+ "run": "2026110301",
+ "status": "DRAFT",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. A family seen from behind, their faces never visible, in ankle-length rough undyed wool robes and head-cloths, barefoot, stands waiting before a great closed square door of rough pitch-black timber in dim light, thin bright lines of daylight at its edges. Dim light through the cracks. Patient. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "sent_prompt": "Create an image, 9:16 vertical portrait, no text. Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. A family seen from behind, their faces never visible, in ankle-length rough undyed wool robes and head-cloths, barefoot, stands waiting before a great closed square door of rough pitch-black timber in dim light, thin bright lines of daylight at its edges. Dim light through the cracks. Patient. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "engine": "chatgpt-desktop",
+ "models": [
+  "chatgpt-images"
+ ],
+ "generated_by": "ChatGPT Windows app on the owner's PC (Create image), one request at a time",
+ "source": "chatgpt-desktop",
+ "download": {
+  "file": "genesis-10-short-s-door-shut.png",
+  "sha256": "95de228ef38b847e99845d661323efa6929c4b686c0933dc32ed7a2a8a13f9be",
+  "size_bytes": 2533771,
+  "pixels": [
+   941,
+   1672
+  ]
+ },
+ "references": [],
+ "licence": {
+  "note": "OpenAI Terms of Use: the user owns the Output; made at the owner's request in his own session (README Licence and account risk)"
+ },
+ "upscaler": "System.Drawing HighQualityBicubic centre crop to 9:16 -> 1080x1920, JPEG quality 93",
+ "aspect_ratio": "9:16",
+ "size": [
+  1080,
+  1920
+ ],
+ "repo_path": "migration/production/bible/stills/candidates/genesis-10-short-s-door-shut-2026110301-1.jpg",
+ "sha256": "9e6d30da579a015caadda22927c3edd26de44d883438a9c77f2063d07a666933"
+}
