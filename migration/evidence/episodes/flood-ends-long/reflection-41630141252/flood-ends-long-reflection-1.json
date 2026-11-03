@@ -1,0 +1,134 @@
+{
+ "version": "bible-reflection-short-v2",
+ "id": "flood-ends-long-reflection-1",
+ "spec": "migration/production/bible/reflections/flood-ends-long-1.json",
+ "parent": {
+  "long": "flood-ends-long",
+  "pilot": "pilot-017",
+  "report": "migration/evidence/episodes/flood-ends-long/report-41484825424.json",
+  "clean_master_sha256": "95307e831eee4c06f826715b5d974a6fcdcacfe6029e6e57bcb8879d777b1eea",
+  "start": 44.88,
+  "end": 66.08,
+  "x": 0.5,
+  "video_id": "1m-NUJhkdMY"
+ },
+ "segments": [
+  {
+   "shot": "k-r1",
+   "asset": "shot-flood-ends-long-reflection-1-k-r1-sha256-dae7a90d6e87c022739337f751c125c8457acaa29c2fe886b9929df38caef388.mp4",
+   "clip_sha256": "dae7a90d6e87c022739337f751c125c8457acaa29c2fe886b9929df38caef388",
+   "start": 0.3,
+   "seconds": 6.583,
+   "speech": [
+    0.0,
+    5.916
+   ],
+   "flags": {
+    "hard": [],
+    "words": [],
+    "soft": []
+   },
+   "accepted_flags": [],
+   "review_score": 9.5
+  },
+  {
+   "shot": "k-r2",
+   "asset": "shot-flood-ends-long-reflection-1-k-r2-sha256-7f043fe271892146064b903aaf532c1aa48412d2638705960b09503547fd00e2.mp4",
+   "clip_sha256": "7f043fe271892146064b903aaf532c1aa48412d2638705960b09503547fd00e2",
+   "start": 6.683,
+   "seconds": 5.167,
+   "speech": [
+    0.157,
+    4.84
+   ],
+   "flags": {
+    "hard": [],
+    "words": [],
+    "soft": []
+   },
+   "accepted_flags": [],
+   "review_score": 9.5
+  },
+  {
+   "shot": "k-r3",
+   "asset": "shot-flood-ends-long-reflection-1-k-r3-sha256-664e04f4814391ef47c2b53e5282ec16c7537fd72086df307722dfea57daa596.mp4",
+   "clip_sha256": "664e04f4814391ef47c2b53e5282ec16c7537fd72086df307722dfea57daa596",
+   "start": 11.65,
+   "seconds": 6.583,
+   "speech": [
+    0.145,
+    6.22
+   ],
+   "flags": {
+    "hard": [],
+    "words": [],
+    "soft": []
+   },
+   "accepted_flags": [],
+   "review_score": 9.5
+  }
+ ],
+ "bottom": {
+  "y": 0.5,
+  "crossfade": 0.2,
+  "frame": [
+   1080,
+   960
+  ]
+ },
+ "voice": {
+  "source": "pavo-talking-clips",
+  "words": 45,
+  "first_word": 0.3,
+  "last_word": 17.87,
+  "wpm": 161.9
+ },
+ "output_sha256": "f36a801c6ba4bff842dd20799aae344fb986483a6bd49cc3c2c519d50d3272e3",
+ "seconds": 21.2,
+ "frame": [
+  1080,
+  1920
+ ],
+ "lufs": -14.3,
+ "true_peak_dbfs": -1.9,
+ "sentences": [
+  {
+   "segment": "r00",
+   "text": "God did not hang that rainbow because Noah was perfect, and the story says so plainly.",
+   "start": 0.3,
+   "end": 6.216
+  },
+  {
+   "segment": "r01",
+   "text": "He failed again, the way people do.",
+   "start": 6.84,
+   "end": 9.181
+  },
+  {
+   "segment": "r01",
+   "text": "Still, God hung up His own bow.",
+   "start": 9.181,
+   "end": 11.523
+  },
+  {
+   "segment": "r02",
+   "text": "So if you are waiting on God tonight, you are not forgotten.",
+   "start": 11.795,
+   "end": 16.655
+  },
+  {
+   "segment": "r02",
+   "text": "You are carried.",
+   "start": 16.655,
+   "end": 17.87
+  }
+ ],
+ "checks": {
+  "frame_1080x1920": true,
+  "lufs_band": true,
+  "true_peak_ceiling": true,
+  "length": true,
+  "keeper_fits": true,
+  "voice_pace": true
+ }
+}
