@@ -142,3 +142,10 @@ accepted boundary.
   `compilations/arc-02-noah-compilation.json` with the `long` chapter for flood-ends-long (1m-NUJhkdMY), then `compilation-build.yml`,
   local-review, claude_review, approve, gate, publish at the 11-04 slot. The 11-01 hook2/close clips say "Genesis five to seven"
   and must not be reused for a Genesis 5-9 title.
+
+- 2026-11-03 (scheduled continuation 14:20 UTC, triage of the last-3 h failures): none is open. reflection-shorts 41642334988/41643668889/41645300580
+  were the retime iterations (CLIPS_TOO_LONG_FOR_CLIP 25.83 s in 26.13 s), fixed by #750/#752 and green in run 41646614168; short-cuts 41635228742 is
+  E283 (fixed); speech-check 41635027079 was LIPSYNC_TOOL_BROKEN (SYNCNET_MODEL_MISSING), the re-run is green; the PR-check and pavo-audio-eval reds were
+  on the #751 branch before it merged (main PR checks green at 14:10Z). No open PR. Shorts in the next 48 h are unchanged; FREE: 2026-11-05 13:30Z
+  (reflection 1 is held at 9.3; a livelier top range needs the long's per-shot time map, not in the report). The M2 Noah compilation Keeper clips
+  (shot-probe 41652099686) belong to the other session in progress; not duplicated here.
