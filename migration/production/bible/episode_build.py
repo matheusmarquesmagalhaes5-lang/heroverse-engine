@@ -577,6 +577,11 @@ def request_problems(plan, layout, refs, client=None, chars=None):
         # a long-first scene approved as a still in camera motion is never sent to Pavo: no Pavo request to validate
         if (approvals.get(shot["id"]) or {}).get("source") == "still_motion":
             continue
+        # E294: a long's non-talking scene is never a Pavo request; unapproved, say so by name (not INVALID_DURATION)
+        if plan.get("track") == "buzzy-long" and shot.get("kind") != "keeper" and not plan_check.talking(shot) \
+                and not (approvals.get(shot["id"]) or {}).get("source"):
+            out.append(f"STILL_NOT_APPROVED {shot['id']} (approve-source still_motion must be on main before the probe)")
+            continue
         try:
             req = request(shot, index, plan, layout, refs, chars)
             client.prepare_video(req["prompt"], req["seconds"], req["aspect_ratio"])

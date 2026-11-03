@@ -2786,5 +2786,17 @@ class TrimOutPoint(unittest.TestCase):
         self.assertIn('rec.get("trim_out_s") != a.get("trim_out_s")', long)
 
 
+class UnapprovedStillIsNamed(unittest.TestCase):
+    def test_e294_an_unapproved_long_scene_is_refused_by_name_not_as_a_pavo_duration(self):
+        # E294: shot-probe 41706470686 ran before the still_motion approvals reached main; each s-* scene was judged as a
+        # Pavo request and the log said INVALID_DURATION. Now it names the missing approval.
+        plan = {"track": "buzzy-long", "shots": [{"id": "s-x", "kind": "scene", "seconds": 18, "lines": [0]}]}
+        class Stub:
+            pass
+        out = eb.request_problems(plan, {}, {}, client=Stub())
+        self.assertEqual(len(out), 1)
+        self.assertTrue(out[0].startswith("STILL_NOT_APPROVED s-x"), out)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -4742,6 +4742,30 @@
      "process"
     ]
    }
+  },
+  {
+   "id": "E294",
+   "date": "2026-11-03",
+   "class": [
+    "order"
+   ],
+   "prior": [
+    "E112",
+    "E116",
+    "E144",
+    "E165",
+    "E187",
+    "E278"
+   ],
+   "error": "shot-probe run 41706470686 (genesis-10-11-long, main 19:47Z) was dispatched before PR #786 (still_motion approvals of the 27 scenes) was merged; request_problems then judged each s-* scene as a Pavo request and failed with PAVO_REQUEST_INVALID INVALID_DURATION (18 s), which hid the real cause; the record job then failed NO_PROBE_RECORD. Root cause: order (probe before the approvals reached main) plus a refusal that named the wrong defect.",
+   "fix": "request_problems names an unapproved non-talking scene of a buzzy-long plan: STILL_NOT_APPROVED <id> (approve-source still_motion must be on main before the probe). PR #786 merged, probe re-dispatched.",
+   "antidote": {
+    "file": "migration/production/bible/test_episode_build.py",
+    "contains": "def test_e294_an_unapproved_long_scene_is_refused_by_name_not_as_a_pavo_duration",
+    "covers": [
+     "order"
+    ]
+   }
   }
  ]
 }
