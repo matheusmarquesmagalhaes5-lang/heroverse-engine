@@ -1,0 +1,89 @@
+{
+ "id": "genesis-10-short-20261103-1",
+ "episode": "genesis-10-short",
+ "run": "20261103",
+ "status": "DRAFT",
+ "format": "short",
+ "size": [
+  1080,
+  1920
+ ],
+ "spec_sha256": "0fa1f609725cc7ee8be8a86628b360e5ca41b3a11c2b92b84f46bf8a0815e56d",
+ "prompt": "Extreme close-up portrait, only his face from brow to chin filling the frame edge to edge, nothing else in the picture: a strong broad-shouldered elderly man of about seventy with Middle Eastern features, weathered olive skin, a long grey beard, short grey hair on a bare head, deep-set dark eyes under heavy brows, a plain brown wool robe belted with a rope, his dark eyes wet with tears of relief and a first small smile as a dove returns with a green olive leaf, his mouth closed. Behind his head there is only a calm golden sunset sky, nothing else at all. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. Warm amber light from the last sunset glow bathes his face in rich warm orange and amber against the soft gold sky, vivid saturated colour, high contrast, photorealistic cinematic film still, sharp focus on the eyes, film grain, no text, no lettering, no signature, no watermark.",
+ "text": "THE DOVE RETURNS",
+ "text_by": "thumbs.py overlay (DejaVu Sans Bold), never the image model",
+ "source": "approved still flood-ends-long-s-joy (reused, no new generation)",
+ "model": "existing approved still (ChatGPT desktop route)",
+ "ratio": "16:9",
+ "resolution": "1920x1080",
+ "conversation_id": null,
+ "quote": null,
+ "references": [],
+ "references_live": null,
+ "source_size": [
+  1920,
+  1080
+ ],
+ "source_sha256": "5716f46b060934db747ad47d6cb086d644f3d5e10a4856d92259ac74622a6dd3",
+ "crop": {
+  "box": [
+   840,
+   0,
+   608,
+   1080
+  ],
+  "source_size": [
+   1920,
+   1080
+  ],
+  "source_sha256": "5716f46b060934db747ad47d6cb086d644f3d5e10a4856d92259ac74622a6dd3",
+  "cropped_sha256": "5e4c0f5a29e8016269bd10894305f8954cadd810ab8b75e1bb001eb5f418cf37",
+  "upscale": 1.778,
+  "resize": "crop [840, 0, 608, 1080], Lanczos to 1080x1920"
+ },
+ "grade": {
+  "factors": {
+   "saturation": 1.15,
+   "contrast": 1.05
+  },
+  "order": [
+   "saturation",
+   "contrast"
+  ],
+  "bounds": {
+   "saturation": [
+    1.0,
+    1.6
+   ],
+   "contrast": [
+    1.0,
+    1.2
+   ]
+  },
+  "by": "thumbs.py apply_grade (PIL ImageEnhance), after crop/resize, before the text",
+  "pre_grade_path": "migration/production/bible/thumbs/candidates/genesis-10-short-20261103-1-ungraded.jpg",
+  "pre_grade_sha256": "5e4c0f5a29e8016269bd10894305f8954cadd810ab8b75e1bb001eb5f418cf37",
+  "graded_sha256": "02ffaab0e4fbcdc476398d6fe5c221017b3cbf574e6eabd6333c22fd333869eb"
+ },
+ "base_path": "migration/production/bible/thumbs/candidates/genesis-10-short-20261103-1-base.jpg",
+ "base_sha256": "02ffaab0e4fbcdc476398d6fe5c221017b3cbf574e6eabd6333c22fd333869eb",
+ "repo_path": "migration/production/bible/thumbs/candidates/genesis-10-short-20261103-1.jpg",
+ "sha256": "792f6f9432db67dd9e75e3045350fbdaffd35ddffaed466acc21d7c9b674bf72",
+ "r16": {
+  "status": "PASS",
+  "fails": [],
+  "metrics": {
+   "brightness": 0.155,
+   "contrast": 0.223,
+   "saturation": 0.822,
+   "colourfulness": 0.17,
+   "edge_density": 0.171,
+   "warm_share": 0.26,
+   "blue_share": 0.0,
+   "dark_share": 0.75,
+   "bright_share": 0.038,
+   "yellow_text_like": 0.0
+  }
+ },
+ "generated_by": "HeroVerse pipeline (AI-generated image)"
+}
