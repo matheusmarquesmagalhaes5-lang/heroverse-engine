@@ -1,0 +1,71 @@
+{
+ "version": "voice-pace-measure-v1",
+ "how": "voice_pace_measure.py in voice-pace.yml: kokoro-onnx 0.4.9 with the hash-pinned Kokoro v1.0 assets, sentence by sentence at speed 1.0, a 0.18 s gap, words over seconds of a line from its first sentence's start to its last sentence's end (the method of cain-voice.json).",
+ "calibration": {
+  "voice": "am_eric (Cain's 8 lines of cain-voice.json)",
+  "recorded": 3.34,
+  "measured": 3.34,
+  "relative_drift": 0.0
+ },
+ "pace_by_voice_words_per_s": {
+  "builder": {
+   "voice_id": "bm_lewis",
+   "speed": 1.0,
+   "lines": 8,
+   "pace": 3.383,
+   "line_min": 3.074,
+   "line_max": 3.889,
+   "each": [
+    {
+     "line": "Go to, let us make brick, and burn them throughly.",
+     "words": 10,
+     "seconds": 2.987,
+     "pace": 3.348
+    },
+    {
+     "line": "Go to, let us build us a city and a tower, whose top may reach unto heaven;",
+     "words": 17,
+     "seconds": 4.651,
+     "pace": 3.655
+    },
+    {
+     "line": "and let us make us a name, lest we be scattered abroad upon the face of the whole earth.",
+     "words": 19,
+     "seconds": 4.885,
+     "pace": 3.889
+    },
+    {
+     "line": "Another hundred bricks before the sun is high, and then the next hundred.",
+     "words": 13,
+     "seconds": 4.181,
+     "pace": 3.109
+    },
+    {
+     "line": "Look how the clay hardens in the fire. We can build as high as we please.",
+     "words": 16,
+     "seconds": 4.66,
+     "pace": 3.433
+    },
+    {
+     "line": "Stone is for the mountains. We have the plain, the clay and our own two hands.",
+     "words": 16,
+     "seconds": 4.937,
+     "pace": 3.241
+    },
+    {
+     "line": "Whoever carries the last brick up there will have his name remembered.",
+     "words": 12,
+     "seconds": 3.904,
+     "pace": 3.074
+    },
+    {
+     "line": "Nobody here will scatter us, because we are all of one speech and one mind.",
+     "words": 15,
+     "seconds": 4.672,
+     "pace": 3.211
+    }
+   ]
+  }
+ },
+ "status": "MEASURED"
+}
