@@ -357,6 +357,20 @@ class Cuts(unittest.TestCase):
             spec["track"] = "buzzy"
             self.assertTrue(sc.check(spec, root)["problems"][0].startswith("SPEC_VERSION"))
 
+    def test_no_two_shorts_of_one_long_repeat_footage_or_speech(self):
+        # E279 (owner, 2026-11-03: "Nao pode ter trechos repetidos nos shorts"): a cut or reflection clip may share only the fade
+        # margin (0.25 s, silence in both) with another Short of the same long
+        self.assertEqual(sc.overlap_problems("X", [("a", 0, 10)], [("a", 0, 10), ("b", 9.8, 20)]), [])
+        self.assertEqual(sc.overlap_problems("X", [("a", 0, 10)], [("b", 10, 20)]), [])
+        self.assertTrue(sc.overlap_problems("X", [("a", 0, 10)], [("b", 9.7, 20)])[0].startswith("X a shares 0.30 s with b"))
+        with tempfile.TemporaryDirectory() as t:
+            root, spec, _ = cut_root(t, [cut(), cut("genesis-07-cut-2", start=4.1, end=24.5)])
+            probs = sc.check(spec, root)["problems"]
+            self.assertTrue(any(p.startswith("CUT_OVERLAPS_ANOTHER genesis-07-cut-1") for p in probs), probs)
+            self.assertTrue(any(p.startswith("CUT_OVERLAPS_ANOTHER genesis-07-cut-2") for p in probs), probs)
+            spec["cuts"] = [cut(start=0.25, end=22.3), cut("genesis-07-cut-2", start=22.1, end=24.5)]
+            self.assertEqual([p for p in sc.check(spec, root)["problems"] if "OVERLAPS_ANOTHER" in p], [])
+
     @unittest.skipUnless(FFMPEG, "ffmpeg")
     def test_render_is_a_9_16_short_with_captions_gain_and_fades(self):
         with tempfile.TemporaryDirectory() as t:

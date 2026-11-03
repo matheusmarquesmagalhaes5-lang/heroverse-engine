@@ -75,6 +75,37 @@ def boundaries(sentences, start, end, total, fade=0.0):
     return out, first, last
 
 
+def sibling_ranges(long, root=ROOT, skip=None, cuts=True):
+    """[(id, start, end)] of every other cut (cuts/<long>.json) and Keeper reflection top clip (reflections/<long>-<n>.json)
+    of the same long: the footage and speech the owner's rule 2026-11-03 keeps from repeating in another Short."""
+    out, base = [], Path(root) / "migration" / "production" / "bible"
+    try:
+        spec = json.loads((base / "cuts" / f"{long}.json").read_text()) if cuts else {}
+        out += [(c["id"], c["start"], c["end"]) for c in spec.get("cuts") or [] if isinstance(c, dict)]
+    except (OSError, ValueError, KeyError, AttributeError):
+        pass
+    for path in sorted((base / "reflections").glob(f"{long}-*.json")):
+        try:
+            r = json.loads(path.read_text())
+            out.append((r["id"], r["clip"]["start"], r["clip"]["end"]))
+        except (OSError, ValueError, KeyError, TypeError):
+            pass
+    return [r for r in out if r[0] != skip and all(type(v) in (int, float) for v in r[1:])]
+
+
+def overlap_problems(code, mine, others, margin=FADE):
+    """E279: `code` per (id, start, end) in `mine` that shares more than `margin` seconds of the long with another range
+    (the margin is the fade at both edges; sentence gaps keep speech out of it). Owner, 2026-11-03: no two Shorts of the
+    same long repeat footage or speech."""
+    out = []
+    for cid, a, b in mine:
+        for oid, c, d in others:
+            if oid != cid and min(b, d) - max(a, c) > margin + 1e-9:
+                out.append(f"{code} {cid} shares {min(b, d) - max(a, c):.2f} s with {oid} (> {margin} s fade margin; "
+                           f"two Shorts of one long never repeat footage or speech)")
+    return out
+
+
 def advice(sentences, first, last):
     """The recommended shape: a hook line, one beat, then a KJV line or the Keeper's insight. Information only."""
     kinds = [s.get("line_kind") for s in sentences[first:last + 1]]
@@ -138,6 +169,9 @@ def check(spec, root=ROOT, spec_path=None):
         for k in ("title", "description"):
             if not isinstance(c.get(k), str) or not c[k].strip():
                 bad.append(f"CUT_{k.upper()} {cid}")
+    mine = [(c["id"], c["start"], c["end"]) for c in cuts if isinstance(c, dict) and type(c.get("start")) in (int, float)
+            and type(c.get("end")) in (int, float)]
+    bad += overlap_problems("CUT_OVERLAPS_ANOTHER", mine, mine + sibling_ranges(spec["long"], root, cuts=False))   # the spec is the cuts
     return {"problems": bad, "cuts": out}
 
 

@@ -252,6 +252,8 @@ def check(spec, root=ROOT, spec_path=None):
             bad.append(f"CLIP_LENGTH {d:.2f} s ({SECONDS[0]:.0f}-{SECONDS[1]:.0f})")
         found, first, last = short_cuts.boundaries(sentences, start, end, total)
         bad += [f"CLIP_{p[4:]}" for p in found]
+        bad += short_cuts.overlap_problems("CLIP_OVERLAPS_ANOTHER", [(spec["id"], start, end)],
+                                           short_cuts.sibling_ranges(spec["long"], root, skip=spec["id"]))
         if not found:
             out.update(first=first, last=last)
     x = clip.get("x", 0.5)
