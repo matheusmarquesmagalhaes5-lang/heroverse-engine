@@ -97,6 +97,14 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
   sentence-safe range that fits 25.5-26.2 s without overlapping a cut) or the owner's call; then publish-episode.yml and the
   `studio_jobs.json` related-video entry for 1m-NUJhkdMY.
 
+- 2026-11-03 (reflection 1 on OUR audio, E287/E288): `shot-remux.yml` (PR #756) puts our request WAV over a STORED Pavo clip (no generation) and
+  runs the strict checks on it. Run 41654835246 on k-r1 (dae7a9), k-r2 (7f043f), k-r4 (b1cd73): all three clean (SyncNet offset 0/-1, conf
+  6.6/5.0/7.2 against min 2.7, face >= 0.95, no flags); approved 9.5 in `shots/flood-ends-long-reflection-1.json` with the `audio` proof (no trim,
+  no speech-check owed). k-r3 stays failed (conf 1.3/1.7). Reflection 1 is NOT rendered or published: the 3-clip plan (k-r1,k-r2,k-r4 = 52 words)
+  is refused by plan_check REFLECTION_PACE (~165.2 wpm over the 165 gate; our WAVs are 18.65 s, >= 167 wpm) and the gate was not loosened. Ways
+  out: owner/coordinator accepts the E286 retime ceiling in plan_check for plans whose clips all exist, or one more passing 4th clip. Top range
+  chosen for it: 62.65-84.x s of flood-ends-long (s-fountains, s-lines; unused by any cut), two shots of 10 s. slot 2026-11-05T05:30Z still free.
+
 ## Next moments
 
 - M2 compilation "Complete Story of Noah (Genesis 5-9)" is due 2026-11-04.
