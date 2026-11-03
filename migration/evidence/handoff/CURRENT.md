@@ -65,6 +65,17 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
   first comment HTTP 403 (known). Next: 11-04 slots (05:30, 13:30, 18:30, 23:30) are EMPTY; reflection 1 master; genesis-11-short;
   Noah/Genesis 1-9 compilation (due 11-04) not started in this run.
 
+- 2026-11-03 (Claude session, owner rule "no repeated footage or speech between Shorts of one long", E279, DECISIONS): `short_cuts.check`
+  and `reflection_shorts.check` now refuse an overlap over the 0.25 s fade margin (PR #729). The four new flood cuts are PUBLISHED
+  (publish-episode, receipts read back private + publish_at): 11-04 05:30Z shutin https://youtube.com/shorts/ejH5wsYjDCg, 13:30Z landing
+  https://youtube.com/shorts/42wuoj5qw7c, 18:30Z raven https://youtube.com/shorts/sqxC7EYi4jc, 23:30Z altar https://youtube.com/shorts/3iLr-QnB8VQ
+  (altar re-cut from 348.535 s: the first cut failed ORIGINAL_SHARE 0.36 and shared 0.17 s of door's fade; local-review on each sha, audio
+  by ASR and measures, not by ear). Reflection 1 top clip moved to the unused 44.88-66.08 s and rendered (reflection-shorts run 41630141252,
+  sha256 f36a801c...), but NOT reviewed, NOT scheduled: word timings show the Pavo clips carry audible trailing speech after each line
+  ("you mealy" 5.84-6.26 s, "own bow, own bow" 11.02-11.42 s, "for carried" 16.74-17.74 s), so audio is not claimable at 9.5. Its draft record
+  stays off main (render evidence on branch `claude/reflection-flood-ends-long-reflection-1-41630141252`). Next: `reflection_shorts.render` must
+  cut each clip at the end of its last required word (pinned ASR), re-render, review, then slot 2026-11-05T05:30Z (spec already carries it).
+
 ## Next moments
 
 - M2 compilation "Complete Story of Noah (Genesis 5-9)" is due 2026-11-04.
