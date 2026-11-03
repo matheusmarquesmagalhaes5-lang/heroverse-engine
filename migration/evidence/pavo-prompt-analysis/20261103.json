@@ -1,0 +1,2458 @@
+{
+ "about": "E293: every Pavo talking generation on record, labelled PASS/FAIL and diffed prompt by prompt, so pavo_prompt.build writes the prompt that passed (owner 2026-11-03: \"Always model the prompt on the way it was done the time it passed\"). Nothing generated; read from the probe records, approvals and the E287 eval.",
+ "sources": {
+  "A": "migration/evidence/shots/**/<run>.json talking shots (remux records merged into their source generation; genesis-08's closed-mouth voice-over Keeper excluded), approvals migration/production/bible/shots/*.json, E287 eval migration/evidence/pavo-audio-eval/20261103.json",
+  "B": "flood-ends-long runs 41423359803 and 41436544195 (E266): 10 generations no probe record kept; prompt = the plan at 959a2561^ after episode_build.bind_prompt, outcome FACE_NOT_FOUND on every generation (pavo_lessons 2026-11-02)",
+  "C": "arc-01-long direct talking probes migration/evidence/pavo/20261027/arc-01-long-talk/probes.json (22 generations); prompt = the plan at 0f4bcaae after bind_prompt; judged on the clip's own track (no E287 re-judgement exists), so its label is the PICTURE only: face and SyncNet sync"
+ },
+ "label_rule": "PASS = approved (bible/shots), or SyncNet sync and face on OUR audio (E287 eval, shot-remux or a pavo_audio ours record: offset -3..0, confidence >= 2.7, face_frames >= 0.8), or a clean legacy probe record (no flag, same thresholds). FAIL otherwise; a native-speech clip with wrong words fails. Cohort C: the same thresholds on the clip track.",
+ "counts": {
+  "all": {
+   "PASS": 45,
+   "FAIL": 26
+  },
+  "A": {
+   "PASS": 29,
+   "FAIL": 10
+  },
+  "B": {
+   "PASS": 0,
+   "FAIL": 10
+  },
+  "C": {
+   "PASS": 16,
+   "FAIL": 6
+  },
+  "template": {
+   "PASS": 13,
+   "FAIL": 4
+  }
+ },
+ "factors": {
+  "all (A+B+C, pass/n)": {
+   "F1 framing right for the aspect (Keeper 16:9/1:1 \"Close-up from the chest up, his face large in the centre of the frame\"; 9:16 and characters \"Medium close-up\")": {
+    "with": [
+     45,
+     59
+    ],
+    "without": [
+     0,
+     12
+    ]
+   },
+   "F10 prop: the scroll in both hands": {
+    "with": [
+     27,
+     49
+    ],
+    "without": [
+     18,
+     22
+    ]
+   },
+   "F11 light: \"the campfire's warm flicker on his face\"": {
+    "with": [
+     27,
+     49
+    ],
+    "without": [
+     18,
+     22
+    ]
+   },
+   "F12 busy background (leaves, garden, branch)": {
+    "with": [
+     18,
+     22
+    ],
+    "without": [
+     27,
+     49
+    ]
+   },
+   "F13 prompt <= 165 words": {
+    "with": [
+     36,
+     57
+    ],
+    "without": [
+     9,
+     14
+    ]
+   },
+   "F14 aspect 16:9": {
+    "with": [
+     29,
+     52
+    ],
+    "without": [
+     16,
+     19
+    ]
+   },
+   "F14b aspect 9:16": {
+    "with": [
+     7,
+     8
+    ],
+    "without": [
+     38,
+     63
+    ]
+   },
+   "F14c aspect 1:1": {
+    "with": [
+     9,
+     11
+    ],
+    "without": [
+     36,
+     60
+    ]
+   },
+   "F15 one person on screen (no second figure named)": {
+    "with": [
+     33,
+     55
+    ],
+    "without": [
+     12,
+     16
+    ]
+   },
+   "F1b framing words \"Medium shot\"": {
+    "with": [
+     0,
+     10
+    ],
+    "without": [
+     45,
+     61
+    ]
+   },
+   "F2 reference: the Keeper talking frame ch-keeper-talk alone": {
+    "with": [
+     27,
+     49
+    ],
+    "without": [
+     18,
+     22
+    ]
+   },
+   "F3 action bound to the audio: \"speaks the words of the audio clip, his lips moving in sync with the voice\" (no SOUND block)": {
+    "with": [
+     42,
+     67
+    ],
+    "without": [
+     3,
+     4
+    ]
+   },
+   "F3b native speech (SOUND block, Pavo voices the line)": {
+    "with": [
+     3,
+     4
+    ],
+    "without": [
+     42,
+     67
+    ]
+   },
+   "F4 emotion: one \"a <adj> <adj> look\" clause and one \"<Adj> and <adj>.\" mood sentence": {
+    "with": [
+     18,
+     37
+    ],
+    "without": [
+     27,
+     34
+    ]
+   },
+   "F4b emotion: a second \"look\" sentence": {
+    "with": [
+     6,
+     8
+    ],
+    "without": [
+     39,
+     63
+    ]
+   },
+   "F5 head/gaze: \"holds his head level\" and \"looks straight into the camera\"": {
+    "with": [
+     27,
+     49
+    ],
+    "without": [
+     18,
+     22
+    ]
+   },
+   "F6 hands raised or gesturing (fruit up toward the camera, gestures, crouches)": {
+    "with": [
+     10,
+     11
+    ],
+    "without": [
+     35,
+     60
+    ]
+   },
+   "F7 line <= 17 words": {
+    "with": [
+     28,
+     36
+    ],
+    "without": [
+     17,
+     35
+    ]
+   },
+   "F7b line >= 22 words": {
+    "with": [
+     11,
+     28
+    ],
+    "without": [
+     34,
+     43
+    ]
+   },
+   "F8 pace <= 2.75 words/s (line s = audio proof, else clip - 0.45 s)": {
+    "with": [
+     21,
+     28
+    ],
+    "without": [
+     8,
+     11
+    ]
+   }
+  },
+  "framing right, bound to the audio (T)": {
+   "F1 framing right for the aspect (Keeper 16:9/1:1 \"Close-up from the chest up, his face large in the centre of the frame\"; 9:16 and characters \"Medium close-up\")": {
+    "with": [
+     42,
+     55
+    ],
+    "without": [
+     0,
+     0
+    ]
+   },
+   "F10 prop: the scroll in both hands": {
+    "with": [
+     26,
+     35
+    ],
+    "without": [
+     16,
+     20
+    ]
+   },
+   "F11 light: \"the campfire's warm flicker on his face\"": {
+    "with": [
+     26,
+     35
+    ],
+    "without": [
+     16,
+     20
+    ]
+   },
+   "F12 busy background (leaves, garden, branch)": {
+    "with": [
+     16,
+     20
+    ],
+    "without": [
+     26,
+     35
+    ]
+   },
+   "F13 prompt <= 165 words": {
+    "with": [
+     36,
+     45
+    ],
+    "without": [
+     6,
+     10
+    ]
+   },
+   "F14 aspect 16:9": {
+    "with": [
+     26,
+     36
+    ],
+    "without": [
+     16,
+     19
+    ]
+   },
+   "F14b aspect 9:16": {
+    "with": [
+     7,
+     8
+    ],
+    "without": [
+     35,
+     47
+    ]
+   },
+   "F14c aspect 1:1": {
+    "with": [
+     9,
+     11
+    ],
+    "without": [
+     33,
+     44
+    ]
+   },
+   "F15 one person on screen (no second figure named)": {
+    "with": [
+     32,
+     41
+    ],
+    "without": [
+     10,
+     14
+    ]
+   },
+   "F1b framing words \"Medium shot\"": {
+    "with": [
+     0,
+     0
+    ],
+    "without": [
+     42,
+     55
+    ]
+   },
+   "F2 reference: the Keeper talking frame ch-keeper-talk alone": {
+    "with": [
+     26,
+     35
+    ],
+    "without": [
+     16,
+     20
+    ]
+   },
+   "F3 action bound to the audio: \"speaks the words of the audio clip, his lips moving in sync with the voice\" (no SOUND block)": {
+    "with": [
+     42,
+     55
+    ],
+    "without": [
+     0,
+     0
+    ]
+   },
+   "F3b native speech (SOUND block, Pavo voices the line)": {
+    "with": [
+     0,
+     0
+    ],
+    "without": [
+     42,
+     55
+    ]
+   },
+   "F4 emotion: one \"a <adj> <adj> look\" clause and one \"<Adj> and <adj>.\" mood sentence": {
+    "with": [
+     18,
+     25
+    ],
+    "without": [
+     24,
+     30
+    ]
+   },
+   "F4b emotion: a second \"look\" sentence": {
+    "with": [
+     6,
+     8
+    ],
+    "without": [
+     36,
+     47
+    ]
+   },
+   "F5 head/gaze: \"holds his head level\" and \"looks straight into the camera\"": {
+    "with": [
+     26,
+     35
+    ],
+    "without": [
+     16,
+     20
+    ]
+   },
+   "F6 hands raised or gesturing (fruit up toward the camera, gestures, crouches)": {
+    "with": [
+     9,
+     10
+    ],
+    "without": [
+     33,
+     45
+    ]
+   },
+   "F7 line <= 17 words": {
+    "with": [
+     26,
+     31
+    ],
+    "without": [
+     16,
+     24
+    ]
+   },
+   "F7b line >= 22 words": {
+    "with": [
+     11,
+     18
+    ],
+    "without": [
+     31,
+     37
+    ]
+   },
+   "F8 pace <= 2.75 words/s (line s = audio proof, else clip - 0.45 s)": {
+    "with": [
+     20,
+     27
+    ],
+    "without": [
+     6,
+     8
+    ]
+   }
+  }
+ },
+ "findings": [
+  "Framing decides the face: the Keeper 'Medium shot' 0/10 and 16:9 'Medium close-up' 0/2 lost his face (seated, drawn full body); the right framing for the aspect passed 45/59 (76 %): 16:9/1:1 'Close-up from the chest up, his face large in the centre of the frame', 9:16 and characters 'Medium close-up'.",
+  "Binding: every Kokoro-input request went out bound ('Image 1 is the narrator.' + 'speaks the words of the audio clip, his lips moving in sync with the voice', episode_build.bind_prompt), so B differs from the passing prompts by the framing words alone.",
+  "Line length: <= 17 words passed 28/36 (78 %), >= 22 words 11/28 (39 %); within the right framing 26/31 (84 %) vs 11/18 (61 %). Pace (words per second) did not separate (75 % vs 73 %).",
+  "Aspect: 9:16 7/8, 1:1 9/11, 16:9 29/52; every face loss with the right framing was at 16:9 (4 of 16 chest-up 16:9 Keeper generations).",
+  "No variance to test: the scroll in both hands, the campfire flicker, 'holds his head level' and 'looks straight into the camera' are in every Keeper prompt (passing and failing); they stay as they were sent.",
+  "A second figure, raised hands and a busy garden background did not lower the rate (75 %, 91 %, 82 %).",
+  "Same request, different outcome: arc-02 k-hook/k-close at the identical request digest passed 3/4 in 41629339290 and 0/4 in 41652099686 (two faces lost, two mouths 10-14 windows off our audio): those 4 fails are not a prompt difference.",
+  "Extra speech after the last word sits in Pavo's returned track (E282, 'round every was' k-r4 69bfee43); with our audio and the cut at the last word it decided no outcome.",
+  "pavo_prompt.build v1 (pavo-talk-v1, E290) was never sent: 0 of 71 generations used its wording (', the speaker centred in the frame', setting before action, 'lips move only while...', 'no hand over the mouth, no head turn away', a one-adjective emotion sentence, no mood sentence), and no generation had its 0.3 s pad."
+ ],
+ "template": {
+  "text": "Image 1 is {label}. {style} {framing}, static camera. {Label}, {identity}, {pose} {action}, a {emotion} look. {setting} {mood}.{period} {negatives}",
+  "framing": {
+   "16:9": "Close-up from the chest up, {pron} face large in the centre of the frame",
+   "1:1": "Close-up from the chest up, {pron} face large in the centre of the frame",
+   "9:16": "Medium close-up",
+   "character": "Medium close-up"
+  },
+  "pose": {
+   "wide": "centred in the frame holds {pron} head level and looks {gaze} and",
+   "9:16": "holds {pron} head level, looks {gaze} and"
+  },
+  "action": "speaks the words of the audio clip, {pron} lips moving in sync with the voice",
+  "negatives": "No text, no logos.",
+  "looks_of_record": {
+   "calm kind": "Tender and grave",
+   "gentle questioning": "Warm and searching",
+   "grave, intent": "Hushed and urgent",
+   "warm expectant": "Warm and expectant",
+   "grave knowing": "Tender and grave"
+  },
+  "input": {
+   "reference": "the speaker's talking reference alone (Keeper ch-keeper-talk), Image 1",
+   "line_words": "12-17 preferred (84 %), at most 25 (the longest passing line)",
+   "tail_pad_s": 0.0,
+   "audio": "our exact Kokoro line (E287), cut at the last word in the edit (E273/E282)"
+  },
+  "reproduces": "the sent prompts of 17 generations word for word (13 PASS, 4 FAIL; the FAILs: arc-02-noah-compilation-keeper 41652099686 k-hook: on our audio: sync conf 1.135 offset 10; arc-02-noah-compilation-keeper 41652099686 k-hook: on our audio: no face; flood-ends-long 41547308176 k-hook: on our audio: no face; genesis-10-short 41574608645 k-insight: on our audio: sync conf 1.802 offset 0)"
+ },
+ "template_prompts": [
+  "7e0ebb40f1303edd3c8acb78015e5d14ea8905676cfcaad5581febf6b0ee7fe3",
+  "b52450ec624319721cd5d9cf9f8593fc8303a6474280b0b7eee4f6192b1379e0",
+  "c8e6962e496e2863b740d289d0a078d11ed136efa4fe37d2062acaf4af7198fd",
+  "d0317fd5ba2b22ecee9ed6ceb30a33a17b497b70d299e9c1a8216c225b919969",
+  "f79932fe1f7fee9c716bcaa086e197a717e1839100c5d7f72c29d2452f78d9ad"
+ ],
+ "prompts": {
+  "92740beff48b25a4fdcdd3ff6e40e287d832cf7a22fb26297b0b32838259c376": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, holds his head level, looks straight into the camera and speaks to the camera, his lips moving clearly with every word, a calm welcoming look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and grave. No text, no logos. SOUND. The narrator's voice: a mature man's deep, warm storyteller voice, calm, measured pace, clear English diction. The narrator speaks on camera, his lips moving in sync with every word. The narrator says exactly these words and nothing else, once, in English: \"I keep the old stories. Tonight I will tell you one of them, whole.\" The soundtrack is only the voice and the natural ambient sound of the open desert at night: a small campfire crackling softly and a light night wind.",
+  "a6ba655630b711c14f20f618c5f2c50fb6e156b5a7dcb10e1650bb4ab2dd3f1d": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, holds his head level, looks straight into the camera and speaks to the camera, his lips moving clearly with every word, his eyes thoughtful. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and grave. No text, no logos. SOUND. The narrator's voice: a mature man's deep, warm storyteller voice, calm, measured pace, clear English diction. The narrator speaks on camera, his lips moving in sync with every word. The narrator says exactly these words and nothing else, once, in English: \"Notice how short the fall is. Seven verses, and the whole world turns.\" The soundtrack is only the voice and the natural ambient sound of the open desert at night: a small campfire crackling softly and a light night wind.",
+  "6f49064ea449a7c959895022832f5368b60c622d24683afd8b9dacaf26b3fd2b": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium close-up, static camera. Adam, a man of about thirty with Middle Eastern features, warm olive-brown skin, dark brown eyes, thick dark brown wavy hair to the shoulders, a short full dark beard, a lean strong build, seen from the chest up among tall green leaves, looks at Eve, a woman of about twenty-five with Middle Eastern features, warm olive-brown skin, dark brown almond-shaped eyes, long thick black wavy hair falling past the shoulders, a gentle oval face, a slender build, seen from the shoulders up among tall green leaves, her long hair over her shoulders, with joy, and speaks, his lips moving clearly with every word. A sunlit garden glade at morning. Joyful and amazed. The world at its making and the garden of Eden: untouched wild land, rivers, trees and open sky. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos. SOUND. Adam's voice: a young man's light, bright tenor voice, youthful and eager, a quick lively pace, clear English diction. Adam speaks on camera, his lips moving in sync with every word. Adam says exactly these words and nothing else, once, in English: \"This is now bone of my bones, and flesh of my flesh: she shall be called Woman,\" The soundtrack is only the voice and the natural ambient sound of the wild open land of the garden: a soft wind through the trees and a few distant birds.",
+  "459385f3841ad03286cd818aef644eca0bae03c9c144148e8c161b6f9f713a5a": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium close-up, static camera. Adam, a man of about thirty with Middle Eastern features, warm olive-brown skin, dark brown eyes, thick dark brown wavy hair to the shoulders, a short full dark beard, a lean strong build, seen from the chest up among tall green leaves, gestures toward Eve, a woman of about twenty-five with Middle Eastern features, warm olive-brown skin, dark brown almond-shaped eyes, long thick black wavy hair falling past the shoulders, a gentle oval face, a slender build, seen from the shoulders up among tall green leaves, her long hair over her shoulders, without looking at her, and speaks, his lips moving clearly with every word. Dusk in the garden. Bitter and afraid. The world at its making and the garden of Eden: untouched wild land, rivers, trees and open sky. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos. SOUND. Adam's voice: a young man's light, bright tenor voice, youthful and eager, a quick lively pace, clear English diction. Adam speaks on camera, his lips moving in sync with every word. Adam says exactly these words and nothing else, once, in English: \"The woman whom thou gavest to be with me, she gave me of the tree, and I did eat.\" Pronunciation: \"thou\" rhymes with \"now\"; \"gavest\" is two syllables, \"GAV-est\". The soundtrack is only the voice and the natural ambient sound of the wild open land of the garden: a soft wind through the trees and a few distant birds.",
+  "b52450ec624319721cd5d9cf9f8593fc8303a6474280b0b7eee4f6192b1379e0": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a grave, intent look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Hushed and urgent. No text, no logos.",
+  "bdae97fc37ba0de3714e474e8bad6d396e74b9496180c1a0b2a5073d98da2e59": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level, looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a gentle questioning look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and searching. No text, no logos.",
+  "2c5379ce264ceae57e1225e20f40e9276447aea76e6fe9e07b37813a36beeca6": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a grave, intent look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Hushed and urgent. A gentle questioning look. No text, no logos.",
+  "be105297bb86673eb3458f78f1a233aa5a66fdaa1c1372b5c954d0eec3566d2c": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a grave, intent look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Hushed and urgent. A warm expectant look. No text, no logos.",
+  "203344c957ff5c00ae191a6f50ad9ca20ebf893bd364407da16482e2d25ac5c7": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a grave, intent look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Hushed and urgent. A grave tender look. No text, no logos.",
+  "f79932fe1f7fee9c716bcaa086e197a717e1839100c5d7f72c29d2452f78d9ad": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a calm kind look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Tender and grave. No text, no logos.",
+  "7e0ebb40f1303edd3c8acb78015e5d14ea8905676cfcaad5581febf6b0ee7fe3": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a warm expectant look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and expectant. No text, no logos.",
+  "c8e6962e496e2863b740d289d0a078d11ed136efa4fe37d2062acaf4af7198fd": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium close-up, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, holds his head level, looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a warm expectant look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and expectant. No text, no logos.",
+  "d0317fd5ba2b22ecee9ed6ceb30a33a17b497b70d299e9c1a8216c225b919969": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium close-up, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, holds his head level, looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a grave knowing look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Tender and grave. No text, no logos.",
+  "6ce43b7e97626e1cf98c1a1f2b31637d56bffc41d6411657b195fe9e3a924e18": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium close-up, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, holds his head level, looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a faint warm smile. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and expectant. No text, no logos.",
+  "c2c0d26eb2a307ef32c68f2659bf270159a147a105534c88b4a735a551f65bd0": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium shot, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a warm expectant look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and expectant. No text, no logos.",
+  "da38ebbc0a3bad6919a709db8a2e8e8619b8b558ae2b8052148b7b47b3a8fc22": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium shot, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a calm kind look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Tender and grave. No text, no logos.",
+  "1470bdf93110a2d48d312a565e0e3afc10108dbbee4fc1477f432a7257579fc9": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium shot, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level, looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a gentle questioning look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and searching. No text, no logos.",
+  "3743721f8aa7a2dce86919d11a7edd0b4c08c8540a9ac22f3afbd16e470a5752": "Image 1 is Eve. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium close-up, static camera. Eve, a woman of about twenty-five with Middle Eastern features, warm olive-brown skin, dark brown almond-shaped eyes, long thick black wavy hair falling past the shoulders, a gentle oval face, a slender build, seen from the shoulders up among tall green leaves, her long hair over her shoulders, holds a ripe red fruit up toward the camera, turns her face to the man beside her, and speaks, her lips moving clearly with every word. A dense garden at golden dusk, warm low sunlight through the leaves. Tempting and uneasy. The world at its making and the garden of Eden: untouched wild land, rivers, trees and open sky. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos. She speaks the words of the audio clip, her lips moving in sync with the voice.",
+  "09e403b180134f845824d9bb758399f1e4aea7e151446ef59e345f1f835ab64e": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium close-up, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, holds his head level, looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a calm welcoming look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and grave. No text, no logos.",
+  "726165d256df9390ac27ed046ac5be6ce8d8f144cb4ab1c59305b0d870e21488": "Image 1 is Adam. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium close-up, static camera. Adam, a man of about thirty with Middle Eastern features, warm olive-brown skin, dark brown eyes, thick dark brown wavy hair to the shoulders, a short full dark beard, a lean strong build, seen from the chest up among tall green leaves, looks at Eve, a woman of about twenty-five with Middle Eastern features, warm olive-brown skin, dark brown almond-shaped eyes, long thick black wavy hair falling past the shoulders, a gentle oval face, a slender build, seen from the shoulders up among tall green leaves, her long hair over her shoulders, with joy, and speaks, his lips moving clearly with every word. A sunlit garden glade at morning. Joyful and amazed. The world at its making and the garden of Eden: untouched wild land, rivers, trees and open sky. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos. He speaks the words of the audio clip, his lips moving in sync with the voice.",
+  "3fa9ae02228606f3e8ff8321cb67001302118b852383cf691baadef0df1076c2": "Image 1 is Eve. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium close-up, static camera. Eve, a woman of about twenty-five with Middle Eastern features, warm olive-brown skin, dark brown almond-shaped eyes, long thick black wavy hair falling past the shoulders, a gentle oval face, a slender build, seen from the shoulders up among tall green leaves, her long hair over her shoulders, faces The serpent, a large slender serpent with glossy olive-green and bronze scales in a diamond pattern, golden eyes with vertical pupils, a pale cream underside and a dark forked tongue, coiled along a low branch of a fruit tree, on the branch, and speaks, her lips moving clearly with every word. Shade beneath the great tree at noon. Earnest and unsure. The world at its making and the garden of Eden: untouched wild land, rivers, trees and open sky. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos. She speaks the words of the audio clip, her lips moving in sync with the voice.",
+  "e96db2a99be9a57398f4d5adb505bf251e85c68064552e00b33e6e58972b9d36": "Image 1 is Adam. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium close-up, static camera. Adam, a man of about thirty with Middle Eastern features, warm olive-brown skin, dark brown eyes, thick dark brown wavy hair to the shoulders, a short full dark beard, a lean strong build, seen from the chest up among tall green leaves, crouches among dark leaves, afraid, and speaks, his lips moving clearly with every word. Evening shadows among the trees. Fearful and ashamed. The world at its making and the garden of Eden: untouched wild land, rivers, trees and open sky. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos. He speaks the words of the audio clip, his lips moving in sync with the voice.",
+  "02b1da4d489c06ed08dc784ddd698914d472fc5f725adfb84329c7d820d709c5": "Image 1 is Adam. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium close-up, static camera. Adam, a man of about thirty with Middle Eastern features, warm olive-brown skin, dark brown eyes, thick dark brown wavy hair to the shoulders, a short full dark beard, a lean strong build, seen from the chest up among tall green leaves, gestures toward Eve, a woman of about twenty-five with Middle Eastern features, warm olive-brown skin, dark brown almond-shaped eyes, long thick black wavy hair falling past the shoulders, a gentle oval face, a slender build, seen from the shoulders up among tall green leaves, her long hair over her shoulders, without looking at her, and speaks, his lips moving clearly with every word. Dusk in the garden. Bitter and afraid. The world at its making and the garden of Eden: untouched wild land, rivers, trees and open sky. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos. He speaks the words of the audio clip, his lips moving in sync with the voice.",
+  "30c12567d7317f1888f8f49533082b6594b433bf9312c3e93e01756614256229": "Image 1 is Eve. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium close-up, static camera. Eve, a woman of about twenty-five with Middle Eastern features, warm olive-brown skin, dark brown almond-shaped eyes, long thick black wavy hair falling past the shoulders, a gentle oval face, a slender build, seen from the shoulders up among tall green leaves, her long hair over her shoulders, lifts her face, tears in her eyes, and speaks, her lips moving clearly with every word. Dusk light fading in the garden. Broken. The world at its making and the garden of Eden: untouched wild land, rivers, trees and open sky. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos. She speaks the words of the audio clip, her lips moving in sync with the voice.",
+  "bb95fbb83ceb403c1247d51c86ecfe8768f1ef5435f4265848efe3f09ab39b4e": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium close-up, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, holds his head level, looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, grave. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and grave. No text, no logos."
+ },
+ "generations": [
+  {
+   "cohort": "A",
+   "ep": "arc-01-long",
+   "run": "40616795532",
+   "shot": "k-promise-1",
+   "clip": "91758e9c4f438c8cf97f1b0a879245e37b8e4450c34d453e8ce0dd0bda58e631",
+   "conversation_id": "373655719851621952",
+   "route": "pavo_native",
+   "aspect": "16:9",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 14,
+   "clip_s": 5,
+   "flags": [],
+   "face": 0.92,
+   "conf": 7.873,
+   "offset": -1,
+   "mouth_corr": 0.254,
+   "label": "FAIL",
+   "why": "native speech: words not exact (['SPEECH_WORDS_NOT_EXACT'])",
+   "extra_words_after_last": 0,
+   "wps_est": 3.08,
+   "prompt_sha256": "92740beff48b25a4fdcdd3ff6e40e287d832cf7a22fb26297b0b32838259c376",
+   "template": false
+  },
+  {
+   "cohort": "A",
+   "ep": "arc-01-long",
+   "run": "40616795532",
+   "shot": "k-insight-1",
+   "clip": "392c43b242eb01e9e39b29f911b0282619504067217a279a36c6041acb61546d",
+   "conversation_id": "373656849356765888",
+   "route": "pavo_native",
+   "aspect": "16:9",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 13,
+   "clip_s": 6,
+   "flags": [],
+   "face": 0.4,
+   "conf": 5.555,
+   "offset": -1,
+   "mouth_corr": 0.149,
+   "label": "PASS",
+   "why": "approved arc-01-long k-insight-1",
+   "extra_words_after_last": 0,
+   "wps_est": 2.34,
+   "prompt_sha256": "a6ba655630b711c14f20f618c5f2c50fb6e156b5a7dcb10e1650bb4ab2dd3f1d",
+   "template": false
+  },
+  {
+   "cohort": "A",
+   "ep": "arc-01-long",
+   "run": "40616795532",
+   "shot": "s-c2-adam",
+   "clip": "d4f416826b28b66d5386226a4ec49ed48e1c18cedcc96ce9a2a78ece9633fe8f",
+   "conversation_id": "373650359153330880",
+   "route": "pavo_native",
+   "aspect": "16:9",
+   "references": [
+    "ch-adam-front",
+    "ch-eve-full"
+   ],
+   "words": 17,
+   "clip_s": 5,
+   "flags": [],
+   "face": 0.93,
+   "conf": 6.774,
+   "offset": -2,
+   "mouth_corr": -0.118,
+   "label": "PASS",
+   "why": "approved arc-01-long s-c2-adam",
+   "extra_words_after_last": 0,
+   "wps_est": 3.74,
+   "prompt_sha256": "6f49064ea449a7c959895022832f5368b60c622d24683afd8b9dacaf26b3fd2b",
+   "template": false
+  },
+  {
+   "cohort": "A",
+   "ep": "arc-01-long",
+   "run": "40616795532",
+   "shot": "s-c4-blame",
+   "clip": "b17a8e494093d7e72c10a2027e25aff1d81d4a800d48c4ba5e2be4a01a0d55df",
+   "conversation_id": "373652135877580480",
+   "route": "pavo_native",
+   "aspect": "16:9",
+   "references": [
+    "ch-adam-front",
+    "ch-eve-full"
+   ],
+   "words": 19,
+   "clip_s": 5,
+   "flags": [],
+   "face": 0.97,
+   "conf": 0.211,
+   "offset": -5,
+   "mouth_corr": -0.183,
+   "label": "PASS",
+   "why": "approved arc-01-long s-c4-blame",
+   "extra_words_after_last": 0,
+   "wps_est": 4.18,
+   "prompt_sha256": "459385f3841ad03286cd818aef644eca0bae03c9c144148e8c161b6f9f713a5a",
+   "template": false
+  },
+  {
+   "cohort": "A",
+   "ep": "arc-02-noah-compilation-keeper",
+   "run": "41629339290",
+   "shot": "k-hook",
+   "clip": "9ba6e7eee0aa213846a99e66c60af579ea5672a3c3ad20e18dbbd97aeb629f0b",
+   "conversation_id": "375972935007472320",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 22,
+   "clip_s": 9,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE"
+   ],
+   "face": 1.0,
+   "conf": 7.146,
+   "offset": -1,
+   "mouth_corr": 0.385,
+   "ours": {
+    "face": 1.0,
+    "conf": 4.991,
+    "offset": 0,
+    "source": "pavo-audio-eval 20261103"
+   },
+   "label": "PASS",
+   "why": "E287 sync and face on our audio",
+   "extra_words_after_last": null,
+   "wps_est": 2.57,
+   "prompt_sha256": "b52450ec624319721cd5d9cf9f8593fc8303a6474280b0b7eee4f6192b1379e0",
+   "template": true
+  },
+  {
+   "cohort": "A",
+   "ep": "arc-02-noah-compilation-keeper",
+   "run": "41629339290",
+   "shot": "k-hook",
+   "clip": "5a28e1162ba9e850fe8b84cdd92e1d5e59598290d08cc39737100f2aaca7d746",
+   "conversation_id": null,
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 22,
+   "clip_s": 9,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE"
+   ],
+   "face": 0.98,
+   "conf": 7.872,
+   "offset": -1,
+   "mouth_corr": 0.458,
+   "ours": {
+    "face": 0.98,
+    "conf": 5.8,
+    "offset": -1,
+    "source": "shot-remux 40616795532"
+   },
+   "audio_s": 8.55,
+   "label": "PASS",
+   "why": "approved arc-02-noah-compilation-keeper k-hook",
+   "extra_words_after_last": null,
+   "wps_est": 2.57,
+   "prompt_sha256": "b52450ec624319721cd5d9cf9f8593fc8303a6474280b0b7eee4f6192b1379e0",
+   "template": true
+  },
+  {
+   "cohort": "A",
+   "ep": "arc-02-noah-compilation-keeper",
+   "run": "41629339290",
+   "shot": "k-close",
+   "clip": "1fcff33b087a7459cb3a6d4476c002efbbe9bd98da7c3193ec27d92904f5068a",
+   "conversation_id": "375976099236347712",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 23,
+   "clip_s": 9,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE"
+   ],
+   "face": 0.82,
+   "conf": 7.958,
+   "offset": -1,
+   "mouth_corr": 0.442,
+   "ours": {
+    "face": 0.82,
+    "conf": 6.024,
+    "offset": -1,
+    "source": "shot-remux 40616795532"
+   },
+   "audio_s": 8.55,
+   "label": "PASS",
+   "why": "approved arc-02-noah-compilation-keeper k-close",
+   "extra_words_after_last": null,
+   "wps_est": 2.69,
+   "prompt_sha256": "bdae97fc37ba0de3714e474e8bad6d396e74b9496180c1a0b2a5073d98da2e59",
+   "template": false
+  },
+  {
+   "cohort": "A",
+   "ep": "arc-02-noah-compilation-keeper",
+   "run": "41629339290",
+   "shot": "k-close",
+   "clip": "15cf615c6f9bfcca9d82be7ea14206c2dc46b6361fa88fadfc4a8810533d8784",
+   "conversation_id": null,
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 23,
+   "clip_s": 9,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE",
+    "AUDIO_OFFSET",
+    "FACE_NOT_FOUND"
+   ],
+   "face": 0.09,
+   "conf": 7.186,
+   "offset": -1,
+   "mouth_corr": 0.144,
+   "ours": {
+    "face": 0.09,
+    "conf": 1.386,
+    "offset": -1,
+    "source": "pavo-audio-eval 20261103"
+   },
+   "label": "FAIL",
+   "why": "on our audio: no face",
+   "extra_words_after_last": null,
+   "wps_est": 2.69,
+   "prompt_sha256": "bdae97fc37ba0de3714e474e8bad6d396e74b9496180c1a0b2a5073d98da2e59",
+   "template": false
+  },
+  {
+   "cohort": "A",
+   "ep": "arc-02-noah-compilation-keeper",
+   "run": "41652099686",
+   "shot": "k-hook",
+   "clip": "fcb7776a960fd4040e7138557ce261642856632235662fb06005e360088233ba",
+   "conversation_id": "376012401348447296",
+   "route": "ours",
+   "aspect": "16:9",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 22,
+   "clip_s": 9,
+   "flags": [
+    "MOUTH_NOT_IN_SYNC"
+   ],
+   "face": 0.95,
+   "conf": 1.135,
+   "offset": 10,
+   "mouth_corr": 0.174,
+   "ours": {
+    "face": 0.95,
+    "conf": 1.135,
+    "offset": 10,
+    "source": "probe record (pavo_audio ours)"
+   },
+   "audio_s": 8.55,
+   "label": "FAIL",
+   "why": "on our audio: sync conf 1.135 offset 10",
+   "extra_words_after_last": null,
+   "wps_est": 2.57,
+   "prompt_sha256": "b52450ec624319721cd5d9cf9f8593fc8303a6474280b0b7eee4f6192b1379e0",
+   "template": true
+  },
+  {
+   "cohort": "A",
+   "ep": "arc-02-noah-compilation-keeper",
+   "run": "41652099686",
+   "shot": "k-hook",
+   "clip": "dd3a93795426bbd8270755814ab8f7da94054e42d1d48758b829a289dfcebd88",
+   "conversation_id": null,
+   "route": "ours",
+   "aspect": "16:9",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 22,
+   "clip_s": 9,
+   "flags": [
+    "FACE_NOT_FOUND",
+    "MOUTH_NOT_IN_SYNC"
+   ],
+   "face": 0.0,
+   "conf": null,
+   "offset": null,
+   "mouth_corr": -1.0,
+   "ours": {
+    "face": 0.0,
+    "conf": null,
+    "offset": null,
+    "source": "probe record (pavo_audio ours)"
+   },
+   "audio_s": 8.55,
+   "label": "FAIL",
+   "why": "on our audio: no face",
+   "extra_words_after_last": null,
+   "wps_est": 2.57,
+   "prompt_sha256": "b52450ec624319721cd5d9cf9f8593fc8303a6474280b0b7eee4f6192b1379e0",
+   "template": true
+  },
+  {
+   "cohort": "A",
+   "ep": "arc-02-noah-compilation-keeper",
+   "run": "41652099686",
+   "shot": "k-close",
+   "clip": "33bdfcf3d53eece0c3d83c2ba11efab425795dea7052c3962764ec0034b92187",
+   "conversation_id": "376015964481558208",
+   "route": "ours",
+   "aspect": "16:9",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 23,
+   "clip_s": 9,
+   "flags": [
+    "MOUTH_NOT_IN_SYNC"
+   ],
+   "face": 0.97,
+   "conf": 3.144,
+   "offset": 14,
+   "mouth_corr": 0.121,
+   "ours": {
+    "face": 0.97,
+    "conf": 3.144,
+    "offset": 14,
+    "source": "probe record (pavo_audio ours)"
+   },
+   "audio_s": 8.55,
+   "label": "FAIL",
+   "why": "on our audio: sync conf 3.144 offset 14",
+   "extra_words_after_last": null,
+   "wps_est": 2.69,
+   "prompt_sha256": "bdae97fc37ba0de3714e474e8bad6d396e74b9496180c1a0b2a5073d98da2e59",
+   "template": false
+  },
+  {
+   "cohort": "A",
+   "ep": "arc-02-noah-compilation-keeper",
+   "run": "41652099686",
+   "shot": "k-close",
+   "clip": "1d00c4a4b07ed75c3ecb9b907db3f5ff1e8efa940b7c228ef0a11b8c7be5d6b3",
+   "conversation_id": null,
+   "route": "ours",
+   "aspect": "16:9",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 23,
+   "clip_s": 9,
+   "flags": [
+    "FACE_NOT_FOUND",
+    "MOUTH_NOT_IN_SYNC"
+   ],
+   "face": 0.0,
+   "conf": null,
+   "offset": null,
+   "mouth_corr": -1.0,
+   "ours": {
+    "face": 0.0,
+    "conf": null,
+    "offset": null,
+    "source": "probe record (pavo_audio ours)"
+   },
+   "audio_s": 8.55,
+   "label": "FAIL",
+   "why": "on our audio: no face",
+   "extra_words_after_last": null,
+   "wps_est": 2.69,
+   "prompt_sha256": "bdae97fc37ba0de3714e474e8bad6d396e74b9496180c1a0b2a5073d98da2e59",
+   "template": false
+  },
+  {
+   "cohort": "A",
+   "ep": "flood-ends-long-reflection-1",
+   "run": "41562885923",
+   "shot": "k-r1",
+   "clip": "b2298cb314337f3d9c67d912157c1c7759d0ffbf756b3b1724e8b7ffb16ede8d",
+   "conversation_id": "375825985260285440",
+   "route": "pavo_track",
+   "aspect": "1:1",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 15,
+   "clip_s": 6,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE"
+   ],
+   "face": 0.97,
+   "conf": 8.029,
+   "offset": -1,
+   "mouth_corr": 0.145,
+   "ours": {
+    "face": 0.97,
+    "conf": 6.365,
+    "offset": -1,
+    "source": "pavo-audio-eval 20261103"
+   },
+   "label": "PASS",
+   "why": "E287 sync and face on our audio",
+   "extra_words_after_last": null,
+   "wps_est": 2.7,
+   "prompt_sha256": "b52450ec624319721cd5d9cf9f8593fc8303a6474280b0b7eee4f6192b1379e0",
+   "template": true
+  },
+  {
+   "cohort": "A",
+   "ep": "flood-ends-long-reflection-1",
+   "run": "41562885923",
+   "shot": "k-r1",
+   "clip": "843bca22792cfc8bb1713cd7ccec9c1cfda9ea6904b627dfcc68d85ee032db37",
+   "conversation_id": null,
+   "route": "pavo_track",
+   "aspect": "1:1",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 15,
+   "clip_s": 6,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE"
+   ],
+   "face": 1.0,
+   "conf": 8.042,
+   "offset": -1,
+   "mouth_corr": 0.137,
+   "ours": {
+    "face": 1.0,
+    "conf": 3.991,
+    "offset": -1,
+    "source": "pavo-audio-eval 20261103"
+   },
+   "label": "PASS",
+   "why": "E287 sync and face on our audio",
+   "extra_words_after_last": null,
+   "wps_est": 2.7,
+   "prompt_sha256": "b52450ec624319721cd5d9cf9f8593fc8303a6474280b0b7eee4f6192b1379e0",
+   "template": true
+  },
+  {
+   "cohort": "A",
+   "ep": "flood-ends-long-reflection-1",
+   "run": "41562885923",
+   "shot": "k-r2",
+   "clip": "3a1695926490792fb7531f0c398bb1aaa2340ff693155402133a4c469678ebc0",
+   "conversation_id": "375828788741445312",
+   "route": "pavo_track",
+   "aspect": "1:1",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 15,
+   "clip_s": 5,
+   "flags": [],
+   "face": 1.0,
+   "conf": 7.745,
+   "offset": -1,
+   "mouth_corr": 0.418,
+   "ours": {
+    "face": 1.0,
+    "conf": 7.945,
+    "offset": -1,
+    "source": "pavo-audio-eval 20261103"
+   },
+   "label": "PASS",
+   "why": "E287 sync and face on our audio",
+   "extra_words_after_last": null,
+   "wps_est": 3.3,
+   "prompt_sha256": "2c5379ce264ceae57e1225e20f40e9276447aea76e6fe9e07b37813a36beeca6",
+   "template": false
+  },
+  {
+   "cohort": "A",
+   "ep": "flood-ends-long-reflection-1",
+   "run": "41562885923",
+   "shot": "k-r2",
+   "clip": "f9f16c0263280f9e6e2687fa3bfef4a5fe9b9375d8429497a30b6f1f1c712aca",
+   "conversation_id": null,
+   "route": "pavo_track",
+   "aspect": "1:1",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 15,
+   "clip_s": 5,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE"
+   ],
+   "face": 1.0,
+   "conf": 7.653,
+   "offset": -1,
+   "mouth_corr": 0.339,
+   "ours": {
+    "face": 1.0,
+    "conf": 6.749,
+    "offset": -1,
+    "source": "pavo-audio-eval 20261103"
+   },
+   "label": "PASS",
+   "why": "E287 sync and face on our audio",
+   "extra_words_after_last": null,
+   "wps_est": 3.3,
+   "prompt_sha256": "2c5379ce264ceae57e1225e20f40e9276447aea76e6fe9e07b37813a36beeca6",
+   "template": false
+  },
+  {
+   "cohort": "A",
+   "ep": "flood-ends-long-reflection-1",
+   "run": "41562885923",
+   "shot": "k-r3",
+   "clip": "664e04f4814391ef47c2b53e5282ec16c7537fd72086df307722dfea57daa596",
+   "conversation_id": "375831170765881152",
+   "route": "pavo_track",
+   "aspect": "1:1",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 15,
+   "clip_s": 6,
+   "flags": [],
+   "face": 1.0,
+   "conf": 6.696,
+   "offset": -1,
+   "mouth_corr": 0.47,
+   "label": "PASS",
+   "why": "approved flood-ends-long-reflection-1 k-r3",
+   "extra_words_after_last": 0,
+   "wps_est": 2.7,
+   "prompt_sha256": "be105297bb86673eb3458f78f1a233aa5a66fdaa1c1372b5c954d0eec3566d2c",
+   "template": false
+  },
+  {
+   "cohort": "A",
+   "ep": "flood-ends-long-reflection-1",
+   "run": "41567543843",
+   "shot": "k-r1",
+   "clip": "dae7a90d6e87c022739337f751c125c8457acaa29c2fe886b9929df38caef388",
+   "conversation_id": "375837317866987264",
+   "route": "pavo_track",
+   "aspect": "1:1",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 16,
+   "clip_s": 6,
+   "flags": [],
+   "face": 0.99,
+   "conf": 7.6,
+   "offset": -1,
+   "mouth_corr": 0.251,
+   "ours": {
+    "face": 0.97,
+    "conf": 6.579,
+    "offset": 0,
+    "source": "shot-remux 40616795532"
+   },
+   "audio_s": 5.55,
+   "label": "PASS",
+   "why": "approved flood-ends-long-reflection-1 k-r1",
+   "extra_words_after_last": 0,
+   "wps_est": 2.88,
+   "prompt_sha256": "b52450ec624319721cd5d9cf9f8593fc8303a6474280b0b7eee4f6192b1379e0",
+   "template": true
+  },
+  {
+   "cohort": "A",
+   "ep": "flood-ends-long-reflection-1",
+   "run": "41572178956",
+   "shot": "k-r2",
+   "clip": "7f043fe271892146064b903aaf532c1aa48412d2638705960b09503547fd00e2",
+   "conversation_id": "375848817360934592",
+   "route": "pavo_track",
+   "aspect": "1:1",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 14,
+   "clip_s": 5,
+   "flags": [],
+   "face": 1.0,
+   "conf": 5.861,
+   "offset": -1,
+   "mouth_corr": 0.339,
+   "ours": {
+    "face": 0.99,
+    "conf": 4.962,
+    "offset": -1,
+    "source": "shot-remux 40616795532"
+   },
+   "audio_s": 4.55,
+   "label": "PASS",
+   "why": "approved flood-ends-long-reflection-1 k-r2",
+   "extra_words_after_last": 0,
+   "wps_est": 3.08,
+   "prompt_sha256": "2c5379ce264ceae57e1225e20f40e9276447aea76e6fe9e07b37813a36beeca6",
+   "template": false
+  },
+  {
+   "cohort": "A",
+   "ep": "flood-ends-long-reflection-1",
+   "run": "41572178956",
+   "shot": "k-r3",
+   "clip": "7f89329f1252ddcb760d872f66d69058d2a7d59a1f6a5c91a069865e4234243a",
+   "conversation_id": "375850174444740352",
+   "route": "pavo_track",
+   "aspect": "1:1",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 14,
+   "clip_s": 6,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE"
+   ],
+   "face": 0.99,
+   "conf": 7.917,
+   "offset": -1,
+   "mouth_corr": 0.552,
+   "ours": {
+    "face": 0.99,
+    "conf": 1.32,
+    "offset": -2,
+    "source": "pavo-audio-eval 20261103"
+   },
+   "label": "FAIL",
+   "why": "on our audio: sync conf 1.32 offset -2",
+   "extra_words_after_last": null,
+   "wps_est": 2.52,
+   "prompt_sha256": "be105297bb86673eb3458f78f1a233aa5a66fdaa1c1372b5c954d0eec3566d2c",
+   "template": false
+  },
+  {
+   "cohort": "A",
+   "ep": "flood-ends-long-reflection-1",
+   "run": "41572178956",
+   "shot": "k-r3",
+   "clip": "b132b7fadc4b491da5aca06bfdb8621887dca3741a9e7b4353f4bc333a67f090",
+   "conversation_id": null,
+   "route": "pavo_track",
+   "aspect": "1:1",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 14,
+   "clip_s": 6,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE",
+    "AUDIO_OFFSET"
+   ],
+   "face": 0.98,
+   "conf": 7.515,
+   "offset": -1,
+   "mouth_corr": 0.393,
+   "ours": {
+    "face": 0.98,
+    "conf": 1.725,
+    "offset": -10,
+    "source": "pavo-audio-eval 20261103"
+   },
+   "label": "FAIL",
+   "why": "on our audio: sync conf 1.725 offset -10",
+   "extra_words_after_last": null,
+   "wps_est": 2.52,
+   "prompt_sha256": "be105297bb86673eb3458f78f1a233aa5a66fdaa1c1372b5c954d0eec3566d2c",
+   "template": false
+  },
+  {
+   "cohort": "A",
+   "ep": "flood-ends-long-reflection-1",
+   "run": "41637504153",
+   "shot": "k-r4",
+   "clip": "69bfee43dbeb44d20f05ca57e1adcec9fa48525e59bf6dec568c2886f3650117",
+   "conversation_id": "375988036708374208",
+   "route": "pavo_track",
+   "aspect": "1:1",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 22,
+   "clip_s": 9,
+   "flags": [],
+   "face": 1.0,
+   "conf": 8.872,
+   "offset": 0,
+   "mouth_corr": 0.371,
+   "label": "PASS",
+   "why": "clean probe record: no flag, face and sync in band",
+   "extra_words_after_last": 0,
+   "wps_est": 2.57,
+   "prompt_sha256": "203344c957ff5c00ae191a6f50ad9ca20ebf893bd364407da16482e2d25ac5c7",
+   "template": false
+  },
+  {
+   "cohort": "A",
+   "ep": "flood-ends-long-reflection-1",
+   "run": "41639242332",
+   "shot": "k-r4",
+   "clip": "b1cd73da0127ebac6f994a95342920614c5a4cf6315e60e2d8d7ac768a81e9c5",
+   "conversation_id": "375991175658372672",
+   "route": "pavo_track",
+   "aspect": "1:1",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 22,
+   "clip_s": 9,
+   "flags": [],
+   "face": 0.95,
+   "conf": 8.159,
+   "offset": -1,
+   "mouth_corr": 0.478,
+   "ours": {
+    "face": 0.95,
+    "conf": 7.213,
+    "offset": -1,
+    "source": "shot-remux 40616795532"
+   },
+   "audio_s": 8.55,
+   "label": "PASS",
+   "why": "approved flood-ends-long-reflection-1 k-r4",
+   "extra_words_after_last": 0,
+   "wps_est": 2.57,
+   "prompt_sha256": "203344c957ff5c00ae191a6f50ad9ca20ebf893bd364407da16482e2d25ac5c7",
+   "template": false
+  },
+  {
+   "cohort": "A",
+   "ep": "flood-ends-long",
+   "run": "41534197400",
+   "shot": "k-insight",
+   "clip": "640affc8b05a4986e4223474858bb83aca9447a2a80ac7df2b784c8260e2c279",
+   "conversation_id": "375769134480493632",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 25,
+   "clip_s": 10,
+   "flags": [],
+   "face": 0.94,
+   "conf": 7.408,
+   "offset": -1,
+   "mouth_corr": 0.345,
+   "label": "PASS",
+   "why": "approved flood-ends-long k-insight",
+   "extra_words_after_last": null,
+   "wps_est": 2.62,
+   "prompt_sha256": "f79932fe1f7fee9c716bcaa086e197a717e1839100c5d7f72c29d2452f78d9ad",
+   "template": true
+  },
+  {
+   "cohort": "A",
+   "ep": "flood-ends-long",
+   "run": "41534197400",
+   "shot": "k-bow",
+   "clip": "eaa3a3bbc24e70a93f44ae8d6d369baa5a3aaa7b318fd72fceb5dec6a5a4420d",
+   "conversation_id": "375770880162463552",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 23,
+   "clip_s": 9,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE"
+   ],
+   "face": 0.99,
+   "conf": 7.448,
+   "offset": -1,
+   "mouth_corr": 0.411,
+   "ours": {
+    "face": 0.99,
+    "conf": 3.208,
+    "offset": -2,
+    "source": "pavo-audio-eval 20261103"
+   },
+   "label": "PASS",
+   "why": "E287 sync and face on our audio",
+   "extra_words_after_last": 0,
+   "wps_est": 2.69,
+   "prompt_sha256": "bdae97fc37ba0de3714e474e8bad6d396e74b9496180c1a0b2a5073d98da2e59",
+   "template": false
+  },
+  {
+   "cohort": "A",
+   "ep": "flood-ends-long",
+   "run": "41534197400",
+   "shot": "k-bow",
+   "clip": "ad6fdeeba9c8e3218cf520b01d403323add6684038a8f0126e2072cbdb7cd779",
+   "conversation_id": null,
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 23,
+   "clip_s": 9,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE"
+   ],
+   "face": 0.91,
+   "conf": 6.152,
+   "offset": -1,
+   "mouth_corr": 0.503,
+   "ours": {
+    "face": 0.98,
+    "conf": 3.404,
+    "offset": 0,
+    "source": "pavo-audio-eval 20261103"
+   },
+   "label": "PASS",
+   "why": "E287 sync and face on our audio",
+   "extra_words_after_last": 0,
+   "wps_est": 2.69,
+   "prompt_sha256": "bdae97fc37ba0de3714e474e8bad6d396e74b9496180c1a0b2a5073d98da2e59",
+   "template": false
+  },
+  {
+   "cohort": "A",
+   "ep": "flood-ends-long",
+   "run": "41534197400",
+   "shot": "k-close",
+   "clip": "4a18040be39f9db519bb699a492b14d3411b12c67b1af84d6c83944ebd242f3c",
+   "conversation_id": "375773247017138880",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 23,
+   "clip_s": 10,
+   "flags": [],
+   "face": 0.98,
+   "conf": 7.438,
+   "offset": -2,
+   "mouth_corr": 0.407,
+   "label": "PASS",
+   "why": "approved flood-ends-long k-close",
+   "extra_words_after_last": null,
+   "wps_est": 2.41,
+   "prompt_sha256": "7e0ebb40f1303edd3c8acb78015e5d14ea8905676cfcaad5581febf6b0ee7fe3",
+   "template": true
+  },
+  {
+   "cohort": "A",
+   "ep": "flood-ends-long",
+   "run": "41547308176",
+   "shot": "k-hook",
+   "clip": "bd1e8c757de6a1771992f4df615ba9a491bffc7197d67e9cb0b96461a945dc46",
+   "conversation_id": "375792602773457600",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 22,
+   "clip_s": 7,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE"
+   ],
+   "face": 0.81,
+   "conf": 7.588,
+   "offset": -1,
+   "mouth_corr": 0.225,
+   "ours": {
+    "face": 0.85,
+    "conf": 6.269,
+    "offset": -1,
+    "source": "pavo-audio-eval 20261103"
+   },
+   "label": "PASS",
+   "why": "approved flood-ends-long k-hook",
+   "extra_words_after_last": 0,
+   "wps_est": 3.36,
+   "prompt_sha256": "b52450ec624319721cd5d9cf9f8593fc8303a6474280b0b7eee4f6192b1379e0",
+   "template": true
+  },
+  {
+   "cohort": "A",
+   "ep": "flood-ends-long",
+   "run": "41547308176",
+   "shot": "k-hook",
+   "clip": "9be7cd0ea5b75837d773b2807c9f5144f90252d1dd4f6d0315d08096e2deca70",
+   "conversation_id": null,
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 22,
+   "clip_s": 7,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE",
+    "AUDIO_OFFSET",
+    "FACE_NOT_FOUND",
+    "MOUTH_NOT_IN_SYNC"
+   ],
+   "face": 0.0,
+   "conf": null,
+   "offset": null,
+   "mouth_corr": -1.0,
+   "ours": {
+    "face": 0.26,
+    "conf": 0.918,
+    "offset": -4,
+    "source": "pavo-audio-eval 20261103"
+   },
+   "label": "FAIL",
+   "why": "on our audio: no face",
+   "extra_words_after_last": null,
+   "wps_est": 3.36,
+   "prompt_sha256": "b52450ec624319721cd5d9cf9f8593fc8303a6474280b0b7eee4f6192b1379e0",
+   "template": true
+  },
+  {
+   "cohort": "A",
+   "ep": "flood-ends-long",
+   "run": "41547308176",
+   "shot": "k-bow",
+   "clip": "89b603a627a8cfb4967e29413ed457b81df3e010f6b50766b25ae1cb1c415e60",
+   "conversation_id": "375794446853737152",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 15,
+   "clip_s": 6,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE"
+   ],
+   "face": 0.88,
+   "conf": 8.048,
+   "offset": -1,
+   "mouth_corr": 0.5,
+   "ours": {
+    "face": 1.0,
+    "conf": 5.874,
+    "offset": -1,
+    "source": "pavo-audio-eval 20261103"
+   },
+   "label": "PASS",
+   "why": "E287 sync and face on our audio",
+   "extra_words_after_last": 0,
+   "wps_est": 2.7,
+   "prompt_sha256": "bdae97fc37ba0de3714e474e8bad6d396e74b9496180c1a0b2a5073d98da2e59",
+   "template": false
+  },
+  {
+   "cohort": "A",
+   "ep": "flood-ends-long",
+   "run": "41547308176",
+   "shot": "k-bow",
+   "clip": "8023c5109257f690f6845028e06d008b330027e071186e0578f4b06fbfb6efbc",
+   "conversation_id": null,
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 15,
+   "clip_s": 6,
+   "flags": [],
+   "face": 0.92,
+   "conf": 8.459,
+   "offset": -1,
+   "mouth_corr": 0.369,
+   "ours": {
+    "face": 0.92,
+    "conf": 5.541,
+    "offset": -1,
+    "source": "pavo-audio-eval 20261103"
+   },
+   "label": "PASS",
+   "why": "approved flood-ends-long k-bow",
+   "extra_words_after_last": null,
+   "wps_est": 2.7,
+   "prompt_sha256": "bdae97fc37ba0de3714e474e8bad6d396e74b9496180c1a0b2a5073d98da2e59",
+   "template": false
+  },
+  {
+   "cohort": "A",
+   "ep": "genesis-09-short",
+   "run": "41254369410",
+   "shot": "k-close",
+   "clip": "cf465b0dcdaca8d13ecc5c318e273d0729496ce6defaa608643a949dfcd6ef4e",
+   "conversation_id": "375070446473477696",
+   "route": "pavo_track",
+   "aspect": "9:16",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 17,
+   "clip_s": 8,
+   "flags": [],
+   "face": 0.95,
+   "conf": 6.764,
+   "offset": -1,
+   "mouth_corr": 0.411,
+   "label": "PASS",
+   "why": "clean probe record: no flag, face and sync in band",
+   "extra_words_after_last": null,
+   "wps_est": 2.25,
+   "prompt_sha256": "c8e6962e496e2863b740d289d0a078d11ed136efa4fe37d2062acaf4af7198fd",
+   "template": true
+  },
+  {
+   "cohort": "A",
+   "ep": "genesis-09-short",
+   "run": "41254369410",
+   "shot": "k-close",
+   "clip": "454a7e4cacb5d33d2bf92b4772e5eadd43f54b3e2a2fa46e3682138cd13962e6",
+   "conversation_id": "375075160858036864",
+   "route": "pavo_track",
+   "aspect": "9:16",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 17,
+   "clip_s": 8,
+   "flags": [],
+   "face": 0.96,
+   "conf": 7.075,
+   "offset": -1,
+   "mouth_corr": 0.53,
+   "label": "PASS",
+   "why": "approved genesis-09-short k-close",
+   "extra_words_after_last": null,
+   "wps_est": 2.25,
+   "prompt_sha256": "c8e6962e496e2863b740d289d0a078d11ed136efa4fe37d2062acaf4af7198fd",
+   "template": true
+  },
+  {
+   "cohort": "A",
+   "ep": "genesis-09-short",
+   "run": "41256532612",
+   "shot": "k-close",
+   "clip": "9bbabc42ff7aea11069d251784405983316202fd8d65235d99f4fcc416478c2c",
+   "conversation_id": "375078148675287744",
+   "route": "pavo_track",
+   "aspect": "9:16",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 17,
+   "clip_s": 8,
+   "flags": [],
+   "face": 0.97,
+   "conf": 7.239,
+   "offset": -1,
+   "mouth_corr": 0.177,
+   "label": "PASS",
+   "why": "clean probe record: no flag, face and sync in band",
+   "extra_words_after_last": null,
+   "wps_est": 2.25,
+   "prompt_sha256": "c8e6962e496e2863b740d289d0a078d11ed136efa4fe37d2062acaf4af7198fd",
+   "template": true
+  },
+  {
+   "cohort": "A",
+   "ep": "genesis-09-short",
+   "run": "41256532612",
+   "shot": "k-close",
+   "clip": "d10868053476ad9e8bdd5cbdaf673c006ed04558626598ad24bac94409c40ef2",
+   "conversation_id": "375081444337030848",
+   "route": "pavo_track",
+   "aspect": "9:16",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 17,
+   "clip_s": 8,
+   "flags": [],
+   "face": 0.99,
+   "conf": 7.235,
+   "offset": -1,
+   "mouth_corr": 0.467,
+   "label": "PASS",
+   "why": "clean probe record: no flag, face and sync in band",
+   "extra_words_after_last": null,
+   "wps_est": 2.25,
+   "prompt_sha256": "c8e6962e496e2863b740d289d0a078d11ed136efa4fe37d2062acaf4af7198fd",
+   "template": true
+  },
+  {
+   "cohort": "A",
+   "ep": "genesis-10-short",
+   "run": "41574608645",
+   "shot": "k-insight",
+   "clip": "c8d168ddbd368d9929cd5d3709886b9668136d3047f248d94198c83fd10b0f7b",
+   "conversation_id": "375855243105959488",
+   "route": "pavo_track",
+   "aspect": "9:16",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 22,
+   "clip_s": 8,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE"
+   ],
+   "face": 0.97,
+   "conf": 7.561,
+   "offset": -1,
+   "mouth_corr": 0.42,
+   "ours": {
+    "face": 0.97,
+    "conf": 1.802,
+    "offset": 0,
+    "source": "pavo-audio-eval 20261103"
+   },
+   "label": "FAIL",
+   "why": "on our audio: sync conf 1.802 offset 0",
+   "extra_words_after_last": 0,
+   "wps_est": 2.91,
+   "prompt_sha256": "d0317fd5ba2b22ecee9ed6ceb30a33a17b497b70d299e9c1a8216c225b919969",
+   "template": true
+  },
+  {
+   "cohort": "A",
+   "ep": "genesis-10-short",
+   "run": "41574608645",
+   "shot": "k-insight",
+   "clip": "950e4db3902f4a925ef64d4290d6c6eef023a950420a6d9c3d2791d66a3d605f",
+   "conversation_id": null,
+   "route": "pavo_track",
+   "aspect": "9:16",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 22,
+   "clip_s": 8,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE"
+   ],
+   "face": 0.93,
+   "conf": 7.188,
+   "offset": -1,
+   "mouth_corr": 0.34,
+   "ours": {
+    "face": 0.93,
+    "conf": 6.027,
+    "offset": -1,
+    "source": "pavo-audio-eval 20261103"
+   },
+   "label": "PASS",
+   "why": "E287 sync and face on our audio",
+   "extra_words_after_last": 0,
+   "wps_est": 2.91,
+   "prompt_sha256": "d0317fd5ba2b22ecee9ed6ceb30a33a17b497b70d299e9c1a8216c225b919969",
+   "template": true
+  },
+  {
+   "cohort": "A",
+   "ep": "genesis-10-short",
+   "run": "41574608645",
+   "shot": "k-close",
+   "clip": "cdcae102f843a8ff3f0a60ce95307e878f9e42d2b97bd9285bdc6ed6184b8f31",
+   "conversation_id": "375858216585985856",
+   "route": "pavo_track",
+   "aspect": "9:16",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 13,
+   "clip_s": 7,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE"
+   ],
+   "face": 0.99,
+   "conf": 5.958,
+   "offset": -1,
+   "mouth_corr": 0.405,
+   "ours": {
+    "face": 0.99,
+    "conf": 3.98,
+    "offset": -1,
+    "source": "pavo-audio-eval 20261103"
+   },
+   "label": "PASS",
+   "why": "E287 sync and face on our audio",
+   "extra_words_after_last": 0,
+   "wps_est": 1.98,
+   "prompt_sha256": "6ce43b7e97626e1cf98c1a1f2b31637d56bffc41d6411657b195fe9e3a924e18",
+   "template": false
+  },
+  {
+   "cohort": "A",
+   "ep": "genesis-10-short",
+   "run": "41574608645",
+   "shot": "k-close",
+   "clip": "7ae7812a96823bbc3bbc6a5f163af203c0b32018622843aa3f79d0b687074c69",
+   "conversation_id": null,
+   "route": "pavo_track",
+   "aspect": "9:16",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 13,
+   "clip_s": 7,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE"
+   ],
+   "face": 0.97,
+   "conf": 6.433,
+   "offset": -1,
+   "mouth_corr": 0.334,
+   "ours": {
+    "face": 0.97,
+    "conf": 3.298,
+    "offset": -1,
+    "source": "pavo-audio-eval 20261103"
+   },
+   "label": "PASS",
+   "why": "E287 sync and face on our audio",
+   "extra_words_after_last": 4,
+   "wps_est": 1.98,
+   "prompt_sha256": "6ce43b7e97626e1cf98c1a1f2b31637d56bffc41d6411657b195fe9e3a924e18",
+   "template": false
+  },
+  {
+   "cohort": "B",
+   "ep": "flood-ends-long",
+   "run": "41423359803/41436544195",
+   "shot": "k-close",
+   "generation": 1,
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 23,
+   "clip_s": null,
+   "label": "FAIL",
+   "why": "FACE_NOT_FOUND (E266: seated Medium shot drawn full body)",
+   "flags": [
+    "FACE_NOT_FOUND"
+   ],
+   "prompt_sha256": "c2c0d26eb2a307ef32c68f2659bf270159a147a105534c88b4a735a551f65bd0",
+   "template": false
+  },
+  {
+   "cohort": "B",
+   "ep": "flood-ends-long",
+   "run": "41423359803/41436544195",
+   "shot": "k-close",
+   "generation": 2,
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 23,
+   "clip_s": null,
+   "label": "FAIL",
+   "why": "FACE_NOT_FOUND (E266: seated Medium shot drawn full body)",
+   "flags": [
+    "FACE_NOT_FOUND"
+   ],
+   "prompt_sha256": "c2c0d26eb2a307ef32c68f2659bf270159a147a105534c88b4a735a551f65bd0",
+   "template": false
+  },
+  {
+   "cohort": "B",
+   "ep": "flood-ends-long",
+   "run": "41423359803/41436544195",
+   "shot": "k-close",
+   "generation": 3,
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 23,
+   "clip_s": null,
+   "label": "FAIL",
+   "why": "FACE_NOT_FOUND (E266: seated Medium shot drawn full body)",
+   "flags": [
+    "FACE_NOT_FOUND"
+   ],
+   "prompt_sha256": "c2c0d26eb2a307ef32c68f2659bf270159a147a105534c88b4a735a551f65bd0",
+   "template": false
+  },
+  {
+   "cohort": "B",
+   "ep": "flood-ends-long",
+   "run": "41423359803/41436544195",
+   "shot": "k-close",
+   "generation": 4,
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 23,
+   "clip_s": null,
+   "label": "FAIL",
+   "why": "FACE_NOT_FOUND (E266: seated Medium shot drawn full body)",
+   "flags": [
+    "FACE_NOT_FOUND"
+   ],
+   "prompt_sha256": "c2c0d26eb2a307ef32c68f2659bf270159a147a105534c88b4a735a551f65bd0",
+   "template": false
+  },
+  {
+   "cohort": "B",
+   "ep": "flood-ends-long",
+   "run": "41423359803/41436544195",
+   "shot": "k-close",
+   "generation": 5,
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 23,
+   "clip_s": null,
+   "label": "FAIL",
+   "why": "FACE_NOT_FOUND (E266: seated Medium shot drawn full body)",
+   "flags": [
+    "FACE_NOT_FOUND"
+   ],
+   "prompt_sha256": "c2c0d26eb2a307ef32c68f2659bf270159a147a105534c88b4a735a551f65bd0",
+   "template": false
+  },
+  {
+   "cohort": "B",
+   "ep": "flood-ends-long",
+   "run": "41423359803/41436544195",
+   "shot": "k-close",
+   "generation": 6,
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 23,
+   "clip_s": null,
+   "label": "FAIL",
+   "why": "FACE_NOT_FOUND (E266: seated Medium shot drawn full body)",
+   "flags": [
+    "FACE_NOT_FOUND"
+   ],
+   "prompt_sha256": "c2c0d26eb2a307ef32c68f2659bf270159a147a105534c88b4a735a551f65bd0",
+   "template": false
+  },
+  {
+   "cohort": "B",
+   "ep": "flood-ends-long",
+   "run": "41423359803/41436544195",
+   "shot": "k-insight",
+   "generation": 1,
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 25,
+   "clip_s": null,
+   "label": "FAIL",
+   "why": "FACE_NOT_FOUND (E266: seated Medium shot drawn full body)",
+   "flags": [
+    "FACE_NOT_FOUND"
+   ],
+   "prompt_sha256": "da38ebbc0a3bad6919a709db8a2e8e8619b8b558ae2b8052148b7b47b3a8fc22",
+   "template": false
+  },
+  {
+   "cohort": "B",
+   "ep": "flood-ends-long",
+   "run": "41423359803/41436544195",
+   "shot": "k-insight",
+   "generation": 2,
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 25,
+   "clip_s": null,
+   "label": "FAIL",
+   "why": "FACE_NOT_FOUND (E266: seated Medium shot drawn full body)",
+   "flags": [
+    "FACE_NOT_FOUND"
+   ],
+   "prompt_sha256": "da38ebbc0a3bad6919a709db8a2e8e8619b8b558ae2b8052148b7b47b3a8fc22",
+   "template": false
+  },
+  {
+   "cohort": "B",
+   "ep": "flood-ends-long",
+   "run": "41423359803/41436544195",
+   "shot": "k-bow",
+   "generation": 1,
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 23,
+   "clip_s": null,
+   "label": "FAIL",
+   "why": "FACE_NOT_FOUND (E266: seated Medium shot drawn full body)",
+   "flags": [
+    "FACE_NOT_FOUND"
+   ],
+   "prompt_sha256": "1470bdf93110a2d48d312a565e0e3afc10108dbbee4fc1477f432a7257579fc9",
+   "template": false
+  },
+  {
+   "cohort": "B",
+   "ep": "flood-ends-long",
+   "run": "41423359803/41436544195",
+   "shot": "k-bow",
+   "generation": 2,
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "references": [
+    "ch-keeper-talk"
+   ],
+   "words": 23,
+   "clip_s": null,
+   "label": "FAIL",
+   "why": "FACE_NOT_FOUND (E266: seated Medium shot drawn full body)",
+   "flags": [
+    "FACE_NOT_FOUND"
+   ],
+   "prompt_sha256": "1470bdf93110a2d48d312a565e0e3afc10108dbbee4fc1477f432a7257579fc9",
+   "template": false
+  },
+  {
+   "cohort": "C",
+   "ep": "arc-01-long",
+   "run": "direct 2026-10-27",
+   "shot": "s-open",
+   "speaker": "eve",
+   "conversation_id": "373572838868944960",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "words": 17,
+   "clip_s": 5,
+   "face": 1.0,
+   "conf": 10.622,
+   "offset": -1,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE",
+    "AUDIO_OFFSET"
+   ],
+   "label": "PASS",
+   "why": "picture: face and SyncNet on the clip track",
+   "prompt_sha256": "3743721f8aa7a2dce86919d11a7edd0b4c08c8540a9ac22f3afbd16e470a5752",
+   "template": false
+  },
+  {
+   "cohort": "C",
+   "ep": "arc-01-long",
+   "run": "direct 2026-10-27",
+   "shot": "s-open",
+   "speaker": "eve",
+   "conversation_id": "373574444096716352",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "words": 17,
+   "clip_s": 5,
+   "face": 1.0,
+   "conf": 7.481,
+   "offset": -2,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE"
+   ],
+   "label": "PASS",
+   "why": "picture: face and SyncNet on the clip track",
+   "prompt_sha256": "3743721f8aa7a2dce86919d11a7edd0b4c08c8540a9ac22f3afbd16e470a5752",
+   "template": false
+  },
+  {
+   "cohort": "C",
+   "ep": "arc-01-long",
+   "run": "direct 2026-10-27",
+   "shot": "s-open",
+   "speaker": "eve",
+   "conversation_id": "373579376144681600",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "words": 17,
+   "clip_s": 5,
+   "face": 1.0,
+   "conf": 9.81,
+   "offset": -1,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE",
+    "AUDIO_OFFSET"
+   ],
+   "label": "PASS",
+   "why": "picture: face and SyncNet on the clip track",
+   "prompt_sha256": "3743721f8aa7a2dce86919d11a7edd0b4c08c8540a9ac22f3afbd16e470a5752",
+   "template": false
+  },
+  {
+   "cohort": "C",
+   "ep": "arc-01-long",
+   "run": "direct 2026-10-27",
+   "shot": "s-open",
+   "speaker": "eve",
+   "conversation_id": "373584601035865664",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "words": 17,
+   "clip_s": 5,
+   "face": 1.0,
+   "conf": 9.152,
+   "offset": -1,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE"
+   ],
+   "label": "PASS",
+   "why": "picture: face and SyncNet on the clip track",
+   "prompt_sha256": "3743721f8aa7a2dce86919d11a7edd0b4c08c8540a9ac22f3afbd16e470a5752",
+   "template": false
+  },
+  {
+   "cohort": "C",
+   "ep": "arc-01-long",
+   "run": "direct 2026-10-27",
+   "shot": "k-promise-1",
+   "speaker": "keeper",
+   "conversation_id": "373586864504650432",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "words": 14,
+   "clip_s": 5,
+   "face": 0.0,
+   "conf": null,
+   "offset": null,
+   "flags": [
+    "FACE_NOT_FOUND",
+    "MOUTH_NOT_IN_SYNC"
+   ],
+   "label": "FAIL",
+   "why": "no face",
+   "prompt_sha256": "09e403b180134f845824d9bb758399f1e4aea7e151446ef59e345f1f835ab64e",
+   "template": false
+  },
+  {
+   "cohort": "C",
+   "ep": "arc-01-long",
+   "run": "direct 2026-10-27",
+   "shot": "s-c2-adam",
+   "speaker": "adam",
+   "conversation_id": "373574884389560064",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "words": 17,
+   "clip_s": 5,
+   "face": 1.0,
+   "conf": 0.623,
+   "offset": 15,
+   "flags": [
+    "MOUTH_NOT_IN_SYNC"
+   ],
+   "label": "FAIL",
+   "why": "sync/rotation ['MOUTH_NOT_IN_SYNC']",
+   "prompt_sha256": "726165d256df9390ac27ed046ac5be6ce8d8f144cb4ab1c59305b0d870e21488",
+   "template": false
+  },
+  {
+   "cohort": "C",
+   "ep": "arc-01-long",
+   "run": "direct 2026-10-27",
+   "shot": "s-c2-adam",
+   "speaker": "adam",
+   "conversation_id": "373577086629899776",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "words": 17,
+   "clip_s": 5,
+   "face": 1.0,
+   "conf": 0.512,
+   "offset": 15,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE",
+    "MOUTH_NOT_IN_SYNC"
+   ],
+   "label": "FAIL",
+   "why": "sync/rotation ['AUDIO_NOT_OUR_LINE', 'MOUTH_NOT_IN_SYNC']",
+   "prompt_sha256": "726165d256df9390ac27ed046ac5be6ce8d8f144cb4ab1c59305b0d870e21488",
+   "template": false
+  },
+  {
+   "cohort": "C",
+   "ep": "arc-01-long",
+   "run": "direct 2026-10-27",
+   "shot": "s-c2-adam",
+   "speaker": "adam",
+   "conversation_id": "373582066556078784",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "words": 17,
+   "clip_s": 5,
+   "face": 1.0,
+   "conf": 7.809,
+   "offset": -2,
+   "flags": [
+    "ROTATED_PICTURE",
+    "AUDIO_NOT_OUR_LINE",
+    "AUDIO_OFFSET"
+   ],
+   "label": "FAIL",
+   "why": "sync/rotation ['ROTATED_PICTURE', 'AUDIO_NOT_OUR_LINE', 'AUDIO_OFFSET']",
+   "prompt_sha256": "726165d256df9390ac27ed046ac5be6ce8d8f144cb4ab1c59305b0d870e21488",
+   "template": false
+  },
+  {
+   "cohort": "C",
+   "ep": "arc-01-long",
+   "run": "direct 2026-10-27",
+   "shot": "s-c3-eve",
+   "speaker": "eve",
+   "conversation_id": "373575025913838272",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "words": 17,
+   "clip_s": 5,
+   "face": 1.0,
+   "conf": 9.207,
+   "offset": -1,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE",
+    "AUDIO_OFFSET"
+   ],
+   "label": "PASS",
+   "why": "picture: face and SyncNet on the clip track",
+   "prompt_sha256": "3fa9ae02228606f3e8ff8321cb67001302118b852383cf691baadef0df1076c2",
+   "template": false
+  },
+  {
+   "cohort": "C",
+   "ep": "arc-01-long",
+   "run": "direct 2026-10-27",
+   "shot": "s-c3-eve",
+   "speaker": "eve",
+   "conversation_id": "373577218271774784",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "words": 17,
+   "clip_s": 5,
+   "face": 1.0,
+   "conf": 8.947,
+   "offset": -1,
+   "flags": [],
+   "label": "PASS",
+   "why": "picture: face and SyncNet on the clip track",
+   "prompt_sha256": "3fa9ae02228606f3e8ff8321cb67001302118b852383cf691baadef0df1076c2",
+   "template": false
+  },
+  {
+   "cohort": "C",
+   "ep": "arc-01-long",
+   "run": "direct 2026-10-27",
+   "shot": "s-c3-eve",
+   "speaker": "eve",
+   "conversation_id": "373579779905161856",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "words": 17,
+   "clip_s": 5,
+   "face": 1.0,
+   "conf": 8.193,
+   "offset": -1,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE"
+   ],
+   "label": "PASS",
+   "why": "picture: face and SyncNet on the clip track",
+   "prompt_sha256": "3fa9ae02228606f3e8ff8321cb67001302118b852383cf691baadef0df1076c2",
+   "template": false
+  },
+  {
+   "cohort": "C",
+   "ep": "arc-01-long",
+   "run": "direct 2026-10-27",
+   "shot": "s-c3-eve",
+   "speaker": "eve",
+   "conversation_id": "373584743436126848",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "words": 17,
+   "clip_s": 5,
+   "face": 1.0,
+   "conf": 8.851,
+   "offset": -2,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE"
+   ],
+   "label": "PASS",
+   "why": "picture: face and SyncNet on the clip track",
+   "prompt_sha256": "3fa9ae02228606f3e8ff8321cb67001302118b852383cf691baadef0df1076c2",
+   "template": false
+  },
+  {
+   "cohort": "C",
+   "ep": "arc-01-long",
+   "run": "direct 2026-10-27",
+   "shot": "s-c4-adam",
+   "speaker": "adam",
+   "conversation_id": "373572972377803392",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "words": 19,
+   "clip_s": 6,
+   "face": 1.0,
+   "conf": 6.779,
+   "offset": -2,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE",
+    "AUDIO_OFFSET"
+   ],
+   "label": "PASS",
+   "why": "picture: face and SyncNet on the clip track",
+   "prompt_sha256": "e96db2a99be9a57398f4d5adb505bf251e85c68064552e00b33e6e58972b9d36",
+   "template": false
+  },
+  {
+   "cohort": "C",
+   "ep": "arc-01-long",
+   "run": "direct 2026-10-27",
+   "shot": "s-c4-adam",
+   "speaker": "adam",
+   "conversation_id": "373576708525924096",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "words": 19,
+   "clip_s": 6,
+   "face": 1.0,
+   "conf": 6.858,
+   "offset": -2,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE",
+    "AUDIO_OFFSET"
+   ],
+   "label": "PASS",
+   "why": "picture: face and SyncNet on the clip track",
+   "prompt_sha256": "e96db2a99be9a57398f4d5adb505bf251e85c68064552e00b33e6e58972b9d36",
+   "template": false
+  },
+  {
+   "cohort": "C",
+   "ep": "arc-01-long",
+   "run": "direct 2026-10-27",
+   "shot": "s-c4-adam",
+   "speaker": "adam",
+   "conversation_id": "373581933965740736",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "words": 19,
+   "clip_s": 6,
+   "face": 1.0,
+   "conf": 8.784,
+   "offset": -2,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE"
+   ],
+   "label": "PASS",
+   "why": "picture: face and SyncNet on the clip track",
+   "prompt_sha256": "e96db2a99be9a57398f4d5adb505bf251e85c68064552e00b33e6e58972b9d36",
+   "template": false
+  },
+  {
+   "cohort": "C",
+   "ep": "arc-01-long",
+   "run": "direct 2026-10-27",
+   "shot": "s-c4-blame",
+   "speaker": "adam",
+   "conversation_id": "373575154783780416",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "words": 19,
+   "clip_s": 5,
+   "face": 0.81,
+   "conf": 1.538,
+   "offset": -2,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE",
+    "MOUTH_NOT_IN_SYNC"
+   ],
+   "label": "FAIL",
+   "why": "sync/rotation ['AUDIO_NOT_OUR_LINE', 'MOUTH_NOT_IN_SYNC']",
+   "prompt_sha256": "02b1da4d489c06ed08dc784ddd698914d472fc5f725adfb84329c7d820d709c5",
+   "template": false
+  },
+  {
+   "cohort": "C",
+   "ep": "arc-01-long",
+   "run": "direct 2026-10-27",
+   "shot": "s-c4-blame",
+   "speaker": "adam",
+   "conversation_id": "373579539643448000",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "words": 19,
+   "clip_s": 5,
+   "face": 1.0,
+   "conf": 10.284,
+   "offset": -1,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE"
+   ],
+   "label": "PASS",
+   "why": "picture: face and SyncNet on the clip track",
+   "prompt_sha256": "02b1da4d489c06ed08dc784ddd698914d472fc5f725adfb84329c7d820d709c5",
+   "template": false
+  },
+  {
+   "cohort": "C",
+   "ep": "arc-01-long",
+   "run": "direct 2026-10-27",
+   "shot": "s-c4-blame",
+   "speaker": "adam",
+   "conversation_id": "373582177696546624",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "words": 19,
+   "clip_s": 5,
+   "face": 1.0,
+   "conf": 9.421,
+   "offset": -1,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE"
+   ],
+   "label": "PASS",
+   "why": "picture: face and SyncNet on the clip track",
+   "prompt_sha256": "02b1da4d489c06ed08dc784ddd698914d472fc5f725adfb84329c7d820d709c5",
+   "template": false
+  },
+  {
+   "cohort": "C",
+   "ep": "arc-01-long",
+   "run": "direct 2026-10-27",
+   "shot": "s-c4-eve",
+   "speaker": "eve",
+   "conversation_id": "373576595908364352",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "words": 16,
+   "clip_s": 6,
+   "face": 1.0,
+   "conf": 6.396,
+   "offset": -2,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE",
+    "AUDIO_OFFSET"
+   ],
+   "label": "PASS",
+   "why": "picture: face and SyncNet on the clip track",
+   "prompt_sha256": "30c12567d7317f1888f8f49533082b6594b433bf9312c3e93e01756614256229",
+   "template": false
+  },
+  {
+   "cohort": "C",
+   "ep": "arc-01-long",
+   "run": "direct 2026-10-27",
+   "shot": "s-c4-eve",
+   "speaker": "eve",
+   "conversation_id": "373579640251648064",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "words": 16,
+   "clip_s": 6,
+   "face": 1.0,
+   "conf": 10.257,
+   "offset": -1,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE",
+    "AUDIO_OFFSET"
+   ],
+   "label": "PASS",
+   "why": "picture: face and SyncNet on the clip track",
+   "prompt_sha256": "30c12567d7317f1888f8f49533082b6594b433bf9312c3e93e01756614256229",
+   "template": false
+  },
+  {
+   "cohort": "C",
+   "ep": "arc-01-long",
+   "run": "direct 2026-10-27",
+   "shot": "s-c4-eve",
+   "speaker": "eve",
+   "conversation_id": "373584506055899840",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "words": 16,
+   "clip_s": 6,
+   "face": 1.0,
+   "conf": 8.319,
+   "offset": -2,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE",
+    "AUDIO_OFFSET"
+   ],
+   "label": "PASS",
+   "why": "picture: face and SyncNet on the clip track",
+   "prompt_sha256": "30c12567d7317f1888f8f49533082b6594b433bf9312c3e93e01756614256229",
+   "template": false
+  },
+  {
+   "cohort": "C",
+   "ep": "arc-01-long",
+   "run": "direct 2026-10-27",
+   "shot": "k-insight-2",
+   "speaker": "keeper",
+   "conversation_id": "373586961866987200",
+   "route": "pavo_track",
+   "aspect": "16:9",
+   "words": 14,
+   "clip_s": 5,
+   "face": 0.53,
+   "conf": 8.436,
+   "offset": -1,
+   "flags": [
+    "AUDIO_NOT_OUR_LINE",
+    "FACE_NOT_FOUND"
+   ],
+   "label": "FAIL",
+   "why": "no face",
+   "prompt_sha256": "bb95fbb83ceb403c1247d51c86ecfe8768f1ef5435f4265848efe3f09ab39b4e",
+   "template": false
+  }
+ ]
+}
