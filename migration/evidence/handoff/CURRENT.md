@@ -71,6 +71,16 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
 - genesis-09-short is public (https://youtube.com/shorts/IYSxVKTikSs). The bridge Short genesis-10 continues only
   if stills exist; Short slots after the long is public. TikTok mirrors each public Short through `tiktok.yml`.
 
+## Owner-login items (2026-11-03, PC "Matheus" via Desktop Commander)
+
+- TikTok runner: `runner.py status` (venv python) returns NOT_LOGGED_IN. Stopped: the login is a manual owner step in
+  the runner's own Chrome profile; no password or challenge was handled. Owner: run `runner.py login`, sign in once.
+- Buffer: `BUFFER_API_KEY` is present and `tiktok.yml` scheduled runs through 46 succeeded; a `discover` run was
+  dispatched (run 41612746847). Nothing further needed on the free plan.
+- Telegram: the repo expects secret `TELEGRAM_BOT_TOKEN` (DECISIONS.md); it is not in the secret list. Not created: the
+  desktop tools available here cannot see or click the screen, so Telegram Desktop could not be driven.
+- Studio related-video links: not done, same reason (no screen control).
+
 ## Brand
 
 The new avatar and banner ("the Keeper by the fire") are live on YouTube and on the Facebook Page
