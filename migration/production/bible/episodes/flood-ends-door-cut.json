@@ -140,5 +140,6 @@
   },
   "process": "local-review.yml run 41565464812 (pinned local ASR + ffmpeg measures + session reviewer's own look at the frame sheets) of this exact cut master, rendered by short-cuts.yml from the clean master of the published long flood-ends-long; E250 defect-finder gate for track buzzy-cut. Scores are information and are not the gate. Local review (E268): audio was judged from the faster-whisper small.en transcript with word times plus ffmpeg loudness/peak/silence measures and my own amplitude readback of the first and last 0.8 s of the exact file; I did not listen to the sound, so delivery, diction and music taste are not claimed. Picture: the 1 frame / 2 s sheets were viewed, one full-size frame per cut, detectors ran on every frame at 320x180.",
   "run_id": "41565464812"
- }
+ },
+ "video_id": "qENUe7ZAu6k"
 }
