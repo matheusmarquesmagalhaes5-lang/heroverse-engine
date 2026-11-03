@@ -100,3 +100,13 @@ accepted boundary.
   owner (QR scan on his phone). (3) Telegram Desktop is not installed on the PC, so no bot or `TELEGRAM_BOT_TOKEN`.
   (4) Studio "Vídeo relacionado" set to the long 1m-NUJhkdMY and saved ("Alterações salvas") on the three flood cuts
   ESuoDa9sGng, v1ssTLntv8Y, qENUe7ZAu6k. Screenshots deleted from the PC.
+
+- 2026-11-03 (scheduled run, focus part B, M2 compilation): NOT built. Pavo is ready (account authenticated, generation enabled,
+  no additional spend). The new Keeper hook and close need a fresh Kokoro line (2-12 s WAV, ASR-exact) as the Pavo audio
+  reference; this cloud session has no Kokoro, and the download of the Kokoro model files was denied by the session's auto-mode
+  classifier, so no audio, Pavo quote or generation was made. No plan file written. Public material (Shorts genesis-06..09 + the
+  flood long) stays about 19 min: ship "The Complete Story of Noah (Genesis 5-9) KJV" at its true length, not a 40 min marathon.
+  Next (a session with Kokoro or an existing voice workflow): hook + close lines, 2 Pavo generations each, best by ASR, plan
+  `compilations/arc-02-noah-compilation.json` with the `long` chapter for flood-ends-long (1m-NUJhkdMY), then `compilation-build.yml`,
+  local-review, claude_review, approve, gate, publish at the 11-04 slot. The 11-01 hook2/close clips say "Genesis five to seven"
+  and must not be reused for a Genesis 5-9 title.
