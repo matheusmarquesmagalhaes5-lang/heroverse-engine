@@ -59,6 +59,7 @@ def hand_copied_shot_ids(root=ROOT):
 # workflow_dispatch workflows the guard does not cover, each with its reason (a new one must be listed or guarded)
 EXEMPT = {
     "local-review.yml": "E268: the default native review: a pinned CPU ASR and ffmpeg measures over a release master by sha256; no provider call, no secret, no generation, zero credits, nothing published; one run per subject (heroverse-subject-<plan>); approval stays with approve.yml",
+    "speech-check.yml": "E281: the pinned ASR (medium.en), YAMNet, voice and lips measured on probed clips by sha256 (episode_build.speech_check_step) and the sidecars pushed to a branch; no provider call, no secret, no generation, zero credits, nothing approved or published; approve-shot recomputes the verdict",
     "buzzy-cloud-readiness.yml": "bounded allowlisted GET-only account inspection; no deploy, generation, render, upload or billing mutation",
     "buzzy-long-pilot.yml": "E259: QA and publication inputs of a built long-first long (master by the report's sha256); no provider call, no secret, no generation; one run at a time (heroverse-long-build); approval stays with approve.yml",
     "short-cuts.yml": "E259: ffmpeg 9:16 cuts of a long-first long's caption-free master by sha256, refused inside speech; no provider call, no secret, no generation; review and publication stay with native-review.yml and publish-episode.yml",
@@ -196,6 +197,24 @@ class Wiring(unittest.TestCase):
         # E73 / E81 / E89 class: the scripts a workflow calls import in the environment it builds
         for wf in g.WORKFLOWS:
             self.assertEqual(g.import_problems(wf), [], wf)
+
+
+class SpeechCheckWorkflow(unittest.TestCase):
+    """E281: a session without local models runs the speech check on the runner with the long build's frozen pins."""
+
+    def test_it_runs_the_builds_own_speech_check_with_the_same_pins_and_every_reference(self):
+        root = Path(__file__).resolve().parents[2]
+        sc = (root / ".github/workflows/speech-check.yml").read_text()
+        lb = (root / ".github/workflows/long-build.yml").read_text()
+        for pin in ("11b220779aea4c6f3ce9d2549c8a95ea869ed84066864b999531ef53e594fe5b",
+                    "10c95ea3eb9a7bb4cb8bddf6feb023250381008177ac162ce169694d05c317de",
+                    "revision=a29b04bd15381511a9af671baec01072039215e3"):
+            self.assertIn(pin, sc)
+            self.assertIn(pin, lb)
+        self.assertIn("episode_build.py speech-check", sc)
+        self.assertIn("refs.json", sc)          # every reference voices.json holds is measured (VOICE_REFERENCE_FILES_MISSING)
+        self.assertNotIn("PAVO_TOKEN", sc)      # no provider secret, no generation
+        self.assertIn("resemblyzer==0.1.4", sc)
 
 
 class Imports(unittest.TestCase):

@@ -1,0 +1,116 @@
+name: HeroVerse speech check (the pinned ASR, YAMNet, voice and lips on probed Pavo clips; writes the sidecars approve-shot reads; nothing approved)
+run-name: "speech-check: record=${{ inputs.record }} clips=${{ inputs.clips }}"
+# E281 (M2, Noah compilation): a session without local models (no medium.en, YAMNet, resemblyzer, MediaPipe) could not run
+# `episode_build.py speech-check`, the only authority that lets approve-shot accept a clip flagged AUDIO_NOT_OUR_LINE
+# (E266). This runs the SAME function (episode_build.speech_check_step) on the runner with the same pins as long-build.yml
+# (medium.en model.bin sha256 11b22077...), shot-probe.yml (MediaPipe face model, SyncNet-free) and the voice references
+# voices.json holds by sha256. The sidecars (migration/evidence/shots/<episode>/speech/<clip sha256>.json) go to branch
+# claude/speech-<episode>-<run> for a PR; approve-shot still recomputes the verdict and Claude still reviews the clip.
+# No Pavo call, no secret, no generation, nothing approved or published.
+on:
+  workflow_dispatch:
+    inputs:
+      plan:
+        description: Plan path (migration/production/bible/plans/<episode>.json)
+        required: true
+      record:
+        description: The sealed shot-probe record on main (migration/evidence/shots/<episode>/<run id>.json)
+        required: true
+      clips:
+        description: "Comma list of SHOT:CLIPSHA256[:TRIM_OUT_SECONDS] (a clip of that record; the trim is the E273 out point)"
+        required: true
+permissions:
+  contents: read
+concurrency:
+  group: heroverse-speech-check
+  cancel-in-progress: false
+jobs:
+  check:
+    if: github.repository == 'matheusmagah-cpu/heroverse-engine' && github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    permissions:
+      contents: write   # release reads (assets.sh) and the sidecar branch; no secret in this job
+    env:
+      PLAN: ${{ inputs.plan }}
+      RECORD: ${{ inputs.record }}
+      CLIPS: ${{ inputs.clips }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - name: Inputs (paths under the repository, an episode that matches, hashes)
+        run: |
+          [[ "$PLAN" =~ ^migration/production/bible/plans/([a-z0-9]+(-[a-z0-9]+)*)\.json$ ]] || { echo "PLAN_PATH_REFUSED"; exit 1; }
+          ep="${BASH_REMATCH[1]}"
+          [[ "$RECORD" =~ ^migration/evidence/shots/$ep/[0-9]{6,20}\.json$ ]] || { echo "RECORD_PATH_REFUSED"; exit 1; }
+          test -f "$PLAN" && test -f "$RECORD" || { echo "PLAN_OR_RECORD_MISSING"; exit 1; }
+          IFS=',' read -ra items <<< "$CLIPS"
+          for it in "${items[@]}"; do
+            [[ "$it" =~ ^[a-z0-9]+(-[a-z0-9]+)*:[0-9a-f]{64}(:[0-9]+(\.[0-9]+)?)?$ ]] || { echo "CLIPS_REFUSED $it"; exit 1; }
+          done
+          echo "EP=$ep" >> "$GITHUB_ENV"
+      - name: Tools (ffmpeg, build tools) and the Python environments (voice and ASR; MediaPipe for the lips)
+        run: |
+          APT_UPDATE_TIMEOUT=300s APT_INSTALL_TIMEOUT=600s bash migration/ci/apt_install.sh ffmpeg libegl1 libgles2 build-essential python3-dev
+          python3 -m venv "$RUNNER_TEMP/sc"
+          "$RUNNER_TEMP/sc/bin/pip" install --disable-pip-version-check -q torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+          "$RUNNER_TEMP/sc/bin/pip" install --disable-pip-version-check -q ai-edge-litert==2.3.0 faster-whisper==1.2.1 av==16.0.1 pillow==11.0.0 numpy==2.2.6 resemblyzer==0.1.4
+          python3 -m venv "$RUNNER_TEMP/lip"
+          "$RUNNER_TEMP/lip/bin/pip" install --disable-pip-version-check -q 'mediapipe==0.10.35'
+          curl -fsSL --retry 3 -o "$RUNNER_TEMP/face_landmarker.task" https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task
+          sha=$(python3 -I -c "import re,sys;print(re.search(r'MODEL_SHA256 = \"([0-9a-f]{64})\"',open(sys.argv[1]).read()).group(1))" migration/production/bible/lipsync_check.py)
+          echo "$sha  $RUNNER_TEMP/face_landmarker.task" | sha256sum -c -
+      - name: YAMNet and the story ASR from frozen pins (medium.en)
+        run: |
+          mkdir -p "$RUNNER_TEMP/models/whisper"
+          bash migration/ci/assets.sh download --repo "$GITHUB_REPOSITORY" --pattern 'yamnet-classification-tflite-v1-sha256-*.tflite' -O "$RUNNER_TEMP/models/yamnet.tflite" --clobber
+          echo "10c95ea3eb9a7bb4cb8bddf6feb023250381008177ac162ce169694d05c317de  $RUNNER_TEMP/models/yamnet.tflite" | sha256sum -c -
+          revision=a29b04bd15381511a9af671baec01072039215e3
+          for name in config.json tokenizer.json vocabulary.txt model.bin; do
+            curl -fsSL --retry 3 --max-time 900 -o "$RUNNER_TEMP/models/whisper/$name" "https://huggingface.co/Systran/faster-whisper-medium.en/resolve/$revision/$name"
+          done
+          echo "11b220779aea4c6f3ce9d2549c8a95ea869ed84066864b999531ef53e594fe5b  $RUNNER_TEMP/models/whisper/model.bin" | sha256sum -c -
+      - name: The clips and every voice reference voices.json holds (by sha256), then the speech check of each clip
+        run: |
+          set -eo pipefail
+          d="$RUNNER_TEMP/dl"; mkdir -p "$d"
+          python3 -I - "$RUNNER_TEMP" <<'PY'
+          import json, sys
+          v = json.load(open("migration/production/bible/voices.json"))["voices"]
+          refs = {w: x["reference"] for w, x in v.items() if x.get("reference")}
+          json.dump({w: r["asset"] for w, r in refs.items()}, open(sys.argv[1] + "/ref-assets.json", "w"))
+          PY
+          python3 -I - "$RUNNER_TEMP" <<'PY' > "$RUNNER_TEMP/ref-names.txt"
+          import json, sys
+          for w, a in json.load(open(sys.argv[1] + "/ref-assets.json")).items():
+              print(w, a)
+          PY
+          echo '{}' > "$RUNNER_TEMP/refs.json"
+          while read -r who asset; do
+            bash migration/ci/assets.sh download --repo "$GITHUB_REPOSITORY" --pattern "$asset" -D "$d" --clobber
+            python3 -I - "$RUNNER_TEMP/refs.json" "$who" "$d/$asset" <<'PY'
+          import json, sys
+          p = json.load(open(sys.argv[1])); p[sys.argv[2]] = sys.argv[3]; json.dump(p, open(sys.argv[1], "w"))
+          PY
+          done < "$RUNNER_TEMP/ref-names.txt"
+          IFS=',' read -ra items <<< "$CLIPS"
+          for it in "${items[@]}"; do
+            IFS=':' read -r shot sha trim <<< "$it"
+            asset="shot-$EP-$shot-sha256-$sha.mp4"
+            bash migration/ci/assets.sh download --repo "$GITHUB_REPOSITORY" --pattern "$asset" -D "$d" --clobber
+            echo "$sha  $d/$asset" | sha256sum -c -
+            args=("$PLAN" "$RECORD" "$shot" "$d/$asset" "$RUNNER_TEMP/models/whisper" "$RUNNER_TEMP/models/yamnet.tflite" "$RUNNER_TEMP/lip/bin/python" "$RUNNER_TEMP/face_landmarker.task" "$RUNNER_TEMP/refs.json")
+            if [ -n "$trim" ]; then args+=(--trim-out "$trim"); fi
+            "$RUNNER_TEMP/sc/bin/python" -I -B migration/production/bible/episode_build.py speech-check "${args[@]}" | tee -a "$RUNNER_TEMP/verdicts.txt"
+            python3 -I -c "import json,sys;s=json.load(open(sys.argv[1]));print('HEARD', sys.argv[2], sys.argv[3], '|', s['measures']['asr']['text'], '| verdict', s['verdict'])" "migration/evidence/shots/$EP/speech/$sha.json" "$shot" "$sha"
+          done
+      - name: Sidecars on claude/speech-<episode>-<run> for the PR
+        run: |
+          branch="claude/speech-$EP-$GITHUB_RUN_ID"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -q -b "$branch"
+          git add "migration/evidence/shots/$EP/speech"
+          git commit -q -m "Speech check $EP (run $GITHUB_RUN_ID): sidecars for approve-shot"
+          git push -q origin "HEAD:refs/heads/$branch"
+          echo "BRANCH $branch"

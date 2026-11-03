@@ -4319,6 +4319,46 @@
      "instrument"
     ]
    }
+  },
+  {
+   "id": "E281",
+   "date": "2026-11-03",
+   "class": [
+    "instrument"
+   ],
+   "prior": [
+    "E120",
+    "E131",
+    "E137",
+    "E139",
+    "E148",
+    "E152",
+    "E166",
+    "E169",
+    "E185",
+    "E186",
+    "E231",
+    "E233",
+    "E238",
+    "E253",
+    "E255",
+    "E262",
+    "E266",
+    "E267",
+    "E273",
+    "E275",
+    "E279",
+    "E280"
+   ],
+   "error": "M2 (Noah compilation): approve-shot accepts a Pavo clip flagged AUDIO_NOT_OUR_LINE only with a speech-check sidecar (E266), but speech-check ran only on a machine with local medium.en, YAMNet, resemblyzer and MediaPipe; the production session had none (and may not download models), so the compilation's hook and close could not be judged and the build stopped.",
+   "fix": "speech-check.yml runs episode_build.speech_check_step on the runner with long-build's frozen pins and every voice reference voices.json holds, then pushes the sidecars to claude/speech-<episode>-<run>. approve-shot still recomputes the verdict; no gate loosened.",
+   "antidote": {
+    "file": "migration/ops/test_dispatch_guard.py",
+    "contains": "def test_it_runs_the_builds_own_speech_check_with_the_same_pins_and_every_reference",
+    "covers": [
+     "instrument"
+    ]
+   }
   }
  ]
 }
