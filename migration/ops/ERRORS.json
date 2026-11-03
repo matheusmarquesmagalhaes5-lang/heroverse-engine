@@ -4697,6 +4697,28 @@
      "process"
     ]
    }
+  },
+  {
+   "id": "E292",
+   "date": "2026-11-03",
+   "class": [
+    "process"
+   ],
+   "prior": [
+    "E287",
+    "E288",
+    "E290",
+    "E291"
+   ],
+   "error": "M2 (Noah compilation): after E287 showed that stored Pavo clips pass sync against OUR audio, the Keeper hook and close were probed again (run 41652099686) instead of remuxed, a cap violation and rework: 4 generations per line (2 in probe 41629339290, 2 in 41652099686), 0 credits but against the owner's rule. Root cause: re-probed instead of remuxing stored clips after E287; 4 generations per line. Nothing in shot-probe knew the line already had stored generations, so only memory kept it from generating again.",
+   "fix": "episode_build.stored_generation_problems and probe_ids: shot-probe refuses (PROBE_STORED_GENERATIONS) any shot that already has stored generations in a committed probe record of its episode unless a visual-defect flag (visual_defect: never the words flags) is recorded on ALL of them; a remux row is a judgement, not a generation. The stored clips are judged by shot-remux.yml on our audio (E288). M2 hook and close: shot-remux on probe 41629339290 clips (see DECISIONS and CURRENT).",
+   "antidote": {
+    "file": "migration/production/bible/test_episode_build.py",
+    "contains": "def test_e292_a_line_with_stored_generations_is_not_probed_again_without_a_visual_defect_on_all_of_them",
+    "covers": [
+     "process"
+    ]
+   }
   }
  ]
 }

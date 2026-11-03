@@ -1471,6 +1471,14 @@
    "class": "D",
    "resume": "review of #475: the probe got SIGTERM (a cancel or the job timeout); its record keeps every generation submitted. Read the record, then probe the shots still without a clip (probe-queue)"
   },
+  "PROBE_STORED_GENERATIONS": {
+   "class": "A",
+   "early": [
+    ".github/workflows/shot-probe.yml::episode_build.py check-probe",
+    "migration/production/bible/episode_build.py::def stored_generation_problems("
+   ],
+   "note": "E292: a line that already has stored generations is judged on our audio by shot-remux, not probed again; check-probe refuses it before any secret unless a visual-defect flag is recorded on all of them"
+  },
   "PROBE_UNKNOWN_SHOT": {
    "class": "A",
    "early": [

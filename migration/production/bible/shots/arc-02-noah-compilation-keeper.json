@@ -1,0 +1,59 @@
+{
+ "episode": "arc-02-noah-compilation-keeper",
+ "shots": {
+  "k-close": {
+   "asset": "shot-arc-02-noah-compilation-keeper-k-close-sha256-41da3980ad476dc4c75b7198b83003b4e2b304e6230d406a584d278a849ad4b8.mp4",
+   "clip_sha256": "41da3980ad476dc4c75b7198b83003b4e2b304e6230d406a584d278a849ad4b8",
+   "request_sha256": "9a2d6bf3c2fabb35a17e62059ca23aa4cc711333c3c91187145737979e522ef0",
+   "clip_seconds": 9.416667,
+   "requested_clip_seconds": 9,
+   "media": {
+    "version": "clip-media-v1",
+    "clip_sha256": "41da3980ad476dc4c75b7198b83003b4e2b304e6230d406a584d278a849ad4b8",
+    "video_seconds": 9.416667,
+    "audio_seconds": 9.417007,
+    "instrument": "ffprobe stream durations"
+   },
+   "score": 9.5,
+   "note": "Stored Pavo clip 1fcff33b (probe 41629339290) with OUR request audio over its picture (shot-remux 41670811661, audio proof route ours, PCM bit-exact, nothing generated). Contact sheet viewed (20 frames, 0.2-9.2 s): same Keeper seated cross-legged by the fire, face visible and centred, scroll in hands, lips move with the line. The cloak folds behind his knees read as extra hands in some frames (a small picture quirk, the face is clean). Strict checks on our audio: SyncNet offset -1 conf 6.02 (min 2.7), face frames 0.82, audio corr 1.0, no flags. Line 8.55 s, picture 9.42 s, no trim needed. Audio NOT heard by ear: this session cannot play audio.",
+   "probe_record": "migration/evidence/shots/arc-02-noah-compilation-keeper/41670811661.json",
+   "run_id": "41670811661",
+   "source_run": null,
+   "approved_at": "2026-11-03",
+   "model": "claude-session-reviewer",
+   "audio": {
+    "route": "ours",
+    "sha256": "dfcb6149dba2bb24ec31741e18a8b306980573d4d910b63bc2374676610b9f7b",
+    "samples": 377055,
+    "seconds": 8.55
+   }
+  },
+  "k-hook": {
+   "asset": "shot-arc-02-noah-compilation-keeper-k-hook-sha256-01d5ddfe25fb30d0fb787c091f5cca9388b2698ec5791d268f4108c59c4bc40e.mp4",
+   "clip_sha256": "01d5ddfe25fb30d0fb787c091f5cca9388b2698ec5791d268f4108c59c4bc40e",
+   "request_sha256": "5d228a66106e9db0a29ba50cd38bebe0f65d8351aa265893723d84dd84c46efd",
+   "clip_seconds": 9.416667,
+   "requested_clip_seconds": 9,
+   "media": {
+    "version": "clip-media-v1",
+    "clip_sha256": "01d5ddfe25fb30d0fb787c091f5cca9388b2698ec5791d268f4108c59c4bc40e",
+    "video_seconds": 9.416667,
+    "audio_seconds": 9.417007,
+    "instrument": "ffprobe stream durations"
+   },
+   "score": 9.5,
+   "note": "Stored Pavo clip 5a28e116 (probe 41629339290, generation 2, the best sync conf of the two) with OUR request audio over its picture (shot-remux 41670811661, audio proof route ours, PCM bit-exact, nothing generated). Contact sheet of the new clip viewed (20 frames, 0.2-9.2 s): same Keeper, hooded, face large and centred, scroll in his hands, starry night, fire at the edge, lips open and close through the line, no artefacts. Strict checks on our audio: SyncNet offset -1 conf 5.8 (min 2.7), face frames 0.98, audio corr 1.0, no flags. Line 8.55 s, picture 9.42 s, no trim needed. Audio NOT heard by ear: this session cannot play audio.",
+   "probe_record": "migration/evidence/shots/arc-02-noah-compilation-keeper/41670811661.json",
+   "run_id": "41670811661",
+   "source_run": null,
+   "approved_at": "2026-11-03",
+   "model": "claude-session-reviewer",
+   "audio": {
+    "route": "ours",
+    "sha256": "c344be58a2e7bdf7ff80357d418d9ede302dea0394c0bad67ecb4b2a1b9aad00",
+    "samples": 377055,
+    "seconds": 8.55
+   }
+  }
+ }
+}

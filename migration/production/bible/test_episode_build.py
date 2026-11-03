@@ -374,6 +374,35 @@ class Generation(unittest.TestCase):
         self.assertEqual(len(n), eb.TALK_ATTEMPTS_MAX)
         # generate_step itself giving a talking shot TALK_ATTEMPTS generations: the E94 failed-shot test (s-eve)
 
+    def test_e292_a_line_with_stored_generations_is_not_probed_again_without_a_visual_defect_on_all_of_them(self):
+        # E292: M2 re-probed a Keeper line that already had 2 stored generations (4 in all, a cap violation) instead of
+        # a shot-remux on our audio (E287). shot-probe refuses it unless EVERY stored generation has a visual-defect flag
+        import tempfile
+        talk = {"id": "k-a", "kind": "keeper", "lines": [0]}
+        plan = {"episode": "ep-x", "shots": [talk]}
+
+        def record(root, flags_list, **extra):
+            clips = [dict({"clip_sha256": f"{i:064x}", "uploaded": True, "flags": f}, **extra) for i, f in enumerate(flags_list, 1)]
+            (Path(root) / "1.json").write_text(json.dumps({"shots": {"k-a": {"clips": clips}}}))
+
+        with tempfile.TemporaryDirectory() as d:
+            self.assertEqual(eb.probe_ids(plan, "k-a", "1", d), (["k-a"], 1))   # no stored generation: allowed
+            record(d, [["AUDIO_NOT_OUR_LINE"], ["AUDIO_NOT_OUR_LINE", "FACE_NOT_FOUND"]])   # one has only a words flag
+            with self.assertRaises(SystemExit) as r:
+                eb.probe_ids(plan, "k-a", "1", d)
+            self.assertIn("PROBE_STORED_GENERATIONS k-a", str(r.exception))
+            record(d, [[], ["FACE_NOT_FOUND"]])   # a clean clip is usable, never regenerated
+            with self.assertRaises(SystemExit):
+                eb.probe_ids(plan, "k-a", "1", d)
+            record(d, [["FACE_NOT_FOUND"], ["AUDIO_NOT_OUR_LINE", "FACE_NOT_FOUND"]])   # a visual defect on ALL: a new round is allowed
+            self.assertEqual(eb.probe_ids(plan, "k-a", "1", d), (["k-a"], 1))
+            record(d, [["MOUTH_NOT_IN_SYNC"]], remux_of="a" * 64)   # a remux row is a judgement, not a generation
+            self.assertEqual(eb.probe_ids(plan, "k-a", "1", d), (["k-a"], 1))
+        # the real M2 Keeper record (4 stored generations, none with a visual flag on both clips of a line) refuses a re-probe
+        keeper = {"id": "k-hook", "kind": "keeper", "lines": [0]}
+        with self.assertRaises(SystemExit):
+            eb.probe_ids({"episode": "arc-02-noah-compilation-keeper", "shots": [keeper]}, "k-hook", "1")
+
     def test_e264_a_talking_shot_costs_two_generations_and_one_probe_round(self):
         # E264 (no rework): 6 generations x rounds spent up to 36 near-identical clips for 3 Keeper lines
         import long_preflight as lp
