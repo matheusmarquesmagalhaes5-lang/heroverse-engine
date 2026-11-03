@@ -424,6 +424,57 @@ class Generation(unittest.TestCase):
                 eb.probe_ids({"episode": "arc-02-noah-compilation-keeper", "shots": [dict(keeper, id=sid)]}, sid, "1")
             self.assertEqual(eb.older_template_shots("arc-02-noah-compilation-keeper", [sid]), [])
 
+    def test_e295_the_owner_authorizes_one_extra_generation_for_a_listed_shot_only(self):
+        # E295: E292 had no owner-authorized path: the owner replied "Autorizo" to one more Pavo generation for the three
+        # Babel lines, and shot-probe could only refuse. A committed record (migration/channel/owner_regen.json) lets a
+        # listed (episode, shot) take ONE new generation while its stored count is below the cap; nothing else changes
+        import tempfile
+        plan = {"episode": "ep-x", "shots": [{"id": sid, "kind": "keeper", "lines": [0]} for sid in ("k-a", "k-b")]}
+        current = eb.pavo_prompt.VERSION
+
+        def record(root, name, sids):
+            shots = {sid: {"request": {"audio": {"tail_pad": current}},
+                           "clips": [{"clip_sha256": f"{name}{sid}".encode().hex().ljust(64, "0")[:64], "flags": []}]}
+                     for sid in sids}
+            (Path(root) / f"{name}.json").write_text(json.dumps({"shots": shots}))
+
+        with tempfile.TemporaryDirectory() as d, tempfile.TemporaryDirectory() as r:
+            regen = Path(r) / "owner_regen.json"
+            regen.write_text(json.dumps({"authorizations": [
+                {"episode": "ep-x", "shots": ["k-a"], "stored_at_authorization": 1, "extra_generations": 1,
+                 "date": "2026-11-03", "question": "q", "owner_reply": "Autorizo"},
+                {"episode": "ep-y", "shots": ["k-b"], "stored_at_authorization": 1, "extra_generations": 1,
+                 "owner_reply": "Autorizo"}]}))
+            record(d, "1", ["k-a", "k-b"])   # one stored clean generation each (the E292 refusal)
+            # allowed once: k-a is listed and below its cap, and it gets exactly one generation
+            self.assertEqual(eb.probe_ids(plan, "k-a", "1", d, regen), (["k-a"], 1))
+            self.assertEqual(eb.owner_authorized_shots("ep-x", ["k-a", "k-b"], d, regen), ["k-a"])
+            # an unlisted shot (and a shot listed for another episode) is still refused
+            with self.assertRaises(SystemExit) as err:
+                eb.probe_ids(plan, "k-b", "1", d, regen)
+            self.assertIn("PROBE_STORED_GENERATIONS k-b", str(err.exception))
+            with self.assertRaises(SystemExit):
+                eb.probe_ids(plan, "k-a,k-b", "1", d, regen)
+            # without the record, k-a is refused as before
+            with self.assertRaises(SystemExit):
+                eb.probe_ids(plan, "k-a", "1", d, Path(r) / "missing.json")
+            # the extra generation is spent: a 2nd extra is refused
+            record(d, "2", ["k-a"])
+            self.assertEqual(eb.owner_authorized_shots("ep-x", ["k-a"], d, regen), [])
+            with self.assertRaises(SystemExit) as err:
+                eb.probe_ids(plan, "k-a", "1", d, regen)
+            self.assertIn("PROBE_STORED_GENERATIONS k-a", str(err.exception))
+            # an entry asking for more than one extra generation, or without the owner's reply, authorizes nothing
+            for bad in ({"extra_generations": 2}, {"owner_reply": ""}):
+                entry = dict({"episode": "ep-x", "shots": ["k-b"], "stored_at_authorization": 1, "extra_generations": 1,
+                              "owner_reply": "Autorizo"}, **bad)
+                regen.write_text(json.dumps({"authorizations": [entry]}))
+                self.assertEqual(eb.owner_regen_caps("ep-x", regen), {})
+        # the committed record: the three Babel lines, one extra generation each, nothing else
+        caps = eb.owner_regen_caps("genesis-10-11-long")
+        self.assertEqual(caps, {"b-brick": 2, "b-tower": 2, "k-restrain": 2})
+        self.assertEqual(eb.owner_regen_caps("arc-02-noah-compilation-keeper"), {})
+
     def test_e264_a_talking_shot_costs_two_generations_and_one_probe_round(self):
         # E264 (no rework): 6 generations x rounds spent up to 36 near-identical clips for 3 Keeper lines
         import long_preflight as lp

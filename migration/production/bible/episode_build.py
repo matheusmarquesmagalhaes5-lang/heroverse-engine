@@ -1989,20 +1989,57 @@ def stored_generations(episode, ids, shots_dir=None):
     return stored
 
 
-def stored_generation_problems(episode, ids, shots_dir=None):
+def stored_generation_problems(episode, ids, shots_dir=None, regen_path=None):
     """E292 (no re-probe of a line that already has stored Pavo generations): the shots of `ids` whose stored generations
     in a committed probe record of this episode do not ALL carry a visual-defect flag (visual_defect: the picture or the
     lips, never the words flags) and are not ALL from an older prompt-template version than pavo_prompt.VERSION (the
     coordinator's rule, 2026-11-03: one new generation per template version, see `older_template_shots`). Such a line is
-    judged on our audio by shot-remux (E287, E288), not generated again."""
+    judged on our audio by shot-remux (E287, E288), not generated again. E295: a shot the owner authorized one more
+    generation for (owner_authorized_shots) passes while its stored count is below the authorized cap."""
     out = []
+    owner = set(owner_authorized_shots(episode, ids, shots_dir, regen_path))
     for sid, rows in stored_generations(episode, ids, shots_dir).items():
+        if sid in owner:
+            continue
         if all(visual_defect(c.get("flags")) for c, _ in rows):
             continue
         if all(v != pavo_prompt.VERSION for _, v in rows):
             continue   # every stored generation is from an older template: one generation with the current one is allowed
         out.append(sid)
     return out
+
+
+OWNER_REGEN = REPO / "migration" / "channel" / "owner_regen.json"
+
+
+def owner_regen_caps(episode, path=None):
+    """{shot id: cap of stored generations} that the owner authorized for `episode` in the committed record
+    migration/channel/owner_regen.json (E295): each listed shot may hold at most `stored_at_authorization` +
+    `extra_generations` stored generations. A missing or malformed record authorizes nothing."""
+    try:
+        data = load(Path(path) if path else OWNER_REGEN)
+    except (OSError, ValueError):
+        return {}
+    caps = {}
+    for a in (data.get("authorizations") if isinstance(data, dict) else None) or []:
+        if not isinstance(a, dict) or a.get("episode") != episode or not str(a.get("owner_reply") or "").strip():
+            continue
+        extra, base, shots = a.get("extra_generations"), a.get("stored_at_authorization"), a.get("shots")
+        if not (extra == 1 and isinstance(base, int) and base >= 0
+                and isinstance(shots, list)):
+            continue   # one extra generation a shot is the most any authorization grants
+        for sid in shots:
+            if isinstance(sid, str):
+                caps[sid] = min(caps.get(sid, base + extra), base + extra)
+    return caps
+
+
+def owner_authorized_shots(episode, ids, shots_dir=None, path=None):
+    """The shots of `ids` that the owner authorized ONE more generation for (owner_regen_caps) and whose stored
+    generations are still below that cap: they take EXACTLY ONE new generation (probe_step max_generations=1)."""
+    caps = owner_regen_caps(episode, path)
+    stored = stored_generations(episode, ids, shots_dir)
+    return [sid for sid in dict.fromkeys(ids) if sid in caps and len(stored.get(sid, [])) < caps[sid]]
 
 
 def older_template_shots(episode, ids, shots_dir=None):
@@ -2015,7 +2052,7 @@ def older_template_shots(episode, ids, shots_dir=None):
     return out
 
 
-def probe_ids(plan, text, attempts, shots_dir=None):
+def probe_ids(plan, text, attempts, shots_dir=None, regen_path=None):
     """shot-probe.yml's inputs, checked before any secret: ([shot ids of this plan], attempts 1-PROBE_ATTEMPTS_MAX)."""
     ids = [x.strip() for x in (text or "").split(",") if x.strip()]
     bad = [x for x in ids if not SHOT_ID_INPUT.fullmatch(x)]
@@ -2034,11 +2071,12 @@ def probe_ids(plan, text, attempts, shots_dir=None):
     if talk:   # E264: no rework: a talking or voice-over shot is probed in one round (2 generations), then the fallback
         raise SystemExit("PROBE_ATTEMPTS_REFUSED " + " ".join(talk) + f" (a talking or voice-over shot takes at most "
                          f"{TALK_PROBE_ROUNDS_MAX} round: {TALK_ATTEMPTS} generation, a second only for a visual defect)")
-    again = stored_generation_problems(plan.get("episode"), ids, shots_dir)
+    again = stored_generation_problems(plan.get("episode"), ids, shots_dir, regen_path)
     if again:   # E292: the owner's cap: every stored generation of a line is used (remux, trim, crossfade) before another is paid for
         raise SystemExit("PROBE_STORED_GENERATIONS " + " ".join(again) + " (a line that already has stored generations is "
-                         "judged on our audio by shot-remux.yml; a new probe needs a visual-defect flag recorded on ALL of them, or "
-                         f"stored generations that are ALL from a template older than {pavo_prompt.VERSION}, one new generation)")
+                         "judged on our audio by shot-remux.yml; a new probe needs a visual-defect flag recorded on ALL of them, "
+                         f"stored generations that are ALL from a template older than {pavo_prompt.VERSION}, one new generation, "
+                         "or the owner's recorded authorization in migration/channel/owner_regen.json, below its cap)")
     return list(dict.fromkeys(ids)), int(attempts)
 
 
@@ -2106,6 +2144,7 @@ def probe_step(plan, work, lip_python, face_model, out, ids, attempts, client=No
                                 "clip_seconds": shot_seconds(plan["shots"][index[sid]], index[sid], plan, layout),
                                 "kjv_quote": kjv_quote(plan, sid)}   # owner 2026-11-03: WARN_KJV_WORDS applies
     single = set(older_template_shots(plan["episode"], ids))   # coordinator 2026-11-03: ONE new generation, no second
+    single |= set(owner_authorized_shots(plan["episode"], ids))   # E295: the owner's one extra generation, no second
     inflight = None   # review of #475: (shot, round) whose generations are not in the record yet
     blocked = set()   # E129 (review of #476): a shot whose prompt Pavo's filter refused is never sent again this run
     try:
