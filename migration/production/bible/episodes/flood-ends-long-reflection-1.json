@@ -1,0 +1,64 @@
+{
+ "version": "bible-episode-v1",
+ "id": "flood-ends-long-reflection-1",
+ "series": "The Bible, story by story (KJV)",
+ "part": 1,
+ "passage": "Genesis 8:1-9:17 (KJV, public domain)",
+ "format": "short",
+ "track": "keeper-reflection",
+ "layout": "keeper-reflection",
+ "parent": {
+  "long": "flood-ends-long",
+  "pilot": "pilot-017",
+  "clean_master_sha256": "95307e831eee4c06f826715b5d974a6fcdcacfe6029e6e57bcb8879d777b1eea",
+  "start": 435.31,
+  "end": 456.47
+ },
+ "segments": [
+  {
+   "shot": "k-r1",
+   "asset": "shot-flood-ends-long-reflection-1-k-r1-sha256-dae7a90d6e87c022739337f751c125c8457acaa29c2fe886b9929df38caef388.mp4",
+   "clip_sha256": "dae7a90d6e87c022739337f751c125c8457acaa29c2fe886b9929df38caef388"
+  },
+  {
+   "shot": "k-r2",
+   "asset": "shot-flood-ends-long-reflection-1-k-r2-sha256-7f043fe271892146064b903aaf532c1aa48412d2638705960b09503547fd00e2.mp4",
+   "clip_sha256": "7f043fe271892146064b903aaf532c1aa48412d2638705960b09503547fd00e2"
+  },
+  {
+   "shot": "k-r3",
+   "asset": "shot-flood-ends-long-reflection-1-k-r3-sha256-664e04f4814391ef47c2b53e5282ec16c7537fd72086df307722dfea57daa596.mp4",
+   "clip_sha256": "664e04f4814391ef47c2b53e5282ec16c7537fd72086df307722dfea57daa596"
+  }
+ ],
+ "output_sha256": "f4553a0930329ab4781ea301b7833a0087a7eba5a805186ca0df69791caa9d66",
+ "seconds": 21.167,
+ "frame": [
+  1080,
+  1920
+ ],
+ "narration": [
+  {
+   "kind": "insight",
+   "text": "God did not hang that rainbow because Noah was perfect, and the story says so plainly."
+  },
+  {
+   "kind": "insight",
+   "text": "He failed again, the way people do. Still, God hung up His own bow."
+  },
+  {
+   "kind": "insight",
+   "text": "So if you are waiting on God tonight, you are not forgotten. You are carried."
+  }
+ ],
+ "scripture": [],
+ "title": "God Hung Up His Own Bow | The Rainbow After the Flood, Genesis 9 (KJV) #shorts",
+ "description": "The Keeper on the rainbow after the flood: mercy was never Noah's reward, it was God's idea (Genesis 9, King James Version).\n\nWatch the full story, the whole of Genesis 8-9: https://youtu.be/1m-NUJhkdMY\n\nScripture: King James Version (public domain), Genesis 9:12-17. The reflection is the Keeper's own words, marked apart from scripture.\nVisuals: AI-generated scenes (Buzzy, GPT-image stills with camera motion). Narration: AI voice. Music: original, owned.\n\n#bible #genesis #biblestory #noah",
+ "tags": [],
+ "category_id": "29",
+ "first_comment": "Mercy was never the reward for being perfect. Watch the full story of the flood's end here: https://youtu.be/1m-NUJhkdMY",
+ "credits": {
+  "vidiq": 0,
+  "pavo": 0
+ }
+}
