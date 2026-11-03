@@ -1,0 +1,81 @@
+{
+ "version": "bible-episode-v1",
+ "id": "flood-ends-ararat-cut",
+ "series": "The Bible, story by story (KJV)",
+ "part": 1,
+ "passage": "Genesis 8:1-9:17 (KJV, public domain)",
+ "format": "short",
+ "track": "buzzy-cut",
+ "parent": {
+  "long": "flood-ends-long",
+  "pilot": "pilot-017",
+  "clean_master_sha256": "95307e831eee4c06f826715b5d974a6fcdcacfe6029e6e57bcb8879d777b1eea",
+  "start": 72.42,
+  "end": 97.88
+ },
+ "output_sha256": "a2fb914fdc73af16d6d35cfd656597938006957f1f00f9d656e7ad5b109f0d89",
+ "seconds": 25.467,
+ "frame": [
+  1080,
+  1920
+ ],
+ "narration": [
+  {
+   "kind": "scripture",
+   "text": "And the waters returned from off the earth continually: and after the end of the hundred and fifty days the waters were abated.",
+   "reference": "Genesis 8:3 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "The water went down, not in a day, but in a long steady retreat. And then, one morning, something shuddered through the whole ark. It stopped moving."
+  },
+  {
+   "kind": "scripture",
+   "text": "And the ark rested in the seventh month, on the seventeenth day of the month, upon the mountains of Ararat.",
+   "reference": "Genesis 8:4 (KJV)"
+  }
+ ],
+ "scripture": [
+  {
+   "reference": "Genesis 8:3 (KJV)",
+   "text": "And the waters returned from off the earth continually: and after the end of the hundred and fifty days the waters were abated."
+  },
+  {
+   "reference": "Genesis 8:4 (KJV)",
+   "text": "And the ark rested in the seventh month, on the seventeenth day of the month, upon the mountains of Ararat."
+  }
+ ],
+ "title": "One Morning the Ark Shuddered and Stopped | Noah on Mount Ararat, Genesis 8 (KJV) #shorts",
+ "description": "The water went down in a long steady retreat, and one morning something shuddered through the whole ark: it rested on the mountains of Ararat (Genesis 8, King James Version).\n\nWatch the full story, the whole of Genesis 8-9: https://youtu.be/1m-NUJhkdMY\n\nScripture: King James Version (public domain), Genesis 8:3-4.\nVisuals: AI-generated scenes (Buzzy, GPT-image stills with camera motion). Narration: AI voice. Music: original, owned.\n\n#bible #genesis #biblestory #noah",
+ "tags": [
+  "noah",
+  "noahs ark",
+  "the dove",
+  "olive leaf",
+  "genesis 8",
+  "bible story",
+  "kjv bible",
+  "christian shorts",
+  "bible stories"
+ ],
+ "category_id": "29",
+ "first_comment": "One morning the ark shuddered and stopped, and the waiting was not over yet. Watch the full story of the flood's end here: https://youtu.be/1m-NUJhkdMY",
+ "credits": {
+  "vidiq": 0,
+  "pavo": 0
+ },
+ "attributes": {
+  "hook_type": "narrated_story_hook",
+  "hook_line": "And the waters returned from off the earth continually: and after the end of the hundred and fifty days the waters were abated.",
+  "title_pattern": "hook_pipe_story_kjv",
+  "first_visual": "s-fountains",
+  "ai_scenes": 3,
+  "slot_utc": "05:30",
+  "transition": "cut",
+  "seconds": 25.467,
+  "voice": "kokoro_am_michael",
+  "compose": "engine",
+  "structure": "bible-story-cut"
+ },
+ "slot": "2026-11-05T05:30:00Z"
+}

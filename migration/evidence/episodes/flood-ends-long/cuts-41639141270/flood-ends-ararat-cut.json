@@ -1,0 +1,85 @@
+{
+ "version": "bible-cut-v1",
+ "id": "flood-ends-ararat-cut",
+ "spec": "migration/production/bible/cuts/flood-ends-long.json",
+ "parent": {
+  "long": "flood-ends-long",
+  "pilot": "pilot-017",
+  "report": "migration/evidence/episodes/flood-ends-long/report-41484825424.json",
+  "clean_master_sha256": "95307e831eee4c06f826715b5d974a6fcdcacfe6029e6e57bcb8879d777b1eea",
+  "start": 72.42,
+  "end": 97.88,
+  "x": 0.5
+ },
+ "output_sha256": "a2fb914fdc73af16d6d35cfd656597938006957f1f00f9d656e7ad5b109f0d89",
+ "seconds": 25.467,
+ "frame": [
+  1080,
+  1920
+ ],
+ "lufs": -14.2,
+ "true_peak_dbfs": -1.5,
+ "sentences": [
+  {
+   "segment": "n07",
+   "text": "And the waters returned from off the earth continually:",
+   "start": 0.249,
+   "end": 3.363,
+   "kind": "scripture",
+   "reference": "Genesis 8:3 (KJV)",
+   "line": 7,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n07",
+   "text": "and after the end of the hundred and fifty days the waters were abated.",
+   "start": 3.543,
+   "end": 7.853,
+   "kind": "scripture",
+   "reference": "Genesis 8:3 (KJV)",
+   "line": 7,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n08",
+   "text": "The water went down, not in a day, but in a long steady retreat.",
+   "start": 8.203,
+   "end": 12.427,
+   "line": 8,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n08",
+   "text": "And then, one morning, something shuddered through the whole ark.",
+   "start": 12.607,
+   "end": 16.404,
+   "line": 8,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n08",
+   "text": "It stopped moving.",
+   "start": 16.584,
+   "end": 18.056,
+   "line": 8,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n09",
+   "text": "And the ark rested in the seventh month, on the seventeenth day of the month, upon the mountains of Ararat.",
+   "start": 18.406,
+   "end": 25.211,
+   "kind": "scripture",
+   "reference": "Genesis 8:4 (KJV)",
+   "line": 9,
+   "line_kind": "scripture"
+  }
+ ],
+ "advice": [],
+ "checks": {
+  "frame_1080x1920": true,
+  "lufs_band": true,
+  "true_peak_ceiling": true,
+  "length": true
+ }
+}
