@@ -181,7 +181,7 @@ class Scaffold(unittest.TestCase):
             self.assertEqual((plan["track"], plan["aspect_ratio"], plan["episode"]), (pc.REFLECTION_TRACK, "1:1", EPISODE))
             self.assertNotEqual(plan["shots"][0]["prompt"], plan["shots"][1]["prompt"])
             self.assertEqual([x["text"] for x in plan["narration"]], [SEG1, SEG2])
-            self.assertIn("with a questioning look", plan["shots"][1]["prompt"])
+            self.assertIn("a gentle questioning look. Night", plan["shots"][1]["prompt"])   # E293: a look of record
             self.assertEqual(plan["shots"][1]["prompt"], pavo_prompt.build(plan["shots"][1], plan))   # E290: the builder's
             noisy = tlf.long_plan()
             noisy["shots"] = [s for s in noisy["shots"] if s["kind"] != "keeper"]

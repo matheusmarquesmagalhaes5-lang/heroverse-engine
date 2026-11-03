@@ -460,13 +460,14 @@ def spoken_lines(segments, offsets, spans):
     return lines
 
 
-EMOTIONS = ("calm", "questioning", "expectant", "tender")   # one adjective a segment, so no two prompts repeat
+EMOTIONS = ("grave, intent", "gentle questioning", "warm expectant", "calm kind")   # looks of record (E293), one a segment
 
 
 def scaffold(spec, root=ROOT):
     """The plan shot-probe.yml probes for a spec's segments (plans/<id>.json, track keeper-reflection, 1:1): one talking
     Keeper shot per segment, k-r1..k-r4, each prompt composed by pavo_prompt.build (E290) from structured fields: the
-    long's own Keeper wardrobe and setting (the same look and reference as the long), only the emotion differing."""
+    long's own Keeper wardrobe and setting (the same look and reference as the long), only the emotion differing (a look
+    of the passing prompts of record, pavo_prompt.PASSING_LOOKS, E293)."""
     import pavo_prompt
     plan_long, _ = short_cuts.sources(spec, root)
     keeper = next((s for s in plan_long.get("shots") or []
