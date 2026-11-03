@@ -226,8 +226,8 @@ def timeline(segments):
 def join_fades(segments, spans):
     """E282: the crossfade after each clip but the last, from the silence it keeps after its last word. A full clip keeps
     the gate: XFADE + TAIL_CLEAR of silence or the render refuses. A TRIMMED clip (cut inside the silence after the
-    last word) has what the cut left, so its crossfade shortens to that silence less TAIL_CLEAR, never under XFADE_MIN:
-    the crossfade still never runs over a word."""
+    last word) has what the cut left, so its crossfade shortens to that silence less TAIL_CLEAR, and under XFADE_MIN
+    it is a plain cut (0 s): the crossfade still never runs over a word."""
     fades = []
     for c, span in zip(segments[:-1], spans[:-1]):
         tail = span[3]
@@ -235,10 +235,11 @@ def join_fades(segments, spans):
             fades.append(XFADE)
         elif c.get("trim_out_s") is not None and tail - TAIL_CLEAR >= XFADE_MIN:
             fades.append(math.floor((tail - TAIL_CLEAR) * 1000) / 1000)
+        elif c.get("trim_out_s") is not None:
+            fades.append(0.0)   # no silence to fade in (the Pavo mumble starts at once): a plain cut, nothing overlaps a word
         else:
-            need = XFADE_MIN + TAIL_CLEAR if c.get("trim_out_s") is not None else XFADE + TAIL_CLEAR
             raise SystemExit(f"SEGMENT_TAIL_TOO_SHORT {c['shot']} {tail:.2f} s of silence after the last word "
-                             f"(the crossfade needs {need:.2f} s)")
+                             f"(the crossfade needs {XFADE + TAIL_CLEAR:.2f} s)")
     return fades
 
 
