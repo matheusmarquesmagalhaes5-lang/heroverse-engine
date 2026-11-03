@@ -4134,7 +4134,7 @@
    }
   },
   {
-   "id": "E275",
+   "id": "E276",
    "date": "2026-11-03",
    "class": [
     "drift"
@@ -4146,7 +4146,7 @@
    "fix": "The test counts the same set the corpus reads (genesis-*-short.json). No gate or criterion changed.",
    "antidote": {
     "file": "migration/production/bible/test_gemini_short_review.py",
-    "contains": "E275: the corpus is the canonical Shorts, not cuts",
+    "contains": "E276: the corpus is the canonical Shorts, not cuts",
     "covers": [
      "drift"
     ]
