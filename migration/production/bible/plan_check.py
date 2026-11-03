@@ -137,6 +137,10 @@ LONG_FIRST_RATIOS = ("16:9",)
 # 1:1 (cropped to the 1080x960 half). A reflection plan carries those shots and nothing else.
 REFLECTION_TRACK = "keeper-reflection"
 REFLECTION_RATIOS = ("1:1",)
+# Owner 2026-11-04 (M2, the Noah compilation): the compilation's own Keeper hook and close are the same machinery at the
+# compilation's 16:9 (chest-up, his face large), 2-4 sentence-safe talking segments, the same pace and length rules.
+COMPILATION_KEEPER_TRACK = "keeper-compilation"
+COMPILATION_KEEPER_RATIOS = ("16:9",)
 REFLECTION_SEGMENTS = (2, 4)
 REFLECTION_WPM_MAX = 165         # reflection_shorts.WPM_BAND[1]: the render refuses a faster measured pace (a test keeps them equal)
 REFLECTION_BREAK = 0.40         # E277: seconds of pause each sentence break inside the lines adds to the Keeper's measured speech
@@ -1304,7 +1308,7 @@ def long_first(plan):
 
 def reflection(plan):
     """A Keeper reflection plan (track keeper-reflection): the talking Keeper clips of a reflection Short's bottom half."""
-    return isinstance(plan, dict) and plan.get("track") == REFLECTION_TRACK
+    return isinstance(plan, dict) and plan.get("track") in (REFLECTION_TRACK, COMPILATION_KEEPER_TRACK)
 
 
 def reflection_pace_problems(items):
@@ -1329,7 +1333,10 @@ def reflection_check(plan, chars, problems, pending):
     speaking) carrying exactly one narration line (kind insight, whole sentences, our own words); every Keeper rule of
     a talking shot applies (look, wardrobe, he speaks, faces the lens on a static camera, chest-up at 1:1, a line
     that one 4-12 s clip can carry after the 10 % retime), and episode_build.predict then measures the layout."""
-    if plan.get("aspect_ratio") not in REFLECTION_RATIOS:
+    if plan.get("track") == COMPILATION_KEEPER_TRACK:
+        if plan.get("aspect_ratio") not in COMPILATION_KEEPER_RATIOS:
+            problems.append("ASPECT_RATIO (a compilation Keeper plan is 16:9: the Keeper from the chest up, his face large)")
+    elif plan.get("aspect_ratio") not in REFLECTION_RATIOS:
         problems.append("ASPECT_RATIO (a reflection plan is 1:1: the Keeper's face and chest, cropped to the half)")
     narration, shots = plan.get("narration"), plan.get("shots")
     if not isinstance(narration, list) or not isinstance(shots, list):

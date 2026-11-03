@@ -1494,6 +1494,35 @@ class ReflectionPaceBeforePavo(unittest.TestCase):
         self.assertEqual(pc.reflection_pace_problems(plan["narration"]), [])
 
 
+class CompilationKeeperPlan(unittest.TestCase):
+    """E280: the compilation's own Keeper hook and close had no plan track, so a cloud session without Kokoro could not
+    make them; the same talking-Keeper machinery (shot-probe.yml) now takes a 16:9 keeper-compilation plan."""
+
+    def plan(self):
+        return json.loads((HERE / "plans" / "arc-02-noah-compilation-keeper.json").read_text())
+
+    def test_the_live_plan_passes_strict_with_its_pace_gate(self):
+        self.assertEqual(pc.check(self.plan())["problems"], [])
+        self.assertEqual(pc.reflection_pace_problems(self.plan()["narration"]), [])
+
+    def test_the_track_is_16x9_and_chest_up_and_a_reflection_stays_1x1(self):
+        plan = self.plan()
+        sq = copy.deepcopy(plan)
+        sq["aspect_ratio"] = "1:1"
+        self.assertIn("ASPECT_RATIO", " ".join(pc.check(sq)["problems"]))
+        wide = json.loads((HERE / "plans" / "flood-ends-long-reflection-1.json").read_text())
+        wide["aspect_ratio"] = "16:9"
+        self.assertIn("ASPECT_RATIO", " ".join(pc.check(wide)["problems"]))
+        medium = copy.deepcopy(plan)
+        medium["shots"][0]["prompt"] = medium["shots"][0]["prompt"].replace(pc.KEEPER_FRAMING_16X9, "Medium shot")
+        self.assertIn("KEEPER_FRAMING_16X9", " ".join(pc.check(medium)["problems"]))
+
+    def test_a_too_fast_hook_is_refused_before_any_generation(self):
+        fast = self.plan()
+        fast["narration"][0]["text"] = "What if obeying God meant building a ship with no rain in sight and here is the whole of Noah's story, Genesis five to nine."
+        self.assertIn("REFLECTION_PACE", " ".join(pc.check(fast)["problems"]))
+
+
 # the long's plan (bible-long-plan-v1) and story QA v2/v3 run here too, so pr-checks.yml runs them unchanged
 from test_long_plan_check import DraftArc1, Grammar as LongGrammar, NoRendererReadsTheNewQaYet, StoryQa  # noqa: E402,F401,E501
 

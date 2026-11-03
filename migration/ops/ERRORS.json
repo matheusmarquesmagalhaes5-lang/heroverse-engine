@@ -4280,6 +4280,45 @@
      "instrument"
     ]
    }
+  },
+  {
+   "id": "E280",
+   "date": "2026-11-03",
+   "class": [
+    "instrument"
+   ],
+   "prior": [
+    "E120",
+    "E131",
+    "E137",
+    "E139",
+    "E148",
+    "E152",
+    "E166",
+    "E169",
+    "E185",
+    "E186",
+    "E231",
+    "E233",
+    "E238",
+    "E253",
+    "E255",
+    "E262",
+    "E266",
+    "E267",
+    "E273",
+    "E275",
+    "E279"
+   ],
+   "error": "M2 (Noah compilation): the compilation's Keeper hook and close can only be Pavo talking clips made in CI, but shot-probe.yml accepted no plan for them (plan_check knew only 9:16 Shorts, 16:9 long-first plans and 1:1 reflections), so a session without local Kokoro could not make them and the compilation was not built.",
+   "fix": "plan_check track keeper-compilation: the reflection's talking-Keeper checks (2-4 sentence-safe segments, E277 pace before any generation, chest-up framing) at the compilation's 16:9; a reflection stays 1:1. No gate loosened.",
+   "antidote": {
+    "file": "migration/production/bible/test_plan_check.py",
+    "contains": "def test_a_too_fast_hook_is_refused_before_any_generation",
+    "covers": [
+     "instrument"
+    ]
+   }
   }
  ]
 }
