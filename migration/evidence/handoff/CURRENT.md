@@ -6,6 +6,7 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
 `../../strategy/DECISIONS.md` ("2026-11-02 — Battle plan to YPP").
 
 ## Current delivery: flood-ends-long (Genesis 8-9, buzzy-long, plan `plans/flood-ends-long.json`)
+- 2026-11-03 22:20Z (scheduled continuation, Babel long): PR #790 (probe record, 7 approved Pavo clips; k-name not approved) and #791 (plan drops k-name, plan_check strict clean) merged with CI green. Next: lease, episode_build preflight, episode.yml, review, approve/gate/publish. No Short gap (8 scheduled).
 - 2026-11-03 20:30Z (scheduled run, Babel long): shot-probe 41706470686 failed because it ran before PR #786 (27 still_motion approvals) was in main
   (s-* judged as Pavo requests, INVALID_DURATION; E294 names it now: STILL_NOT_APPROVED). #786 merged (CI green); shot-probe re-dispatched on main for
   k-hook,b-brick,b-tower,b-name,k-restrain,k-irony,k-name,k-close (attempts=1, 0 credits). Next: review the probe sheets, approve-shot by PR, then
