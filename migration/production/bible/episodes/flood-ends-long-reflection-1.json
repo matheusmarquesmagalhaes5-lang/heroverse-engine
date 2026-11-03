@@ -1,0 +1,121 @@
+{
+ "version": "bible-episode-v1",
+ "id": "flood-ends-long-reflection-1",
+ "series": "The Bible, story by story (KJV)",
+ "part": 1,
+ "passage": "Genesis 8:1-9:17 (KJV, public domain)",
+ "format": "short",
+ "track": "keeper-reflection",
+ "layout": "keeper-reflection",
+ "parent": {
+  "long": "flood-ends-long",
+  "pilot": "pilot-017",
+  "clean_master_sha256": "95307e831eee4c06f826715b5d974a6fcdcacfe6029e6e57bcb8879d777b1eea",
+  "start": 56.28,
+  "end": 80.27
+ },
+ "segments": [
+  {
+   "shot": "k-r1",
+   "asset": "shot-flood-ends-long-reflection-1-k-r1-sha256-e83cea77890ff940224e542a29d1fc0a8d47ea10f38ca7848c0867cf9b43146e.mp4",
+   "clip_sha256": "e83cea77890ff940224e542a29d1fc0a8d47ea10f38ca7848c0867cf9b43146e"
+  },
+  {
+   "shot": "k-r2",
+   "asset": "shot-flood-ends-long-reflection-1-k-r2-sha256-8b9ac1123e1a2516d531ba92f9927d70c2241da5d964cfdaecd6c4cc3dccebfb.mp4",
+   "clip_sha256": "8b9ac1123e1a2516d531ba92f9927d70c2241da5d964cfdaecd6c4cc3dccebfb"
+  },
+  {
+   "shot": "k-r4",
+   "asset": "shot-flood-ends-long-reflection-1-k-r4-sha256-9ee77ed7ec29555346462d5c1f156b6a9ee3ba59e2b7f09df8a1877b0f39bb8e.mp4",
+   "clip_sha256": "9ee77ed7ec29555346462d5c1f156b6a9ee3ba59e2b7f09df8a1877b0f39bb8e"
+  }
+ ],
+ "output_sha256": "08276e852825970587cefc0afb493442648c1b96427ef2512b2e72259a32c640",
+ "seconds": 24.0,
+ "frame": [
+  1080,
+  1920
+ ],
+ "narration": [
+  {
+   "kind": "insight",
+   "text": "God did not hang that rainbow because Noah was perfect, and the story says so plainly."
+  },
+  {
+   "kind": "insight",
+   "text": "He failed again, the way people do. Still, God hung up His own bow."
+  },
+  {
+   "kind": "insight",
+   "text": "Before any rainbow, Noah did one thing first on dry ground, and it still stops me every time. Watch what it was."
+  }
+ ],
+ "scripture": [],
+ "title": "God Did Not Hang That Rainbow Because Noah Was Perfect | Noah, Genesis 8-9 (KJV) #shorts",
+ "description": "The Keeper over the waiting of the flood: God remembered Noah, and mercy was never Noah's reward, it was God's idea (Genesis 8-9, King James Version).\n\nWatch the full story, the whole of Genesis 8-9: https://youtu.be/1m-NUJhkdMY\n\nScripture: King James Version (public domain), Genesis 8:1-3; 9:12-17. The reflection is the Keeper's own words, marked apart from scripture.\nVisuals: AI-generated scenes (Buzzy, GPT-image stills with camera motion). Narration: AI voice. Music: original, owned.\n\n#bible #genesis #biblestory #noah",
+ "tags": [],
+ "category_id": "29",
+ "first_comment": "What did Noah do first on dry ground? Watch the full story of the flood's end here: https://youtu.be/1m-NUJhkdMY",
+ "credits": {
+  "vidiq": 0,
+  "pavo": 0
+ },
+ "slot": "2026-11-05T05:30:00Z",
+ "review": {
+  "overall": 9.3,
+  "reviewer": "claude-session-reviewer",
+  "output_sha256": "08276e852825970587cefc0afb493442648c1b96427ef2512b2e72259a32c640",
+  "scores": {
+   "opening_and_promise": 9.5,
+   "picture_quality": 9.5,
+   "figure_and_background_integrity": 9.5,
+   "captions_readable_and_synced": 9.5,
+   "audio_clarity_and_mix": 9.0,
+   "pacing_and_visual_variety": 9.0,
+   "scripture_on_screen": 10.0,
+   "policy_safe": 10.0
+  },
+  "issues": [
+   "00:00 to 00:16 The top half is one slow-moving still of the ark on the sea for 16.2 s (s-fountains), then one still of a figure at a fire for 7.8 s (s-lines): 2 shots in 24 s, one scene change. No rainbow on top while the lines speak of one. Low visual variety; the long's own shots are 15-23 s each, so no unused sentence-safe 23.4-24.1 s window has more shots.",
+   "00:06 and 00:12 The whole mix is silent for 1.32 s (6.07-7.39) and 0.87 s (11.88-12.75) between the three Keeper clips (the top clip is muted and our line ends before each clip's picture does): the local review flags them as dropouts; they read as pauses between thoughts, but the mouth keeps a small movement over part of that silence.",
+   "00:00 The local review flags speech at the first frame (a); the first word starts at the clip's own 0.3 s offset, unchanged from the earlier render.",
+   "Voice is OUR Kokoro line on the stored Pavo picture (E287, remux run 41654835246, digest proof on the kept bytes); sync was measured strictly on that audio (SyncNet offset 0/-1, confidence 6.6/5.0/7.2). The render slowed the three clips x0.92 (E286, atempo with the picture slowed equally, so sync holds); heard pace 164.2 wpm, at the top of the 115-165 band. Sync AFTER the retime was not re-measured (only the unslowed clips were).",
+   "Audio was NOT heard by ear. The pinned ASR (local-review 41661153948) hears exactly the three lines (52 words) and nothing else; -14.2 LUFS, -1.9 dBTP. Delivery, diction and the sound of the retimed voice are not claimed."
+  ],
+  "defects": [
+   {
+    "issue": 0,
+    "category": "d",
+    "resolved": false
+   },
+   {
+    "issue": 1,
+    "category": "c",
+    "resolved": false
+   },
+   {
+    "issue": 2,
+    "category": "info",
+    "resolved": false
+   },
+   {
+    "issue": 3,
+    "category": "info",
+    "resolved": false
+   },
+   {
+    "issue": 4,
+    "category": "info",
+    "resolved": false
+   }
+  ],
+  "publish_decision": {
+   "decision": "hold",
+   "by": "claude-session-reviewer",
+   "note": "Below the 9.5 Short floor on this exact master (sha256 08276e852825): honest overall 9.3; pacing and visual variety 9.0 (a 16.2 s held still on top) and audio 9.0 (ASR and measures only, retimed x0.92, two ~1 s total silences). Not published. Gap: a top half with 3+ shots and no still over ~8 s, which this long cannot give in a sentence-safe 24 s window, or the owner accepting this master; no score is copied from another file."
+  },
+  "process": "reflection-shorts.yml run 41660551928 rendered the master; local-review.yml run 41661153948 (pinned local ASR + ffmpeg measures) of this exact master; frame sheet 1 frame / 2 s viewed. I did not listen to the sound.",
+  "run_id": "41661153948"
+ }
+}
