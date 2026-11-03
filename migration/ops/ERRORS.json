@@ -4485,6 +4485,50 @@
      "instrument"
     ]
    }
+  },
+  {
+   "id": "E285",
+   "date": "2026-11-03",
+   "class": [
+    "instrument"
+   ],
+   "prior": [
+    "E120",
+    "E131",
+    "E137",
+    "E139",
+    "E148",
+    "E152",
+    "E166",
+    "E169",
+    "E185",
+    "E186",
+    "E231",
+    "E233",
+    "E238",
+    "E253",
+    "E255",
+    "E262",
+    "E266",
+    "E267",
+    "E273",
+    "E275",
+    "E279",
+    "E280",
+    "E281",
+    "E282",
+    "E283",
+    "E284"
+   ],
+   "error": "publish-episode.yml for flood-ends-leaf-cut was dispatched without publish_at (the record's slot is not read): the Short went public at once (13:04Z) instead of its 2026-11-05 13:30Z slot, and took a slot out of the 48 h buffer.",
+   "fix": "dispatch_guard: a record with a future slot and an empty publish_at is refused (GUARD_SLOT_NEEDS_PUBLISH_AT). Always pass publish_at=<slot>. No gate loosened.",
+   "antidote": {
+    "file": "migration/ops/test_dispatch_guard.py",
+    "contains": "def test_a_publish_record_with_a_future_slot_needs_its_publish_at",
+    "covers": [
+     "instrument"
+    ]
+   }
   }
  ]
 }

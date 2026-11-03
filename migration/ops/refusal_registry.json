@@ -650,6 +650,10 @@
    "class": "N",
    "why": "E116/E52: dispatch_guard refuses an episode record whose title or description is over YouTube's limit before publish-episode fetches or uploads anything; nothing is lost"
   },
+  "GUARD_SLOT_NEEDS_PUBLISH_AT": {
+   "class": "N",
+   "why": "E285: dispatch_guard refuses a publish-episode dispatch whose record has a future slot and an empty publish_at (it would publish at once); nothing is lost, dispatch again with publish_at"
+  },
   "GUARD_RERUN_WITHOUT_FIX": {
    "class": "D",
    "resume": "E116: merge the fix that touches what the failed run depends on, or record the external cause in migration/evidence/dispatch/retries.json by PR, then dispatch"

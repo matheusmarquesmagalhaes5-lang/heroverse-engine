@@ -378,6 +378,18 @@ class Inputs(unittest.TestCase):
         with mock.patch.object(episode_order, "earlier_part_open", return_value="EARLIER_PART_NOT_RECORDED x"):
             self.refused("episode.yml", {"plan": PLAN}, "EARLIER_PART_NOT_RECORDED")
 
+    def test_a_publish_record_with_a_future_slot_needs_its_publish_at(self):
+        """E285: publish-episode with an empty publish_at published a cut at once instead of at its slot."""
+        rec = json.loads((ROOT / "migration/production/bible/episodes/genesis-01-short.json").read_text())
+        rec["slot"] = "2999-01-01T13:30:00Z"
+        with mock.patch.object(g, "load", return_value=rec):
+            self.refused("publish-episode.yml", {"episode": "genesis-01-short"}, "GUARD_SLOT_NEEDS_PUBLISH_AT")
+            self.assertTrue(g.WORKFLOWS["publish-episode.yml"][1](
+                {"episode": "genesis-01-short", "publish_at": "2999-01-01T13:30:00Z"}))
+        rec["slot"] = "2020-01-01T13:30:00Z"
+        with mock.patch.object(g, "load", return_value=rec):
+            self.assertTrue(g.WORKFLOWS["publish-episode.yml"][1]({"episode": "genesis-01-short"}))
+
     def test_a_publish_record_over_the_platform_limits_is_refused(self):
         rec = json.loads((ROOT / "migration/production/bible/episodes/genesis-01-short.json").read_text())
         rec["description"] = "x" * (g.DESCRIPTION_MAX + 1)

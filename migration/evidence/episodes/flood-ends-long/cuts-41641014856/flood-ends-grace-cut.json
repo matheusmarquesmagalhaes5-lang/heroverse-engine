@@ -1,0 +1,125 @@
+{
+ "version": "bible-cut-v1",
+ "id": "flood-ends-grace-cut",
+ "spec": "migration/production/bible/cuts/flood-ends-long.json",
+ "parent": {
+  "long": "flood-ends-long",
+  "pilot": "pilot-017",
+  "report": "migration/evidence/episodes/flood-ends-long/report-41484825424.json",
+  "clean_master_sha256": "95307e831eee4c06f826715b5d974a6fcdcacfe6029e6e57bcb8879d777b1eea",
+  "start": 471.94,
+  "end": 500.88,
+  "x": 0.5
+ },
+ "output_sha256": "c12dfdb189f02a2390b32074a5d31d23ef35586f39036e157de84c821e925eb9",
+ "seconds": 28.872,
+ "frame": [
+  1080,
+  1920
+ ],
+ "lufs": -14.2,
+ "true_peak_dbfs": -1.7,
+ "sentences": [
+  {
+   "segment": "n49",
+   "text": "The Bible does not pretend Noah became perfect.",
+   "start": 0.248,
+   "end": 3.64,
+   "line": 49,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n49",
+   "text": "Later he planted a vineyard, and failed again, the way people do.",
+   "start": 3.82,
+   "end": 8.129,
+   "line": 49,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n49",
+   "text": "Grace did not make him a god.",
+   "start": 8.309,
+   "end": 10.57,
+   "line": 49,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n49",
+   "text": "It made him a man who was carried.",
+   "start": 10.75,
+   "end": 13.14,
+   "line": 49,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n50",
+   "text": "And all the days of Noah were nine hundred and fifty years:",
+   "start": 13.49,
+   "end": 17.372,
+   "kind": "scripture",
+   "reference": "Genesis 9:29 (KJV)",
+   "line": 50,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n50",
+   "text": "and he died.",
+   "start": 17.552,
+   "end": 18.768,
+   "kind": "scripture",
+   "reference": "Genesis 9:29 (KJV)",
+   "line": 50,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n51",
+   "text": "What are you waiting for God to open?",
+   "start": 19.118,
+   "end": 21.636,
+   "line": 51,
+   "line_kind": "cta"
+  },
+  {
+   "segment": "n51",
+   "text": "Tell me in the comments.",
+   "start": 21.816,
+   "end": 23.437,
+   "line": 51,
+   "line_kind": "cta"
+  },
+  {
+   "segment": "n51",
+   "text": "Next time:",
+   "start": 23.617,
+   "end": 24.854,
+   "line": 51,
+   "line_kind": "cta"
+  },
+  {
+   "segment": "n51",
+   "text": "the tower that reached for the sky.",
+   "start": 25.034,
+   "end": 27.296,
+   "line": 51,
+   "line_kind": "cta"
+  },
+  {
+   "segment": "n51",
+   "text": "Subscribe.",
+   "start": 27.476,
+   "end": 28.692,
+   "line": 51,
+   "line_kind": "cta"
+  }
+ ],
+ "advice": [
+  "ends on a cta line: a KJV line or the Keeper's insight closes a cut best"
+ ],
+ "checks": {
+  "frame_1080x1920": true,
+  "lufs_band": true,
+  "true_peak_ceiling": true,
+  "length": true
+ }
+}
