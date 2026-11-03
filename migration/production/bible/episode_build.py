@@ -1770,7 +1770,7 @@ def fetch_shot_clip(approved, dst, fetch=fetch_release_asset):
 
 
 def generate_clips(plan, work, lip_python, face_model, ids=None, client=None, download=None, sleep=time.sleep,
-                   validate=None, report_path=None):
+                   validate=None, report_path=None, max_generations=None):
     """shot-probe.yml's generation engine (E114: the build itself generates nothing): the named shots (all when
     None) in risk_order (E99), each through shot_runner (the build's own request and checks) and make_shot (a
     failed clip is a NEW generation, attempts_for(shot) in all, each refused one kept beside the shot, E94); the
@@ -1812,7 +1812,7 @@ def generate_clips(plan, work, lip_python, face_model, ids=None, client=None, do
             entry.update(speaker=shot["speaker"], line=shot["line"])
         try:
             try:
-                kept, records = make_shot(shot["id"], attempt, check, attempts=attempts_for(shot),
+                kept, records = make_shot(shot["id"], attempt, check, attempts=min(attempts_for(shot), max_generations or attempts_for(shot)),
                                           regenerate=visual_defect)
             except ShotFailed as exc:
                 if not (str(exc).startswith("PAVO_PROMPT_BLOCKED") and native_speech(req, shot)):
@@ -1831,7 +1831,7 @@ def generate_clips(plan, work, lip_python, face_model, ids=None, client=None, do
                                                               lip_python, face_model, sleep, progress)
                 entry["request"] = {k: v for k, v in req.items()}
                 entry["route"] = pavo_native.KOKORO
-                kept, records = make_shot(shot["id"], attempt, check, attempts=attempts_for(shot),
+                kept, records = make_shot(shot["id"], attempt, check, attempts=min(attempts_for(shot), max_generations or attempts_for(shot)),
                                           regenerate=visual_defect)
         except (ShotFailed, SystemExit) as exc:
             entry["error"] = str(exc)
@@ -1958,11 +1958,17 @@ def generate_step(plan, work, lip_python, face_model, approvals=None, fetch=fetc
 
 # ---------- shot probe and approval (E114) ----------
 
-def stored_generation_problems(episode, ids, shots_dir=None):
-    """E292 (no re-probe of a line that already has stored Pavo generations): the shots of `ids` that have stored clips
-    in a committed probe record of this episode whose generations do not ALL carry a visual-defect flag (visual_defect:
-    the picture or the lips, never the words flags). Such a line is judged on OUR audio by shot-remux (E287, E288),
-    not generated again. A remux row (`remux_of`) is a judgement of a stored picture, not a generation."""
+def stored_template_version(entry):
+    """The prompt-template version a stored shot entry was generated with: a standard talking shot's request records
+    pavo_prompt.VERSION in its audio (`tail_pad`, request_digest); a hand-written prompt (before E290/E293) records none,
+    so it is older than every version (None)."""
+    audio = ((entry or {}).get("request") or {}).get("audio") or {}
+    return audio.get("tail_pad") if isinstance(audio, dict) else None
+
+
+def stored_generations(episode, ids, shots_dir=None):
+    """{shot id: [(stored clip row, template version)]} of the generations kept in the committed probe records of this
+    episode. A remux row (`remux_of`) is a judgement of a stored picture, not a generation."""
     root = Path(shots_dir) if shots_dir else REPO / "migration" / "evidence" / "shots" / str(episode)
     stored = {}
     for f in sorted(root.glob("*.json")):
@@ -1971,10 +1977,37 @@ def stored_generation_problems(episode, ids, shots_dir=None):
         except (OSError, ValueError):
             continue
         for sid in ids:
-            for c in (shots.get(sid) or {}).get("clips") or []:
+            entry = shots.get(sid) or {}
+            for c in entry.get("clips") or []:
                 if isinstance(c, dict) and not c.get("remux_of") and c.get("clip_sha256"):
-                    stored.setdefault(sid, []).append(c)
-    return [sid for sid, clips in stored.items() if not all(visual_defect(c.get("flags")) for c in clips)]
+                    stored.setdefault(sid, []).append((c, stored_template_version(entry)))
+    return stored
+
+
+def stored_generation_problems(episode, ids, shots_dir=None):
+    """E292 (no re-probe of a line that already has stored Pavo generations): the shots of `ids` whose stored generations
+    in a committed probe record of this episode do not ALL carry a visual-defect flag (visual_defect: the picture or the
+    lips, never the words flags) and are not ALL from an older prompt-template version than pavo_prompt.VERSION (the
+    coordinator's rule, 2026-11-03: one new generation per template version, see `older_template_shots`). Such a line is
+    judged on our audio by shot-remux (E287, E288), not generated again."""
+    out = []
+    for sid, rows in stored_generations(episode, ids, shots_dir).items():
+        if all(visual_defect(c.get("flags")) for c, _ in rows):
+            continue
+        if all(v != pavo_prompt.VERSION for _, v in rows):
+            continue   # every stored generation is from an older template: one generation with the current one is allowed
+        out.append(sid)
+    return out
+
+
+def older_template_shots(episode, ids, shots_dir=None):
+    """The shots of `ids` that have stored generations, none with a visual defect on all of them, all from a template
+    older than the current one: they take EXACTLY ONE new generation (probe_step passes max_generations=1)."""
+    out = []
+    for sid, rows in stored_generations(episode, ids, shots_dir).items():
+        if not all(visual_defect(c.get("flags")) for c, _ in rows) and all(v != pavo_prompt.VERSION for _, v in rows):
+            out.append(sid)
+    return out
 
 
 def probe_ids(plan, text, attempts, shots_dir=None):
@@ -1999,7 +2032,8 @@ def probe_ids(plan, text, attempts, shots_dir=None):
     again = stored_generation_problems(plan.get("episode"), ids, shots_dir)
     if again:   # E292: the owner's cap: every stored generation of a line is used (remux, trim, crossfade) before another is paid for
         raise SystemExit("PROBE_STORED_GENERATIONS " + " ".join(again) + " (a line that already has stored generations is "
-                         "judged on our audio by shot-remux.yml; a new probe needs a visual-defect flag recorded on ALL of them)")
+                         "judged on our audio by shot-remux.yml; a new probe needs a visual-defect flag recorded on ALL of them, or "
+                         f"stored generations that are ALL from a template older than {pavo_prompt.VERSION}, one new generation)")
     return list(dict.fromkeys(ids)), int(attempts)
 
 
@@ -2066,6 +2100,7 @@ def probe_step(plan, work, lip_python, face_model, out, ids, attempts, client=No
                                 "request": canonical, "clips": [],
                                 "clip_seconds": shot_seconds(plan["shots"][index[sid]], index[sid], plan, layout),
                                 "kjv_quote": kjv_quote(plan, sid)}   # owner 2026-11-03: WARN_KJV_WORDS applies
+    single = set(older_template_shots(plan["episode"], ids))   # coordinator 2026-11-03: ONE new generation, no second
     inflight = None   # review of #475: (shot, round) whose generations are not in the record yet
     blocked = set()   # E129 (review of #476): a shot whose prompt Pavo's filter refused is never sent again this run
     try:
@@ -2078,7 +2113,8 @@ def probe_step(plan, work, lip_python, face_model, out, ids, attempts, client=No
                 try:
                     report = generate_clips(plan, work, lip_python, face_model, ids=[sid], client=client,
                                             download=download, sleep=sleep, validate=False,
-                                            report_path=work / f"probe-{sid}-{n}.json")
+                                            report_path=work / f"probe-{sid}-{n}.json",
+                                            max_generations=1 if sid in single else None)
                 except SystemExit as exc:
                     if not str(exc).startswith(("SHOT_FAILED", "PAVO_REFUSED", "PAVO_JOB", "PAVO_PROMPT_BLOCKED")):
                         raise   # a broken tool or a refused request stops the probe (E89)
