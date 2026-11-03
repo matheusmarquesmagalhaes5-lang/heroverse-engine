@@ -1,0 +1,36 @@
+{
+ "shot": "k-hook",
+ "clip_sha256": "5ba6ab4c8cac066eb529ededd5fa50c0519301bc283c9e354845b9f6a3a1012c",
+ "measures": {
+  "asr": {
+   "model_bin_sha256": "11b220779aea4c6f3ce9d2549c8a95ea869ed84066864b999531ef53e594fe5b",
+   "text": "One language, one plan, one tower to reach the sky, then God came down. Why?",
+   "speech_span": [
+    0.0,
+    7.36
+   ]
+  },
+  "music": 0.0,
+  "singing": 0.0,
+  "lufs": -23.5,
+  "voice": {
+   "reference": "392c43b242eb01e9e39b29f911b0282619504067217a279a36c6041acb61546d",
+   "same": 0.7457,
+   "others": [
+    0.7404
+   ],
+   "others_references": [
+    "d4f416826b28b66d5386226a4ec49ed48e1c18cedcc96ce9a2a78ece9633fe8f"
+   ]
+  },
+  "lips": []
+ },
+ "verdict": [
+  "VOICE_NOT_CONSISTENT"
+ ],
+ "review_notes": {
+  "line": "one language one plan one tower to reach the sky then god came down why",
+  "asr_text": "One language, one plan, one tower to reach the sky, then God came down. Why?",
+  "words_differ": false
+ }
+}

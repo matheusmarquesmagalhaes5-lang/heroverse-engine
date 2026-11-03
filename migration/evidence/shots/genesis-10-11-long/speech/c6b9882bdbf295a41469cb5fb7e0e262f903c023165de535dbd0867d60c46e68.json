@@ -1,0 +1,34 @@
+{
+ "shot": "b-tower",
+ "clip_sha256": "c6b9882bdbf295a41469cb5fb7e0e262f903c023165de535dbd0867d60c46e68",
+ "measures": {
+  "asr": {
+   "model_bin_sha256": "11b220779aea4c6f3ce9d2549c8a95ea869ed84066864b999531ef53e594fe5b",
+   "text": "let us too, let us build us, let us and a tower may reach unto his end to coverage.",
+   "speech_span": [
+    0.0,
+    5.0
+   ]
+  },
+  "music": 0.0,
+  "singing": 0.0,
+  "lufs": -22.8,
+  "voice": {
+   "reference": null,
+   "same": null,
+   "others": []
+  },
+  "lips": []
+ },
+ "verdict": [
+  "VOICE_REFERENCE_MISSING"
+ ],
+ "review_notes": {
+  "line": "go to let us build us a city and a tower whose top may reach unto heaven",
+  "asr_text": "let us too, let us build us, let us and a tower may reach unto his end to coverage.",
+  "words_differ": true,
+  "warnings": [
+   "WARN_KJV_WORDS"
+  ]
+ }
+}

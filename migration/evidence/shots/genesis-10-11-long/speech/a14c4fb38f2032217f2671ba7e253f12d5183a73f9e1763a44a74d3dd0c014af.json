@@ -1,0 +1,36 @@
+{
+ "shot": "k-restrain",
+ "clip_sha256": "a14c4fb38f2032217f2671ba7e253f12d5183a73f9e1763a44a74d3dd0c014af",
+ "measures": {
+  "asr": {
+   "model_bin_sha256": "11b220779aea4c6f3ce9d2549c8a95ea869ed84066864b999531ef53e594fe5b",
+   "text": "He said nothing would be restrained from them in Peol Reohe, and they casused Raband and Harbitolstam.",
+   "speech_span": [
+    0.0,
+    6.4
+   ]
+  },
+  "music": 0.0,
+  "singing": 0.0,
+  "lufs": -18.2,
+  "voice": {
+   "reference": "392c43b242eb01e9e39b29f911b0282619504067217a279a36c6041acb61546d",
+   "same": 0.767,
+   "others": [
+    0.8142
+   ],
+   "others_references": [
+    "d4f416826b28b66d5386226a4ec49ed48e1c18cedcc96ce9a2a78ece9633fe8f"
+   ]
+  },
+  "lips": []
+ },
+ "verdict": [
+  "VOICE_NOT_CONSISTENT"
+ ],
+ "review_notes": {
+  "line": "he said nothing would be restrained from them so after water he chose distance",
+  "asr_text": "He said nothing would be restrained from them in Peol Reohe, and they casused Raband and Harbitolstam.",
+  "words_differ": true
+ }
+}
