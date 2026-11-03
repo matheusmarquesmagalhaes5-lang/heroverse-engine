@@ -1,0 +1,26 @@
+{
+ "id": "genesis-10-11-long-s-stranger",
+ "episode": "genesis-10-11-long",
+ "shot": "s-stranger",
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Close-up, slow push-in. A woman and a man seen from behind at a river landing at dawn, facing each other with open hands, their faces hidden, two small children clinging to their robes and looking away, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Soft cold dawn light on their backs and shoulders. Aching and tender. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-stranger.jpg",
+ "sha256": "5ded358a49a20d4ba5ac1590ba411684ea1b542bcb33245e6866fbaea8fd1065",
+ "size": [
+  1920,
+  1080
+ ],
+ "candidate": "genesis-10-11-long-s-stranger-2026110304-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-03",
+  "score": 9.5,
+  "note": "Actual frame viewed: a woman and a man seen from behind and in profile at a river landing at dawn, open hands toward each other, two children clinging to them; no frontal faces, no text.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "ec79624bd1ad52ef7ae017752f2e3301f1a9a23ff55fa4b3202b42b08afb9874",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
+}

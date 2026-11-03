@@ -1,0 +1,26 @@
+{
+ "id": "genesis-10-11-long-s-mighty",
+ "episode": "genesis-10-11-long",
+ "shot": "s-mighty",
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow push-in. A powerful hunter with a great bow stands on a rocky rise at sunrise looking over a plain, a slain lion at his feet, his back to us, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Low gold sunrise, long shadows. Proud and dangerous. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-mighty.jpg",
+ "sha256": "590cffae4117c2860ec8368dfa8e90e815e08cbea68a49cc2053143ba050abe6",
+ "size": [
+  1920,
+  1080
+ ],
+ "candidate": "genesis-10-11-long-s-mighty-2026110303-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-03",
+  "score": 9.5,
+  "note": "Actual frame viewed: hunter seen from behind with a great bow over a slain lion at sunrise, long shadows, centred, plain linen and hide, no text.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "6c022843cb2779adbeb4ceb89c6f2d21b490e4df190be6cdd93a6c18a916d037",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
+}

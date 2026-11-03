@@ -1,0 +1,26 @@
+{
+ "id": "genesis-10-11-long-s-ur",
+ "episode": "genesis-10-11-long",
+ "shot": "s-ur",
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow push-in. A distant river town of simple brick houses at twilight on the plain, a tiny family with a lamp walking toward it, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Blue twilight with a warm lamp glow. Tender and expectant. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-ur.jpg",
+ "sha256": "55132b3cf10836d13ecd0aec705ba9bbb47e5867841be86948ce26ad72e7c048",
+ "size": [
+  1920,
+  1080
+ ],
+ "candidate": "genesis-10-11-long-s-ur-2026110304-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-03",
+  "score": 9.5,
+  "note": "Actual frame viewed: a family of four seen from behind carrying bundles and a small lamp toward a lit river town of brick houses at twilight, palms and reeds; period-correct, no text.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "d1578acd65c581932114c5bcad9d2250ece8094c022db9766f39d86c0c29b217",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
+}

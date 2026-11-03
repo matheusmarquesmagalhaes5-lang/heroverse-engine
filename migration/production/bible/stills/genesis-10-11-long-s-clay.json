@@ -1,0 +1,26 @@
+{
+ "id": "genesis-10-11-long-s-clay",
+ "episode": "genesis-10-11-long",
+ "shot": "s-clay",
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow push-in. Barefoot workers knee-deep in wet grey clay pressing it into wooden moulds, rows of raw clay bricks drying in the sun behind them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Hard midday sun, wet clay glistening. Strained and determined. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-clay.jpg",
+ "sha256": "f4e9b7ab6669d7939e5ba95f80486b88ea89e0b3bfe5adffd209953d48738df6",
+ "size": [
+  1920,
+  1080
+ ],
+ "candidate": "genesis-10-11-long-s-clay-2026110303-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-03",
+  "score": 9.5,
+  "note": "Actual frame viewed: workers from behind knee-deep in wet clay pressing bricks into wooden moulds, rows of drying bricks, kilns far behind.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "3cf8a38d28fef53a66b47404c43ed83df18a7ba9ba41324eee34184f46470aab",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
+}

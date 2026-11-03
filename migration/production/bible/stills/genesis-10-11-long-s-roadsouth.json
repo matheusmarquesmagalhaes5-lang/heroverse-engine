@@ -1,0 +1,26 @@
+{
+ "id": "genesis-10-11-long-s-roadsouth",
+ "episode": "genesis-10-11-long",
+ "shot": "s-roadsouth",
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow pan. A few figures walking beside a wide shining river through green reeds toward a far horizon, a flock of birds rising, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Warm late-afternoon light on water. Quiet and resolute. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-roadsouth.jpg",
+ "sha256": "f33f34f33229d36735aba5efe843d8b75853e7ed290b0a6bd5b32c3e80eb6e23",
+ "size": [
+  1920,
+  1080
+ ],
+ "candidate": "genesis-10-11-long-s-roadsouth-2026110303-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-03",
+  "score": 9.5,
+  "note": "Actual frame viewed: a few figures walking beside a shining river through reeds toward a far horizon, birds rising, seen from behind.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "6a5445143785ac80c0306023382febac80f6f8c8031e8e3895d08970032a1197",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
+}

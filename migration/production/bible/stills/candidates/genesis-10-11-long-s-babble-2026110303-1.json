@@ -1,0 +1,37 @@
+{
+ "id": "genesis-10-11-long-s-babble-2026110303-1",
+ "still": "genesis-10-11-long-s-babble",
+ "episode": "genesis-10-11-long",
+ "shot": "s-babble",
+ "run": "2026110303",
+ "status": "DRAFT",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow push-in. Two workers on a ramp face each other, one pointing up, the other shaking his head in total confusion, a stack of bricks between them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Hard light and swirling dust. Bewildered and rising panic. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "sent_prompt": "Create an image, 16:9 landscape, no text. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow push-in. Two workers on a ramp face each other, one pointing up, the other shaking his head in total confusion, a stack of bricks between them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Hard light and swirling dust. Bewildered and rising panic. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "engine": "chatgpt-desktop",
+ "models": [
+  "chatgpt-images"
+ ],
+ "generated_by": "ChatGPT Windows app on the owner's PC (Create image), one request at a time",
+ "source": "chatgpt-desktop",
+ "download": {
+  "file": "genesis-10-11-long-s-babble.png",
+  "sha256": "cacdc094556fbc4479b400fdcf9b3ce058b3b99dec11de53a8900ee0820fc331",
+  "size_bytes": 2291419,
+  "pixels": [
+   1672,
+   941
+  ]
+ },
+ "references": [],
+ "licence": {
+  "note": "OpenAI Terms of Use: the user owns the Output; made at the owner's request in his own session (README Licence and account risk)"
+ },
+ "upscaler": "System.Drawing HighQualityBicubic centre crop to 16:9 -> 1920x1080, JPEG quality 93",
+ "aspect_ratio": "16:9",
+ "size": [
+  1920,
+  1080
+ ],
+ "repo_path": "migration/production/bible/stills/candidates/genesis-10-11-long-s-babble-2026110303-1.jpg",
+ "sha256": "308f78d48f282b3433dba8aa2f31e80fb8d46f1f7387df6e19a13341dced5abb"
+}

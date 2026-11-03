@@ -1,0 +1,37 @@
+{
+ "id": "genesis-10-11-long-s-ur-2026110304-1",
+ "still": "genesis-10-11-long-s-ur",
+ "episode": "genesis-10-11-long",
+ "shot": "s-ur",
+ "run": "2026110304",
+ "status": "DRAFT",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow push-in. A distant river town of simple brick houses at twilight on the plain, a tiny family with a lamp walking toward it, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Blue twilight with a warm lamp glow. Tender and expectant. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "sent_prompt": "Create an image, 16:9 landscape, no text. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow push-in. A distant river town of simple brick houses at twilight on the plain, a tiny family with a lamp walking toward it, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Blue twilight with a warm lamp glow. Tender and expectant. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "engine": "chatgpt-desktop",
+ "models": [
+  "chatgpt-images"
+ ],
+ "generated_by": "ChatGPT Windows app on the owner's PC (Create image), one request at a time",
+ "source": "chatgpt-desktop",
+ "download": {
+  "file": "genesis-10-11-long-s-ur.png",
+  "sha256": "07f4f2f67871874279c76446b4dfc09e6a1149cf4685f5a7644964713e8d1fc8",
+  "size_bytes": 2243972,
+  "pixels": [
+   1672,
+   941
+  ]
+ },
+ "references": [],
+ "licence": {
+  "note": "OpenAI Terms of Use: the user owns the Output; made at the owner's request in his own session (README Licence and account risk)"
+ },
+ "upscaler": "System.Drawing HighQualityBicubic centre crop to 16:9 -> 1920x1080, JPEG quality 93",
+ "aspect_ratio": "16:9",
+ "size": [
+  1920,
+  1080
+ ],
+ "repo_path": "migration/production/bible/stills/candidates/genesis-10-11-long-s-ur-2026110304-1.jpg",
+ "sha256": "55132b3cf10836d13ecd0aec705ba9bbb47e5867841be86948ce26ad72e7c048"
+}

@@ -1,0 +1,37 @@
+{
+ "id": "genesis-10-11-long-s-journey-2026110303-1",
+ "still": "genesis-10-11-long-s-journey",
+ "episode": "genesis-10-11-long",
+ "shot": "s-journey",
+ "run": "2026110303",
+ "status": "DRAFT",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow pan. A long caravan of families with donkeys and carts crossing a vast hazy plain toward a wide brown river, seen from far behind, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Late afternoon haze, dust glowing gold. Weary and hopeful. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "sent_prompt": "Create an image, 16:9 landscape, no text. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow pan. A long caravan of families with donkeys and carts crossing a vast hazy plain toward a wide brown river, seen from far behind, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Late afternoon haze, dust glowing gold. Weary and hopeful. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "engine": "chatgpt-desktop",
+ "models": [
+  "chatgpt-images"
+ ],
+ "generated_by": "ChatGPT Windows app on the owner's PC (Create image), one request at a time",
+ "source": "chatgpt-desktop",
+ "download": {
+  "file": "genesis-10-11-long-s-journey.png",
+  "sha256": "d8b99d6762be79457ada7f1dd95c733c5fcab38ce8b9b769c3f3c7f4e125c7b7",
+  "size_bytes": 2714932,
+  "pixels": [
+   1672,
+   941
+  ]
+ },
+ "references": [],
+ "licence": {
+  "note": "OpenAI Terms of Use: the user owns the Output; made at the owner's request in his own session (README Licence and account risk)"
+ },
+ "upscaler": "System.Drawing HighQualityBicubic centre crop to 16:9 -> 1920x1080, JPEG quality 93",
+ "aspect_ratio": "16:9",
+ "size": [
+  1920,
+  1080
+ ],
+ "repo_path": "migration/production/bible/stills/candidates/genesis-10-11-long-s-journey-2026110303-1.jpg",
+ "sha256": "e4e9d6a46f565238662f457ef0b69e5fc3a005b998cf2040c6c532ea031df1c6"
+}
