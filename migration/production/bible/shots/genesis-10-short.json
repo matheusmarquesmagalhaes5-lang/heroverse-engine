@@ -22,8 +22,9 @@
   "k-insight": {
    "source": "still_motion",
    "score": 9.5,
-   "note": "Borrowed arc-01 Keeper still (approved 9.5, ch-keeper ref), 9:16 centre crop, face and beard whole; Kokoro voice-over.",
-   "approved_at": "2026-10-28",
+   "note": "Borrowed arc-01 Keeper still (approved 9.5, ch-keeper ref), 9:16 centre crop, face and beard whole; Kokoro voice-over. Re-approved for the shortened insight line (request changed).",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
    "still_from": "arc-01-long-k-promise-3",
    "still": "arc-01-long-k-promise-3",
    "repo_path": "migration/production/bible/stills/arc-01-long-k-promise-3.jpg",
@@ -35,7 +36,7 @@
    ],
    "licence": "Pavo generated (owner-owned)",
    "clip_seconds": 12,
-   "request_sha256": "ec406c4699ba8b0ccb0a05ecdb820a136e0549a1e2546d3c924370c3d83ceaf0"
+   "request_sha256": "de8bb54f7a664ca12507cdffdbc71965a1ae8b746bc6774a2761c2e7fa58ea87"
   },
   "k-question": {
    "source": "pavo_reuse",
@@ -88,7 +89,7 @@
   "s-door-shut": {
    "source": "still_motion",
    "score": 9.5,
-   "note": "Approved ChatGPT-desktop still in cinematic camera motion; silent scene.",
+   "note": "Approved still in cinematic camera motion (re-approved: the shot's request changed with the plan's line timing).",
    "model": "claude-session-reviewer",
    "approved_at": "2026-11-03",
    "still": "genesis-10-short-s-door-shut",
@@ -101,7 +102,7 @@
    ],
    "licence": "apache-2.0",
    "clip_seconds": 10,
-   "request_sha256": "09e1a1a93ff171ed358755a6d34e3eefc963ef0c526ddd0130eea40c108faaec"
+   "request_sha256": "d5df3ad56980dad47a78d438204e92394636590fbb9d3e099c82f3e917cb8004"
   },
   "s-dove-circle": {
    "source": "still_motion",
