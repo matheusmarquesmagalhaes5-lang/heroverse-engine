@@ -281,7 +281,13 @@
     "first_comment": "PENDING: HTTP_403 forbidden: The comment thread could not be created due to insufficient permissions. The request might not be properly authorized."
    },
    "video_id": "1m-NUJhkdMY",
-   "uploaded_at": "2026-11-02T21:02:41.798047+00:00"
+   "uploaded_at": "2026-11-02T21:02:41.798047+00:00",
+   "released": {
+    "at": "2026-11-03T01:15:16.466804+00:00",
+    "privacy": "public",
+    "receipt": "release-receipt-41558453690.json",
+    "plan": "release-plan.json"
+   }
   }
  },
  "owner_exceptions": {

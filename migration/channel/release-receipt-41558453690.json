@@ -1,0 +1,24 @@
+{
+ "version": "channel-release-receipt-v1",
+ "channel_id": "UCuMF6pJQkyMzaVoAxFL86yA",
+ "plan": "release-plan.json",
+ "reason": "owner, 2026-11-03: release the held flood-ends-long (pilot-017) as it is. Uploaded by publish.yml run 41524618475 after approve.yml and the prepublish gate passed for this exact file; held 2026-11-02 (PR #682); removed from hold-plan.json.",
+ "undo": "set the video back to its 'before' privacy (and publishAt)",
+ "changes": [
+  {
+   "video_id": "1m-NUJhkdMY",
+   "before": {
+    "privacy": "private",
+    "publishAt": null,
+    "uploadStatus": "processed"
+   },
+   "after": {
+    "privacy": "public",
+    "publishAt": null,
+    "uploadStatus": "processed"
+   },
+   "verified_at": "2026-11-03T01:15:16.466804+00:00",
+   "result": "RELEASED"
+  }
+ ]
+}
