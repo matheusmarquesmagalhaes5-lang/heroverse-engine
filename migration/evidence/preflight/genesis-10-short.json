@@ -1,0 +1,194 @@
+{
+ "plan": "migration/production/bible/plans/genesis-10-short.json",
+ "episode": "genesis-10-short",
+ "checked_at": "2026-11-03T04:33:35Z",
+ "plan_check": {
+  "problems": [],
+  "pending": [],
+  "estimate": {
+   "seconds": 178.8,
+   "keeper_share": 0.102,
+   "lesson_share": 0.106,
+   "establishing_share": 0.0,
+   "lines": 21,
+   "shots": 21,
+   "spoken_lines": 1,
+   "words": 471
+  }
+ },
+ "characters": [
+  {
+   "id": "keeper",
+   "status": "APPROVED",
+   "refs": [
+    "front"
+   ],
+   "talk_refs": [
+    "talk"
+   ],
+   "voice": "am_michael",
+   "image_records": [
+    "ch-keeper-front",
+    "ch-keeper-talk"
+   ]
+  }
+ ],
+ "cf_images": {
+  "recorded_today": 0,
+  "daily_allocation": 44,
+  "sheets_needed": {},
+  "fits_today": true
+ },
+ "voice": {
+  "ran": true,
+  "reused": false,
+  "checkpoint_sha256": "7872733e0d302c97bfdd351555a9f1f2a126534739890a8d649fe8bd4c93ffa5",
+  "problems": [],
+  "pace": {
+   "god": [
+    3.18
+   ],
+   "narration": [
+    2.42,
+    2.97,
+    2.64,
+    2.93,
+    2.8,
+    3.62,
+    3.18,
+    3.45,
+    3.54,
+    2.65,
+    2.86,
+    3.37,
+    2.3,
+    2.56,
+    3.06,
+    3.06,
+    2.95,
+    2.75,
+    3.05,
+    2.15
+   ]
+  },
+  "measured": {
+   "total": 170.929,
+   "keeper_share": 0.111,
+   "lesson_share": 0.115,
+   "retimed": {}
+  }
+ },
+ "requests": {
+  "ran": true,
+  "problems": [],
+  "digests": {
+   "s-voice": "ba5982e531884fa587ea7d0fe0d2de4d4bd0d41d3a3b943392150aa705ca3c1b",
+   "s-hold": "ca7128ee5e847dec59c67e416e1f6022450d035535fc496893656683157d98a9",
+   "s-wind": "d34df7ebc5488e02edddff73541aa884eb2f40d43a25c5b5810a70266e3bb112",
+   "s-calm": "962da98f3961721c2f4bb6c93e4422732ff7bcd70d5068a286ee43c8f1281d19",
+   "s-ararat": "6729bf59c4f40e8ed0a9cef6bed6e3522b01a6dff56fdb43d2308e63e69298f8",
+   "s-still-water": "0840c9bad846caba1f4550938f391e6a35cf8bcca0a0fc40439cdbf12ae302a2",
+   "s-window": "f21da0267004b64fa3cae90d68c77714fb0e0a459f700e55facb8dda5925e5d5",
+   "s-raven": "fcbe3a1b6f84f12359ba40bbaeb536de78e2a4754cba806295986a8eb0d1ede5",
+   "s-noah-dove": "2752fbd7b99300076c98e19a5dd91720dfe0e6f8405d4862db4959c961024d1c",
+   "s-dove-circle": "292096706d60797cf68a7f196d3618f04974af5058052f427fa45a4a9cafd343",
+   "s-hand": "853397844dffe9fa6b657f2ab5f1ab8bc353de5f2c341db845bc718d0e9951c1",
+   "s-dusk": "196dfd18a6ea54951eb77f6b4be925b87859525cb4b520b6a2dd37ea837466dc",
+   "s-leaf": "595f2e2959dc68dc996cd660d0ca56b78fb3423ed30a3b61a84be74bd41e8f1c",
+   "s-release": "894c8b0ab6ca7dedc61c8a337e66005d27428e4c7dcad770f101fe968ce95e29",
+   "s-empty-sky": "13dad87c542b9c10386599131cc14ec07a6cb8d73dfe29d50d0222913d7634bd",
+   "s-green": "5dcb3a05032c163e16e69ae722be4371b0526c546fca9f067a92b1e757067af3",
+   "s-dry": "53f7af3abbacf9b4ae2d494ae0cb766e1829595cf12034c491d5dc2a671576d3",
+   "s-door-shut": "9939bad9400e168039ff042a212883be57f45627abc075cb5f2265933be3a9a8",
+   "k-insight": "d6139213b1d6fe3a9d7059b65000d7155f2a3e532042a29bb222fee8836f587e",
+   "k-question": "9915d0105b03aee1fb2b3e1bafcd66bbc5bb82d434d570cc24430d2f3e06ff99",
+   "k-close": "fcd3f420eadf01dfbccbc5a6fc7758f45d036e077daf293f6eaf8bcf637723e3"
+  },
+  "needs": {
+   "s-voice": 8,
+   "s-hold": 9,
+   "s-wind": 12,
+   "s-calm": 12,
+   "s-ararat": 10,
+   "s-still-water": 9,
+   "s-window": 8,
+   "s-raven": 8,
+   "s-noah-dove": 8,
+   "s-dove-circle": 8,
+   "s-hand": 8,
+   "s-dusk": 9,
+   "s-leaf": 12,
+   "s-release": 9,
+   "s-empty-sky": 8,
+   "s-green": 9,
+   "s-dry": 9,
+   "s-door-shut": 10,
+   "k-insight": 9,
+   "k-question": 6,
+   "k-close": 8
+  }
+ },
+ "setups": {
+  "shots": [
+   {
+    "kind": "god_voice_over",
+    "shot": "s-voice",
+    "probe": "none needed: generated right after the talking shots (risk_order), face check"
+   },
+   {
+    "kind": "plan_b_still",
+    "shot": "k-insight",
+    "probe": "none needed: the Kokoro voice over its approved still in motion (owner exception, arc-01 long); no lips are shown speaking"
+   },
+   {
+    "kind": "still_mouth",
+    "speaker": "keeper",
+    "references": {
+     "ch-keeper-talk": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
+    },
+    "shot": "k-question",
+    "check": "lipsync_check --still-mouth",
+    "probe": [
+     "migration/evidence/pavo/20261026/keeper-vo/calibration.json"
+    ],
+    "passed": "2 of 2",
+    "shot_chance": 0.938
+   },
+   {
+    "kind": "plan_b_still",
+    "shot": "k-close",
+    "probe": "none needed: the Kokoro voice over its approved still in motion (owner exception, arc-01 long); no lips are shown speaking"
+   }
+  ],
+  "probes_required": [],
+  "rate_low": [],
+  "talk_attempts": 2,
+  "min_shot_chance": 0.9,
+  "run_chance_all_talking_shots": 0.938
+ },
+ "shot_review": [
+  "SHOT_REQUEST_CHANGED s-door-shut k-insight (the plan's request is no longer the one the approved clip was made from: probe and approve again)"
+ ],
+ "binding": {
+  "plan": "13cccfd7c710f314a11b3ef3eb741fc19c29e2274d72c2622b563fbeeda5c715",
+  "characters": "4fa2cce1dc2029a424336c09a7f2b0272aaa0681023b7010d55a44847ca4d047",
+  "image_records": {
+   "ch-keeper-front.json": "666eb65f6fc26529aa71af95bba873ac4bdb123c599b30d7e2fe7e1986399932",
+   "ch-keeper-talk.json": "c431a6013669385cb236c64158160cc6966337cdfb8ada711ed98f58b509b6cc"
+  },
+  "setups": "0caff8f5bd70483f889bf2219fa29949d17504192dee6aef96f0bc8dcbba1b4a",
+  "code": {
+   "episode_build.py": "07f8c552960afea25ca853b66456f129080aa7ed629f9f3d645e0ea0c7f1827c",
+   "plan_check.py": "f82585de3da3bf1f2c8932dd598ed6cc961f63ea530eafbeb38b9a643718dbb6",
+   "voice_pace.py": "d4d2850c60e7df3680130725b6d584a83239538ad91f59671fcff4a626837c4b",
+   "lipsync_check.py": "5fa7aed2dbe007c556fd3e693ae31d0ef9c5bd11a4132773aa06eb78bf552983",
+   "syncnet.py": "0f6e65316b50850629e488e6167ad7159efc3b2480d27ced3166311e054633f7",
+   "episode_preflight.py": "f0835f14e3ddb16d551382c0cb443602837dd3ff5ff8463cd114d4a480c60231",
+   "clip_timing.py": "44626ba6ea7f807a62a99dcabcca3751d55c01ce452718efe1fc1b9e6db73509",
+   "reviewer_identity.py": "b813ceb46a450e21f7fd3fd08b38fe77094f1b3fafaec8db3251f56f954be24d",
+   "owner_quality_policy.py": "093de8b9883d18d6e6f8eb08989696d180bb890556cc89de34aecb5fdcedb3ca"
+  }
+ },
+ "blockers": [],
+ "status": "PASS"
+}
