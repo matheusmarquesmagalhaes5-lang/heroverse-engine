@@ -47,6 +47,9 @@ def real_ours():
 
 
 stub_ours()
+# Owner 2026-11-03 made "pavo" the default route. This suite's fixtures are the E287 world (our request audio over Pavo's
+# picture, fake bytes), so they run on the explicit "ours" route; the Pavo-audio route has its own tests in test_pavo_audio.py.
+eb.pavo_audio.DEFAULT = eb.pavo_audio.OURS
 
 
 # genesis-07-short.json as main had it before plan B (#413, commit 1c1ed79): the lip-synced Keeper. Run 40307414749
@@ -1241,6 +1244,32 @@ class Lines(unittest.TestCase):
         self.assertAlmostEqual(timeline["sentences"][0]["end"], result["lines"][0]["end"], places=3)   # captions too
         self.assertAlmostEqual(timeline["sentences"][-1]["start"], k["start"], places=2)
         self.assertAlmostEqual(timeline["voice_seconds"], k["end"], places=2)
+
+    def test_a_pavo_audio_approval_lays_its_shot_out_at_the_clip_length_and_freezes_the_pavo_request(self):
+        """Owner 2026-11-03: the whole Pavo clip is the shot's slot, but the Pavo REQUEST (seconds, input WAV) stays the one
+        made before the approval, so the approved request digest holds."""
+        plan = dict(self.PLAN, episode="pavo-lines-test")
+        sha = "f" * 64
+        approvals = {"k-open": {"clip_sha256": sha, "audio": {"route": "pavo"},
+                                "media": {"version": "clip-media-v1", "clip_sha256": sha, "video_seconds": 5.54,
+                                          "audio_seconds": 5.5},
+                                "speech": {"route": "pavo", "clip_sha256": sha, "onset": 0.0, "end": 5.5, "gain_db": 1.0,
+                                           "flags": []}}}
+        self.voice([(0.3, 3.6), (3.78, 30.0), (30.18, 60.0), (60.18, 66.73)])
+        before = eb.lines_step(plan, self.work)
+        with patch.object(eb, "load_approvals", lambda plan, path=None: approvals):
+            result = eb.lines_step(plan, self.work)
+            frozen = result["pavo_requests"]["k-open"]
+            self.assertEqual(frozen["seconds"], before["keeper"]["k-open"]["seconds"])      # the request as it was
+            self.assertEqual(frozen["wav"], eb.rel(self.work / "pavo-request" / "k-open.wav"))
+            info = json.loads(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "json",
+                                              str(eb.REPO / frozen["wav"])], capture_output=True, text=True).stdout)
+            self.assertAlmostEqual(float(info["format"]["duration"]), before["keeper"]["k-open"]["seconds"], delta=0.02)
+            self.assertEqual(eb.talk_record(result, plan["shots"][0])["seconds"], before["keeper"]["k-open"]["seconds"])
+            self.assertAlmostEqual(result["lines"][0]["end"] - result["lines"][0]["start"], 5.5, delta=0.02)   # the slot
+            self.assertGreater(result["total"], before["total"])
+            self.assertEqual(eb.talk_record(result, plan["shots"][2]), result["keeper"]["k-close"])   # others untouched
+        self.assertNotIn("pavo_requests", before)
 
     def test_a_keeper_over_25_percent_measured_stops_the_run(self):
         self.voice([(0.3, 12.3), (12.48, 25.0), (25.18, 40.0), (40.18, 50.38)])

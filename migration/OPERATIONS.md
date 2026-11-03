@@ -126,7 +126,22 @@ the approval records it. `reflection_shorts.py check` repeats it per segment (`S
 `SEGMENT_CLIP_WORDS_UNPROVEN`, `SEGMENT_CLIP_WRONG_WORDS`). A Keeper segment that fails both generations falls back to the
 DECISIONS ladder only for a long; a reflection without all its clips is not made that day (the cuts and bridge Shorts go on).
 
-Pavo's audio is ours (E287, owner 2026-11-03: "o pavo nao tem vida propria... quem ta errado e voce"). On the Kokoro-input route
+Pavo's audio is Pavo's, in full (owner 2026-11-03: "Quero com o audio do pavo tambem.. quero o video do pavo na integra. A
+narracao feita vai ser pras imagens.. aproveitar tudo que o pavo pode oferecer dentro das capacidades"). This reverses E287's
+default: `pavo_audio` is a per-shot setting whose DEFAULT is `"pavo"` on every track (long compose, reflection, compilation,
+bridge Shorts). The kept clip is exactly what Pavo returned (no mux; `trim_out_s` only when the shot or approval sets it);
+its `audio` proof records the digest of Pavo's own track and its LUFS/true peak. approve-shot records the one gain that
+matches it to the narration within +-1 dB under a -1.5 dBTP limiter and the whole clip as its speech span; the compose
+(`native_voice`, long_build) lays it into the voice track and lays the clip's whole length out as that shot's slot, while
+the Pavo request keeps its pre-approval seconds and WAV (`layout.pavo_requests`). Kokoro narration stays on the still and
+scene shots. Visual gates are unchanged (face, mouth sync against the clip's own track, artifacts); `AUDIO_NOT_OUR_LINE` and
+`SPEECH_WORDS_NOT_EXACT` are no refusal for these shots: `speech-check` writes the ASR text to `review_notes`, and a direct KJV
+quotation whose words differ carries `WARN_KJV_WORDS` for the reviewer (KJV-exact pillar; a warning, never automatic). A
+stored clip is moved to this route by `shot-remux.yml` too (the route of the shot decides: the stored bytes are kept, only
+re-judged; a stored clip that already has our line laid over it is refused, `PAVO_AUDIO_IS_OURS`: its original asset is the
+legacy probe's). Explicit `"pavo_audio": "ours"` keeps E287 below; approvals recorded under it keep it.
+
+Pavo's audio is ours (E287, now an explicit option; owner 2026-11-03: "o pavo nao tem vida propria... quem ta errado e voce"). On the Kokoro-input route
 (`sound: false`, our exact line as the request's input audio) the clip we keep is Pavo's picture with the request's own WAV laid
 over it (`pavo_audio.mux_ours`, PCM, bit-exact); Pavo's returned track is dropped and never judged. Words are the request's
 words (exact by construction); `pavo_audio.assert_ours` proves the kept audio equals the request WAV and the probe record

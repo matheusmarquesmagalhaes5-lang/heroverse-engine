@@ -260,5 +260,37 @@ class ReviewTrackTests(unittest.TestCase):
         self.assertEqual(pg.sha256_file(pg.CRITERIA_FILES[pg.COMPILATION]), pg.FROZEN_CRITERIA_SHA256[pg.COMPILATION])
 
 
+class PavoOwnAudioRoute(unittest.TestCase):
+    """Owner 2026-11-03: a Keeper clip is used in full with Pavo's own audio unless the key says otherwise."""
+    def test_the_route_is_explicit_then_the_plan_then_the_recorded_remux_then_the_old_plans_then_pavo(self):
+        key = {}
+        self.assertEqual(cl.key_route({"id": "new"}, key), "pavo")
+        self.assertEqual(cl.key_route({"id": "arc-02-noah-compilation"}, key), "ours")      # built before: its digests hold
+        self.assertEqual(cl.key_route({"id": "new"}, {"remux": {"audio_route": "ours"}}), "ours")
+        self.assertEqual(cl.key_route({"id": "new", "pavo_audio": "ours"}, key), "ours")
+        self.assertEqual(cl.key_route({"id": "arc-02-noah-compilation"}, {"pavo_audio": "pavo"}), "pavo")
+        self.assertEqual(cl.key_route({"id": "new", "pavo_audio": "ours"}, {"pavo_audio": "pavo"}), "pavo")
+        with self.assertRaisesRegex(SystemExit, "PAVO_AUDIO_ROUTE_INVALID"):
+            cl.key_route({"id": "new"}, {"pavo_audio": "theirs"})
+        for name in ("arc-02-noah-compilation", "arc-02-noah-complete-compilation"):
+            plan = cl.load(HERE / "compilations" / f"{name}.json")
+            self.assertEqual({cl.key_route(plan, plan[k]) for k in ("hook", "close")}, {"ours"})
+
+    @unittest.skipUnless(FFMPEG, "ffmpeg required")
+    def test_the_pavo_route_plays_the_whole_clip_with_its_own_track_and_trims_only_when_set(self):
+        with tempfile.TemporaryDirectory() as t:
+            t = Path(t)
+            ff("-f", "lavfi", "-i", "testsrc=s=640x360:r=24:d=4", "-f", "lavfi", "-i", "sine=f=500:r=48000:d=4",
+               "-c:v", "libx264", "-pix_fmt", "yuv420p", "-c:a", "aac", "-shortest", t / "pavo.mp4")
+            ff("-f", "lavfi", "-i", "sine=f=200:r=24000:d=1.5", t / "k.wav")
+            cl.render_keeper(t / "pavo.mp4", t / "k.wav", t / "full.mp4", None, "pavo")
+            cl.render_keeper(t / "pavo.mp4", t / "k.wav", t / "cut.mp4", 3.0, "pavo")
+            self.assertAlmostEqual(cl.duration(t / "full.mp4"), 4.0 + 2 * cl.BEAT, delta=0.15)   # in full, a still beat each end
+            self.assertAlmostEqual(cl.duration(t / "cut.mp4"), 3.0 + cl.BEAT, delta=0.15)        # trimmed only when explicit
+            lufs, peak = cl.loudness(t / "full.mp4")
+            self.assertTrue(cl.LUFS_BAND[0] - 1.5 <= lufs <= cl.LUFS_BAND[1] + 1.0, lufs)         # the same gain as every segment
+            self.assertLessEqual(peak, cl.TRUE_PEAK_MAX)
+
+
 if __name__ == "__main__":
     unittest.main()

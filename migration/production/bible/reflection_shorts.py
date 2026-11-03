@@ -191,7 +191,8 @@ def segment_problems(spec, root=ROOT):
         if said != eb.spoken_words(seg["text"]):
             bad.append(f"SEGMENT_CLIP_WRONG_WORDS {sid} (the clip was made for other words than the segment's: a "
                        "hard defect, probe the new text)")
-        if trim is not None:   # E282: the pinned ASR heard exactly the line on the clip as cut (speech-check --trim-out)
+        pavo = (approved.get("audio") or {}).get("route") == pavo_audio.PAVO   # owner 2026-11-03: Pavo's own audio
+        if trim is not None and not pavo:   # E282: the pinned ASR heard exactly the line on the clip as cut (speech-check --trim-out)
             side = Path(root) / "migration" / "evidence" / "shots" / spec["id"] / "speech" / f"{sha}.json"
             try:
                 proof = cl.load(side)
@@ -215,12 +216,16 @@ def segment_problems(spec, root=ROOT):
             bad.append(f"SEGMENT_AUDIO_NOT_OURS {sid} (the approval's audio proof is not the probe record's for this clip)")
         elif proof is not None:
             split = dict(split, words=[])   # exact by construction; a broken mux is refused at approve-shot and the render
+        if pavo:
+            split = dict(split, words=[])   # Pavo's words are a review note (the speech sidecar), never a refusal
         if [f for f in split["words"] if f not in accepted]:
             bad.append(f"SEGMENT_CLIP_WORDS_UNPROVEN {sid} (AUDIO_NOT_OUR_LINE needs the pinned ASR's proof on this "
                        "clip: episode_build.py speech-check, then approve-shot)")
         out.append({"shot": sid, "asset": asset, "clip_sha256": sha, "seconds": trim if trim is not None else seconds,
                     "trim_out_s": trim, "text": seg["text"].strip(), "flags": split, "accepted_flags": accepted, "score": score,
-                    **({"audio": proof} if proof is not None else {})})
+                    **({"audio": proof} if proof is not None else {}),
+                    **({"gain_db": (approved.get("speech") or {}).get("gain_db")} if pavo else {}),
+                    **({"review_notes": approved["review_notes"]} if approved.get("review_notes") else {})})
     return bad, out
 
 
@@ -234,6 +239,12 @@ def timeline(segments):
     return offsets, round(at + segments[-1].get("fade", XFADE), 3)
 
 
+def adaptive_fade(c):
+    """A clip whose crossfade shortens to the silence it has: a trimmed one (E282) and, owner 2026-11-03, a Pavo-audio clip
+    used in full (its tail is Pavo's own): the picture blends, the crossfade never runs over a word, and it is never a refusal."""
+    return c.get("trim_out_s") is not None or (c.get("audio") or {}).get("route") == pavo_audio.PAVO
+
+
 def join_fades(segments, spans):
     """E282: the crossfade after each clip but the last, from the silence it keeps after its last word. A full clip keeps
     the gate: XFADE + TAIL_CLEAR of silence or the render refuses. A TRIMMED clip (cut inside the silence after the
@@ -244,9 +255,9 @@ def join_fades(segments, spans):
         tail = span[3]
         if tail >= XFADE + TAIL_CLEAR:
             fades.append(XFADE)
-        elif c.get("trim_out_s") is not None and tail - TAIL_CLEAR >= XFADE_MIN:
+        elif adaptive_fade(c) and tail - TAIL_CLEAR >= XFADE_MIN:
             fades.append(math.floor((tail - TAIL_CLEAR) * 1000) / 1000)
-        elif c.get("trim_out_s") is not None:
+        elif adaptive_fade(c):
             fades.append(0.0)   # no silence to fade in (the Pavo mumble starts at once): a plain cut, nothing overlaps a word
         else:
             raise SystemExit(f"SEGMENT_TAIL_TOO_SHORT {c['shot']} {tail:.2f} s of silence after the last word "
@@ -523,7 +534,7 @@ def render(spec_path, clean, work, out_dir, root=ROOT):
         if not path.is_file() or cl.sha256(path) != c["clip_sha256"]:
             raise SystemExit(f"CLIP_FILE_MISSING {c['shot']} (reflection_shorts.py fetch-clips: the approved clip's exact bytes)")
         if c.get("audio") is not None:   # E287: its audio digest is the request's own, on the approved bytes
-            pavo_audio.verify(path, c["audio"])
+            pavo_audio.verify_any(path, c["audio"])
         if c.get("trim_out_s") is not None:   # E282: the clip is used as approved, cut right after the line's last word
             (work / "trimmed").mkdir(parents=True, exist_ok=True)
             path = eb.trim_media(path, c["trim_out_s"], work / "trimmed" / f"{c['shot']}.mp4")
@@ -568,7 +579,9 @@ def render(spec_path, clean, work, out_dir, root=ROOT):
         # the Keeper's voice: the clips' own audio, each placed where its clip starts (the previous tail is silent there)
         inputs = [a for p in paths for a in ("-i", p)]
         chain = ";".join(f"[{i}:a]aresample=48000,aformat=channel_layouts=stereo,"
-                         f"adelay={int(round(offsets[i] * 1000))}|{int(round(offsets[i] * 1000))}[k{i}]" for i in range(n))
+                         + (pavo_audio.match_filter(segments[i]["gain_db"]) + "," if segments[i].get("gain_db") is not None
+                            and (segments[i].get("audio") or {}).get("route") == pavo_audio.PAVO else "")   # owner 2026-11-03
+                         + f"adelay={int(round(offsets[i] * 1000))}|{int(round(offsets[i] * 1000))}[k{i}]" for i in range(n))
         voice = tmp / "voice.wav"
         cl.run(["ffmpeg", "-nostdin", "-v", "error", "-y", *inputs, "-filter_complex",
                 f"{chain};" + "".join(f"[k{i}]" for i in range(n)) + f"amix=inputs={n}:normalize=0:duration=longest,"

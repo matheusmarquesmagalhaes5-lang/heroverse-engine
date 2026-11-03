@@ -10,6 +10,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import unittest.mock
 import wave
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -17,6 +18,9 @@ import episode_build as eb  # noqa: E402
 import pavo_audio  # noqa: E402
 
 HAS_FFMPEG = shutil.which("ffmpeg") is not None and shutil.which("ffprobe") is not None
+# E287's tests below run on the explicit "ours" route (owner 2026-11-03 made "pavo" the default); the default and the
+# Pavo route are tested in the classes at the end of this file, which set it back.
+pavo_audio.DEFAULT = pavo_audio.OURS
 
 
 def write_line(path, seconds=2.0, hz=300.0):
@@ -85,7 +89,7 @@ class AudioIsOurs(unittest.TestCase):
                        check=True)
         with self.assertRaisesRegex(SystemExit, "AUDIO_NOT_OURS"):
             pavo_audio.verify(silent, proof)
-        for bad in (None, {}, dict(proof, route="pavo"), dict(proof, samples=0), dict(proof, sha256=None)):
+        for bad in (None, {}, dict(proof, route="theirs"), dict(proof, samples=0), dict(proof, sha256=None)):
             with self.assertRaisesRegex(SystemExit, "AUDIO_NOT_OURS"):
                 pavo_audio.verify(kept, bad)
 
@@ -183,7 +187,7 @@ class ApprovalNeedsTheProof(unittest.TestCase):
         ours = {"pavo_audio": "ours"}
         self.assertIsNone(eb.ours_audio_problem(ours, entry, {"audio": proof, "flags": []}))
         self.assertIn("no pavo_audio proof", eb.ours_audio_problem(ours, entry, {"flags": []}))
-        self.assertIn("no pavo_audio proof", eb.ours_audio_problem(ours, entry, {"audio": dict(proof, route="pavo")}))
+        self.assertIn("no pavo_audio proof", eb.ours_audio_problem(ours, entry, {"audio": dict(proof, route="theirs")}))
         self.assertIn("no pavo_audio proof", eb.ours_audio_problem(ours, entry, {"audio": dict(proof, sha256="x")}))
         self.assertIn("words flag", eb.ours_audio_problem(ours, entry, {"audio": proof, "flags": ["AUDIO_NOT_OUR_LINE"]}))
         # a legacy record (Pavo's track kept) and a native-speech request keep their own rules
@@ -285,6 +289,242 @@ class RemuxOurAudioOverAStoredClip(unittest.TestCase):
         (self.src / eb.shot_asset_name("ep", "k-a", self.sha)).write_bytes(b"other")   # the asset is not the recorded bytes
         with self.assertRaisesRegex(SystemExit, "REMUX_STORED_CLIP_MISSING"):
             self.remux()
+
+
+class RouteAndLoudness(unittest.TestCase):
+    """Owner 2026-11-03: "pavo" (Pavo's own audio, the clip in full) is the default; "ours" is an explicit option."""
+    def test_the_default_is_pavo_and_ours_is_only_explicit_or_recorded(self):
+        with unittest.mock.patch.object(pavo_audio, "DEFAULT", pavo_audio.PAVO):
+            self.assertEqual(pavo_audio.route_of({}), "pavo")
+            self.assertEqual(pavo_audio.route_of(None), "pavo")
+            self.assertEqual(pavo_audio.route_of({"pavo_audio": "ours"}), "ours")
+            self.assertEqual(pavo_audio.route_of({}, {"route": "ours"}), "ours")      # an E287 approval keeps its route
+            self.assertEqual(pavo_audio.route_of({"pavo_audio": "pavo"}, {"route": "ours"}), "pavo")   # explicit wins
+            self.assertEqual(pavo_audio.route_of({}, {"route": "pavo"}), "pavo")
+            self.assertEqual(pavo_audio.route_of({}, "ours"), "ours")                  # a compilation key's remux route
+            with self.assertRaisesRegex(SystemExit, "PAVO_AUDIO_ROUTE_INVALID"):
+                pavo_audio.route_of({"pavo_audio": "theirs"})
+        self.assertEqual(pavo_audio.DEFAULT, "ours")   # this file's fixtures; the shipped default is asserted above
+        self.assertEqual(pavo_audio.ROUTES, ("pavo", "ours"))
+        shipped = subprocess.run([sys.executable, "-I", "-c", "import sys;sys.path.insert(0,%r);import pavo_audio;"
+                                  "print(pavo_audio.DEFAULT)" % str(Path(__file__).resolve().parent)],
+                                 capture_output=True, text=True, check=True).stdout.strip()
+        self.assertEqual(shipped, "pavo")
+
+    def test_match_gain_lands_within_one_db_and_refuses_a_peak_the_limiter_cannot_hide(self):
+        got = pavo_audio.match_gain(-22.0, -16.0, -12.0)
+        self.assertEqual((got["gain_db"], got["matched_lufs"], got["limited"]), (6.0, -16.0, False))
+        got = pavo_audio.match_gain(-22.0, -16.0, -6.0)   # +6 dB puts the peak at 0 dBTP: the limiter holds the ceiling
+        self.assertTrue(got["limited"])
+        self.assertLessEqual(abs(got["matched_lufs"] - -16.0), pavo_audio.LOUDNESS_TOL)
+        with self.assertRaisesRegex(SystemExit, "LOUDNESS_NOT_MATCHED"):
+            pavo_audio.match_gain(-30.0, -16.0, -3.0)
+        for bad in (None, float("nan"), True):
+            with self.assertRaisesRegex(SystemExit, "LOUDNESS_NOT_MATCHED"):
+                pavo_audio.match_gain(bad, -16.0, -3.0)
+
+    @unittest.skipUnless(HAS_FFMPEG, "ffmpeg required")
+    def test_the_filter_brings_a_real_pavo_track_to_the_narration_within_one_db_under_the_ceiling(self):
+        tmp = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, tmp)
+        clip = pavo_clip(tmp / "pavo.mp4", seconds=4.0)
+        line = write_line(tmp / "line.wav", seconds=4.0)
+        proof = pavo_audio.pavo_proof(clip, line)
+        self.assertEqual(proof["route"], "pavo")
+        gain = pavo_audio.match_gain(proof["lufs"], proof["narration_lufs"], proof["true_peak_db"])
+        out = tmp / "matched.wav"
+        subprocess.run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", str(clip), "-vn", "-af",
+                        pavo_audio.match_filter(gain["gain_db"]), str(out)], check=True)
+        after = pavo_audio.measure(out)
+        self.assertLessEqual(abs(after["lufs"] - proof["narration_lufs"]), pavo_audio.LOUDNESS_TOL)
+        self.assertLessEqual(after["true_peak_db"], pavo_audio.TRUE_PEAK_MAX + 0.3)
+
+    @unittest.skipUnless(HAS_FFMPEG, "ffmpeg required")
+    def test_the_proof_binds_pavos_own_track_and_refuses_our_line_labelled_as_pavos(self):
+        tmp = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, tmp)
+        clip = pavo_clip(tmp / "pavo.mp4")
+        line = write_line(tmp / "line.wav")
+        proof = pavo_audio.pavo_proof(clip, line)
+        self.assertEqual(pavo_audio.verify_any(clip, proof), proof)
+        import test_episode_build as t   # its import stubs mux_ours: the real one is wanted here
+        ours = t.REAL_MUX(clip, line, tmp / "ours.mp4")
+        with self.assertRaisesRegex(SystemExit, "PAVO_AUDIO_IS_OURS"):
+            pavo_audio.pavo_proof(ours, line)
+        with self.assertRaisesRegex(SystemExit, "AUDIO_NOT_PAVO"):
+            pavo_audio.verify_any(ours, proof)
+        self.assertEqual(pavo_audio.verify_any(ours, pavo_audio.proof_of(line))["route"], "ours")
+
+
+@unittest.skipUnless(HAS_FFMPEG, "ffmpeg required")
+class PavoRouteInTheEngine(unittest.TestCase):
+    def setUp(self):
+        import test_episode_build as t
+        self.t = t
+        self.tmp = Path(tempfile.mkdtemp(dir=eb.REPO, prefix=".test-pavo-"))
+        self.addCleanup(shutil.rmtree, self.tmp, True)
+        self.addCleanup(shutil.rmtree, eb.REPO / ".episode" / "x", True)
+        self.raw = pavo_clip(self.tmp / "raw.mp4", seconds=3.0)
+        self.saved = (eb.clip_flags, eb.lipsync_flags, eb.face_flags)
+        self.addCleanup(lambda: setattr(eb, "clip_flags", self.saved[0]) or setattr(eb, "lipsync_flags", self.saved[1])
+                        or setattr(eb, "face_flags", self.saved[2]))
+
+    def runner(self, shot_patch=None):
+        t = self.t
+        plan = t.dialogue_plan()
+        layout = t.layout_for(plan, [2.4, 3.0, 2.5, 3.1])
+        wav = eb.REPO / layout["speakers"]["s-eve"]["wav"]
+        wav.parent.mkdir(parents=True, exist_ok=True)
+        write_line(wav)
+        shot = next(s for s in plan["shots"] if s["id"] == "s-eve")
+        shot.update(shot_patch or {})
+        refs = {"keeper": ["k.jpg"], "eve": ["eve.jpg"]}
+        (self.tmp / "refs.json").write_text(json.dumps(refs))
+        client = t.FakeClient([{"conversation_id": "1", "status": "submitted"}], {"1": [t.done("1")]})
+        out = eb.shot_runner(shot, plan["shots"].index(shot), plan, layout, refs, self.tmp, client,
+                             lambda url, dst: shutil.copyfile(self.raw, dst), "py", "model", lambda s: None)
+        return out, wav
+
+    def test_the_default_keeps_the_pavo_clip_whole_with_its_own_track_and_never_refuses_the_words(self):
+        seen = {}
+        eb.clip_flags = lambda path, aspect=None: []
+
+        def lips(py, model, clip, line):   # the mouth is judged against the track the clip CARRIES, not our line
+            seen["line"] = Path(line)
+            pavo_audio.pavo_verify(clip, seen["proof"])
+            return ["AUDIO_NOT_OUR_LINE", "MOUTH_NOT_IN_SYNC"], {"audio": {"corr": 0.2}, "mouth": {"sync": {}}}
+        eb.lipsync_flags = lips
+        with unittest.mock.patch.object(pavo_audio, "DEFAULT", pavo_audio.PAVO):
+            (req, attempt, check, raw, final), wav = self.runner()
+            record, path = attempt(1)
+            seen["proof"] = record["audio"]
+            flags, _ = check(path)
+        self.assertEqual(eb.sha256(final), eb.sha256(raw))                  # the clip as Pavo made it: in full, no trim, no mux
+        self.assertEqual(record["audio"]["route"], "pavo")
+        self.assertNotEqual(seen["line"], wav)                              # judged on its own track
+        self.assertEqual(flags, ["MOUTH_NOT_IN_SYNC"])                      # words are not a flag; the visual gates stay
+        self.assertFalse(eb.visual_defect([]) )
+        self.assertEqual(record["audio"]["narration_lufs"], pavo_audio.measure(wav)["lufs"])
+        self.assertIsNone(eb.ours_audio_problem({"pavo_audio": "pavo"}, {"request": {"audio": {"words": ["a"]}}},
+                                                {"audio": record["audio"], "flags": flags}))
+
+    def test_an_explicit_ours_shot_still_gets_our_line_over_pavos_picture(self):
+        eb.clip_flags = lambda path, aspect=None: []
+        eb.lipsync_flags = lambda py, model, clip, line: ([], {"audio": {}, "mouth": {"sync": {}}})
+        eb.face_flags = eb.lipsync_flags
+        self.t.real_ours()
+        self.addCleanup(self.t.stub_ours)
+        with unittest.mock.patch.object(pavo_audio, "DEFAULT", pavo_audio.PAVO):
+            (req, attempt, check, raw, final), wav = self.runner({"pavo_audio": "ours"})
+            record, path = attempt(1)
+        self.assertEqual(record["audio"], pavo_audio.proof_of(wav))
+        pavo_audio.verify(final, record["audio"])
+
+
+class ReviewNotesAndTheKjvWarning(unittest.TestCase):
+    LINE = "In the beginning God created the heaven and the earth"
+
+    def test_another_word_is_a_note_and_only_a_kjv_quotation_warns(self):
+        same = eb.pavo_review_notes(self.LINE, self.LINE.lower() + ".", True)
+        self.assertEqual((same["words_differ"], same.get("warnings")), (False, None))
+        other = eb.pavo_review_notes(self.LINE, "In the beginning the Lord created the heaven and the earth", False)
+        self.assertEqual((other["words_differ"], other.get("warnings")), (True, None))      # a note, no warning, no refusal
+        self.assertEqual(other["asr_text"], "In the beginning the Lord created the heaven and the earth")
+        kjv = eb.pavo_review_notes(self.LINE, "In the beginning the Lord created the heaven and the earth", True)
+        self.assertEqual(kjv["warnings"], ["WARN_KJV_WORDS"])
+        self.assertEqual(eb.pavo_review_notes(self.LINE, None, True)["warnings"], ["WARN_KJV_WORDS"])   # not heard at all
+
+    def test_a_scripture_item_marks_the_shot_as_a_kjv_quotation(self):
+        import test_episode_build as t
+        plan = t.dialogue_plan()
+        self.assertFalse(eb.kjv_quote(plan, "s-eve"))
+        self.assertFalse(eb.kjv_quote({"shots": []}, "nope"))
+        items, carried = eb.plan_check.sequence(plan)
+        index = next(i for i, s in enumerate(plan["shots"]) if s["id"] == "s-eve")
+        with unittest.mock.patch.object(eb.plan_check, "sequence", lambda p: (
+                [dict(it, kind="scripture") if k in carried[index] else it for k, it in enumerate(items)], carried)):
+            self.assertTrue(eb.kjv_quote(plan, "s-eve"))
+
+
+class ApprovalOnThePavoRoute(unittest.TestCase):
+    """approve-shot on a clip that keeps Pavo's own audio: no words refusal, the whole clip is the speech span, the one gain
+    matches the narration, the ASR text and any KJV warning are review notes."""
+    def setUp(self):
+        self.records = eb.REPO / "migration" / "evidence" / "shots"
+        self.records.mkdir(parents=True, exist_ok=True)
+        self.path = self.records / f".test-{os.getpid()}-pavo.json"
+        self.shots = Path(tempfile.mkdtemp(dir=self.records.parent, prefix=".test-shots-"))
+        self.addCleanup(shutil.rmtree, self.shots, True)
+        self.addCleanup(self.path.unlink, True)
+        self.sha = "c" * 64
+        self.proof = {"route": "pavo", "sha256": "d" * 64, "samples": 6 * 44100, "seconds": 6.0, "lufs": -22.0,
+                      "true_peak_db": -12.0, "narration_lufs": -16.0}
+
+    def record(self, flags=("MOUTH_NOT_IN_SYNC",), kjv=False, audio=None):
+        asset = eb.shot_asset_name("ep", "s-eve", self.sha)
+        self.path.write_text(json.dumps({"episode": "ep", "run_id": "40500000777", "pavo_audio": "pavo", "shots": {"s-eve": {
+            "request_sha256": "r" * 64, "clip_seconds": 6, "kjv_quote": kjv,
+            "request": {"audio": {"words": ["in", "the", "beginning"]}}, "clips": [{
+                "asset": asset, "clip_sha256": self.sha, "uploaded": True, "flags": list(flags),
+                "audio": audio or self.proof,
+                "media": {"version": "clip-media-v1", "clip_sha256": self.sha, "video_seconds": 6.04, "audio_seconds": 6.0}}]}}}))
+        return asset
+
+    def approve(self, asset, **kw):
+        return eb.approve_shot(self.path, "s-eve", asset, "9.6", "heard and saw it", shots_dir=self.shots,
+                               reviewer="claude-session-reviewer", **kw)
+
+    def test_the_whole_clip_with_its_own_audio_is_approved_with_one_gain_and_no_words_gate(self):
+        approved = self.approve(self.record())
+        self.assertEqual(approved["audio"], self.proof)
+        speech = approved["speech"]
+        self.assertEqual((speech["route"], speech["onset"], speech["end"], speech["gain_db"], speech["flags"]),
+                         ("pavo", 0.0, 6.0, 6.0, []))                      # the whole clip, +6 dB to -16 LUFS
+        self.assertEqual(speech["tp_db"], pavo_audio.TRUE_PEAK_MAX)
+        self.assertNotIn("trim_out_s", approved)                            # in full unless the approval says otherwise
+        self.assertEqual(approved["review_notes"]["asr_text"], None)
+        self.assertNotIn("warnings", approved["review_notes"])
+        self.assertEqual(eb.speech_record_flags(approved, self.sha), [])
+
+    def test_a_kjv_quotation_without_a_heard_text_warns_but_is_never_refused(self):
+        approved = self.approve(self.record(kjv=True))
+        self.assertEqual(approved["review_notes"]["warnings"], ["WARN_KJV_WORDS"])
+        side = self.records / "ep" / "speech" / f"{self.sha}.json"
+        self.addCleanup(shutil.rmtree, self.records / "ep", True)
+        side.parent.mkdir(parents=True, exist_ok=True)
+        notes = eb.pavo_review_notes("in the beginning", "in the end", True)
+        side.write_text(json.dumps({"review_notes": notes}))
+        again = self.approve(self.record(kjv=True))
+        self.assertEqual(again["review_notes"]["asr_text"], "in the end")
+        self.assertEqual(again["review_notes"]["warnings"], ["WARN_KJV_WORDS"])
+
+    def test_a_trim_is_applied_only_when_the_approval_sets_it_and_a_hard_defect_still_bars(self):
+        approved = self.approve(self.record(), trim_out_s=5.0)
+        self.assertEqual((approved["trim_out_s"], approved["speech"]["end"]), (5.0, 5.0))
+        with self.assertRaisesRegex(SystemExit, "SHOT_CHECKS_FAILED s-eve FACE_NOT_FOUND"):
+            self.approve(self.record(flags=("FACE_NOT_FOUND",)))
+        with self.assertRaisesRegex(SystemExit, "SHOT_AUDIO_NOT_OURS.*LOUDNESS_NOT_MATCHED"):
+            self.approve(self.record(audio=dict(self.proof, lufs=-40.0, true_peak_db=-3.0)))
+
+
+class NativeSpansForPavoApprovals(unittest.TestCase):
+    def test_a_talking_shot_with_a_pavo_approval_is_laid_out_at_its_clip_length_on_any_plan(self):
+        import test_episode_build as t
+        plan = t.dialogue_plan()
+        sha = "e" * 64
+        media = {"version": "clip-media-v1", "clip_sha256": sha, "video_seconds": 7.04, "audio_seconds": 7.0}
+        speech = {"route": "pavo", "clip_sha256": sha, "onset": 0.0, "end": 7.0, "gain_db": 2.0, "flags": []}
+        approvals = {"s-eve": {"clip_sha256": sha, "media": media, "speech": speech, "audio": {"route": "pavo"}}}
+        spans = eb.native_spans(plan, approvals)
+        self.assertEqual({k: v[1:] for k, v in spans.items()}, {"s-eve": (0.0, 7.0)})
+        self.assertEqual(eb.native_spans(plan, approvals, pavo=False), {})
+        ours = {"s-eve": dict(approvals["s-eve"], speech=dict(speech, route="ours"))}
+        self.assertEqual(eb.native_spans(plan, ours), {})
+        self.assertEqual(eb.native_spans(plan, {}), {})
+        place = eb.pavo_native.placements(plan, {"lines": [{"start": 1.5}] * 8}, {"s-eve": ([0], 0.0, 7.0)},
+                                          {"s-eve": __file__}, {"s-eve": {"speech": dict(speech, tp_db=-1.5)}})[0]
+        self.assertEqual((place["gain_db"], place["tp_db"], place["seconds"]), (2.0, -1.5, 7.0))
+        self.assertIn("alimiter=limit=0.8414", eb.pavo_native.premix_filter([place], 20.0))
 
 
 if __name__ == "__main__":

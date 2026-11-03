@@ -32,3 +32,4 @@ never an intention. A rule here never loosens a gate; SYSTEM, PROMPT_GUIDE and E
 - **rule** Keeper lines of 12-17 words passed 26 of 31 and 22-25 words 11 of 18; write 12-17, never above 25 (PAVO_LINE_WORDS). Evidence: E293, evidence/pavo-prompt-analysis/20261103.json
 - **rule** The input audio is our line as cut, no added silence (TAIL_PAD 0): no passing generation had a pad; the tail is cut in the edit and the clip carries our audio. Supersedes the 0.3 s pad rule above. Evidence: E293, E287, E273
 - **failed** The identical M2 hook/close request passed 3 of 4 in one run and 0 of 4 in the next (two faces lost, two mouths 10-14 windows off): variance at one wording, so a visual defect keeps its one second generation. Evidence: shot-probe 41629339290 and 41652099686
+- **rule** Owner 2026-11-03: Pavo clips in full with Pavo's own audio; Kokoro only over stills Evidence: owner order 2026-11-03, pavo_audio.py route pavo (default), supersedes E287's default

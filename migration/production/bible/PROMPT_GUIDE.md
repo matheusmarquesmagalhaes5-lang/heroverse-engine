@@ -181,7 +181,32 @@ The regular route's existing line/clip retime rules apply before acceptance; an 
 stretched later to fit a replacement. Preserve actual failures and their measures. A good clip from another line
 does not establish synchronization for this line.
 
-**Pavo's audio is ours (E287, owner 2026-11-03: "Pavo does only what we send; the fault is ours").** Send the exact
+**Pavo's audio is Pavo's, the clip is used in full (owner 2026-11-03, reverses E287's default: "Quero com o audio do pavo
+tambem.. quero o video do pavo na integra. A narracao feita vai ser pras imagens.. aproveitar tudo que o pavo pode
+oferecer").** `pavo_audio` is a per-shot setting: `"pavo"` is the DEFAULT for every track (long compose, reflection,
+compilation, bridge Shorts); `"ours"` (E287, below) stays only as an explicit per-shot option and for approvals already
+recorded under it (`pavo_audio.route_of` reads the recorded proof, so their digests do not move; compilation plans built
+before the order are grandfathered by id in `compilation_long.OURS_BEFORE_2026_11_03`). Our Kokoro narration is used only
+over still and scene shots (and over a voice-over Keeper segment).
+- The request is unchanged (our exact line as input audio, `sound: false`, so request digests hold). The kept clip is the
+  bytes Pavo returned: no mux, and `trim_out_s` is applied only when the shot/approval sets it explicitly. The clip's
+  `audio` proof is `pavo_audio.pavo_proof` (route `pavo`, digest of ITS decoded track, LUFS, true peak, the narration's
+  LUFS); `PAVO_AUDIO_IS_OURS` refuses our line mislabelled as Pavo's.
+- Loudness: approve-shot records one gain that brings the clip's integrated LUFS within +-1 dB of the narration
+  (`pavo_audio.match_gain`, `LOUDNESS_NOT_MATCHED` when the peaks leave no room) with a true-peak ceiling of -1.5 dBTP
+  (`match_filter`: limiter); the compose lays the whole clip into the voice track at that gain (`speech.route "pavo"`:
+  onset 0, end = the clip's audio; the slot of that shot in the layout is the clip's whole length). The Pavo request keeps
+  the pre-approval seconds and input WAV (`layout.pavo_requests`), so the approval's request digest holds.
+- Picture crossfades (E272) stay at the boundaries and are picture only, never over speech: a reflection crossfade shortens
+  to the silence the clip's tail has, down to a plain cut, and is never a refusal for a Pavo-audio clip.
+- Checks: the visual gates stay (face present, mouth sync against the track the clip carries, artifacts, still mouth).
+  `AUDIO_NOT_OUR_LINE` and `SPEECH_WORDS_NOT_EXACT` are not refusals for a Pavo-audio shot: `speech-check` records the pinned
+  ASR text as `review_notes` (copied to the approval). EXCEPTION, the KJV-exact pillar: for a shot whose line is a direct KJV
+  quotation (a `scripture` item of the plan), a word difference (or no ASR text) is surfaced as `WARN_KJV_WORDS` in the review
+  notes so the reviewer decides; it is a warning, never an automatic refusal.
+- A line's second generation is still only for a VISUAL defect (a words difference never buys one).
+
+**Explicit `"ours"` (E287, owner 2026-11-03: "Pavo does only what we send; the fault is ours").** Send the exact
 Kokoro line as the request's input audio with `sound: false`, and keep only Pavo's picture: the clip is Pavo's video with
 the request's own WAV as its audio (`pavo_audio.mux_ours`, PCM), never Pavo's returned track, which is a re-synthesis that
 can re-time the line, add a tail or change a word. The words are the request's words, exact by construction, and the audio
@@ -268,7 +293,7 @@ shot-probe uploads EVERY generation that has a video, with its flags and measure
 never kept before, so there was nothing to compare. A shot is a failed shot only when every generation has a hard flag.
 - HARD (never approvable): `FACE_NOT_FOUND`, a broken render (clip_check flags, `NO_VIDEO`), `MOUTH_TALKING` on a
   voice-over Keeper, `GOD_SHOT_FACE`, a policy block, and a clip that does not say our words.
-- WORDS (legacy clips only, E287): `AUDIO_NOT_OUR_LINE` is an RMS-envelope measure on Pavo's returned track: it fires on a
+- WORDS (legacy and `"ours"` clips only; not a refusal on the default Pavo-audio route): `AUDIO_NOT_OUR_LINE` is an RMS-envelope measure on Pavo's returned track: it fires on a
   line Pavo re-timed as well as on other words. A clip of a probe record made under `pavo_audio: "ours"` carries our own
   audio, so it cannot raise it (a words flag there means the mux broke: `SHOT_AUDIO_NOT_OURS`). For a legacy clip it
   stays hard until `episode_build.py speech-check` shows the pinned ASR heard the clip say the line; then

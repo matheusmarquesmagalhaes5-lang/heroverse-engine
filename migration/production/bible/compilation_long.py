@@ -5,7 +5,9 @@ Nothing is generated here. The long is assembled from the arc's already-public S
 (episode record `output_sha256`, release asset `bible-<id>-sha256-<sha>.mp4`, sha256 checked) framed for 16:9
 (1920x1080: the 9:16 video centred over a blurred, darkened, scaled copy; the Short's burned captions are kept),
 one chapter card before each story, and a new Keeper hook and close (two Pavo clips made at a fresh exact zero-credit
-quote, committed with their zero-cost record; their audio is our own Kokoro line). Every segment fades in and out
+quote, committed with their zero-cost record). Owner 2026-11-03: each Keeper clip is used in full with PAVO'S OWN audio
+(`pavo_audio: "pavo"`, the default; `trim_out_s` only when the key sets it); our Kokoro line is the loudness reference
+(`audio`) and stays the sound only of a voice-over Keeper segment, and `"ours"` (E287) is an explicit per-key option. Every segment fades in and out
 (FADE) and is brought to LUFS by gain only, so a join has no pop and no cut speech.
 
 usage: compilation_long.py inputs PLAN            asset name and sha256 of each source master, one per line
@@ -28,6 +30,9 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
+if str(HERE) not in sys.path:
+    sys.path.insert(0, str(HERE))
+import pavo_audio  # noqa: E402  (owner 2026-11-03: a Keeper clip is used in full with Pavo's own audio by default)
 PLAN_VERSION = "bible-compilation-plan-v1"
 MANIFEST_VERSION = "bible-compilation-manifest-v1"
 CRITERIA = "compilation-qa-criteria-v1"
@@ -153,6 +158,11 @@ def plan_problems(plan, episodes=EPISODES, root=ROOT):
             continue
         if k["quote"] != "0 credits (exact, fresh)":
             bad.append(key + " clip was not made at an exact zero-credit quote")
+        try:
+            route = key_route(plan, k)
+        except SystemExit as exc:
+            bad.append(f"{key} {exc}")
+            route = None
         t = k.get("trim_out_s")
         if t is not None and not (type(t) in (int, float) and 3 <= t <= 30):
             bad.append(key + " trim_out_s must be a number of seconds from 3 to 30")
@@ -160,6 +170,11 @@ def plan_problems(plan, episodes=EPISODES, root=ROOT):
             p = Path(root) / k[f]
             if not p.is_file() or sha256(p) != k[f + "_sha256"]:
                 bad.append(f"{key} {f} missing or changed")
+        if route == pavo_audio.PAVO and not any(b.startswith(key + " ") and "missing or changed" in b for b in bad):
+            try:   # the clip's own track must exist and must not be our line laid over it (a clip mislabelled "pavo")
+                pavo_audio.pavo_proof(Path(root) / k["video"], Path(root) / k["audio"])
+            except (SystemExit, subprocess.CalledProcessError) as exc:
+                bad.append(f"{key} video: {exc}")
     still = (plan.get("thumbnail") or {}).get("still")
     if still is not None:   # E292: a thumbnail from an approved still: the file, its sha256 and its approval record
         p = Path(root) / str((still or {}).get("path", ""))
@@ -170,6 +185,20 @@ def plan_problems(plan, episodes=EPISODES, root=ROOT):
             if not approved.is_file() or load(approved).get("status") != "APPROVED" or load(approved).get("sha256") != still["sha256"]:
                 bad.append("thumbnail still is not an approved still of that sha256")
     return bad
+
+
+OURS_BEFORE_2026_11_03 = ("arc-02-noah-compilation", "arc-02-noah-complete-compilation")   # built and approved on our audio
+
+
+def key_route(plan, k):
+    """The Keeper key's audio route: its explicit `pavo_audio`, else the plan's, else the route its recorded remux kept
+    (an E288 remux made it "ours": that clip's digests do not move), else "ours" for the plans built before the owner's
+    order of 2026-11-03 (their rendered digests must not move), else the default, "pavo"."""
+    if k.get("pavo_audio") is None and plan.get("pavo_audio") is not None:
+        k = dict(k, pavo_audio=plan["pavo_audio"])
+    recorded = (k.get("remux") or {}).get("audio_route") or (pavo_audio.OURS if plan.get("id") in OURS_BEFORE_2026_11_03
+                                                              else None)
+    return pavo_audio.route_of(k, recorded)
 
 
 VOICEOVER_QUOTE = "0 credits (no Pavo call: Kokoro voice-over on an approved still)"
@@ -329,11 +358,15 @@ def render_long(src, out, end=None, card=None):
         p.unlink()
 
 
-def render_keeper(video, audio, out, trim_out_s=None):
+def render_keeper(video, audio, out, trim_out_s=None, route=pavo_audio.OURS):
     """Keeper clip at 16:9 with a still beat (BEAT) at each end: first/last frame held, our own line starts after the
     first beat; its audio is our Kokoro wav, so nothing depends on the clip's own sound. E292 (the edit fixes a minor
     imperfection, E273): `trim_out_s` cuts the clip at the end of our line (and its 0.3 s tail pad) and drops the closing
-    still beat, so no 1.8 s of dead mix follows the Keeper (local-review flagged a dropout at 8.69-10.48 s)."""
+    still beat, so no 1.8 s of dead mix follows the Keeper (local-review flagged a dropout at 8.69-10.48 s).
+    Owner 2026-11-03, route "pavo": the clip's OWN audio is the Keeper's voice (the whole clip unless `trim_out_s` is set),
+    brought to LUFS by the same gain (the Kokoro `audio` is only the loudness reference of the narration)."""
+    if route == pavo_audio.PAVO:
+        return render_keeper_pavo(video, out, trim_out_s)
     if trim_out_s is not None:
         d = float(trim_out_s) + BEAT
         v, a = fades(d)
@@ -351,6 +384,19 @@ def render_keeper(video, audio, out, trim_out_s=None):
              f"apad=whole_dur={d:.3f},{a}[a]")
     run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", video, "-i", audio, "-filter_complex", graph, "-map", "[v]",
          "-map", "[a]", "-t", f"{d:.3f}", *ENC, out])
+
+
+def render_keeper_pavo(video, out, trim_out_s=None):
+    """The Keeper clip on the Pavo-audio route: its own track, in full, between a still beat at each end."""
+    seconds = float(trim_out_s) if trim_out_s is not None else duration(video)
+    d = seconds + (BEAT if trim_out_s is not None else 2 * BEAT)
+    v, a = fades(d)
+    pad = f"start_mode=clone:start_duration={BEAT}" + ("" if trim_out_s is not None else f":stop_mode=clone:stop_duration={BEAT}")
+    graph = (f"[0:v]scale={W}:{H}:flags=lanczos,setsar=1,tpad={pad},{v}[v];"
+             f"[0:a]atrim=duration={seconds:.3f},asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo,"
+             f"{gain_filter(video)},adelay={int(BEAT * 1000)}:all=1,apad=whole_dur={d:.3f},{a}[a]")
+    run(["ffmpeg", "-nostdin", "-v", "error", "-y", *(["-t", f"{seconds:.3f}"] if trim_out_s is not None else []),
+         "-i", video, "-filter_complex", graph, "-map", "[v]", "-map", "[a]", "-t", f"{d:.3f}", *ENC, out])
 
 
 def render_keeper_still(still, audio, out):
@@ -376,7 +422,7 @@ def render_key(plan, key, voice_dir, out):
             raise SystemExit(f"VOICE_LINE_MISSING {key} (compilation_long.py voice-cut first)")
         render_keeper_still(ROOT / k["voiceover"]["still"], wav, out)
     else:
-        render_keeper(ROOT / k["video"], ROOT / k["audio"], out, k.get("trim_out_s"))
+        render_keeper(ROOT / k["video"], ROOT / k["audio"], out, k.get("trim_out_s"), key_route(plan, k))
 
 
 def thumbnail(src, spec, out):
