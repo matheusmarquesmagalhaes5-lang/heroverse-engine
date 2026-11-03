@@ -117,5 +117,18 @@
   },
   "process": "reflection-shorts.yml run 41660551928 rendered the master; local-review.yml run 41661153948 (pinned local ASR + ffmpeg measures) of this exact master; frame sheet 1 frame / 2 s viewed. I did not listen to the sound.",
   "run_id": "41661153948"
+ },
+ "attributes": {
+  "hook_type": "keeper_reflection_open_loop",
+  "hook_line": "God did not hang that rainbow because Noah was perfect, and the story says so plainly.",
+  "title_pattern": "hook_pipe_story_kjv",
+  "first_visual": "ark_on_the_sea_over_keeper_face_firelit",
+  "ai_scenes": 2,
+  "slot_utc": "05:30",
+  "transition": "cut",
+  "seconds": 24.0,
+  "voice": "kokoro_am_michael",
+  "compose": "engine",
+  "structure": "bible-keeper-reflection"
  }
 }
