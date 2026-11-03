@@ -4529,6 +4529,51 @@
      "instrument"
     ]
    }
+  },
+  {
+   "id": "E286",
+   "date": "2026-11-03",
+   "class": [
+    "instrument"
+   ],
+   "prior": [
+    "E120",
+    "E131",
+    "E137",
+    "E139",
+    "E148",
+    "E152",
+    "E166",
+    "E169",
+    "E185",
+    "E186",
+    "E231",
+    "E233",
+    "E238",
+    "E253",
+    "E255",
+    "E262",
+    "E266",
+    "E267",
+    "E273",
+    "E275",
+    "E279",
+    "E280",
+    "E281",
+    "E282",
+    "E283",
+    "E284",
+    "E285"
+   ],
+   "error": "flood-ends-long-reflection-1: with each Pavo clip cut right after its line (E282) and a 4th segment added, reflection_shorts.py render refused VOICE_PACE 178 wpm (band 115-165, run 41643668889). The pace gate divides the words by the clips' speech spans; the earlier 150 wpm came from the trailing mumbles inflating the spans, so E277's plan estimate (Kokoro pace) never saw that the Pavo clips themselves run fast.",
+   "fix": "reflection_shorts.render: when the cut clips measure over the band it slows all of them as one (retime_media: setpts and atempo, so the lips stay on the words and the pitch holds) to RETIME_TARGET 162 wpm, by at most 10 % (RETIME_MIN 0.90, the retime a long's talking shots already allow), re-measures the spans and then applies the unchanged VOICE_PACE gate on the retimed clips; more than 10 % is still refused. The record carries bottom.retime.",
+   "antidote": {
+    "file": "migration/production/bible/test_reflection_shorts.py",
+    "contains": "def test_e286_a_clip_set_faster_than_the_band_is_retimed_by_at_most_ten_percent",
+    "covers": [
+     "instrument"
+    ]
+   }
   }
  ]
 }

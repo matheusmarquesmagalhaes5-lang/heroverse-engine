@@ -509,7 +509,7 @@ class Render(unittest.TestCase):
             self.assertTrue(rs.XFADE_MIN <= rec["bottom"]["crossfades"][0] <= rs.XFADE)
             self.assertAlmostEqual(second["start"], 0.3 + first["seconds"] - rec["bottom"]["crossfades"][0], delta=0.01)
 
-    def test_e283_a_clip_set_faster_than_the_band_is_retimed_by_at_most_ten_percent(self):
+    def test_e286_a_clip_set_faster_than_the_band_is_retimed_by_at_most_ten_percent(self):
         with tempfile.TemporaryDirectory() as t:
             clip = Path(t) / "c.mp4"
             make_clip(clip, 220, seconds=8.0, speech=6.0)
