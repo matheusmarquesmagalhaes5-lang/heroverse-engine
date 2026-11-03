@@ -346,6 +346,12 @@ class RepoFiles(unittest.TestCase):
         self.assertEqual(arcs[0]["long"]["slot"], "2026-10-29T22:00:00Z")   # owner recovery direction 29/10
         self.assertEqual([a["next"] for a in arcs], ["arc-02", "arc-03", "arc-04", None])
         for p in (ROOT / "migration/production/bible/episodes").glob("*.json"):
+            record = json.loads(p.read_text())
+            if record.get("track") in ("buzzy-cut", "keeper-reflection"):
+                # E259: a cut or reflection of a long belongs to no arc's shorts list; it links through parent.pilot
+                self.assertTrue((record.get("parent") or {}).get("pilot"), p.stem)
+                self.assertEqual(sum(p.stem in a["shorts"] for a in arcs), 0, p.stem)
+                continue
             self.assertEqual(sum(p.stem in a["shorts"] for a in arcs), 1, p.stem)
 
     def test_heartbeat_dispatches_arc_links_on_its_condition(self):

@@ -1,0 +1,144 @@
+{
+ "version": "bible-episode-v1",
+ "id": "flood-ends-door-cut",
+ "series": "The Bible, story by story (KJV)",
+ "part": 1,
+ "passage": "Genesis 8:1-9:17 (KJV, public domain)",
+ "format": "short",
+ "track": "buzzy-cut",
+ "parent": {
+  "long": "flood-ends-long",
+  "pilot": "pilot-017",
+  "clean_master_sha256": "95307e831eee4c06f826715b5d974a6fcdcacfe6029e6e57bcb8879d777b1eea",
+  "start": 298.62,
+  "end": 338.64
+ },
+ "output_sha256": "0f88e0bc5a9cbb24524bfedda11c0706cef42b7038fe99899d9afe18e6b48eff",
+ "seconds": 40.033,
+ "frame": [
+  1080,
+  1920
+ ],
+ "narration": [
+  {
+   "kind": "insight",
+   "text": "Most miss this: Noah saw dry ground and still waited. He stepped out when God said go. The One who shut the door opened it."
+  },
+  {
+   "kind": "story",
+   "text": "Two months more, until the earth was fully dry. Then, at last, the voice came. Not a shout. A word. And with it, the door that no one else could open."
+  },
+  {
+   "kind": "scripture",
+   "text": "And God spake unto Noah, saying,",
+   "reference": "Genesis 8:15 (KJV)"
+  },
+  {
+   "kind": "scripture",
+   "text": "And Noah went forth, and his sons, and his wife, and his sons’ wives with him:",
+   "reference": "Genesis 8:18 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Out they walked, a whole world of animals, one by one, down onto the washed new earth. Noah was the last of his family to step off the boat."
+  }
+ ],
+ "scripture": [
+  {
+   "reference": "Genesis 8:15 (KJV)",
+   "text": "And God spake unto Noah, saying,"
+  },
+  {
+   "reference": "Genesis 8:18 (KJV)",
+   "text": "And Noah went forth, and his sons, and his wife, and his sons’ wives with him:"
+  }
+ ],
+ "title": "Noah Saw Dry Ground and Still Waited | Genesis 8 (KJV) #shorts",
+ "description": "Dry ground was right before his eyes, and the door stayed shut until God said go (Genesis 8, King James Version).\n\nWatch the full story, the whole of Genesis 8-9: https://youtu.be/1m-NUJhkdMY\n\nScripture: King James Version (public domain), Genesis 8:13-19.\nVisuals: AI-generated scenes (Buzzy, GPT-image stills with camera motion). Narration: AI voice. Music: original, owned.\n\n#bible #genesis #biblestory #noah",
+ "tags": [
+  "noah",
+  "noahs ark",
+  "genesis 8",
+  "waiting on god",
+  "bible story",
+  "kjv bible",
+  "christian shorts",
+  "bible stories"
+ ],
+ "category_id": "29",
+ "first_comment": "Noah saw dry ground and still waited for God's word. What are you waiting for God to open? The full story: https://youtu.be/1m-NUJhkdMY",
+ "credits": {
+  "vidiq": 0,
+  "pavo": 0
+ },
+ "attributes": {
+  "hook_type": "keeper_insight_hook",
+  "hook_line": "Most miss this: Noah saw dry ground and still waited. He stepped out when God said go. The One who shut the door opened it.",
+  "title_pattern": "hook_pipe_story_kjv",
+  "first_visual": "keeper_face_firelit",
+  "ai_scenes": 4,
+  "slot_utc": "18:30",
+  "transition": "cut",
+  "seconds": 40.033,
+  "voice": "kokoro_am_michael",
+  "compose": "engine",
+  "structure": "bible-story-cut"
+ },
+ "slot": "2026-11-03T18:30:00Z",
+ "review": {
+  "overall": 9.1,
+  "reviewer": "claude-session-reviewer",
+  "output_sha256": "0f88e0bc5a9cbb24524bfedda11c0706cef42b7038fe99899d9afe18e6b48eff",
+  "scores": {
+   "opening_and_promise": 9.0,
+   "picture_quality": 9.0,
+   "figure_and_background_integrity": 9.0,
+   "captions_readable_and_synced": 9.0,
+   "audio_clarity_and_mix": 9.0,
+   "pacing_and_visual_variety": 8.5,
+   "scripture_on_screen": 9.0,
+   "policy_safe": 10.0
+  },
+  "issues": [
+   "00:00 The local review flagged speech at the first frame (category a). Measured on this exact file: the first 0.3 s is room tone at about -33 to -45 dBFS and the speech rises from about 0.3 to 0.4 s, after the 0.25 s fade-in, and the cut was made 0.25 s clear of the first word (short_cuts.check, E275). The first word is intact; the flag is the recognizer's timestamp, not a cut-off word.",
+   "00:00 to 00:09 The Keeper's face is a still with slow motion and a closed, still mouth while his voice-over insight plays (authorised Plan B); the caption sits over his beard. No lip-sync is claimed.",
+   "00:10 to 00:24 15 s on one still (the shut ark door at golden hour) while the voice comes; no defect.",
+   "00:22 to 00:34 The KJV label 'Genesis 8:15 / 8:18 - KJV' is tiny at phone size; readable at full resolution.",
+   "History: the first cut of this range (sha256 745525b7..., local review 41563521473) opened on nine seconds of a dark low-key still under 'Dry ground at last'; the cut was re-made to start on the lit 'Most miss this' line (E275 note in DECISIONS), a new file with its own review."
+  ],
+  "defects": [
+   {
+    "issue": 0,
+    "category": "info",
+    "resolved": false
+   },
+   {
+    "issue": 1,
+    "category": "info",
+    "resolved": false
+   },
+   {
+    "issue": 2,
+    "category": "info",
+    "resolved": false
+   },
+   {
+    "issue": 3,
+    "category": "d",
+    "resolved": false
+   },
+   {
+    "issue": 4,
+    "category": "info",
+    "resolved": true
+   }
+  ],
+  "publish_decision": {
+   "decision": "publish",
+   "by": "claude-session-reviewer",
+   "note": "Defect list of local review 41565464812 and the frame sheets of this exact master (sha256 0f88e0bc...): no speech cut off (first-frame flag measured and a timestamp artefact), the scenes fit their lines and the story order holds (the Keeper's insight, the shut door, the animals leaving the ark), no audio error (-14.1 LUFS, -1.7 dBTP, no silence inside speech), no policy issue; God's words are exact KJV and God is not depicted. The cut starts and ends 0.25 s clear of speech and ends on the story line 'Noah was the last of his family to step off the boat'. The earlier dark-opening version was replaced, not published. Owner order of 2026-11-03 to cut the long."
+  },
+  "process": "local-review.yml run 41565464812 (pinned local ASR + ffmpeg measures + session reviewer's own look at the frame sheets) of this exact cut master, rendered by short-cuts.yml from the clean master of the published long flood-ends-long; E250 defect-finder gate for track buzzy-cut. Scores are information and are not the gate. Local review (E268): audio was judged from the faster-whisper small.en transcript with word times plus ffmpeg loudness/peak/silence measures and my own amplitude readback of the first and last 0.8 s of the exact file; I did not listen to the sound, so delivery, diction and music taste are not claimed. Picture: the 1 frame / 2 s sheets were viewed, one full-size frame per cut, detectors ran on every frame at 320x180.",
+  "run_id": "41565464812"
+ }
+}

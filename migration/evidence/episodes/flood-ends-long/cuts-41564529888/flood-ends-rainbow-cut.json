@@ -1,0 +1,203 @@
+{
+ "version": "bible-cut-v1",
+ "id": "flood-ends-rainbow-cut",
+ "spec": "migration/production/bible/cuts/flood-ends-long.json",
+ "parent": {
+  "long": "flood-ends-long",
+  "pilot": "pilot-017",
+  "report": "migration/evidence/episodes/flood-ends-long/report-41484825424.json",
+  "clean_master_sha256": "95307e831eee4c06f826715b5d974a6fcdcacfe6029e6e57bcb8879d777b1eea",
+  "start": 399.521,
+  "end": 472.088,
+  "x": 0.5
+ },
+ "output_sha256": "0cf37c874b77ba7751e6c31cd25d4d514e21bec1884b4997c769847a1f753787",
+ "seconds": 72.6,
+ "frame": [
+  1080,
+  1920
+ ],
+ "lufs": -14.1,
+ "true_peak_dbfs": -1.5,
+ "sentences": [
+  {
+   "segment": "n42",
+   "text": "But the first time a dark cloud gathered over the hills, imagine the fear.",
+   "start": 0.25,
+   "end": 5.135,
+   "line": 42,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n42",
+   "text": "Would the water come back?",
+   "start": 5.315,
+   "end": 7.001,
+   "line": 42,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n42",
+   "text": "Every child who had heard the stories would look up and wonder.",
+   "start": 7.181,
+   "end": 11.149,
+   "line": 42,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n43",
+   "text": "And I will establish my covenant with you;",
+   "start": 11.499,
+   "end": 14.315,
+   "kind": "scripture",
+   "reference": "Genesis 9:11 (KJV)",
+   "line": 43,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n43",
+   "text": "neither shall all flesh be cut off any more by the waters of a flood;",
+   "start": 14.495,
+   "end": 18.953,
+   "kind": "scripture",
+   "reference": "Genesis 9:11 (KJV)",
+   "line": 43,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n43",
+   "text": "neither shall there any more be a flood to destroy the earth.",
+   "start": 19.133,
+   "end": 22.803,
+   "kind": "scripture",
+   "reference": "Genesis 9:11 (KJV)",
+   "line": 43,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n44",
+   "text": "I do set my bow in the cloud, and it shall be for a token of a covenant between me and the earth.",
+   "start": 23.153,
+   "end": 29.425,
+   "kind": "scripture",
+   "reference": "Genesis 9:13 (KJV)",
+   "line": 44,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n45",
+   "text": "And there it was, for the very first time:",
+   "start": 29.775,
+   "end": 32.505,
+   "line": 45,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n45",
+   "text": "a bow of colour, bending over the whole sky.",
+   "start": 32.685,
+   "end": 35.757,
+   "line": 45,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n45",
+   "text": "Not a weapon pointed at us.",
+   "start": 35.937,
+   "end": 38.007,
+   "line": 45,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n45",
+   "text": "A war bow, hung up.",
+   "start": 38.187,
+   "end": 39.787,
+   "line": 45,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n46",
+   "text": "And the bow shall be in the cloud;",
+   "start": 40.137,
+   "end": 42.206,
+   "kind": "scripture",
+   "reference": "Genesis 9:16 (KJV)",
+   "line": 46,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n46",
+   "text": "and I will look upon it, that I may remember the everlasting covenant between God and every living creature of all flesh that is upon the earth.",
+   "start": 42.386,
+   "end": 52.093,
+   "kind": "scripture",
+   "reference": "Genesis 9:16 (KJV)",
+   "line": 46,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n47",
+   "text": "Read that again.",
+   "start": 52.443,
+   "end": 53.851,
+   "line": 47,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n47",
+   "text": "The sign is not only for us to see.",
+   "start": 54.031,
+   "end": 56.847,
+   "line": 47,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n47",
+   "text": "God says He Himself will look upon it, and remember.",
+   "start": 57.027,
+   "end": 60.739,
+   "line": 47,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n47",
+   "text": "He holds the promise in His own hands.",
+   "start": 60.919,
+   "end": 63.585,
+   "line": 47,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n48",
+   "text": "Notice what the rainbow is.",
+   "start": 63.935,
+   "end": 65.919,
+   "line": 48,
+   "line_kind": "insight"
+  },
+  {
+   "segment": "n48",
+   "text": "God hung up His own bow, pointing at the sky and not at us.",
+   "start": 66.099,
+   "end": 70.323,
+   "line": 48,
+   "line_kind": "insight"
+  },
+  {
+   "segment": "n48",
+   "text": "Mercy is His idea.",
+   "start": 70.503,
+   "end": 72.317,
+   "line": 48,
+   "line_kind": "insight"
+  }
+ ],
+ "advice": [],
+ "checks": {
+  "frame_1080x1920": true,
+  "lufs_band": true,
+  "true_peak_ceiling": true,
+  "length": true
+ }
+}

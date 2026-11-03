@@ -226,8 +226,12 @@ def record(spec_path, cut_json, root=ROOT):
     c = next((x for x in spec["cuts"] if x["id"] == cut.get("id")), None)
     if c is None or cut.get("parent", {}).get("long") != spec["long"]:
         raise SystemExit("CUT_NOT_IN_SPEC")
-    plan, _ = sources(spec, root)
+    plan, report = sources(spec, root)
     words = narration(cut["sentences"])
+    start, end = float(c["start"]), float(c["end"])
+    scenes = [t for t in report["composed"]["timeline"] if t.get("start", 0) < end and t.get("end", 0) > start]
+    ids = list(dict.fromkeys(t.get("shot") for t in scenes if t.get("shot")))
+    slot = c.get("slot") or ""
     rec = {"version": "bible-episode-v1", "id": c["id"], "series": SERIES, "part": plan.get("part"),
            "passage": plan.get("passage"), "format": "short", "track": TRACK,
            "parent": {k: cut["parent"][k] for k in ("long", "pilot", "clean_master_sha256", "start", "end")},
@@ -236,6 +240,13 @@ def record(spec_path, cut_json, root=ROOT):
                                              if w.get("kind") == "scripture" and w.get("reference")],
            "title": c["title"], "description": c["description"], "tags": c.get("tags") or [], "category_id": "29",
            "first_comment": c.get("first_comment", ""), "credits": {"vidiq": 0, "pavo": 0},
+           # live_intel.REQUIRED_ATTRIBUTES: what a later verdict compares (hook, title pattern, opening picture, pace)
+           "attributes": {"hook_type": c.get("hook_type", "narrated_story_hook"), "hook_line": words[0]["text"] if words else "",
+                          "title_pattern": "hook_emoji_pipe_story_kjv" if re.search(r"[^\x00-\u2fff]", c["title"]) else "hook_pipe_story_kjv",
+                          "first_visual": c.get("first_visual", ids[0] if ids else "unknown"),
+                          "ai_scenes": len(ids), "slot_utc": slot[11:16] if len(slot) >= 16 else "unscheduled",
+                          "transition": "cut", "seconds": cut["seconds"], "voice": "kokoro_am_michael", "compose": "engine",
+                          "structure": "bible-story-cut"},
            **({"slot": c["slot"]} if c.get("slot") else {})}
     path = Path(root) / "migration/production/bible/episodes" / f"{c['id']}.json"
     if path.exists() and cl.load(path).get("output_sha256") not in (None, rec["output_sha256"]):

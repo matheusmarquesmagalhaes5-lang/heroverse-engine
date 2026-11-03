@@ -39,6 +39,12 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
   records the read-back. Then the cuts via `short-cuts.yml` (`cuts/flood-ends-long.json`), spaced across the day. The Pavo
   rebuild is a later separate version.
 
+- 2026-11-03: 1m-NUJhkdMY is PUBLIC (channel-privacy `release` run 41558453690, read back public/processed; receipt
+  `channel/release-receipt-41558453690.json`, ledger entry `released`). Cuts of it (`bible/cuts/flood-ends-long.json`,
+  short-cuts run 41564529888): flood-ends-dove-cut 05:30Z, flood-ends-rainbow-cut 13:30Z, flood-ends-door-cut 18:30Z, each
+  reviewed on its own hash (local-review) and published by `publish-episode.yml` with the long's link. Still to do for the
+  long: pinned comment (first comment 403, see ledger), `arcs.json`, the Pavo rebuild is a later version.
+
 ## Next moments
 
 - M2 compilation "Complete Story of Noah (Genesis 5-9)" is due 2026-11-04.

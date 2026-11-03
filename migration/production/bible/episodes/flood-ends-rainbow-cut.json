@@ -1,0 +1,151 @@
+{
+ "version": "bible-episode-v1",
+ "id": "flood-ends-rainbow-cut",
+ "series": "The Bible, story by story (KJV)",
+ "part": 1,
+ "passage": "Genesis 8:1-9:17 (KJV, public domain)",
+ "format": "short",
+ "track": "buzzy-cut",
+ "parent": {
+  "long": "flood-ends-long",
+  "pilot": "pilot-017",
+  "clean_master_sha256": "95307e831eee4c06f826715b5d974a6fcdcacfe6029e6e57bcb8879d777b1eea",
+  "start": 399.521,
+  "end": 472.088
+ },
+ "output_sha256": "0cf37c874b77ba7751e6c31cd25d4d514e21bec1884b4997c769847a1f753787",
+ "seconds": 72.6,
+ "frame": [
+  1080,
+  1920
+ ],
+ "narration": [
+  {
+   "kind": "story",
+   "text": "But the first time a dark cloud gathered over the hills, imagine the fear. Would the water come back? Every child who had heard the stories would look up and wonder."
+  },
+  {
+   "kind": "scripture",
+   "text": "And I will establish my covenant with you; neither shall all flesh be cut off any more by the waters of a flood; neither shall there any more be a flood to destroy the earth.",
+   "reference": "Genesis 9:11 (KJV)"
+  },
+  {
+   "kind": "scripture",
+   "text": "I do set my bow in the cloud, and it shall be for a token of a covenant between me and the earth.",
+   "reference": "Genesis 9:13 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "And there it was, for the very first time: a bow of colour, bending over the whole sky. Not a weapon pointed at us. A war bow, hung up."
+  },
+  {
+   "kind": "scripture",
+   "text": "And the bow shall be in the cloud; and I will look upon it, that I may remember the everlasting covenant between God and every living creature of all flesh that is upon the earth.",
+   "reference": "Genesis 9:16 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Read that again. The sign is not only for us to see. God says He Himself will look upon it, and remember. He holds the promise in His own hands."
+  },
+  {
+   "kind": "insight",
+   "text": "Notice what the rainbow is. God hung up His own bow, pointing at the sky and not at us. Mercy is His idea."
+  }
+ ],
+ "scripture": [
+  {
+   "reference": "Genesis 9:11 (KJV)",
+   "text": "And I will establish my covenant with you; neither shall all flesh be cut off any more by the waters of a flood; neither shall there any more be a flood to destroy the earth."
+  },
+  {
+   "reference": "Genesis 9:13 (KJV)",
+   "text": "I do set my bow in the cloud, and it shall be for a token of a covenant between me and the earth."
+  },
+  {
+   "reference": "Genesis 9:16 (KJV)",
+   "text": "And the bow shall be in the cloud; and I will look upon it, that I may remember the everlasting covenant between God and every living creature of all flesh that is upon the earth."
+  }
+ ],
+ "title": "God Hung Up His Own Bow 🌈 | The Rainbow Covenant, Genesis 9 (KJV) #shorts",
+ "description": "After the flood, God set His bow in the cloud and promised to remember (Genesis 9, King James Version).\n\nWatch the full story, the whole of Genesis 8-9: https://youtu.be/1m-NUJhkdMY\n\nScripture: King James Version (public domain), Genesis 9:11-16.\nVisuals: AI-generated scenes (Buzzy, GPT-image stills with camera motion). Narration: AI voice. Music: original, owned.\n\n#bible #genesis #biblestory #noah",
+ "tags": [
+  "rainbow",
+  "rainbow covenant",
+  "noah",
+  "genesis 9",
+  "bible story",
+  "kjv bible",
+  "christian shorts",
+  "bible stories"
+ ],
+ "category_id": "29",
+ "first_comment": "The rainbow is not only a sign for us to see; God says He will look upon it and remember. The full story: https://youtu.be/1m-NUJhkdMY",
+ "credits": {
+  "vidiq": 0,
+  "pavo": 0
+ },
+ "attributes": {
+  "hook_type": "narrated_fear_question_hook",
+  "hook_line": "But the first time a dark cloud gathered over the hills, imagine the fear. Would the water come back? Every child who had heard the stories would look up and wonder.",
+  "title_pattern": "hook_emoji_pipe_story_kjv",
+  "first_visual": "storm_over_the_family",
+  "ai_scenes": 7,
+  "slot_utc": "13:30",
+  "transition": "cut",
+  "seconds": 72.6,
+  "voice": "kokoro_am_michael",
+  "compose": "engine",
+  "structure": "bible-story-cut"
+ },
+ "slot": "2026-11-03T13:30:00Z",
+ "review": {
+  "overall": 9.1,
+  "reviewer": "claude-session-reviewer",
+  "output_sha256": "0cf37c874b77ba7751e6c31cd25d4d514e21bec1884b4997c769847a1f753787",
+  "scores": {
+   "opening_and_promise": 9.0,
+   "picture_quality": 9.0,
+   "figure_and_background_integrity": 9.0,
+   "captions_readable_and_synced": 9.0,
+   "audio_clarity_and_mix": 9.0,
+   "pacing_and_visual_variety": 8.5,
+   "scripture_on_screen": 9.0,
+   "policy_safe": 10.0
+  },
+  "issues": [
+   "00:00 The local review flagged speech at the first frame (category a). Measured on this exact file: the first 0.3 s is room tone at about -33 to -45 dBFS and the speech rises from about 0.3 to 0.4 s, after the 0.25 s fade-in, and the cut was made 0.25 s clear of the first word (short_cuts.check, E275). The first word is intact; the flag is the recognizer's timestamp, not a cut-off word.",
+   "00:39 to 01:02 About 23 s on one still (the family on the hill at golden hour) while the KJV covenant and the insight run; no defect, a retention risk.",
+   "00:12 to 00:20 and 00:24 to 00:30, 00:40 to 00:54 The small 'Genesis 9:11 / 9:13 / 9:16 - KJV' label is tiny at phone size; readable at full resolution.",
+   "00:34 to 00:41 The recognizer heard 'A war bell hung up' for 'A war bow, hung up'; recognizer slip, the caption frames show 'bow, hung'. Not verified by ear."
+  ],
+  "defects": [
+   {
+    "issue": 0,
+    "category": "info",
+    "resolved": false
+   },
+   {
+    "issue": 1,
+    "category": "info",
+    "resolved": false
+   },
+   {
+    "issue": 2,
+    "category": "d",
+    "resolved": false
+   },
+   {
+    "issue": 3,
+    "category": "info",
+    "resolved": false
+   }
+  ],
+  "publish_decision": {
+   "decision": "publish",
+   "by": "claude-session-reviewer",
+   "note": "Defect list of local review 41563297136 and the frame sheets of this exact master (sha256 0cf37c87...), plus a full-size frame at 00:31: no speech cut off (first-frame flag measured and a timestamp artefact), every scene fits its line and the order holds (dark storm and the family, light breaking through, the ark on the mountain under a clear rainbow while 'a bow of colour' is told, the family on the hill at sunset for the covenant), no audio error (-14.1 LUFS, -1.5 dBTP, no silence inside speech), no policy issue; the KJV words are exact and God is not depicted. The cut starts and ends 0.25 s clear of speech and closes on 'Mercy is His idea'. Owner order of 2026-11-03 to cut the long."
+  },
+  "process": "local-review.yml run 41563297136 (pinned local ASR + ffmpeg measures + session reviewer's own look at the frame sheets) of this exact cut master, rendered by short-cuts.yml from the clean master of the published long flood-ends-long; E250 defect-finder gate for track buzzy-cut. Scores are information and are not the gate. Local review (E268): audio was judged from the faster-whisper small.en transcript with word times plus ffmpeg loudness/peak/silence measures and my own amplitude readback of the first and last 0.8 s of the exact file; I did not listen to the sound, so delivery, diction and music taste are not claimed. Picture: the 1 frame / 2 s sheets were viewed, one full-size frame per cut, detectors ran on every frame at 320x180.",
+  "run_id": "41563297136"
+ }
+}
