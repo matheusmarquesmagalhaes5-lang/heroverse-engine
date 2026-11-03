@@ -61,7 +61,8 @@
    "shot": "k-hook",
    "approval": "migration/production/bible/shots/arc-02-noah-compilation-keeper.json",
    "audio_route": "ours"
-  }
+  },
+  "trim_out_s": 8.55
  },
  "close": {
   "text": "Noah did all that God commanded him, before one drop fell. So what is God asking of you, that you cannot yet see?",
@@ -78,7 +79,8 @@
    "shot": "k-close",
    "approval": "migration/production/bible/shots/arc-02-noah-compilation-keeper.json",
    "audio_route": "ours"
-  }
+  },
+  "trim_out_s": 8.55
  },
  "thumbnail": {
   "still": {

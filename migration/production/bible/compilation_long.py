@@ -153,6 +153,9 @@ def plan_problems(plan, episodes=EPISODES, root=ROOT):
             continue
         if k["quote"] != "0 credits (exact, fresh)":
             bad.append(key + " clip was not made at an exact zero-credit quote")
+        t = k.get("trim_out_s")
+        if t is not None and not (type(t) in (int, float) and 3 <= t <= 30):
+            bad.append(key + " trim_out_s must be a number of seconds from 3 to 30")
         for f in ("video", "audio"):
             p = Path(root) / k[f]
             if not p.is_file() or sha256(p) != k[f + "_sha256"]:
@@ -326,9 +329,20 @@ def render_long(src, out, end=None, card=None):
         p.unlink()
 
 
-def render_keeper(video, audio, out):
+def render_keeper(video, audio, out, trim_out_s=None):
     """Keeper clip at 16:9 with a still beat (BEAT) at each end: first/last frame held, our own line starts after the
-    first beat; its audio is our Kokoro wav, so nothing depends on the clip's own sound."""
+    first beat; its audio is our Kokoro wav, so nothing depends on the clip's own sound. E292 (the edit fixes a minor
+    imperfection, E273): `trim_out_s` cuts the clip at the end of our line (and its 0.3 s tail pad) and drops the closing
+    still beat, so no 1.8 s of dead mix follows the Keeper (local-review flagged a dropout at 8.69-10.48 s)."""
+    if trim_out_s is not None:
+        d = float(trim_out_s) + BEAT
+        v, a = fades(d)
+        graph = (f"[0:v]scale={W}:{H}:flags=lanczos,setsar=1,tpad=start_mode=clone:start_duration={BEAT},{v}[v];"
+                 f"[1:a]aresample=48000,aformat=channel_layouts=stereo,{gain_filter(audio)},adelay={int(BEAT * 1000)}:all=1,"
+                 f"apad=whole_dur={d:.3f},{a}[a]")
+        run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-t", f"{float(trim_out_s):.3f}", "-i", video, "-i", audio,
+             "-filter_complex", graph, "-map", "[v]", "-map", "[a]", "-t", f"{d:.3f}", *ENC, out])
+        return
     d = duration(video) + 2 * BEAT
     v, a = fades(d)
     graph = (f"[0:v]scale={W}:{H}:flags=lanczos,setsar=1,tpad=start_mode=clone:start_duration={BEAT}:"
@@ -362,7 +376,7 @@ def render_key(plan, key, voice_dir, out):
             raise SystemExit(f"VOICE_LINE_MISSING {key} (compilation_long.py voice-cut first)")
         render_keeper_still(ROOT / k["voiceover"]["still"], wav, out)
     else:
-        render_keeper(ROOT / k["video"], ROOT / k["audio"], out)
+        render_keeper(ROOT / k["video"], ROOT / k["audio"], out, k.get("trim_out_s"))
 
 
 def thumbnail(src, spec, out):

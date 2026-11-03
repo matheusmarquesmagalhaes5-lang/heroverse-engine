@@ -90,6 +90,21 @@ class PlanTests(unittest.TestCase):
             mutate(bad)
             self.assertTrue(any(text in x for x in cl.plan_problems(bad)), text)
 
+    def test_e292_a_trimmed_keeper_clip_ends_at_its_line_and_has_no_closing_beat(self):
+        plan = cl.load(ROOT / "migration/production/bible/compilations/arc-02-noah-complete-pavo-compilation.json")
+        for key in ("hook", "close"):
+            self.assertEqual(plan[key]["trim_out_s"], 8.55)
+        for bad_trim in (0, 2.9, 31, "8.5", True):
+            bad = copy.deepcopy(plan)
+            bad["hook"]["trim_out_s"] = bad_trim
+            self.assertTrue(any("trim_out_s" in x for x in cl.plan_problems(bad)), bad_trim)
+        if FFMPEG:
+            base = ROOT / "migration/evidence/pavo/20261103/compilation-m2"
+            with tempfile.TemporaryDirectory() as d:
+                out = Path(d) / "k.mp4"
+                cl.render_keeper(base / "hook-clip.mp4", base / "hook.wav", out, 8.55)
+                self.assertAlmostEqual(cl.duration(out), 8.55 + cl.BEAT, delta=0.1)
+
     def test_e289_a_keeper_segment_under_10_s_is_no_chapter_of_its_own(self):
         plan = cl.load(ROOT / "migration/production/bible/compilations/arc-02-noah-complete-compilation.json")
         seg = lambda kind, a, b: {"kind": kind, "start": a, "end": b}
