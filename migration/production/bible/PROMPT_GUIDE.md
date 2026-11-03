@@ -208,25 +208,45 @@ generates is used, so the request is right before it is sent.
 - Plans published before the rule (flood-ends-long, genesis-09-short, genesis-10-short) are grandfathered by id
   (`plan_check.PAVO_COVERAGE_GRANDFATHERED`, held frozen by a test).
 
-**Prompt: one builder, fixed order.** A talking shot carries `"pavo": {"emotion", "setting", "wardrobe", "gaze"}` and
-its `prompt` is exactly `pavo_prompt.build`'s (`PAVO_PROMPT_NOT_STANDARD` otherwise; never hand-written):
+**Prompt: one builder, modelled on the prompts that passed (E292).** Owner, 2026-11-03: "Always model the prompt on
+the way it was done the time it passed." A talking shot carries `"pavo": {"emotion", "setting", "wardrobe", "gaze",
+"mood"}` and its `prompt` is exactly `pavo_prompt.build`'s (`PAVO_PROMPT_NOT_STANDARD` otherwise; never hand-written).
+The builder fills `pavo_prompt.TEMPLATE`, the passing prompt of record word for word (it reproduces flood k-insight,
+k-close and k-hook, the M2 hook, reflection k-r1, genesis-09 k-close and genesis-10 k-insight byte for byte):
 
-1. reference binding: "Image 1 is the narrator." / "Image 1 is Noah.";
-2. style: the series style line;
-3. framing: "Close-up from the chest up, his face large in the centre of the frame, static camera, the speaker
-   centred in the frame.";
-4. identity: the character bible's look and one wardrobe variant, word for word;
-5. setting and light: the shot's `setting`; a scene adds its period sentence;
-6. action: "speaks the words of the audio clip, his lips moving in sync with the voice; his lips move only while the
-   voice speaks, his mouth closed and still before the first word and after the last word, no extra words, no
-   humming, no mouthing after the line.";
-7. emotion: one adjective and one gaze (`pavo_prompt.GAZES`; the Keeper always "straight into the camera");
-8. negatives: "No text, no logos, no second person, no hand over the mouth, no head turn away." (a scene adds its
-   period exclusion sentence).
+> Image 1 is the narrator. *STYLE* Close-up from the chest up, his face large in the centre of the frame, static
+> camera. The narrator, *look*, *wardrobe*, centred in the frame holds his head level and looks straight into the
+> camera and speaks the words of the audio clip, his lips moving in sync with the voice, a calm kind look. *setting*
+> Tender and grave. No text, no logos.
 
-**Audio.** The input audio is our exact Kokoro line plus `pavo_prompt.TAIL_PAD` (0.3 s) of digital silence, capped
-0.05 s before the clip's end (`episode_build.lines_step`, `tail_pad_s`); the request digest records `tail_pad`, so
-an approved legacy clip keeps its request. The kept clip carries that same WAV (E287).
+A character reads "Image 1 is Noah. … Medium close-up, static camera. Noah, *look*, …" with its gaze, and a scene adds
+its period setting and exclusion sentences after the mood sentence, before "No text, no logos." (the order of the
+passing character prompts). Nothing else is added: no wording that no generation has used.
+
+Modelled on passing prompts (71 Pavo talking generations of record, 45 PASS / 26 FAIL;
+[evidence](../../evidence/pavo-prompt-analysis/20261103.json): approved, or SyncNet sync and face on our audio):
+
+| Part | Passing wording (pass rate) | Failing or untested wording |
+|---|---|---|
+| framing, Keeper 16:9 / 1:1 | "Close-up from the chest up, his face large in the centre of the frame" (Keeper 22/31) | "Medium shot" 0/10, 16:9 "Medium close-up" 0/2 (seated, drawn full body, face lost) |
+| framing, Keeper 9:16 and characters | "Medium close-up" (Keeper 7/8, character pictures 20/20 with the face, 16/20 in sync) | — |
+| binding and action | "Image 1 is the narrator." … "speaks the words of the audio clip, his lips moving in sync with the voice" (every Kokoro-input request, bound by `bind_prompt`) | the native SOUND block 3/4 (words wrong once) |
+| pose and gaze | 16:9/1:1 "centred in the frame holds his head level and looks straight into the camera and"; 9:16 "holds his head level, looks straight into the camera and" | v1's separate "He holds his head level…" sentence: never sent |
+| emotion | one "a <look> look" clause + one "<Adjective> and <adjective>." mood (`PASSING_LOOKS`: calm kind / Tender and grave, gentle questioning / Warm and searching, grave, intent / Hushed and urgent, warm expectant / Warm and expectant, grave knowing / Tender and grave) | v1's one-adjective "with a grave look": never sent |
+| negatives | "No text, no logos." | v1's "no second person, no hand over the mouth, no head turn away" and "lips move only while… no humming": never sent |
+| scroll, campfire flicker on the face, head level, straight gaze | in every Keeper prompt, passing and failing: kept as sent | — |
+| line length | 12-17 words 26/31 within the right framing (84 %) | 22-25 words 11/18 (61 %); above 25 never tried (`PAVO_LINE_WORDS`) |
+| aspect | 9:16 7/8, 1:1 9/11 | 16:9 29/52: every face loss with the right framing was at 16:9 (4 of 16) |
+| second figure, raised hands, busy garden | no lower rate (75 %, 91 %, 82 %) | — |
+| pace, prompt length | no separation (≤ 2.75 w/s 75 % vs 73 %) | — |
+
+The same request digest passed 3 of 4 (M2, shot-probe 41629339290) and failed 4 of 4 (41652099686): those four are
+generation variance, not wording, and are why a visual defect still takes the one second generation below.
+
+**Audio.** The input audio is our exact Kokoro line as `episode_build.lines_step` cuts it, with no added silence
+(`pavo_prompt.TAIL_PAD` = 0: no passing generation had a pad; the E290 0.3 s pad was never sent). The kept clip
+carries that same WAV (E287) and is cut at the last word in the edit (E273/E282); the request digest records
+`tail_pad` (the builder version), so an approved legacy clip keeps its request.
 
 **Pace before any probe.** A Keeper line whose clip retime (`talk_retime`) would speed it past E277's band within
 E288's one 10 % slowing is refused (`PAVO_LINE_PACE`); a reflection keeps `REFLECTION_PACE`.

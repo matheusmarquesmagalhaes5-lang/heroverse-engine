@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
-"""E290: the Pavo talking-shot prompt standard (pavo_prompt.build, PROMPT_GUIDE "Pavo talking-shot prompt standard"),
-the 0.3 s silence pad after our line, and the daily lessons file production reads before any Pavo request."""
+"""E290/E292: the Pavo talking-shot prompt standard (pavo_prompt.build, PROMPT_GUIDE "Pavo talking-shot prompt standard"):
+the builder writes the passing prompt of record word for word (evidence/pavo-prompt-analysis/20261103.json), the input
+audio is our line as cut (no added pad, as every passing generation), and the daily lessons file is read first."""
+import hashlib
 import json
 from pathlib import Path
 import sys
@@ -18,7 +20,7 @@ CHARS = pp.ch.registry()
 SETTING = "Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him."
 
 
-def keeper_shot(emotion="grave", **pavo):
+def keeper_shot(emotion="calm kind", **pavo):
     return {"id": "k-hook", "kind": "keeper", "lines": [0], "audio_route": "kokoro",
             "pavo": dict({"emotion": emotion, "setting": SETTING, "wardrobe": "fire"}, **pavo)}
 
@@ -27,50 +29,94 @@ def flood_plan():
     return json.loads((HERE / "plans/flood-ends-long.json").read_text())
 
 
+EVIDENCE = HERE.parents[1] / "evidence"
+# passing generations of record (approved, or E287 sync and face on our audio): (probe record, shot, plan, look)
+PASSING = (("shots/flood-ends-long/41534197400.json", "k-insight", "flood-ends-long", "calm kind"),
+           ("shots/flood-ends-long/41534197400.json", "k-close", "flood-ends-long", "warm expectant"),
+           ("shots/flood-ends-long/41547308176.json", "k-hook", "flood-ends-long", "grave, intent"),
+           ("shots/arc-02-noah-compilation-keeper/41629339290.json", "k-hook", "arc-02-noah-compilation-keeper",
+            "grave, intent"),
+           ("shots/flood-ends-long-reflection-1/41567543843.json", "k-r1", "flood-ends-long-reflection-1",
+            "grave, intent"),
+           ("shots/genesis-09-short/41254369410.json", "k-close", "genesis-09-short", "warm expectant"),
+           ("shots/genesis-10-short/41574608645.json", "k-insight", "genesis-10-short", "grave knowing"))
+
+
 class Builder(unittest.TestCase):
-    def test_the_prompt_has_the_eight_parts_in_the_owners_order(self):
-        plan = flood_plan()
-        p = pp.build(keeper_shot(), plan, CHARS)
-        keeper = CHARS["keeper"]
-        order = ["Image 1 is the narrator.", pp.STYLE, pc.KEEPER_FRAMING_16X9, keeper["look"], keeper["wardrobe"]["fire"],
-                 SETTING, "speaks the words of the audio clip", "lips move only while the voice speaks",
-                 "mouth closed and still before the first word and after the last word",
-                 "no extra words, no humming, no mouthing after the line", "looks straight into the camera",
-                 "with a grave look", "No text, no logos, no second person, no hand over the mouth, no head turn away."]
-        at = [p.find(x) for x in order]
-        self.assertNotIn(-1, at, p)
-        self.assertEqual(at, sorted(at), p)
-        self.assertTrue(p.startswith("Image 1 is the narrator. " + pp.STYLE))
-        # the builder already binds Image 1 and the audio clause: the request's bind_prompt changes nothing
-        self.assertIn(eb.BOUND_AUDIO.format(pronoun="his"), p)
-        self.assertEqual(eb.bind_prompt(p, "keeper", CHARS), p)
+    def test_e292_the_keeper_prompt_is_the_passing_prompt_of_record_word_for_word(self):
+        # owner 2026-11-03: "Always model the prompt on the way it was done the time it passed."
+        for record, sid, plan_id, look in PASSING:
+            sent = json.loads((EVIDENCE / record).read_text())["shots"][sid]["request"]["prompt"]
+            plan = json.loads((HERE / f"plans/{plan_id}.json").read_text())
+            shot = {"id": sid, "kind": "keeper", "lines": [], "pavo": {"emotion": look, "setting": SETTING,
+                                                                        "wardrobe": "fire"}}
+            self.assertEqual(pp.build(shot, plan, CHARS), sent, (record, sid))
+            self.assertIn(hashlib.sha256(sent.encode()).hexdigest(), analysis["template_prompts"], (record, sid))
 
-    def test_a_built_keeper_prompt_passes_every_keeper_rule_at_every_aspect(self):
-        for aspect in ("16:9", "9:16", "1:1"):
-            s = dict(keeper_shot(), prompt=pp.build(keeper_shot(), flood_plan(), CHARS))
+    def setUp(self):
+        global analysis
+        analysis = json.loads((HERE.parents[2] / pp.EVIDENCE).read_text())
+
+    def test_e292_the_keeper_template_at_each_aspect(self):
+        keeper, plan = CHARS["keeper"], flood_plan()
+        look = f"{keeper['look']}, {keeper['wardrobe']['fire']}"
+        wide = ("Image 1 is the narrator. " + pp.STYLE + " Close-up from the chest up, his face large in the centre of "
+                f"the frame, static camera. The narrator, {look}, centred in the frame holds his head level and looks "
+                "straight into the camera and speaks the words of the audio clip, his lips moving in sync with the "
+                f"voice, a calm kind look. {SETTING} Tender and grave. No text, no logos.")
+        tall = ("Image 1 is the narrator. " + pp.STYLE + f" Medium close-up, static camera. The narrator, {look}, holds "
+                "his head level, looks straight into the camera and speaks the words of the audio clip, his lips moving "
+                f"in sync with the voice, a calm kind look. {SETTING} Tender and grave. No text, no logos.")
+        for aspect, want in (("16:9", wide), ("1:1", wide), ("9:16", tall)):
+            plan["aspect_ratio"] = aspect
+            p = pp.build(keeper_shot(), plan, CHARS)
+            self.assertEqual(p, want, aspect)
+            s = dict(keeper_shot(), prompt=p)
             self.assertEqual(pc.prompt_problems(0, s), [], aspect)
-            self.assertEqual(pc.keeper_prompt_problems(0, s, CHARS["keeper"], aspect), [], aspect)
-            self.assertEqual(pc.safe_area_problems(0, s), [], aspect)
+            self.assertEqual(pc.keeper_prompt_problems(0, s, keeper, aspect), [], aspect)
+            if aspect != "9:16":   # a long-first prompt keeps him in the centre column (E259); a 9:16 Short is that column
+                self.assertEqual(pc.safe_area_problems(0, s), [], aspect)
+            # the builder already binds Image 1 and the audio clause: the request's bind_prompt changes nothing
+            self.assertIn(eb.BOUND_AUDIO.format(pronoun="his"), p)
+            self.assertEqual(eb.bind_prompt(p, "keeper", CHARS), p)
+        # no wording that no generation of record used
+        for never in ("the speaker centred", "lips move only", "no humming", "no second person", "head turn away"):
+            self.assertNotIn(never, wide)
 
-    def test_a_character_scene_states_its_period_and_its_look(self):
+    def test_e292_a_character_follows_the_same_template_with_its_period(self):
         plan = flood_plan()
+        setting = "Dawn on the wet hillside, pale gold light on his face, mist behind him."
         s = {"id": "s-noah", "kind": "scene", "speaker": "noah", "characters": ["noah"],
              "line": "And Noah said, Blessed be the LORD God of Shem.", "reference": "Genesis 9:26 (KJV)",
-             "pavo": {"emotion": "solemn", "gaze": "up toward the sky",
-                      "setting": "Dawn on the wet hillside, pale gold light on his face, mist behind him."}}
+             "pavo": {"emotion": "solemn", "mood": "Solemn and grave", "gaze": "up toward the sky", "setting": setting}}
         s["prompt"] = pp.build(s, plan, CHARS)
-        self.assertTrue(s["prompt"].startswith("Image 1 is Noah. "))
-        per = pc.period(plan)
-        self.assertIn(per["setting"], s["prompt"])
-        self.assertTrue(s["prompt"].endswith(per["exclude"]))
+        per, noah = pc.period(plan), CHARS["noah"]
+        self.assertEqual(s["prompt"], (
+            "Image 1 is Noah. " + pp.STYLE + f" Medium close-up, static camera. Noah, {noah['look']}, centred in the "
+            "frame holds his head level and looks up toward the sky and speaks the words of the audio clip, his lips "
+            f"moving in sync with the voice, a solemn look. {setting} Solemn and grave. {per['setting']} "
+            f"{per['exclude']} No text, no logos."))
         self.assertEqual(pc.period_problems(0, s, per), [])
         self.assertEqual(pc.character_problems(0, ["noah"], s["prompt"], CHARS), [])
         self.assertEqual(pc.prompt_problems(0, s), [])
         self.assertEqual(pc.writing_problems(0, s), [])
+        # a look of record carries its own mood; any other look must state one
+        self.assertIn("is not a look of record", pp.field_problems(dict(s, pavo=dict(s["pavo"], mood=None)), CHARS,
+                                                                   plan)[0])
+
+    def test_e292_a_line_longer_than_any_of_record_is_refused(self):
+        plan = flood_plan()
+        plan["narration"] = [{"kind": "insight", "text": " ".join(["word"] * pp.LINE_WORDS_MAX) + "."}]
+        shot = dict(keeper_shot(), lines=[0])
+        self.assertTrue(pp.build(shot, plan, CHARS).startswith("Image 1 is the narrator."))
+        plan["narration"][0]["text"] += " More."
+        with self.assertRaisesRegex(SystemExit, "PAVO_LINE_WORDS"):
+            pp.build(shot, plan, CHARS)
 
     def test_malformed_fields_are_refused_before_any_prompt(self):
         plan = flood_plan()
-        bad = {"very grave": keeper_shot(emotion="very grave"), "gaze": keeper_shot(gaze="just past the camera"),
+        bad = {"no mood": keeper_shot(emotion="very grave"), "long look": keeper_shot(emotion="a b c d", mood="X and y"),
+               "mood": keeper_shot(mood="tender"), "gaze": keeper_shot(gaze="just past the camera"),
                "wardrobe": keeper_shot(wardrobe="armour"), "extra": keeper_shot(hands="folded")}
         for why, s in bad.items():
             self.assertTrue(pp.field_problems(s, CHARS, plan), why)
@@ -81,10 +127,10 @@ class Builder(unittest.TestCase):
 
 
 class TailPad(unittest.TestCase):
-    def test_our_line_ends_on_clean_silence_and_never_reaches_the_clips_end(self):
-        self.assertEqual(pp.tail_pad(7.55, 8), 0.3)                      # the retime target N - 0.45: a full 0.3 s
-        self.assertEqual(pp.tail_pad(7.70, 8), 0.25)                     # 0.05 s always left before the picture ends
-        self.assertEqual(pp.tail_pad(7.98, 8), 0.0)
+    def test_our_line_goes_in_as_cut_like_every_passing_generation(self):
+        # E292: no passing generation of record had added silence; the pad mechanism stays, set to none
+        self.assertEqual(pp.TAIL_PAD, 0.0)
+        self.assertEqual([pp.tail_pad(x, 8) for x in (7.55, 7.70, 7.98)], [0.0, 0.0, 0.0])
         with tempfile.TemporaryDirectory() as t:
             path = Path(t) / "k.wav"
             with wave.open(str(path), "wb") as w:
