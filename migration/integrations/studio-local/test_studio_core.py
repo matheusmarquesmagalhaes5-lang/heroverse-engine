@@ -163,7 +163,12 @@ class MappingTests(unittest.TestCase):
         for j in jobs:
             self.assertIsNone(core.job_problem(j))
         cut = [j for j in jobs if j["reason"].startswith("cut")]
-        self.assertEqual(cut, [])    # all three flood cuts are already done by hand
+        # the three first flood cuts are done by hand; every later cut gets a job to its source long (E280: the cuts
+        # published after the queue was written made this assertion red on main)
+        self.assertFalse({j["video_id"] for j in cut} & set(rm.ALREADY_DONE))
+        for j in cut:
+            self.assertEqual(j["target_video_id"], "1m-NUJhkdMY")
+            self.assertTrue(j["reason"].endswith("cut of its source long"))
 
     def test_committed_queue_is_valid(self):
         doc = rm.read_json(rm.OUT)
