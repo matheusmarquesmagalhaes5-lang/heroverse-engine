@@ -48,6 +48,330 @@
    "clip_seconds": 6,
    "from_score": 9.5,
    "request_sha256": "2944e1fa385878ecf01778bd61e3ff5c1a0f70e37e88b6b273289550d5e9a4d5"
+  },
+  "s-ararat": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT-desktop still in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "still": "genesis-10-short-s-ararat",
+   "repo_path": "migration/production/bible/stills/genesis-10-short-s-ararat.jpg",
+   "clip_sha256": null,
+   "still_sha256": "19bcb206729f40bc7df68bea8173f27277080e1fe85143d8961147d7cf2f5521",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 10,
+   "request_sha256": "9f09c53bf522039b083efb4d4bab84704140610b2aaf461c5970f7dd129ab22f"
+  },
+  "s-calm": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT-desktop still in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "still": "genesis-10-short-s-calm",
+   "repo_path": "migration/production/bible/stills/genesis-10-short-s-calm.jpg",
+   "clip_sha256": null,
+   "still_sha256": "a3eff6adc5afecd1ff0f9ea68038392e91ce2d85fd91cf808126d80cb294e47e",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 12,
+   "request_sha256": "c3dc8b52ca9258f5456e7596c99eba0b796bece4948dbde27ee5f546f25abe20"
+  },
+  "s-door-shut": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT-desktop still in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "still": "genesis-10-short-s-door-shut",
+   "repo_path": "migration/production/bible/stills/genesis-10-short-s-door-shut.jpg",
+   "clip_sha256": null,
+   "still_sha256": "9e6d30da579a015caadda22927c3edd26de44d883438a9c77f2063d07a666933",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 10,
+   "request_sha256": "09e1a1a93ff171ed358755a6d34e3eefc963ef0c526ddd0130eea40c108faaec"
+  },
+  "s-dove-circle": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT-desktop still in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "still": "genesis-10-short-s-dove-circle",
+   "repo_path": "migration/production/bible/stills/genesis-10-short-s-dove-circle.jpg",
+   "clip_sha256": null,
+   "still_sha256": "53afb902d9fa909bc76d9bcdd57da6076043312d869f1e4a40ffc1bbbdb576cb",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 8,
+   "request_sha256": "5c3cfbc2a468f6dea88933fc7f4e0a41309a6befbdcb671ebefeab6a7a779a0f"
+  },
+  "s-dry": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT-desktop still in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "still": "genesis-10-short-s-dry",
+   "repo_path": "migration/production/bible/stills/genesis-10-short-s-dry.jpg",
+   "clip_sha256": null,
+   "still_sha256": "0fb17045df816d9a8bb356c2ed1918088e9dad7f43ddaeef0ea0f6b21c25e0f0",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 9,
+   "request_sha256": "7224d1b5e00c9487f453db7fb103a8e570c3d949d7525c9d6be3e342f41a23af"
+  },
+  "s-dusk": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT-desktop still in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "still": "genesis-10-short-s-dusk",
+   "repo_path": "migration/production/bible/stills/genesis-10-short-s-dusk.jpg",
+   "clip_sha256": null,
+   "still_sha256": "6019e7116ef33c0e2b7f5543d55f8693c394a7427db62e368eef6d2ec749f639",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 9,
+   "request_sha256": "1c1fe82f354c0d76cccda8518ba63793d3abaa91ea4fe5afd9703c921ac2f0cf"
+  },
+  "s-empty-sky": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT-desktop still in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "still": "genesis-10-short-s-empty-sky",
+   "repo_path": "migration/production/bible/stills/genesis-10-short-s-empty-sky.jpg",
+   "clip_sha256": null,
+   "still_sha256": "974719d05fc0c6e91fa092a852679337a95548e21be7e2d0de761bdb277cc2be",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 8,
+   "request_sha256": "a713c9a1249bb38d97616eb868335807a37b023e53c2ce40ffb563aa9c076d6d"
+  },
+  "s-green": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT-desktop still in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "still": "genesis-10-short-s-green",
+   "repo_path": "migration/production/bible/stills/genesis-10-short-s-green.jpg",
+   "clip_sha256": null,
+   "still_sha256": "0934c2d86556c302d84c7a0dd9e00b78bb608292c41e6f3587459caaf10b927a",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 9,
+   "request_sha256": "cfe1aedd8673073512dfbe333de21bb3c72d2a7af796601e7850b3e710c3b958"
+  },
+  "s-hand": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT-desktop still in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "still": "genesis-10-short-s-hand",
+   "repo_path": "migration/production/bible/stills/genesis-10-short-s-hand.jpg",
+   "clip_sha256": null,
+   "still_sha256": "ef345fb95fce217f6c8aa0827006e91921c619a100495d8aef2970ef8fa916d0",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 8,
+   "request_sha256": "c6cf0edffabc7979b97b20aaf9c0ba5f65fc6a49418a3d5d863840191388afee"
+  },
+  "s-hold": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT-desktop still in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "still": "genesis-10-short-s-hold",
+   "repo_path": "migration/production/bible/stills/genesis-10-short-s-hold.jpg",
+   "clip_sha256": null,
+   "still_sha256": "8f40a59c3bee54aada35ed7cc0436572f35f24b5ec927fafaf537a5a999748f6",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 9,
+   "request_sha256": "257a890778221f04b00e360e59489823697c41494a857beff0ba3bf2054d64a3"
+  },
+  "s-leaf": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT-desktop still in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "still": "genesis-10-short-s-leaf",
+   "repo_path": "migration/production/bible/stills/genesis-10-short-s-leaf.jpg",
+   "clip_sha256": null,
+   "still_sha256": "a6b4fdfe6a671b10bf309efbae47de155e2a61cbdb3bcb7afe5c7c36d52a86fd",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 12,
+   "request_sha256": "8650bf65c4439fd97c77e516dfe5b8ea456032ddb9a3d84e142189d21afcf667"
+  },
+  "s-noah-dove": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT-desktop still in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "still": "genesis-10-short-s-noah-dove",
+   "repo_path": "migration/production/bible/stills/genesis-10-short-s-noah-dove.jpg",
+   "clip_sha256": null,
+   "still_sha256": "9327fb84bd24ac90ca74a315415081bfe193634f17ad608794a870d5380df31a",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 8,
+   "request_sha256": "4037efd19325cd01a64ebb39ed9957ffde1dd837e5a4499a50f36fa179ff9040"
+  },
+  "s-raven": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT-desktop still in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "still": "genesis-10-short-s-raven",
+   "repo_path": "migration/production/bible/stills/genesis-10-short-s-raven.jpg",
+   "clip_sha256": null,
+   "still_sha256": "c0e75689a186810e8b58def64ebe34ed6d9d8e88935eb4e1928b5948a15a59cf",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 8,
+   "request_sha256": "5b2f24cf651cc5f3fec7ba26a11310dcfbe91ca315cfd2373a7f901ce23c175d"
+  },
+  "s-release": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT-desktop still in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "still": "genesis-10-short-s-release",
+   "repo_path": "migration/production/bible/stills/genesis-10-short-s-release.jpg",
+   "clip_sha256": null,
+   "still_sha256": "20aea8029748df15efc2b5608dde348d2694f058c15c20fb14f881ffb14d2842",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 9,
+   "request_sha256": "ace9c4b11f5cb0bb8674d1d12b167cabc397e2b80a20badba5cf4d1e5fe05153"
+  },
+  "s-still-water": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT-desktop still in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "still": "genesis-10-short-s-still-water",
+   "repo_path": "migration/production/bible/stills/genesis-10-short-s-still-water.jpg",
+   "clip_sha256": null,
+   "still_sha256": "46d11bfc89d7b1bfc858bf2ec9ba28f800a4578790da5742afea204a2ec3ccbf",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 9,
+   "request_sha256": "343594f1bf7f631acd3946bf1612305e2d2dd8c731bf32f2d8e744099b33b8f3"
+  },
+  "s-voice": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT-desktop still in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "still": "genesis-10-short-s-voice",
+   "repo_path": "migration/production/bible/stills/genesis-10-short-s-voice.jpg",
+   "clip_sha256": null,
+   "still_sha256": "a99f039a9eecfd18626c32cafc3ab93adb17e10a64fcccecb087a6714a4e4d75",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 8,
+   "request_sha256": "200ffe6311612fa5bba4e665b8ce289a86c94cc05f583b0b56c4296a58e7d4cd"
+  },
+  "s-wind": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT-desktop still in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "still": "genesis-10-short-s-wind",
+   "repo_path": "migration/production/bible/stills/genesis-10-short-s-wind.jpg",
+   "clip_sha256": null,
+   "still_sha256": "8d0d12a8a3857893a513c58f5af6dea68703ae95fb5404a437b2b82d9260a578",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 12,
+   "request_sha256": "7c6d3d2bbce981f1b430ab81891856fd52062529d5127327096aec19c92442ee"
+  },
+  "s-window": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT-desktop still in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "still": "genesis-10-short-s-window",
+   "repo_path": "migration/production/bible/stills/genesis-10-short-s-window.jpg",
+   "clip_sha256": null,
+   "still_sha256": "e4e5367590c965d37a65eea2b77a8ef9e5bb9207b511d97a765893693211d2cd",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 8,
+   "request_sha256": "1a2a44cae7df53c9c234906f624cc583b8797a8b8fae677ecec168c05ea45a6e"
   }
  }
 }
