@@ -228,6 +228,11 @@ def publish_episode(i):
     need(re.fullmatch(r"(\d{4}-\d\d-\d\dT\d\d:\d\d(:\d\d)?Z)?", i.get("publish_at") or ""), "publish_at",
          i.get("publish_at"), "RFC3339 UTC (Z) or empty")
     rec = load(rel)
+    slot = rec.get("slot") or ""
+    if not i.get("publish_at") and re.fullmatch(r"\d{4}-\d\d-\d\dT\d\d:\d\d(:\d\d)?Z", slot) \
+            and datetime.strptime(slot[:16], "%Y-%m-%dT%H:%M").replace(tzinfo=timezone.utc) > datetime.now(timezone.utc):
+        # E285: an empty publish_at means public NOW; a record with a future slot would skip its slot
+        refuse("GUARD_SLOT_NEEDS_PUBLISH_AT", f"{rel} has slot {slot}: pass publish_at={slot} (empty publish_at publishes now)")
     if len(rec.get("title", "")) > TITLE_MAX or len(rec.get("description", "").encode()) > DESCRIPTION_MAX:
         refuse("GUARD_RECORD_OVER_LIMIT", f"{rel}: title <= {TITLE_MAX} characters, description <= "
                                           f"{DESCRIPTION_MAX} bytes (E52)")

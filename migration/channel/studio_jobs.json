@@ -85,6 +85,48 @@
    "target_video_id": "X2LPFriRn3M",
    "reason": "short genesis-09-short: chapter of the compilation",
    "target_title": "Noah's Ark and the Flood Begins: Genesis 5-7 Bible Story (KJV)"
+  },
+  {
+   "video_id": "IDL92dFIK2Y",
+   "action": "related_video",
+   "target_video_id": "1m-NUJhkdMY",
+   "reason": "short flood-ends-leaf-cut: its source long",
+   "target_title": "The Flood Ends: The Raven, the Dove and the Rainbow (Genesis 8-9, KJV)"
+  },
+  {
+   "video_id": "ejH5wsYjDCg",
+   "action": "related_video",
+   "target_video_id": "1m-NUJhkdMY",
+   "reason": "short flood-ends-shutin-cut: its source long",
+   "target_title": "The Flood Ends: The Raven, the Dove and the Rainbow (Genesis 8-9, KJV)"
+  },
+  {
+   "video_id": "42wuoj5qw7c",
+   "action": "related_video",
+   "target_video_id": "1m-NUJhkdMY",
+   "reason": "short flood-ends-landing-cut: its source long",
+   "target_title": "The Flood Ends: The Raven, the Dove and the Rainbow (Genesis 8-9, KJV)"
+  },
+  {
+   "video_id": "sqxC7EYi4jc",
+   "action": "related_video",
+   "target_video_id": "1m-NUJhkdMY",
+   "reason": "short flood-ends-raven-cut: its source long",
+   "target_title": "The Flood Ends: The Raven, the Dove and the Rainbow (Genesis 8-9, KJV)"
+  },
+  {
+   "video_id": "3iLr-QnB8VQ",
+   "action": "related_video",
+   "target_video_id": "1m-NUJhkdMY",
+   "reason": "short flood-ends-altar-cut: its source long",
+   "target_title": "The Flood Ends: The Raven, the Dove and the Rainbow (Genesis 8-9, KJV)"
+  },
+  {
+   "video_id": "B5H2n_iyYV4",
+   "action": "related_video",
+   "target_video_id": "1m-NUJhkdMY",
+   "reason": "short genesis-10-short: its source long",
+   "target_title": "The Flood Ends: The Raven, the Dove and the Rainbow (Genesis 8-9, KJV)"
   }
  ]
 }
