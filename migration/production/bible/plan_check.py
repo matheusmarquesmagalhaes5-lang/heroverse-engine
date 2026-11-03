@@ -143,6 +143,8 @@ COMPILATION_KEEPER_TRACK = "keeper-compilation"
 COMPILATION_KEEPER_RATIOS = ("16:9",)
 REFLECTION_SEGMENTS = (2, 4)
 REFLECTION_WPM_MAX = 165         # reflection_shorts.WPM_BAND[1]: the render refuses a faster measured pace (a test keeps them equal)
+REFLECTION_RETIME_TARGET = 164   # E289: the pace a too-fast Keeper is slowed to by the reflection render (E286), reflection_shorts.RETIME_TARGET
+REFLECTION_RETIME_MIN = 0.90     # ... by at most 10 % (reflection_shorts.RETIME_MIN): the tempo the render may apply
 REFLECTION_BREAK = 0.40         # E277: seconds of pause each sentence break inside the lines adds to the Keeper's measured speech
 REFLECTION_WORDS = (20, 80)          # publish_episode.REFLECTION_WORDS
 SAFE_AREA = re.compile(r"(?i)\bcent(?:er|re)d in the frame\b")
@@ -1311,19 +1313,35 @@ def reflection(plan):
     return isinstance(plan, dict) and plan.get("track") in (REFLECTION_TRACK, COMPILATION_KEEPER_TRACK)
 
 
-def reflection_pace_problems(items):
+def reflection_retime(wpm):
+    """E289: the tempo (1.0 = none) the reflection render applies to a Keeper measured at `wpm`: over REFLECTION_WPM_MAX the
+    clips are slowed to REFLECTION_RETIME_TARGET, picture and voice together (atempo keeps the pitch; E286). ONE function:
+    reflection_shorts.render calls it on the measured pace and reflection_pace_problems on the planned one, so the plan and
+    the render can never judge the pace with two different factors."""
+    if wpm <= REFLECTION_WPM_MAX or wpm <= 0:
+        return 1.0
+    return round(REFLECTION_RETIME_TARGET / wpm, 3)
+
+
+def reflection_pace_problems(items, retimed=False):
     """E277: reflection_shorts.py render refuses a Keeper whose measured pace passes REFLECTION_WPM_MAX (VOICE_PACE 169 wpm
     on the first render of flood-ends-long-reflection-1, after its clips were already made on Pavo). Kokoro's Keeper runs
     at VOICE_PACE words a second (172 wpm) and only the pauses inside the speech bring it down, so the same estimate is made
-    here, before any shot-probe: the words over the pace plus REFLECTION_BREAK for every sentence break inside the lines."""
+    here, before any shot-probe: the words over the pace plus REFLECTION_BREAK for every sentence break inside the lines.
+    E289: the pace that counts is the one the VIEWER hears. A reflection (`retimed`) is slowed by the render (E286) when its
+    measured pace is over the band, so the plan is judged after the same tempo (reflection_retime): refused only when that
+    tempo would pass REFLECTION_RETIME_MIN, i.e. the heard pace would still be over the band or the slowing audible."""
     text = [x["text"].strip() for x in items]
     n = sum(words(t) for t in text)
     breaks = sum(len(re.findall(r"[.!?](?=\s+\S)", t)) for t in text)
     seconds = n / VOICE_PACE["keeper"] + REFLECTION_BREAK * breaks
     wpm = n / seconds * 60 if seconds else 0.0
-    if wpm > REFLECTION_WPM_MAX:
-        return [f"REFLECTION_PACE ~{wpm:.0f} wpm ({n} words, {breaks} sentence breaks; the render refuses over "
-                f"{REFLECTION_WPM_MAX}): add a sentence break or cut words BEFORE any Pavo clip is made"]
+    tempo = reflection_retime(wpm) if retimed else 1.0
+    heard = wpm * tempo
+    if heard > REFLECTION_WPM_MAX or tempo < REFLECTION_RETIME_MIN:
+        return [f"REFLECTION_PACE ~{wpm:.0f} wpm, ~{heard:.0f} heard after the render's x{tempo} retime ({n} words, {breaks} "
+                f"sentence breaks; the render refuses over {REFLECTION_WPM_MAX} and slows by at most "
+                f"{round((1 - REFLECTION_RETIME_MIN) * 100)} %): add a sentence break or cut words BEFORE any Pavo clip is made"]
     return []
 
 
@@ -1392,7 +1410,7 @@ def reflection_check(plan, chars, problems, pending):
             problems.append(f"REFLECTION_SEGMENT_NOT_A_SENTENCE line {i} (a segment ends on . ! or ?: never cut inside a "
                             "sentence)")
     total_words = sum(words(x["text"]) for x in items)
-    problems += reflection_pace_problems(items)
+    problems += reflection_pace_problems(items, retimed=plan.get("track") != COMPILATION_KEEPER_TRACK)
     if not REFLECTION_WORDS[0] <= total_words <= REFLECTION_WORDS[1]:
         problems.append(f"REFLECTION_LENGTH {total_words} words ({REFLECTION_WORDS[0]}-{REFLECTION_WORDS[1]})")
     if keeper.get("status") != "APPROVED" or not keeper.get("refs"):

@@ -4591,6 +4591,25 @@
      "process"
     ]
    }
+  },
+  {
+   "id": "E288",
+   "date": "2026-11-03",
+   "class": [
+    "process"
+   ],
+   "prior": [
+    "E287"
+   ],
+   "error": "plan_check REFLECTION_PACE (E277) judged the Keeper's pace as the render would REFUSE it, while the render has slowed a too-fast Keeper by up to 10 % since E286 (picture and voice together, pitch kept), so the viewer hears ~164 wpm. The three-clip reflection 1 (k-r1, k-r2, k-r4: 52 words, planned ~165.2 wpm, our WAVs 18.65 s) was refused at plan time by 0.2 wpm although the render would have shipped it at ~x0.94 and ~164 wpm heard. Root cause: two gates on one property with two factors (the plan had none, the render 164/wpm), changed at different times.",
+   "fix": "plan_check.reflection_retime(wpm) is the only source of the factor: reflection_shorts.render calls it on the measured pace and reflection_pace_problems(items, retimed=True) on the planned one (a reflection track; the compilation Keeper has no retime and keeps the plain gate); RETIME_TARGET/RETIME_MIN of the renderer are the plan's constants. The heard pace must still be inside 165 and the slowing at most 10 %, and the measured band check after the retime is unchanged.",
+   "antidote": {
+    "file": "migration/production/bible/test_plan_check.py",
+    "contains": "def test_the_plan_and_the_render_judge_the_pace_with_one_retime",
+    "covers": [
+     "process"
+    ]
+   }
   }
  ]
 }
