@@ -25,6 +25,13 @@ against its own actual timeline and accepted audio; imports do not qualify sourc
 Before any publisher is called, the record must describe the actual passing review and qualified package.
 `check-record` validates its implemented record checks; it does not perform perceptual review.
 
+Related video (Studio-only, owner 2026-11-03): every newly scheduled Short gets an entry in `channel/studio_jobs.json`
+(`migration/channel/related_map.py build --public-check` regenerates it; mapping rules in
+`integrations/studio-local/README.md`). When the PC is online, production runs
+`C:\HeroVerse\studio-runner\.venv\Scripts\python runner.py run` via Desktop Commander (on demand, no schedule on the PC);
+the receipt arrives as a data-only `claude/studio-receipt-*` PR under `evidence/studio/`. If the PC is offline, the jobs wait
+and nothing else blocks.
+
 Private ingress must deliver the exact file to the existing episode publisher without publishing unfinished media
 in a repository release or logging private URLs. Consult the workflow's current declared inputs and recorded
 claims; do not invent an input name or a new approval format. The workflow remains `publish-episode.yml`.

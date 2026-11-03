@@ -1,0 +1,16 @@
+{
+ "_note": "Studio selectors (text in English and Portuguese; Studio follows the account language). Edit here, not in the code. `runner.py probe VIDEO_ID` shows which still match.",
+ "page_ready": ["ytcp-video-metadata-editor", "#details", "ytcp-video-metadata-editor-basics"],
+ "show_more": ["ytcp-button#toggle-button", "#toggle-button"],
+ "show_more_text": ["Show more", "Mostrar mais"],
+ "related_section_text": ["Related video", "Vídeo relacionado"],
+ "related_section": ["ytcp-video-metadata-related-video", "ytcp-video-related-video", "div:has(> .section-title:text-matches(\"Related video|Vídeo relacionado\", \"i\"))"],
+ "related_select_button_text": ["Select video", "Selecionar vídeo", "Select a video", "Selecionar um vídeo", "Edit", "Editar", "Change", "Alterar"],
+ "dialog": ["ytcp-video-pick-dialog", "tp-yt-paper-dialog", "ytcp-dialog", "[role=dialog]"],
+ "dialog_search": ["input[type=text]", "input[aria-label*=Search i]", "input[aria-label*=Pesquis i]", "#search-input input"],
+ "dialog_item": ["ytcp-video-pick-row", "ytcp-entity-row", "[role=row]", "[role=option]", "ytcp-video-row"],
+ "dialog_confirm_text": ["Select", "Selecionar", "Done", "Concluído"],
+ "save_button": ["ytcp-button#save", "#save"],
+ "save_text": ["Save", "Salvar"],
+ "saved_toast_text": ["Changes saved", "Alterações salvas", "Salvo", "Saved"]
+}

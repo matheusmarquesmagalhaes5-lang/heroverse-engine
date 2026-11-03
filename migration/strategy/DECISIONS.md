@@ -15,6 +15,13 @@ original evidence. This page is not a historical task queue or a second producti
   only on the same pinned Kokoro voices and settings. Existing Pavo clips are never regenerated, recut in content or
   replaced; they are used as stored (release asset or saved provider ID read by GET). New visuals other than the hook,
   speaking characters and the Keeper's close are animated FLUX stills or licensed footage, each with a second option.
+- Owner, 2026-11-03 ("eu autorizo você fazer tudo pelo meu PC"): a Studio runner on the owner's PC
+  (`C:\HeroVerse\studio-runner`, own Chrome profile, Playwright, `integrations/studio-local/`) does Studio tasks the Data API
+  cannot, starting with each Short's Related video. The cloud only writes jobs (`channel/studio_jobs.json`, built by
+  `channel/related_map.py`); the runner reads them from origin/main, acts one video at a time (at most 30 a run), verifies
+  after reload and returns receipts as data-only PRs (`evidence/studio/`). Invoked on demand only: no scheduled task, service
+  or startup entry on the PC (the owner may add a schedule himself). Cookies stay on the PC; the owner signs in once with
+  `runner.py login`. The owner's everyday Chrome is never touched.
 - Build within the 9.5 quality parameters before final review. Review the actual complete audio/video, retain
   grounded defects and require overall ≥9.5 before a new upload. Never manufacture scores or approvals.
 - Bible Shorts use the existing episode route and `publish-episode.yml`. Longs use their existing build/handoff and
