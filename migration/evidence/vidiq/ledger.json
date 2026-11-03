@@ -1372,7 +1372,7 @@
    "kind": "read",
    "tool": "vidiq_outliers",
    "credits": 5,
-   "purpose": "cross-niche long emotional-narrative outliers (second Intelig\u00eancia Viva run)",
+   "purpose": "cross-niche long emotional-narrative outliers (second Inteligência Viva run)",
    "saved_to": "evidence/vidiq/20261102/cross-niche-outliers.json"
   },
   {
@@ -1382,6 +1382,14 @@
    "credits": 25,
    "purpose": "cross-niche structure audit 93wYHx79Mso (27:51)",
    "saved_to": "evidence/vidiq/20261102/cross-niche-outliers.json"
+  },
+  {
+   "date": "2026-11-03",
+   "kind": "read",
+   "tool": "vidiq_get_videos_by_ids",
+   "credits": 5,
+   "purpose": "verify flood-ends-long public (M1 trigger)",
+   "saved_to": "none"
   }
  ]
 }
