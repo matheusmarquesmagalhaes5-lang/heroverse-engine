@@ -1,0 +1,52 @@
+{
+ "source_policy": "pavo_speech_stock",
+ "track": "keeper-reflection",
+ "version": "bible-plan-v2",
+ "episode": "flood-ends-long-reflection-1",
+ "part": 1,
+ "aspect_ratio": "1:1",
+ "story": "The Keeper's reflection on Genesis 8:1-9:17 (KJV, public domain), said to the camera in 3 segments (the bottom half of flood-ends-long-reflection-1)",
+ "narration": [
+  {
+   "kind": "insight",
+   "text": "Noah did not earn that rainbow by being perfect, and the story says so plainly."
+  },
+  {
+   "kind": "insight",
+   "text": "He failed again, the way people do, and God still hung up His own bow."
+  },
+  {
+   "kind": "insight",
+   "text": "So if you are waiting on God tonight, you are not forgotten. You are carried."
+  }
+ ],
+ "shots": [
+  {
+   "kind": "keeper",
+   "id": "k-r1",
+   "lines": [
+    0
+   ],
+   "audio_route": "kokoro",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks to the camera, his lips moving clearly with every word, a grave, intent look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Hushed and urgent. No text, no logos."
+  },
+  {
+   "kind": "keeper",
+   "id": "k-r2",
+   "lines": [
+    1
+   ],
+   "audio_route": "kokoro",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks to the camera, his lips moving clearly with every word, a grave, intent look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Hushed and urgent. A gentle questioning look. No text, no logos."
+  },
+  {
+   "kind": "keeper",
+   "id": "k-r3",
+   "lines": [
+    2
+   ],
+   "audio_route": "kokoro",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks to the camera, his lips moving clearly with every word, a grave, intent look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Hushed and urgent. A warm expectant look. No text, no logos."
+  }
+ ]
+}
