@@ -54,6 +54,12 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
   Noah compilation: `compilation_long.py` takes a public long as a chapter; the plan and a new Pavo hook/close are still to do
   (due 2026-11-04). The chat "HeroVerse — stills" is kept for the genesis-11 stills (delete it when those are done).
 
+- 2026-11-03 (scheduled run 06:44 UTC): Shorts scheduled in the next 48 h: only the three flood cuts of today (05:30 dove
+  ESuoDa9sGng, 13:30 rainbow v1ssTLntv8Y, 18:30 door qENUe7ZAu6k). 23:30 today and all four 2026-11-04 slots are EMPTY:
+  genesis-10-short (built, reviewed 9.5) still waits on its Noah close-up thumbnail (ChatGPT desktop route; PC device online,
+  not driven in this run). Next run: thumbs candidate, approve, `check-record`, `publish-episode.yml` at the first free slot;
+  then Noah compilation (due 11-04) and the Babel script (runway 0).
+
 ## Next moments
 
 - M2 compilation "Complete Story of Noah (Genesis 5-9)" is due 2026-11-04.
