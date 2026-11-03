@@ -73,6 +73,23 @@ class PlanTests(unittest.TestCase):
             mutate(bad)
             self.assertTrue(any(text in x for x in cl.plan_problems(bad)), text)
 
+    def test_e292_the_pavo_noah_plan_uses_the_remuxed_clips_and_an_approved_still_thumbnail(self):
+        plan = cl.load(ROOT / "migration/production/bible/compilations/arc-02-noah-complete-pavo-compilation.json")
+        self.assertEqual(cl.plan_problems(plan), [])
+        self.assertFalse(cl.has_voiceover(plan))   # the owner's order: Pavo in the hook and the Keeper close
+        self.assertEqual(plan["publish_at"], "2026-11-04T16:00:00Z")
+        self.assertNotEqual(plan["pilot"], "pilot-018")   # pilot-018 is approved on master 1d5fc187
+        for key in ("hook", "close"):
+            self.assertEqual(plan[key]["remux"]["audio_route"], "ours")
+        for mutate, text in ((lambda p: p["hook"].update(video_sha256="0" * 64), "hook video missing or changed"),
+                             (lambda p: p["close"].update(quote="0 credits (no Pavo call: Kokoro voice-over on an approved still)"),
+                              "not made at an exact zero-credit quote"),
+                             (lambda p: p["thumbnail"]["still"].update(sha256="0" * 64), "thumbnail still missing or changed"),
+                             (lambda p: p["thumbnail"]["still"].update(approved_still="flood-ends-long-s-nope"), "approved still")):
+            bad = copy.deepcopy(plan)
+            mutate(bad)
+            self.assertTrue(any(text in x for x in cl.plan_problems(bad)), text)
+
     def test_e289_a_keeper_segment_under_10_s_is_no_chapter_of_its_own(self):
         plan = cl.load(ROOT / "migration/production/bible/compilations/arc-02-noah-complete-compilation.json")
         seg = lambda kind, a, b: {"kind": kind, "start": a, "end": b}
