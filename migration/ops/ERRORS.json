@@ -4400,6 +4400,48 @@
      "instrument"
     ]
    }
+  },
+  {
+   "id": "E283",
+   "date": "2026-11-03",
+   "class": [
+    "instrument"
+   ],
+   "prior": [
+    "E120",
+    "E131",
+    "E137",
+    "E139",
+    "E148",
+    "E152",
+    "E166",
+    "E169",
+    "E185",
+    "E186",
+    "E231",
+    "E233",
+    "E238",
+    "E253",
+    "E255",
+    "E262",
+    "E266",
+    "E267",
+    "E273",
+    "E275",
+    "E279",
+    "E280",
+    "E281",
+    "E282"
+   ],
+   "error": "short-cuts.yml re-rendered every cut of the spec, including cuts already published; an encoder run is not bit-identical, so the new sha256 met RECORD_EXISTS_FOR_ANOTHER_FILE and stopped the run (41635228742) before the two new cuts got a record.",
+   "fix": "short_cuts.render skips a cut whose episode record already exists; a deliberate re-cut archives the record first. No gate loosened.",
+   "antidote": {
+    "file": "migration/production/bible/test_long_first.py",
+    "contains": "def test_a_cut_with_its_record_is_not_rendered_again",
+    "covers": [
+     "instrument"
+    ]
+   }
   }
  ]
 }

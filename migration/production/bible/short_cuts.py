@@ -198,6 +198,10 @@ def render(spec_path, clean, out_dir, root=ROOT):
     sentences = report["composed"]["sentences"]
     done = []
     for c in spec["cuts"]:
+        # E283: a cut that already has its record is not rendered again (an encoder run is not bit-identical, so a new
+        # sha256 would meet RECORD_EXISTS_FOR_ANOTHER_FILE and stop the whole run); a deliberate re-cut archives the record first
+        if (Path(root) / "migration/production/bible/episodes" / f"{c['id']}.json").exists():
+            continue
         info = result["cuts"][c["id"]]
         start, end = float(c["start"]), float(c["end"])
         d = end - start
