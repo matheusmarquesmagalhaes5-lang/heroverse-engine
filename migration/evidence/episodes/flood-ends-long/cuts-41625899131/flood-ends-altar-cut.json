@@ -1,0 +1,113 @@
+{
+ "version": "bible-cut-v1",
+ "id": "flood-ends-altar-cut",
+ "spec": "migration/production/bible/cuts/flood-ends-long.json",
+ "parent": {
+  "long": "flood-ends-long",
+  "pilot": "pilot-017",
+  "report": "migration/evidence/episodes/flood-ends-long/report-41484825424.json",
+  "clean_master_sha256": "95307e831eee4c06f826715b5d974a6fcdcacfe6029e6e57bcb8879d777b1eea",
+  "start": 348.535,
+  "end": 382.17,
+  "x": 0.5
+ },
+ "output_sha256": "7b6237529a9f2df1e288ebc09cadb31fa1066b1f56da8239abdceb71a4b08452",
+ "seconds": 33.667,
+ "frame": [
+  1080,
+  1920
+ ],
+ "lufs": -14.1,
+ "true_peak_dbfs": -1.4,
+ "sentences": [
+  {
+   "segment": "n37",
+   "text": "Before building a house, before planting a field, Noah built an altar.",
+   "start": 0.25,
+   "end": 4.73,
+   "line": 37,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n37",
+   "text": "The first thing he did on the new earth was say thank you.",
+   "start": 4.91,
+   "end": 8.345,
+   "line": 37,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n38",
+   "text": "And the Lord smelled a sweet savour;",
+   "start": 8.695,
+   "end": 10.999,
+   "kind": "scripture",
+   "reference": "Genesis 8:21 (KJV)",
+   "line": 38,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n38",
+   "text": "and the Lord said in his heart, I will not again curse the ground any more for man’s sake;",
+   "start": 11.179,
+   "end": 16.683,
+   "kind": "scripture",
+   "reference": "Genesis 8:21 (KJV)",
+   "line": 38,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n38",
+   "text": "for the imagination of man’s heart is evil from his youth;",
+   "start": 16.863,
+   "end": 20.873,
+   "kind": "scripture",
+   "reference": "Genesis 8:21 (KJV)",
+   "line": 38,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n38",
+   "text": "neither will I again smite any more every thing living, as I have done.",
+   "start": 21.053,
+   "end": 25.704,
+   "kind": "scripture",
+   "reference": "Genesis 8:21 (KJV)",
+   "line": 38,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n39",
+   "text": "And God answered with a promise.",
+   "start": 26.054,
+   "end": 28.315,
+   "line": 39,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n39",
+   "text": "He knew the human heart was still broken.",
+   "start": 28.495,
+   "end": 31.226,
+   "line": 39,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n39",
+   "text": "He chose mercy anyway.",
+   "start": 31.406,
+   "end": 33.369,
+   "line": 39,
+   "line_kind": "story"
+  }
+ ],
+ "advice": [
+  "ends on a story line: a KJV line or the Keeper's insight closes a cut best"
+ ],
+ "checks": {
+  "frame_1080x1920": true,
+  "lufs_band": true,
+  "true_peak_ceiling": true,
+  "length": true
+ }
+}

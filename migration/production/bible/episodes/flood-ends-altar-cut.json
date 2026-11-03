@@ -1,0 +1,125 @@
+{
+ "version": "bible-episode-v1",
+ "id": "flood-ends-altar-cut",
+ "series": "The Bible, story by story (KJV)",
+ "part": 1,
+ "passage": "Genesis 8:1-9:17 (KJV, public domain)",
+ "format": "short",
+ "track": "buzzy-cut",
+ "parent": {
+  "long": "flood-ends-long",
+  "pilot": "pilot-017",
+  "clean_master_sha256": "95307e831eee4c06f826715b5d974a6fcdcacfe6029e6e57bcb8879d777b1eea",
+  "start": 348.535,
+  "end": 382.17
+ },
+ "output_sha256": "7b6237529a9f2df1e288ebc09cadb31fa1066b1f56da8239abdceb71a4b08452",
+ "seconds": 33.667,
+ "frame": [
+  1080,
+  1920
+ ],
+ "narration": [
+  {
+   "kind": "story",
+   "text": "Before building a house, before planting a field, Noah built an altar. The first thing he did on the new earth was say thank you."
+  },
+  {
+   "kind": "scripture",
+   "text": "And the Lord smelled a sweet savour; and the Lord said in his heart, I will not again curse the ground any more for man’s sake; for the imagination of man’s heart is evil from his youth; neither will I again smite any more every thing living, as I have done.",
+   "reference": "Genesis 8:21 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "And God answered with a promise. He knew the human heart was still broken. He chose mercy anyway."
+  }
+ ],
+ "scripture": [
+  {
+   "reference": "Genesis 8:21 (KJV)",
+   "text": "And the Lord smelled a sweet savour; and the Lord said in his heart, I will not again curse the ground any more for man’s sake; for the imagination of man’s heart is evil from his youth; neither will I again smite any more every thing living, as I have done."
+  }
+ ],
+ "title": "Before Building a House, Noah Built an Altar | Genesis 8 (KJV) #shorts",
+ "description": "The first thing Noah did on the new earth was say thank you (Genesis 8, King James Version).\n\nWatch the full story, the whole of Genesis 8-9: https://youtu.be/1m-NUJhkdMY\n\nScripture: King James Version (public domain), Genesis 8:21.\nVisuals: AI-generated scenes (Buzzy, GPT-image stills with camera motion). Narration: AI voice. Music: original, owned.\n\n#bible #genesis #biblestory #noah",
+ "tags": [
+  "noah",
+  "noahs ark",
+  "bible story",
+  "kjv bible",
+  "christian shorts",
+  "bible stories",
+  "altar",
+  "genesis 8"
+ ],
+ "category_id": "29",
+ "first_comment": "Before a house, before a field: an altar. The full story: https://youtu.be/1m-NUJhkdMY",
+ "credits": {
+  "vidiq": 0,
+  "pavo": 0
+ },
+ "attributes": {
+  "hook_type": "narrated_story_hook",
+  "hook_line": "Before building a house, before planting a field, Noah built an altar. The first thing he did on the new earth was say thank you.",
+  "title_pattern": "hook_pipe_story_kjv",
+  "first_visual": "s-altar",
+  "ai_scenes": 2,
+  "slot_utc": "18:30",
+  "transition": "cut",
+  "seconds": 33.667,
+  "voice": "kokoro_am_michael",
+  "compose": "engine",
+  "structure": "bible-story-cut"
+ },
+ "slot": "2026-11-04T23:30:00Z",
+ "review": {
+  "overall": 9.1,
+  "reviewer": "claude-session-reviewer",
+  "output_sha256": "7b6237529a9f2df1e288ebc09cadb31fa1066b1f56da8239abdceb71a4b08452",
+  "scores": {
+   "opening_and_promise": 9.0,
+   "picture_quality": 9.0,
+   "figure_and_background_integrity": 9.0,
+   "captions_readable_and_synced": 9.0,
+   "audio_clarity_and_mix": 9.0,
+   "pacing_and_visual_variety": 8.5,
+   "scripture_on_screen": 9.0,
+   "policy_safe": 10.0
+  },
+  "issues": [
+   "00:00 The local review flagged speech at the first frame (category a). Measured on this exact file: first 0.25 s -34 dB mean (room tone), speech rises 0.25 to 0.5 s (mean -19 dB); the cut was made 0.25 s clear of the first word (short_cuts.check, E275). The first word is intact; the flag is the recognizer's timestamp, not a cut-off word.",
+   "00:08 to 00:33 About 25 s on two stills (Noah beside the altar fire for 8 s, then the family under the smoke column for the rest) with slow camera motion while Genesis 8:21 and the story run; no defect, a retention risk. The long's own pacing, kept as cut.",
+   "00:08 to 00:25 The small 'Genesis 8:21 / KJV' label above the yellow KJV caption is tiny at phone size; readable at full resolution.",
+   "00:08 to 00:11 The recognizer wrote 'savor' for the KJV 'savour'; the caption frame at 00:10 shows 'savour;'. Not verified by ear."
+  ],
+  "defects": [
+   {
+    "issue": 0,
+    "category": "info",
+    "resolved": false
+   },
+   {
+    "issue": 1,
+    "category": "info",
+    "resolved": false
+   },
+   {
+    "issue": 2,
+    "category": "d",
+    "resolved": false
+   },
+   {
+    "issue": 3,
+    "category": "info",
+    "resolved": false
+   }
+  ],
+  "publish_decision": {
+   "decision": "publish",
+   "by": "claude-session-reviewer",
+   "note": "Defect list of local review 41628006465 and the frame sheet of this exact master (sha256 7b623752...): no speech cut off mid-word or mid-sentence (the first-frame flag was measured on the file and is a timestamp artefact), the scenes fit their lines (Noah at the altar fire for the hook and thank-you line, the family at the smoking altar for Genesis 8:21 and God's promise, a close shot of the three of them on 'He chose mercy anyway.'), no audio error (-14.1 LUFS, true peak -1.4 dBTP, no silence inside speech), no policy issue. The cut starts 0.25 s clear of 'Before building a house' (348.535 s) and ends 0.25 s after 'He chose mercy anyway.'. It replaces the first altar render (sha256 057a9717...), which started 0.17 s inside the door cut's fade and failed ORIGINAL_SHARE 0.36 < 0.40; this range (348.535-382.17 s) is inside no other cut or reflection clip of the long (E279). Owner order of 2026-11-03 to cut the long."
+  },
+  "process": "local-review.yml run 41628006465 (pinned local ASR + ffmpeg measures + session reviewer's own look at the frame sheet) of this exact cut master, rendered by short-cuts.yml run 41625899131 from the clean master of the published long flood-ends-long; E250 defect-gated track buzzy-cut. Scores are information and are not the gate. Local review (E268): audio was judged from the faster-whisper small.en transcript with word times plus ffmpeg loudness/peak/silence measures and my own volumedetect readback of the first 0.8 s of the exact file (downloaded from the release, sha256 verified); I did not listen to the sound, so delivery, diction and music taste are not claimed. Picture: the 1 frame / 2 s sheet was viewed; detectors ran on every frame at 320x180.",
+  "run_id": "41628006465"
+ }
+}
