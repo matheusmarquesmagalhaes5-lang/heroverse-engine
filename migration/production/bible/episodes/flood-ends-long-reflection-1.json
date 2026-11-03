@@ -1,0 +1,65 @@
+{
+ "version": "bible-episode-v1",
+ "id": "flood-ends-long-reflection-1",
+ "series": "The Bible, story by story (KJV)",
+ "part": 1,
+ "passage": "Genesis 8:1-9:17 (KJV, public domain)",
+ "format": "short",
+ "track": "keeper-reflection",
+ "layout": "keeper-reflection",
+ "parent": {
+  "long": "flood-ends-long",
+  "pilot": "pilot-017",
+  "clean_master_sha256": "95307e831eee4c06f826715b5d974a6fcdcacfe6029e6e57bcb8879d777b1eea",
+  "start": 56.28,
+  "end": 80.27
+ },
+ "segments": [
+  {
+   "shot": "k-r1",
+   "asset": "shot-flood-ends-long-reflection-1-k-r1-sha256-e83cea77890ff940224e542a29d1fc0a8d47ea10f38ca7848c0867cf9b43146e.mp4",
+   "clip_sha256": "e83cea77890ff940224e542a29d1fc0a8d47ea10f38ca7848c0867cf9b43146e"
+  },
+  {
+   "shot": "k-r2",
+   "asset": "shot-flood-ends-long-reflection-1-k-r2-sha256-8b9ac1123e1a2516d531ba92f9927d70c2241da5d964cfdaecd6c4cc3dccebfb.mp4",
+   "clip_sha256": "8b9ac1123e1a2516d531ba92f9927d70c2241da5d964cfdaecd6c4cc3dccebfb"
+  },
+  {
+   "shot": "k-r4",
+   "asset": "shot-flood-ends-long-reflection-1-k-r4-sha256-9ee77ed7ec29555346462d5c1f156b6a9ee3ba59e2b7f09df8a1877b0f39bb8e.mp4",
+   "clip_sha256": "9ee77ed7ec29555346462d5c1f156b6a9ee3ba59e2b7f09df8a1877b0f39bb8e"
+  }
+ ],
+ "output_sha256": "08276e852825970587cefc0afb493442648c1b96427ef2512b2e72259a32c640",
+ "seconds": 24.0,
+ "frame": [
+  1080,
+  1920
+ ],
+ "narration": [
+  {
+   "kind": "insight",
+   "text": "God did not hang that rainbow because Noah was perfect, and the story says so plainly."
+  },
+  {
+   "kind": "insight",
+   "text": "He failed again, the way people do. Still, God hung up His own bow."
+  },
+  {
+   "kind": "insight",
+   "text": "Before any rainbow, Noah did one thing first on dry ground, and it still stops me every time. Watch what it was."
+  }
+ ],
+ "scripture": [],
+ "title": "God Did Not Hang That Rainbow Because Noah Was Perfect | Noah, Genesis 8-9 (KJV) #shorts",
+ "description": "The Keeper over the waiting of the flood: God remembered Noah, and mercy was never Noah's reward, it was God's idea (Genesis 8-9, King James Version).\n\nWatch the full story, the whole of Genesis 8-9: https://youtu.be/1m-NUJhkdMY\n\nScripture: King James Version (public domain), Genesis 8:1-3; 9:12-17. The reflection is the Keeper's own words, marked apart from scripture.\nVisuals: AI-generated scenes (Buzzy, GPT-image stills with camera motion). Narration: AI voice. Music: original, owned.\n\n#bible #genesis #biblestory #noah",
+ "tags": [],
+ "category_id": "29",
+ "first_comment": "What did Noah do first on dry ground? Watch the full story of the flood's end here: https://youtu.be/1m-NUJhkdMY",
+ "credits": {
+  "vidiq": 0,
+  "pavo": 0
+ },
+ "slot": "2026-11-05T05:30:00Z"
+}
