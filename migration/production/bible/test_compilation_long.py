@@ -73,6 +73,20 @@ class PlanTests(unittest.TestCase):
             mutate(bad)
             self.assertTrue(any(text in x for x in cl.plan_problems(bad)), text)
 
+    def test_e289_a_keeper_segment_under_10_s_is_no_chapter_of_its_own(self):
+        plan = cl.load(ROOT / "migration/production/bible/compilations/arc-02-noah-complete-compilation.json")
+        seg = lambda kind, a, b: {"kind": kind, "start": a, "end": b}
+        tl = {"segments": [seg("hook", 0, 9.3), seg("short", 9.3, 80), seg("short", 80, 246), seg("short", 246, 414),
+                           seg("short", 414, 580), seg("long", 580, 1073), seg("close", 1073, 1082.5)]}
+        _, rows = cl.description(plan, tl)
+        self.assertEqual(rows[0], (0, plan["chapters"][0]["title"]))
+        self.assertEqual(len(rows), 5)
+        self.assertEqual(rows[-1][1], plan["chapters"][-1]["title"])
+        self.assertTrue(all(b[0] - a[0] >= 10 for a, b in zip(rows, rows[1:])))   # the preflight's own rule
+        tl["segments"][0]["end"], tl["segments"][-1]["start"] = 12.0, 1070.0       # 10 s or more: its own chapter again
+        _, rows = cl.description(plan, tl)
+        self.assertEqual((rows[0][1], rows[-1][1]), (plan["chapter_zero"], plan["chapter_last"]))
+
     def test_refusals(self):
         plan = cl.load(PLAN)
         for mutate, text in ((lambda p: p["chapters"].reverse(), "canonical order"),

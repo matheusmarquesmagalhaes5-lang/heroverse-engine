@@ -468,11 +468,20 @@ def qa(plan_path, out_dir):
     return 0 if doc["status"] == "PASS" else 1
 
 
+CHAPTER_MIN = 10.0   # publication preflight: each description chapter is at least 10 s (migration/publish/preflight.py CHAPTERS)
+
+
 def description(plan, tl):
-    rows = [(0, plan["chapter_zero"])] + [(r["start"], plan["chapters"][i]["title"])
-                                          for i, r in enumerate(x for x in tl["segments"] if x["kind"] in ("short", "long"))]
-    close = next(r for r in tl["segments"] if r["kind"] == "close")
-    rows.append((close["start"], plan["chapter_last"]))
+    """The description's chapters. A Keeper hook or close shorter than CHAPTER_MIN seconds cannot be a chapter of its own
+    (the preflight refuses it, and a title card shorter than that is no chapter): the hook is folded into the first
+    story's chapter (which then starts at 0:00) and the close into the last story's, as the preflight's rule reads."""
+    segs = tl["segments"]
+    hook = next(r for r in segs if r["kind"] == "hook")
+    stories = [(r["start"], plan["chapters"][i]["title"]) for i, r in enumerate(x for x in segs if x["kind"] in ("short", "long"))]
+    rows = [(0, plan["chapter_zero"])] + stories if hook["end"] - hook["start"] >= CHAPTER_MIN else [(0, stories[0][1])] + stories[1:]
+    close = next(r for r in segs if r["kind"] == "close")
+    if close["end"] - close["start"] >= CHAPTER_MIN:
+        rows.append((close["start"], plan["chapter_last"]))
     chapters = "\n".join(f"{clock(t)} {name}" for t, name in rows)
     links = "\n".join(f"- {c['title']} ({c['reference']}): {chapter_url(c)}"
                       for c in plan["chapters"])

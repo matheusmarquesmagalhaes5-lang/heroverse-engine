@@ -4610,6 +4610,52 @@
      "process"
     ]
    }
+  },
+  {
+   "id": "E289",
+   "date": "2026-11-03",
+   "class": [
+    "instrument"
+   ],
+   "prior": [
+    "E120",
+    "E131",
+    "E137",
+    "E139",
+    "E148",
+    "E152",
+    "E166",
+    "E169",
+    "E185",
+    "E186",
+    "E231",
+    "E233",
+    "E238",
+    "E253",
+    "E255",
+    "E262",
+    "E266",
+    "E267",
+    "E273",
+    "E275",
+    "E279",
+    "E280",
+    "E281",
+    "E282",
+    "E283",
+    "E284",
+    "E285",
+    "E286"
+   ],
+   "error": "M2 (Noah compilation): approve.yml run 41660141173 refused pilot-018 with preflight CHAPTERS (from 0:00, each at least 10 s) after build, local review and review were done: the Keeper's voice-over hook (9.3 s) and close (9.2 s) were listed as description chapters shorter than the preflight's 10 s, a rule compilation_long did not know.",
+   "fix": "compilation_long.description: a hook or close shorter than 10 s is folded into the first / last story's chapter instead of being its own row; the preflight is unchanged.",
+   "antidote": {
+    "file": "migration/production/bible/test_compilation_long.py",
+    "contains": "def test_e289_a_keeper_segment_under_10_s_is_no_chapter_of_its_own",
+    "covers": [
+     "instrument"
+    ]
+   }
   }
  ]
 }
