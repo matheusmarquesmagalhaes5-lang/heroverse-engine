@@ -71,55 +71,5 @@
   "compose": "engine",
   "structure": "bible-story-cut"
  },
- "slot": "2026-11-04T13:30:00Z",
- "review": {
-  "overall": 9.1,
-  "reviewer": "claude-session-reviewer",
-  "output_sha256": "ba9268423a7fc3331588ba95e48fd0adb71771ce4cb489ec07920d8a8786c7e0",
-  "scores": {
-   "opening_and_promise": 9.0,
-   "picture_quality": 9.0,
-   "figure_and_background_integrity": 9.0,
-   "captions_readable_and_synced": 9.0,
-   "audio_clarity_and_mix": 9.0,
-   "pacing_and_visual_variety": 8.5,
-   "scripture_on_screen": 9.0,
-   "policy_safe": 10.0
-  },
-  "issues": [
-   "00:00 The local review flagged speech at the first frame (category a). Measured on this exact file: first 0.25 s -38 dB mean (room tone), speech rises 0.25 to 0.5 s; the cut was made 0.25 s clear of the first word (short_cuts.check, E275). The first word is intact; the flag is the recognizer's timestamp, not a cut-off word.",
-   "00:08 to 00:26 About 17 s on one still (the raven over gray water) while the KJV verse and the story line run; no defect, a retention risk. The long's own pacing, kept as cut.",
-   "00:08 to 00:14 The small 'Genesis 8:7 / KJV' label above the yellow KJV caption is tiny at phone size; readable at full resolution.",
-   "00:14 The recognizer split the KJV line at 'until the waters were dried up / from off the earth' and wrote 'a raven' twice; captions at 00:10 to 00:14 show 'which went', 'waters were', 'the earth.'. Not verified by ear."
-  ],
-  "defects": [
-   {
-    "issue": 0,
-    "category": "info",
-    "resolved": false
-   },
-   {
-    "issue": 1,
-    "category": "info",
-    "resolved": false
-   },
-   {
-    "issue": 2,
-    "category": "d",
-    "resolved": false
-   },
-   {
-    "issue": 3,
-    "category": "info",
-    "resolved": false
-   }
-  ],
-  "publish_decision": {
-   "decision": "publish",
-   "by": "claude-session-reviewer",
-   "note": "Defect list of local review 41624220090 and the frame sheet of this exact master (sha256 ba926842...): no speech cut off mid-word or mid-sentence (the first-frame flag was measured on the file and is a timestamp artefact), the scenes fit their lines (Noah's hand at the ark window for the first lines, then the raven over the gray water for the KJV verse and the silence), no audio error (-14.1 LUFS, true peak -1.9 dBTP, no silence inside speech), no policy issue. The cut starts and ends 0.25 s clear of speech and ends on 'No answer, no news, only the sound of wings, and then silence.' Owner order of 2026-11-03 to cut the long, new cuts only (the owner's no-repeat rule: this range is not inside another cut or reflection clip of the long)."
-  },
-  "process": "local-review.yml run 41624220090 (pinned local ASR + ffmpeg measures + session reviewer's own look at the frame sheet) of this exact cut master, rendered by short-cuts.yml run 41618609762 from the clean master of the published long flood-ends-long; E250 defect-gated track buzzy-cut. Scores are information and are not the gate. Local review (E268): audio was judged from the faster-whisper small.en transcript with word times plus ffmpeg loudness/peak/silence measures and my own volumedetect readback of the first 0.8 s of the exact file (downloaded from the release, sha256 verified); I did not listen to the sound, so delivery, diction and music taste are not claimed. Picture: the 1 frame / 2 s sheet was viewed; detectors ran on every frame at 320x180.",
-  "run_id": "41624220090"
- }
+ "slot": "2026-11-04T13:30:00Z"
 }

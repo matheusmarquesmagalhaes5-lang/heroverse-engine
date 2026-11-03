@@ -1,0 +1,99 @@
+{
+ "version": "bible-cut-v1",
+ "id": "flood-ends-raven-cut",
+ "spec": "migration/production/bible/cuts/flood-ends-long.json",
+ "parent": {
+  "long": "flood-ends-long",
+  "pilot": "pilot-017",
+  "report": "migration/evidence/episodes/flood-ends-long/report-41484825424.json",
+  "clean_master_sha256": "95307e831eee4c06f826715b5d974a6fcdcacfe6029e6e57bcb8879d777b1eea",
+  "start": 136.8,
+  "end": 163.05,
+  "x": 0.5
+ },
+ "output_sha256": "ba9268423a7fc3331588ba95e48fd0adb71771ce4cb489ec07920d8a8786c7e0",
+ "seconds": 26.267,
+ "frame": [
+  1080,
+  1920
+ ],
+ "lufs": -14.1,
+ "true_peak_dbfs": -1.9,
+ "sentences": [
+  {
+   "segment": "n14",
+   "text": "Forty days later Noah did something small and brave.",
+   "start": 0.269,
+   "end": 3.747,
+   "line": 14,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n14",
+   "text": "He opened the window.",
+   "start": 3.927,
+   "end": 5.548,
+   "line": 14,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n14",
+   "text": "And what he sent out first was a raven.",
+   "start": 5.728,
+   "end": 8.352,
+   "line": 14,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n15",
+   "text": "And he sent forth a raven, which went forth to and fro, until the waters were dried up from off the earth.",
+   "start": 8.702,
+   "end": 15.55,
+   "kind": "scripture",
+   "reference": "Genesis 8:7 (KJV)",
+   "line": 15,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n16",
+   "text": "It flew back and forth over the water, and it never came home.",
+   "start": 15.9,
+   "end": 20.103,
+   "line": 16,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n16",
+   "text": "No answer.",
+   "start": 20.283,
+   "end": 21.456,
+   "line": 16,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n16",
+   "text": "No news.",
+   "start": 21.636,
+   "end": 22.788,
+   "line": 16,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n16",
+   "text": "Only the sound of wings, and then silence.",
+   "start": 22.968,
+   "end": 25.997,
+   "line": 16,
+   "line_kind": "story"
+  }
+ ],
+ "advice": [
+  "ends on a story line: a KJV line or the Keeper's insight closes a cut best"
+ ],
+ "checks": {
+  "frame_1080x1920": true,
+  "lufs_band": true,
+  "true_peak_ceiling": true,
+  "length": true
+ }
+}
