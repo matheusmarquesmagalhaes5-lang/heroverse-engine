@@ -1,0 +1,18 @@
+{
+ "version": "critique-v1",
+ "model": "gemini-3.6-flash",
+ "findings": [
+  {
+   "category": "misleading claims",
+   "quote": "The Complete Story of Noah (Genesis 5-9) KJV",
+   "why": "The script claims to provide the complete story of Noah, but it only contains a few dislocated KJV verse fragments and unread headings, completely omitting the actual narrative of the building of the ark, the flood itself, the raven and dove, and the rainbow covenant."
+  },
+  {
+   "category": "inauthentic content",
+   "quote": "Enoch Walked With God The end of all flesh is come before me; for the earth is filled with violence through them. ... The Flood Ends: The Raven, the Dove and the Rainbow Noah did all that God commanded him",
+   "why": "Section headers from an outline or study Bible were pasted straight into the text without including the actual narrative content described by those headings, indicating low-effort mass-produced template compilation."
+  }
+ ],
+ "narrative_value": "Low. The script lacks narrative continuity, consisting of fragmented Scripture verses mixed with raw outline headings rather than a coherent story or teaching.",
+ "status": "FAIL"
+}
