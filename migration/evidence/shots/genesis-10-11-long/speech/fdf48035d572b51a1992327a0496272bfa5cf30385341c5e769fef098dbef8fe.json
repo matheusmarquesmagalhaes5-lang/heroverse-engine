@@ -1,0 +1,36 @@
+{
+ "shot": "k-irony",
+ "clip_sha256": "fdf48035d572b51a1992327a0496272bfa5cf30385341c5e769fef098dbef8fe",
+ "measures": {
+  "asr": {
+   "model_bin_sha256": "11b220779aea4c6f3ce9d2549c8a95ea869ed84066864b999531ef53e594fe5b",
+   "text": "They built how arms the void bees what scattered the tower is what scour is what scatter",
+   "speech_span": [
+    0.0,
+    4.76
+   ]
+  },
+  "music": 0.0,
+  "singing": 0.0,
+  "lufs": -20.7,
+  "voice": {
+   "reference": "392c43b242eb01e9e39b29f911b0282619504067217a279a36c6041acb61546d",
+   "same": 0.7035,
+   "others": [
+    0.7784
+   ],
+   "others_references": [
+    "d4f416826b28b66d5386226a4ec49ed48e1c18cedcc96ce9a2a78ece9633fe8f"
+   ]
+  },
+  "lips": []
+ },
+ "verdict": [
+  "VOICE_NOT_CONSISTENT"
+ ],
+ "review_notes": {
+  "line": "they built the tower to avoid being scattered the tower is what scattered them",
+  "asr_text": "They built how arms the void bees what scattered the tower is what scour is what scatter",
+  "words_differ": true
+ }
+}

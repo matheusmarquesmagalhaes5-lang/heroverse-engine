@@ -1,0 +1,31 @@
+{
+ "shot": "b-name",
+ "clip_sha256": "2a6f55fb7b99ba6a8ad7950519353dacab7be95503aa91cb7ecef8d5e0ea5f67",
+ "measures": {
+  "asr": {
+   "model_bin_sha256": "11b220779aea4c6f3ce9d2549c8a95ea869ed84066864b999531ef53e594fe5b",
+   "text": "And let us make us a name, lest we be scattered abroad upon the face of the whole earth.",
+   "speech_span": [
+    0.0,
+    5.0
+   ]
+  },
+  "music": 0.0,
+  "singing": 0.0,
+  "lufs": -22.7,
+  "voice": {
+   "reference": null,
+   "same": null,
+   "others": []
+  },
+  "lips": []
+ },
+ "verdict": [
+  "VOICE_REFERENCE_MISSING"
+ ],
+ "review_notes": {
+  "line": "and let us make us a name lest we be scattered abroad upon the face of the whole earth",
+  "asr_text": "And let us make us a name, lest we be scattered abroad upon the face of the whole earth.",
+  "words_differ": false
+ }
+}
