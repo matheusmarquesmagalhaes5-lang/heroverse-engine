@@ -487,8 +487,7 @@ class Render(unittest.TestCase):
         self.assertEqual(rs.join_fades(trimmed, spans), [0.18])
         with self.assertRaisesRegex(SystemExit, "SEGMENT_TAIL_TOO_SHORT a"):
             rs.join_fades([{"shot": "a"}, {"shot": "b"}], spans)   # not trimmed: the 0.22 s gate holds
-        with self.assertRaisesRegex(SystemExit, "SEGMENT_TAIL_TOO_SHORT a"):   # nor under the minimum, trimmed or not
-            rs.join_fades(trimmed, [(0.0, 9.5, 9.6, 0.09), spans[1]])
+        self.assertEqual(rs.join_fades(trimmed, [(0.0, 9.5, 9.6, 0.09), spans[1]]), [0.0])   # no room: a plain cut
         offsets, end = rs.timeline([{"seconds": 9.6, "fade": 0.18}, {"seconds": 10.0, "fade": rs.XFADE}])
         self.assertEqual((offsets, end), ([0.3, 9.72], 19.72))
         parts, label = rs.bottom_graph([9.6, 10.0], 0.5, 22.0, fades=[0.18])
