@@ -108,6 +108,10 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
   `keeper-compilation` (16:9), `speech-check.yml`, the voice-over mode of `compilation_long.py`. After it is public:
   `python3 migration/channel/related_map.py build --public-check` (newest compilation wins) for the Studio related-video queue,
   pinned comment on the Shorts (still the long's link until then).
+  APPROVED (approve.yml run 41668258143, three-stage gate, review 7.5 information only) and UPLOADED (publish.yml run 41668904843):
+  https://youtu.be/1zsZZgDCAG0 private, publishAt 2026-11-04T13:30:00Z read back from the receipt `publish/receipts/pilot-018-*.json`; thumbnail set,
+  first comment PENDING until public (first-comment.yml after 13:30Z). Not public yet: the related-video queue and pinned comments wait for it.
+  The build's second run (41661409404) produced a different master and was refused by the pilot guard; master 1d5fc187 stays the accepted one.
 - 2026-11-03 (reflection 1 on OUR audio, E287/E288): `shot-remux.yml` (PR #756) puts our request WAV over a STORED Pavo clip (no generation) and
   runs the strict checks on it. Run 41654835246 on k-r1 (dae7a9), k-r2 (7f043f), k-r4 (b1cd73): all three clean (SyncNet offset 0/-1, conf
   6.6/5.0/7.2 against min 2.7, face >= 0.95, no flags); approved 9.5 in `shots/flood-ends-long-reflection-1.json` with the `audio` proof (no trim,
