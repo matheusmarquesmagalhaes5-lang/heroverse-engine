@@ -137,7 +137,7 @@ def browser(pw, headless):
 
 
 def logged_in(ctx):
-    names = {c["name"] for c in ctx.cookies("https://www.youtube.com", "https://accounts.google.com")}
+    names = {c["name"] for c in ctx.cookies(["https://www.youtube.com", "https://accounts.google.com"])}
     return bool(names & LOGIN_COOKIES)
 
 
