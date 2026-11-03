@@ -161,53 +161,30 @@
    }
   },
   "k-close": {
-   "asset": "shot-genesis-10-11-long-k-close-sha256-553a24b8cc3345a6a5ea1cff1715f4e90d5cccec7e0cce09a994757d2e0a01cc.mp4",
-   "clip_sha256": "553a24b8cc3345a6a5ea1cff1715f4e90d5cccec7e0cce09a994757d2e0a01cc",
+   "asset": "shot-genesis-10-11-long-k-close-sha256-9cb8d139a452d8a66b419d68ae10800e5f7d4c989d1ad21888061dd814daf3fa.mp4",
+   "clip_sha256": "9cb8d139a452d8a66b419d68ae10800e5f7d4c989d1ad21888061dd814daf3fa",
    "request_sha256": "0d99df4fa382ec421d43e1dd281ef669eb8d0e28d563f52761e020db8d56d984",
    "clip_seconds": 9.416667,
    "requested_clip_seconds": 9,
    "media": {
     "version": "clip-media-v1",
-    "clip_sha256": "553a24b8cc3345a6a5ea1cff1715f4e90d5cccec7e0cce09a994757d2e0a01cc",
+    "clip_sha256": "9cb8d139a452d8a66b419d68ae10800e5f7d4c989d1ad21888061dd814daf3fa",
     "video_seconds": 9.416667,
-    "audio_seconds": 9.44,
+    "audio_seconds": 9.417007,
     "instrument": "ffprobe stream durations"
    },
    "score": 9.5,
-   "note": "Frames viewed (20 across 9 s): the Keeper in a close chest-up framing, face large, warm and expectant, lips moving, eyes to the camera, no second person or text; sync offset -2, conf 7.37, face found in 90 % of frames.",
-   "probe_record": "migration/evidence/shots/genesis-10-11-long/41714272567.json",
-   "run_id": "41714272567",
+   "note": "Remuxed clip on our Kokoro line (pavo_audio ours; Pavo own track added invented words). Frames viewed (20 across 9 s): chest-up close Keeper, face large, warm and expectant, scroll in hands, lips moving with the line, no second person or text; no flags.",
+   "probe_record": "migration/evidence/shots/genesis-10-11-long/41731930737.json",
+   "run_id": "41731930737",
    "source_run": null,
    "approved_at": "2026-11-03",
    "model": "claude-session-reviewer",
-   "speech": {
-    "route": "pavo",
-    "clip_sha256": "553a24b8cc3345a6a5ea1cff1715f4e90d5cccec7e0cce09a994757d2e0a01cc",
-    "onset": 0.0,
-    "end": 9.416,
-    "gain_db": -2.5,
-    "lufs": -23.2,
-    "matched_lufs": -25.7,
-    "narration_lufs": -25.7,
-    "true_peak_db": -6.9,
-    "tp_db": -1.5,
-    "limited": false,
-    "flags": []
-   },
    "audio": {
-    "route": "pavo",
-    "sha256": "1bd14197b1a88a1259dff79085f7ac49a5667a732e04edb5e4331c92d3556d62",
-    "samples": 416304,
-    "seconds": 9.44,
-    "lufs": -23.2,
-    "true_peak_db": -6.9,
-    "narration_lufs": -25.7
-   },
-   "review_notes": {
-    "line": "what are you building your name on tell me below next the man who left everything subscribe",
-    "asr_text": null,
-    "words_differ": null,
-    "asr": "not run on this clip (episode_build.py speech-check)"
+    "route": "ours",
+    "sha256": "23885a0df3c9874d8dbb2ab51d3dcf5bee0d6a48e781fa287c3961dbfc5a58ec",
+    "samples": 377055,
+    "seconds": 8.55
    }
   },
   "k-hook": {
@@ -261,53 +238,30 @@
    }
   },
   "k-irony": {
-   "asset": "shot-genesis-10-11-long-k-irony-sha256-fdf48035d572b51a1992327a0496272bfa5cf30385341c5e769fef098dbef8fe.mp4",
-   "clip_sha256": "fdf48035d572b51a1992327a0496272bfa5cf30385341c5e769fef098dbef8fe",
+   "asset": "shot-genesis-10-11-long-k-irony-sha256-e0b63a2b0ac905884be574d0df3b51e6740cbeff838a4947ced0cc47e70dabe4.mp4",
+   "clip_sha256": "e0b63a2b0ac905884be574d0df3b51e6740cbeff838a4947ced0cc47e70dabe4",
    "request_sha256": "9123cc7ce018b7c263033096efb6095a3e498ba978065af64b884b63b92a09a5",
    "clip_seconds": 5.166667,
    "requested_clip_seconds": 5,
    "media": {
     "version": "clip-media-v1",
-    "clip_sha256": "fdf48035d572b51a1992327a0496272bfa5cf30385341c5e769fef098dbef8fe",
+    "clip_sha256": "e0b63a2b0ac905884be574d0df3b51e6740cbeff838a4947ced0cc47e70dabe4",
     "video_seconds": 5.166667,
-    "audio_seconds": 5.184,
+    "audio_seconds": 5.167007,
     "instrument": "ffprobe stream durations"
    },
    "score": 9.5,
-   "note": "Frames viewed: the Keeper by the fire, calm kind look, lips moving, no second person or text; sync offset -1, conf 9.72, face found in every frame.",
-   "probe_record": "migration/evidence/shots/genesis-10-11-long/41714272567.json",
-   "run_id": "41714272567",
+   "note": "Remuxed clip on our Kokoro line (pavo_audio ours; Pavo own track garbled the words). Frames viewed (20 across 5 s): the Keeper by the fire, hooded, grave knowing look, lips moving with the line, no second person or text; no flags, face found in every frame.",
+   "probe_record": "migration/evidence/shots/genesis-10-11-long/41731930737.json",
+   "run_id": "41731930737",
    "source_run": null,
    "approved_at": "2026-11-03",
    "model": "claude-session-reviewer",
-   "speech": {
-    "route": "pavo",
-    "clip_sha256": "fdf48035d572b51a1992327a0496272bfa5cf30385341c5e769fef098dbef8fe",
-    "onset": 0.0,
-    "end": 5.166,
-    "gain_db": -5.9,
-    "lufs": -20.9,
-    "matched_lufs": -26.8,
-    "narration_lufs": -26.8,
-    "true_peak_db": -5.7,
-    "tp_db": -1.5,
-    "limited": false,
-    "flags": []
-   },
    "audio": {
-    "route": "pavo",
-    "sha256": "2383e7d1bdd7c44d97f05797c054f82ebd0b403e5422ac612d308b59386ce43c",
-    "samples": 228615,
-    "seconds": 5.184,
-    "lufs": -20.9,
-    "true_peak_db": -5.7,
-    "narration_lufs": -26.8
-   },
-   "review_notes": {
-    "line": "they built the tower to avoid being scattered the tower is what scattered them",
-    "asr_text": null,
-    "words_differ": null,
-    "asr": "not run on this clip (episode_build.py speech-check)"
+    "route": "ours",
+    "sha256": "64011a49b2d5a167ff36330250a719446b1bfaa6f1e024b4ce39c026a38d86f7",
+    "samples": 200655,
+    "seconds": 4.55
    }
   },
   "k-restrain": {
