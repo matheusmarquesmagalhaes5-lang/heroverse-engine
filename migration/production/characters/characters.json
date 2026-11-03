@@ -162,6 +162,23 @@
    "role": "Enoch of Seth's line, who walked with God (Genesis 5:21-24); never Cain's son Enoch (Genesis 4:17), who is not shown; silent on screen",
    "note": "Black hair and beard streaked with grey, a cream robe and a dark blue shawl keep him apart from Noah (bald crown, iron-grey beard, brown robe with a rope) and the Keeper (silver-white beard under a brown hood).",
    "reviewed": "DRAFT (2026-10-28): reference prompts written for the arc-02 long (images.json ch-enoch-*); sheet by cf-images.yml (pilot characters), then Claude's review sets APPROVED with the kept refs."
+  },
+  "builder": {
+   "name": "The builder",
+   "first_story": "Genesis 11 (the tower of Babel long)",
+   "status": "DRAFT",
+   "seed": 7801,
+   "look": "a lean wiry man of about thirty-five with Middle Eastern features, sun-darkened tan skin, a long narrow face, deep-set dark eyes with crow's feet, straight black hair tied back at the nape with a strip of cloth, a thin black moustache and a stubbled chin, sinewy forearms",
+   "wardrobe": {
+    "brickyard": "a plain sleeveless undyed linen tunic belted with a twisted cord, his forearms and tunic spattered with wet grey-brown clay",
+    "tower": "the same plain linen tunic, a coil of rope over one shoulder, pale mud-brick dust on his face and hands"
+   },
+   "refs": [],
+   "voice": "bm_lewis",
+   "pronoun": "his",
+   "role": "an original anonymous brick-maker of the plain of Shinar who speaks the builders' KJV words (Genesis 11:3-4); never a named biblical person",
+   "note": "Black hair tied back, a thin moustache with a stubbled chin and a lean build keep him apart from Cain (cropped curls, close beard, heavy build), Noah (bare grey head, long beard) and the Keeper (hood, silver beard). Period dress of Shinar: plain undyed linen, no metal, no jewellery. Voice bm_lewis, pace measured by voice-pace.yml.",
+   "reviewed": "DRAFT (2026-11-03): reference still from the ChatGPT desktop route, then Claude's review sets APPROVED with the kept ref."
   }
  },
  "god": {
