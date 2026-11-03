@@ -7,7 +7,11 @@ with it (regenerated deterministically in CI, see pavo-audio-eval.yml), lays our
 (pavo_audio.mux_ours) and measures, with the existing lipsync_check, the SyncNet offset and confidence of the mouth
 against OUR audio and the face. Nothing is generated, nothing approved.
 
-usage: pavo_audio_eval.py CLIP.mp4 LINE.wav FACE_LANDMARKER.task SYNCNET.model OUT_DIR   one JSON line, exit 0 always
+usage: pavo_audio_eval.py --plan-step voice-script|lines PLAN WORK
+                                                 episode_build's own step on a plan version a probe ran, with only the
+                                                 reflection pace ceiling lifted for THIS evaluation: a plan written
+                                                 before E277 (REFLECTION_PACE) must still give the line the probe sent
+       pavo_audio_eval.py CLIP.mp4 LINE.wav FACE_LANDMARKER.task SYNCNET.model OUT_DIR   one JSON line, exit 0 always
 """
 import json
 import sys
@@ -32,7 +36,23 @@ def evaluate(clip, line, model, weights, out_dir):
                      "in_sync": not lc.sync_verdict(sync)}}
 
 
+def plan_step(step, plan, work):
+    """The probe's own voice-script / lines step on its old plan; only plan_check's pace ceiling (a later rule on the
+    plan, not on the audio) is lifted here and nowhere else."""
+    import episode_build as eb
+    import plan_check
+    plan_check.REFLECTION_WPM_MAX = 10 ** 6
+    plan = eb.load(plan)
+    if step == "voice-script":
+        eb.save(Path(work) / "voice-script.json", eb.voice_script(plan))
+    else:
+        eb.lines_step(plan, work)
+
+
 if __name__ == "__main__":
+    if len(sys.argv) == 5 and sys.argv[1] == "--plan-step" and sys.argv[2] in ("voice-script", "lines"):
+        plan_step(*sys.argv[2:])
+        sys.exit(0)
     if len(sys.argv) != 6:
         raise SystemExit(__doc__)
     print(json.dumps(evaluate(*sys.argv[1:])))

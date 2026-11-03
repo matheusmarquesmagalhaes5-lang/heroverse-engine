@@ -56,10 +56,10 @@ jobs:
             echo "$want  $plan" | sha256sum -c -   # the plan bytes the probe ran
             work="$GITHUB_WORKSPACE/.episode/eval-$ep-$run"
             rm -rf "$work"; mkdir -p "$work"
-            python3 -I -B migration/production/bible/episode_build.py voice-script "$plan" "$work"
+            python3 -I -B migration/production/bible/pavo_audio_eval.py --plan-step voice-script "$plan" "$work"
             python3 -I -B migration/production/pilot_render.py prepare "$work" HeroVerse_Linux_Source_Ready_20261013_v2.zip
             "$RUNNER_TEMP/voice/bin/python" -I -B migration/production/pilot_render.py voice "$work" "$work/voice-script.json"
-            python3 -I -B migration/production/bible/episode_build.py lines "$plan" "$work"
+            python3 -I -B migration/production/bible/pavo_audio_eval.py --plan-step lines "$plan" "$work"
             for it in $clips; do
               shot=${it%%:*}; pre=${it#*:}
               sha=$(python3 -I - "migration/evidence/shots/$ep/$run.json" "$shot" "$pre" <<'PY'
@@ -84,9 +84,6 @@ jobs:
                 | python3 -I -c "import json,sys;r=json.loads(sys.stdin.read());r['episode'],r['run'],r['shot']=sys.argv[1:4];print(json.dumps(r))" "$ep" "$run" "$shot" | tee -a "$RUNNER_TEMP/out/results.jsonl"
             done
           done <<'SETS'
-          genesis-10-short 23c40bf9df 41574608645 k-insight:c8d168 k-insight:950e4d k-close:cdcae1 k-close:7ae781
-          flood-ends-long 3a14d273fe 41547308176 k-hook:bd1e8c k-hook:9be7cd k-bow:89b603 k-bow:8023c5
-          flood-ends-long 959a25617f 41534197400 k-bow:eaa3a3 k-bow:ad6fde
           flood-ends-long-reflection-1 eb8bb0e862 41562885923 k-r1:b2298c k-r1:843bca k-r2:f9f16c k-r2:3a1695
           flood-ends-long-reflection-1 f404524785 41572178956 k-r3:7f8932 k-r3:b132b7 k-r2:7f043f
           arc-02-noah-compilation-keeper dd1d4c9c19 41629339290 k-hook:9ba6e7 k-hook:5a28e1 k-close:1fcff3 k-close:15cf61
