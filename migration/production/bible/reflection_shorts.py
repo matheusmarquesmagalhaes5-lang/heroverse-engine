@@ -59,6 +59,8 @@ SEGMENTS = (2, 4)                  # plan_check.REFLECTION_SEGMENTS: one approve
 WPM_BAND = (115, 165)              # the accepted words-per-minute band of the narration (QA)
 VOICE_AT = 0.3                     # the first clip starts this long after the top clip
 XFADE = 0.2                        # the crossfade between two clips: inside the previous clip's silent tail
+RETIME_TARGET = 162                # E286: the pace a too-fast cut set is slowed to (inside WPM_BAND)
+RETIME_MIN = 0.90                  # ... by at most 10 % (the retime the long's talking shots already allow)
 XFADE_MIN = 0.08                   # E282: the shortest crossfade after a TRIMMED clip (its silent tail is what the trim left)
 TAIL_MIN = 0.6                     # the Short keeps this long after the last clip ends
 TAIL_MAX = 3.0                     # ... and no more (the last frame is held: no long frozen face)
@@ -393,6 +395,15 @@ def bottom_graph(durations, y, total, fps=30, fades=None):
     return parts, "bot"
 
 
+def retime_media(src, tempo, dst):
+    """E286: the clip slowed to `tempo` (< 1) as one: picture and the Keeper's own voice stretched together (atempo keeps the
+    pitch), so the lips stay on the words; re-encoded near-losslessly like trim_media."""
+    cl.run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", str(src), "-filter_complex",
+            f"[0:v]setpts=PTS/{tempo}[v];[0:a]atempo={tempo}[a]", "-map", "[v]", "-map", "[a]", "-r", "30",
+            "-c:v", "libx264", "-preset", "medium", "-crf", "12", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", str(dst)])
+    return Path(dst)
+
+
 def has_audio(path):
     return bool(cl.run(["ffprobe", "-v", "error", "-select_streams", "a:0", "-show_entries", "stream=codec_type", "-of",
                         "csv=p=0", path]).stdout.strip())
@@ -508,6 +519,17 @@ def render(spec_path, clean, work, out_dir, root=ROOT):
     for c, s in zip(segments, seconds):
         if abs(s - c["seconds"]) > 0.15:
             raise SystemExit(f"CLIP_SECONDS_CHANGED {c['shot']} {s:.2f} s measured, {c['seconds']} s approved")
+    tempo = 1.0
+    wpm0 = result["reflection"]["words"] / sum(x[1] - x[0] for x in spans) * 60
+    if wpm0 > WPM_BAND[1] and wpm0 > 0:   # E286: cut at their last words the clips are faster than the band: slow them all, within 10 %
+        tempo = round(RETIME_TARGET / wpm0, 3)
+        if tempo < RETIME_MIN:
+            raise SystemExit(f"VOICE_PACE {wpm0:.0f} wpm ({WPM_BAND[0]}-{WPM_BAND[1]}; a retime to {RETIME_TARGET} wpm "
+                             f"needs x{tempo}, under x{RETIME_MIN})")
+        (work / "retimed").mkdir(parents=True, exist_ok=True)
+        paths = [retime_media(p, tempo, work / "retimed" / p.name) for p in paths]
+        spans = [speech_span(p) for p in paths]
+        seconds = [x[2] for x in spans]
     fades = join_fades(segments, spans)   # the crossfade never runs over his last word (E282: shorter after a trimmed clip)
     offsets, bottom_end = timeline([dict(c, seconds=s, fade=f) for c, s, f in zip(segments, seconds, fades + [XFADE])])
     if bottom_end + TAIL_MIN > d:
@@ -563,7 +585,7 @@ def render(spec_path, clean, work, out_dir, root=ROOT):
                          "seconds": seconds[i], "speech": [spans[i][0], spans[i][1]],
                          **({"trim_out_s": c["trim_out_s"]} if c.get("trim_out_s") is not None else {}), "flags": c["flags"],
                          "accepted_flags": c["accepted_flags"], "review_score": c["score"]} for i, c in enumerate(segments)],
-           "bottom": {"y": (spec.get("bottom") or {}).get("y", 0.5), "crossfade": XFADE, "crossfades": fades,
+           "bottom": {"y": (spec.get("bottom") or {}).get("y", 0.5), "retime": tempo, "crossfade": XFADE, "crossfades": fades,
                       "frame": list(HALF)},
            "voice": {"source": "pavo-talking-clips", "words": result["reflection"]["words"],
                      "first_word": round(first_word, 3), "last_word": round(last_word, 3), "wpm": round(wpm, 1)},
