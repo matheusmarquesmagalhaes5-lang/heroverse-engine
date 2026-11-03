@@ -38,6 +38,22 @@ class PlanTests(unittest.TestCase):
                          [f"genesis-0{n}-short" for n in (6, 7, 8, 9)])
         self.assertLessEqual(len(plan["title"]), 100)
 
+    def test_a_public_long_is_a_chapter(self):
+        plan = cl.load(PLAN)
+        long_ch = {"long": {"id": "flood-ends-long", "pilot": "pilot-017", "video_id": "1m-NUJhkdMY",
+                            "sha256": "9" * 64, "seconds": 501.8},
+                   "title": "The Flood Ends", "reference": "Genesis 8-9"}
+        plan["chapters"].append(long_ch)
+        self.assertEqual(cl.plan_problems(plan), [])
+        src = cl.sources(plan)
+        self.assertEqual(src[-1][:3], ("flood-ends-long", "pilot-017-sha256-" + "9" * 64 + ".mp4", "9" * 64))
+        self.assertEqual(cl.chapter_url(long_ch), "https://www.youtube.com/watch?v=1m-NUJhkdMY")
+        for mutate in (lambda c: c["long"].update(sha256="x"), lambda c: c["long"].update(video_id=""),
+                       lambda c: c["long"].update(pilot="p17")):
+            bad = copy.deepcopy(plan)
+            mutate(bad["chapters"][-1])
+            self.assertTrue(any("not a public long" in x for x in cl.plan_problems(bad)))
+
     def test_refusals(self):
         plan = cl.load(PLAN)
         for mutate, text in ((lambda p: p["chapters"].reverse(), "canonical order"),
