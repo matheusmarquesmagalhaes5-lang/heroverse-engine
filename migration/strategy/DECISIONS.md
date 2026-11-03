@@ -685,3 +685,17 @@ Reflection 1 on our audio (three clips, master 08276e85, reflection-shorts run 4
 - Close the inter-clip silences of a reflection to 0.3 s at most.
 - Re-measure sync after any retime.
 - The reflection pace is judged after the render's own retime (`plan_check.reflection_retime`, E288); the stored clips are re-judged on our audio by `shot-remux.yml`.
+
+## 2026-11-03 — M2 Keeper hook and close: one new generation per line, on the current template (coordinator, E292)
+
+The two stored generations a line of arc-02-noah-compilation-keeper (probe 41629339290, hand-written prompt, 22- and 23-word lines) pass sync on our
+audio (shot-remux 41670811661) but Pavo's OWN track says the wrong words (speech-check 41636192512: "Noah's Shading and Sip", "gut El Lassi"), and the
+owner's order is Pavo's own audio, the clip in full. The fix is the prompt and the line, not our audio or a wrong-words publish:
+- `episode_build.stored_generation_problems` (E292) still refuses a shot-probe of a line with stored generations, with one more exception: when
+  EVERY stored generation was built with a prompt template older than `pavo_prompt.VERSION` (the record's `request.audio.tail_pad` carries the
+  version of a standard talking shot; a hand-written prompt carries none), the line takes EXACTLY ONE new generation (`older_template_shots`,
+  `generate_clips(max_generations=1)`: no second generation for a visual defect). One generation per template version after that.
+- The two Keeper shots now carry `pavo` fields (prompt = `pavo_prompt.build`), lines shortened to 16 and 17 words as the Keeper's own wording, not KJV:
+  hook "What if obeying God meant building a ship with no rain in sight? Here is Noah's whole story."; close "Noah obeyed before one drop fell. What is
+  God asking of you, that you cannot yet see?". plan_check strict (E277 pace included) passes.
+- The compilation uses the clips in full with their own audio (`pavo_audio` "pavo", #782); the ours-route remux approvals stay as evidence only.
