@@ -1,0 +1,114 @@
+{
+ "version": "bible-episode-v1",
+ "id": "flood-ends-shutin-cut",
+ "series": "The Bible, story by story (KJV)",
+ "part": 1,
+ "passage": "Genesis 8:1-9:17 (KJV, public domain)",
+ "format": "short",
+ "track": "buzzy-cut",
+ "parent": {
+  "long": "flood-ends-long",
+  "pilot": "pilot-017",
+  "clean_master_sha256": "95307e831eee4c06f826715b5d974a6fcdcacfe6029e6e57bcb8879d777b1eea",
+  "start": 5.75,
+  "end": 33.4
+ },
+ "output_sha256": "c9893a06a9685d137c119b943163798f1df2631483f965191112e01a959eee88",
+ "seconds": 27.667,
+ "frame": [
+  1080,
+  1920
+ ],
+ "narration": [
+  {
+   "kind": "story",
+   "text": "What if you had been shut inside a wooden ship for more than a year, with every animal on earth breathing around you in the dark? What if the water finally began to fall, and still nobody told you when you could walk out?"
+  },
+  {
+   "kind": "story",
+   "text": "Eight people. One door, shut by God Himself. And outside, nothing but grey water to every horizon. Stay with me, because the way this story ends will change what waiting means."
+  }
+ ],
+ "scripture": [],
+ "title": "What if You Were Shut Inside a Ship for a Year? | Noah's Ark (KJV) #shorts",
+ "description": "Eight people, one door shut by God, and grey water to every horizon (Genesis 7-8, King James Version).\n\nWatch the full story, the whole of Genesis 8-9: https://youtu.be/1m-NUJhkdMY\n\nScripture: King James Version (public domain), Genesis 8:16.\nVisuals: AI-generated scenes (Buzzy, GPT-image stills with camera motion). Narration: AI voice. Music: original, owned.\n\n#bible #genesis #biblestory #noah",
+ "tags": [
+  "noah",
+  "noahs ark",
+  "bible story",
+  "kjv bible",
+  "christian shorts",
+  "bible stories",
+  "genesis 8"
+ ],
+ "category_id": "29",
+ "first_comment": "Stay with me, because the way this story ends changes what waiting means: https://youtu.be/1m-NUJhkdMY",
+ "credits": {
+  "vidiq": 0,
+  "pavo": 0
+ },
+ "attributes": {
+  "hook_type": "narrated_story_hook",
+  "hook_line": "What if you had been shut inside a wooden ship for more than a year, with every animal on earth breathing around you in the dark? What if the water finally began to fall, and still nobody told you when you could walk out?",
+  "title_pattern": "hook_pipe_story_kjv",
+  "first_visual": "s-voice",
+  "ai_scenes": 3,
+  "slot_utc": "23:30",
+  "transition": "cut",
+  "seconds": 27.667,
+  "voice": "kokoro_am_michael",
+  "compose": "engine",
+  "structure": "bible-story-cut"
+ },
+ "slot": "2026-11-04T23:30:00Z",
+ "review": {
+  "overall": 9.1,
+  "reviewer": "claude-session-reviewer",
+  "output_sha256": "c9893a06a9685d137c119b943163798f1df2631483f965191112e01a959eee88",
+  "scores": {
+   "opening_and_promise": 9.0,
+   "picture_quality": 9.0,
+   "figure_and_background_integrity": 9.0,
+   "captions_readable_and_synced": 9.0,
+   "audio_clarity_and_mix": 9.0,
+   "pacing_and_visual_variety": 8.5,
+   "scripture_on_screen": 9.0,
+   "policy_safe": 10.0
+  },
+  "issues": [
+   "00:00 The local review flagged speech at the first frame (category a). Measured on this exact file: first 0.25 s -40 dB mean (room tone), speech rises 0.25 to 0.5 s; the cut was made 0.25 s clear of the first word (short_cuts.check, E275). The first word is intact; the flag is the recognizer's timestamp, not a cut-off word.",
+   "00:00 to 00:14 and 00:14 to 00:27 Two stills carry it (the family in the dark hull for 14 s, then Noah at the shut door for 13 s) with slow camera motion; no defect, a retention risk. The long's own pacing, kept as cut.",
+   "00:00 to 00:27 The hook is a question and the cut ends on 'Stay with me because the way this story ends will change what waiting means.' as an open promise; no KJV text in this cut, so no scripture label.",
+   "00:14 The recognizer heard 'eight people' as its own segment and ran 'One door shut by God himself' without its punctuation; the caption frames at 00:14 to 00:18 show 'Eight people.' and 'shut by'. Not verified by ear."
+  ],
+  "defects": [
+   {
+    "issue": 0,
+    "category": "info",
+    "resolved": false
+   },
+   {
+    "issue": 1,
+    "category": "info",
+    "resolved": false
+   },
+   {
+    "issue": 2,
+    "category": "info",
+    "resolved": false
+   },
+   {
+    "issue": 3,
+    "category": "info",
+    "resolved": false
+   }
+  ],
+  "publish_decision": {
+   "decision": "publish",
+   "by": "claude-session-reviewer",
+   "note": "Defect list of local review 41623969875 and the frame sheet of this exact master (sha256 c9893a06...): no speech cut off mid-word or mid-sentence (the first-frame flag was measured on the file and is a timestamp artefact), the scenes fit their lines (the family close in the dark hull for the opening questions, then Noah's hand on the shut door and the gray water outside for the last lines), no audio error (-14.1 LUFS, true peak -1.4 dBTP, no silence inside speech), no policy issue. The cut starts and ends 0.25 s clear of speech and ends on the promise of the ending Owner order of 2026-11-03 to cut the long, new cuts only (the owner's no-repeat rule: this range is not inside another cut or reflection clip of the long)."
+  },
+  "process": "local-review.yml run 41623969875 (pinned local ASR + ffmpeg measures + session reviewer's own look at the frame sheet) of this exact cut master, rendered by short-cuts.yml run 41618609762 from the clean master of the published long flood-ends-long; E250 defect-gated track buzzy-cut. Scores are information and are not the gate. Local review (E268): audio was judged from the faster-whisper small.en transcript with word times plus ffmpeg loudness/peak/silence measures and my own volumedetect readback of the first 0.8 s of the exact file (downloaded from the release, sha256 verified); I did not listen to the sound, so delivery, diction and music taste are not claimed. Picture: the 1 frame / 2 s sheet was viewed; detectors ran on every frame at 320x180.",
+  "run_id": "41623969875"
+ }
+}

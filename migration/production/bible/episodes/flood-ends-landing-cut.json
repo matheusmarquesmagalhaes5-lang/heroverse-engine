@@ -1,0 +1,124 @@
+{
+ "version": "bible-episode-v1",
+ "id": "flood-ends-landing-cut",
+ "series": "The Bible, story by story (KJV)",
+ "part": 1,
+ "passage": "Genesis 8:1-9:17 (KJV, public domain)",
+ "format": "short",
+ "track": "buzzy-cut",
+ "parent": {
+  "long": "flood-ends-long",
+  "pilot": "pilot-017",
+  "clean_master_sha256": "95307e831eee4c06f826715b5d974a6fcdcacfe6029e6e57bcb8879d777b1eea",
+  "start": 97.74,
+  "end": 130.27
+ },
+ "output_sha256": "a18c7aa267ea0d155a05030cd0da290fa43fe53d21cc2b87b2beb18f8d8d4d30",
+ "seconds": 32.533,
+ "frame": [
+  1080,
+  1920
+ ],
+ "narration": [
+  {
+   "kind": "story",
+   "text": "The ark scraped rock and stopped. Everyone froze. They had landed. But when they looked out, there was still nothing but water, and no ground to stand on."
+  },
+  {
+   "kind": "scripture",
+   "text": "And the waters decreased continually until the tenth month: in the tenth month, on the first day of the month, were the tops of the mountains seen.",
+   "reference": "Genesis 8:5 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Two more months of waiting, and then the first grey peaks rose out of the water like islands. The world was coming back. But coming back is not the same as being ready."
+  }
+ ],
+ "scripture": [
+  {
+   "reference": "Genesis 8:5 (KJV)",
+   "text": "And the waters decreased continually until the tenth month: in the tenth month, on the first day of the month, were the tops of the mountains seen."
+  }
+ ],
+ "title": "The Ark Hit Rock. Everyone Froze | Genesis 8 (KJV) #shorts",
+ "description": "The ark scraped rock, everyone froze, and still there was only water (Genesis 8, King James Version).\n\nWatch the full story, the whole of Genesis 8-9: https://youtu.be/1m-NUJhkdMY\n\nScripture: King James Version (public domain), Genesis 8:4.\nVisuals: AI-generated scenes (Buzzy, GPT-image stills with camera motion). Narration: AI voice. Music: original, owned.\n\n#bible #genesis #biblestory #noah",
+ "tags": [
+  "noah",
+  "noahs ark",
+  "bible story",
+  "kjv bible",
+  "christian shorts",
+  "bible stories",
+  "genesis 8"
+ ],
+ "category_id": "29",
+ "first_comment": "The ark stopped, but the waiting was not over. See how it ends: https://youtu.be/1m-NUJhkdMY",
+ "credits": {
+  "vidiq": 0,
+  "pavo": 0
+ },
+ "attributes": {
+  "hook_type": "narrated_story_hook",
+  "hook_line": "The ark scraped rock and stopped. Everyone froze. They had landed. But when they looked out, there was still nothing but water, and no ground to stand on.",
+  "title_pattern": "hook_pipe_story_kjv",
+  "first_visual": "s-ararat",
+  "ai_scenes": 2,
+  "slot_utc": "05:30",
+  "transition": "cut",
+  "seconds": 32.533,
+  "voice": "kokoro_am_michael",
+  "compose": "engine",
+  "structure": "bible-story-cut"
+ },
+ "slot": "2026-11-04T05:30:00Z",
+ "review": {
+  "overall": 9.1,
+  "reviewer": "claude-session-reviewer",
+  "output_sha256": "a18c7aa267ea0d155a05030cd0da290fa43fe53d21cc2b87b2beb18f8d8d4d30",
+  "scores": {
+   "opening_and_promise": 9.0,
+   "picture_quality": 9.0,
+   "figure_and_background_integrity": 9.0,
+   "captions_readable_and_synced": 9.0,
+   "audio_clarity_and_mix": 9.0,
+   "pacing_and_visual_variety": 8.5,
+   "scripture_on_screen": 9.0,
+   "policy_safe": 10.0
+  },
+  "issues": [
+   "00:00 The local review flagged speech at the first frame (category a). Measured on this exact file: first 0.25 s -38 dB mean (room tone), speech rises 0.25 to 0.5 s (mean -19 dB); the cut was made 0.25 s clear of the first word (short_cuts.check, E275). The first word is intact; the flag is the recognizer's timestamp, not a cut-off word.",
+   "00:00 to 00:11 and 00:12 to 00:32 Two stills carry the whole Short (the ark hull on the rock for 11 s, then the gray peaks for 21 s) with slow camera motion while the sentences run; no defect, a retention risk. The long's own pacing, kept as cut.",
+   "00:12 to 00:20 The small 'Genesis 8:5 / KJV' label above the yellow KJV caption is tiny at phone size; readable at full resolution.",
+   "00:15 to 00:20 The recognizer heard 'the tops of the mountain scene' for the KJV 'the tops of the mountains seen'; the caption frames at 00:16 and 00:18 show 'on the' and 'the tops'. Recognizer slip, not verified by ear."
+  ],
+  "defects": [
+   {
+    "issue": 0,
+    "category": "info",
+    "resolved": false
+   },
+   {
+    "issue": 1,
+    "category": "info",
+    "resolved": false
+   },
+   {
+    "issue": 2,
+    "category": "d",
+    "resolved": false
+   },
+   {
+    "issue": 3,
+    "category": "info",
+    "resolved": false
+   }
+  ],
+  "publish_decision": {
+   "decision": "publish",
+   "by": "claude-session-reviewer",
+   "note": "Defect list of local review 41623955474 and the frame sheet of this exact master (sha256 a18c7aa2...): no speech cut off mid-word or mid-sentence (the first-frame flag was measured on the file and is a timestamp artefact), the scenes fit their lines (the ark hull on the rock while it scrapes and everyone freezes, then the gray peaks and the eight people on the shore as the waters fall), no audio error (-14.0 LUFS, true peak -1.8 dBTP, no silence inside speech), no policy issue. The cut starts and ends 0.25 s clear of speech and ends on 'But coming back is not the same as being ready.' Owner order of 2026-11-03 to cut the long, new cuts only (the owner's no-repeat rule: this range is not inside another cut or reflection clip of the long)."
+  },
+  "process": "local-review.yml run 41623955474 (pinned local ASR + ffmpeg measures + session reviewer's own look at the frame sheet) of this exact cut master, rendered by short-cuts.yml run 41618609762 from the clean master of the published long flood-ends-long; E250 defect-gated track buzzy-cut. Scores are information and are not the gate. Local review (E268): audio was judged from the faster-whisper small.en transcript with word times plus ffmpeg loudness/peak/silence measures and my own volumedetect readback of the first 0.8 s of the exact file (downloaded from the release, sha256 verified); I did not listen to the sound, so delivery, diction and music taste are not claimed. Picture: the 1 frame / 2 s sheet was viewed; detectors ran on every frame at 320x180.",
+  "run_id": "41623955474"
+ }
+}
