@@ -1,0 +1,27 @@
+{
+ "shot": "k-r3",
+ "clip_sha256": "664e04f4814391ef47c2b53e5282ec16c7537fd72086df307722dfea57daa596",
+ "measures": {
+  "asr": {
+   "model_bin_sha256": "11b220779aea4c6f3ce9d2549c8a95ea869ed84066864b999531ef53e594fe5b",
+   "text": "So if you are waiting on God tonight, you are not forgotten, you are carried.",
+   "speech_span": [
+    0.0,
+    5.3
+   ]
+  },
+  "music": 0.0,
+  "singing": 0.0,
+  "lufs": -24.5,
+  "voice": {
+   "reference": null,
+   "same": null,
+   "others": []
+  },
+  "lips": []
+ },
+ "verdict": [
+  "VOICE_REFERENCE_MISSING"
+ ],
+ "trim_out_s": 5.32
+}

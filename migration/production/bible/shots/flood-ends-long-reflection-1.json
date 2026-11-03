@@ -15,12 +15,13 @@
     "instrument": "ffprobe stream durations"
    },
    "score": 9.5,
-   "note": "Single generation, no flags. Frame sheet of the actual clip viewed at full size: same Keeper, lips follow the line, hand gesture, no artefacts. Audio judged by the pinned ASR words check (clean) and measures (audio corr 0.93, SyncNet conf 7.6), NOT by ear: this session cannot play audio.",
+   "note": "Approved clip unchanged, now used cut at 5.40 s (E281) inside the silence after the line's last word, because the clip's own audio carries a trailing Pavo mumble after it. Frames of the trimmed clip viewed as a contact sheet (same Keeper, no artefacts; the picture is the frames of the earlier full-size review, only shortened). The pinned ASR (faster-whisper small.en) hears exactly the line on the trimmed media (speech-check --trim-out 5.40; the voice-similarity measure was not taken: resemblyzer unavailable offline); lips flags empty, music and singing 0. Audio NOT heard by ear: this session cannot play audio.",
    "probe_record": "migration/evidence/shots/flood-ends-long-reflection-1/41567543843.json",
    "run_id": "41567543843",
    "source_run": null,
    "approved_at": "2026-11-03",
-   "model": "claude-session-reviewer"
+   "model": "claude-session-reviewer",
+   "trim_out_s": 5.4
   },
   "k-r2": {
    "asset": "shot-flood-ends-long-reflection-1-k-r2-sha256-7f043fe271892146064b903aaf532c1aa48412d2638705960b09503547fd00e2.mp4",
@@ -36,12 +37,13 @@
     "instrument": "ffprobe stream durations"
    },
    "score": 9.5,
-   "note": "Single generation, no flags. Frame sheet of the actual clip viewed at full size: same Keeper, mouth follows the line, no artefacts. Audio judged by the pinned ASR words check (clean) and measures (audio corr 0.87, SyncNet conf 5.9), NOT by ear: this session cannot play audio.",
+   "note": "Approved clip unchanged, now used cut at 4.24 s (E281) inside the silence after the line's last word, because the clip's own audio carries a trailing Pavo mumble after it. Frames of the trimmed clip viewed as a contact sheet (same Keeper, no artefacts; the picture is the frames of the earlier full-size review, only shortened). The pinned ASR (faster-whisper small.en) hears exactly the line on the trimmed media (speech-check --trim-out 4.24; the voice-similarity measure was not taken: resemblyzer unavailable offline); lips flags empty, music and singing 0. Audio NOT heard by ear: this session cannot play audio.",
    "probe_record": "migration/evidence/shots/flood-ends-long-reflection-1/41572178956.json",
    "run_id": "41572178956",
    "source_run": null,
    "approved_at": "2026-11-03",
-   "model": "claude-session-reviewer"
+   "model": "claude-session-reviewer",
+   "trim_out_s": 4.24
   },
   "k-r3": {
    "asset": "shot-flood-ends-long-reflection-1-k-r3-sha256-664e04f4814391ef47c2b53e5282ec16c7537fd72086df307722dfea57daa596.mp4",
@@ -57,12 +59,13 @@
     "instrument": "ffprobe stream durations"
    },
    "score": 9.5,
-   "note": "Single generation, no flags. Frame sheet of the actual clip viewed at full size: same Keeper, lips follow the line, natural hand gesture at the end, no artefacts. Audio judged by the pinned ASR words check (clean) and measures (audio corr 0.99, SyncNet conf 6.7), NOT by ear: this session cannot play audio.",
+   "note": "Approved clip unchanged, now used cut at 5.32 s (E281) inside the silence after the line's last word, because the clip's own audio carries a trailing Pavo mumble after it. Frames of the trimmed clip viewed as a contact sheet (same Keeper, no artefacts; the picture is the frames of the earlier full-size review, only shortened). The pinned ASR (faster-whisper small.en) hears exactly the line on the trimmed media (speech-check --trim-out 5.32; the voice-similarity measure was not taken: resemblyzer unavailable offline); lips flags empty, music and singing 0. Audio NOT heard by ear: this session cannot play audio.",
    "probe_record": "migration/evidence/shots/flood-ends-long-reflection-1/41562885923.json",
    "run_id": "41562885923",
    "source_run": null,
    "approved_at": "2026-11-03",
-   "model": "claude-session-reviewer"
+   "model": "claude-session-reviewer",
+   "trim_out_s": 5.32
   }
  }
 }
