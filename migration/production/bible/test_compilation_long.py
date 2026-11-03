@@ -54,7 +54,7 @@ class PlanTests(unittest.TestCase):
             mutate(bad["chapters"][-1])
             self.assertTrue(any("not a public long" in x for x in cl.plan_problems(bad)))
 
-    def test_e283_the_complete_noah_plan_uses_the_voiceover_fallback_and_the_release_master(self):
+    def test_e284_the_complete_noah_plan_uses_the_voiceover_fallback_and_the_release_master(self):
         plan = cl.load(ROOT / "migration/production/bible/compilations/arc-02-noah-complete-compilation.json")
         self.assertEqual(cl.plan_problems(plan), [])
         self.assertEqual(plan["title"], "The Complete Story of Noah (Genesis 5-9) KJV")

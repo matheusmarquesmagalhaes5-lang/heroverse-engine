@@ -4433,11 +4433,54 @@
     "E281",
     "E282"
    ],
+   "error": "short-cuts.yml re-rendered every cut of the spec, including cuts already published; an encoder run is not bit-identical, so the new sha256 met RECORD_EXISTS_FOR_ANOTHER_FILE and stopped the run (41635228742) before the two new cuts got a record.",
+   "fix": "short_cuts.render skips a cut whose episode record already exists; a deliberate re-cut archives the record first. No gate loosened.",
+   "antidote": {
+    "file": "migration/production/bible/test_long_first.py",
+    "contains": "def test_a_cut_with_its_record_is_not_rendered_again",
+    "covers": [
+     "instrument"
+    ]
+   }
+  },
+  {
+   "id": "E284",
+   "date": "2026-11-03",
+   "class": [
+    "instrument"
+   ],
+   "prior": [
+    "E120",
+    "E131",
+    "E137",
+    "E139",
+    "E148",
+    "E152",
+    "E166",
+    "E169",
+    "E185",
+    "E186",
+    "E231",
+    "E233",
+    "E238",
+    "E253",
+    "E255",
+    "E262",
+    "E266",
+    "E267",
+    "E273",
+    "E275",
+    "E279",
+    "E280",
+    "E281",
+    "E282",
+    "E283"
+   ],
    "error": "M2 (Noah compilation): the Pavo talking Keeper hook and close were all SPEECH_WORDS_NOT_EXACT / VOICE_NOT_CONSISTENT (shot-probe 41629339290, speech-check 41636192512), and compilation_long had no route for the voice-over fallback: its Keeper segments needed a committed Pavo clip and Kokoro wav. Its long chapter also looked for the pilot alias, which holds an older master, not the public file (asset bible-flood-ends-long-sha256-9a2d0f24...).",
    "fix": "compilation_long: a hook/close with `voiceover` (an approved 16:9 Keeper still by sha256, the pinned voice, the record of the failed Pavo attempt, no-Pavo zero-credit quote) is rendered as a slow push-in over the still with the Kokoro line that compilation-build.yml synthesizes on the runner (voice-needed, voice-script, voice-cut); a long chapter may name its release master `bible-<id>-sha256-<sha>.mp4`. Every other check, the sha256 of each source and the QA are unchanged; nothing loosened.",
    "antidote": {
     "file": "migration/production/bible/test_compilation_long.py",
-    "contains": "def test_e283_the_complete_noah_plan_uses_the_voiceover_fallback_and_the_release_master",
+    "contains": "def test_e284_the_complete_noah_plan_uses_the_voiceover_fallback_and_the_release_master",
     "covers": [
      "instrument"
     ]
