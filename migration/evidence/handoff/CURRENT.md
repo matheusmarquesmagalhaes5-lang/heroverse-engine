@@ -105,6 +105,14 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
   out: owner/coordinator accepts the E286 retime ceiling in plan_check for plans whose clips all exist, or one more passing 4th clip. Top range
   chosen for it: 62.65-84.x s of flood-ends-long (s-fountains, s-lines; unused by any cut), two shots of 10 s. slot 2026-11-05T05:30Z still free.
 
+- 2026-11-03 (scheduled run, focus: START genesis-10-11-long): NOT started, plan not written. Blockers found before any effect:
+  (1) the coordinator's "Pavo prompt standard" PR (PROMPT_GUIDE section, HOOK_NOT_PAVO / CHARACTER_LINE_NOT_PAVO gates) is not on main
+  (no `pavo_lessons.md` either), so no Pavo request was built; (2) the builders' KJV lines need an APPROVED `characters.json` speaker with
+  a voice (`builder`; only keeper/adam/eve/noah/serpent are approved) and a `voice_pace.py` measurement, which needs Kokoro (not in the
+  cloud session) plus an approved reference still from the ChatGPT PC route; (3) no stills were made (PC route not driven). God's Genesis
+  11:6-7 stays Keeper narration or a non-face scene. Next: character `builder`, then plans/genesis-10-11-long.json, plan_check --strict,
+  stills, Pavo via the standard. PR #759 (M2 Noah compilation, other session) untouched.
+
 ## Next moments
 
 - M2 compilation "Complete Story of Noah (Genesis 5-9)" is due 2026-11-04.
