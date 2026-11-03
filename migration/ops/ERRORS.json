@@ -4132,6 +4132,49 @@
      "instrument"
     ]
    }
+  },
+  {
+   "id": "E276",
+   "date": "2026-11-03",
+   "class": [
+    "drift"
+   ],
+   "prior": [
+    "E100",
+    "E102",
+    "E126",
+    "E130",
+    "E132",
+    "E133",
+    "E145",
+    "E146",
+    "E147",
+    "E149",
+    "E150",
+    "E151",
+    "E152",
+    "E153",
+    "E166",
+    "E167",
+    "E168",
+    "E169",
+    "E189",
+    "E218",
+    "E236",
+    "E243",
+    "E245",
+    "E270",
+    "E274"
+   ],
+   "error": "test_gemini_short_review counted every published episode record with a review as the calibration corpus, but the corpus is the canonical genesis-*-short records only; the three published flood-ends cuts made the count 14 against 11 rows and turned every PR check red.",
+   "fix": "The test counts the same set the corpus reads (genesis-*-short.json). No gate or criterion changed.",
+   "antidote": {
+    "file": "migration/production/bible/test_gemini_short_review.py",
+    "contains": "E276: the corpus is the canonical Shorts, not cuts",
+    "covers": [
+     "drift"
+    ]
+   }
   }
  ]
 }
