@@ -1,0 +1,12 @@
+{
+ "id": "ch-builder-front",
+ "character": "builder",
+ "repo_path": "migration/production/characters/refs/ch-builder-front.jpg",
+ "sha256": "2e569bc474691e2113df210a7afa1075f6a1bb1a7fb9d955d15b4a260851562f",
+ "source": "ChatGPT desktop app (Create image, 16:9) in the chat 'HeroVerse — stills', owner's PC, 2026-11-03; png sha256 f1ac6a2a4e55da86b413ebeb19ebaeac8e80bbca9733b7a544899403d1288fc1, centre crop 1920x1080 JPEG",
+ "frame": [
+  1920,
+  1080
+ ],
+ "review": "Claude 2026-11-03: actual image viewed: one lean man, black hair tied back with a cloth strip, thin moustache, stubbled chin, deep-set dark eyes, plain undyed sleeveless linen tunic spattered with wet clay, mouth closed, eyes to camera, face large and centred, brickyard with kiln glow behind; no text, no jewellery, no metal, no modern item; clearly apart from Noah (bare grey head, long beard), Cain (cropped curls, close beard, heavy build) and the Keeper (hood, silver beard)"
+}
