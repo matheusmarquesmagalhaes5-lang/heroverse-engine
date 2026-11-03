@@ -1,0 +1,32 @@
+{
+ "shot": "k-hook",
+ "clip_sha256": "5a28e1162ba9e850fe8b84cdd92e1d5e59598290d08cc39737100f2aaca7d746",
+ "measures": {
+  "asr": {
+   "model_bin_sha256": "11b220779aea4c6f3ce9d2549c8a95ea869ed84066864b999531ef53e594fe5b",
+   "text": "What if obeying God meant building a ship with no rain in sight? Here is Noah's Shading and Sip, Genesis 5-9, user 09.",
+   "speech_span": [
+    0.0,
+    9.5
+   ]
+  },
+  "music": 0.0,
+  "singing": 0.0,
+  "lufs": -25.2,
+  "voice": {
+   "reference": "392c43b242eb01e9e39b29f911b0282619504067217a279a36c6041acb61546d",
+   "same": 0.7204,
+   "others": [
+    0.765
+   ],
+   "others_references": [
+    "d4f416826b28b66d5386226a4ec49ed48e1c18cedcc96ce9a2a78ece9633fe8f"
+   ]
+  },
+  "lips": []
+ },
+ "verdict": [
+  "SPEECH_WORDS_NOT_EXACT",
+  "VOICE_NOT_CONSISTENT"
+ ]
+}
