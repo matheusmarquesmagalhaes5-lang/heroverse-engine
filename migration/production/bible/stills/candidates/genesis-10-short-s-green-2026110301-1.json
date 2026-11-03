@@ -1,0 +1,37 @@
+{
+ "id": "genesis-10-short-s-green-2026110301-1",
+ "still": "genesis-10-short-s-green",
+ "episode": "genesis-10-short",
+ "shot": "s-green",
+ "run": "2026110301",
+ "status": "DRAFT",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. Young olive trees and green shoots on a washed muddy hillside shining in the sun, the water gone, and a family in silhouette, in ankle-length rough undyed wool robes and head-cloths, barefoot, looking down on it from the top of the slope, their backs to the camera. Bright morning after rain. Hopeful. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "sent_prompt": "Create an image, 9:16 vertical portrait, no text. Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. Young olive trees and green shoots on a washed muddy hillside shining in the sun, the water gone, and a family in silhouette, in ankle-length rough undyed wool robes and head-cloths, barefoot, looking down on it from the top of the slope, their backs to the camera. Bright morning after rain. Hopeful. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "engine": "chatgpt-desktop",
+ "models": [
+  "chatgpt-images"
+ ],
+ "generated_by": "ChatGPT Windows app on the owner's PC (Create image), one request at a time",
+ "source": "chatgpt-desktop",
+ "download": {
+  "file": "genesis-10-short-s-green.png",
+  "sha256": "ba8ad3aa77a211ab1d7f3f3c6e7229f928aa234b42f8245e12370fceb852b834",
+  "size_bytes": 3038766,
+  "pixels": [
+   941,
+   1672
+  ]
+ },
+ "references": [],
+ "licence": {
+  "note": "OpenAI Terms of Use: the user owns the Output; made at the owner's request in his own session (README Licence and account risk)"
+ },
+ "upscaler": "System.Drawing HighQualityBicubic centre crop to 9:16 -> 1080x1920, JPEG quality 93",
+ "aspect_ratio": "9:16",
+ "size": [
+  1080,
+  1920
+ ],
+ "repo_path": "migration/production/bible/stills/candidates/genesis-10-short-s-green-2026110301-1.jpg",
+ "sha256": "0934c2d86556c302d84c7a0dd9e00b78bb608292c41e6f3587459caaf10b927a"
+}

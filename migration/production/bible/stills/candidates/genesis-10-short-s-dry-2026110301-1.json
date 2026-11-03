@@ -1,0 +1,37 @@
+{
+ "id": "genesis-10-short-s-dry-2026110301-1",
+ "still": "genesis-10-short-s-dry",
+ "episode": "genesis-10-short",
+ "shot": "s-dry",
+ "run": "2026110301",
+ "status": "DRAFT",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. Figures in silhouette, in ankle-length rough undyed wool robes and head-cloths, barefoot, pull back a covering of rough hides and look out from the top of rough pitch-black timber over a wide dry land with mountains, their backs to the camera. Bright day, clear sky. Awe. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "sent_prompt": "Create an image, 9:16 vertical portrait, no text. Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. Figures in silhouette, in ankle-length rough undyed wool robes and head-cloths, barefoot, pull back a covering of rough hides and look out from the top of rough pitch-black timber over a wide dry land with mountains, their backs to the camera. Bright day, clear sky. Awe. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "engine": "chatgpt-desktop",
+ "models": [
+  "chatgpt-images"
+ ],
+ "generated_by": "ChatGPT Windows app on the owner's PC (Create image), one request at a time",
+ "source": "chatgpt-desktop",
+ "download": {
+  "file": "genesis-10-short-s-dry.png",
+  "sha256": "b9da750f611083950de1505e1fadf7ad38384f36922d5bb44828bcd61848ad6d",
+  "size_bytes": 2969636,
+  "pixels": [
+   941,
+   1672
+  ]
+ },
+ "references": [],
+ "licence": {
+  "note": "OpenAI Terms of Use: the user owns the Output; made at the owner's request in his own session (README Licence and account risk)"
+ },
+ "upscaler": "System.Drawing HighQualityBicubic centre crop to 9:16 -> 1080x1920, JPEG quality 93",
+ "aspect_ratio": "9:16",
+ "size": [
+  1080,
+  1920
+ ],
+ "repo_path": "migration/production/bible/stills/candidates/genesis-10-short-s-dry-2026110301-1.jpg",
+ "sha256": "0fb17045df816d9a8bb356c2ed1918088e9dad7f43ddaeef0ea0f6b21c25e0f0"
+}

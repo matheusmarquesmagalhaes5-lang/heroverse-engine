@@ -2,6 +2,25 @@
  "id": "genesis-10-short-s-hand",
  "episode": "genesis-10-short",
  "shot": "s-hand",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Close-up. A weathered hand in a rough undyed wool sleeve, seen from behind the shoulder of a figure in silhouette, reaches out of a dark square opening in rough pitch-black timber and gently cups a tired white dove. Grey light. Tender. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Close-up. A weathered hand in a rough undyed wool sleeve, seen from behind the shoulder of a figure in silhouette, reaches out of a dark square opening in rough pitch-black timber and gently cups a tired white dove. Grey light. Tender. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-10-short-s-hand.jpg",
+ "sha256": "ef345fb95fce217f6c8aa0827006e91921c619a100495d8aef2970ef8fa916d0",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-10-short-s-hand-2026110301-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-03",
+  "score": 9.5,
+  "note": "ChatGPT desktop 9:16 candidate, viewed in a contact sheet: painterly Old-Master light, period-correct, no text or modern objects, faces turned away or small, centred subject. Single candidate per still.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "a87261b338e00dc7ff7f95f63e7876e4c70dd4f3599c397f2312a918d9204c95",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

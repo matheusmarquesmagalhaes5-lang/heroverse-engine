@@ -1,0 +1,37 @@
+{
+ "id": "genesis-10-short-s-release-2026110301-1",
+ "still": "genesis-10-short-s-release",
+ "episode": "genesis-10-short",
+ "shot": "s-release",
+ "run": "2026110301",
+ "status": "DRAFT",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. Weathered cupped hands in rough undyed wool sleeves, seen from behind a figure in silhouette, open at a dark square opening in rough pitch-black timber as a white dove flies up into a bright sky. Clear morning light. Letting go. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "sent_prompt": "Create an image, 9:16 vertical portrait, no text. Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. Weathered cupped hands in rough undyed wool sleeves, seen from behind a figure in silhouette, open at a dark square opening in rough pitch-black timber as a white dove flies up into a bright sky. Clear morning light. Letting go. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "engine": "chatgpt-desktop",
+ "models": [
+  "chatgpt-images"
+ ],
+ "generated_by": "ChatGPT Windows app on the owner's PC (Create image), one request at a time",
+ "source": "chatgpt-desktop",
+ "download": {
+  "file": "genesis-10-short-s-release.png",
+  "sha256": "d99c311ffaccb56ad3ab38b6e1837419105e873e6f6e220438a953ba0fe4a8b1",
+  "size_bytes": 2353269,
+  "pixels": [
+   941,
+   1672
+  ]
+ },
+ "references": [],
+ "licence": {
+  "note": "OpenAI Terms of Use: the user owns the Output; made at the owner's request in his own session (README Licence and account risk)"
+ },
+ "upscaler": "System.Drawing HighQualityBicubic centre crop to 9:16 -> 1080x1920, JPEG quality 93",
+ "aspect_ratio": "9:16",
+ "size": [
+  1080,
+  1920
+ ],
+ "repo_path": "migration/production/bible/stills/candidates/genesis-10-short-s-release-2026110301-1.jpg",
+ "sha256": "20aea8029748df15efc2b5608dde348d2694f058c15c20fb14f881ffb14d2842"
+}

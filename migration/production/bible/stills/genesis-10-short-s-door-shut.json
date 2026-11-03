@@ -2,6 +2,25 @@
  "id": "genesis-10-short-s-door-shut",
  "episode": "genesis-10-short",
  "shot": "s-door-shut",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. A family seen from behind, their faces never visible, in ankle-length rough undyed wool robes and head-cloths, barefoot, stands waiting before a great closed square door of rough pitch-black timber in dim light, thin bright lines of daylight at its edges. Dim light through the cracks. Patient. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. A family seen from behind, their faces never visible, in ankle-length rough undyed wool robes and head-cloths, barefoot, stands waiting before a great closed square door of rough pitch-black timber in dim light, thin bright lines of daylight at its edges. Dim light through the cracks. Patient. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-10-short-s-door-shut.jpg",
+ "sha256": "9e6d30da579a015caadda22927c3edd26de44d883438a9c77f2063d07a666933",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-10-short-s-door-shut-2026110301-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-03",
+  "score": 9.5,
+  "note": "ChatGPT desktop 9:16 candidate, viewed in a contact sheet: painterly Old-Master light, period-correct, no text or modern objects, faces turned away or small, centred subject. Single candidate per still.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "a2aea88ebd837af52c24bf2a5b013d27461caef40eb8faef310ddbf4f4743ecb",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

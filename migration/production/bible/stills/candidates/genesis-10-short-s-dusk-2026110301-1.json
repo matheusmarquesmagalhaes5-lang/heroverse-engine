@@ -1,0 +1,37 @@
+{
+ "id": "genesis-10-short-s-dusk-2026110301-1",
+ "still": "genesis-10-short-s-dusk",
+ "episode": "genesis-10-short",
+ "shot": "s-dusk",
+ "run": "2026110301",
+ "status": "DRAFT",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. A family of eight seen from behind, their faces never visible, in ankle-length rough undyed wool robes and head-cloths, barefoot, sit together at a dark square opening in rough pitch-black timber and watch an empty evening sky over still water. Evening, warm low light on the water. Waiting. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "sent_prompt": "Create an image, 9:16 vertical portrait, no text. Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. A family of eight seen from behind, their faces never visible, in ankle-length rough undyed wool robes and head-cloths, barefoot, sit together at a dark square opening in rough pitch-black timber and watch an empty evening sky over still water. Evening, warm low light on the water. Waiting. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "engine": "chatgpt-desktop",
+ "models": [
+  "chatgpt-images"
+ ],
+ "generated_by": "ChatGPT Windows app on the owner's PC (Create image), one request at a time",
+ "source": "chatgpt-desktop",
+ "download": {
+  "file": "genesis-10-short-s-dusk.png",
+  "sha256": "b32cc3723d7046974a72ed98c64f4adf65f3c329cb02efe8e4d9dc8b2ca208e4",
+  "size_bytes": 2306149,
+  "pixels": [
+   941,
+   1672
+  ]
+ },
+ "references": [],
+ "licence": {
+  "note": "OpenAI Terms of Use: the user owns the Output; made at the owner's request in his own session (README Licence and account risk)"
+ },
+ "upscaler": "System.Drawing HighQualityBicubic centre crop to 9:16 -> 1080x1920, JPEG quality 93",
+ "aspect_ratio": "9:16",
+ "size": [
+  1080,
+  1920
+ ],
+ "repo_path": "migration/production/bible/stills/candidates/genesis-10-short-s-dusk-2026110301-1.jpg",
+ "sha256": "6019e7116ef33c0e2b7f5543d55f8693c394a7427db62e368eef6d2ec749f639"
+}

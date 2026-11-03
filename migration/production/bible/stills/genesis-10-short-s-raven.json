@@ -2,6 +2,25 @@
  "id": "genesis-10-short-s-raven",
  "episode": "genesis-10-short",
  "shot": "s-raven",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. A black raven flies away low over endless grey water, and two figures in silhouette, in ankle-length rough undyed wool robes and head-cloths, barefoot, watch it go from a dark square opening in rough pitch-black timber, their backs to the camera. Grey day. Uncertain. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. A black raven flies away low over endless grey water, and two figures in silhouette, in ankle-length rough undyed wool robes and head-cloths, barefoot, watch it go from a dark square opening in rough pitch-black timber, their backs to the camera. Grey day. Uncertain. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-10-short-s-raven.jpg",
+ "sha256": "c0e75689a186810e8b58def64ebe34ed6d9d8e88935eb4e1928b5948a15a59cf",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-10-short-s-raven-2026110301-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-03",
+  "score": 9.5,
+  "note": "ChatGPT desktop 9:16 candidate, viewed in a contact sheet: painterly Old-Master light, period-correct, no text or modern objects, faces turned away or small, centred subject. Single candidate per still.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "6d30f8fd9bec6d34c32c76d974ccfc7e41585ba1c78d6c40710484dbfdbabdd8",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }
