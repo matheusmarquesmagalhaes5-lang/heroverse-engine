@@ -1,0 +1,76 @@
+{
+ "version": "bible-episode-v1",
+ "id": "flood-ends-grace-cut",
+ "series": "The Bible, story by story (KJV)",
+ "part": 1,
+ "passage": "Genesis 8:1-9:17 (KJV, public domain)",
+ "format": "short",
+ "track": "buzzy-cut",
+ "parent": {
+  "long": "flood-ends-long",
+  "pilot": "pilot-017",
+  "clean_master_sha256": "95307e831eee4c06f826715b5d974a6fcdcacfe6029e6e57bcb8879d777b1eea",
+  "start": 471.94,
+  "end": 500.88
+ },
+ "output_sha256": "c12dfdb189f02a2390b32074a5d31d23ef35586f39036e157de84c821e925eb9",
+ "seconds": 28.872,
+ "frame": [
+  1080,
+  1920
+ ],
+ "narration": [
+  {
+   "kind": "story",
+   "text": "The Bible does not pretend Noah became perfect. Later he planted a vineyard, and failed again, the way people do. Grace did not make him a god. It made him a man who was carried."
+  },
+  {
+   "kind": "scripture",
+   "text": "And all the days of Noah were nine hundred and fifty years: and he died.",
+   "reference": "Genesis 9:29 (KJV)"
+  },
+  {
+   "kind": "cta",
+   "text": "What are you waiting for God to open? Tell me in the comments. Next time: the tower that reached for the sky. Subscribe."
+  }
+ ],
+ "scripture": [
+  {
+   "reference": "Genesis 9:29 (KJV)",
+   "text": "And all the days of Noah were nine hundred and fifty years: and he died."
+  }
+ ],
+ "title": "Grace Did Not Make Noah a God. It Made Him Carried. | Genesis 9 (KJV) #shorts",
+ "description": "The Bible does not pretend Noah became perfect: he failed again, the way people do, and mercy was still God's idea (Genesis 9, King James Version).\n\nWatch the full story, the whole of Genesis 8-9: https://youtu.be/1m-NUJhkdMY\n\nScripture: King James Version (public domain), Genesis 9:29.\nVisuals: AI-generated scenes (Buzzy, GPT-image stills with camera motion). Narration: AI voice. Music: original, owned.\n\n#bible #genesis #biblestory #noah",
+ "tags": [
+  "noah",
+  "noahs ark",
+  "the dove",
+  "olive leaf",
+  "genesis 8",
+  "bible story",
+  "kjv bible",
+  "christian shorts",
+  "bible stories"
+ ],
+ "category_id": "29",
+ "first_comment": "Grace did not make him a god; it made him a man who was carried. What are you waiting for God to open? Watch the full story: https://youtu.be/1m-NUJhkdMY",
+ "credits": {
+  "vidiq": 0,
+  "pavo": 0
+ },
+ "attributes": {
+  "hook_type": "narrated_story_hook",
+  "hook_line": "The Bible does not pretend Noah became perfect. Later he planted a vineyard, and failed again, the way people do. Grace did not make him a god. It made him a man who was carried.",
+  "title_pattern": "hook_pipe_story_kjv",
+  "first_visual": "s-vineyard",
+  "ai_scenes": 2,
+  "slot_utc": "05:30",
+  "transition": "cut",
+  "seconds": 28.872,
+  "voice": "kokoro_am_michael",
+  "compose": "engine",
+  "structure": "bible-story-cut"
+ },
+ "slot": "2026-11-05T05:30:00Z"
+}
