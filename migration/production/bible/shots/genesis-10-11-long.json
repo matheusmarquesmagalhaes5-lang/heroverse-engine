@@ -1,6 +1,365 @@
 {
  "episode": "genesis-10-11-long",
  "shots": {
+  "b-brick": {
+   "asset": "shot-genesis-10-11-long-b-brick-sha256-9e9a877241ad73c1a3efe8e91b74930729e65fc2c4ad8518ffa1226172b85aff.mp4",
+   "clip_sha256": "9e9a877241ad73c1a3efe8e91b74930729e65fc2c4ad8518ffa1226172b85aff",
+   "request_sha256": "c471d6ab1158eb92a0d813612119149266eca0ac13cf2f92cc797880b9fab44a",
+   "clip_seconds": 7.291667,
+   "requested_clip_seconds": 7,
+   "media": {
+    "version": "clip-media-v1",
+    "clip_sha256": "9e9a877241ad73c1a3efe8e91b74930729e65fc2c4ad8518ffa1226172b85aff",
+    "video_seconds": 7.291667,
+    "audio_seconds": 7.328,
+    "instrument": "ffprobe stream durations"
+   },
+   "score": 9.5,
+   "note": "Frames viewed (20 across 7 s): the approved builder, same face as the reference (black hair tied back, thin moustache, clay-spattered linen tunic), brickyard and kiln glow behind, lips moving on the line, eyes to the camera, no second person or text. Sync offset -1, conf 9.59.",
+   "probe_record": "migration/evidence/shots/genesis-10-11-long/41714272567.json",
+   "run_id": "41714272567",
+   "source_run": null,
+   "approved_at": "2026-11-03",
+   "model": "claude-session-reviewer",
+   "speech": {
+    "route": "pavo",
+    "clip_sha256": "9e9a877241ad73c1a3efe8e91b74930729e65fc2c4ad8518ffa1226172b85aff",
+    "onset": 0.0,
+    "end": 7.291,
+    "gain_db": -4.9,
+    "lufs": -21.6,
+    "matched_lufs": -26.5,
+    "narration_lufs": -26.5,
+    "true_peak_db": -7.5,
+    "tp_db": -1.5,
+    "limited": false,
+    "flags": []
+   },
+   "audio": {
+    "route": "pavo",
+    "sha256": "f9ca94911f8c5a8603d794a3e83b7b137739ebafd68e2de2fa6ff9f335dcb204",
+    "samples": 323165,
+    "seconds": 7.328,
+    "lufs": -21.6,
+    "true_peak_db": -7.5,
+    "narration_lufs": -26.5
+   },
+   "review_notes": {
+    "line": "go to let us make brick and burn them throughly and they had brick for stone and slime had they for morter",
+    "asr_text": null,
+    "words_differ": null,
+    "asr": "not run on this clip (episode_build.py speech-check)",
+    "warnings": [
+     "WARN_KJV_WORDS"
+    ]
+   }
+  },
+  "b-name": {
+   "asset": "shot-genesis-10-11-long-b-name-sha256-2a6f55fb7b99ba6a8ad7950519353dacab7be95503aa91cb7ecef8d5e0ea5f67.mp4",
+   "clip_sha256": "2a6f55fb7b99ba6a8ad7950519353dacab7be95503aa91cb7ecef8d5e0ea5f67",
+   "request_sha256": "cb82e22522ea990ea1f8038a71c1b6e7d30702ea86daa9fc6b7a4a7783ac37c2",
+   "clip_seconds": 5.166667,
+   "requested_clip_seconds": 5,
+   "media": {
+    "version": "clip-media-v1",
+    "clip_sha256": "2a6f55fb7b99ba6a8ad7950519353dacab7be95503aa91cb7ecef8d5e0ea5f67",
+    "video_seconds": 5.166667,
+    "audio_seconds": 5.184,
+    "instrument": "ffprobe stream durations"
+   },
+   "score": 9.5,
+   "note": "Frames viewed: the builder, consistent face, brickyard at dusk light, lips moving with the line, a fearful tension in the brows, no second person; sync offset -1, conf 9.60.",
+   "probe_record": "migration/evidence/shots/genesis-10-11-long/41714272567.json",
+   "run_id": "41714272567",
+   "source_run": null,
+   "approved_at": "2026-11-03",
+   "model": "claude-session-reviewer",
+   "speech": {
+    "route": "pavo",
+    "clip_sha256": "2a6f55fb7b99ba6a8ad7950519353dacab7be95503aa91cb7ecef8d5e0ea5f67",
+    "onset": 0.0,
+    "end": 5.166,
+    "gain_db": -4.7,
+    "lufs": -22.7,
+    "matched_lufs": -27.4,
+    "narration_lufs": -27.4,
+    "true_peak_db": -5.3,
+    "tp_db": -1.5,
+    "limited": false,
+    "flags": []
+   },
+   "audio": {
+    "route": "pavo",
+    "sha256": "0a053a66531dee3b27d1369b62d8d68c3ea5ace96a53e37b67e3409b3abb8252",
+    "samples": 228615,
+    "seconds": 5.184,
+    "lufs": -22.7,
+    "true_peak_db": -5.3,
+    "narration_lufs": -27.4
+   },
+   "review_notes": {
+    "line": "and let us make us a name lest we be scattered abroad upon the face of the whole earth",
+    "asr_text": null,
+    "words_differ": null,
+    "asr": "not run on this clip (episode_build.py speech-check)",
+    "warnings": [
+     "WARN_KJV_WORDS"
+    ]
+   }
+  },
+  "b-tower": {
+   "asset": "shot-genesis-10-11-long-b-tower-sha256-c6b9882bdbf295a41469cb5fb7e0e262f903c023165de535dbd0867d60c46e68.mp4",
+   "clip_sha256": "c6b9882bdbf295a41469cb5fb7e0e262f903c023165de535dbd0867d60c46e68",
+   "request_sha256": "be64ae9ff1bcba1cad99906aa61bdc800065d63b3a245a943f7785e316cde641",
+   "clip_seconds": 5.166667,
+   "requested_clip_seconds": 5,
+   "media": {
+    "version": "clip-media-v1",
+    "clip_sha256": "c6b9882bdbf295a41469cb5fb7e0e262f903c023165de535dbd0867d60c46e68",
+    "video_seconds": 5.166667,
+    "audio_seconds": 5.184,
+    "instrument": "ffprobe stream durations"
+   },
+   "score": 9.5,
+   "note": "Frames viewed: the builder, same face and tunic, brick stacks and kiln behind, defiant speaking look, lips moving, no second person, no text; sync offset -1, conf 8.60, face found in every frame.",
+   "probe_record": "migration/evidence/shots/genesis-10-11-long/41714272567.json",
+   "run_id": "41714272567",
+   "source_run": null,
+   "approved_at": "2026-11-03",
+   "model": "claude-session-reviewer",
+   "speech": {
+    "route": "pavo",
+    "clip_sha256": "c6b9882bdbf295a41469cb5fb7e0e262f903c023165de535dbd0867d60c46e68",
+    "onset": 0.0,
+    "end": 5.166,
+    "gain_db": -4.6,
+    "lufs": -22.9,
+    "matched_lufs": -27.5,
+    "narration_lufs": -27.5,
+    "true_peak_db": -5.2,
+    "tp_db": -1.5,
+    "limited": false,
+    "flags": []
+   },
+   "audio": {
+    "route": "pavo",
+    "sha256": "a4090d66770eae8076463e37301e4aaea6886995be798b50fbad2c2bc75b4557",
+    "samples": 228615,
+    "seconds": 5.184,
+    "lufs": -22.9,
+    "true_peak_db": -5.2,
+    "narration_lufs": -27.5
+   },
+   "review_notes": {
+    "line": "go to let us build us a city and a tower whose top may reach unto heaven",
+    "asr_text": null,
+    "words_differ": null,
+    "asr": "not run on this clip (episode_build.py speech-check)",
+    "warnings": [
+     "WARN_KJV_WORDS"
+    ]
+   }
+  },
+  "k-close": {
+   "asset": "shot-genesis-10-11-long-k-close-sha256-553a24b8cc3345a6a5ea1cff1715f4e90d5cccec7e0cce09a994757d2e0a01cc.mp4",
+   "clip_sha256": "553a24b8cc3345a6a5ea1cff1715f4e90d5cccec7e0cce09a994757d2e0a01cc",
+   "request_sha256": "0d99df4fa382ec421d43e1dd281ef669eb8d0e28d563f52761e020db8d56d984",
+   "clip_seconds": 9.416667,
+   "requested_clip_seconds": 9,
+   "media": {
+    "version": "clip-media-v1",
+    "clip_sha256": "553a24b8cc3345a6a5ea1cff1715f4e90d5cccec7e0cce09a994757d2e0a01cc",
+    "video_seconds": 9.416667,
+    "audio_seconds": 9.44,
+    "instrument": "ffprobe stream durations"
+   },
+   "score": 9.5,
+   "note": "Frames viewed (20 across 9 s): the Keeper in a close chest-up framing, face large, warm and expectant, lips moving, eyes to the camera, no second person or text; sync offset -2, conf 7.37, face found in 90 % of frames.",
+   "probe_record": "migration/evidence/shots/genesis-10-11-long/41714272567.json",
+   "run_id": "41714272567",
+   "source_run": null,
+   "approved_at": "2026-11-03",
+   "model": "claude-session-reviewer",
+   "speech": {
+    "route": "pavo",
+    "clip_sha256": "553a24b8cc3345a6a5ea1cff1715f4e90d5cccec7e0cce09a994757d2e0a01cc",
+    "onset": 0.0,
+    "end": 9.416,
+    "gain_db": -2.5,
+    "lufs": -23.2,
+    "matched_lufs": -25.7,
+    "narration_lufs": -25.7,
+    "true_peak_db": -6.9,
+    "tp_db": -1.5,
+    "limited": false,
+    "flags": []
+   },
+   "audio": {
+    "route": "pavo",
+    "sha256": "1bd14197b1a88a1259dff79085f7ac49a5667a732e04edb5e4331c92d3556d62",
+    "samples": 416304,
+    "seconds": 9.44,
+    "lufs": -23.2,
+    "true_peak_db": -6.9,
+    "narration_lufs": -25.7
+   },
+   "review_notes": {
+    "line": "what are you building your name on tell me below next the man who left everything subscribe",
+    "asr_text": null,
+    "words_differ": null,
+    "asr": "not run on this clip (episode_build.py speech-check)"
+   }
+  },
+  "k-hook": {
+   "asset": "shot-genesis-10-11-long-k-hook-sha256-5ba6ab4c8cac066eb529ededd5fa50c0519301bc283c9e354845b9f6a3a1012c.mp4",
+   "clip_sha256": "5ba6ab4c8cac066eb529ededd5fa50c0519301bc283c9e354845b9f6a3a1012c",
+   "request_sha256": "884449f2f106a727d8f26f12f428cf4adad2600f5c332ab50e52968bb7be04ba",
+   "clip_seconds": 8.0,
+   "requested_clip_seconds": 8,
+   "media": {
+    "version": "clip-media-v1",
+    "clip_sha256": "5ba6ab4c8cac066eb529ededd5fa50c0519301bc283c9e354845b9f6a3a1012c",
+    "video_seconds": 8.0,
+    "audio_seconds": 8.0,
+    "instrument": "ffprobe stream durations"
+   },
+   "score": 9.5,
+   "note": "Frames viewed (20 across 8 s): the Keeper by his campfire under the stars, hooded and bearded, his own look, mouth moving with the line, eyes to the camera, no second person, no text; framing wider than chest-up but the face stays found (0.97) and readable. Pavo audio kept in full; lips in sync (SyncNet offset -1, conf 8.46).",
+   "probe_record": "migration/evidence/shots/genesis-10-11-long/41714272567.json",
+   "run_id": "41714272567",
+   "source_run": null,
+   "approved_at": "2026-11-03",
+   "model": "claude-session-reviewer",
+   "speech": {
+    "route": "pavo",
+    "clip_sha256": "5ba6ab4c8cac066eb529ededd5fa50c0519301bc283c9e354845b9f6a3a1012c",
+    "onset": 0.0,
+    "end": 8.0,
+    "gain_db": -2.4,
+    "lufs": -23.6,
+    "matched_lufs": -26.0,
+    "narration_lufs": -26.0,
+    "true_peak_db": -7.8,
+    "tp_db": -1.5,
+    "limited": false,
+    "flags": []
+   },
+   "audio": {
+    "route": "pavo",
+    "sha256": "cc537f9ded3125879a160f8c56916f4262f95125160bcd3de6f169d4f952c034",
+    "samples": 352800,
+    "seconds": 8.0,
+    "lufs": -23.6,
+    "true_peak_db": -7.8,
+    "narration_lufs": -26.0
+   },
+   "review_notes": {
+    "line": "one language one plan one tower to reach the sky then god came down why",
+    "asr_text": null,
+    "words_differ": null,
+    "asr": "not run on this clip (episode_build.py speech-check)"
+   }
+  },
+  "k-irony": {
+   "asset": "shot-genesis-10-11-long-k-irony-sha256-fdf48035d572b51a1992327a0496272bfa5cf30385341c5e769fef098dbef8fe.mp4",
+   "clip_sha256": "fdf48035d572b51a1992327a0496272bfa5cf30385341c5e769fef098dbef8fe",
+   "request_sha256": "9123cc7ce018b7c263033096efb6095a3e498ba978065af64b884b63b92a09a5",
+   "clip_seconds": 5.166667,
+   "requested_clip_seconds": 5,
+   "media": {
+    "version": "clip-media-v1",
+    "clip_sha256": "fdf48035d572b51a1992327a0496272bfa5cf30385341c5e769fef098dbef8fe",
+    "video_seconds": 5.166667,
+    "audio_seconds": 5.184,
+    "instrument": "ffprobe stream durations"
+   },
+   "score": 9.5,
+   "note": "Frames viewed: the Keeper by the fire, calm kind look, lips moving, no second person or text; sync offset -1, conf 9.72, face found in every frame.",
+   "probe_record": "migration/evidence/shots/genesis-10-11-long/41714272567.json",
+   "run_id": "41714272567",
+   "source_run": null,
+   "approved_at": "2026-11-03",
+   "model": "claude-session-reviewer",
+   "speech": {
+    "route": "pavo",
+    "clip_sha256": "fdf48035d572b51a1992327a0496272bfa5cf30385341c5e769fef098dbef8fe",
+    "onset": 0.0,
+    "end": 5.166,
+    "gain_db": -5.9,
+    "lufs": -20.9,
+    "matched_lufs": -26.8,
+    "narration_lufs": -26.8,
+    "true_peak_db": -5.7,
+    "tp_db": -1.5,
+    "limited": false,
+    "flags": []
+   },
+   "audio": {
+    "route": "pavo",
+    "sha256": "2383e7d1bdd7c44d97f05797c054f82ebd0b403e5422ac612d308b59386ce43c",
+    "samples": 228615,
+    "seconds": 5.184,
+    "lufs": -20.9,
+    "true_peak_db": -5.7,
+    "narration_lufs": -26.8
+   },
+   "review_notes": {
+    "line": "they built the tower to avoid being scattered the tower is what scattered them",
+    "asr_text": null,
+    "words_differ": null,
+    "asr": "not run on this clip (episode_build.py speech-check)"
+   }
+  },
+  "k-restrain": {
+   "asset": "shot-genesis-10-11-long-k-restrain-sha256-a14c4fb38f2032217f2671ba7e253f12d5183a73f9e1763a44a74d3dd0c014af.mp4",
+   "clip_sha256": "a14c4fb38f2032217f2671ba7e253f12d5183a73f9e1763a44a74d3dd0c014af",
+   "request_sha256": "e0c0ea62c03d1416b5fae7313df41627d8741ba2ce82947d00b8b84bac9ce2bc",
+   "clip_seconds": 6.583333,
+   "requested_clip_seconds": 6,
+   "media": {
+    "version": "clip-media-v1",
+    "clip_sha256": "a14c4fb38f2032217f2671ba7e253f12d5183a73f9e1763a44a74d3dd0c014af",
+    "video_seconds": 6.583333,
+    "audio_seconds": 6.592,
+    "instrument": "ffprobe stream durations"
+   },
+   "score": 9.5,
+   "note": "Frames viewed: the Keeper by the fire, hooded, grave knowing look, mouth moving, no second person or text; sync offset -1, conf 8.39, face found in 88 % of frames.",
+   "probe_record": "migration/evidence/shots/genesis-10-11-long/41714272567.json",
+   "run_id": "41714272567",
+   "source_run": null,
+   "approved_at": "2026-11-03",
+   "model": "claude-session-reviewer",
+   "speech": {
+    "route": "pavo",
+    "clip_sha256": "a14c4fb38f2032217f2671ba7e253f12d5183a73f9e1763a44a74d3dd0c014af",
+    "onset": 0.0,
+    "end": 6.583,
+    "gain_db": -7.8,
+    "lufs": -18.2,
+    "matched_lufs": -26.0,
+    "narration_lufs": -26.0,
+    "true_peak_db": -2.7,
+    "tp_db": -1.5,
+    "limited": false,
+    "flags": []
+   },
+   "audio": {
+    "route": "pavo",
+    "sha256": "173cc49728a41b672f6eeba07543d19070228df0c421fc76ba4e772737017ab0",
+    "samples": 290708,
+    "seconds": 6.592,
+    "lufs": -18.2,
+    "true_peak_db": -2.7,
+    "narration_lufs": -26.0
+   },
+   "review_notes": {
+    "line": "he said nothing would be restrained from them so after water he chose distance",
+    "asr_text": null,
+    "words_differ": null,
+    "asr": "not run on this clip (episode_build.py speech-check)"
+   }
+  },
   "s-babble": {
    "source": "still_motion",
    "score": 9.5,
