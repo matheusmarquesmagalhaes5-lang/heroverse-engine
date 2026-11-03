@@ -4219,6 +4219,29 @@
      "drift"
     ]
    }
+  },
+  {
+   "id": "E278",
+   "date": "2026-11-03",
+   "class": [
+    "order"
+   ],
+   "prior": [
+    "E112",
+    "E116",
+    "E144",
+    "E165",
+    "E187"
+   ],
+   "error": "First comments on the long 1m-NUJhkdMY, the three flood cuts and genesis-10 stayed 'PENDING: HTTP_403 forbidden': the publishers posted commentThreads.insert while the video was still private or scheduled, and the 403 read like a permanent refusal (arc_links would also have marked it terminal). The long's retry never started either: pilot-017 is held (schedule publish_at null), so pending_comments had no public time.",
+   "fix": "publish_video.first_comment reads privacyStatus first and returns 'PENDING: video not public yet' for a private/scheduled video without calling the API; arc_links treats that text as transient (not comment_terminal); render_queue.pending_comments falls back to the ledger entry's released.at when schedule publish_at is null, so reconcile retries via first-comment.yml.",
+   "antidote": {
+    "file": "migration/publish/test_first_comment.py",
+    "contains": "def test_private_or_scheduled_video_defers_the_comment_without_attempting_it",
+    "covers": [
+     "order"
+    ]
+   }
   }
  ]
 }

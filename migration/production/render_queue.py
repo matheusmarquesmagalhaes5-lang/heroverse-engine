@@ -192,8 +192,12 @@ def pending_comments(production, ledger, now):
         sched = Path(production) / pilot / "schedule.json"
         try:
             public = when(json.loads(sched.read_text())["publish_at"])
-        except (FileNotFoundError, ValueError, KeyError):
-            continue
+        except (FileNotFoundError, ValueError, KeyError, TypeError, AttributeError):
+            # E264: a held long has publish_at null; the owner's release records when it went public
+            try:
+                public = when((entry.get("released") or {})["at"])
+            except (KeyError, ValueError, TypeError, AttributeError):
+                continue
         if public + timedelta(minutes=10) <= now <= public + timedelta(days=COMMENT_DAYS) and pilot not in out:
             out.append(pilot)
     return out
