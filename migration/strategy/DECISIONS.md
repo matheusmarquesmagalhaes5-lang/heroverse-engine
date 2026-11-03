@@ -569,3 +569,8 @@ cuts (dove 66 s, rainbow 73 s, door 40 s) were rendered by short-cuts.yml and ea
 cut was refused before publish: it began 0.1 s before the first word, under the 0.25 s fade-in; the cut was re-made 0.25 s clear of speech and
 `short_cuts.check` now refuses `CUT_FADE_OVERLAPS_SPEECH`. The first door cut opened on nine seconds of a dark still, so it was re-made to open on
 the Keeper's lit "Most miss this" line. Both earlier masters stay on record (evidence branches) and were never published.
+
+## 2026-11-03 — Inteligência Viva
+- Moment M1 closing, M2 due 11-04. Trigger "long not public by 11-03 23:30": not hit (flood-ends-long public since 01:15Z, measured via vidIQ; 1 view; duration 8:22, shorter than the 15-20 min planned).
+- No new daily report (latest 11-02 18:48): goal numbers carried over (subs 301 measured; long hours 27.9 estimated; hours bind). Deadlines unchanged (11-15, max 12-01).
+- Action: funnel links and Facebook post of the long today; Noah compilation is production's next build; later longs target 12-15 min. Experiments unread until the M3 checkpoint 11-05. vidIQ used: 5 credits.

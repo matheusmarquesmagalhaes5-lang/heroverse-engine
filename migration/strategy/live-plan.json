@@ -1,6 +1,6 @@
 {
  "date": "2026-11-03",
- "run": "extra run requested by the owner (~00:50 UTC 11-03). No new daily report (latest is 11-02 18:48), so goal numbers are carried over; no vidIQ credits used today in this run.",
+ "run": "daily run ~05:20 UTC 11-03; still no new daily report (latest 11-02 18:48), goal numbers carried over; vidIQ 5 credits used (3,089 balance before).",
  "deadline": {
   "target": "2026-11-15",
   "max": "2026-12-01"
@@ -80,7 +80,8 @@
  ],
  "experiments_review": [
   "flood-ends-long: <1 day since release, no reading; kept, metric starts at public time (7-day views and avg view duration, thresholds unchanged).",
-  "Short->long funnel, packaging A/B, subscribe conversion: no new readings; all kept. M3 checkpoint 11-05 will be the first real read."
+  "Short->long funnel, packaging A/B, subscribe conversion: no new readings; all kept. M3 checkpoint 11-05 will be the first real read.",
+  "11-03: flood-ends-long went public 01:15Z (1 view at check); all four experiments unread, kept. Length is 8:22 vs the 15-20 min assumed: success threshold unchanged, shortfall noted."
  ],
  "quantities": {
   "longs": 1,
@@ -158,16 +159,15 @@
  },
  "cross_niche_status": "2026-11-02 cross-niche pool (evidence/vidiq/20261102/cross-niche-outliers.json): 8 winners, breakout 40-126, but 6 of 8 are one cowboy-romance cluster and no weak contrasts yet -> NOT validated, test only. Transferable test: title = emotional turn + withheld reveal, as title B packaging test; 2h+ length not copied. Structure audit of 93wYHx79Mso submitted; result still pending at write time.",
  "battle_plan": {
-  "moment": "M2 (due 2026-11-04): 'The Complete Story of Noah (Genesis 5-9) KJV' compilation, 40-60 min. M1 closes when flood-ends-long (1m-NUJhkdMY) is verified public; the owner released it as is and it is being made public now.",
+  "moment": "M1 (11-02/03) closing; M2 due 11-04",
   "triggers_hit": [
-   "M1 trigger (long not public by 11-03 23:30): NOT hit; it is being made public at ~00:50 UTC 11-03",
-   "M3 (11-05 checkpoint) not yet due; M5 not yet due"
+   "M1 'long not public by 11-03 23:30': NOT hit - flood-ends-long public since 2026-11-03T01:15Z (measured, vidIQ: 1 view, 8:22 duration)"
   ],
   "actions": [
-   "Verify 1m-NUJhkdMY is public, then arcs.json link, pinned comment and playlist; Facebook Page gets the long",
-   "Build the Noah compilation from approved G06-G09 media, the Noah compilation and flood-ends-long; publish 11-04; then repoint every live Short's pinned comment and related video to it",
-   "Cuts of flood-ends-long (coordinator session is making them) feed the 4-Shorts/day schedule, each with a funnel link",
-   "Write the next long script (Genesis 10-11 Babel) now: script runway is 0.0 days"
+   "Measured: the public long is 8:22, not the 15-20 min the lever assumed; judge its 7-day thresholds (>=300 views, >=6 min avg) against that length and make Babel/next longs 12-15 min",
+   "Pin comment + description link to the long on every Short/cut today; Facebook Page post of the long",
+   "Build the Noah compilation (M2, 11-04) - first priority of production after the cuts",
+   "Keep 4 Shorts/day with 48 h buffer; M3 read 11-05"
   ]
  },
  "slots_note": "estimate, thin data: only 13:30 and 23:30 UTC have own performance data (best Short 532 views at 13:30; 23:30 got 328/302). 05:30 and 18:30 are exploration slots, to be judged after 3 days; Short slots only after the long is public.",
