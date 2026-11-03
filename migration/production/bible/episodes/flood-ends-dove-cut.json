@@ -1,0 +1,93 @@
+{
+ "version": "bible-episode-v1",
+ "id": "flood-ends-dove-cut",
+ "series": "The Bible, story by story (KJV)",
+ "part": 1,
+ "passage": "Genesis 8:1-9:17 (KJV, public domain)",
+ "format": "short",
+ "track": "buzzy-cut",
+ "parent": {
+  "long": "flood-ends-long",
+  "pilot": "pilot-017",
+  "clean_master_sha256": "95307e831eee4c06f826715b5d974a6fcdcacfe6029e6e57bcb8879d777b1eea",
+  "start": 169.776,
+  "end": 240.631
+ },
+ "output_sha256": "2a4761c0dcaded29cc8882fcc13773405dff4e2c27befc30bad87ddfa5000b4c",
+ "seconds": 70.867,
+ "frame": [
+  1080,
+  1920
+ ],
+ "narration": [
+  {
+   "kind": "story",
+   "text": "So he took the gentlest bird he had. A dove. If there was any dry place left in the world, she would find it."
+  },
+  {
+   "kind": "story",
+   "text": "Hour after hour the family watched the sky. Nothing came back, until the evening. And the dove did return, but with nothing at all."
+  },
+  {
+   "kind": "scripture",
+   "text": "But the dove found no rest for the sole of her foot, and she returned unto him into the ark, for the waters were on the face of the whole earth: then he put forth his hand, and took her, and pulled her in unto him into the ark.",
+   "reference": "Genesis 8:9 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Still only water. Still no place to land. And yet Noah did not shout, and did not give up. He waited."
+  },
+  {
+   "kind": "scripture",
+   "text": "And he stayed yet other seven days; and again he sent forth the dove out of the ark;",
+   "reference": "Genesis 8:10 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Seven more days. He counted them one by one. Then he let her go again, and the whole family held their breath."
+  },
+  {
+   "kind": "scripture",
+   "text": "And the dove came in to him in the evening; and, lo, in her mouth was an olive leaf pluckt off: so Noah knew that the waters were abated from off the earth.",
+   "reference": "Genesis 8:11 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "One green leaf. Somewhere out there, something was growing again."
+  }
+ ],
+ "scripture": [
+  {
+   "reference": "Genesis 8:9 (KJV)",
+   "text": "But the dove found no rest for the sole of her foot, and she returned unto him into the ark, for the waters were on the face of the whole earth: then he put forth his hand, and took her, and pulled her in unto him into the ark."
+  },
+  {
+   "reference": "Genesis 8:10 (KJV)",
+   "text": "And he stayed yet other seven days; and again he sent forth the dove out of the ark;"
+  },
+  {
+   "reference": "Genesis 8:11 (KJV)",
+   "text": "And the dove came in to him in the evening; and, lo, in her mouth was an olive leaf pluckt off: so Noah knew that the waters were abated from off the earth."
+  }
+ ],
+ "title": "One Green Leaf After the Flood 🕊️ | The Dove and the Olive Leaf, Genesis 8 (KJV) #shorts",
+ "description": "The gentlest bird, a long wait, and one olive leaf: Noah sends out the dove after the flood (Genesis 8, King James Version).\n\nWatch the full story, the whole of Genesis 8-9: https://youtu.be/1m-NUJhkdMY\n\nScripture: King James Version (public domain), Genesis 8:8-11.\nVisuals: AI-generated scenes (Buzzy, GPT-image stills with camera motion). Narration: AI voice. Music: original, owned.\n\n#bible #genesis #biblestory #noah",
+ "tags": [
+  "noah",
+  "noahs ark",
+  "the dove",
+  "olive leaf",
+  "genesis 8",
+  "bible story",
+  "kjv bible",
+  "christian shorts",
+  "bible stories"
+ ],
+ "category_id": "29",
+ "first_comment": "One green leaf was the first word of the new world. Watch the full story of the flood's end here: https://youtu.be/1m-NUJhkdMY",
+ "credits": {
+  "vidiq": 0,
+  "pavo": 0
+ },
+ "slot": "2026-11-03T05:30:00Z"
+}

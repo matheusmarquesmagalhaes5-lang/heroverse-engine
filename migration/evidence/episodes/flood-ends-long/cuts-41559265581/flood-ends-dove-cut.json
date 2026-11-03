@@ -1,0 +1,223 @@
+{
+ "version": "bible-cut-v1",
+ "id": "flood-ends-dove-cut",
+ "spec": "migration/production/bible/cuts/flood-ends-long.json",
+ "parent": {
+  "long": "flood-ends-long",
+  "pilot": "pilot-017",
+  "report": "migration/evidence/episodes/flood-ends-long/report-41484825424.json",
+  "clean_master_sha256": "95307e831eee4c06f826715b5d974a6fcdcacfe6029e6e57bcb8879d777b1eea",
+  "start": 169.776,
+  "end": 240.631,
+  "x": 0.5
+ },
+ "output_sha256": "2a4761c0dcaded29cc8882fcc13773405dff4e2c27befc30bad87ddfa5000b4c",
+ "seconds": 70.867,
+ "frame": [
+  1080,
+  1920
+ ],
+ "lufs": -14.1,
+ "true_peak_dbfs": -1.5,
+ "sentences": [
+  {
+   "segment": "n18",
+   "text": "So he took the gentlest bird he had.",
+   "start": 0.1,
+   "end": 2.724,
+   "line": 18,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n18",
+   "text": "A dove.",
+   "start": 2.904,
+   "end": 3.907,
+   "line": 18,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n18",
+   "text": "If there was any dry place left in the world, she would find it.",
+   "start": 4.087,
+   "end": 8.247,
+   "line": 18,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n19",
+   "text": "Hour after hour the family watched the sky.",
+   "start": 8.597,
+   "end": 11.882,
+   "line": 19,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n19",
+   "text": "Nothing came back, until the evening.",
+   "start": 12.062,
+   "end": 14.686,
+   "line": 19,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n19",
+   "text": "And the dove did return, but with nothing at all.",
+   "start": 14.866,
+   "end": 18.194,
+   "line": 19,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n20",
+   "text": "But the dove found no rest for the sole of her foot, and she returned unto him into the ark, for the waters were on the face of the whole earth:",
+   "start": 18.544,
+   "end": 27.248,
+   "kind": "scripture",
+   "reference": "Genesis 8:9 (KJV)",
+   "line": 20,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n20",
+   "text": "then he put forth his hand, and took her, and pulled her in unto him into the ark.",
+   "start": 27.428,
+   "end": 32.271,
+   "kind": "scripture",
+   "reference": "Genesis 8:9 (KJV)",
+   "line": 20,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n21",
+   "text": "Still only water.",
+   "start": 32.621,
+   "end": 34.242,
+   "line": 21,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n21",
+   "text": "Still no place to land.",
+   "start": 34.422,
+   "end": 36.257,
+   "line": 21,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n21",
+   "text": "And yet Noah did not shout, and did not give up.",
+   "start": 36.437,
+   "end": 39.701,
+   "line": 21,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n21",
+   "text": "He waited.",
+   "start": 39.881,
+   "end": 40.99,
+   "line": 21,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n22",
+   "text": "And he stayed yet other seven days;",
+   "start": 41.34,
+   "end": 43.9,
+   "kind": "scripture",
+   "reference": "Genesis 8:10 (KJV)",
+   "line": 22,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n22",
+   "text": "and again he sent forth the dove out of the ark;",
+   "start": 44.08,
+   "end": 47.365,
+   "kind": "scripture",
+   "reference": "Genesis 8:10 (KJV)",
+   "line": 22,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n23",
+   "text": "Seven more days.",
+   "start": 47.715,
+   "end": 49.145,
+   "line": 23,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n23",
+   "text": "He counted them one by one.",
+   "start": 49.325,
+   "end": 51.479,
+   "line": 23,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n23",
+   "text": "Then he let her go again, and the whole family held their breath.",
+   "start": 51.659,
+   "end": 55.435,
+   "line": 23,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n24",
+   "text": "And the dove came in to him in the evening;",
+   "start": 55.785,
+   "end": 58.324,
+   "kind": "scripture",
+   "reference": "Genesis 8:11 (KJV)",
+   "line": 24,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n24",
+   "text": "and, lo, in her mouth was an olive leaf pluckt off:",
+   "start": 58.504,
+   "end": 61.683,
+   "kind": "scripture",
+   "reference": "Genesis 8:11 (KJV)",
+   "line": 24,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n24",
+   "text": "so Noah knew that the waters were abated from off the earth.",
+   "start": 61.863,
+   "end": 65.66,
+   "kind": "scripture",
+   "reference": "Genesis 8:11 (KJV)",
+   "line": 24,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n25",
+   "text": "One green leaf.",
+   "start": 66.01,
+   "end": 67.397,
+   "line": 25,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n25",
+   "text": "Somewhere out there, something was growing again.",
+   "start": 67.577,
+   "end": 70.755,
+   "line": 25,
+   "line_kind": "story"
+  }
+ ],
+ "advice": [
+  "ends on a story line: a KJV line or the Keeper's insight closes a cut best"
+ ],
+ "checks": {
+  "frame_1080x1920": true,
+  "lufs_band": true,
+  "true_peak_ceiling": true,
+  "length": true
+ }
+}

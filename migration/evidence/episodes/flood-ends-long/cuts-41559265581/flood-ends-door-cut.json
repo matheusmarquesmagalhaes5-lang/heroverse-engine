@@ -1,0 +1,165 @@
+{
+ "version": "bible-cut-v1",
+ "id": "flood-ends-door-cut",
+ "spec": "migration/production/bible/cuts/flood-ends-long.json",
+ "parent": {
+  "long": "flood-ends-long",
+  "pilot": "pilot-017",
+  "report": "migration/evidence/episodes/flood-ends-long/report-41484825424.json",
+  "clean_master_sha256": "95307e831eee4c06f826715b5d974a6fcdcacfe6029e6e57bcb8879d777b1eea",
+  "start": 289.613,
+  "end": 338.49,
+  "x": 0.5
+ },
+ "output_sha256": "46511f5b3f21778f8bf10199291b21cd161c79b3d33edc9b9f0b00640bdcd2de",
+ "seconds": 48.9,
+ "frame": [
+  1080,
+  1920
+ ],
+ "lufs": -14.2,
+ "true_peak_dbfs": -1.7,
+ "sentences": [
+  {
+   "segment": "n30",
+   "text": "Dry ground at last, right before his eyes.",
+   "start": 0.1,
+   "end": 3.236,
+   "line": 30,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n30",
+   "text": "And still the door stayed shut.",
+   "start": 3.416,
+   "end": 5.528,
+   "line": 30,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n30",
+   "text": "The One who closed it had not yet said open.",
+   "start": 5.708,
+   "end": 8.908,
+   "line": 30,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n31",
+   "text": "Most miss this:",
+   "start": 9.258,
+   "end": 10.728,
+   "line": 31,
+   "line_kind": "insight"
+  },
+  {
+   "segment": "n31",
+   "text": "Noah saw dry ground and still waited.",
+   "start": 10.914,
+   "end": 13.612,
+   "line": 31,
+   "line_kind": "insight"
+  },
+  {
+   "segment": "n31",
+   "text": "He stepped out when God said go.",
+   "start": 13.797,
+   "end": 16.209,
+   "line": 31,
+   "line_kind": "insight"
+  },
+  {
+   "segment": "n31",
+   "text": "The One who shut the door opened it.",
+   "start": 16.395,
+   "end": 18.808,
+   "line": 31,
+   "line_kind": "insight"
+  },
+  {
+   "segment": "n32",
+   "text": "Two months more, until the earth was fully dry.",
+   "start": 19.158,
+   "end": 22.294,
+   "line": 32,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n32",
+   "text": "Then, at last, the voice came.",
+   "start": 22.474,
+   "end": 24.543,
+   "line": 32,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n32",
+   "text": "Not a shout.",
+   "start": 24.723,
+   "end": 26.003,
+   "line": 32,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n32",
+   "text": "A word.",
+   "start": 26.183,
+   "end": 27.25,
+   "line": 32,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n32",
+   "text": "And with it, the door that no one else could open.",
+   "start": 27.43,
+   "end": 30.609,
+   "line": 32,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n33",
+   "text": "And God spake unto Noah, saying,",
+   "start": 30.959,
+   "end": 33.412,
+   "kind": "scripture",
+   "reference": "Genesis 8:15 (KJV)",
+   "line": 33,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n34",
+   "text": "And Noah went forth, and his sons, and his wife, and his sons’ wives with him:",
+   "start": 33.762,
+   "end": 39.074,
+   "kind": "scripture",
+   "reference": "Genesis 8:18 (KJV)",
+   "line": 34,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n35",
+   "text": "Out they walked, a whole world of animals, one by one, down onto the washed new earth.",
+   "start": 39.424,
+   "end": 45.099,
+   "line": 35,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n35",
+   "text": "Noah was the last of his family to step off the boat.",
+   "start": 45.279,
+   "end": 48.777,
+   "line": 35,
+   "line_kind": "story"
+  }
+ ],
+ "advice": [
+  "ends on a story line: a KJV line or the Keeper's insight closes a cut best"
+ ],
+ "checks": {
+  "frame_1080x1920": true,
+  "lufs_band": true,
+  "true_peak_ceiling": true,
+  "length": true
+ }
+}
