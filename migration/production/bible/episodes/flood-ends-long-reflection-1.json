@@ -1,0 +1,143 @@
+{
+ "version": "bible-episode-v1",
+ "id": "flood-ends-long-reflection-1",
+ "series": "The Bible, story by story (KJV)",
+ "part": 1,
+ "passage": "Genesis 8:1-9:17 (KJV, public domain)",
+ "format": "short",
+ "track": "keeper-reflection",
+ "layout": "keeper-reflection",
+ "parent": {
+  "long": "flood-ends-long",
+  "pilot": "pilot-017",
+  "clean_master_sha256": "95307e831eee4c06f826715b5d974a6fcdcacfe6029e6e57bcb8879d777b1eea",
+  "start": 39.95,
+  "end": 66.12
+ },
+ "segments": [
+  {
+   "shot": "k-r1",
+   "asset": "shot-flood-ends-long-reflection-1-k-r1-sha256-dae7a90d6e87c022739337f751c125c8457acaa29c2fe886b9929df38caef388.mp4",
+   "clip_sha256": "dae7a90d6e87c022739337f751c125c8457acaa29c2fe886b9929df38caef388"
+  },
+  {
+   "shot": "k-r2",
+   "asset": "shot-flood-ends-long-reflection-1-k-r2-sha256-7f043fe271892146064b903aaf532c1aa48412d2638705960b09503547fd00e2.mp4",
+   "clip_sha256": "7f043fe271892146064b903aaf532c1aa48412d2638705960b09503547fd00e2"
+  },
+  {
+   "shot": "k-r3",
+   "asset": "shot-flood-ends-long-reflection-1-k-r3-sha256-664e04f4814391ef47c2b53e5282ec16c7537fd72086df307722dfea57daa596.mp4",
+   "clip_sha256": "664e04f4814391ef47c2b53e5282ec16c7537fd72086df307722dfea57daa596"
+  },
+  {
+   "shot": "k-r4",
+   "asset": "shot-flood-ends-long-reflection-1-k-r4-sha256-b1cd73da0127ebac6f994a95342920614c5a4cf6315e60e2d8d7ac768a81e9c5.mp4",
+   "clip_sha256": "b1cd73da0127ebac6f994a95342920614c5a4cf6315e60e2d8d7ac768a81e9c5"
+  }
+ ],
+ "output_sha256": "1af86a9e62fc452cbbd20022c8cfddad71404dec0179754360b25d79091f301e",
+ "seconds": 26.2,
+ "frame": [
+  1080,
+  1920
+ ],
+ "narration": [
+  {
+   "kind": "insight",
+   "text": "God did not hang that rainbow because Noah was perfect, and the story says so plainly."
+  },
+  {
+   "kind": "insight",
+   "text": "He failed again, the way people do. Still, God hung up His own bow."
+  },
+  {
+   "kind": "insight",
+   "text": "So if you are waiting on God tonight, you are not forgotten. You are carried."
+  },
+  {
+   "kind": "insight",
+   "text": "Before any rainbow, Noah did one thing first on dry ground, and it still stops me every time. Watch what it was."
+  }
+ ],
+ "scripture": [],
+ "title": "You Are Not Forgotten. You Are Carried. | Noah, Genesis 8-9 (KJV) #shorts",
+ "description": "The Keeper over the waiting of the flood: God remembered Noah, and mercy was never Noah's reward, it was God's idea (Genesis 8-9, King James Version).\n\nWatch the full story, the whole of Genesis 8-9: https://youtu.be/1m-NUJhkdMY\n\nScripture: King James Version (public domain), Genesis 8:1-3; 9:12-17. The reflection is the Keeper's own words, marked apart from scripture.\nVisuals: AI-generated scenes (Buzzy, GPT-image stills with camera motion). Narration: AI voice. Music: original, owned.\n\n#bible #genesis #biblestory #noah",
+ "tags": [],
+ "category_id": "29",
+ "first_comment": "You are not forgotten; God remembered Noah in the dark, and He remembers you. Watch the full story of the flood's end here: https://youtu.be/1m-NUJhkdMY",
+ "credits": {
+  "vidiq": 0,
+  "pavo": 0
+ },
+ "slot": "2026-11-05T05:30:00Z",
+ "review": {
+  "overall": 9.3,
+  "reviewer": "claude-session-reviewer",
+  "output_sha256": "1af86a9e62fc452cbbd20022c8cfddad71404dec0179754360b25d79091f301e",
+  "scores": {
+   "opening_and_promise": 9.5,
+   "picture_quality": 9.5,
+   "figure_and_background_integrity": 9.5,
+   "captions_readable_and_synced": 9.5,
+   "audio_clarity_and_mix": 9.0,
+   "pacing_and_visual_variety": 9.0,
+   "scripture_on_screen": 10.0,
+   "policy_safe": 10.0
+  },
+  "issues": [
+   "00:00 to 00:26 The top half is two slow-moving stills of the ark on the sea, about 14 s and 12 s; the Keeper below changes only by a hard cut at 10.6 s and the crossfades. Low visual variety for 26 s, and no rainbow on top while the lines speak of one.",
+   "00:00 The local review flags speech at the first frame (category a). Measured on this exact file: the first 0.3 s is digital silence and the Keeper's first word rises at 0.3 s at full level with no fade, so the opening is abrupt but no word is cut.",
+   "00:06 / 00:10 / 00:16 Joins between the four Keeper clips: 0.2 s crossfade after k-r1, a plain cut after k-r2 (its clip has 0.05 s of silence after 'bow', E282) and a 0.2 s crossfade after k-r3; the audio at each join decays to below -37 dBFS before the next clip starts.",
+   "Pace: the four Pavo clips are cut at their last words (E282) and slowed x0.92 (E286), measured 164.5 wpm, at the top of the 115-165 band: brisk for a reflection.",
+   "Audio was NOT heard by ear. The pinned ASR (local-review 41646996539) hears exactly the four lines and nothing after the last word of any of them (the earlier 'you mealy', second 'own bow' and 'for carried' are gone, and the new 'right?' after k-r4 is cut); -14.2 LUFS, -1.8 dBTP, 0.94 s of silence only after the last word. Delivery, diction and the sound of the retimed voice are not claimed."
+  ],
+  "defects": [
+   {
+    "issue": 0,
+    "category": "d",
+    "resolved": false
+   },
+   {
+    "issue": 1,
+    "category": "info",
+    "resolved": false
+   },
+   {
+    "issue": 2,
+    "category": "info",
+    "resolved": false
+   },
+   {
+    "issue": 3,
+    "category": "info",
+    "resolved": false
+   },
+   {
+    "issue": 4,
+    "category": "info",
+    "resolved": false
+   }
+  ],
+  "publish_decision": {
+   "decision": "hold",
+   "by": "claude-session-reviewer",
+   "note": "Below the 9.5 Short floor on this exact master (sha256 1af86a9e62fc): honest overall 9.3, pacing and visual variety 9.0 (two held stills on top for 26 s), audio judged only by ASR and measures. Not published. Raising it needs a livelier top half or the owner accepting this one; no score is copied from another file."
+  },
+  "process": "local-review.yml run 41646996539 (pinned local ASR + ffmpeg measures) of this exact master, rendered by reflection-shorts.yml run 41646614168; frame sheet 1 frame / 2 s viewed, full-size frames at 3 s and 17 s viewed (shrunk to 540 px), amplitude read back around each join and the first and last 0.9 s. I did not listen to the sound.",
+  "run_id": "41646996539"
+ },
+ "attributes": {
+  "hook_type": "keeper_reflection_open_loop",
+  "hook_line": "God did not hang that rainbow because Noah was perfect, and the story says so plainly.",
+  "title_pattern": "hook_pipe_story_kjv",
+  "first_visual": "ark_on_the_sea_over_keeper_face_firelit",
+  "ai_scenes": 3,
+  "slot_utc": "05:30",
+  "transition": "cut",
+  "seconds": 26.2,
+  "voice": "kokoro_am_michael",
+  "compose": "engine",
+  "structure": "bible-keeper-reflection"
+ }
+}
