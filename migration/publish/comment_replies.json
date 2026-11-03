@@ -47,6 +47,10 @@
   "UgzzaMnedFC4Kc2X0eV4AaABAg": {
    "decision": "REPLY",
    "text": "Obrigado! Que bom que gostou."
+  },
+  "UgxTm2kn2cTk4BciIqp4AaABAg": {
+   "decision": "SKIP",
+   "reason": "provocation"
   }
  },
  "version": "comment-replies-v1"

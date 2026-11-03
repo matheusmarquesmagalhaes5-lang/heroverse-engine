@@ -83,6 +83,17 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
   20 s, `REFLECTION_TOO_SHORT_FOR_CLIP`: his last frame would be held over 3 s). Needs an owner decision: a fourth Pavo segment
   (spend), or a re-planned reflection; no gate was loosened and nothing was re-rendered.
 
+- 2026-11-03 (scheduled run ~12:15-13:45 UTC): two more flood cuts. `flood-ends-leaf-cut` is PUBLIC since 13:04Z (https://youtube.com/shorts/IDL92dFIK2Y):
+  publish-episode was dispatched without publish_at (empty = public now, the record's slot is not read), so it did not wait for 2026-11-05 13:30Z
+  (E285: the dispatch guard now refuses a record with a future slot and no publish_at; always pass publish_at=<slot>). `flood-ends-grace-cut`
+  (471.94-500.88 s, the Keeper's close) is scheduled, private until 2026-11-05T05:30Z: https://youtube.com/shorts/JlKX5Tw3kjM (local-review
+  41641492530, review 9.1, audio by ASR and measures, not by ear). The ararat cut failed ORIGINAL_SHARE 0.39 and was dropped. short-cuts.yml no longer
+  re-renders a cut that has its record (E283, run 41635228742 hit RECORD_EXISTS_FOR_ANOTHER_FILE). Shorts in the next 48 h: 11-03 13:30 rainbow,
+  18:30 door, 23:30 genesis-10; 11-04 05:30 shutin, 13:30 landing, 18:30 raven, 23:30 altar; 11-05 05:30 grace. FREE: 11-05 13:30 (reflection 1, held
+  by the other session's trim_out_s work, E281, or genesis-11-short bridge). All 9 cuts of flood-ends-long are used; no stock is left. Studio
+  related-video queue entries added for every flood Short. Failed PR-check runs on stale branches (m2-noah-compilation, reflection-rerender) were
+  unit tests on old branches, not main (main passes). Noah compilation (due 11-04) and the Babel script are not started in this run.
+
 ## Next moments
 
 - M2 compilation "Complete Story of Noah (Genesis 5-9)" is due 2026-11-04.
