@@ -113,7 +113,8 @@
   },
   "AUDIO_NOT_OUR_LINE": {
    "class": "C",
-   "probe": "evidence/pavo/setups.json via episode_preflight: at least 6 direct 0-credit Pavo generations of each talking LINE with its speaker, reference and binding, judged by lipsync_check (else PROBE_REQUIRED), and a chance within TALK_ATTEMPTS of at least 0.9 (else PROBE_RATE_LOW), before any build: the rate belongs to the line (#419); risk_order generates talking shots first (E99)"
+   "probe": "evidence/pavo/setups.json via episode_preflight: at least 6 direct 0-credit Pavo generations of each talking LINE with its speaker, reference and binding, judged by lipsync_check (else PROBE_REQUIRED), and a chance within TALK_ATTEMPTS of at least 0.9 (else PROBE_RATE_LOW), before any build: the rate belongs to the line (#419); risk_order generates talking shots first (E99)",
+   "note": "owner 2026-11-03: not a refusal for a shot on the default Pavo-audio route (the ASR text is a review note; a KJV quotation gets WARN_KJV_WORDS); still a hard stop only for a legacy clip until the ASR proves the line"
   },
   "AUDIO_OFFSET": {
    "class": "C",
@@ -1993,7 +1994,8 @@
   },
   "SPEECH_WORDS_NOT_EXACT": {
    "class": "C",
-   "probe": "story QA v4 (owner 27/10, R4): knowable only on a generated clip. The cheapest probe is the native line's direct 0-credit Pavo probe (episode_preflight's talking-line probes, binding pavo_native.NATIVE_BINDING), then episode_build.py speech-check on the probed clip before approve-shot, which recomputes the verdict and refuses a failed or unmeasured clip (SPEECH_UNCHECKED, SPEECH_CHECKS_FAILED); the build ships only an approval whose speech record is of that exact clip"
+   "probe": "story QA v4 (owner 27/10, R4): knowable only on a generated clip. The cheapest probe is the native line's direct 0-credit Pavo probe (episode_preflight's talking-line probes, binding pavo_native.NATIVE_BINDING), then episode_build.py speech-check on the probed clip before approve-shot, which recomputes the verdict and refuses a failed or unmeasured clip (SPEECH_UNCHECKED, SPEECH_CHECKS_FAILED); the build ships only an approval whose speech record is of that exact clip",
+   "note": "owner 2026-11-03: not a refusal for a Pavo-audio talking shot (review note, WARN_KJV_WORDS for a KJV quotation); it still binds the story QA v4 native-speech route"
   },
   "SRT_BOM": {
    "class": "A",
@@ -2866,6 +2868,10 @@
     "migration/production/bible/episode_build.py::plan_check.pavo_coverage_problems(plan, chars)"
    ],
    "note": "E290: a talking shot with `pavo` fields is sent only with pavo_prompt.build's prompt; plan_check --strict (pavo_coverage_problems, every buzzy-long and buzzy plan not grandfathered) and episode_build.check_plan refuse the same plan before any probe, and also HOOK_NOT_PAVO, CHARACTER_LINE_NOT_PAVO, KEEPER_LINE_NOT_PAVO, PAVO_LINE_PACE and PAVO_LESSONS_INVALID, so the request never reaches Pavo unstandardized."
+  },
+  "WARN_KJV_WORDS": {
+   "class": "N",
+   "why": "owner 2026-11-03 (Pavo's own audio, clips in full): a warning in the review notes, never a refusal. A shot whose line is a direct KJV quotation (a `scripture` item) keeps the KJV-exact pillar: when the pinned ASR text differs from the line, or was not heard, speech-check and approve-shot record WARN_KJV_WORDS and the reviewer decides; no generation, voice or render stops"
   }
  },
  "review": {

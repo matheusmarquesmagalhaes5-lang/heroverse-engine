@@ -418,7 +418,9 @@ def placements(plan, layout, spans, clips, approvals):
         if sid not in clips or not Path(clips[sid]).is_file():
             raise SystemExit(f"NATIVE_CLIP_MISSING {sid} (the approved clip with its own audio)")
         out.append({"shot": sid, "clip": str(clips[sid]), "at": float(layout["lines"][idx[0]]["start"]),
-                    "src_start": onset, "seconds": round(end - onset, 3), "gain_db": float(gain)})
+                    "src_start": onset, "seconds": round(end - onset, 3), "gain_db": float(gain),
+                    **({"tp_db": float(tp)} if isinstance(tp := ((approvals.get(sid) or {}).get("speech") or {}).get("tp_db"),
+                                                         (int, float)) else {})})
     return out
 
 
@@ -432,7 +434,8 @@ def premix_filter(places, total):
         ms = int(round(p["at"] * 1000))
         parts.append(f"[{k}:a]atrim=start={p['src_start']:.3f}:duration={d:.3f},asetpts=PTS-STARTPTS,"
                      f"aresample=48000,aformat=channel_layouts=stereo,volume={p['gain_db']:.2f}dB,"
-                     f"afade=t=in:d={XFADE_S},afade=t=out:st={max(0.0, d - XFADE_S):.3f}:d={XFADE_S},"
+                     + (f"alimiter=limit={10 ** (p['tp_db'] / 20):.4f}:level=false," if "tp_db" in p else "")   # Pavo audio: true-peak ceiling
+                     + f"afade=t=in:d={XFADE_S},afade=t=out:st={max(0.0, d - XFADE_S):.3f}:d={XFADE_S},"
                      f"adelay={ms}|{ms}[s{k}]")
         labels.append(f"[s{k}]")
     parts.append(f"anoisesrc=color=brown:sample_rate=48000:duration={total:.3f},highpass=f={BED_BAND[0]},"

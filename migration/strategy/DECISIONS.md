@@ -659,6 +659,23 @@ WILL be used. Organize it at EDIT time." "Learn every day, so there is no rework
 - Edit-time use (OPERATIONS "Editing rule"): trim, crossfade and retime fix a usable generation; TALK_ATTEMPTS stays 1.
 - `strategy/pavo_lessons.md`: dated, evidence-linked lessons; production reads it, Inteligência Viva appends daily.
 
+## 2026-11-03 — Pavo clips in full with Pavo's own audio; Kokoro only over the stills (owner order)
+
+Owner, verbatim: "Quero com o áudio do pavo também.. quero o vídeo do pavo na íntegra. A narração feita vai ser pras imagens..
+aproveitar tudo que o pavo pode oferecer dentro das capacidades." This reverses E287's default (our WAV over Pavo's picture).
+- `pavo_audio` is a per-shot setting; `"pavo"` is the DEFAULT on every track (long compose, reflection, compilation, bridge
+  Shorts). `"ours"` stays only as an explicit option and for approvals recorded under it (their digests do not move; the two
+  compilation plans built before the order are grandfathered by id). Kokoro narration is only over still and scene shots.
+- In full: the clip is the bytes Pavo returned; `trim_out_s` applies only when set explicitly. The E272 crossfade stays at
+  the boundaries, picture only, never over speech. The audio is matched to the narration (integrated LUFS within +-1 dB, true
+  peak under -1.5 dBTP).
+- Checks: the visual gates stay (face, mouth sync against Pavo's own track, artifacts). `AUDIO_NOT_OUR_LINE` and
+  `SPEECH_WORDS_NOT_EXACT` stop refusing a Pavo-audio shot; the ASR text is a review note. The KJV-exact pillar (CLAUDE.md,
+  SYSTEM) keeps one exception: a direct KJV quotation whose heard words differ gets `WARN_KJV_WORDS` in the review notes and
+  the reviewer decides (a warning, not an automatic refusal).
+- Not a defect, so no ERRORS entry. A clip made under E287's default has only OUR audio kept (the raw track was dropped); the
+  pre-remux probe assets (Pavo's track kept) are the only source of its own audio.
+
 ## 2026-11-03 — Flood reflection 1 held at 9.3; what the next reflection must have (coordinator)
 
 Reflection 1 on our audio (three clips, master 08276e85, reflection-shorts run 41660551928, local-review 41661153948) was reviewed honestly at 9.3
