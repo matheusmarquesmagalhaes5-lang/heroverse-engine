@@ -548,3 +548,7 @@ video, joined to their neighbours by a short picture crossfade, never a hard jum
 (`episode_build.LONG_XFADE` 0.3 s, `short_engine.transitions`) blends the picture into and out of each talking shot inside the
 silence next to his words, so no word is cut, faded or overlapped; the Shorts keep cuts only (hookify block-shorts-fade-wipe).
 God's voice (s-voice) stays a scene: God is never shown with a face, and Genesis 8-9 has no other on-screen speaker.
+
+## 2026-11-03 — Inteligência Viva (extra run, owner request)
+- Moment M2 (Noah compilation due 11-04); M1 closing as flood-ends-long goes public. No trigger fired. Goal numbers carried over from 11-02 (subs 301 measured; long hours 27.9 estimated; hours bind). No vidIQ credits used.
+- live-plan: 4 Shorts/day (2-3 cuts or bridges + 1 Keeper reflection v2), slots 05:30/13:30/18:30/23:30 UTC (05:30 and 18:30 are unmeasured exploration), next long Genesis 10-11 (script runway 0), compilation 11-04.
