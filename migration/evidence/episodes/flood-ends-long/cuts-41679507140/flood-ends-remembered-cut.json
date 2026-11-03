@@ -1,0 +1,77 @@
+{
+ "version": "bible-cut-v1",
+ "id": "flood-ends-remembered-cut",
+ "spec": "migration/production/bible/cuts/flood-ends-long.json",
+ "parent": {
+  "long": "flood-ends-long",
+  "pilot": "pilot-017",
+  "report": "migration/evidence/episodes/flood-ends-long/report-41484825424.json",
+  "clean_master_sha256": "95307e831eee4c06f826715b5d974a6fcdcacfe6029e6e57bcb8879d777b1eea",
+  "start": 33.2,
+  "end": 56.18,
+  "x": 0.5
+ },
+ "output_sha256": "0518460174ca6976bc7d5f76b3d0f4ce7a4f45af4ae609b03e3794551f329813",
+ "seconds": 23.0,
+ "frame": [
+  1080,
+  1920
+ ],
+ "lufs": -14.1,
+ "true_peak_dbfs": -1.9,
+ "sentences": [
+  {
+   "segment": "n03",
+   "text": "And God remembered Noah, and every living thing, and all the cattle that was with him in the ark:",
+   "start": 0.293,
+   "end": 6.671,
+   "kind": "scripture",
+   "reference": "Genesis 8:1 (KJV)",
+   "line": 3,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n03",
+   "text": "and God made a wind to pass over the earth, and the waters asswaged;",
+   "start": 6.851,
+   "end": 11.438,
+   "kind": "scripture",
+   "reference": "Genesis 8:1 (KJV)",
+   "line": 3,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n04",
+   "text": "Remembered.",
+   "start": 11.788,
+   "end": 12.833,
+   "line": 4,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n04",
+   "text": "Not because God had forgotten them, but because the next move was His.",
+   "start": 13.013,
+   "end": 17.472,
+   "line": 4,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n04",
+   "text": "A wind swept over the earth, and the great ocean began, slowly, to sink.",
+   "start": 17.652,
+   "end": 22.729,
+   "line": 4,
+   "line_kind": "story"
+  }
+ ],
+ "advice": [
+  "ends on a story line: a KJV line or the Keeper's insight closes a cut best"
+ ],
+ "checks": {
+  "frame_1080x1920": true,
+  "lufs_band": true,
+  "true_peak_ceiling": true,
+  "length": true
+ }
+}
