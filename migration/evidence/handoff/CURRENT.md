@@ -76,12 +76,6 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
   stays off main (render evidence on branch `claude/reflection-flood-ends-long-reflection-1-41630141252`). Next: `reflection_shorts.render` must
   cut each clip at the end of its last required word (pinned ASR), re-render, review, then slot 2026-11-05T05:30Z (spec already carries it).
 
-- 2026-11-03 (reflection 1 trim, E282): `reflection_shorts.py` now honours each approved clip's `trim_out_s` (the check re-verifies the
-  pinned ASR's words on the trimmed media; the render cuts the clip, a shorter crossfade follows a trimmed clip). k-r1 5.40 s,
-  k-r2 4.24 s, k-r3 5.32 s (from the ASR word timings, inside the silence; ASR now hears exactly each line, audio not heard by ear).
-  BLOCKED, not published: the three trimmed clips are 14.9 s of Keeper speech, and the top clip is 21.2 s (the Short floor is
-  20 s, `REFLECTION_TOO_SHORT_FOR_CLIP`: his last frame would be held over 3 s). Needs an owner decision: a fourth Pavo segment
-  (spend), or a re-planned reflection; no gate was loosened and nothing was re-rendered.
 
 - 2026-11-03 (scheduled run ~12:15-13:45 UTC): two more flood cuts. `flood-ends-leaf-cut` is PUBLIC since 13:04Z (https://youtube.com/shorts/IDL92dFIK2Y):
   publish-episode was dispatched without publish_at (empty = public now, the record's slot is not read), so it did not wait for 2026-11-05 13:30Z
@@ -93,6 +87,15 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
   by the other session's trim_out_s work, E281, or genesis-11-short bridge). All 9 cuts of flood-ends-long are used; no stock is left. Studio
   related-video queue entries added for every flood Short. Failed PR-check runs on stale branches (m2-noah-compilation, reflection-rerender) were
   unit tests on old branches, not main (main passes). Noah compilation (due 11-04) and the Babel script are not started in this run.
+
+- 2026-11-03 (reflection 1, E282/E286): each Pavo clip is cut at its approved `trim_out_s` (k-r1 5.40, k-r2 4.24, k-r3 5.38 s) and a 4th
+  segment k-r4 ("Before any rainbow, Noah did one thing first on dry ground...", 2nd generation of two, cut 8.48 s) was added; the
+  clips are slowed x0.92 to 164.5 wpm. Top clip 39.95-66.12 s. Master `bible-flood-ends-long-reflection-1-sha256-1af86a9e...` (26.2 s,
+  -14.2 LUFS, run 41646614168), local-review 41646996539: pinned ASR hears exactly the four lines and nothing after them. Record
+  `episodes/flood-ends-long-reflection-1.json` carries an honest review 9.3 (pacing 9.0: two held stills on top; audio not heard by
+  ear) and decision HOLD: below the 9.5 floor, NOT published, slot 2026-11-05T05:30Z still free. Next: a livelier top half (another
+  sentence-safe range that fits 25.5-26.2 s without overlapping a cut) or the owner's call; then publish-episode.yml and the
+  `studio_jobs.json` related-video entry for 1m-NUJhkdMY.
 
 ## Next moments
 
