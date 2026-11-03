@@ -2659,5 +2659,34 @@ class ExistingEditImport(unittest.TestCase):
             self.assertEqual((work / 'narration.wav').read_bytes(), before)
 
 
+class TrimOutPoint(unittest.TestCase):
+    """E273 (owner: a minor imperfection is fixed in the edit, never regenerated): a per-shot trim_out_s."""
+
+    def test_an_out_point_must_leave_picture_and_cut_the_clip(self):
+        self.assertIsNone(eb.trim_problem(6.0, 7.29))
+        for bad in (7.29, 9.0, 0.5, float("nan"), True, "6", None):
+            self.assertRegex(eb.trim_problem(bad, 7.29), "SHOT_TRIM_INVALID")
+        with tempfile.TemporaryDirectory() as tmp:
+            src, dst = Path(tmp) / "a.mp4", Path(tmp) / "b.mp4"
+            subprocess.run(["ffmpeg", "-nostdin", "-v", "error", "-f", "lavfi", "-i", "testsrc=s=160x90:r=24:d=4",
+                            "-f", "lavfi", "-i", "sine=d=4", "-shortest", "-c:v", "libx264", "-c:a", "aac", str(src)],
+                           check=True)
+            eb.trim_media(src, 2.5, dst)
+            self.assertAlmostEqual(eb.clip_timing.measure(dst)["video_seconds"], 2.5, delta=0.1)
+            self.assertAlmostEqual(eb.clip_timing.measure(dst)["audio_seconds"], 2.5, delta=0.1)
+            before = eb.sha256(src)
+            eb.trim_media(src, 2.0)                       # in place: the approved hash then no longer matches,
+            self.assertNotEqual(eb.sha256(src), before)   # so the build always fetches the approved bytes first
+
+    def test_the_trim_is_applied_by_the_build_and_the_upscale_and_proven_on_the_trimmed_media(self):
+        build = Path(eb.__file__).read_text()
+        self.assertIn('trim_media(final, approved["trim_out_s"])', build)
+        self.assertIn("trim_media(clip, trim_out_s, Path(tmp)", build)            # speech-check on the trimmed media
+        self.assertIn('load(side).get("trim_out_s") != trim_out_s', build)       # the proof is for this trim only
+        long = (Path(eb.__file__).parent / "long_build.py").read_text()
+        self.assertIn('eb.trim_media(src, a["trim_out_s"])', long)
+        self.assertIn('rec.get("trim_out_s") != a.get("trim_out_s")', long)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -471,6 +471,19 @@ class Decode(unittest.TestCase):
         self.assertIn('track = face_track(clip, model, fps=None)', text)
         self.assertIn('sync_measure(face_crops(track), samples, rate, weights)', text)
 
+    def test_e273_the_lip_tracker_finds_a_small_hooded_firelit_face_without_loosening_the_share(self):
+        # E273: at the landmarker's default 0.5 confidences k-bow (face in every frame of its sheet) read face_frames
+        # 0.71 and FACE_NOT_FOUND; the tracker now runs at FACE_CONFIDENCE (0.92 on that clip). The 80 % share is
+        # untouched and the God-shot still-image check keeps the default.
+        self.assertEqual(lc.FACE_FRAMES_MIN, 0.8)
+        self.assertLess(lc.FACE_CONFIDENCE, 0.5)
+        self.assertGreaterEqual(lc.FACE_CONFIDENCE, 0.4)
+        text = Path(lc.__file__).read_text()
+        self.assertIn("lm = landmarker(model, vision.RunningMode.VIDEO, FACE_CONFIDENCE)", text)
+        self.assertIn("lm = landmarker(model, vision.RunningMode.IMAGE)", text)
+        for name in ("min_face_detection_confidence", "min_face_presence_confidence", "min_tracking_confidence"):
+            self.assertIn(name, text)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -63,7 +63,7 @@ the episode record and dispatches publish-episode.yml.
                                                  E114, shot-probe.yml with adopt_run: clips a build run made and
                                                  Claude approved, as a probe record (request recomputed and equal to
                                                  the plan's now, the build's checks again); nothing generated
-  episode_build.py approve-shot RECORD SHOT ASSET SCORE NOTE --reviewer MODEL
+  episode_build.py approve-shot RECORD SHOT ASSET SCORE NOTE --reviewer MODEL [--trim-out SECONDS]
                                                  E114: the named session's frame review (SCORE >= 9.5) approves a clip
                                                  into shots/<episode>.json (by PR); the build ships that clip
   episode_build.py measure-clip RECORD SHOT CLIP [OUT_DIR]
@@ -1468,7 +1468,7 @@ def shot_runner(shot, index, plan, layout, refs, work, client, download, lip_pyt
 
 
 def speech_check_step(plan_path, record_path, shot_id, clip, whisper_dir, yamnet, lip_python, face_model,
-                      refs_json=None, measure=None):
+                      refs_json=None, measure=None, trim_out_s=None):
     """Story QA v4: measure one probed native clip (its record under evidence/shots, the clip by its sha256) and write
     the sidecar approve-shot reads, migration/evidence/shots/<episode>/speech/<clip sha256>.json. The verdict is
     recomputed at approval; nothing is approved here."""
@@ -1484,6 +1484,21 @@ def speech_check_step(plan_path, record_path, shot_id, clip, whisper_dir, yamnet
     if not any(c.get("clip_sha256") == clip_sha for c in entry.get("clips") or []):
         raise SystemExit(f"SHOT_CLIP_NOT_IN_RECORD {shot_id} {clip_sha}")
     shot = next(s for s in plan["shots"] if s["id"] == shot_id)
+    if trim_out_s is not None:   # E273: the words, lips and voice are measured on the clip as the edit will use it
+        problem = trim_problem(trim_out_s, clip_timing.measure(clip)["video_seconds"])
+        if problem:
+            raise SystemExit(problem)
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            trimmed = trim_media(clip, trim_out_s, Path(tmp) / "trimmed.mp4")
+            return _speech_check_measured(plan, record, entry, shot, shot_id, clip_sha, trimmed, whisper_dir, yamnet,
+                                          lip_python, face_model, refs_json, measure, trim_out_s)
+    return _speech_check_measured(plan, record, entry, shot, shot_id, clip_sha, clip, whisper_dir, yamnet, lip_python,
+                                  face_model, refs_json, measure, None)
+
+
+def _speech_check_measured(plan, record, entry, shot, shot_id, clip_sha, clip, whisper_dir, yamnet, lip_python,
+                           face_model, refs_json, measure, trim_out_s):
     if plan_check.talking(shot):
         lips, _ = lipsync_flags(lip_python, face_model, clip, own_track(clip))
     elif plan_check.voiceover(shot):
@@ -1497,7 +1512,10 @@ def speech_check_step(plan_path, record_path, shot_id, clip, whisper_dir, yamnet
     out.parent.mkdir(parents=True, exist_ok=True)
     words = " ".join(((entry.get("request") or {}).get("audio") or {}).get("words") or [])
     verdict = pavo_native.speech_verdict(measures, words, binding=pavo_native.voice_binding(who))
-    save(out, {"shot": shot_id, "clip_sha256": clip_sha, "measures": measures, "verdict": verdict})
+    side = {"shot": shot_id, "clip_sha256": clip_sha, "measures": measures, "verdict": verdict}
+    if trim_out_s is not None:
+        side["trim_out_s"] = trim_out_s
+    save(out, side)
     return {"shot": shot_id, "sidecar": rel(out), "verdict": verdict}
 
 
@@ -1569,6 +1587,32 @@ def voice_reference_step(record_path, shot_id, asset, score, note, voices_path=N
         "chosen_at": today or time.strftime("%Y-%m-%d", time.gmtime()), **({"previous": old} if old else {})}
     save(path, data)
     return data["voices"][who]["reference"]
+
+
+TRIM_MIN_S = 2.0   # a trimmed talking clip keeps at least this much picture
+
+
+def trim_problem(trim_out_s, video_seconds):
+    """E273: None when `trim_out_s` is a usable out point of a clip of `video_seconds`, else the refusal."""
+    if (isinstance(trim_out_s, bool) or not isinstance(trim_out_s, (int, float)) or not math.isfinite(trim_out_s)
+            or not TRIM_MIN_S <= trim_out_s < video_seconds):
+        return f"SHOT_TRIM_INVALID {trim_out_s!r} (an out point of {TRIM_MIN_S} s up to the clip's {video_seconds} s)"
+    return None
+
+
+def trim_media(src, trim_out_s, dst=None):
+    """E273 (owner: a minor imperfection is fixed in the edit): the clip cut at `trim_out_s` seconds, video and
+    audio together, re-encoded near-losslessly; `dst` (default: replaces `src`). The words, lips and clip checks run
+    on this media (speech-check --trim-out, the build) and the upscale starts from it."""
+    src = Path(src)
+    out = Path(dst) if dst else src.with_name(src.stem + ".trim.mp4")
+    run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", str(src), "-t", f"{float(trim_out_s):.3f}",
+         "-c:v", "libx264", "-preset", "medium", "-crf", "12", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k",
+         str(out)])
+    if dst is None:
+        out.replace(src)
+        return src
+    return out
 
 
 def accepted_flags(approved, clip_sha):
@@ -1762,24 +1806,27 @@ def generate_step(plan, work, lip_python, face_model, approvals=None, fetch=fetc
         if not (final.exists() and approved.get("clip_sha256") and sha256(final) == approved["clip_sha256"]):
             shot_sources.fetch_source(approved, final, fetch, direction=directions.get(shot["id"]),
                                       depth_png=depth_png(work, approved))
+        if approved.get("trim_out_s") is not None:   # E273: the approved out point; every check below runs on it
+            trim_media(final, approved["trim_out_s"])
+            entry["trim_out_s"] = approved["trim_out_s"]
         if shot["id"] in directions:   # owner 2026-11-01: the move the director chose and why, for the reviewer
             entry["motion_direction"] = directions[shot["id"]]
         if source in shot_sources.SILENT_SOURCES:   # a Buzzy clip, a licensed clip or a still in motion: no person, no speech
             flags, measures = clip_flags(final, plan.get("aspect_ratio", "9:16")), None
         else:
             flags, measures = check(final)
-            ok = accepted_flags(approved, sha256(final))   # E266: soft measures the approval recorded, this clip only
+            ok = accepted_flags(approved, approved["clip_sha256"])   # E266: soft measures the approval recorded, this clip only
             if ok:
                 entry["accepted_flags"] = ok
             flags = [f for f in flags if f not in ok]
             if native_speech(req, shot):   # story QA v4: the speech checks Claude's approval was given on
-                flags = flags + speech_record_flags(approved, sha256(final))
+                flags = flags + speech_record_flags(approved, approved["clip_sha256"])
         entry["source"] = source
         entry["approved"] = {k: approved.get(k) for k in ("asset", "clip_sha256", "request_sha256", "score", "source",
                                "footage", "still", "still_sha256", "repo_path", "frame", "motion", "motion_engine", "still_from",
                                "clip_from", "clip_seconds", "crop_to", "url", "inventory", "licence", "credit", "speech",
                                "attribution", "picture_sha256", "task_id", "buzzy_model", "buzzy_resolution", "accepted_flags",
-                               "words")
+                               "words", "trim_out_s")
                              if k in approved}
         entry["checks"] = {"flags": flags, "measures": measures}
         report["shots"][shot["id"]] = entry
@@ -2060,7 +2107,8 @@ def measure_clip_step(record_path, shot_id, clip_path, out_dir=None):
     return media
 
 
-def approve_shot(record_path, shot_id, asset, score, note, shots_dir=None, today=None, *, reviewer=None):
+def approve_shot(record_path, shot_id, asset, score, note, shots_dir=None, today=None, *, reviewer=None,
+                 trim_out_s=None):
     """E114: the named session's frame review approves one probed clip (>= SHOT_REVIEW_MIN) into shots/<episode>.json, copied
     from the probe record so nobody hand-edits a hash. Refused: a record outside evidence/shots/, a clip that failed
     the build's checks, a score under the floor, an empty note."""
@@ -2103,6 +2151,10 @@ def approve_shot(record_path, shot_id, asset, score, note, shots_dir=None, today
     if media is None:
         raise SystemExit(f"SHOT_MEDIA_UNMEASURED {shot_id} (episode_build.py measure-clip before approving legacy probes)")
     seconds = media["video_seconds"]
+    if trim_out_s is not None:   # E273: an out point, proven on the trimmed media (speech-check --trim-out)
+        problem = trim_problem(trim_out_s, seconds)
+        if problem:
+            raise SystemExit(f"{problem} {shot_id}")
     speech = None
     audio = (entry.get("request") or {}).get("audio") or {}
     if split["words"]:
@@ -2113,6 +2165,10 @@ def approve_shot(record_path, shot_id, asset, score, note, shots_dir=None, today
         if not side.is_file() or not line:
             raise SystemExit(f"SHOT_WORDS_UNPROVEN {shot_id} {asset} ({','.join(split['words'])}: run "
                              f"episode_build.py speech-check on this clip, the ASR must hear the line: {rel(side)})")
+        if load(side).get("trim_out_s") != trim_out_s:   # the proof is for the media the edit ships, no other
+            raise SystemExit(f"SHOT_WORDS_UNPROVEN {shot_id} {asset} (the sidecar was measured with trim "
+                             f"{load(side).get('trim_out_s')!r}, this approval trims at {trim_out_s!r}: run "
+                             "episode_build.py speech-check with the same --trim-out)")
         heard = pavo_native.words_flags(load(side).get("measures") or {}, line)
         if heard:
             raise SystemExit(f"SHOT_WORDS_NOT_OUR_LINE {shot_id} {asset} {','.join(heard)} (the clip does not say our "
@@ -2147,6 +2203,8 @@ def approve_shot(record_path, shot_id, asset, score, note, shots_dir=None, today
                               "approved_at": today or time.strftime("%Y-%m-%d", time.gmtime()), "model": model}
     if speech:
         data["shots"][shot_id]["speech"] = speech
+    if trim_out_s is not None:
+        data["shots"][shot_id]["trim_out_s"] = trim_out_s
     if accepted:   # E266: what the reviewer saw and accepted on this exact clip; the build ignores exactly these
         data["shots"][shot_id]["accepted_flags"] = accepted
         if words_proof:
@@ -2409,6 +2467,10 @@ def main(argv):
     if cmd == "approve-shot" and len(argv) == 9 and argv[7] == "--reviewer":
         print(json.dumps(approve_shot(argv[2], argv[3], argv[4], argv[5], argv[6], reviewer=argv[8]), ensure_ascii=False))
         return 0
+    if cmd == "approve-shot" and len(argv) == 11 and argv[7] == "--reviewer" and argv[9] == "--trim-out":
+        print(json.dumps(approve_shot(argv[2], argv[3], argv[4], argv[5], argv[6], reviewer=argv[8],
+                                      trim_out_s=float(argv[10])), ensure_ascii=False))
+        return 0
     if cmd == "measure-clip" and len(argv) in (5, 6):
         print(json.dumps(measure_clip_step(*argv[2:5], out_dir=argv[5] if len(argv) == 6 else None)))
         return 0
@@ -2430,6 +2492,12 @@ def main(argv):
     if cmd in ("sources", "approve-source"):   # owner 27/10 (R1-R3): per-shot sources, Claude's approval of one
         import shot_sources
         return shot_sources.main(argv)
+    if cmd == "speech-check" and "--trim-out" in argv and len(argv) in (12, 13):   # ... [REFS] --trim-out S (E273)
+        trim = float(argv[-1])
+        rest = argv[:-2]
+        print(json.dumps(speech_check_step(*rest[2:10], refs_json=rest[10] if len(rest) == 11 else None,
+                                           trim_out_s=trim)))
+        return 0
     if cmd == "speech-check" and len(argv) in (10, 11):   # story QA v4: PLAN RECORD SHOT CLIP WHISPER YAMNET LIP FACE [REFS]
         print(json.dumps(speech_check_step(*argv[2:10], refs_json=argv[10] if len(argv) == 11 else None)))
         return 0

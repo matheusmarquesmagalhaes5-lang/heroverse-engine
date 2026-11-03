@@ -305,6 +305,8 @@ def upscale_step(plan, shot_id, out, weights, frame_fn=None, fetch=eb.fetch_rele
         fps, seconds = FPS, probe(dst)["seconds"]
     else:
         shot_sources.fetch_source(a, src, fetch)
+        if a.get("trim_out_s") is not None:   # E273: the approved out point, before the upscale
+            eb.trim_media(src, a["trim_out_s"])
         if frame_fn is None:
             frame_fn = pavo_footage.real_esrgan(weights)
             upscaler = AI["upscaler"]
@@ -319,6 +321,8 @@ def upscale_step(plan, shot_id, out, weights, frame_fn=None, fetch=eb.fetch_rele
            "source": {"width": w, "height": h, "fps": round(fps, 3), "seconds": round(seconds, 3)},
            "frame": frame_of(dst), "fps": FPS, "upscaler": upscaler, "sha256": eb.sha256(dst),
            "artifact": artifact_name(plan["episode"], shot_id, key)}
+    if a.get("trim_out_s") is not None:
+        rec["trim_out_s"] = a["trim_out_s"]
     eb.save(out / f"{shot_id}.json", rec)
     print(json.dumps({"shot": shot_id, "sha256": rec["sha256"], "artifact": rec["artifact"]}))
     return rec
@@ -340,7 +344,8 @@ def upscaled(plan, up, approvals, frame=FRAME):
         a = approvals.get(sid) or {}
         key = shot_sources.source_sha256(a)
         if (key is None or rec.get("source_sha256") != key
-                or rec.get("source_kind", "pavo") != a.get("source", "pavo")):
+                or rec.get("source_kind", "pavo") != a.get("source", "pavo")
+                or rec.get("trim_out_s") != a.get("trim_out_s")):   # E273: made with the approved out point
             problems.append(f"UPSCALE_SOURCE_MISMATCH {sid}")
         elif eb.sha256(f) != rec.get("sha256"):
             problems.append(f"UPSCALE_SHA256_MISMATCH {sid}")
