@@ -17,7 +17,8 @@ DIRECTING = {"migration/OPERATIONS.md", "migration/SYSTEM.md", "migration/STANDA
 # E115: failure classes (rework audit 2026-10-27). An entry's `class` is one of these, or a list of them
 CLASSES = {"cheap-vs-expensive", "env-vs-test", "review-after-build", "random", "no-data", "threshold", "external",
            "order", "drift", "silent", "direction", "pr-late", "capacity", "rerun-without-fix", "recurrence",
-           "fragile-input", "instrument"}   # E120 instrument: the instrument cannot measure the property it gates
+           "fragile-input", "instrument", "process"}   # E120 instrument: the instrument cannot measure the property it gates
+# E287 process: our own procedure made the defect (we judged or fed Pavo's output wrongly), not a tool or a threshold
 CLASSED_FROM = 115   # E100-E114 were backfilled with their class; from E115 on every entry is classified
 
 

@@ -328,6 +328,26 @@ class Check(unittest.TestCase):
                 root, spec, _ = make_root(t, flags={"k-r1": [flag, "MOUTH_NOT_IN_SYNC"]}, accepted={"k-r1": ["MOUTH_NOT_IN_SYNC", flag]})
                 self.assertIn("SEGMENT_CLIP_HARD_FLAG", codes(rs.check(spec, root)), flag)
 
+    def test_e287_a_clip_with_our_audio_proof_needs_no_asr_proof_and_the_proof_must_match_the_probe_record(self):
+        # the clip's audio is OUR request audio (pavo_audio): its words are the request's, exact by construction
+        proof = {"route": "ours", "sha256": "b" * 64, "samples": 88200, "seconds": 2.0}
+        with tempfile.TemporaryDirectory() as t:
+            root, spec, _ = make_root(t, flags={"k-r2": ["AUDIO_NOT_OUR_LINE"]}, accepted={"k-r2": ["AUDIO_NOT_OUR_LINE"]})
+            self.assertIn("SEGMENT_CLIP_WORDS_UNPROVEN", codes(rs.check(spec, root)))   # legacy: Pavo's track, ASR proof owed
+            shots, record = root / rs.SHOTS / f"{EPISODE}.json", root / "migration/evidence/shots" / EPISODE / "123456.json"
+            doc, rec = json.loads(shots.read_text()), json.loads(record.read_text())
+            for clip in rec["shots"]["k-r2"]["clips"]:
+                clip["audio"] = proof
+            doc["shots"]["k-r2"]["audio"] = proof
+            shots.write_text(json.dumps(doc))
+            record.write_text(json.dumps(rec))
+            got = rs.check(spec, root)
+            self.assertEqual(got["problems"], [])
+            self.assertEqual(got["reflection"]["clips"][1]["audio"], proof)
+            doc["shots"]["k-r2"]["audio"] = dict(proof, sha256="c" * 64)   # a proof the probe record does not hold
+            shots.write_text(json.dumps(doc))
+            self.assertIn("SEGMENT_AUDIO_NOT_OURS", codes(rs.check(spec, root)))
+
     def test_the_keeper_clips_fit_the_top_clip(self):
         with tempfile.TemporaryDirectory() as t:
             root, spec, _ = make_root(t)

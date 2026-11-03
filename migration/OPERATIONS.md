@@ -126,6 +126,18 @@ the approval records it. `reflection_shorts.py check` repeats it per segment (`S
 `SEGMENT_CLIP_WORDS_UNPROVEN`, `SEGMENT_CLIP_WRONG_WORDS`). A Keeper segment that fails both generations falls back to the
 DECISIONS ladder only for a long; a reflection without all its clips is not made that day (the cuts and bridge Shorts go on).
 
+Pavo's audio is ours (E287, owner 2026-11-03: "o pavo nao tem vida propria... quem ta errado e voce"). On the Kokoro-input route
+(`sound: false`, our exact line as the request's input audio) the clip we keep is Pavo's picture with the request's own WAV laid
+over it (`pavo_audio.mux_ours`, PCM, bit-exact); Pavo's returned track is dropped and never judged. Words are the request's
+words (exact by construction); `pavo_audio.assert_ours` proves the kept audio equals the request WAV and the probe record
+carries it (`pavo_audio: "ours"`, per clip `audio` = sha256 + samples). `lipsync_check` measures the SyncNet offset and
+confidence, the face and the clip checks against that same audio, thresholds unchanged. So `AUDIO_NOT_OUR_LINE` and
+`SPEECH_WORDS_NOT_EXACT` cannot come from Pavo's track any more, no `speech-check` is owed for these clips, and
+`approve-shot` refuses a clip of such a record without the proof (`SHOT_AUDIO_NOT_OURS`); `reflection_shorts` verifies the
+digest on the approved bytes (`SEGMENT_AUDIO_NOT_OURS`). Pavo's own speech (`audio_route: pavo_native`) keeps its story QA v4
+checks. Evidence: `evidence/pavo-audio-eval/20261103.json` (`pavo-audio-eval.yml`, 21 stored clips, nothing generated: 13 of
+the 16 rejected only for words or audio hold sync with our audio). Legacy approvals (Pavo's track kept) keep the E266 rules.
+
 A reflection record has `track: keeper-reflection`, `layout: keeper-reflection`, `parent` {long, pilot, clean_master_sha256,
 start, end}, `segments` [{shot, asset, clip_sha256}] and no review. A new file is a new review; the long's score is never
 copied. Today only a long-first long with a caption-free master and sentence timeline can be the source (a compilation, as
@@ -186,7 +198,7 @@ for runs, `ops/errors_query.py` for errors. Model routing: Haiku checks, Sonnet 
 only coordination.
 
 Free compute first: GitHub Actions, the owner's PC (ChatGPT app stills in the single chat "HeroVerse — stills"),
-Gemini free tier. Pavo only at 0-credit quotes, max 2 generations per talking line (E264); Buzzy at most 100/day.
+Gemini free tier. Pavo only at 0-credit quotes, 1 generation per talking line and a 2nd only for a visual defect of the first (E264, E287); Buzzy at most 100/day.
 
 Owner-only steps that need a login: Buffer, TikTok `runner.py login`, the Telegram bot token secret, YouTube Studio
 related-video links.

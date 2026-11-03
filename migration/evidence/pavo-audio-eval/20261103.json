@@ -1,0 +1,799 @@
+{
+ "about": "E287 evidence (pavo-audio-eval.yml runs 41645235318 and 41647049778, PR #751): stored Pavo clips by sha256 with our request audio regenerated from the plan version each probe ran, laid over the same picture (AAC mux at evaluation time; production keeps PCM). pavo_track = lipsync_check as judged before E287 (Pavo's returned track); ours = the same check on the muxed clip. in_sync = lipsync_check.sync_verdict, face_frames >= 0.8. Nothing generated.",
+ "thresholds": {
+  "SYNC_OFFSET_CENTRE": -1.5,
+  "SYNC_OFFSET_TOL": 1.5,
+  "SYNC_CONF_MIN": 2.7,
+  "FACE_FRAMES_MIN": 0.8
+ },
+ "clips": [
+  {
+   "clip": "c8d168ddbd368d9929cd5d3709886b9668136d3047f248d94198c83fd10b0f7b",
+   "pavo_track": {
+    "audio": {
+     "corr": 0.193,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 7.561,
+     "min_dist": 8.506,
+     "windows": 195
+    },
+    "flags": [
+     "AUDIO_NOT_OUR_LINE"
+    ]
+   },
+   "ours": {
+    "audio": {
+     "corr": 1.0,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": 0,
+     "conf": 1.802,
+     "min_dist": 14.062,
+     "windows": 195
+    },
+    "face_frames": 0.97,
+    "flags": [
+     "MOUTH_NOT_IN_SYNC"
+    ],
+    "lips_corr": 0.204,
+    "in_sync": false
+   },
+   "episode": "genesis-10-short",
+   "run": "41574608645",
+   "shot": "k-insight"
+  },
+  {
+   "clip": "950e4db3902f4a925ef64d4290d6c6eef023a950420a6d9c3d2791d66a3d605f",
+   "pavo_track": {
+    "audio": {
+     "corr": 0.768,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 7.188,
+     "min_dist": 8.421,
+     "windows": 195
+    },
+    "flags": [
+     "AUDIO_NOT_OUR_LINE"
+    ]
+   },
+   "ours": {
+    "audio": {
+     "corr": 1.0,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 6.027,
+     "min_dist": 9.399,
+     "windows": 195
+    },
+    "face_frames": 0.93,
+    "flags": [],
+    "lips_corr": 0.362,
+    "in_sync": true
+   },
+   "episode": "genesis-10-short",
+   "run": "41574608645",
+   "shot": "k-insight"
+  },
+  {
+   "clip": "cdcae102f843a8ff3f0a60ce95307e878f9e42d2b97bd9285bdc6ed6184b8f31",
+   "pavo_track": {
+    "audio": {
+     "corr": 0.715,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 5.958,
+     "min_dist": 9.223,
+     "windows": 177
+    },
+    "flags": [
+     "AUDIO_NOT_OUR_LINE"
+    ]
+   },
+   "ours": {
+    "audio": {
+     "corr": 1.0,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 3.98,
+     "min_dist": 10.956,
+     "windows": 177
+    },
+    "face_frames": 0.99,
+    "flags": [],
+    "lips_corr": 0.427,
+    "in_sync": true
+   },
+   "episode": "genesis-10-short",
+   "run": "41574608645",
+   "shot": "k-close"
+  },
+  {
+   "clip": "7ae7812a96823bbc3bbc6a5f163af203c0b32018622843aa3f79d0b687074c69",
+   "pavo_track": {
+    "audio": {
+     "corr": 0.313,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 6.433,
+     "min_dist": 9.177,
+     "windows": 177
+    },
+    "flags": [
+     "AUDIO_NOT_OUR_LINE"
+    ]
+   },
+   "ours": {
+    "audio": {
+     "corr": 1.0,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 3.298,
+     "min_dist": 12.16,
+     "windows": 177
+    },
+    "face_frames": 0.97,
+    "flags": [],
+    "lips_corr": 0.26,
+    "in_sync": true
+   },
+   "episode": "genesis-10-short",
+   "run": "41574608645",
+   "shot": "k-close"
+  },
+  {
+   "clip": "bd1e8c757de6a1771992f4df615ba9a491bffc7197d67e9cb0b96461a945dc46",
+   "pavo_track": {
+    "audio": {
+     "corr": 0.687,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 7.657,
+     "min_dist": 8.552,
+     "windows": 177
+    },
+    "flags": [
+     "AUDIO_NOT_OUR_LINE"
+    ]
+   },
+   "ours": {
+    "audio": {
+     "corr": 1.0,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 6.269,
+     "min_dist": 9.605,
+     "windows": 177
+    },
+    "face_frames": 0.85,
+    "flags": [],
+    "lips_corr": 0.247,
+    "in_sync": true
+   },
+   "episode": "flood-ends-long",
+   "run": "41547308176",
+   "shot": "k-hook"
+  },
+  {
+   "clip": "9be7cd0ea5b75837d773b2807c9f5144f90252d1dd4f6d0315d08096e2deca70",
+   "pavo_track": {
+    "audio": {
+     "corr": 0.361,
+     "lag_ms": -120
+    },
+    "sync": {
+     "offset": 0,
+     "conf": 6.191,
+     "min_dist": 7.954,
+     "windows": 177
+    },
+    "flags": [
+     "AUDIO_NOT_OUR_LINE",
+     "AUDIO_OFFSET",
+     "FACE_NOT_FOUND"
+    ]
+   },
+   "ours": {
+    "audio": {
+     "corr": 1.0,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -4,
+     "conf": 0.918,
+     "min_dist": 12.886,
+     "windows": 177
+    },
+    "face_frames": 0.26,
+    "flags": [
+     "FACE_NOT_FOUND",
+     "MOUTH_NOT_IN_SYNC"
+    ],
+    "lips_corr": 0.153,
+    "in_sync": false
+   },
+   "episode": "flood-ends-long",
+   "run": "41547308176",
+   "shot": "k-hook"
+  },
+  {
+   "clip": "89b603a627a8cfb4967e29413ed457b81df3e010f6b50766b25ae1cb1c415e60",
+   "pavo_track": {
+    "audio": {
+     "corr": 0.802,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 8.095,
+     "min_dist": 7.983,
+     "windows": 159
+    },
+    "flags": [
+     "AUDIO_NOT_OUR_LINE"
+    ]
+   },
+   "ours": {
+    "audio": {
+     "corr": 1.0,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 5.874,
+     "min_dist": 10.023,
+     "windows": 159
+    },
+    "face_frames": 1.0,
+    "flags": [],
+    "lips_corr": 0.29,
+    "in_sync": true
+   },
+   "episode": "flood-ends-long",
+   "run": "41547308176",
+   "shot": "k-bow"
+  },
+  {
+   "clip": "8023c5109257f690f6845028e06d008b330027e071186e0578f4b06fbfb6efbc",
+   "pavo_track": {
+    "audio": {
+     "corr": 0.857,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 8.459,
+     "min_dist": 8.068,
+     "windows": 159
+    },
+    "flags": []
+   },
+   "ours": {
+    "audio": {
+     "corr": 1.0,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 5.541,
+     "min_dist": 10.247,
+     "windows": 159
+    },
+    "face_frames": 0.92,
+    "flags": [],
+    "lips_corr": 0.348,
+    "in_sync": true
+   },
+   "episode": "flood-ends-long",
+   "run": "41547308176",
+   "shot": "k-bow"
+  },
+  {
+   "clip": "eaa3a3bbc24e70a93f44ae8d6d369baa5a3aaa7b318fd72fceb5dec6a5a4420d",
+   "pavo_track": {
+    "audio": {
+     "corr": 0.38,
+     "lag_ms": -40
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 7.452,
+     "min_dist": 7.759,
+     "windows": 230
+    },
+    "flags": [
+     "AUDIO_NOT_OUR_LINE"
+    ]
+   },
+   "ours": {
+    "audio": {
+     "corr": 1.0,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -2,
+     "conf": 3.208,
+     "min_dist": 11.765,
+     "windows": 230
+    },
+    "face_frames": 0.99,
+    "flags": [],
+    "lips_corr": 0.051,
+    "in_sync": true
+   },
+   "episode": "flood-ends-long",
+   "run": "41534197400",
+   "shot": "k-bow"
+  },
+  {
+   "clip": "ad6fdeeba9c8e3218cf520b01d403323add6684038a8f0126e2072cbdb7cd779",
+   "pavo_track": {
+    "audio": {
+     "corr": 0.294,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": 0,
+     "conf": 6.21,
+     "min_dist": 9.003,
+     "windows": 230
+    },
+    "flags": [
+     "AUDIO_NOT_OUR_LINE"
+    ]
+   },
+   "ours": {
+    "audio": {
+     "corr": 1.0,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": 0,
+     "conf": 3.404,
+     "min_dist": 11.529,
+     "windows": 230
+    },
+    "face_frames": 0.98,
+    "flags": [],
+    "lips_corr": 0.061,
+    "in_sync": true
+   },
+   "episode": "flood-ends-long",
+   "run": "41534197400",
+   "shot": "k-bow"
+  },
+  {
+   "clip": "b2298cb314337f3d9c67d912157c1c7759d0ffbf756b3b1724e8b7ffb16ede8d",
+   "pavo_track": {
+    "audio": {
+     "corr": 0.826,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 8.029,
+     "min_dist": 7.535,
+     "windows": 159
+    },
+    "flags": [
+     "AUDIO_NOT_OUR_LINE"
+    ]
+   },
+   "ours": {
+    "audio": {
+     "corr": 1.0,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 6.365,
+     "min_dist": 9.671,
+     "windows": 159
+    },
+    "face_frames": 0.97,
+    "flags": [],
+    "lips_corr": 0.204,
+    "in_sync": true
+   },
+   "episode": "flood-ends-long-reflection-1",
+   "run": "41562885923",
+   "shot": "k-r1"
+  },
+  {
+   "clip": "843bca22792cfc8bb1713cd7ccec9c1cfda9ea6904b627dfcc68d85ee032db37",
+   "pavo_track": {
+    "audio": {
+     "corr": 0.654,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 8.042,
+     "min_dist": 7.949,
+     "windows": 159
+    },
+    "flags": [
+     "AUDIO_NOT_OUR_LINE"
+    ]
+   },
+   "ours": {
+    "audio": {
+     "corr": 1.0,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 3.991,
+     "min_dist": 12.023,
+     "windows": 159
+    },
+    "face_frames": 1.0,
+    "flags": [],
+    "lips_corr": 0.163,
+    "in_sync": true
+   },
+   "episode": "flood-ends-long-reflection-1",
+   "run": "41562885923",
+   "shot": "k-r1"
+  },
+  {
+   "clip": "f9f16c0263280f9e6e2687fa3bfef4a5fe9b9375d8429497a30b6f1f1c712aca",
+   "pavo_track": {
+    "audio": {
+     "corr": 0.699,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 7.653,
+     "min_dist": 8.13,
+     "windows": 123
+    },
+    "flags": [
+     "AUDIO_NOT_OUR_LINE"
+    ]
+   },
+   "ours": {
+    "audio": {
+     "corr": 1.0,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 6.749,
+     "min_dist": 8.94,
+     "windows": 124
+    },
+    "face_frames": 1.0,
+    "flags": [],
+    "lips_corr": 0.335,
+    "in_sync": true
+   },
+   "episode": "flood-ends-long-reflection-1",
+   "run": "41562885923",
+   "shot": "k-r2"
+  },
+  {
+   "clip": "3a1695926490792fb7531f0c398bb1aaa2340ff693155402133a4c469678ebc0",
+   "pavo_track": {
+    "audio": {
+     "corr": 0.986,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 7.745,
+     "min_dist": 7.605,
+     "windows": 123
+    },
+    "flags": []
+   },
+   "ours": {
+    "audio": {
+     "corr": 1.0,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 7.945,
+     "min_dist": 7.32,
+     "windows": 124
+    },
+    "face_frames": 1.0,
+    "flags": [],
+    "lips_corr": 0.458,
+    "in_sync": true
+   },
+   "episode": "flood-ends-long-reflection-1",
+   "run": "41562885923",
+   "shot": "k-r2"
+  },
+  {
+   "clip": "7f89329f1252ddcb760d872f66d69058d2a7d59a1f6a5c91a069865e4234243a",
+   "pavo_track": {
+    "audio": {
+     "corr": 0.055,
+     "lag_ms": -40
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 8.043,
+     "min_dist": 7.534,
+     "windows": 159
+    },
+    "flags": [
+     "AUDIO_NOT_OUR_LINE"
+    ]
+   },
+   "ours": {
+    "audio": {
+     "corr": 1.0,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -2,
+     "conf": 1.32,
+     "min_dist": 13.768,
+     "windows": 159
+    },
+    "face_frames": 0.99,
+    "flags": [
+     "MOUTH_NOT_IN_SYNC"
+    ],
+    "lips_corr": -0.145,
+    "in_sync": false
+   },
+   "episode": "flood-ends-long-reflection-1",
+   "run": "41572178956",
+   "shot": "k-r3"
+  },
+  {
+   "clip": "b132b7fadc4b491da5aca06bfdb8621887dca3741a9e7b4353f4bc333a67f090",
+   "pavo_track": {
+    "audio": {
+     "corr": 0.409,
+     "lag_ms": -240
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 7.652,
+     "min_dist": 8.056,
+     "windows": 159
+    },
+    "flags": [
+     "AUDIO_NOT_OUR_LINE",
+     "AUDIO_OFFSET"
+    ]
+   },
+   "ours": {
+    "audio": {
+     "corr": 1.0,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -10,
+     "conf": 1.725,
+     "min_dist": 13.543,
+     "windows": 159
+    },
+    "face_frames": 0.98,
+    "flags": [
+     "MOUTH_NOT_IN_SYNC"
+    ],
+    "lips_corr": 0.251,
+    "in_sync": false
+   },
+   "episode": "flood-ends-long-reflection-1",
+   "run": "41572178956",
+   "shot": "k-r3"
+  },
+  {
+   "clip": "7f043fe271892146064b903aaf532c1aa48412d2638705960b09503547fd00e2",
+   "pavo_track": {
+    "audio": {
+     "corr": 0.865,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 5.981,
+     "min_dist": 9.036,
+     "windows": 123
+    },
+    "flags": []
+   },
+   "ours": {
+    "audio": {
+     "corr": 1.0,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 5.132,
+     "min_dist": 9.861,
+     "windows": 124
+    },
+    "face_frames": 0.99,
+    "flags": [],
+    "lips_corr": 0.362,
+    "in_sync": true
+   },
+   "episode": "flood-ends-long-reflection-1",
+   "run": "41572178956",
+   "shot": "k-r2"
+  },
+  {
+   "clip": "9ba6e7eee0aa213846a99e66c60af579ea5672a3c3ad20e18dbbd97aeb629f0b",
+   "pavo_track": {
+    "audio": {
+     "corr": 0.83,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 7.146,
+     "min_dist": 8.753,
+     "windows": 230
+    },
+    "flags": [
+     "AUDIO_NOT_OUR_LINE"
+    ]
+   },
+   "ours": {
+    "audio": {
+     "corr": 1.0,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": 0,
+     "conf": 4.991,
+     "min_dist": 10.634,
+     "windows": 230
+    },
+    "face_frames": 1.0,
+    "flags": [],
+    "lips_corr": 0.288,
+    "in_sync": true
+   },
+   "episode": "arc-02-noah-compilation-keeper",
+   "run": "41629339290",
+   "shot": "k-hook"
+  },
+  {
+   "clip": "5a28e1162ba9e850fe8b84cdd92e1d5e59598290d08cc39737100f2aaca7d746",
+   "pavo_track": {
+    "audio": {
+     "corr": 0.844,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 7.872,
+     "min_dist": 8.127,
+     "windows": 230
+    },
+    "flags": [
+     "AUDIO_NOT_OUR_LINE"
+    ]
+   },
+   "ours": {
+    "audio": {
+     "corr": 1.0,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 5.709,
+     "min_dist": 10.234,
+     "windows": 230
+    },
+    "face_frames": 0.98,
+    "flags": [],
+    "lips_corr": 0.441,
+    "in_sync": true
+   },
+   "episode": "arc-02-noah-compilation-keeper",
+   "run": "41629339290",
+   "shot": "k-hook"
+  },
+  {
+   "clip": "1fcff33b087a7459cb3a6d4476c002efbbe9bd98da7c3193ec27d92904f5068a",
+   "pavo_track": {
+    "audio": {
+     "corr": 0.691,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 7.958,
+     "min_dist": 7.76,
+     "windows": 230
+    },
+    "flags": [
+     "AUDIO_NOT_OUR_LINE"
+    ]
+   },
+   "ours": {
+    "audio": {
+     "corr": 1.0,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 5.953,
+     "min_dist": 9.588,
+     "windows": 230
+    },
+    "face_frames": 0.82,
+    "flags": [],
+    "lips_corr": 0.443,
+    "in_sync": true
+   },
+   "episode": "arc-02-noah-compilation-keeper",
+   "run": "41629339290",
+   "shot": "k-close"
+  },
+  {
+   "clip": "15cf615c6f9bfcca9d82be7ea14206c2dc46b6361fa88fadfc4a8810533d8784",
+   "pavo_track": {
+    "audio": {
+     "corr": 0.013,
+     "lag_ms": -120
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 7.186,
+     "min_dist": 7.991,
+     "windows": 230
+    },
+    "flags": [
+     "AUDIO_NOT_OUR_LINE",
+     "AUDIO_OFFSET",
+     "FACE_NOT_FOUND"
+    ]
+   },
+   "ours": {
+    "audio": {
+     "corr": 1.0,
+     "lag_ms": 0
+    },
+    "sync": {
+     "offset": -1,
+     "conf": 1.386,
+     "min_dist": 14.23,
+     "windows": 230
+    },
+    "face_frames": 0.09,
+    "flags": [
+     "FACE_NOT_FOUND",
+     "MOUTH_NOT_IN_SYNC"
+    ],
+    "lips_corr": 0.0,
+    "in_sync": false
+   },
+   "episode": "arc-02-noah-compilation-keeper",
+   "run": "41629339290",
+   "shot": "k-close"
+  }
+ ]
+}

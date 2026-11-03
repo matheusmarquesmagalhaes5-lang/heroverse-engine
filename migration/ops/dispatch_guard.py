@@ -138,7 +138,7 @@ def shot_probe(i):
     need(re.fullmatch(r"[1-6]", i.get("attempts") or ""), "attempts", i.get("attempts"), "1-6")
     need(re.fullmatch(r"(\d{6,20})?", i.get("adopt_run") or ""), "adopt_run", i.get("adopt_run"), "a run id or empty")
     sys.path.insert(0, str(ROOT / "migration" / "production" / "bible"))
-    import episode_build  # E264: a talking or voice-over shot is probed in one round (TALK_ATTEMPTS = 2 generations)
+    import episode_build  # E264: a talking or voice-over shot is probed in one round (TALK_ATTEMPTS = 1 generation, TALK_ATTEMPTS_MAX = 2 only for a visual defect, E287)
     by_id = {s.get("id"): s for s in plan.get("shots", [])}
     over = [x for x in shots if int(i["attempts"]) > episode_build.probe_rounds_cap(by_id[x])]
     need(not over, "attempts", i.get("attempts"),

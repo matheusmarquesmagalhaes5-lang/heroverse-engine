@@ -26,6 +26,29 @@ from client import PavoError  # noqa: E402
 HAS_FFMPEG = shutil.which("ffmpeg") is not None
 
 
+# E287: the engine lays OUR request audio over Pavo's picture (pavo_audio.mux_ours) and proves the digest. These tests feed
+# the engine fake bytes, not media, so the two media calls are stubbed here; test_pavo_audio.py runs the real ones on real
+# ffmpeg media and AudioIsOurs below drives them through the engine's own attempt().
+FAKE_PROOF = {"route": "ours", "sha256": "0" * 64, "samples": 1, "seconds": 0.1}
+REAL_MUX, REAL_ASSERT = eb.pavo_audio.mux_ours, eb.pavo_audio.assert_ours
+
+
+def _fake_mux(clip, line, dst):
+    shutil.copyfile(clip, dst)
+    return dst
+
+
+def stub_ours():
+    eb.pavo_audio.mux_ours, eb.pavo_audio.assert_ours = _fake_mux, lambda clip, line: dict(FAKE_PROOF)
+
+
+def real_ours():
+    eb.pavo_audio.mux_ours, eb.pavo_audio.assert_ours = REAL_MUX, REAL_ASSERT
+
+
+stub_ours()
+
+
 # genesis-07-short.json as main had it before plan B (#413, commit 1c1ed79): the lip-synced Keeper. Run 40307414749
 # built its 30 scene and God clips from exactly these requests (its report.json: 30 of 30 prompts and seconds equal)
 TALKING_COMMIT = "1c1ed79"
@@ -341,14 +364,14 @@ class Generation(unittest.TestCase):
         # lines); a talking shot gets 2, then falls back to the Keeper voice-over on a still motion
         talk = {"id": "k-a", "kind": "keeper", "lines": [0]}
         scene = {"id": "s-a", "kind": "scene", "lines": [1]}
-        self.assertEqual(eb.attempts_for(talk), eb.TALK_ATTEMPTS)
+        self.assertEqual(eb.attempts_for(talk), eb.TALK_ATTEMPTS_MAX)
         self.assertEqual(eb.attempts_for(scene), eb.ATTEMPTS)
-        self.assertEqual(eb.TALK_ATTEMPTS, 2)
+        self.assertEqual((eb.TALK_ATTEMPTS, eb.TALK_ATTEMPTS_MAX), (1, 2))   # E287: one generation, a second only for a visual defect
         n = []
         with self.assertRaises(eb.ShotFailed):
             eb.make_shot("k-a", lambda i: (n.append(i) or {"generation": i}, None), lambda p: ([], None),
                          attempts=eb.attempts_for(talk))
-        self.assertEqual(len(n), eb.TALK_ATTEMPTS)
+        self.assertEqual(len(n), eb.TALK_ATTEMPTS_MAX)
         # generate_step itself giving a talking shot TALK_ATTEMPTS generations: the E94 failed-shot test (s-eve)
 
     def test_e264_a_talking_shot_costs_two_generations_and_one_probe_round(self):
@@ -356,7 +379,7 @@ class Generation(unittest.TestCase):
         import long_preflight as lp
         talk = {"id": "k-a", "kind": "keeper", "lines": [0]}
         scene = {"id": "s-a", "kind": "scene", "lines": [1]}
-        self.assertEqual((eb.TALK_ATTEMPTS, eb.TALK_PROBE_ROUNDS_MAX), (2, 1))
+        self.assertEqual((eb.TALK_ATTEMPTS_MAX, eb.TALK_PROBE_ROUNDS_MAX), (2, 1))   # the ceiling every budget fits (E287: a 2nd only for a visual defect)
         self.assertEqual((eb.probe_rounds_cap(talk), eb.probe_rounds_cap(scene)), (1, eb.PROBE_ATTEMPTS_MAX))
         with self.assertRaises(SystemExit) as err:
             eb.probe_ids({"episode": "x", "shots": [talk]}, "k-a", "2")
@@ -882,7 +905,7 @@ class Gating(unittest.TestCase):
         record = eb.probe_step(self.plan, self.work, "py", "model", out, ["s-eve"], 1, client=client,
                                download=lambda url, dst: Path(dst).write_bytes(url.encode()), sleep=lambda s: None,
                                sheet=lambda video, sheet: sheets.append(Path(sheet).name))
-        self.assertEqual(len(client.calls), eb.TALK_ATTEMPTS)               # still at most 2 generations
+        self.assertEqual(len(client.calls), eb.TALK_ATTEMPTS_MAX)               # still at most 2 generations
         clips = record["shots"]["s-eve"]["clips"]
         self.assertEqual([c["flags"] for c in clips], [["MOUTH_NOT_IN_SYNC"], ["FACE_NOT_FOUND"]])
         self.assertEqual([(c["hard_flags"], c["soft_flags"]) for c in clips],
@@ -921,6 +944,8 @@ class Gating(unittest.TestCase):
             side = records / self.plan["episode"] / "speech" / f"{sha}.json"
             doc = json.loads(path.read_text())
             doc["shots"]["s-eve"]["clips"][0]["flags"] = ["AUDIO_NOT_OUR_LINE", "MOUTH_NOT_IN_SYNC"]
+            doc["shots"]["s-eve"]["clips"][0].pop("audio")   # a LEGACY clip (E287: Pavo's own track was kept): E266's rules
+            doc.pop("pavo_audio")
             path.write_text(json.dumps(doc))
             with self.assertRaisesRegex(SystemExit, "SHOT_WORDS_UNPROVEN"):
                 eb.approve_shot(path, "s-eve", clips[0]["asset"], "9.6", "re-timed, same words?", **kw)
@@ -1067,11 +1092,11 @@ class Gating(unittest.TestCase):
         # E94: run 40278642295 refused k-insight three times; only the flags reached the log, no clip, no measures
         eb.lipsync_flags = lambda py, model, clip, wav: (["FACE_NOT_FOUND"], {"audio": {"corr": 0.2}, "mouth": {}})
         with self.assertRaises(SystemExit):   # E266: a HARD flag; a soft or words flag no longer fails the shot
-            self.generate(extra=eb.TALK_ATTEMPTS - 1)   # s-eve talks: every one of its generations is refused
+            self.generate(extra=eb.TALK_ATTEMPTS_MAX - 1)   # s-eve talks: every one of its generations is refused
         report = json.loads((self.work / "report.json").read_text())
         attempts = report["shots"]["s-eve"]["attempts"]
         self.assertEqual([a["clip"] for a in attempts],
-                         [f"s-eve-fail{n}.mp4" for n in range(1, eb.TALK_ATTEMPTS + 1)])   # a talking shot (E98)
+                         [f"s-eve-fail{n}.mp4" for n in range(1, eb.TALK_ATTEMPTS_MAX + 1)])   # a talking shot (E98)
         self.assertEqual(attempts[0]["lipsync"]["audio"]["corr"], 0.2)
         for a in attempts:
             self.assertTrue((self.work / "clips" / a["clip"]).exists())
@@ -1515,9 +1540,9 @@ class KeeperVoiceover(unittest.TestCase):
         order = [s["id"] for _, s in eb.risk_order(p["shots"])]
         self.assertEqual(order, ["s-eve", "s-god", "k-close", "s-a"])      # a check that can fail: before the scenes
         # 1 pass in 6 direct closed-mouth clips: 3 generations would lose the run; Pavo is free, so 6 like a talking shot
-        self.assertEqual(eb.attempts_for(p["shots"][-1]), eb.TALK_ATTEMPTS)
+        self.assertEqual(eb.attempts_for(p["shots"][-1]), eb.TALK_ATTEMPTS_MAX)
         self.assertEqual(eb.attempts_for(p["shots"][1]), eb.ATTEMPTS)
-        self.assertTrue(all(eb.attempts_for(s) == eb.TALK_ATTEMPTS for s in VO_EXAMPLE["shots"] if s["kind"] == "keeper"))
+        self.assertTrue(all(eb.attempts_for(s) == eb.TALK_ATTEMPTS_MAX for s in VO_EXAMPLE["shots"] if s["kind"] == "keeper"))
 
     def test_the_layout_counts_his_share_and_writes_no_input_audio(self):
         p = vo_dialogue_plan()
@@ -1661,9 +1686,9 @@ class StillMouthGate(unittest.TestCase):
         eb.still_mouth_flags = lambda py, model, clip: (seen.append(clip) or ["MOUTH_TALKING"],
                                                         {"still_mouth": {"opening_range": 0.09}})
         with self.assertRaises(SystemExit) as err:
-            self.generate(extra=eb.TALK_ATTEMPTS - 1)
-        self.assertIn(f"SHOT_FAILED k-close after {eb.TALK_ATTEMPTS} generations: MOUTH_TALKING", str(err.exception))
-        self.assertEqual(len(seen), eb.TALK_ATTEMPTS)
+            self.generate(extra=eb.TALK_ATTEMPTS_MAX - 1)
+        self.assertIn(f"SHOT_FAILED k-close after {eb.TALK_ATTEMPTS_MAX} generations: MOUTH_TALKING", str(err.exception))
+        self.assertEqual(len(seen), eb.TALK_ATTEMPTS_MAX)
 
     def test_a_broken_still_mouth_check_stops_the_run_and_spends_no_regeneration(self):
         fake = self.work / "python"
