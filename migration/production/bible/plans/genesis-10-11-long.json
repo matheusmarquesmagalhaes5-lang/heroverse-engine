@@ -1,0 +1,801 @@
+{
+ "source_policy": "pavo_speech_stock",
+ "track": "buzzy-long",
+ "version": "bible-plan-v2",
+ "episode": "genesis-10-11-long",
+ "part": 1,
+ "passage": "Genesis 10-11:9 (KJV, public domain), with Genesis 11:26-28 and 12:2",
+ "period": {
+  "setting": "The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing.",
+  "exclude": "No stone temples, glass, iron, machinery, cranes, modern clothing or roads.",
+  "avoid": [
+   "streets?",
+   "roads?",
+   "lanterns?",
+   "kerosene",
+   "glass",
+   "windows?",
+   "chimneys?",
+   "castles?",
+   "domes?",
+   "churches",
+   "church",
+   "steeples?",
+   "spires?",
+   "iron",
+   "steel",
+   "machinery",
+   "cranes?",
+   "concrete",
+   "stone (?:temples?|buildings?|walls?|columns?)",
+   "marble",
+   "columns?",
+   "coats?",
+   "hats?",
+   "(?:peaked|flat|baseball|cloth) caps?"
+  ]
+ },
+ "aspect_ratio": "16:9",
+ "story": "Why God scattered the builders of Babel: one language, one plan and a tower to make a name (Genesis 10-11; arc 4)",
+ "people": "The builders are the people of Genesis 11, seen mostly in silhouette or from behind in rough undyed linen and wool; the builder is an original anonymous brick-maker of Shinar (characters.json) who speaks the people's KJV words (Genesis 11:3-4) in three Pavo talking shots, alone on screen. God is never shown: His Genesis 11:6-7 are read by the Keeper as narration over clouds and light, never a face or a figure. The Keeper speaks the hook, the insights and the close in Pavo talking shots.",
+ "beats": "structure bible-story long: cold open (the Keeper's question: why did God stop them?); the world of one language and the nations (Genesis 10); the plain of Shinar; clay, fire and pitch; the builder's three KJV lines; the tower rising; the Lord comes down; His words; the language confounded; the scattering; Babel; the contrast with Genesis 12:2 (I will make thy name great); the close.",
+ "narration": [
+  {
+   "kind": "story",
+   "text": "One language. One plan. One tower to reach the sky. Then God came down, and everything stopped. Why?"
+  },
+  {
+   "kind": "story",
+   "text": "Rewind to the days after the flood. Eight survivors had become families, and the families were becoming nations."
+  },
+  {
+   "kind": "scripture",
+   "text": "These are the families of the sons of Noah, after their generations, in their nations: and by these were the nations divided in the earth after the flood.",
+   "reference": "Genesis 10:32 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "But one detail comes before the scattering. For a little while, they were still together."
+  },
+  {
+   "kind": "scripture",
+   "text": "And the whole earth was of one language, and of one speech.",
+   "reference": "Genesis 11:1 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Think about what that means. No translators. No strangers whose words you cannot understand. Every mother, every trader and every child spoke the same tongue, and nothing they said was ever lost between them."
+  },
+  {
+   "kind": "story",
+   "text": "And among those first nations rose a man the Bible remembers by a single word: mighty."
+  },
+  {
+   "kind": "scripture",
+   "text": "And Cush begat Nimrod: he began to be a mighty one in the earth.",
+   "reference": "Genesis 10:8 (KJV)"
+  },
+  {
+   "kind": "scripture",
+   "text": "He was a mighty hunter before the Lord: wherefore it is said, Even as Nimrod the mighty hunter before the Lord.",
+   "reference": "Genesis 10:9 (KJV)"
+  },
+  {
+   "kind": "scripture",
+   "text": "And the beginning of his kingdom was Babel, and Erech, and Accad, and Calneh, in the land of Shinar.",
+   "reference": "Genesis 10:10 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "The Bible does not say that he built the tower. It only says that his kingdom began at Babel. Remember that name, because this story is about to break right there."
+  },
+  {
+   "kind": "scripture",
+   "text": "And it came to pass, as they journeyed from the east, that they found a plain in the land of Shinar; and they dwelt there.",
+   "reference": "Genesis 11:2 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "A wide, flat plain between two rivers. Rich mud, endless reeds and the sky stretching down to every horizon. It was a perfect place to live, and it had one problem. There was no stone anywhere."
+  },
+  {
+   "kind": "story",
+   "text": "So they used what they had. They dug the river clay with their bare hands, pressed it into wooden moulds, and set the soft bricks out in rows under the burning sun. Hundreds, then thousands, then more than anyone could count."
+  },
+  {
+   "kind": "story",
+   "text": "Then they learned the secret of fire. A brick baked hard in a kiln is no longer soft mud. It is as strong as rock, and it will last for thousands of years."
+  },
+  {
+   "kind": "scripture",
+   "text": "And they said one to another,",
+   "reference": "Genesis 11:3 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Slime is the old word for bitumen, the black, sticky tar that seeped out of the ground in that land. It glued every brick to the next one. Nothing they built there would ever fall apart on its own."
+  },
+  {
+   "kind": "story",
+   "text": "Now picture the whole human race standing on one plain at dusk. Not one voice raised against another. One people, with one language, and one idea, and then someone said it out loud."
+  },
+  {
+   "kind": "story",
+   "text": "The foundation alone took years: a platform of fired brick wider than a village, every brick carried in by hand."
+  },
+  {
+   "kind": "story",
+   "text": "Thousands of people, all working toward one plan, because every one of them understood every word. That is what one language gives: speed, trust and strength."
+  },
+  {
+   "kind": "story",
+   "text": "Then it began to climb. Terrace upon terrace, with long ramps winding up its sides like a road to the clouds, and a line of workers on every ramp, from the first light to the last."
+  },
+  {
+   "kind": "story",
+   "text": "A tower like that takes millions of bricks. Each one was baked, carried and set by someone who believed that this would make them great."
+  },
+  {
+   "kind": "story",
+   "text": "Higher than the birds, higher than the hills. Men worked on ropes and reed scaffolds, passing bricks from hand to hand, and every time one looked down, the whole plain looked smaller."
+  },
+  {
+   "kind": "story",
+   "text": "And every brick laid was an answer to one quiet question: do we really need God, when we can reach the heavens ourselves?"
+  },
+  {
+   "kind": "story",
+   "text": "Then the sky above the tower began to change. The clouds thickened, the light turned grey, and the wind stopped. Something was coming, and it was not a storm."
+  },
+  {
+   "kind": "story",
+   "text": "Up on the top terrace the builders felt dizzy with what they had done. Nobody had ever stood so high."
+  },
+  {
+   "kind": "scripture",
+   "text": "And the Lord came down to see the city and the tower, which the children of men builded.",
+   "reference": "Genesis 11:5 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Read that verse slowly. They said their tower would reach unto heaven, and the Lord still had to come down to see it."
+  },
+  {
+   "kind": "scripture",
+   "text": "And the Lord said, Behold, the people is one, and they have all one language; and this they begin to do: and now nothing will be restrained from them, which they have imagined to do.",
+   "reference": "Genesis 11:6 (KJV)"
+  },
+  {
+   "kind": "scripture",
+   "text": "Go to, let us go down, and there confound their language, that they may not understand one another’s speech.",
+   "reference": "Genesis 11:7 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "No lightning. No flood. Not one brick was struck. God did not knock down the tower. He quietly took away their words."
+  },
+  {
+   "kind": "insight",
+   "text": "Read His reason again: nothing would be restrained from them. After the flood, He stopped a world going wrong another way. Not water. Distance."
+  },
+  {
+   "kind": "story",
+   "text": "Picture the moment it happened. A man on the scaffold calls down for more clay, and the man below hears sounds he has never heard in his life. He shouts louder. The words come back as noise."
+  },
+  {
+   "kind": "story",
+   "text": "Imagine waking up the next morning. You turn to the person beside you, and you cannot say good morning. You cannot ask for water. You cannot even say sorry."
+  },
+  {
+   "kind": "story",
+   "text": "A father cannot understand his own brother. A mother calls her child, and a stranger answers."
+  },
+  {
+   "kind": "story",
+   "text": "Hands that had worked as one stopped in the middle of the air. Friends became strangers in the middle of a sentence. And the great chain of bricks, which had never once broken, went still."
+  },
+  {
+   "kind": "story",
+   "text": "The tower was still standing, every brick in its place. But the one thing that had built it, a single shared voice, was gone."
+  },
+  {
+   "kind": "scripture",
+   "text": "So the Lord scattered them abroad from thence upon the face of all the earth: and they left off to build the city.",
+   "reference": "Genesis 11:8 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Families picked up their children and walked away, each one toward the few voices they could still understand."
+  },
+  {
+   "kind": "story",
+   "text": "Some went west, toward the sea and the sunset."
+  },
+  {
+   "kind": "story",
+   "text": "Some went east, toward the mountains."
+  },
+  {
+   "kind": "story",
+   "text": "And some followed the great river south into the unknown."
+  },
+  {
+   "kind": "scripture",
+   "text": "Therefore is the name of it called Babel; because the Lord did there confound the language of all the earth: and from thence did the Lord scatter them abroad upon the face of all the earth.",
+   "reference": "Genesis 11:9 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Babel. They wanted to make a name that would reach the heavens, and they got one that sounds like babble. The name they built for themselves became the name of their confusion."
+  },
+  {
+   "kind": "story",
+   "text": "Centuries later a great city called Babylon would rise near this very plain. Babylon is simply Babel, said in Greek."
+  },
+  {
+   "kind": "insight",
+   "text": "They built the tower so they would not be scattered. The tower is what scattered them. Fear builds the very thing it fears."
+  },
+  {
+   "kind": "story",
+   "text": "And yet the story did not end there. Generations later, down the same great river, in a city called Ur, a man named Abram was born."
+  },
+  {
+   "kind": "scripture",
+   "text": "Now these are the generations of Terah: Terah begat Abram, Nahor, and Haran; and Haran begat Lot.",
+   "reference": "Genesis 11:27 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Here is the answer that Babel was waiting for. The builders tried to make their own name great. But to this one quiet man God would say something very different."
+  },
+  {
+   "kind": "scripture",
+   "text": "and I will make of thee a great nation, and I will bless thee, and make thy name great; and thou shalt be a blessing:",
+   "reference": "Genesis 12:2 (KJV)"
+  },
+  {
+   "kind": "insight",
+   "text": "They said, make us a name. God told Abram, I will make thy name great. Names we build fall. Names God gives stay."
+  },
+  {
+   "kind": "cta",
+   "text": "What are you building to make a name for yourself? Tell me in the comments. Next time: the man who left everything. Subscribe."
+  }
+ ],
+ "shots": [
+  {
+   "kind": "keeper",
+   "id": "k-hook",
+   "lines": [
+    0
+   ],
+   "ambience": "the open desert at night: a small campfire crackling softly and a light night wind",
+   "audio_route": "kokoro",
+   "pavo": {
+    "emotion": "urgent",
+    "setting": "Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him.",
+    "wardrobe": "fire",
+    "gaze": "straight into the camera"
+   },
+   "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera, the speaker centred in the frame. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. He speaks the words of the audio clip, his lips moving in sync with the voice; his lips move only while the voice speaks, his mouth closed and still before the first word and after the last word, no extra words, no humming, no mouthing after the line. He holds his head level and looks straight into the camera, with a urgent look. No text, no logos, no second person, no hand over the mouth, no head turn away."
+  },
+  {
+   "id": "s-nations",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow drift. A vast green river valley at dawn with many small family camps and cooking fires scattered across it, mist on the water, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Soft golden dawn, mist and woodsmoke. Hopeful and open. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "lines": [
+    1,
+    2,
+    3
+   ],
+   "seconds": 18,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "genesis-10-11-long-s-nations",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-onetongue",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow push-in. A crowded market at a river landing, men and women trading grain and cloth under reed awnings, a child laughing on a man's shoulders, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Warm morning light, dust in the air. Joyful and close. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "lines": [
+    4,
+    5
+   ],
+   "seconds": 18,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "genesis-10-11-long-s-onetongue",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-mighty",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow push-in. A powerful hunter with a great bow stands on a rocky rise at sunrise looking over a plain, a slain lion at his feet, his back to us, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Low gold sunrise, long shadows. Proud and dangerous. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "lines": [
+    6,
+    7,
+    8
+   ],
+   "seconds": 16,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "genesis-10-11-long-s-mighty",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-kingdom",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow push-in. The first brick city of a young kingdom on a wide river plain at sunrise, simple flat-roofed houses and workshops, smoke rising, tiny figures on the riverbank, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Warm sunrise light on the river. Curious and ominous. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "lines": [
+    9,
+    10
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "genesis-10-11-long-s-kingdom",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-journey",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow pan. A long caravan of families with donkeys and carts crossing a vast hazy plain toward a wide brown river, seen from far behind, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Late afternoon haze, dust glowing gold. Weary and hopeful. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "lines": [
+    11,
+    12
+   ],
+   "seconds": 18,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "genesis-10-11-long-s-journey",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-clay",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow push-in. Barefoot workers knee-deep in wet grey clay pressing it into wooden moulds, rows of raw clay bricks drying in the sun behind them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Hard midday sun, wet clay glistening. Strained and determined. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "lines": [
+    13
+   ],
+   "seconds": 16,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "genesis-10-11-long-s-clay",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-kiln",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow pull-back. A great beehive kiln roaring with orange fire, a worker raking glowing coals, stacks of finished red-brown bricks beside it, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Orange firelight and heat shimmer against a darkening sky. Fierce and hungry. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "lines": [
+    14,
+    15
+   ],
+   "seconds": 16,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "genesis-10-11-long-s-kiln",
+   "figures": "anonymous"
+  },
+  {
+   "id": "b-brick",
+   "kind": "scene",
+   "speaker": "builder",
+   "reference": "Genesis 11:3 (KJV)",
+   "line": "Go to, let us make brick, and burn them throughly. And they had brick for stone, and slime had they for morter.",
+   "characters": [
+    "builder"
+   ],
+   "pavo": {
+    "emotion": "eager",
+    "setting": "A brickyard on the plain at dawn, a kiln's orange glow and drifting smoke behind him, soft morning light on his face.",
+    "wardrobe": "brickyard",
+    "gaze": "straight into the camera"
+   },
+   "prompt": "Image 1 is The builder. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera, the speaker centred in the frame. The builder, a lean wiry man of about thirty-five with Middle Eastern features, sun-darkened tan skin, a long narrow face, deep-set dark eyes with crow's feet, straight black hair tied back at the nape with a strip of cloth, a thin black moustache and a stubbled chin, sinewy forearms, a plain sleeveless undyed linen tunic belted with a twisted cord, his forearms and tunic spattered with wet grey-brown clay. A brickyard on the plain at dawn, a kiln's orange glow and drifting smoke behind him, soft morning light on his face. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. He speaks the words of the audio clip, his lips moving in sync with the voice; his lips move only while the voice speaks, his mouth closed and still before the first word and after the last word, no extra words, no humming, no mouthing after the line. He holds his head level and looks straight into the camera, with a eager look. No text, no logos, no second person, no hand over the mouth, no head turn away. No stone temples, glass, iron, machinery, cranes, modern clothing or roads."
+  },
+  {
+   "id": "s-pitch",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Close-up, slow push-in. A worker in silhouette seen from behind kneels and pours thick black pitch from a clay jar onto a row of fired bricks, pressing the next brick into it, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Warm low firelight on glossy black pitch. Heavy and busy. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "lines": [
+    16
+   ],
+   "seconds": 18,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "genesis-10-11-long-s-pitch",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-gathered",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow push-in. A huge crowd of thousands gathered at dusk around a great pile of bricks and torches on the plain, all faces turned up toward the darkening sky, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Dusk and torchlight, sparks rising. Tense and electric. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "lines": [
+    17
+   ],
+   "seconds": 16,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "genesis-10-11-long-s-gathered",
+   "figures": "anonymous"
+  },
+  {
+   "id": "b-tower",
+   "kind": "scene",
+   "speaker": "builder",
+   "reference": "Genesis 11:4 (KJV)",
+   "line": "Go to, let us build us a city and a tower, whose top may reach unto heaven;",
+   "characters": [
+    "builder"
+   ],
+   "pavo": {
+    "emotion": "defiant",
+    "setting": "High on a brick scaffold in the late afternoon, the unfinished tower behind him, warm low sun on his face and dust in the air.",
+    "wardrobe": "tower",
+    "gaze": "straight into the camera"
+   },
+   "prompt": "Image 1 is The builder. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera, the speaker centred in the frame. The builder, a lean wiry man of about thirty-five with Middle Eastern features, sun-darkened tan skin, a long narrow face, deep-set dark eyes with crow's feet, straight black hair tied back at the nape with a strip of cloth, a thin black moustache and a stubbled chin, sinewy forearms, the same plain linen tunic, a coil of rope over one shoulder, pale mud-brick dust on his face and hands. High on a brick scaffold in the late afternoon, the unfinished tower behind him, warm low sun on his face and dust in the air. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. He speaks the words of the audio clip, his lips moving in sync with the voice; his lips move only while the voice speaks, his mouth closed and still before the first word and after the last word, no extra words, no humming, no mouthing after the line. He holds his head level and looks straight into the camera, with a defiant look. No text, no logos, no second person, no hand over the mouth, no head turn away. No stone temples, glass, iron, machinery, cranes, modern clothing or roads."
+  },
+  {
+   "id": "b-name",
+   "kind": "scene",
+   "speaker": "builder",
+   "reference": "Genesis 11:4 (KJV)",
+   "line": "and let us make us a name, lest we be scattered abroad upon the face of the whole earth.",
+   "characters": [
+    "builder"
+   ],
+   "pavo": {
+    "emotion": "fearful",
+    "setting": "High on a brick scaffold in the late afternoon, the unfinished tower behind him, warm low sun on his face and dust in the air.",
+    "wardrobe": "tower",
+    "gaze": "straight into the camera"
+   },
+   "prompt": "Image 1 is The builder. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera, the speaker centred in the frame. The builder, a lean wiry man of about thirty-five with Middle Eastern features, sun-darkened tan skin, a long narrow face, deep-set dark eyes with crow's feet, straight black hair tied back at the nape with a strip of cloth, a thin black moustache and a stubbled chin, sinewy forearms, the same plain linen tunic, a coil of rope over one shoulder, pale mud-brick dust on his face and hands. High on a brick scaffold in the late afternoon, the unfinished tower behind him, warm low sun on his face and dust in the air. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. He speaks the words of the audio clip, his lips moving in sync with the voice; his lips move only while the voice speaks, his mouth closed and still before the first word and after the last word, no extra words, no humming, no mouthing after the line. He holds his head level and looks straight into the camera, with a fearful look. No text, no logos, no second person, no hand over the mouth, no head turn away. No stone temples, glass, iron, machinery, cranes, modern clothing or roads."
+  },
+  {
+   "id": "s-foundation",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow push-in. A vast square foundation of fired brick on the empty plain with thousands of tiny workers laying the first courses, a few torches burning at its corners, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Cold blue pre-dawn light with torches. Awed and ominous. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "lines": [
+    18,
+    19
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "genesis-10-11-long-s-foundation",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-ramps",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow tilt up. A towering stepped tower of brick rising in great terraces with long ramps climbing its sides and lines of tiny workers carrying loads up them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Hard afternoon sun, long shadows down the terraces. Overwhelming and proud. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "lines": [
+    20,
+    21
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "genesis-10-11-long-s-ramps",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-scaffold",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow drift. Workers on a high reed-and-rope scaffold passing bricks hand to hand along a chain, the tower wall rising behind them, a wide hazy plain far below, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Late golden sun and drifting dust. Dizzy and triumphant. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "lines": [
+    22,
+    23
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "genesis-10-11-long-s-scaffold",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-top",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow push-in. The unfinished top terrace of the tower against huge dark storm clouds gathering above it, a few tiny workers frozen at its edge looking up, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Heavy grey light breaking through dark clouds. Uneasy and charged. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "lines": [
+    24,
+    25
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "genesis-10-11-long-s-top",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-down",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow pull-back. A single broad shaft of brilliant white light falling through a hole in thick clouds onto the plain, lighting the whole tower from above, tiny workers on the ramps frozen and looking up, no figure in the light, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Brilliant white light cutting through dark cloud. Awe and dread. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "lines": [
+    26,
+    27
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "genesis-10-11-long-s-down",
+   "figures": "anonymous",
+   "climax": true
+  },
+  {
+   "id": "s-behold",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow push-in. A vast circle of clouds opening above the tower, slow churning grey and gold, one great shaft of light pouring down over the plain, a crowd of tiny workers below with their faces turned up, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Golden light through churning clouds. Solemn and majestic. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "lines": [
+    28
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "genesis-10-11-long-s-behold",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-confound",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow drift. A great wind sweeping across the plain, tearing the reeds flat and whirling dust around the foot of the tower under a sky of boiling clouds, a crowd of tiny workers bracing against it, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Dark sky and a thin line of gold light at the horizon. Stern and sudden. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "lines": [
+    29,
+    30
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "genesis-10-11-long-s-confound",
+   "figures": "anonymous"
+  },
+  {
+   "kind": "keeper",
+   "id": "k-restrain",
+   "lines": [
+    31
+   ],
+   "ambience": "the open desert at night: a small campfire crackling softly and a light night wind",
+   "audio_route": "kokoro",
+   "pavo": {
+    "emotion": "tender",
+    "setting": "Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him.",
+    "wardrobe": "fire",
+    "gaze": "straight into the camera"
+   },
+   "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera, the speaker centred in the frame. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. He speaks the words of the audio clip, his lips moving in sync with the voice; his lips move only while the voice speaks, his mouth closed and still before the first word and after the last word, no extra words, no humming, no mouthing after the line. He holds his head level and looks straight into the camera, with a tender look. No text, no logos, no second person, no hand over the mouth, no head turn away."
+  },
+  {
+   "id": "s-babble",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow push-in. Two workers on a ramp face each other, one pointing up, the other shaking his head in total confusion, a stack of bricks between them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Hard light and swirling dust. Bewildered and rising panic. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "lines": [
+    32
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "genesis-10-11-long-s-babble",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-stranger",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Close-up, slow push-in. A woman and a man face to face at a river landing at dawn, both reaching out and speaking, neither understanding, their children clinging to their robes, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Soft cold dawn light on faces turned half away. Aching and tender. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "lines": [
+    33,
+    34
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "genesis-10-11-long-s-stranger",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-tools",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow pull-back. Hundreds of workers standing still among dropped tools and scattered bricks, turning to one another with open hands, the tower silent behind them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Flat grey dusk light. Stunned and lost. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "lines": [
+    35,
+    36
+   ],
+   "seconds": 18,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "genesis-10-11-long-s-tools",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-parting",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow drift. A family of a man, a woman and two children gathering bundles and turning away from the crowd toward a distant trail at dusk, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Low amber dusk light. Heartbreaking and quiet. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "lines": [
+    37,
+    38
+   ],
+   "seconds": 18,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "genesis-10-11-long-s-parting",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-roadwest",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow pan. A long line of small figures with donkeys heading west over rolling hills at sunrise, the tower tiny and distant on the plain behind them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Low sunrise light and long blue shadows. Lonely and vast. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "lines": [
+    39
+   ],
+   "seconds": 7,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "genesis-10-11-long-s-roadwest",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-roadeast",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow pan. A small group of travellers climbing a dry mountain pass toward a pale morning sky, mist in the valley below, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Cool pale dawn light. Resolute and small. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "lines": [
+    40
+   ],
+   "seconds": 7,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "genesis-10-11-long-s-roadeast",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-roadsouth",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow pan. A few figures walking beside a wide shining river through green reeds toward a far horizon, a flock of birds rising, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Warm late-afternoon light on water. Quiet and resolute. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "lines": [
+    41
+   ],
+   "seconds": 7,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "genesis-10-11-long-s-roadsouth",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-unfinished",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow pull-back. The unfinished tower alone on the empty plain at dawn with open scaffolds, a few dropped bricks and cold ashes, long mist across the ground, one lone figure in the distance walking away, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Cold silver dawn light, mist on the ground. Hollow and silent. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "lines": [
+    42
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "genesis-10-11-long-s-unfinished",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-babel",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow push-in. A single worn brick lying in the dust at the foot of the empty tower with long grass already growing through the cracks, early light behind, a child in silhouette far behind it walking away, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Soft low light on dust and grass. Wistful and still. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "lines": [
+    43,
+    44
+   ],
+   "seconds": 18,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "genesis-10-11-long-s-babel",
+   "figures": "anonymous"
+  },
+  {
+   "kind": "keeper",
+   "id": "k-irony",
+   "lines": [
+    45
+   ],
+   "ambience": "the open desert at night: a small campfire crackling softly and a light night wind",
+   "audio_route": "kokoro",
+   "pavo": {
+    "emotion": "grave",
+    "setting": "Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him.",
+    "wardrobe": "fire",
+    "gaze": "straight into the camera"
+   },
+   "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera, the speaker centred in the frame. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. He speaks the words of the audio clip, his lips moving in sync with the voice; his lips move only while the voice speaks, his mouth closed and still before the first word and after the last word, no extra words, no humming, no mouthing after the line. He holds his head level and looks straight into the camera, with a grave look. No text, no logos, no second person, no hand over the mouth, no head turn away."
+  },
+  {
+   "id": "s-ur",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow push-in. A distant river town of simple brick houses at twilight on the plain, a tiny family with a lamp walking toward it, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Blue twilight with a warm lamp glow. Tender and expectant. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "lines": [
+    46,
+    47
+   ],
+   "seconds": 18,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "genesis-10-11-long-s-ur",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-star",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow tilt up. A lone traveller on a dark hilltop looking up at a sky full of stars, one bright star above him, campfire embers at his feet, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Deep blue night with starlight and a faint ember glow. Humble and full of wonder. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "lines": [
+    48,
+    49
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "genesis-10-11-long-s-star",
+   "figures": "anonymous"
+  },
+  {
+   "kind": "keeper",
+   "id": "k-name",
+   "lines": [
+    50
+   ],
+   "ambience": "the open desert at night: a small campfire crackling softly and a light night wind",
+   "audio_route": "kokoro",
+   "pavo": {
+    "emotion": "gentle",
+    "setting": "Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him.",
+    "wardrobe": "fire",
+    "gaze": "straight into the camera"
+   },
+   "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera, the speaker centred in the frame. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. He speaks the words of the audio clip, his lips moving in sync with the voice; his lips move only while the voice speaks, his mouth closed and still before the first word and after the last word, no extra words, no humming, no mouthing after the line. He holds his head level and looks straight into the camera, with a gentle look. No text, no logos, no second person, no hand over the mouth, no head turn away."
+  },
+  {
+   "kind": "keeper",
+   "id": "k-close",
+   "lines": [
+    51
+   ],
+   "ambience": "the open desert at night: a small campfire crackling softly and a light night wind",
+   "audio_route": "kokoro",
+   "pavo": {
+    "emotion": "warm",
+    "setting": "Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him.",
+    "wardrobe": "fire",
+    "gaze": "straight into the camera"
+   },
+   "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera, the speaker centred in the frame. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. He speaks the words of the audio clip, his lips moving in sync with the voice; his lips move only while the voice speaks, his mouth closed and still before the first word and after the last word, no extra words, no humming, no mouthing after the line. He holds his head level and looks straight into the camera, with a warm look. No text, no logos, no second person, no hand over the mouth, no head turn away."
+  }
+ ],
+ "criteria": "story-qa-criteria-v5",
+ "audio_route": "kokoro",
+ "sources_v5": "Stills from the ChatGPT desktop app, each animated by the cinematic still engine; God's words in the Keeper's voice over clouds and light, never a figure; the hook, the builders' lines, the insights and the close are Pavo talking shots with our own Kokoro audio.",
+ "long": {
+  "pilot": "pilot-019",
+  "title": "Why Did God Scatter the Builders of Babel? | Tower of Babel | Genesis 11 Bible Story (KJV)",
+  "description": "Genesis 10-11 (King James Version, public domain), dramatized with AI-generated visuals; the scenes are imagined, the quoted words are the KJV.\n\n{chapters}\n\nWhat are you building to make a name for yourself? Tell me in the comments.",
+  "tags": [
+   "tower of babel",
+   "babel",
+   "genesis 11",
+   "bible story",
+   "kjv",
+   "nimrod",
+   "confusion of tongues"
+  ],
+  "first_comment": "They said let us make us a name. God said to Abram, I will make thy name great. What are you building your name on today?",
+  "chapters": [
+   {
+    "shot": "k-hook",
+    "title": "One language, one tower"
+   },
+   {
+    "shot": "s-clay",
+    "title": "Brick and slime"
+   },
+   {
+    "shot": "b-tower",
+    "title": "Let us build a tower"
+   },
+   {
+    "shot": "s-down",
+    "title": "The Lord came down"
+   },
+   {
+    "shot": "s-babble",
+    "title": "The language confounded"
+   },
+   {
+    "shot": "s-unfinished",
+    "title": "Why it is called Babel"
+   },
+   {
+    "shot": "s-star",
+    "title": "A name God gives"
+   }
+  ],
+  "thumbnail": {
+   "at": 1.0,
+   "line1": "WHY GOD SCATTERED THEM",
+   "line2": "Genesis 11"
+  },
+  "reflection_window": {
+   "start": 410,
+   "end": 431
+  }
+ }
+}
