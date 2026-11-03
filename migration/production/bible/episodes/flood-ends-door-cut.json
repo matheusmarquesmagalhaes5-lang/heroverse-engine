@@ -1,0 +1,75 @@
+{
+ "version": "bible-episode-v1",
+ "id": "flood-ends-door-cut",
+ "series": "The Bible, story by story (KJV)",
+ "part": 1,
+ "passage": "Genesis 8:1-9:17 (KJV, public domain)",
+ "format": "short",
+ "track": "buzzy-cut",
+ "parent": {
+  "long": "flood-ends-long",
+  "pilot": "pilot-017",
+  "clean_master_sha256": "95307e831eee4c06f826715b5d974a6fcdcacfe6029e6e57bcb8879d777b1eea",
+  "start": 298.62,
+  "end": 338.64
+ },
+ "output_sha256": "0f88e0bc5a9cbb24524bfedda11c0706cef42b7038fe99899d9afe18e6b48eff",
+ "seconds": 40.033,
+ "frame": [
+  1080,
+  1920
+ ],
+ "narration": [
+  {
+   "kind": "insight",
+   "text": "Most miss this: Noah saw dry ground and still waited. He stepped out when God said go. The One who shut the door opened it."
+  },
+  {
+   "kind": "story",
+   "text": "Two months more, until the earth was fully dry. Then, at last, the voice came. Not a shout. A word. And with it, the door that no one else could open."
+  },
+  {
+   "kind": "scripture",
+   "text": "And God spake unto Noah, saying,",
+   "reference": "Genesis 8:15 (KJV)"
+  },
+  {
+   "kind": "scripture",
+   "text": "And Noah went forth, and his sons, and his wife, and his sons’ wives with him:",
+   "reference": "Genesis 8:18 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Out they walked, a whole world of animals, one by one, down onto the washed new earth. Noah was the last of his family to step off the boat."
+  }
+ ],
+ "scripture": [
+  {
+   "reference": "Genesis 8:15 (KJV)",
+   "text": "And God spake unto Noah, saying,"
+  },
+  {
+   "reference": "Genesis 8:18 (KJV)",
+   "text": "And Noah went forth, and his sons, and his wife, and his sons’ wives with him:"
+  }
+ ],
+ "title": "Noah Saw Dry Ground and Still Waited | Genesis 8 (KJV) #shorts",
+ "description": "Dry ground was right before his eyes, and the door stayed shut until God said go (Genesis 8, King James Version).\n\nWatch the full story, the whole of Genesis 8-9: https://youtu.be/1m-NUJhkdMY\n\nScripture: King James Version (public domain), Genesis 8:13-19.\nVisuals: AI-generated scenes (Buzzy, GPT-image stills with camera motion). Narration: AI voice. Music: original, owned.\n\n#bible #genesis #biblestory #noah",
+ "tags": [
+  "noah",
+  "noahs ark",
+  "genesis 8",
+  "waiting on god",
+  "bible story",
+  "kjv bible",
+  "christian shorts",
+  "bible stories"
+ ],
+ "category_id": "29",
+ "first_comment": "Noah saw dry ground and still waited for God's word. What are you waiting for God to open? The full story: https://youtu.be/1m-NUJhkdMY",
+ "credits": {
+  "vidiq": 0,
+  "pavo": 0
+ },
+ "slot": "2026-11-03T18:30:00Z"
+}
