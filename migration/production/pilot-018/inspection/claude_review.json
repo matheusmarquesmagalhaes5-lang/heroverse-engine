@@ -1,0 +1,90 @@
+{
+ "version": "claude-review-compilation-v1",
+ "model": "claude-session-reviewer",
+ "output_sha256": "1d5fc1876b57f1928683a4045dd5d302226bdf663d2ed02e027543a068d4c94f",
+ "reviewed_at": "2026-11-03T15:45:00Z",
+ "native_review": {
+  "run_id": 41657276132,
+  "model": "local:faster-whisper-small.en@d1d751a5+ffmpeg",
+  "status": "EVIDENCE_COMPLETE",
+  "duration_seconds": 1082.554,
+  "note": "local-review.yml (E268) on this exact master: whole-audio ASR transcript with word times, loudness, silence, frame sheets 1 frame / 2 s, detectors on every frame at 320x180"
+ },
+ "evidence": [
+  "What was heard: the ASR transcript of the whole master (small.en, run 41657276132), read in full by the session reviewer. Nobody listened to the audio by ear in this review: speech is judged on the transcript and the measures, not on delivery, diction or pronunciation.",
+  "Hook (Kokoro voice-over, am_michael) read exact: 'What if obeying God meant building a ship with no rain in sight? Here is Noah's whole story, Genesis 5 to 9.' Close read exact: 'Noah did all that God commanded him before one drop fell. So what is God asking of you that you cannot yet see?' The long chapter ends on 'What are you waiting for God to open?' (end_s 493.74 s: its own CTA 'Next time, the tower... Subscribe' was cut in the plan after the first build's review found it); no word cut at a join in the transcript.",
+  "What was seen: the build's 20-frame sheet, the thumbnail, and frame sheets 1, 5, 10, 14, 18 and 19 of the 19 local-review sheets (about 4 s of every 2 s sample window in those sheets), not every sheet and never 30 fps. Hook and close show the approved Keeper stills (arc-01-long-k-promise-2 and -3) with a slow push-in; the five chapters show each story's own accepted master.",
+  "compilation-qa-criteria-v1 PASS (build run 41647516203, master sha256 1d5fc187...): 1920x1080, 30 fps, -14.2 LUFS, -1.3 dBTP, 1082.6 s = 18:03 (hook 9.3 s, genesis-06..09 Shorts 570.2 s, flood-ends-long 493.8 s, close 9.2 s), sources verified by sha256, order canonical. Length is the true length of the public material, no padding.",
+  "Pavo attempts for the Keeper's talking hook and close, all at an exact 0-credit quote: shot-probe 41629339290 (2 generations a line): speech-check 41636192512 heard garbled tails and VOICE_NOT_CONSISTENT on every clip; shot-probe 41652099686 (after E287, our own audio over Pavo's picture): 2 generations a line, the clips kept carry MOUTH_NOT_IN_SYNC (SyncNet offset 10 and 14 windows, confidence 1.1 and 3.1). Lips visibly off our audio, so the voice-over fallback on approved stills is used and no Pavo clip is in the master."
+ ],
+ "issues": [
+  "00:00.00 [info] The local ASR timestamps the hook's first word at 0.0 s; by construction (compilation_long.render_keeper_still) the Kokoro line starts 0.5 s after the clip's start under a 0.25 s fade-in, and the transcript reads the hook whole ('What if obeying God meant building a ship with no rain in sight? Here is Noah's whole story, Genesis 5 to 9.'). Not verified by ear.",
+  "00:05.95 [f] Detector: frozen picture 3.2 s over the hook's last seconds. The Keeper still has a slow push-in (about 1.35 %/s) that the 320x180 detector does not register; the frame sheet shows the same still held. The Keeper does not move his lips: a voice-over on an approved still (owner fallback), not a talking clip.",
+  "00:08.49 [c] Mix silent 0.89 s between the end of the hook's line and the first chapter (the 0.5 s end beat plus the fades of both segments); not inside speech.",
+  "17:59.25 [f] Detector: frozen picture 3.1 s over the close's still (same slow push-in), speech 'So what is God asking of you that you cannot yet see?' ends at 17:58 in the transcript.",
+  "09:41 [info] Chapters 1-4 are the vertical Shorts framed 16:9 over a blurred fill (the compilation's designed format, 0.25 s fades) and chapter 5 is the 16:9 long; the format change at 09:40 is a designed join, no line or story order broken.",
+  "thumbnail [f] The thumbnail frame (the long at 450 s) carries the long's own burned caption faintly behind the lower title band ('ll flesh that is'); legible only on close inspection; kept, not a speech, order or policy defect.",
+  "12:59 [info] Longest stretch without a scene change 119 s is the Short genesis-08's slow ark sequence (detector note), not a defect."
+ ],
+ "defects": [
+  {
+   "issue": 0,
+   "category": "info",
+   "resolved": true
+  },
+  {
+   "issue": 1,
+   "category": "f",
+   "resolved": false
+  },
+  {
+   "issue": 2,
+   "category": "c",
+   "resolved": false
+  },
+  {
+   "issue": 3,
+   "category": "f",
+   "resolved": false
+  },
+  {
+   "issue": 4,
+   "category": "info",
+   "resolved": true
+  },
+  {
+   "issue": 5,
+   "category": "f",
+   "resolved": false
+  },
+  {
+   "issue": 6,
+   "category": "info",
+   "resolved": true
+  }
+ ],
+ "classification_notes": {
+  "1": "[f] unresolved, not blocking: the push-in is slow; the Keeper's lips are closed, so nothing is out of sync.",
+  "2": "[c] a 0.89 s pause at the hook/chapter join between two faded segments, not speech.",
+  "3": "[f] as 1.",
+  "5": "[f] thumbnail caption bleed, minor."
+ },
+ "strongest_moment": "The long's rainbow and covenant chapter, then the Keeper's close asking what God is asking of the viewer.",
+ "overall": 7.5,
+ "scores_information_only": {
+  "opening_and_promise": 8.0,
+  "picture_quality": 8.0,
+  "figure_and_background_integrity": 7.5,
+  "captions_readable_and_synced": 8.0,
+  "audio_clarity_and_mix": 7.0,
+  "pacing_and_visual_variety": 7.0,
+  "scripture_on_screen": 8.0,
+  "policy_safe": 9.0,
+  "note": "Information only (compilation track gates on defects). Not 9.5: the hook and close are voice-over on stills, the vertical Shorts sit in a blurred 16:9 frame, and audio quality was not judged by ear."
+ },
+ "publish_decision": {
+  "decision": "publish",
+  "by": "claude-session-reviewer",
+  "note": "No speech cut off in the transcript, no scene against its line or story order, no policy issue ([a], [b], [e] none). Unresolved [f] and [c] are non-blocking and listed. Executor and reviewer: the Claude session; no audio was heard by ear."
+ }
+}

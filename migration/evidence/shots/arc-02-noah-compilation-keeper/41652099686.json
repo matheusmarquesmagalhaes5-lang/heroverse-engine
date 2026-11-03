@@ -1,0 +1,458 @@
+{
+ "episode": "arc-02-noah-compilation-keeper",
+ "plan_sha256": "3a3954d4ed7c5822ae2abd96f3661be2fd99471c1e29671b1bda5ba4fcd3a57e",
+ "attempts": 1,
+ "shots": {
+  "k-hook": {
+   "kind": "keeper",
+   "request_sha256": "5d228a66106e9db0a29ba50cd38bebe0f65d8351aa265893723d84dd84c46efd",
+   "request": {
+    "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a grave, intent look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Hushed and urgent. No text, no logos.",
+    "aspect_ratio": "16:9",
+    "sound": false,
+    "references": [
+     {
+      "image": "ch-keeper-talk",
+      "sha256": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
+     }
+    ],
+    "audio": {
+     "speaker": "keeper",
+     "voice": {
+      "voice_id": "am_michael",
+      "speed": 1.0
+     },
+     "words": [
+      "what",
+      "if",
+      "obeying",
+      "god",
+      "meant",
+      "building",
+      "a",
+      "ship",
+      "with",
+      "no",
+      "rain",
+      "in",
+      "sight",
+      "here",
+      "is",
+      "noah's",
+      "whole",
+      "story",
+      "genesis",
+      "five",
+      "to",
+      "nine"
+     ]
+    }
+   },
+   "clips": [
+    {
+     "round": 1,
+     "generation": 1,
+     "asset": "shot-arc-02-noah-compilation-keeper-k-hook-sha256-fcb7776a960fd4040e7138557ce261642856632235662fb06005e360088233ba.mp4",
+     "clip_sha256": "fcb7776a960fd4040e7138557ce261642856632235662fb06005e360088233ba",
+     "flags": [
+      "MOUTH_NOT_IN_SYNC"
+     ],
+     "hard_flags": [],
+     "words_flags": [],
+     "soft_flags": [
+      "MOUTH_NOT_IN_SYNC"
+     ],
+     "measures": {
+      "lipsync": {
+       "audio": {
+        "corr": 1.0,
+        "lag_ms": 0
+       },
+       "mouth": {
+        "corr": 0.174,
+        "lag_ms": 0,
+        "speak_to_pause": 1.23,
+        "face_frames": 0.95,
+        "sync": {
+         "offset": 10,
+         "conf": 1.135,
+         "min_dist": 14.668,
+         "windows": 230
+        }
+       }
+      }
+     },
+     "generations": [
+      {
+       "generation": 1,
+       "conversation_id": "376012401348447296",
+       "submission": "submitted",
+       "quoted_credits": 0,
+       "source": {
+        "width": 1280.0,
+        "height": 720.0,
+        "seconds": 9.0
+       },
+       "audio": {
+        "route": "ours",
+        "sha256": "866577bb02e23a9233fe10a51f5ee388c98adead45129676578c2aa3eec186ed",
+        "samples": 377055,
+        "seconds": 8.55
+       },
+       "flags": [
+        "MOUTH_NOT_IN_SYNC"
+       ],
+       "lipsync": {
+        "audio": {
+         "corr": 1.0,
+         "lag_ms": 0
+        },
+        "mouth": {
+         "corr": 0.174,
+         "lag_ms": 0,
+         "speak_to_pause": 1.23,
+         "face_frames": 0.95,
+         "sync": {
+          "offset": 10,
+          "conf": 1.135,
+          "min_dist": 14.668,
+          "windows": 230
+         }
+        }
+       },
+       "clip": "k-hook-fail1.mp4"
+      },
+      {
+       "generation": 2,
+       "conversation_id": "376014347204095488",
+       "submission": "submitted",
+       "quoted_credits": 0,
+       "source": {
+        "width": 1280.0,
+        "height": 720.0,
+        "seconds": 9.0
+       },
+       "audio": {
+        "route": "ours",
+        "sha256": "866577bb02e23a9233fe10a51f5ee388c98adead45129676578c2aa3eec186ed",
+        "samples": 377055,
+        "seconds": 8.55
+       },
+       "flags": [
+        "FACE_NOT_FOUND",
+        "MOUTH_NOT_IN_SYNC"
+       ],
+       "lipsync": {
+        "audio": {
+         "corr": 1.0,
+         "lag_ms": 0
+        },
+        "mouth": {
+         "corr": -1.0,
+         "lag_ms": 0,
+         "speak_to_pause": 0.0,
+         "face_frames": 0.0,
+         "sync": null
+        }
+       },
+       "clip": "k-hook-fail2.mp4"
+      }
+     ],
+     "sheet": "41652099686-k-hook-1-1.jpg",
+     "audio": {
+      "route": "ours",
+      "sha256": "866577bb02e23a9233fe10a51f5ee388c98adead45129676578c2aa3eec186ed",
+      "samples": 377055,
+      "seconds": 8.55
+     },
+     "media": {
+      "version": "clip-media-v1",
+      "clip_sha256": "fcb7776a960fd4040e7138557ce261642856632235662fb06005e360088233ba",
+      "video_seconds": 9.416667,
+      "audio_seconds": 9.417007,
+      "instrument": "ffprobe stream durations"
+     },
+     "uploaded": true
+    },
+    {
+     "round": 1,
+     "generation": 2,
+     "asset": "shot-arc-02-noah-compilation-keeper-k-hook-sha256-dd3a93795426bbd8270755814ab8f7da94054e42d1d48758b829a289dfcebd88.mp4",
+     "clip_sha256": "dd3a93795426bbd8270755814ab8f7da94054e42d1d48758b829a289dfcebd88",
+     "flags": [
+      "FACE_NOT_FOUND",
+      "MOUTH_NOT_IN_SYNC"
+     ],
+     "hard_flags": [
+      "FACE_NOT_FOUND"
+     ],
+     "words_flags": [],
+     "soft_flags": [
+      "MOUTH_NOT_IN_SYNC"
+     ],
+     "measures": {
+      "lipsync": {
+       "audio": {
+        "corr": 1.0,
+        "lag_ms": 0
+       },
+       "mouth": {
+        "corr": -1.0,
+        "lag_ms": 0,
+        "speak_to_pause": 0.0,
+        "face_frames": 0.0,
+        "sync": null
+       }
+      }
+     },
+     "generations": [],
+     "sheet": "41652099686-k-hook-1-2.jpg",
+     "audio": {
+      "route": "ours",
+      "sha256": "866577bb02e23a9233fe10a51f5ee388c98adead45129676578c2aa3eec186ed",
+      "samples": 377055,
+      "seconds": 8.55
+     },
+     "media": {
+      "version": "clip-media-v1",
+      "clip_sha256": "dd3a93795426bbd8270755814ab8f7da94054e42d1d48758b829a289dfcebd88",
+      "video_seconds": 9.416667,
+      "audio_seconds": 9.417007,
+      "instrument": "ffprobe stream durations"
+     },
+     "uploaded": true
+    }
+   ],
+   "clip_seconds": 9
+  },
+  "k-close": {
+   "kind": "keeper",
+   "request_sha256": "9a2d6bf3c2fabb35a17e62059ca23aa4cc711333c3c91187145737979e522ef0",
+   "request": {
+    "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level, looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a gentle questioning look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and searching. No text, no logos.",
+    "aspect_ratio": "16:9",
+    "sound": false,
+    "references": [
+     {
+      "image": "ch-keeper-talk",
+      "sha256": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
+     }
+    ],
+    "audio": {
+     "speaker": "keeper",
+     "voice": {
+      "voice_id": "am_michael",
+      "speed": 1.0
+     },
+     "words": [
+      "noah",
+      "did",
+      "all",
+      "that",
+      "god",
+      "commanded",
+      "him",
+      "before",
+      "one",
+      "drop",
+      "fell",
+      "so",
+      "what",
+      "is",
+      "god",
+      "asking",
+      "of",
+      "you",
+      "that",
+      "you",
+      "cannot",
+      "yet",
+      "see"
+     ]
+    }
+   },
+   "clips": [
+    {
+     "round": 1,
+     "generation": 2,
+     "asset": "shot-arc-02-noah-compilation-keeper-k-close-sha256-33bdfcf3d53eece0c3d83c2ba11efab425795dea7052c3962764ec0034b92187.mp4",
+     "clip_sha256": "33bdfcf3d53eece0c3d83c2ba11efab425795dea7052c3962764ec0034b92187",
+     "flags": [
+      "MOUTH_NOT_IN_SYNC"
+     ],
+     "hard_flags": [],
+     "words_flags": [],
+     "soft_flags": [
+      "MOUTH_NOT_IN_SYNC"
+     ],
+     "measures": {
+      "lipsync": {
+       "audio": {
+        "corr": 1.0,
+        "lag_ms": 0
+       },
+       "mouth": {
+        "corr": 0.121,
+        "lag_ms": 240,
+        "speak_to_pause": 1.0,
+        "face_frames": 0.97,
+        "sync": {
+         "offset": 14,
+         "conf": 3.144,
+         "min_dist": 12.299,
+         "windows": 230
+        }
+       }
+      }
+     },
+     "generations": [
+      {
+       "generation": 1,
+       "conversation_id": "376015964481558208",
+       "submission": "submitted",
+       "quoted_credits": 0,
+       "source": {
+        "width": 1280.0,
+        "height": 720.0,
+        "seconds": 9.0
+       },
+       "audio": {
+        "route": "ours",
+        "sha256": "9180e8138a42a8503f95abecdf12624bdd81ccce1b54be4a871ed975871d47ed",
+        "samples": 377055,
+        "seconds": 8.55
+       },
+       "flags": [
+        "FACE_NOT_FOUND",
+        "MOUTH_NOT_IN_SYNC"
+       ],
+       "lipsync": {
+        "audio": {
+         "corr": 1.0,
+         "lag_ms": 0
+        },
+        "mouth": {
+         "corr": -1.0,
+         "lag_ms": 0,
+         "speak_to_pause": 0.0,
+         "face_frames": 0.0,
+         "sync": null
+        }
+       },
+       "clip": "k-close-fail1.mp4"
+      },
+      {
+       "generation": 2,
+       "conversation_id": "376017307207794496",
+       "submission": "submitted",
+       "quoted_credits": 0,
+       "source": {
+        "width": 1280.0,
+        "height": 720.0,
+        "seconds": 9.0
+       },
+       "audio": {
+        "route": "ours",
+        "sha256": "9180e8138a42a8503f95abecdf12624bdd81ccce1b54be4a871ed975871d47ed",
+        "samples": 377055,
+        "seconds": 8.55
+       },
+       "flags": [
+        "MOUTH_NOT_IN_SYNC"
+       ],
+       "lipsync": {
+        "audio": {
+         "corr": 1.0,
+         "lag_ms": 0
+        },
+        "mouth": {
+         "corr": 0.121,
+         "lag_ms": 240,
+         "speak_to_pause": 1.0,
+         "face_frames": 0.97,
+         "sync": {
+          "offset": 14,
+          "conf": 3.144,
+          "min_dist": 12.299,
+          "windows": 230
+         }
+        }
+       },
+       "clip": "k-close-fail2.mp4"
+      }
+     ],
+     "sheet": "41652099686-k-close-1-2.jpg",
+     "audio": {
+      "route": "ours",
+      "sha256": "9180e8138a42a8503f95abecdf12624bdd81ccce1b54be4a871ed975871d47ed",
+      "samples": 377055,
+      "seconds": 8.55
+     },
+     "media": {
+      "version": "clip-media-v1",
+      "clip_sha256": "33bdfcf3d53eece0c3d83c2ba11efab425795dea7052c3962764ec0034b92187",
+      "video_seconds": 9.416667,
+      "audio_seconds": 9.417007,
+      "instrument": "ffprobe stream durations"
+     },
+     "uploaded": true
+    },
+    {
+     "round": 1,
+     "generation": 1,
+     "asset": "shot-arc-02-noah-compilation-keeper-k-close-sha256-1d00c4a4b07ed75c3ecb9b907db3f5ff1e8efa940b7c228ef0a11b8c7be5d6b3.mp4",
+     "clip_sha256": "1d00c4a4b07ed75c3ecb9b907db3f5ff1e8efa940b7c228ef0a11b8c7be5d6b3",
+     "flags": [
+      "FACE_NOT_FOUND",
+      "MOUTH_NOT_IN_SYNC"
+     ],
+     "hard_flags": [
+      "FACE_NOT_FOUND"
+     ],
+     "words_flags": [],
+     "soft_flags": [
+      "MOUTH_NOT_IN_SYNC"
+     ],
+     "measures": {
+      "lipsync": {
+       "audio": {
+        "corr": 1.0,
+        "lag_ms": 0
+       },
+       "mouth": {
+        "corr": -1.0,
+        "lag_ms": 0,
+        "speak_to_pause": 0.0,
+        "face_frames": 0.0,
+        "sync": null
+       }
+      }
+     },
+     "generations": [],
+     "sheet": "41652099686-k-close-1-1.jpg",
+     "audio": {
+      "route": "ours",
+      "sha256": "9180e8138a42a8503f95abecdf12624bdd81ccce1b54be4a871ed975871d47ed",
+      "samples": 377055,
+      "seconds": 8.55
+     },
+     "media": {
+      "version": "clip-media-v1",
+      "clip_sha256": "1d00c4a4b07ed75c3ecb9b907db3f5ff1e8efa940b7c228ef0a11b8c7be5d6b3",
+      "video_seconds": 9.416667,
+      "audio_seconds": 9.417007,
+      "instrument": "ffprobe stream durations"
+     },
+     "uploaded": true
+    }
+   ],
+   "clip_seconds": 9
+  }
+ },
+ "pavo_audio": "ours",
+ "pavo_budget": {
+  "units_before": 46,
+  "units_this_run": 8
+ },
+ "run_id": "41652099686"
+}

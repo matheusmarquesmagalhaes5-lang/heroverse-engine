@@ -97,6 +97,17 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
   sentence-safe range that fits 25.5-26.2 s without overlapping a cut) or the owner's call; then publish-episode.yml and the
   `studio_jobs.json` related-video entry for 1m-NUJhkdMY.
 
+- 2026-11-03 (M2, "The Complete Story of Noah (Genesis 5-9) KJV", pilot-018, plan `compilations/arc-02-noah-complete-compilation.json`):
+  built by `compilation-build.yml` run 41647516203, master sha256 `1d5fc187...` (1082.6 s = 18:03: Keeper hook, Shorts genesis-06..09,
+  flood-ends-long cut at 493.74 s, Keeper close; true length, no padding), QA PASS, local-review run 41657276132, review
+  `pilot-018/inspection/claude_review.json` (defect gate, nothing heard by ear: ASR transcript and frame sheets only), publish_at
+  2026-11-04T13:30Z (the live-plan long slot; the landing cut is also at 13:30). Hook and close are the Kokoro voice-over on
+  approved stills: Pavo probe 41629339290 (2 gens a line; speech-check.yml run 41636192512: wrong words and voice) and, after E287,
+  probe 41652099686 (our audio over Pavo's picture; MOUTH_NOT_IN_SYNC on every kept clip, offsets 10/14 windows), so no Pavo
+  clip is in the master (4 generations a line in all, 0 credits). New CI pieces: `shot-probe` accepts plan track
+  `keeper-compilation` (16:9), `speech-check.yml`, the voice-over mode of `compilation_long.py`. After it is public:
+  `python3 migration/channel/related_map.py build --public-check` (newest compilation wins) for the Studio related-video queue,
+  pinned comment on the Shorts (still the long's link until then).
 - 2026-11-03 (reflection 1 on OUR audio, E287/E288): `shot-remux.yml` (PR #756) puts our request WAV over a STORED Pavo clip (no generation) and
   runs the strict checks on it. Run 41654835246 on k-r1 (dae7a9), k-r2 (7f043f), k-r4 (b1cd73): all three clean (SyncNet offset 0/-1, conf
   6.6/5.0/7.2 against min 2.7, face >= 0.95, no flags); approved 9.5 in `shots/flood-ends-long-reflection-1.json` with the `audio` proof (no trim,
