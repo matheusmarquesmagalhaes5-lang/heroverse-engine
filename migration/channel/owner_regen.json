@@ -1,0 +1,16 @@
+{
+ "schema": "heroverse-owner-regen-v1",
+ "note": "E295: the owner's recorded authorizations for ONE more Pavo generation of a line that already has stored generations (E292). episode_build.owner_regen_caps reads it: a listed (episode, shot) may hold at most stored_at_authorization + extra_generations stored generations; anything else stays refused by PROBE_STORED_GENERATIONS. Only the owner's own reply creates an entry.",
+ "authorizations": [
+  {
+   "episode": "genesis-10-11-long",
+   "shots": ["b-brick", "b-tower", "k-restrain"],
+   "stored_at_authorization": 1,
+   "extra_generations": 1,
+   "date": "2026-11-03",
+   "question": "Autorizo mais 1 geração no Pavo para as 3 falas de Babel",
+   "owner_reply": "Autorizo",
+   "context": "Babel long: on Pavo's own track the words of b-brick, b-tower and k-restrain were wrong (speech-check 41729891998); on our line the lips were out of sync (shot-remux 41731930737, SyncNet offset -13); shot-probe 41733618212 refused a second generation (E292). The new generation uses the rebuilt E293 prompts and shorter lines."
+  }
+ ]
+}
