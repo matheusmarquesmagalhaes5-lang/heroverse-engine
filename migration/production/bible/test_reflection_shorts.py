@@ -220,6 +220,20 @@ class Check(unittest.TestCase):
                 self.assertIn(code, codes(rs.check(dict(spec, clip=clip), root)), clip)
             self.assertEqual(rs.SECONDS, (20.0, 40.0))
 
+    def test_the_top_clip_never_repeats_another_short_of_the_same_long(self):
+        # E279: another cut of the long (or reflection) already holds this footage and speech
+        with tempfile.TemporaryDirectory() as t:
+            root, spec, _ = make_root(t)
+            other = tlf.cut("genesis-07-cut-1", start=0.25, end=22.3)
+            cuts = root / "migration/production/bible/cuts/genesis-long-test.json"
+            cuts.write_text(json.dumps({"cuts": [other]}))
+            self.assertIn("CLIP_OVERLAPS_ANOTHER", codes(rs.check(spec, root)))
+            cuts.write_text(json.dumps({"cuts": [dict(other, start=22.0, end=40.0)]}))   # 0.2 s: only the fade
+            self.assertNotIn("CLIP_OVERLAPS_ANOTHER", codes(rs.check(spec, root)))
+            twin = dict(spec, id="genesis-long-test-reflection-2")
+            (root / "migration/production/bible/reflections/genesis-long-test-2.json").write_text(json.dumps(twin))
+            self.assertIn("CLIP_OVERLAPS_ANOTHER", codes(rs.check(spec, root)))
+
     def test_the_clip_comes_from_an_approved_published_long(self):
         with tempfile.TemporaryDirectory() as t:
             root, spec, _ = make_root(t, published=False)

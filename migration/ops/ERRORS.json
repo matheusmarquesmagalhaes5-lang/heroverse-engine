@@ -4242,6 +4242,44 @@
      "order"
     ]
    }
+  },
+  {
+   "id": "E279",
+   "date": "2026-11-03",
+   "class": [
+    "instrument"
+   ],
+   "prior": [
+    "E120",
+    "E131",
+    "E137",
+    "E139",
+    "E148",
+    "E152",
+    "E166",
+    "E169",
+    "E185",
+    "E186",
+    "E231",
+    "E233",
+    "E238",
+    "E253",
+    "E255",
+    "E262",
+    "E266",
+    "E267",
+    "E273",
+    "E275"
+   ],
+   "error": "flood-ends-long: seven cuts and Keeper reflection 1 were planned without any check between them: reflection 1's top clip (435.31-456.47 s) lay inside the rainbow cut (399.52-472.09 s), so two Shorts of one long would have shown the same footage and speech; altar was cut 0.17 s inside door's end. The owner's rule (2026-11-03): no two Shorts of the same long repeat footage or speech. short_cuts.check and reflection_shorts.check each looked only at their own range.",
+   "fix": "short_cuts.sibling_ranges/overlap_problems: short_cuts.check refuses CUT_OVERLAPS_ANOTHER and reflection_shorts.check refuses CLIP_OVERLAPS_ANOTHER when a range shares more than the 0.25 s fade margin (silence in both) with another cut or reflection top clip of the same long. Reflection 1 re-picked on the unused 44.88-66.08 s (God remembered Noah); altar's 0.17 s is the shared fade tail, silence on both sides (door's last word ends 338.39 s, altar's first word starts 338.74 s).",
+   "antidote": {
+    "file": "migration/production/bible/test_long_first.py",
+    "contains": "def test_no_two_shorts_of_one_long_repeat_footage_or_speech",
+    "covers": [
+     "instrument"
+    ]
+   }
   }
  ]
 }

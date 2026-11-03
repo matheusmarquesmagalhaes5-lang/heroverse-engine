@@ -630,3 +630,12 @@ the Keeper's lit "Most miss this" line. Both earlier masters stay on record (evi
   correlation is therefore not shown to be a false-positive generator, and it cannot be the authority anyway: corr 0.769 and
   0.802 clips said the wrong words. The gate already makes the pinned ASR the authority (E266: `approve-shot` accepts the
   flag only with a sidecar whose words are exact for the same clip and trim). No gate or tolerance changed.
+
+## 2026-11-03 — No repeated footage or speech between Shorts of one long (owner rule)
+
+Owner, verbatim: "Não pode ter trechos repetidos nos shorts… esses recortes são recortes novos." No two Shorts of the same
+long (cuts and Keeper reflection top clips) repeat footage or speech. Only the 0.25 s fade tail (silence in both) may be
+shared. `short_cuts.check` refuses `CUT_OVERLAPS_ANOTHER`, `reflection_shorts.check` refuses `CLIP_OVERLAPS_ANOTHER` (E279).
+flood-ends-long: reflection 1's top clip moves from 435.31-456.47 s (inside the rainbow cut) to the unused 44.88-66.08 s
+("And God remembered Noah… Remembered"); altar (338.47 s) stays: door ends 338.64 s, door's last word ends 338.39 s and
+altar's first word starts 338.74 s, so the shared 0.17 s is fade over silence, not repeated speech.
