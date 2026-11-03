@@ -416,10 +416,13 @@ class Generation(unittest.TestCase):
                                                                           "clips": [{"clip_sha256": "f" * 64, "flags": []}]}}}))
             with self.assertRaises(SystemExit):   # one generation per template version, already spent on the current one
                 eb.probe_ids(plan, "k-a", "1", d)
-        # the real M2 Keeper record: hand-written prompts (no template version), so one generation per line is allowed
+        # the real M2 Keeper records: the hand-written prompts of probe 41629339290 were allowed ONE generation on the
+        # current template (probe 41738699321, clean, no flags); that spent it, so another probe is refused
         keeper = {"id": "k-hook", "kind": "keeper", "lines": [0]}
-        self.assertEqual(eb.probe_ids({"episode": "arc-02-noah-compilation-keeper", "shots": [keeper]}, "k-hook", "1"), (["k-hook"], 1))
-        self.assertEqual(sorted(eb.older_template_shots("arc-02-noah-compilation-keeper", ["k-hook", "k-close"])), ["k-close", "k-hook"])
+        for sid in ("k-hook", "k-close"):
+            with self.assertRaises(SystemExit):
+                eb.probe_ids({"episode": "arc-02-noah-compilation-keeper", "shots": [dict(keeper, id=sid)]}, sid, "1")
+            self.assertEqual(eb.older_template_shots("arc-02-noah-compilation-keeper", [sid]), [])
 
     def test_e264_a_talking_shot_costs_two_generations_and_one_probe_round(self):
         # E264 (no rework): 6 generations x rounds spent up to 36 near-identical clips for 3 Keeper lines
