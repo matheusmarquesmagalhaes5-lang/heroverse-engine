@@ -639,3 +639,9 @@ shared. `short_cuts.check` refuses `CUT_OVERLAPS_ANOTHER`, `reflection_shorts.ch
 flood-ends-long: reflection 1's top clip moves from 435.31-456.47 s (inside the rainbow cut) to the unused 44.88-66.08 s
 ("And God remembered Noah… Remembered"); altar (338.47 s) stays: door ends 338.64 s, door's last word ends 338.39 s and
 altar's first word starts 338.74 s, so the shared 0.17 s is fade over silence, not repeated speech.
+
+Reflection 1 re-render (run 41630141252, sha256 f36a801c6ba4bff8..., top clip 44.88-66.08 s, 21.2 s): not reviewed and not scheduled. The pinned
+ASR (faster-whisper small.en, word timings, run locally on the exact master) hears extra speech after each Keeper line: "you mealy"
+(5.84-6.26 s), a second "own bow" (11.02-11.42 s), "for carried" (16.74-17.74 s); volumedetect shows speech-level energy there (about -10 to
+-14 dB), so these are in the clips' audio, not recognizer noise. The 9.5 audio claim stays pending. The fix belongs in the render (trim each
+clip at its last required word), not in the gate. Also: the top still (the ark on the sea, 21 s) does not show the rainbow the lines name.
