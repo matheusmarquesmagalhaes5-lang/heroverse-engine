@@ -4574,6 +4574,23 @@
      "instrument"
     ]
    }
+  },
+  {
+   "id": "E287",
+   "date": "2026-11-03",
+   "class": [
+    "process"
+   ],
+   "prior": [],
+   "error": "Pavo does only what we send (owner 2026-11-03: \"o pavo nao tem vida propria... quem ta errado e voce\"), yet we judged our own line on Pavo's RE-SYNTHESIZED audio: the Kokoro-input route kept the clip's returned track (a re-timed line, a tail mumble, a changed word) as its audio, so SPEECH_WORDS_NOT_EXACT, AUDIO_NOT_OUR_LINE and an envelope corr under 0.85 discarded clips whose PICTURE was good (genesis-10 k-insight/k-close probe 41574608645, flood k-hook/k-bow, reflection k-r1..k-r3, M2 hook/close), and the reflection render shipped the mumble. Root cause: judged the words on Pavo's re-synthesized audio instead of using our exact audio. Evidence run pavo-audio-eval (PR #751, 21 stored clips, nothing generated): with OUR request audio laid over the same picture the SyncNet sync holds for 13 of the 16 clips rejected only for words/audio (offset -2..0, confidence 3.2-6.8, face >= 0.82); the 3 that fail are the ones whose mouth really followed other words (k-insight gen 1 conf 1.8, k-r3 conf 1.3 and 1.7), and the two with no face still fail FACE_NOT_FOUND.",
+   "fix": "pavo_audio.py: the kept talking clip is Pavo's picture (stream copy) with the request's own WAV as the only audio (PCM, bit-exact); mux_ours at probe time, assert_ours proves the decoded audio equals the request WAV (sha256 and samples recorded as the clip's `audio` proof; the probe record carries pavo_audio \"ours\"). lipsync_check then measures the SyncNet offset and confidence, the face and the clip checks against that same audio, unchanged and strict. The words authority is the request's words, exact by construction: approve-shot refuses a clip of an ours-record without the proof or with a words flag (SHOT_AUDIO_NOT_OURS) and needs no speech-check for it; reflection_shorts verifies the digest on the approved bytes before it uses them (SEGMENT_AUDIO_NOT_OURS). TALK_ATTEMPTS = 1 per line; make_shot takes a second generation only for a visual defect (visual_defect: not a words flag; TALK_ATTEMPTS_MAX = 2 stays the ceiling every budget fits). Legacy approvals (Pavo's track kept) keep their E266 rules; a legacy clip can be re-approved only through a new probe record.",
+   "antidote": {
+    "file": "migration/production/bible/test_pavo_audio.py",
+    "contains": "def test_e287_the_kept_clip_carries_our_request_audio_never_pavos_track",
+    "covers": [
+     "process"
+    ]
+   }
   }
  ]
 }

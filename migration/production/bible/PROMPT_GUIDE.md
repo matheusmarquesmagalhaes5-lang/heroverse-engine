@@ -180,8 +180,18 @@ The regular route's existing line/clip retime rules apply before acceptance; an 
 stretched later to fit a replacement. Preserve actual failures and their measures. A good clip from another line
 does not establish synchronization for this line.
 
-**Generation cap and fallback (E264, owner: no rework).** A talking or voice-over shot gets `TALK_ATTEMPTS = 2`
-generations (one and at most 1 regeneration) and at most 1 shot-probe round (`TALK_PROBE_ROUNDS_MAX`; the dispatch
+**Pavo's audio is ours (E287, owner 2026-11-03: "Pavo does only what we send; the fault is ours").** Send the exact
+Kokoro line as the request's input audio with `sound: false`, and keep only Pavo's picture: the clip is Pavo's video with
+the request's own WAV as its audio (`pavo_audio.mux_ours`, PCM), never Pavo's returned track, which is a re-synthesis that
+can re-time the line, add a tail or change a word. The words are the request's words, exact by construction, and the audio
+digest equals the request's WAV (`pavo_audio.assert_ours`, recorded as the clip's `audio` proof). Do not judge words on
+Pavo's track, do not run `speech-check` on such a clip, do not discard a good picture for its returned sound. Lip sync, the
+face and the visual checks stay strict and run against our audio (`lipsync_check` on the kept clip). A clip is regenerated
+only for a VISUAL defect (the face lost, a broken render, lips out of sync with our audio), never for the words.
+
+**Generation cap and fallback (E264, owner: no rework; E287).** A talking or voice-over shot plans `TALK_ATTEMPTS = 1`
+generation and takes a second only when the first has a visual defect (`episode_build.visual_defect`; the ceiling every
+budget fits is `TALK_ATTEMPTS_MAX = 2`), at most 1 shot-probe round (`TALK_PROBE_ROUNDS_MAX`; the dispatch
 guard and `probe_ids` refuse `attempts` above 1 for it), so one shot costs at most 2 generations a run and three
 talking shots at most 6 (`long_preflight.planned_units(..., worst=True)`). When a talking Keeper shot fails its
 checks on both generations, the shot falls back to the Keeper voice-over on reviewed still motion of an approved
@@ -193,8 +203,10 @@ shot-probe uploads EVERY generation that has a video, with its flags and measure
 never kept before, so there was nothing to compare. A shot is a failed shot only when every generation has a hard flag.
 - HARD (never approvable): `FACE_NOT_FOUND`, a broken render (clip_check flags, `NO_VIDEO`), `MOUTH_TALKING` on a
   voice-over Keeper, `GOD_SHOT_FACE`, a policy block, and a clip that does not say our words.
-- WORDS: `AUDIO_NOT_OUR_LINE` is an RMS-envelope measure: it fires on a line Pavo re-timed as well as on other words.
-  It stays hard until `episode_build.py speech-check` shows the pinned ASR heard the clip say the line; then
+- WORDS (legacy clips only, E287): `AUDIO_NOT_OUR_LINE` is an RMS-envelope measure on Pavo's returned track: it fires on a
+  line Pavo re-timed as well as on other words. A clip of a probe record made under `pavo_audio: "ours"` carries our own
+  audio, so it cannot raise it (a words flag there means the mux broke: `SHOT_AUDIO_NOT_OURS`). For a legacy clip it
+  stays hard until `episode_build.py speech-check` shows the pinned ASR heard the clip say the line; then
   approve-shot accepts it (`accepted_flags` + `words`, bound to the clip's sha256).
 - SOFT (visible, not a bar): `MOUTH_NOT_IN_SYNC`, `AUDIO_OFFSET`, a small offset fixed in the edit (trim, hold, cut
   point, B-roll). approve-shot records them as `accepted_flags`; the build ignores exactly those on that clip.

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""E286 evidence: does a stored Pavo clip stay in sync when OUR exact audio is laid over its picture?
+"""E287 evidence: does a stored Pavo clip stay in sync when OUR exact audio is laid over its picture?
 
 Owner 2026-11-03: Pavo does only what we send; the fault is ours when we judge the words on Pavo's returned (re-synthesized)
 audio and discard clips whose picture is good. This script takes an already generated clip and the Kokoro line we sent

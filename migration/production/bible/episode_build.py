@@ -104,7 +104,7 @@ import pavo_native  # noqa: E402  (owner 27/10: Pavo's own speech, story QA v4)
 import reviewer_identity  # noqa: E402
 import clip_timing  # noqa: E402
 import existing_edit  # noqa: E402
-import pavo_audio  # noqa: E402  (E286: a talking clip's audio is OUR request audio, never Pavo's track)
+import pavo_audio  # noqa: E402  (E287: a talking clip's audio is OUR request audio, never Pavo's track)
 
 VOICE = {"voice_id": "am_michael", "speed": 1.0}   # the pinned engine voice (qa_pilot.voice_model_pinned)
 LINE_GAP = plan_check.LINE_GAP
@@ -118,7 +118,7 @@ ATTEMPTS = 3               # one generation and at most 2 regenerations
 # generation and at most 1 regeneration): 6 per shot per round, times rounds, spent up to 36 near-identical Pavo clips
 # for 3 Keeper lines, which is rework. A talking shot that fails both falls back to the Keeper voice-over on a reviewed
 # still motion of an approved Keeper still (DECISIONS "Battle plan to YPP"); no further generation is ever queued.
-# E286 (owner 2026-11-03): the clip's audio is now OUR request audio (pavo_audio.py), so no generation is spent for the
+# E287 (owner 2026-11-03): the clip's audio is now OUR request audio (pavo_audio.py), so no generation is spent for the
 # words: a line takes ONE generation (TALK_ATTEMPTS) and a second only for a VISUAL defect of the first (visual_defect:
 # the face lost, a broken render, the lips out of sync with our audio), at most TALK_ATTEMPTS_MAX in all. TALK_ATTEMPTS_MAX
 # is the ceiling every budget (dispatch guard, preflight chance, quota units) must fit; it is E264's old cap.
@@ -1259,7 +1259,7 @@ def wait_job(client, cid, sleep=time.sleep, clock=time.monotonic):
 def attempts_for(shot):
     """E98: the most generations one shot may take; every caller of make_shot passes it, and every budget is sized by
     it. A talking shot and a voice-over Keeper shot (plan B) plan TALK_ATTEMPTS = 1 and take a second only when the
-    first has a visual defect (E286, make_shot's `regenerate`), so the ceiling is TALK_ATTEMPTS_MAX."""
+    first has a visual defect (E287, make_shot's `regenerate`), so the ceiling is TALK_ATTEMPTS_MAX."""
     return TALK_ATTEMPTS_MAX if plan_check.talking(shot) or plan_check.voiceover(shot) else ATTEMPTS
 
 
@@ -1282,7 +1282,7 @@ WORDS_FLAGS = ("AUDIO_NOT_OUR_LINE",)
 
 
 def visual_defect(flags):
-    """E286: a generation worth a second one: it has a flag, and not one of the words flags. The audio is OUR request
+    """E287: a generation worth a second one: it has a flag, and not one of the words flags. The audio is OUR request
     audio (pavo_audio), so a line's words never cost a generation; what is left is the picture (the face lost, a broken
     render, a talking mouth where none is wanted) and the lips out of sync with our audio."""
     return any(f not in WORDS_FLAGS for f in flags or [])
@@ -1302,7 +1302,7 @@ def reviewable(flags):
 
 def make_shot(shot_id, attempt, check, attempts=ATTEMPTS, regenerate=None):
     """attempt(n) -> (record, clip path or None); check(path) -> (flags, measures or None). A clean generation ends the
-    shot at once. Otherwise the shot goes on to its next generation (at most `attempts` in all, and E286 only when
+    shot at once. Otherwise the shot goes on to its next generation (at most `attempts` in all, and E287 only when
     `regenerate(flags)` says the flagged one is worth another: visual_defect) and EVERY generation is
     kept: a flagged one beside the shot (E94) with record["clip"] naming its file, so the probe uploads it. E266: when no
     generation is clean but one has no hard flag (flag_split: a small sync offset, a re-timed line) the shot is kept
@@ -1338,7 +1338,7 @@ def make_shot(shot_id, attempt, check, attempts=ATTEMPTS, regenerate=None):
             record.setdefault("flags", ["NO_VIDEO"])
         records.append(record)
         if regenerate is not None and not regenerate(record["flags"]):
-            break   # E286: nothing visual to fix: another generation would only spend Pavo for the same picture
+            break   # E287: nothing visual to fix: another generation would only spend Pavo for the same picture
     usable = next((r for r in records if r.get("clip") and reviewable(r["flags"])), None)
     if usable:
         return where / usable["clip"], records
@@ -1456,7 +1456,7 @@ def shot_runner(shot, index, plan, layout, refs, work, client, download, lip_pyt
                             "seconds": video.get("seconds")}
         if not talks and not native:   # Pavo adds an AAC track even with sound false: strip it
             run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", raw, "-an", "-c:v", "copy", final])
-        elif talks and not native:   # E286: Pavo's picture with OUR request audio over it; Pavo's own track is dropped
+        elif talks and not native:   # E287: Pavo's picture with OUR request audio over it; Pavo's own track is dropped
             line = REPO / talk_record(layout, shot)["wav"]
             pavo_audio.mux_ours(raw, line, final)
             record["audio"] = pavo_audio.assert_ours(final, line)   # the kept audio's digest IS the request's
@@ -1915,7 +1915,7 @@ def keep_generations(sid, n, gens, work, out, episode, sheet, first=None):
         row = {"round": n, "generation": g.get("generation"), "asset": asset, "clip_sha256": sha,
                "flags": list(g.get("flags") or []), "hard_flags": split["hard"], "words_flags": split["words"],
                "soft_flags": split["soft"], "measures": measures, "generations": [], "sheet": label, "_name": name}
-        if g.get("audio"):   # E286: the proof that the kept clip's audio is the request's own (pavo_audio.assert_ours)
+        if g.get("audio"):   # E287: the proof that the kept clip's audio is the request's own (pavo_audio.assert_ours)
             row["audio"] = g["audio"]
         rows.append(row)
     rows.sort(key=lambda r: r["_name"] != first)
@@ -1942,7 +1942,7 @@ def probe_step(plan, work, lip_python, face_model, out, ids, attempts, client=No
     sheet = sheet or sheet_step
     out.mkdir(parents=True, exist_ok=True)
     record = {"episode": plan["episode"], "plan_sha256": None, "attempts": attempts, "shots": {},
-              "pavo_audio": pavo_audio.ROUTE}   # E286: a Kokoro-input clip of this record carries OUR request audio
+              "pavo_audio": pavo_audio.ROUTE}   # E287: a Kokoro-input clip of this record carries OUR request audio
     index = {s["id"]: i for i, s in enumerate(plan["shots"])}
     for sid in ids:
         sha, canonical = request_identity(plan["shots"][index[sid]], index[sid], plan, layout, refs)
@@ -2134,7 +2134,7 @@ def measure_clip_step(record_path, shot_id, clip_path, out_dir=None):
 
 
 def ours_audio_problem(record, entry, clip):
-    """E286: why a clip's audio is not provably the request's own (None: it is, or it is a legacy clip / another route).
+    """E287: why a clip's audio is not provably the request's own (None: it is, or it is a legacy clip / another route).
     A record made under pavo_audio "ours" holds, for every Kokoro-input clip, the digest proof of the muxed audio
     (pavo_audio.assert_ours at probe time); a missing, foreign or malformed proof is refused, and so is a words flag:
     on our own audio AUDIO_NOT_OUR_LINE can only mean the mux broke. A legacy record (Pavo's track kept) is judged by
@@ -2251,7 +2251,7 @@ def approve_shot(record_path, shot_id, asset, score, note, shots_dir=None, today
                               "approved_at": today or time.strftime("%Y-%m-%d", time.gmtime()), "model": model}
     if speech:
         data["shots"][shot_id]["speech"] = speech
-    if clip.get("audio"):   # E286: the words authority is the request; the proof binds this clip's audio to it
+    if clip.get("audio"):   # E287: the words authority is the request; the proof binds this clip's audio to it
         data["shots"][shot_id]["audio"] = clip["audio"]
     if trim_out_s is not None:
         data["shots"][shot_id]["trim_out_s"] = trim_out_s

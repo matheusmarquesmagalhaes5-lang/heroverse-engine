@@ -208,7 +208,7 @@ def segment_problems(spec, root=ROOT):
             bad.append(f"SEGMENT_CLIP_HARD_FLAG {sid} {','.join(split['hard'])} (no face, a broken render or a policy "
                        "problem: never shipped)")
         accepted = eb.accepted_flags(approved, sha)
-        proof = approved.get("audio")   # E286: the clip's audio is OUR request audio (pavo_audio): the words are the request's
+        proof = approved.get("audio")   # E287: the clip's audio is OUR request audio (pavo_audio): the words are the request's
         if proof is not None and proof != clip.get("audio"):
             bad.append(f"SEGMENT_AUDIO_NOT_OURS {sid} (the approval's audio proof is not the probe record's for this clip)")
         elif proof is not None:
@@ -515,7 +515,7 @@ def render(spec_path, clean, work, out_dir, root=ROOT):
         path = work / "clips" / f"{c['shot']}.mp4"
         if not path.is_file() or cl.sha256(path) != c["clip_sha256"]:
             raise SystemExit(f"CLIP_FILE_MISSING {c['shot']} (reflection_shorts.py fetch-clips: the approved clip's exact bytes)")
-        if c.get("audio") is not None:   # E286: its audio digest is the request's own, on the approved bytes
+        if c.get("audio") is not None:   # E287: its audio digest is the request's own, on the approved bytes
             pavo_audio.verify(path, c["audio"])
         if c.get("trim_out_s") is not None:   # E282: the clip is used as approved, cut right after the line's last word
             (work / "trimmed").mkdir(parents=True, exist_ok=True)

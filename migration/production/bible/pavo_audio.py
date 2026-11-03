@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""E286: the audio of a Pavo talking clip is OURS (`pavo_audio: "ours"`, the default of the Kokoro-input route).
+"""E287: the audio of a Pavo talking clip is OURS (`pavo_audio: "ours"`, the default of the Kokoro-input route).
 
 We send Pavo our exact Kokoro line (the request's input audio, sound false) and keep only what it makes of it: the
 picture, the lips it animates for that voice. Its returned track is a re-synthesis that may re-time the line, add a

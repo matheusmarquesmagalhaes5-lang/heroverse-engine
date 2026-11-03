@@ -26,7 +26,7 @@ from client import PavoError  # noqa: E402
 HAS_FFMPEG = shutil.which("ffmpeg") is not None
 
 
-# E286: the engine lays OUR request audio over Pavo's picture (pavo_audio.mux_ours) and proves the digest. These tests feed
+# E287: the engine lays OUR request audio over Pavo's picture (pavo_audio.mux_ours) and proves the digest. These tests feed
 # the engine fake bytes, not media, so the two media calls are stubbed here; test_pavo_audio.py runs the real ones on real
 # ffmpeg media and AudioIsOurs below drives them through the engine's own attempt().
 FAKE_PROOF = {"route": "ours", "sha256": "0" * 64, "samples": 1, "seconds": 0.1}
@@ -366,7 +366,7 @@ class Generation(unittest.TestCase):
         scene = {"id": "s-a", "kind": "scene", "lines": [1]}
         self.assertEqual(eb.attempts_for(talk), eb.TALK_ATTEMPTS_MAX)
         self.assertEqual(eb.attempts_for(scene), eb.ATTEMPTS)
-        self.assertEqual((eb.TALK_ATTEMPTS, eb.TALK_ATTEMPTS_MAX), (1, 2))   # E286: one generation, a second only for a visual defect
+        self.assertEqual((eb.TALK_ATTEMPTS, eb.TALK_ATTEMPTS_MAX), (1, 2))   # E287: one generation, a second only for a visual defect
         n = []
         with self.assertRaises(eb.ShotFailed):
             eb.make_shot("k-a", lambda i: (n.append(i) or {"generation": i}, None), lambda p: ([], None),
@@ -379,7 +379,7 @@ class Generation(unittest.TestCase):
         import long_preflight as lp
         talk = {"id": "k-a", "kind": "keeper", "lines": [0]}
         scene = {"id": "s-a", "kind": "scene", "lines": [1]}
-        self.assertEqual((eb.TALK_ATTEMPTS_MAX, eb.TALK_PROBE_ROUNDS_MAX), (2, 1))   # the ceiling every budget fits (E286: a 2nd only for a visual defect)
+        self.assertEqual((eb.TALK_ATTEMPTS_MAX, eb.TALK_PROBE_ROUNDS_MAX), (2, 1))   # the ceiling every budget fits (E287: a 2nd only for a visual defect)
         self.assertEqual((eb.probe_rounds_cap(talk), eb.probe_rounds_cap(scene)), (1, eb.PROBE_ATTEMPTS_MAX))
         with self.assertRaises(SystemExit) as err:
             eb.probe_ids({"episode": "x", "shots": [talk]}, "k-a", "2")
@@ -944,7 +944,7 @@ class Gating(unittest.TestCase):
             side = records / self.plan["episode"] / "speech" / f"{sha}.json"
             doc = json.loads(path.read_text())
             doc["shots"]["s-eve"]["clips"][0]["flags"] = ["AUDIO_NOT_OUR_LINE", "MOUTH_NOT_IN_SYNC"]
-            doc["shots"]["s-eve"]["clips"][0].pop("audio")   # a LEGACY clip (E286: Pavo's own track was kept): E266's rules
+            doc["shots"]["s-eve"]["clips"][0].pop("audio")   # a LEGACY clip (E287: Pavo's own track was kept): E266's rules
             doc.pop("pavo_audio")
             path.write_text(json.dumps(doc))
             with self.assertRaisesRegex(SystemExit, "SHOT_WORDS_UNPROVEN"):

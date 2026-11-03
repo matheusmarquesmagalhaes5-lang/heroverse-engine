@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""E286: the kept talking clip carries OUR request audio, never Pavo's re-synthesized track (real ffmpeg media)."""
+"""E287: the kept talking clip carries OUR request audio, never Pavo's re-synthesized track (real ffmpeg media)."""
 import json
 import math
 import os
@@ -50,8 +50,8 @@ class AudioIsOurs(unittest.TestCase):
     def tearDown(self):
         shutil.rmtree(self.tmp)
 
-    def test_e286_the_kept_clip_carries_our_request_audio_never_pavos_track(self):
-        # Pavo's own track is NOT the line (this is the E286 defect: words were judged on it) ...
+    def test_e287_the_kept_clip_carries_our_request_audio_never_pavos_track(self):
+        # Pavo's own track is NOT the line (this is the E287 defect: words were judged on it) ...
         with self.assertRaisesRegex(SystemExit, "AUDIO_NOT_OURS"):
             pavo_audio.assert_ours(self.raw, self.line)
         # ... the kept clip is Pavo's picture with our line over it: the audio digest IS the request's
