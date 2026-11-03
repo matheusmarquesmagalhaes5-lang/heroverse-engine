@@ -1,0 +1,37 @@
+{
+ "id": "genesis-10-11-long-s-roadwest-2026110303-1",
+ "still": "genesis-10-11-long-s-roadwest",
+ "episode": "genesis-10-11-long",
+ "shot": "s-roadwest",
+ "run": "2026110303",
+ "status": "DRAFT",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow pan. A long line of small figures with donkeys heading west over rolling hills at sunrise, the tower tiny and distant on the plain behind them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Low sunrise light and long blue shadows. Lonely and vast. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "sent_prompt": "Create an image, 16:9 landscape, no text. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow pan. A long line of small figures with donkeys heading west over rolling hills at sunrise, the tower tiny and distant on the plain behind them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Low sunrise light and long blue shadows. Lonely and vast. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "engine": "chatgpt-desktop",
+ "models": [
+  "chatgpt-images"
+ ],
+ "generated_by": "ChatGPT Windows app on the owner's PC (Create image), one request at a time",
+ "source": "chatgpt-desktop",
+ "download": {
+  "file": "genesis-10-11-long-s-roadwest.png",
+  "sha256": "cffec947cb1b74b1c194d33157af2c7f5712588b66ed54db324bc9080d916d4f",
+  "size_bytes": 2274243,
+  "pixels": [
+   1672,
+   941
+  ]
+ },
+ "references": [],
+ "licence": {
+  "note": "OpenAI Terms of Use: the user owns the Output; made at the owner's request in his own session (README Licence and account risk)"
+ },
+ "upscaler": "System.Drawing HighQualityBicubic centre crop to 16:9 -> 1920x1080, JPEG quality 93",
+ "aspect_ratio": "16:9",
+ "size": [
+  1920,
+  1080
+ ],
+ "repo_path": "migration/production/bible/stills/candidates/genesis-10-11-long-s-roadwest-2026110303-1.jpg",
+ "sha256": "a6c27e52bd4779cff3d2f42ef066194d6174ff27efd8b8d6c99238b9bfb81005"
+}

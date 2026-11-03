@@ -1,0 +1,37 @@
+{
+ "id": "genesis-10-11-long-s-nations-2026110303-1",
+ "still": "genesis-10-11-long-s-nations",
+ "episode": "genesis-10-11-long",
+ "shot": "s-nations",
+ "run": "2026110303",
+ "status": "DRAFT",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow drift. A vast green river valley at dawn with many small family camps and cooking fires scattered across it, mist on the water, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Soft golden dawn, mist and woodsmoke. Hopeful and open. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "sent_prompt": "Create an image, 16:9 landscape, no text. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow drift. A vast green river valley at dawn with many small family camps and cooking fires scattered across it, mist on the water, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Soft golden dawn, mist and woodsmoke. Hopeful and open. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "engine": "chatgpt-desktop",
+ "models": [
+  "chatgpt-images"
+ ],
+ "generated_by": "ChatGPT Windows app on the owner's PC (Create image), one request at a time",
+ "source": "chatgpt-desktop",
+ "download": {
+  "file": "genesis-10-11-long-s-nations.png",
+  "sha256": "8abf5e966b8b0e9b2bc3e9f18badc572e75e9210c19d88fe130007ce43ed152b",
+  "size_bytes": 2626418,
+  "pixels": [
+   1672,
+   941
+  ]
+ },
+ "references": [],
+ "licence": {
+  "note": "OpenAI Terms of Use: the user owns the Output; made at the owner's request in his own session (README Licence and account risk)"
+ },
+ "upscaler": "System.Drawing HighQualityBicubic centre crop to 16:9 -> 1920x1080, JPEG quality 93",
+ "aspect_ratio": "16:9",
+ "size": [
+  1920,
+  1080
+ ],
+ "repo_path": "migration/production/bible/stills/candidates/genesis-10-11-long-s-nations-2026110303-1.jpg",
+ "sha256": "795769372979241f8935d2759c05bcc38274d2089637c13f2cec2b2efa3a58fa"
+}

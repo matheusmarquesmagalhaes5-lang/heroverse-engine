@@ -1,0 +1,26 @@
+{
+ "id": "genesis-10-11-long-s-ramps",
+ "episode": "genesis-10-11-long",
+ "shot": "s-ramps",
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow tilt up. A towering stepped tower of brick rising in great terraces with long ramps climbing its sides and lines of tiny workers carrying loads up them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Hard afternoon sun, long shadows down the terraces. Overwhelming and proud. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-ramps.jpg",
+ "sha256": "da102d6eac521db191074c421df182a3ee77d44b9b079adf1dcc3c23cffccc1f",
+ "size": [
+  1920,
+  1080
+ ],
+ "candidate": "genesis-10-11-long-s-ramps-2026110303-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-03",
+  "score": 9.5,
+  "note": "Actual frame viewed: the stepped brick tower in great terraces with long ramps and tiny workers, hard afternoon sun, centred.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "c4167eaa6b672016028f27e8970d20fb2e021cd5b7c3313c9fdbe477671d6f37",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
+}
