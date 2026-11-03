@@ -11,9 +11,9 @@
  "files": {
   "script.json": "724afe16f91a37ce39b6bc913de9404b0b16df0af461dbfee848c5a92453115d",
   "schedule.json": "4e4fd53184ac0e55d106b0d1bb55335bf92ae84c2293f6ce05e63709a5de363c",
-  "out/manifest.json": "b6964783d8f90ba23ff2a89129eaaa99a080148f07d88c974a473fc4bec07a96",
+  "out/manifest.json": "1078c36bc305400d566548c61360730bca068e811a56251e11eefcc698b617ce",
   "out/timeline.json": "a63516e41f7cfabc517eb8d2113498764ab0aa88ca7e5eafaf00ffb2c1e03dfc",
-  "out/package.json": "2155d4207f231ae763f3697db3561350a9fa45d54e677057ab704449778a5535",
+  "out/package.json": "2c7f5834bedc5f002f8878559463bcfac1a2f62ef00ae5cc42bf3125eb303ab1",
   "inspection/thumbnail.jpg": "efc3be55cb72eef1f38575c0d3d0ae23a66831d183b2649e670b148853640c2a"
  },
  "review_status": "AWAITING_REVIEW",
