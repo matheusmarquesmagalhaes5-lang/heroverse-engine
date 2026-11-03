@@ -108,6 +108,13 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
   `keeper-compilation` (16:9), `speech-check.yml`, the voice-over mode of `compilation_long.py`. After it is public:
   `python3 migration/channel/related_map.py build --public-check` (newest compilation wins) for the Studio related-video queue,
   pinned comment on the Shorts (still the long's link until then).
+- 2026-11-03 (reflection 1 on OUR audio, E287/E288): `shot-remux.yml` (PR #756) puts our request WAV over a STORED Pavo clip (no generation) and
+  runs the strict checks on it. Run 41654835246 on k-r1 (dae7a9), k-r2 (7f043f), k-r4 (b1cd73): all three clean (SyncNet offset 0/-1, conf
+  6.6/5.0/7.2 against min 2.7, face >= 0.95, no flags); approved 9.5 in `shots/flood-ends-long-reflection-1.json` with the `audio` proof (no trim,
+  no speech-check owed). k-r3 stays failed (conf 1.3/1.7). Reflection 1 is NOT rendered or published: the 3-clip plan (k-r1,k-r2,k-r4 = 52 words)
+  is refused by plan_check REFLECTION_PACE (~165.2 wpm over the 165 gate; our WAVs are 18.65 s, >= 167 wpm) and the gate was not loosened. Ways
+  out: owner/coordinator accepts the E286 retime ceiling in plan_check for plans whose clips all exist, or one more passing 4th clip. Top range
+  chosen for it: 62.65-84.x s of flood-ends-long (s-fountains, s-lines; unused by any cut), two shots of 10 s. slot 2026-11-05T05:30Z still free.
 
 ## Next moments
 
@@ -154,3 +161,10 @@ accepted boundary.
   `compilations/arc-02-noah-compilation.json` with the `long` chapter for flood-ends-long (1m-NUJhkdMY), then `compilation-build.yml`,
   local-review, claude_review, approve, gate, publish at the 11-04 slot. The 11-01 hook2/close clips say "Genesis five to seven"
   and must not be reused for a Genesis 5-9 title.
+
+- 2026-11-03 (scheduled continuation 14:20 UTC, triage of the last-3 h failures): none is open. reflection-shorts 41642334988/41643668889/41645300580
+  were the retime iterations (CLIPS_TOO_LONG_FOR_CLIP 25.83 s in 26.13 s), fixed by #750/#752 and green in run 41646614168; short-cuts 41635228742 is
+  E283 (fixed); speech-check 41635027079 was LIPSYNC_TOOL_BROKEN (SYNCNET_MODEL_MISSING), the re-run is green; the PR-check and pavo-audio-eval reds were
+  on the #751 branch before it merged (main PR checks green at 14:10Z). No open PR. Shorts in the next 48 h are unchanged; FREE: 2026-11-05 13:30Z
+  (reflection 1 is held at 9.3; a livelier top range needs the long's per-shot time map, not in the report). The M2 Noah compilation Keeper clips
+  (shot-probe 41652099686) belong to the other session in progress; not duplicated here.

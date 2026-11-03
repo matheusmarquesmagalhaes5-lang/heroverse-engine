@@ -44,6 +44,7 @@ import buzzy_long  # noqa: E402
 import compilation_long as cl  # noqa: E402
 import kjv_check  # noqa: E402
 import pavo_audio  # noqa: E402
+import plan_check  # noqa: E402
 import publish_episode as pe  # noqa: E402
 import short_cuts  # noqa: E402
 import short_engine  # noqa: E402
@@ -60,8 +61,8 @@ SEGMENTS = (2, 4)                  # plan_check.REFLECTION_SEGMENTS: one approve
 WPM_BAND = (115, 165)              # the accepted words-per-minute band of the narration (QA)
 VOICE_AT = 0.3                     # the first clip starts this long after the top clip
 XFADE = 0.2                        # the crossfade between two clips: inside the previous clip's silent tail
-RETIME_TARGET = 164                # E286: the pace a too-fast cut set is slowed to (inside WPM_BAND)
-RETIME_MIN = 0.90                  # ... by at most 10 % (the retime the long's talking shots already allow)
+RETIME_TARGET = plan_check.REFLECTION_RETIME_TARGET   # E286/E289: the pace a too-fast cut set is slowed to (inside WPM_BAND);
+RETIME_MIN = plan_check.REFLECTION_RETIME_MIN         # ... by at most 10 %: ONE definition, the plan is judged by it too
 XFADE_MIN = 0.08                   # E282: the shortest crossfade after a TRIMMED clip (its silent tail is what the trim left)
 TAIL_MIN = 0.6                     # the Short keeps this long after the last clip ends
 TAIL_MAX = 3.0                     # ... and no more (the last frame is held: no long frozen face)
@@ -531,7 +532,7 @@ def render(spec_path, clean, work, out_dir, root=ROOT):
     tempo = 1.0
     wpm0 = result["reflection"]["words"] / sum(x[1] - x[0] for x in spans) * 60
     if wpm0 > WPM_BAND[1] and wpm0 > 0:   # E286: cut at their last words the clips are faster than the band: slow them all, within 10 %
-        tempo = round(RETIME_TARGET / wpm0, 3)
+        tempo = plan_check.reflection_retime(wpm0)   # E289: the very function the plan's pace was judged by
         if tempo < RETIME_MIN:
             raise SystemExit(f"VOICE_PACE {wpm0:.0f} wpm ({WPM_BAND[0]}-{WPM_BAND[1]}; a retime to {RETIME_TARGET} wpm "
                              f"needs x{tempo}, under x{RETIME_MIN})")

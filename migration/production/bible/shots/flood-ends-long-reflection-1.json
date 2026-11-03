@@ -2,48 +2,58 @@
  "episode": "flood-ends-long-reflection-1",
  "shots": {
   "k-r1": {
-   "asset": "shot-flood-ends-long-reflection-1-k-r1-sha256-dae7a90d6e87c022739337f751c125c8457acaa29c2fe886b9929df38caef388.mp4",
-   "clip_sha256": "dae7a90d6e87c022739337f751c125c8457acaa29c2fe886b9929df38caef388",
+   "asset": "shot-flood-ends-long-reflection-1-k-r1-sha256-e83cea77890ff940224e542a29d1fc0a8d47ea10f38ca7848c0867cf9b43146e.mp4",
+   "clip_sha256": "e83cea77890ff940224e542a29d1fc0a8d47ea10f38ca7848c0867cf9b43146e",
    "request_sha256": "b43cbae82b9742c58d76207e33d7b55c43b2d2980fbf3650a51935612db487c2",
    "clip_seconds": 6.583333,
    "requested_clip_seconds": 6,
    "media": {
     "version": "clip-media-v1",
-    "clip_sha256": "dae7a90d6e87c022739337f751c125c8457acaa29c2fe886b9929df38caef388",
+    "clip_sha256": "e83cea77890ff940224e542a29d1fc0a8d47ea10f38ca7848c0867cf9b43146e",
     "video_seconds": 6.583333,
-    "audio_seconds": 6.56,
+    "audio_seconds": 6.582993,
     "instrument": "ffprobe stream durations"
    },
    "score": 9.5,
-   "note": "Approved clip unchanged, now used cut at 5.40 s (E281) inside the silence after the line's last word, because the clip's own audio carries a trailing Pavo mumble after it. Frames of the trimmed clip viewed as a contact sheet (same Keeper, no artefacts; the picture is the frames of the earlier full-size review, only shortened). The pinned ASR (faster-whisper small.en) hears exactly the line on the trimmed media (speech-check --trim-out 5.40; the voice-similarity measure was not taken: resemblyzer unavailable offline); lips flags empty, music and singing 0. Audio NOT heard by ear: this session cannot play audio.",
-   "probe_record": "migration/evidence/shots/flood-ends-long-reflection-1/41567543843.json",
-   "run_id": "41567543843",
+   "note": "Stored Pavo clip dae7a90d (run 41567543843, the approved generation) with OUR request audio over its picture (shot-remux 41654835246, audio proof route ours, 244755 samples, PCM bit-exact). Contact sheet of the actual new clip viewed (20 frames, 0.2-6.4 s): same Keeper, face large and centred, scroll in both hands, fire flicker, no artefacts, lips move with the line. Strict checks on our audio: SyncNet offset 0 conf 6.58 (min 2.7), face frames 0.97, audio corr 1.0, no flags. The words are the request's by construction. Mouth keeps a small movement after our line ends (line 5.55 s, picture 6.58 s). Audio NOT heard by ear: this session cannot play audio.",
+   "probe_record": "migration/evidence/shots/flood-ends-long-reflection-1/41654835246.json",
+   "run_id": "41654835246",
    "source_run": null,
    "approved_at": "2026-11-03",
    "model": "claude-session-reviewer",
-   "trim_out_s": 5.4
+   "audio": {
+    "route": "ours",
+    "sha256": "00df9338c03738180db6723499c25a95a83a767a1a64f2721f1fcd8f8a938255",
+    "samples": 244755,
+    "seconds": 5.55
+   }
   },
   "k-r2": {
-   "asset": "shot-flood-ends-long-reflection-1-k-r2-sha256-7f043fe271892146064b903aaf532c1aa48412d2638705960b09503547fd00e2.mp4",
-   "clip_sha256": "7f043fe271892146064b903aaf532c1aa48412d2638705960b09503547fd00e2",
+   "asset": "shot-flood-ends-long-reflection-1-k-r2-sha256-8b9ac1123e1a2516d531ba92f9927d70c2241da5d964cfdaecd6c4cc3dccebfb.mp4",
+   "clip_sha256": "8b9ac1123e1a2516d531ba92f9927d70c2241da5d964cfdaecd6c4cc3dccebfb",
    "request_sha256": "b436f9591e3230dc59b72a04ee062c452054b90fc6cfd988c65da3f2c799060e",
    "clip_seconds": 5.166667,
    "requested_clip_seconds": 5,
    "media": {
     "version": "clip-media-v1",
-    "clip_sha256": "7f043fe271892146064b903aaf532c1aa48412d2638705960b09503547fd00e2",
+    "clip_sha256": "8b9ac1123e1a2516d531ba92f9927d70c2241da5d964cfdaecd6c4cc3dccebfb",
     "video_seconds": 5.166667,
-    "audio_seconds": 5.152,
+    "audio_seconds": 5.167007,
     "instrument": "ffprobe stream durations"
    },
    "score": 9.5,
-   "note": "Approved clip unchanged, now used cut at 4.24 s (E281) inside the silence after the line's last word, because the clip's own audio carries a trailing Pavo mumble after it. Frames of the trimmed clip viewed as a contact sheet (same Keeper, no artefacts; the picture is the frames of the earlier full-size review, only shortened). The pinned ASR (faster-whisper small.en) hears exactly the line on the trimmed media (speech-check --trim-out 4.24; the voice-similarity measure was not taken: resemblyzer unavailable offline); lips flags empty, music and singing 0. Audio NOT heard by ear: this session cannot play audio.",
-   "probe_record": "migration/evidence/shots/flood-ends-long-reflection-1/41572178956.json",
-   "run_id": "41572178956",
+   "note": "Stored Pavo clip 7f043fe2 (run 41572178956, the approved generation) with OUR request audio over its picture (shot-remux 41654835246, route ours, 200655 samples). Contact sheet of the actual new clip viewed (20 frames, 0.1-5.0 s): same Keeper, no artefacts, lips move with the line. Strict checks on our audio: SyncNet offset -1 conf 4.96 (min 2.7), face frames 0.99, audio corr 1.0, no flags. Words are the request's by construction. Audio NOT heard by ear: this session cannot play audio.",
+   "probe_record": "migration/evidence/shots/flood-ends-long-reflection-1/41654835246.json",
+   "run_id": "41654835246",
    "source_run": null,
    "approved_at": "2026-11-03",
    "model": "claude-session-reviewer",
-   "trim_out_s": 4.24
+   "audio": {
+    "route": "ours",
+    "sha256": "3e456856eb665d0f4a6e73f01b2636ae10903a8e9804314e8abb56dc270c8a34",
+    "samples": 200655,
+    "seconds": 4.55
+   }
   },
   "k-r3": {
    "asset": "shot-flood-ends-long-reflection-1-k-r3-sha256-664e04f4814391ef47c2b53e5282ec16c7537fd72086df307722dfea57daa596.mp4",
@@ -68,26 +78,31 @@
    "trim_out_s": 5.38
   },
   "k-r4": {
-   "asset": "shot-flood-ends-long-reflection-1-k-r4-sha256-b1cd73da0127ebac6f994a95342920614c5a4cf6315e60e2d8d7ac768a81e9c5.mp4",
-   "clip_sha256": "b1cd73da0127ebac6f994a95342920614c5a4cf6315e60e2d8d7ac768a81e9c5",
+   "asset": "shot-flood-ends-long-reflection-1-k-r4-sha256-9ee77ed7ec29555346462d5c1f156b6a9ee3ba59e2b7f09df8a1877b0f39bb8e.mp4",
+   "clip_sha256": "9ee77ed7ec29555346462d5c1f156b6a9ee3ba59e2b7f09df8a1877b0f39bb8e",
    "request_sha256": "e8ef6972e6518798f1403ad71cd3002c8ac08a7b881c082b4ab8ce430d7db2e2",
    "clip_seconds": 9.416667,
    "requested_clip_seconds": 9,
    "media": {
     "version": "clip-media-v1",
-    "clip_sha256": "b1cd73da0127ebac6f994a95342920614c5a4cf6315e60e2d8d7ac768a81e9c5",
+    "clip_sha256": "9ee77ed7ec29555346462d5c1f156b6a9ee3ba59e2b7f09df8a1877b0f39bb8e",
     "video_seconds": 9.416667,
-    "audio_seconds": 9.408,
+    "audio_seconds": 9.417007,
     "instrument": "ffprobe stream durations"
    },
    "score": 9.5,
-   "note": "Second of two k-r4 generations (the first, 41637504153, was kept but its pinned ASR heard 'it round every was' mid-line, untrimmable). This one: full-size frame sheet viewed, same Keeper, lips follow the line, no artefacts. The clip's own audio adds a trailing 'right?' after the last word; used cut at 8.48 s (E282) inside the silence 8.20-8.55 s. Pinned ASR hears exactly the line on the trimmed media (speech-check --trim-out 8.48); lips flags empty; voice-similarity measure not taken (resemblyzer unavailable offline). Audio NOT heard by ear: this session cannot play audio.",
-   "probe_record": "migration/evidence/shots/flood-ends-long-reflection-1/41639242332.json",
-   "run_id": "41639242332",
+   "note": "Stored Pavo clip b1cd73da (run 41639242332, the approved generation) with OUR request audio over its picture (shot-remux 41654835246, route ours, 377055 samples). Contact sheet of the actual new clip viewed (20 frames, 0.2-9.2 s): same Keeper, fire in the foreground, no artefacts, lips move with the line. Strict checks on our audio: SyncNet offset -1 conf 7.21 (min 2.7), face frames 0.95, audio corr 1.0, no flags. Words are the request's by construction. Audio NOT heard by ear: this session cannot play audio.",
+   "probe_record": "migration/evidence/shots/flood-ends-long-reflection-1/41654835246.json",
+   "run_id": "41654835246",
    "source_run": null,
    "approved_at": "2026-11-03",
    "model": "claude-session-reviewer",
-   "trim_out_s": 8.48
+   "audio": {
+    "route": "ours",
+    "sha256": "b89f3061a8b8ef88e9c96968f864a01edb1a3dfb398713175fea8aa33f65f78f",
+    "samples": 377055,
+    "seconds": 8.55
+   }
   }
  }
 }

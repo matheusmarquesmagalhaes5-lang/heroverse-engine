@@ -1,0 +1,190 @@
+name: HeroVerse shot remux (a stored Pavo clip with OUR request audio over its picture, the build's strict checks; nothing generated)
+run-name: "shot-remux: plan=${{ inputs.plan }} shots=${{ inputs.shots }}"
+# E288 (coordinator 2026-11-03, on E287): clips stored before E287 kept Pavo's returned track and so could not be approved
+# on our own audio. This is NOT a generation: for each listed stored clip (shot:sha256-prefix of an uploaded clip in a
+# committed probe record) it takes the release asset by its sha256, refuses it unless the plan sends the very request
+# that made it (SHOT_REQUEST_CHANGED), regenerates OUR request WAV (deterministic Kokoro, the pins of shot-probe.yml),
+# lays it over the stored picture (pavo_audio.mux_ours: stream copy, PCM, digest proof) and runs the build's own strict
+# checks on the result against that same audio (lipsync_check SyncNet offset and confidence, the face, clip_check).
+# The new clip goes into the release under its own content-hash name; its frame sheet and a probe record
+# (pavo_audio ours, the `audio` proof, `remux_of`) go to branch claude/shot-remux-<episode>-<run> for Claude's review and
+# `episode_build.py approve-shot`, exactly like a probed clip. No Pavo call, no secret, zero credits.
+on:
+  workflow_dispatch:
+    inputs:
+      plan:
+        description: Plan path (migration/production/bible/plans/<episode-id>.json), plan_check strict
+        required: true
+      shots:
+        description: "Comma list shot-id:clip-sha256-prefix (6-64 hex) of stored, uploaded clips, e.g. k-r1:dae7a9,k-r2:7f043f"
+        required: true
+permissions:
+  contents: read
+concurrency:
+  group: heroverse-shot-remux
+  cancel-in-progress: false
+jobs:
+  remux:
+    concurrency:
+      group: heroverse-subject-${{ inputs.plan }}
+      cancel-in-progress: false
+    if: github.repository == 'matheusmagah-cpu/heroverse-engine' && github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    permissions:
+      contents: read
+    outputs:
+      episode: ${{ steps.plan.outputs.episode }}
+    env:
+      PLAN: ${{ inputs.plan }}
+      GH_TOKEN: ${{ github.token }}
+      SHOTS: ${{ inputs.shots }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - id: plan
+        name: The plan (path checked, plan_check strict) and the stored clips (shot:sha256-prefix, one uploaded clip each)
+        run: |
+          [[ "$PLAN" =~ ^migration/production/bible/plans/([a-z0-9]+(-[a-z0-9]+)*)\.json$ ]] || { echo "PLAN_PATH_REFUSED"; exit 1; }
+          ep="${BASH_REMATCH[1]}"
+          test -f "$PLAN" || { echo "PLAN_MISSING"; exit 1; }
+          python3 -I -c "import json,sys;sys.exit(0 if json.load(open(sys.argv[1])).get('episode')==sys.argv[2] else 'PLAN_EPISODE_MISMATCH')" "$PLAN" "$ep"
+          python3 -I -B migration/production/bible/plan_check.py "$PLAN" --strict
+          python3 -I -B migration/production/bible/episode_build.py remux-assets "$PLAN" > "$RUNNER_TEMP/assets.txt"
+          echo "episode=$ep" >> "$GITHUB_OUTPUT"
+          echo "EP=$ep" >> "$GITHUB_ENV"
+          echo "WORK=$GITHUB_WORKSPACE/.episode/remux-$ep" >> "$GITHUB_ENV"
+          echo "OUT=$RUNNER_TEMP/out" >> "$GITHUB_ENV"
+      - name: Tools, pinned voice runtime, MediaPipe face model (sha256 = lipsync_check.MODEL_SHA256), SyncNet weights (sha256 = syncnet.SYNCNET_SHA256)
+        run: |
+          APT_UPDATE_TIMEOUT=300s APT_INSTALL_TIMEOUT=600s bash migration/ci/apt_install.sh ffmpeg espeak-ng fonts-dejavu-core libegl1 libgles2   # mediapipe links libEGL/libGLESv2 (E89)
+          python3 -m venv "$RUNNER_TEMP/voice"
+          "$RUNNER_TEMP/voice/bin/pip" install --disable-pip-version-check -q 'kokoro-onnx==0.4.9' 'onnxruntime==1.20.1' 'numpy==2.2.6' 'espeakng-loader==0.2.4' 'soundfile==0.13.1'
+          python3 -m venv "$RUNNER_TEMP/lip"
+          "$RUNNER_TEMP/lip/bin/pip" install --disable-pip-version-check -q 'mediapipe==0.10.35'
+          curl -fsSL --retry 3 -o "$RUNNER_TEMP/face_landmarker.task" https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task
+          sha=$(python3 -I -c "import re,sys;print(re.search(r'MODEL_SHA256 = \"([0-9a-f]{64})\"',open(sys.argv[1]).read()).group(1))" migration/production/bible/lipsync_check.py)
+          echo "$sha  $RUNNER_TEMP/face_landmarker.task" | sha256sum -c -
+          # E120: the sync gate is SyncNet (CPU, numpy, no torch); its public weights sit next to the face model
+          sha=$(python3 -I -c "import re,sys;print(re.search(r'SYNCNET_SHA256 = \"([0-9a-f]{64})\"',open(sys.argv[1]).read()).group(1))" migration/production/bible/syncnet.py)
+          # E240: from the engine release first (by sha256), the original host only when not mirrored yet; fail closed on any mismatch
+          bash migration/ci/pinned_asset.sh fetch "syncnet_v2-$sha.model" "$sha" "$RUNNER_TEMP/syncnet_v2.model" https://www.robots.ox.ac.uk/~vgg/software/lipsync/data/syncnet_v2.model
+          echo "$sha  $RUNNER_TEMP/syncnet_v2.model" | sha256sum -c -
+          # the lips check must work before any Pavo generation is spent (E89): the calibration clip must pass
+          "$RUNNER_TEMP/lip/bin/python" -I -B migration/production/bible/lipsync_check.py migration/evidence/pavo/20261026/keeper/keeper-lipsync.mp4 migration/evidence/pavo/20261026/keeper/line-01.wav "$RUNNER_TEMP/face_landmarker.task"
+          # E120: and the same clip with its audio 400 ms late must be flagged MOUTH_NOT_IN_SYNC (the gate can see a shift)
+          ffmpeg -nostdin -v error -y -i migration/evidence/pavo/20261026/keeper/keeper-lipsync.mp4 -af adelay=400:all=1 -c:v copy -shortest "$RUNNER_TEMP/late.mp4"
+          "$RUNNER_TEMP/lip/bin/python" -I -B migration/production/bible/lipsync_check.py "$RUNNER_TEMP/late.mp4" migration/evidence/pavo/20261026/keeper/line-01.wav "$RUNNER_TEMP/face_landmarker.task" > "$RUNNER_TEMP/late.json" || true
+          # it must be MEASURED out of sync (mouth.sync present, offset outside the window), not merely fail; a crash or
+          # an empty output is SYNC_CHECK_BLIND too
+          python3 -I - "$RUNNER_TEMP/late.json" migration/production/bible/lipsync_check.py <<'PY'
+          import json, re, sys
+          try:
+              r = json.loads(open(sys.argv[1]).read().strip().splitlines()[-1])
+              s = r["mouth"]["sync"]
+              text = open(sys.argv[2]).read()
+              centre = float(re.search(r"^SYNC_OFFSET_CENTRE = (-?[0-9.]+)", text, re.M).group(1))
+              tol = float(re.search(r"^SYNC_OFFSET_TOL = ([0-9.]+)", text, re.M).group(1))
+              ok = s is not None and abs(s["offset"] - centre) > tol and "MOUTH_NOT_IN_SYNC" in r["flags"]
+          except Exception as e:
+              print(f"late clip check: {type(e).__name__}: {e}")
+              ok = False
+          sys.exit(0 if ok else "SYNC_CHECK_BLIND: the clip with its audio 400 ms late was not measured out of sync")
+          PY
+          # and the face check of God's voice-over shots must see the Keeper's face in the same clip
+          "$RUNNER_TEMP/lip/bin/python" -I -B migration/production/bible/lipsync_check.py --faces migration/evidence/pavo/20261026/keeper/keeper-lipsync.mp4 "$RUNNER_TEMP/face_landmarker.task" > "$RUNNER_TEMP/faces.json" && { echo "FACE_CHECK_BLIND"; exit 1; } || true
+          python3 -I -c "import json,sys;r=json.load(open(sys.argv[1]));sys.exit(0 if r['faces_found']>0 else 'FACE_CHECK_BLIND')" "$RUNNER_TEMP/faces.json"
+          # E106: the still-mouth check of a voice-over Keeper must work before any generation too: a probe clip that
+          # passed it (keeper-vo/calibration.json) passes again, and the talking calibration clip is flagged
+          "$RUNNER_TEMP/lip/bin/python" -I -B migration/production/bible/lipsync_check.py --still-mouth migration/evidence/pavo/20261026/keeper-vo/probe-k-close-1-373107379233670656.mp4 "$RUNNER_TEMP/face_landmarker.task"
+          # review of #422: the talking clip must be flagged MOUTH_TALKING itself, not merely fail in some way
+          "$RUNNER_TEMP/lip/bin/python" -I -B migration/production/bible/lipsync_check.py --still-mouth migration/evidence/pavo/20261026/keeper/keeper-lipsync.mp4 "$RUNNER_TEMP/face_landmarker.task" > "$RUNNER_TEMP/still.json" || true
+          python3 -I - "$RUNNER_TEMP/still.json" <<'PY'
+          import json, sys
+          lines = open(sys.argv[1]).read().strip().splitlines()
+          try:
+              flags = json.loads(lines[-1]).get("flags", [])
+          except (IndexError, ValueError, AttributeError):
+              flags = []
+          sys.exit(0 if "MOUTH_TALKING" in flags else "STILL_MOUTH_CHECK_BLIND")
+          PY
+          mkdir -p "$WORK" "$OUT"
+      - name: Voice track (Kokoro line by line; narration am_michael, each spoken line in its speaker voice) and the talking clips input audio
+        run: |
+          python3 -I -B migration/production/bible/episode_build.py voice-script "$PLAN" "$WORK"
+          python3 -I -B migration/production/pilot_render.py prepare "$WORK" HeroVerse_Linux_Source_Ready_20261013_v2.zip
+          # espeakng-loader's compiled default data path may not exist on the runner; point it at the wheel's own data
+          ESPEAK_DATA_PATH=$("$RUNNER_TEMP/voice/bin/python" -I -c "import espeakng_loader as e;print(e.get_data_path())")
+          test -d "$ESPEAK_DATA_PATH" || { echo "ESPEAK_DATA_MISSING"; exit 1; }
+          export ESPEAK_DATA_PATH
+          "$RUNNER_TEMP/voice/bin/python" -I -B migration/production/pilot_render.py voice "$WORK" "$WORK/voice-script.json"
+          python3 -I -B migration/production/bible/episode_build.py lines "$PLAN" "$WORK"
+      - name: Approved reference images (sha256 checked, <= 1536 px JPEG)
+        run: python3 -I -B migration/production/bible/episode_build.py refs "$PLAN" "$WORK"
+      - name: The stored clips from the release, by sha256 (the recorded bytes)
+        run: |
+          mkdir -p "$RUNNER_TEMP/stored"
+          while read -r name; do
+            [ -n "$name" ] || continue
+            bash migration/ci/assets.sh download --repo "$GITHUB_REPOSITORY" --pattern "$name" -D "$RUNNER_TEMP/stored" --clobber
+          done < "$RUNNER_TEMP/assets.txt"
+      - name: Our line over each stored picture, the build's strict checks on the result, frame sheets (nothing generated)
+        run: python3 -I -B migration/production/bible/episode_build.py remux "$PLAN" "$WORK" "$RUNNER_TEMP/lip/bin/python" "$RUNNER_TEMP/face_landmarker.task" "$OUT" "$RUNNER_TEMP/stored"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always() && steps.plan.outputs.episode != ''
+        with:
+          name: shot-remux-${{ steps.plan.outputs.episode }}-${{ github.run_id }}
+          path: ${{ runner.temp }}/out
+          if-no-files-found: ignore
+          retention-days: 14
+
+  record:
+    needs: remux
+    if: always() && needs.remux.outputs.episode != ''
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: write   # release assets (assets.sh) and the evidence branch; no secret in this job
+    env:
+      GH_TOKEN: ${{ github.token }}
+      EP: ${{ needs.remux.outputs.episode }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - id: artifact
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        continue-on-error: true
+        with:
+          name: shot-remux-${{ needs.remux.outputs.episode }}-${{ github.run_id }}
+          path: ${{ runner.temp }}/out
+      - name: Media timing instrument for the hash-bound record seal (E152)
+        if: steps.artifact.outcome == 'success'
+        run: bash migration/ci/apt_install.sh ffmpeg
+      - name: Every remuxed clip into the release under its content-hash name; sheets and record on claude/shot-remux-<id>-<run>
+        env:
+          ARTIFACT: ${{ steps.artifact.outcome }}
+        run: |
+          [[ "$EP" =~ ^[a-z0-9]+(-[a-z0-9]+)*$ ]] || { echo "EPISODE_ID_REFUSED"; exit 1; }
+          out="$RUNNER_TEMP/out"
+          if [ ! -f "$out/probe.json" ]; then
+            echo "::error::NO_PROBE_RECORD: the remux job left no record (artifact download: $ARTIFACT); read the remux job's log"
+            exit 1
+          fi
+          d="migration/evidence/shots/$EP"; mkdir -p "$d"
+          python3 -I -B migration/production/bible/episode_build.py probe-assets "$out" "$EP" > "$RUNNER_TEMP/assets.txt"
+          while read -r name; do
+            [ -n "$name" ] || continue
+            bash migration/ci/assets.sh upload "$out/$name" --repo "$GITHUB_REPOSITORY" --clobber
+          done < "$RUNNER_TEMP/assets.txt"
+          python3 -I -B migration/production/bible/episode_build.py probe-assets "$out" "$EP" "$GITHUB_RUN_ID" "$d/$GITHUB_RUN_ID.json" >/dev/null
+          for f in "$out"/*.jpg; do
+            [ -f "$f" ] && cp "$f" "$d/$GITHUB_RUN_ID-$(basename "$f")"
+          done
+          branch="claude/shot-remux-$EP-$GITHUB_RUN_ID"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -q -b "$branch"
+          git add "$d"
+          git commit -q -m "Shot remux $EP (run $GITHUB_RUN_ID): stored clips with our request audio, frame sheets and record for Claude's review"
+          git push -q origin "HEAD:refs/heads/$branch"
+          echo "BRANCH $branch"

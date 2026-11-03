@@ -192,5 +192,100 @@ class ApprovalNeedsTheProof(unittest.TestCase):
         self.assertIsNone(eb.ours_audio_problem(ours, native, {"flags": []}))
 
 
+@unittest.skipUnless(HAS_FFMPEG, "ffmpeg required")
+class RemuxOurAudioOverAStoredClip(unittest.TestCase):
+    """E288: a clip stored before E287 (Pavo's track kept) becomes a probe clip with OUR request audio, nothing generated."""
+    def setUp(self):
+        from unittest import mock
+        import test_episode_build as t   # its import stubs the mux: the real one is what this class tests
+        t.real_ours()
+        self.addCleanup(t.stub_ours)
+        self.tmp = Path(tempfile.mkdtemp(dir=eb.REPO, prefix=".test-remux-"))
+        self.addCleanup(shutil.rmtree, self.tmp, True)
+        self.raw = pavo_clip(self.tmp / "raw.mp4")
+        self.sha = eb.sha256(self.raw)
+        self.src = self.tmp / "src"
+        self.src.mkdir()
+        shutil.copyfile(self.raw, self.src / eb.shot_asset_name("ep", "k-a", self.sha))
+        self.shots = self.tmp / "shots"
+        self.shots.mkdir()
+        self.old_request = "r" * 64
+        (self.shots / "111111.json").write_text(json.dumps({"episode": "ep", "shots": {"k-a": {
+            "request_sha256": self.old_request, "clip_seconds": 6, "clips": [
+                {"asset": eb.shot_asset_name("ep", "k-a", self.sha), "clip_sha256": self.sha, "uploaded": True, "flags": []}]}}}))
+        self.line = write_line(self.tmp / "line.wav")
+        self.work = self.tmp / "work"
+        self.work.mkdir()
+        (self.work / "layout.json").write_text("{}")
+        (self.work / "refs.json").write_text("{}")
+        self.plan = {"episode": "ep", "shots": [{"id": "k-a", "kind": "keeper"}]}
+        self.mock = mock
+        self.flags = []
+        self.seen = {}
+
+        def runner(*a, **k):
+            def check(path):
+                self.seen["clip"] = Path(path)
+                pavo_audio.assert_ours(path, self.line)   # the strict checks hear OUR line
+                return list(self.flags), {"lipsync": {"audio": {"corr": 1.0}, "mouth": {"face_frames": 1.0, "sync": {"offset": -1}}}}
+            return None, None, check, None, None
+        self.patches = [
+            mock.patch.object(eb, "request_problems", lambda *a: []),
+            mock.patch.object(eb, "request", lambda *a, **k: {"audios": ["x"], "sound": False}),
+            mock.patch.object(eb, "native_speech", lambda *a: False),
+            mock.patch.object(eb.plan_check, "talking", lambda shot: True),
+            mock.patch.object(eb, "talk_record", lambda layout, shot: {"wav": str(self.line.relative_to(eb.REPO))}),
+            mock.patch.object(eb, "request_identity", lambda *a, **k: (self.old_request, {"audio": {"words": ["a"]}})),
+            mock.patch.object(eb, "shot_runner", runner)]
+        for p in self.patches:
+            p.start()
+            self.addCleanup(p.stop)
+
+    def remux(self, prefix=None):
+        return eb.remux_step(self.plan, self.work, "py", "model", self.tmp / "out", [("k-a", prefix or self.sha[:8])], self.src,
+                             sheet=lambda video, dst: Path(dst).write_bytes(b"jpg"), shots_dir=self.shots)
+
+    def test_the_stored_picture_gets_our_line_and_a_probe_record_approve_shot_accepts(self):
+        record = self.remux()
+        clip = record["shots"]["k-a"]["clips"][0]
+        self.assertEqual((record["pavo_audio"], clip["remux_of"], clip["flags"]), ("ours", self.sha, []))
+        kept = self.tmp / "out" / clip["asset"]
+        self.assertEqual(clip["clip_sha256"], eb.sha256(kept))
+        self.assertNotEqual(clip["clip_sha256"], self.sha)   # the audio changed, so the clip is a new content-hash asset
+        pavo_audio.verify(kept, clip["audio"])                # the proof binds the kept bytes to our WAV
+        self.assertEqual(clip["audio"], pavo_audio.proof_of(self.line))
+        with self.assertRaises(SystemExit):
+            pavo_audio.verify(self.raw, clip["audio"])        # the stored clip's own track is not ours
+        self.assertEqual(self.seen["clip"].name, "k-a.mp4")
+        self.assertIsNone(eb.ours_audio_problem(record, record["shots"]["k-a"], clip))
+        self.assertEqual(eb.probe_assets(self.tmp / "out", "ep"), [clip["asset"]])   # the record job's own name check
+
+    def test_a_failed_check_is_recorded_not_hidden_and_a_changed_request_is_refused(self):
+        self.flags = ["MOUTH_NOT_IN_SYNC"]
+        record = self.remux()
+        self.assertEqual(record["shots"]["k-a"]["clips"][0]["soft_flags"], ["MOUTH_NOT_IN_SYNC"])
+        self.old_request = "z" * 64   # the plan now sends another request than the stored clip's
+        with self.patch_identity():
+            with self.assertRaisesRegex(SystemExit, "SHOT_REQUEST_CHANGED k-a"):
+                self.remux()
+
+    def patch_identity(self):
+        return self.mock.patch.object(eb, "request_identity", lambda *a, **k: ("n" * 64, {}))
+
+    def test_inputs_and_sources_are_exact(self):
+        self.assertEqual(eb.remux_items("k-r1:dae7a9, k-r2:7f043f"), [("k-r1", "dae7a9"), ("k-r2", "7f043f")])
+        for bad in ("", "k-r1", "k-r1:xyz", "k-r1:abc", "k-r1:dae7a9,k-r1:dae7a9", "K:dae7a9"):
+            with self.assertRaisesRegex(SystemExit, "REMUX_SHOTS_REFUSED"):
+                eb.remux_items(bad)
+        with self.assertRaisesRegex(SystemExit, "REMUX_SOURCE_CLIP"):
+            eb.remux_source("ep", "k-a", "ffffff", self.shots)
+        with self.assertRaisesRegex(SystemExit, "REMUX_SOURCE_CLIP"):
+            eb.remux_source("ep", "k-b", self.sha[:8], self.shots)
+        self.assertEqual(eb.remux_source("ep", "k-a", self.sha[:8], self.shots)[1], self.sha)
+        (self.src / eb.shot_asset_name("ep", "k-a", self.sha)).write_bytes(b"other")   # the asset is not the recorded bytes
+        with self.assertRaisesRegex(SystemExit, "REMUX_STORED_CLIP_MISSING"):
+            self.remux()
+
+
 if __name__ == "__main__":
     unittest.main()

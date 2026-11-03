@@ -1,0 +1,278 @@
+{
+ "episode": "flood-ends-long-reflection-1",
+ "plan_sha256": "d8d94fa2f84ab5e55ea442b7a29fb816ba82ab6853e1a438bdf6d6aed6a965d1",
+ "attempts": 0,
+ "shots": {
+  "k-r1": {
+   "kind": "keeper",
+   "request_sha256": "b43cbae82b9742c58d76207e33d7b55c43b2d2980fbf3650a51935612db487c2",
+   "request": {
+    "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a grave, intent look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Hushed and urgent. No text, no logos.",
+    "aspect_ratio": "1:1",
+    "sound": false,
+    "references": [
+     {
+      "image": "ch-keeper-talk",
+      "sha256": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
+     }
+    ],
+    "audio": {
+     "speaker": "keeper",
+     "voice": {
+      "voice_id": "am_michael",
+      "speed": 1.0
+     },
+     "words": [
+      "god",
+      "did",
+      "not",
+      "hang",
+      "that",
+      "rainbow",
+      "because",
+      "noah",
+      "was",
+      "perfect",
+      "and",
+      "the",
+      "story",
+      "says",
+      "so",
+      "plainly"
+     ]
+    }
+   },
+   "clips": [
+    {
+     "round": "remux",
+     "remux_of": "dae7a90d6e87c022739337f751c125c8457acaa29c2fe886b9929df38caef388",
+     "source_record": "migration/evidence/shots/flood-ends-long-reflection-1/41567543843.json",
+     "asset": "shot-flood-ends-long-reflection-1-k-r1-sha256-e83cea77890ff940224e542a29d1fc0a8d47ea10f38ca7848c0867cf9b43146e.mp4",
+     "clip_sha256": "e83cea77890ff940224e542a29d1fc0a8d47ea10f38ca7848c0867cf9b43146e",
+     "flags": [],
+     "measures": {
+      "audio": {
+       "corr": 1.0,
+       "lag_ms": 0
+      },
+      "mouth": {
+       "corr": 0.427,
+       "lag_ms": 0,
+       "speak_to_pause": 1.52,
+       "face_frames": 0.97,
+       "sync": {
+        "offset": 0,
+        "conf": 6.579,
+        "min_dist": 8.624,
+        "windows": 159
+       }
+      }
+     },
+     "audio": {
+      "route": "ours",
+      "sha256": "00df9338c03738180db6723499c25a95a83a767a1a64f2721f1fcd8f8a938255",
+      "samples": 244755,
+      "seconds": 5.55
+     },
+     "sheet": "41654835246-k-r1-remux.jpg",
+     "generations": [],
+     "hard_flags": [],
+     "words_flags": [],
+     "soft_flags": [],
+     "media": {
+      "version": "clip-media-v1",
+      "clip_sha256": "e83cea77890ff940224e542a29d1fc0a8d47ea10f38ca7848c0867cf9b43146e",
+      "video_seconds": 6.583333,
+      "audio_seconds": 6.582993,
+      "instrument": "ffprobe stream durations"
+     },
+     "uploaded": true
+    }
+   ],
+   "clip_seconds": 6
+  },
+  "k-r2": {
+   "kind": "keeper",
+   "request_sha256": "b436f9591e3230dc59b72a04ee062c452054b90fc6cfd988c65da3f2c799060e",
+   "request": {
+    "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a grave, intent look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Hushed and urgent. A gentle questioning look. No text, no logos.",
+    "aspect_ratio": "1:1",
+    "sound": false,
+    "references": [
+     {
+      "image": "ch-keeper-talk",
+      "sha256": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
+     }
+    ],
+    "audio": {
+     "speaker": "keeper",
+     "voice": {
+      "voice_id": "am_michael",
+      "speed": 1.0
+     },
+     "words": [
+      "he",
+      "failed",
+      "again",
+      "the",
+      "way",
+      "people",
+      "do",
+      "still",
+      "god",
+      "hung",
+      "up",
+      "his",
+      "own",
+      "bow"
+     ]
+    }
+   },
+   "clips": [
+    {
+     "round": "remux",
+     "remux_of": "7f043fe271892146064b903aaf532c1aa48412d2638705960b09503547fd00e2",
+     "source_record": "migration/evidence/shots/flood-ends-long-reflection-1/41572178956.json",
+     "asset": "shot-flood-ends-long-reflection-1-k-r2-sha256-8b9ac1123e1a2516d531ba92f9927d70c2241da5d964cfdaecd6c4cc3dccebfb.mp4",
+     "clip_sha256": "8b9ac1123e1a2516d531ba92f9927d70c2241da5d964cfdaecd6c4cc3dccebfb",
+     "flags": [],
+     "measures": {
+      "audio": {
+       "corr": 1.0,
+       "lag_ms": 0
+      },
+      "mouth": {
+       "corr": 0.359,
+       "lag_ms": -40,
+       "speak_to_pause": 1.39,
+       "face_frames": 0.99,
+       "sync": {
+        "offset": -1,
+        "conf": 4.962,
+        "min_dist": 9.873,
+        "windows": 124
+       }
+      }
+     },
+     "audio": {
+      "route": "ours",
+      "sha256": "3e456856eb665d0f4a6e73f01b2636ae10903a8e9804314e8abb56dc270c8a34",
+      "samples": 200655,
+      "seconds": 4.55
+     },
+     "sheet": "41654835246-k-r2-remux.jpg",
+     "generations": [],
+     "hard_flags": [],
+     "words_flags": [],
+     "soft_flags": [],
+     "media": {
+      "version": "clip-media-v1",
+      "clip_sha256": "8b9ac1123e1a2516d531ba92f9927d70c2241da5d964cfdaecd6c4cc3dccebfb",
+      "video_seconds": 5.166667,
+      "audio_seconds": 5.167007,
+      "instrument": "ffprobe stream durations"
+     },
+     "uploaded": true
+    }
+   ],
+   "clip_seconds": 5
+  },
+  "k-r4": {
+   "kind": "keeper",
+   "request_sha256": "e8ef6972e6518798f1403ad71cd3002c8ac08a7b881c082b4ab8ce430d7db2e2",
+   "request": {
+    "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a grave, intent look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Hushed and urgent. A grave tender look. No text, no logos.",
+    "aspect_ratio": "1:1",
+    "sound": false,
+    "references": [
+     {
+      "image": "ch-keeper-talk",
+      "sha256": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
+     }
+    ],
+    "audio": {
+     "speaker": "keeper",
+     "voice": {
+      "voice_id": "am_michael",
+      "speed": 1.0
+     },
+     "words": [
+      "before",
+      "any",
+      "rainbow",
+      "noah",
+      "did",
+      "one",
+      "thing",
+      "first",
+      "on",
+      "dry",
+      "ground",
+      "and",
+      "it",
+      "still",
+      "stops",
+      "me",
+      "every",
+      "time",
+      "watch",
+      "what",
+      "it",
+      "was"
+     ]
+    }
+   },
+   "clips": [
+    {
+     "round": "remux",
+     "remux_of": "b1cd73da0127ebac6f994a95342920614c5a4cf6315e60e2d8d7ac768a81e9c5",
+     "source_record": "migration/evidence/shots/flood-ends-long-reflection-1/41639242332.json",
+     "asset": "shot-flood-ends-long-reflection-1-k-r4-sha256-9ee77ed7ec29555346462d5c1f156b6a9ee3ba59e2b7f09df8a1877b0f39bb8e.mp4",
+     "clip_sha256": "9ee77ed7ec29555346462d5c1f156b6a9ee3ba59e2b7f09df8a1877b0f39bb8e",
+     "flags": [],
+     "measures": {
+      "audio": {
+       "corr": 1.0,
+       "lag_ms": 0
+      },
+      "mouth": {
+       "corr": 0.341,
+       "lag_ms": 0,
+       "speak_to_pause": 1.57,
+       "face_frames": 0.95,
+       "sync": {
+        "offset": -1,
+        "conf": 7.213,
+        "min_dist": 8.953,
+        "windows": 230
+       }
+      }
+     },
+     "audio": {
+      "route": "ours",
+      "sha256": "b89f3061a8b8ef88e9c96968f864a01edb1a3dfb398713175fea8aa33f65f78f",
+      "samples": 377055,
+      "seconds": 8.55
+     },
+     "sheet": "41654835246-k-r4-remux.jpg",
+     "generations": [],
+     "hard_flags": [],
+     "words_flags": [],
+     "soft_flags": [],
+     "media": {
+      "version": "clip-media-v1",
+      "clip_sha256": "9ee77ed7ec29555346462d5c1f156b6a9ee3ba59e2b7f09df8a1877b0f39bb8e",
+      "video_seconds": 9.416667,
+      "audio_seconds": 9.417007,
+      "instrument": "ffprobe stream durations"
+     },
+     "uploaded": true
+    }
+   ],
+   "clip_seconds": 9
+  }
+ },
+ "pavo_audio": "ours",
+ "remux": true,
+ "run_id": "41654835246"
+}

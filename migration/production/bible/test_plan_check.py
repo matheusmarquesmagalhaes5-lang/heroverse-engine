@@ -1482,16 +1482,45 @@ class ReflectionPaceBeforePavo(unittest.TestCase):
     def test_the_lines_that_rendered_at_169_wpm_are_refused_and_the_reworded_ones_pass(self):
         old = self.lines("He failed again, the way people do, and God still hung up His own bow.")
         new = self.lines("He failed again, the way people do. Still, God hung up His own bow.")
+        # a track whose renderer does not retime (the compilation Keeper) keeps the plain gate
         self.assertTrue(any(p.startswith("REFLECTION_PACE") for p in pc.reflection_pace_problems(old)))
         self.assertEqual(pc.reflection_pace_problems(new), [])
+        # a reflection is slowed by the render (E286): ~169 wpm is heard at the retimed pace, under the gate (E289)
+        self.assertEqual(pc.reflection_pace_problems(old, retimed=True), [])
 
-    def test_the_gate_equals_the_renderers_band(self):
+    def test_the_plan_and_the_render_judge_the_pace_with_one_retime(self):
+        """E289: pc.reflection_retime is the only place the factor comes from; the renderer's constants ARE the plan's and the
+        render calls the same function on the measured pace."""
         import reflection_shorts as rs
-        self.assertEqual(pc.REFLECTION_WPM_MAX, rs.WPM_BAND[1])
+        self.assertIs(rs.plan_check, pc)
+        self.assertEqual((rs.RETIME_TARGET, rs.RETIME_MIN, rs.WPM_BAND[1]),
+                         (pc.REFLECTION_RETIME_TARGET, pc.REFLECTION_RETIME_MIN, pc.REFLECTION_WPM_MAX))
+        self.assertIn("plan_check.reflection_retime(wpm0)", (HERE / "reflection_shorts.py").read_text())
+        self.assertEqual(pc.reflection_retime(150), 1.0)
+        self.assertEqual(pc.reflection_retime(165), 1.0)
+        self.assertEqual(pc.reflection_retime(178), round(164 / 178, 3))
+        # the words over the retimed duration are the pace the viewer hears, and it is inside the band
+        for wpm in (166, 172, 178, 182):
+            heard = wpm * pc.reflection_retime(wpm)
+            self.assertAlmostEqual(heard, pc.REFLECTION_RETIME_TARGET, delta=0.2)
+        # a Keeper whose slowing would pass the limit is still refused: the plan and the render disagree no more
+        fake = [{"text": "word " * 30 + "end."}]
+        saved = pc.VOICE_PACE["keeper"]
+        pc.VOICE_PACE["keeper"] = 3.4   # 204 wpm: x0.80 needed, under RETIME_MIN
+        try:
+            self.assertTrue(pc.reflection_pace_problems(fake, retimed=True))
+        finally:
+            pc.VOICE_PACE["keeper"] = saved
+
+    def test_the_three_clip_plan_of_reflection_1_passes_after_the_retime(self):
+        items = [{"text": t} for t in (self.R1, "He failed again, the way people do. Still, God hung up His own bow.",
+                 "Before any rainbow, Noah did one thing first on dry ground, and it still stops me every time. Watch what it was.")]
+        self.assertTrue(pc.reflection_pace_problems(items))   # ~165.2 wpm planned: over the gate without a retime
+        self.assertEqual(pc.reflection_pace_problems(items, retimed=True), [])   # heard ~164 after x0.993
 
     def test_the_live_reflection_plan_passes_it(self):
         plan = json.loads((HERE / "plans" / "flood-ends-long-reflection-1.json").read_text())
-        self.assertEqual(pc.reflection_pace_problems(plan["narration"]), [])
+        self.assertEqual(pc.reflection_pace_problems(plan["narration"], retimed=True), [])
 
 
 class CompilationKeeperPlan(unittest.TestCase):
