@@ -59,6 +59,7 @@ SEGMENTS = (2, 4)                  # plan_check.REFLECTION_SEGMENTS: one approve
 WPM_BAND = (115, 165)              # the accepted words-per-minute band of the narration (QA)
 VOICE_AT = 0.3                     # the first clip starts this long after the top clip
 XFADE = 0.2                        # the crossfade between two clips: inside the previous clip's silent tail
+XFADE_MIN = 0.08                   # E282: the shortest crossfade after a TRIMMED clip (its silent tail is what the trim left)
 TAIL_MIN = 0.6                     # the Short keeps this long after the last clip ends
 TAIL_MAX = 3.0                     # ... and no more (the last frame is held: no long frozen face)
 TAIL_CLEAR = 0.02                  # the previous clip is silent this much longer than the crossfade (no word is faded)
@@ -165,6 +166,14 @@ def segment_problems(spec, root=ROOT):
             bad.append(f"SEGMENT_CLIP_SECONDS {sid} ({seconds!r}: the measured seconds of a {CLIP_SECONDS[0]:.0f}-"
                        f"{CLIP_SECONDS[1]:.0f} s Pavo clip)")
             seconds = None
+        # E282 (owner: a minor imperfection is fixed in the edit): the approved out point of a clip whose Pavo tail
+        # mumbles after the last word; the clip is used cut there
+        trim = approved.get("trim_out_s")
+        if trim is not None:
+            why = eb.trim_problem(trim, seconds) if seconds else "SHOT_TRIM_INVALID (no measured clip seconds)"
+            if why:
+                bad.append(f"SEGMENT_CLIP_TRIM {sid} {why}")
+                trim = None
         # the clip's own record: the words its request carried, and its checks split by meaning (E266)
         try:
             record = cl.load(Path(root) / str(approved.get("probe_record") or ""))
@@ -177,6 +186,20 @@ def segment_problems(spec, root=ROOT):
         if said != eb.spoken_words(seg["text"]):
             bad.append(f"SEGMENT_CLIP_WRONG_WORDS {sid} (the clip was made for other words than the segment's: a "
                        "hard defect, probe the new text)")
+        if trim is not None:   # E282: the pinned ASR heard exactly the line on the clip as cut (speech-check --trim-out)
+            side = Path(root) / "migration" / "evidence" / "shots" / spec["id"] / "speech" / f"{sha}.json"
+            try:
+                proof = cl.load(side)
+            except (OSError, ValueError):
+                proof = None
+            if not isinstance(proof, dict) or proof.get("clip_sha256") != sha or proof.get("trim_out_s") != trim:
+                bad.append(f"SEGMENT_TRIM_WORDS_UNPROVEN {sid} (episode_build.py speech-check with --trim-out {trim}: the "
+                           "ASR's words on the trimmed media)")
+            else:
+                heard = eb.pavo_native.words_flags(proof.get("measures") or {}, " ".join(said))
+                if heard:
+                    bad.append(f"SEGMENT_TRIM_WORDS {sid} {','.join(heard)} (the pinned ASR does not hear exactly the line "
+                               f"on the clip cut at {trim} s)")
         split = eb.flag_split(clip.get("flags"))
         if split["hard"]:
             bad.append(f"SEGMENT_CLIP_HARD_FLAG {sid} {','.join(split['hard'])} (no face, a broken render or a policy "
@@ -185,19 +208,38 @@ def segment_problems(spec, root=ROOT):
         if [f for f in split["words"] if f not in accepted]:
             bad.append(f"SEGMENT_CLIP_WORDS_UNPROVEN {sid} (AUDIO_NOT_OUR_LINE needs the pinned ASR's proof on this "
                        "clip: episode_build.py speech-check, then approve-shot)")
-        out.append({"shot": sid, "asset": asset, "clip_sha256": sha, "seconds": seconds, "text": seg["text"].strip(),
-                    "flags": split, "accepted_flags": accepted, "score": score})
+        out.append({"shot": sid, "asset": asset, "clip_sha256": sha, "seconds": trim if trim is not None else seconds,
+                    "trim_out_s": trim, "text": seg["text"].strip(), "flags": split, "accepted_flags": accepted, "score": score})
     return bad, out
 
 
 def timeline(segments):
-    """(offsets, end): each clip's start inside the Short (the first at VOICE_AT, each next one XFADE before the previous
-    ends) and where the last one ends, from the approved clips' measured seconds."""
+    """(offsets, end): each clip's start inside the Short (the first at VOICE_AT, each next one `fade` (default XFADE)
+    before the previous ends) and where the last one ends, from the clips' seconds (a trimmed clip's are its out point)."""
     offsets, at = [], VOICE_AT
     for s in segments:
         offsets.append(round(at, 3))
-        at += s["seconds"] - XFADE
-    return offsets, round(at + XFADE, 3)
+        at += s["seconds"] - s.get("fade", XFADE)
+    return offsets, round(at + segments[-1].get("fade", XFADE), 3)
+
+
+def join_fades(segments, spans):
+    """E282: the crossfade after each clip but the last, from the silence it keeps after its last word. A full clip keeps
+    the gate: XFADE + TAIL_CLEAR of silence or the render refuses. A TRIMMED clip (cut inside the silence after the
+    last word) has what the cut left, so its crossfade shortens to that silence less TAIL_CLEAR, never under XFADE_MIN:
+    the crossfade still never runs over a word."""
+    fades = []
+    for c, span in zip(segments[:-1], spans[:-1]):
+        tail = span[3]
+        if tail >= XFADE + TAIL_CLEAR:
+            fades.append(XFADE)
+        elif c.get("trim_out_s") is not None and tail - TAIL_CLEAR >= XFADE_MIN:
+            fades.append(math.floor((tail - TAIL_CLEAR) * 1000) / 1000)
+        else:
+            need = XFADE_MIN + TAIL_CLEAR if c.get("trim_out_s") is not None else XFADE + TAIL_CLEAR
+            raise SystemExit(f"SEGMENT_TAIL_TOO_SHORT {c['shot']} {tail:.2f} s of silence after the last word "
+                             f"(the crossfade needs {need:.2f} s)")
+    return fades
 
 
 def check(spec, root=ROOT, spec_path=None):
@@ -335,14 +377,15 @@ def keeper_window(y, w=HALF[0], h=HALF[1], fps=30):
             f"crop={w}:{h}:(iw-{w})/2:(ih-{h})*{y:.4f},setsar=1,format=yuv420p")
 
 
-def bottom_graph(durations, y, total, fps=30):
+def bottom_graph(durations, y, total, fps=30, fades=None):
     """(filter chunks, output label): the clips (inputs 2..) in order, each cropped, joined by XFADE crossfades, the first
     held VOICE_AT, the last frame held to `total`."""
     parts = [f"[{i + 2}:v]{keeper_window(y, fps=fps)}[b{i}]" for i in range(len(durations))]
     cur, acc = "b0", durations[0]
     for i in range(1, len(durations)):
-        parts.append(f"[{cur}][b{i}]xfade=transition=fade:duration={XFADE}:offset={acc - XFADE:.3f}[x{i}]")
-        cur, acc = f"x{i}", acc + durations[i] - XFADE
+        fade = fades[i - 1] if fades else XFADE
+        parts.append(f"[{cur}][b{i}]xfade=transition=fade:duration={fade}:offset={acc - fade:.3f}[x{i}]")
+        cur, acc = f"x{i}", acc + durations[i] - fade
     hold = max(total - (VOICE_AT + acc), 0.0) + 1.0
     parts.append(f"[{cur}]tpad=start_mode=clone:start_duration={VOICE_AT},tpad=stop_mode=clone:stop_duration={hold:.3f},"
                  f"trim=duration={total:.3f},setpts=PTS-STARTPTS[bot]")
@@ -436,6 +479,7 @@ def fetch_clips(spec_path, work, root=ROOT, fetch=None):
 
 def render(spec_path, clean, work, out_dir, root=ROOT):
     spec = cl.load(spec_path)
+    import episode_build as eb
     result = check(spec, root)
     cl.refuse(result["problems"])
     plan, report = short_cuts.sources(spec, root)
@@ -452,6 +496,9 @@ def render(spec_path, clean, work, out_dir, root=ROOT):
         path = work / "clips" / f"{c['shot']}.mp4"
         if not path.is_file() or cl.sha256(path) != c["clip_sha256"]:
             raise SystemExit(f"CLIP_FILE_MISSING {c['shot']} (reflection_shorts.py fetch-clips: the approved clip's exact bytes)")
+        if c.get("trim_out_s") is not None:   # E282: the clip is used as approved, cut right after the line's last word
+            (work / "trimmed").mkdir(parents=True, exist_ok=True)
+            path = eb.trim_media(path, c["trim_out_s"], work / "trimmed" / f"{c['shot']}.mp4")
         if not has_audio(path):
             raise SystemExit(f"CLIP_NO_AUDIO {c['shot']} (the clip carries the Keeper's voice: a silent clip is not a talking shot)")
         paths.append(path)
@@ -460,11 +507,8 @@ def render(spec_path, clean, work, out_dir, root=ROOT):
     for c, s in zip(segments, seconds):
         if abs(s - c["seconds"]) > 0.15:
             raise SystemExit(f"CLIP_SECONDS_CHANGED {c['shot']} {s:.2f} s measured, {c['seconds']} s approved")
-    for i, (c, span) in enumerate(zip(segments[:-1], spans[:-1])):
-        if span[3] < XFADE + TAIL_CLEAR:   # the crossfade would run over his last word
-            raise SystemExit(f"SEGMENT_TAIL_TOO_SHORT {c['shot']} {span[3]:.2f} s of silence after the last word "
-                             f"(the {XFADE} s crossfade needs {XFADE + TAIL_CLEAR:.2f} s)")
-    offsets, bottom_end = timeline([dict(c, seconds=s) for c, s in zip(segments, seconds)])
+    fades = join_fades(segments, spans)   # the crossfade never runs over his last word (E282: shorter after a trimmed clip)
+    offsets, bottom_end = timeline([dict(c, seconds=s, fade=f) for c, s, f in zip(segments, seconds, fades + [XFADE])])
     if bottom_end + TAIL_MIN > d:
         raise SystemExit(f"CLIPS_TOO_LONG_FOR_CLIP {bottom_end:.2f} s of Keeper clips in {d:.2f} s")
     lines = spoken_lines(segments, offsets, spans)
@@ -502,7 +546,7 @@ def render(spec_path, clean, work, out_dir, root=ROOT):
         cl.run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", seg, "-i", voice, "-filter_complex", mix, "-map", "[mix]",
                 "-t", f"{d:.3f}", "-c:a", "pcm_s16le", premix])
         v, a = cl.fades(d)
-        bottom, label = bottom_graph(seconds, (spec.get("bottom") or {}).get("y", 0.5), d)
+        bottom, label = bottom_graph(seconds, (spec.get("bottom") or {}).get("y", 0.5), d, fades=fades)
         graph = ";".join([f"[0:v]{window(spec['clip'].get('x', 0.5))}[top]", *bottom,
                           f"[top][{label}]vstack=inputs=2,subtitles={ass},{v}[v]",
                           f"[1:a]{cl.gain_filter(premix)},{a}[a]"])
@@ -515,9 +559,11 @@ def render(spec_path, clean, work, out_dir, root=ROOT):
                       "clean_master_sha256": want, "start": start, "end": end, "x": spec["clip"].get("x", 0.5),
                       "video_id": result["reflection"]["long_video_id"]},
            "segments": [{"shot": c["shot"], "asset": c["asset"], "clip_sha256": c["clip_sha256"], "start": offsets[i],
-                         "seconds": seconds[i], "speech": [spans[i][0], spans[i][1]], "flags": c["flags"],
+                         "seconds": seconds[i], "speech": [spans[i][0], spans[i][1]],
+                         **({"trim_out_s": c["trim_out_s"]} if c.get("trim_out_s") is not None else {}), "flags": c["flags"],
                          "accepted_flags": c["accepted_flags"], "review_score": c["score"]} for i, c in enumerate(segments)],
-           "bottom": {"y": (spec.get("bottom") or {}).get("y", 0.5), "crossfade": XFADE, "frame": list(HALF)},
+           "bottom": {"y": (spec.get("bottom") or {}).get("y", 0.5), "crossfade": XFADE, "crossfades": fades,
+                      "frame": list(HALF)},
            "voice": {"source": "pavo-talking-clips", "words": result["reflection"]["words"],
                      "first_word": round(first_word, 3), "last_word": round(last_word, 3), "wpm": round(wpm, 1)},
            "output_sha256": cl.sha256(mp4), "seconds": round(cl.duration(mp4), 3), "frame": [probe[0], probe[1]],

@@ -117,6 +117,10 @@ def make_root(t, spec=None, published=True, flags=None, accepted=None, score=9.6
     return root, spec, path
 
 
+def sidecar_trim(kind, trim):
+    return trim + 1.0 if kind == "other-trim" else trim
+
+
 def codes(result):
     return [p.split()[0] for p in result["problems"]]
 
@@ -442,6 +446,69 @@ class Render(unittest.TestCase):
             shutil.copy(tight, work / "clips" / "k-r1.mp4")
             with self.assertRaisesRegex(SystemExit, "SEGMENT_TAIL_TOO_SHORT k-r1"):
                 rs.render(path, clean, work, Path(t) / "out", root=root)
+
+    def trim_k_r1(self, root, trim, sidecar):
+        """k-r1 approved with an out point (approve-shot --trim-out), its words proof on the trimmed media as given."""
+        f = root / rs.SHOTS / f"{EPISODE}.json"
+        doc = json.loads(f.read_text())
+        doc["shots"]["k-r1"]["trim_out_s"] = trim
+        f.write_text(json.dumps(doc))
+        sha = doc["shots"]["k-r1"]["clip_sha256"]
+        side = root / "migration/evidence/shots" / EPISODE / "speech" / f"{sha}.json"
+        side.parent.mkdir(parents=True, exist_ok=True)
+        if sidecar:
+            pinned = eb.pavo_native.criteria()["speech"]["asr_model"]["model_bin_sha256"]
+            heard = " ".join(eb.spoken_words(SEG1)) if sidecar == "line" else "you mealy"
+            side.write_text(json.dumps({"shot": "k-r1", "clip_sha256": sha, "trim_out_s": sidecar_trim(sidecar, trim),
+                                        "measures": {"asr": {"model_bin_sha256": pinned, "text": heard}}}))
+
+    def test_e282_the_check_honours_an_approved_trim_and_reverifies_the_words_on_the_trimmed_clip(self):
+        with tempfile.TemporaryDirectory() as t:
+            root, spec, _ = make_root(t)
+            self.assertEqual(rs.check(spec, root)["reflection"]["clips"][0]["seconds"], 10.0)
+            self.trim_k_r1(root, 9.55, None)   # no ASR proof on the trimmed media
+            self.assertIn("SEGMENT_TRIM_WORDS_UNPROVEN", codes(rs.check(spec, root)))
+            self.trim_k_r1(root, 9.55, "other-trim")   # the proof is for another cut
+            self.assertIn("SEGMENT_TRIM_WORDS_UNPROVEN", codes(rs.check(spec, root)))
+            self.trim_k_r1(root, 9.55, "extra")   # the trimmed clip still carries extra speech
+            self.assertIn("SEGMENT_TRIM_WORDS", codes(rs.check(spec, root)))
+            self.trim_k_r1(root, 12.0, "line")   # an out point past the clip
+            self.assertIn("SEGMENT_CLIP_TRIM", codes(rs.check(spec, root)))
+            self.trim_k_r1(root, 9.55, "line")
+            got = rs.check(spec, root)
+            self.assertEqual(got["problems"], [])
+            first = got["reflection"]["clips"][0]
+            self.assertEqual((first["trim_out_s"], first["seconds"]), (9.55, 9.55))   # the used length is the out point
+            self.assertIsNone(got["reflection"]["clips"][1]["trim_out_s"])
+
+    def test_e282_a_trimmed_clip_shortens_its_crossfade_a_full_clip_keeps_the_gate(self):
+        spans = [(0.0, 9.4, 9.6, 0.2), (0.0, 9.0, 10.0, 1.0)]
+        trimmed = [{"shot": "a", "trim_out_s": 9.6}, {"shot": "b"}]
+        self.assertEqual(rs.join_fades(trimmed, spans), [0.18])
+        with self.assertRaisesRegex(SystemExit, "SEGMENT_TAIL_TOO_SHORT a"):
+            rs.join_fades([{"shot": "a"}, {"shot": "b"}], spans)   # not trimmed: the 0.22 s gate holds
+        with self.assertRaisesRegex(SystemExit, "SEGMENT_TAIL_TOO_SHORT a"):   # nor under the minimum, trimmed or not
+            rs.join_fades(trimmed, [(0.0, 9.5, 9.6, 0.09), spans[1]])
+        offsets, end = rs.timeline([{"seconds": 9.6, "fade": 0.18}, {"seconds": 10.0, "fade": rs.XFADE}])
+        self.assertEqual((offsets, end), ([0.3, 9.72], 19.72))
+        parts, label = rs.bottom_graph([9.6, 10.0], 0.5, 22.0, fades=[0.18])
+        self.assertTrue(any("xfade=transition=fade:duration=0.18:offset=9.420" in p for p in parts), parts)
+
+    def test_e282_render_cuts_each_clip_at_its_approved_out_point(self):
+        with tempfile.TemporaryDirectory() as t:
+            root, spec, path, clean, work = self.prepare(t)
+            self.trim_k_r1(root, 9.55, "line")
+            rec = rs.render(path, clean, work, Path(t) / "out", root=root)
+            self.assertTrue(all(rec["checks"].values()), rec["checks"])
+            first, second = rec["segments"]
+            self.assertEqual(first["trim_out_s"], 9.55)
+            self.assertNotIn("trim_out_s", second)
+            self.assertAlmostEqual(first["seconds"], 9.55, delta=0.1)   # measured on the trimmed media, not the 10 s clip
+            self.assertEqual(cl.sha256(work / "clips" / "k-r1.mp4"), json.loads(
+                (root / rs.SHOTS / f"{EPISODE}.json").read_text())["shots"]["k-r1"]["clip_sha256"])   # the approved bytes stay
+            self.assertAlmostEqual(cl.duration(work / "trimmed" / "k-r1.mp4"), 9.55, delta=0.1)
+            self.assertTrue(rs.XFADE_MIN <= rec["bottom"]["crossfades"][0] <= rs.XFADE)
+            self.assertAlmostEqual(second["start"], 0.3 + first["seconds"] - rec["bottom"]["crossfades"][0], delta=0.01)
 
     def test_fetch_clips_takes_the_approved_bytes_by_their_asset_names(self):
         with tempfile.TemporaryDirectory() as t:
