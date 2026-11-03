@@ -1,0 +1,90 @@
+{
+ "version": "studio-jobs-v1",
+ "note": "Written by migration/channel/related_map.py; consumed by migration/integrations/studio-local/runner.py. Add an entry for every newly scheduled Short (OPERATIONS.md Short route).",
+ "jobs": [
+  {
+   "video_id": "_sUdOLxWy5c",
+   "action": "related_video",
+   "target_video_id": "v4zN53ZiUIs",
+   "reason": "short-old pilot-002: its source long",
+   "target_title": "Morning Prayer | God Has Already Gone Ahead of You Today"
+  },
+  {
+   "video_id": "SsgCGkM6knQ",
+   "action": "related_video",
+   "target_video_id": "Iegu_RD_wbE",
+   "reason": "short-old pilot-004: its source long",
+   "target_title": "Night Prayer Before Sleep | Give God Your Worries, Rest in His Peace"
+  },
+  {
+   "video_id": "VEbS6pvirTA",
+   "action": "related_video",
+   "target_video_id": "XDwxi4pvllM",
+   "reason": "short-old pilot-005: its source long",
+   "target_title": "Morning Prayer for Protection | Psalm 91 Over You and Your Family"
+  },
+  {
+   "video_id": "ku2MTQKmXaU",
+   "action": "related_video",
+   "target_video_id": "1m-NUJhkdMY",
+   "reason": "short genesis-01-short: newest public long",
+   "target_title": "The Flood Ends: The Raven, the Dove and the Rainbow (Genesis 8-9, KJV)"
+  },
+  {
+   "video_id": "hwq4qgjreh0",
+   "action": "related_video",
+   "target_video_id": "1m-NUJhkdMY",
+   "reason": "short genesis-02-short: newest public long",
+   "target_title": "The Flood Ends: The Raven, the Dove and the Rainbow (Genesis 8-9, KJV)"
+  },
+  {
+   "video_id": "K_ZwsCt-Wg4",
+   "action": "related_video",
+   "target_video_id": "1m-NUJhkdMY",
+   "reason": "short genesis-03-short: newest public long",
+   "target_title": "The Flood Ends: The Raven, the Dove and the Rainbow (Genesis 8-9, KJV)"
+  },
+  {
+   "video_id": "s9YK37YErRc",
+   "action": "related_video",
+   "target_video_id": "1m-NUJhkdMY",
+   "reason": "short genesis-04-short: newest public long",
+   "target_title": "The Flood Ends: The Raven, the Dove and the Rainbow (Genesis 8-9, KJV)"
+  },
+  {
+   "video_id": "OYijqQdQq0o",
+   "action": "related_video",
+   "target_video_id": "1m-NUJhkdMY",
+   "reason": "short genesis-05-short: newest public long",
+   "target_title": "The Flood Ends: The Raven, the Dove and the Rainbow (Genesis 8-9, KJV)"
+  },
+  {
+   "video_id": "dyuqBS_FXew",
+   "action": "related_video",
+   "target_video_id": "X2LPFriRn3M",
+   "reason": "short genesis-06-short: chapter of the compilation",
+   "target_title": "Noah's Ark and the Flood Begins: Genesis 5-7 Bible Story (KJV)"
+  },
+  {
+   "video_id": "Vvfw4W4nV7M",
+   "action": "related_video",
+   "target_video_id": "X2LPFriRn3M",
+   "reason": "short genesis-07-short: chapter of the compilation",
+   "target_title": "Noah's Ark and the Flood Begins: Genesis 5-7 Bible Story (KJV)"
+  },
+  {
+   "video_id": "jPNjgf-PWHM",
+   "action": "related_video",
+   "target_video_id": "X2LPFriRn3M",
+   "reason": "short genesis-08-short: chapter of the compilation",
+   "target_title": "Noah's Ark and the Flood Begins: Genesis 5-7 Bible Story (KJV)"
+  },
+  {
+   "video_id": "IYSxVKTikSs",
+   "action": "related_video",
+   "target_video_id": "X2LPFriRn3M",
+   "reason": "short genesis-09-short: chapter of the compilation",
+   "target_title": "Noah's Ark and the Flood Begins: Genesis 5-7 Bible Story (KJV)"
+  }
+ ]
+}
