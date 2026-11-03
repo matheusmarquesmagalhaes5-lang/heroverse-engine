@@ -1887,7 +1887,26 @@ def generate_step(plan, work, lip_python, face_model, approvals=None, fetch=fetc
 
 # ---------- shot probe and approval (E114) ----------
 
-def probe_ids(plan, text, attempts):
+def stored_generation_problems(episode, ids, shots_dir=None):
+    """E292 (no re-probe of a line that already has stored Pavo generations): the shots of `ids` that have stored clips
+    in a committed probe record of this episode whose generations do not ALL carry a visual-defect flag (visual_defect:
+    the picture or the lips, never the words flags). Such a line is judged on OUR audio by shot-remux (E287, E288),
+    not generated again. A remux row (`remux_of`) is a judgement of a stored picture, not a generation."""
+    root = Path(shots_dir) if shots_dir else REPO / "migration" / "evidence" / "shots" / str(episode)
+    stored = {}
+    for f in sorted(root.glob("*.json")):
+        try:
+            shots = load(f).get("shots") or {}
+        except (OSError, ValueError):
+            continue
+        for sid in ids:
+            for c in (shots.get(sid) or {}).get("clips") or []:
+                if isinstance(c, dict) and not c.get("remux_of") and c.get("clip_sha256"):
+                    stored.setdefault(sid, []).append(c)
+    return [sid for sid, clips in stored.items() if not all(visual_defect(c.get("flags")) for c in clips)]
+
+
+def probe_ids(plan, text, attempts, shots_dir=None):
     """shot-probe.yml's inputs, checked before any secret: ([shot ids of this plan], attempts 1-PROBE_ATTEMPTS_MAX)."""
     ids = [x.strip() for x in (text or "").split(",") if x.strip()]
     bad = [x for x in ids if not SHOT_ID_INPUT.fullmatch(x)]
@@ -1906,6 +1925,10 @@ def probe_ids(plan, text, attempts):
     if talk:   # E264: no rework: a talking or voice-over shot is probed in one round (2 generations), then the fallback
         raise SystemExit("PROBE_ATTEMPTS_REFUSED " + " ".join(talk) + f" (a talking or voice-over shot takes at most "
                          f"{TALK_PROBE_ROUNDS_MAX} round: {TALK_ATTEMPTS} generation, a second only for a visual defect)")
+    again = stored_generation_problems(plan.get("episode"), ids, shots_dir)
+    if again:   # E292: the owner's cap: every stored generation of a line is used (remux, trim, crossfade) before another is paid for
+        raise SystemExit("PROBE_STORED_GENERATIONS " + " ".join(again) + " (a line that already has stored generations is "
+                         "judged on our audio by shot-remux.yml; a new probe needs a visual-defect flag recorded on ALL of them)")
     return list(dict.fromkeys(ids)), int(attempts)
 
 

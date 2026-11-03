@@ -157,6 +157,15 @@ def plan_problems(plan, episodes=EPISODES, root=ROOT):
             p = Path(root) / k[f]
             if not p.is_file() or sha256(p) != k[f + "_sha256"]:
                 bad.append(f"{key} {f} missing or changed")
+    still = (plan.get("thumbnail") or {}).get("still")
+    if still is not None:   # E292: a thumbnail from an approved still: the file, its sha256 and its approval record
+        p = Path(root) / str((still or {}).get("path", ""))
+        if not p.is_file() or sha256(p) != (still or {}).get("sha256"):
+            bad.append("thumbnail still missing or changed")
+        else:
+            approved = Path(root) / "migration/production/bible/stills" / f"{still.get('approved_still')}.json"
+            if not approved.is_file() or load(approved).get("status") != "APPROVED" or load(approved).get("sha256") != still["sha256"]:
+                bad.append("thumbnail still is not an approved still of that sha256")
     return bad
 
 
@@ -362,6 +371,20 @@ def thumbnail(src, spec, out):
     t1, t2 = Path(str(out) + ".1.txt"), Path(str(out) + ".2.txt")
     t1.write_text(spec["line1"])
     t2.write_text(spec["line2"])
+    if spec.get("still"):
+        # E292 (owner: the bottom caption was weak): an APPROVED still, clean of any burned-in subtitle, with a stepped dark
+        # foot (no frame of a video's own caption shows through it), bigger lines and a heavier outline
+        vf = (f"crop=iw:iw*9/16:0:(ih-iw*9/16)*{ys:.3f},scale=1280:720:flags=lanczos,"
+              f"drawbox=x=0:y=ih-300:w=iw:h=300:color=black@0.25:t=fill,"
+              f"drawbox=x=0:y=ih-230:w=iw:h=230:color=black@0.35:t=fill,"
+              f"drawbox=x=0:y=ih-170:w=iw:h=170:color=black@0.45:t=fill,"
+              f"drawtext=fontfile={FONT}:textfile={t1}:fontsize=96:fontcolor=white:x=(w-text_w)/2:y=h-190:borderw=6:bordercolor=black,"
+              f"drawtext=fontfile={FONT}:textfile={t2}:fontsize=54:fontcolor=0xf0c860:x=(w-text_w)/2:y=h-72:borderw=4:bordercolor=black")
+        run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", ROOT / spec["still"]["path"], "-frames:v", "1", "-vf", vf,
+             "-q:v", "2", out])
+        t1.unlink()
+        t2.unlink()
+        return
     vf = (f"crop=iw:iw*9/16:0:(ih-iw*9/16)*{ys:.3f},scale=1280:720:flags=lanczos,"
           f"drawbox=x=0:y=ih-190:w=iw:h=190:color=black@0.55:t=fill,"
           f"drawtext=fontfile={FONT}:textfile={t1}:fontsize=84:fontcolor=white:x=(w-text_w)/2:y=h-175:borderw=3:bordercolor=black,"
@@ -422,8 +445,11 @@ def build(plan_path, src_dir, out_dir, voice_dir=None):
         t += r["seconds"]
         r["end"] = round(t, 3)
         timeline.append(r)
-    thumb_src = next(v for v in verified if v["short"] == plan["thumbnail"]["short"])
-    thumbnail(src_dir / thumb_src["asset"], plan["thumbnail"], out / "thumbnail.jpg")
+    if plan["thumbnail"].get("still"):
+        thumbnail(None, plan["thumbnail"], out / "thumbnail.jpg")
+    else:
+        thumb_src = next(v for v in verified if v["short"] == plan["thumbnail"]["short"])
+        thumbnail(src_dir / thumb_src["asset"], plan["thumbnail"], out / "thumbnail.jpg")
     sha = sha256(master)
     save(out / "timeline.json", {"output_sha256": sha, "segments": timeline})
     save(out / "sources.json", verified)

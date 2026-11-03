@@ -141,6 +141,14 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
   New: DECISIONS 2026-11-03 rules (reserved reflection window, inter-clip silences <= 0.3 s, re-measure sync after a retime), two pavo_lessons,
   long_plan_check warns REFLECTION_WINDOW_NOT_RESERVED (E291).
 
+- 2026-11-03 (M2 v2, Pavo hook and close on OUR audio, E292): `shot-remux.yml` run 41670811661 on the STORED clips of probe 41629339290 (k-hook
+  5a28e1 = generation 2, k-close 1fcff3 = generation 2; no new generation, 0 credits): both clean on our audio (SyncNet offset -1, conf 5.8 and 6.0 against
+  min 2.7, face 0.98 and 0.82, no flags), approved 9.5 in `shots/arc-02-noah-compilation-keeper.json` with the `audio` proof (no trim; frame sheets viewed,
+  audio not heard by ear). New plan `compilations/arc-02-noah-complete-pavo-compilation.json` (pilot-019, publish_at 2026-11-04T16:00Z, clips and WAVs in
+  `evidence/pavo/20261103/compilation-m2/`, thumbnail from the approved still flood-ends-long-s-ararat with a heavier bottom caption). The earlier
+  voice-over version 1zsZZgDCAG0 (pilot-018, 13:30Z) stays scheduled until the new upload is read back scheduled, then goes to `hold-plan.json`.
+  Antidote E292: `shot-probe` refuses a line with stored generations unless a visual-defect flag is on all of them (PROBE_STORED_GENERATIONS).
+
 ## Next moments
 
 - M2 compilation "Complete Story of Noah (Genesis 5-9)" is due 2026-11-04.
