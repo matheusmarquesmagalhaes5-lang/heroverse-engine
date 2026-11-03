@@ -12,6 +12,7 @@ ACTIVE = ("migration/production", "migration/publish", "migration/ops", "migrati
 DIRECTING = {"migration/OPERATIONS.md", "migration/SYSTEM.md", "migration/STANDARD.md", "migration/ops/RUNNER_WAKEUP.md", "migration/ops/CLAUDE_REVIEW.md", "migration/ops/AUTOPILOT.md",
              "migration/strategy/DECISIONS.md", "migration/strategy/MODELING_SPEC.md", "migration/strategy/VIDIQ.md",
              "migration/strategy/BEAT_THE_REFERENCE_RULE.md",
+             "migration/strategy/pavo_lessons.md",   # E290: dated Pavo lessons production reads before any request
              "migration/strategy/FORMAT_ARCHETYPE_MORNING_PRAYER_DIRECT_ADDRESS.md",
              "migration/strategy/MARKET_FORECAST_TIME_TO_YPP_20261017.md"}  # registered forecast (evidence of DECISIONS)
 # E115: failure classes (rework audit 2026-10-27). An entry's `class` is one of these, or a list of them
@@ -186,7 +187,8 @@ class Register(unittest.TestCase):
                  for p in (ROOT / d).glob("*.md")}
         self.assertEqual(found - DIRECTING, set(), "new directing document: list it in OPERATIONS.md and here, or delete it")
         ops = (ROOT / "migration/OPERATIONS.md").read_text()
-        for doc in ("RUNNER_WAKEUP.md", "DECISIONS.md", "MODELING_SPEC.md", "VIDIQ.md", "CLAUDE_REVIEW.md", "AUTOPILOT.md"):
+        for doc in ("RUNNER_WAKEUP.md", "DECISIONS.md", "MODELING_SPEC.md", "VIDIQ.md", "CLAUDE_REVIEW.md", "AUTOPILOT.md",
+                    "pavo_lessons.md"):
             self.assertIn(doc, ops)
 
 

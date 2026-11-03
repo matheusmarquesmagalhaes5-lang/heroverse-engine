@@ -138,6 +138,15 @@ digest on the approved bytes (`SEGMENT_AUDIO_NOT_OURS`). Pavo's own speech (`aud
 checks. Evidence: `evidence/pavo-audio-eval/20261103.json` (`pavo-audio-eval.yml`, 21 stored clips, nothing generated: 13 of
 the 16 rejected only for words or audio hold sync with our audio). Legacy approvals (Pavo's track kept) keep the E266 rules.
 
+**Editing rule: what Pavo generates is used (owner 2026-11-03, E290).** Under E287 (our WAV over Pavo's picture)
+every generation with a visible face and sync within the `lipsync_check` thresholds is usable, and it is used. Its
+small defects are fixed at EDIT time, never by a new generation: the tail is trimmed at the last word (`trim_out_s`,
+E273/E282), the join is a picture crossfade inside the silence (E272; Shorts keep cuts), a clip set faster than the band
+is retimed by at most 10 % (E286/E288). `TALK_ATTEMPTS` stays 1; a second generation only for a visual defect
+(`episode_build.visual_defect`). Prompts come only from `pavo_prompt.build` (PROMPT_GUIDE "Pavo talking-shot prompt
+standard"); production reads `strategy/pavo_lessons.md` first, and Inteligência Viva appends each day's probe and
+review outcomes with run ids (`pavo_prompt.py lesson DATE worked|failed|rule TEXT EVIDENCE`).
+
 A clip stored before E287 (Pavo's track kept) is re-judged on our audio by `shot-remux.yml` (E288; plan + `shots` =
 `shot:sha256-prefix` of uploaded clips in committed probe records; no Pavo call, no secret, nothing generated): the stored
 picture by its sha256, the plan's request must still equal the one that made it, our regenerated Kokoro WAV laid over it

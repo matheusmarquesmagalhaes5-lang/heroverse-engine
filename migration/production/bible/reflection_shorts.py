@@ -45,6 +45,7 @@ import compilation_long as cl  # noqa: E402
 import kjv_check  # noqa: E402
 import pavo_audio  # noqa: E402
 import plan_check  # noqa: E402
+import characters as ch  # noqa: E402  (plan_check put characters/ on the path)
 import publish_episode as pe  # noqa: E402
 import short_cuts  # noqa: E402
 import short_engine  # noqa: E402
@@ -459,30 +460,34 @@ def spoken_lines(segments, offsets, spans):
     return lines
 
 
-LOOKS = ("a calm kind look", "a gentle questioning look", "a warm expectant look", "a grave tender look")
+EMOTIONS = ("calm", "questioning", "expectant", "tender")   # one adjective a segment, so no two prompts repeat
 
 
 def scaffold(spec, root=ROOT):
     """The plan shot-probe.yml probes for a spec's segments (plans/<id>.json, track keeper-reflection, 1:1): one talking
-    Keeper shot per segment, k-r1..k-r4, from the long's own Keeper prompt (his look, wardrobe, chest-up framing and
-    campfire word for word: the same reference as the long) with only his expression changed so no prompt repeats."""
+    Keeper shot per segment, k-r1..k-r4, each prompt composed by pavo_prompt.build (E290) from structured fields: the
+    long's own Keeper wardrobe and setting (the same look and reference as the long), only the emotion differing."""
+    import pavo_prompt
     plan_long, _ = short_cuts.sources(spec, root)
-    base = next((s["prompt"] for s in plan_long.get("shots") or []
-                 if s.get("kind") == "keeper" and not s.get("voiceover") and isinstance(s.get("prompt"), str)), None)
-    if not base:
+    keeper = next((s for s in plan_long.get("shots") or []
+                   if s.get("kind") == "keeper" and not s.get("voiceover") and isinstance(s.get("prompt"), str)), None)
+    if not keeper:
         raise SystemExit("LONG_HAS_NO_TALKING_KEEPER_PROMPT (the long's plan holds no talking Keeper shot to reuse)")
+    wardrobe = (keeper.get("pavo") or {}).get("wardrobe") or next(
+        (k for k, v in (ch.registry()[ch.NARRATOR].get("wardrobe") or {}).items() if v in keeper["prompt"]), "fire")
+    setting = (keeper.get("pavo") or {}).get("setting") or pavo_prompt.KEEPER_SETTINGS[wardrobe]
     segs = spec["segments"]
-    shots = []
-    for i, seg in enumerate(segs):
-        prompt = re.sub(r"\ba [a-z ]+ look\b", LOOKS[i % len(LOOKS)], base, count=1)
-        if prompt == base and i:
-            prompt = base.replace("No text, no logos.", f"{LOOKS[i % len(LOOKS)].capitalize()}. No text, no logos.")
-        shots.append({"kind": "keeper", "id": seg["shot"], "lines": [i], "audio_route": "kokoro", "prompt": prompt})
-    return {"source_policy": "pavo_speech_stock", "track": "keeper-reflection", "version": "bible-plan-v2",
+    plan = {"source_policy": "pavo_speech_stock", "track": "keeper-reflection", "version": "bible-plan-v2",
             "episode": spec["id"], "part": plan_long.get("part") or 1, "aspect_ratio": "1:1",
             "story": f"The Keeper's reflection on {plan_long.get('passage')}, said to the camera in {len(segs)} segments "
                      f"(the bottom half of {spec['id']})",
-            "narration": [{"kind": "insight", "text": s["text"].strip()} for s in segs], "shots": shots}
+            "narration": [{"kind": "insight", "text": s["text"].strip()} for s in segs], "shots": []}
+    for i, seg in enumerate(segs):
+        shot = {"kind": "keeper", "id": seg["shot"], "lines": [i], "audio_route": "kokoro",
+                "pavo": {"emotion": EMOTIONS[i % len(EMOTIONS)], "setting": setting, "wardrobe": wardrobe}}
+        shot["prompt"] = pavo_prompt.build(shot, plan)
+        plan["shots"].append(shot)
+    return plan
 
 
 def fetch_clips(spec_path, work, root=ROOT, fetch=None):

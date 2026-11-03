@@ -4656,6 +4656,26 @@
      "instrument"
     ]
    }
+  },
+  {
+   "id": "E290",
+   "date": "2026-11-03",
+   "class": [
+    "process"
+   ],
+   "prior": [
+    "E287",
+    "E288"
+   ],
+   "error": "Owner 2026-11-03: \"You are not doing the HOOK in Pavo, nor the CHARACTERS' lines; only the Keeper at the end.\" Root cause: Pavo applied only to the Keeper close; the hook and character lines were not required; prompts were assembled ad hoc. genesis-09-short and genesis-10-short opened on God's voice over a sky (pavo_hook on a scene), their Keeper insight and close went out as voice-overs, plan_check had no rule that a long-first or bridge plan's hook or a character's quoted speech be a Pavo talking shot, and each talking prompt was hand-written per plan (style first, 'Medium close-up' in genesis-10, no instruction for the mouth before and after the line), so the tail mumbles, the full-body framing and the pace were found only after generation.",
+   "fix": "plan_check.pavo_coverage_problems (plan_check --strict via strict_problems, episode_build.check_plan, autopilot gates) for every buzzy-long and buzzy plan not in PAVO_COVERAGE_GRANDFATHERED (the three published plans, held frozen by a test): HOOK_NOT_PAVO (the first shot is a talking Keeper or a speaking human character; keeper_hook now also lets a bridge Short open on the talking Keeper, since God is never shown), CHARACTER_LINE_NOT_PAVO (a character's quoted speech in narration, a speaking shot with a second person or without approved references), KEEPER_LINE_NOT_PAVO (a voice-over Keeper without a pavo_fallback probe record whose every generation has a hard flag), PAVO_PROMPT_NOT_STANDARD (the prompt is not pavo_prompt.build's from the shot's `pavo` fields; episode_build.request refuses the same before sending), PAVO_LINE_PACE (E277's estimate after the clip retime, within E288's one 10 % factor), PAVO_LESSONS_INVALID. pavo_prompt.py builds every talking prompt in the owner's fixed order (binding, style, chest-up framing, identity, setting and light, mouth-only-while-speaking action, one emotion and gaze, negatives) and the input WAV gets TAIL_PAD 0.3 s of silence (lines_step; the digest records tail_pad, so legacy approved requests are unchanged); reflection_shorts.scaffold uses the builder. strategy/pavo_lessons.md holds dated, evidence-linked lessons that production reads (build refuses without it) and Inteligência Viva appends (pavo_prompt.py lesson). OPERATIONS 'Editing rule': every usable generation is used and fixed at edit time (trim E273, crossfade E272, retime E286); TALK_ATTEMPTS stays 1.",
+   "antidote": {
+    "file": "migration/production/bible/test_plan_check.py",
+    "contains": "def test_e290_the_hook_character_lines_and_keeper_lines_are_pavo_and_prompts_come_from_the_builder",
+    "covers": [
+     "process"
+    ]
+   }
   }
  ]
 }

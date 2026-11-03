@@ -2850,6 +2850,14 @@
   "REMUX_NOT_A_KOKORO_TALKING_SHOT": {
    "class": "N",
    "why": "E288: shot-remux.yml puts our request audio over a stored clip before any approval; these refuse a wrong input, a source clip that is not exactly one uploaded clip of a committed probe record, a missing release asset or a shot that is not a Kokoro talking shot, and stop no generation, voice or render"
+  },
+  "PAVO_PROMPT_NOT_STANDARD": {
+   "class": "A",
+   "early": [
+    "migration/production/bible/plan_check.py::def pavo_prompt_problems(",
+    "migration/production/bible/episode_build.py::plan_check.pavo_coverage_problems(plan, chars)"
+   ],
+   "note": "E290: a talking shot with `pavo` fields is sent only with pavo_prompt.build's prompt; plan_check --strict (pavo_coverage_problems, every buzzy-long and buzzy plan not grandfathered) and episode_build.check_plan refuse the same plan before any probe, and also HOOK_NOT_PAVO, CHARACTER_LINE_NOT_PAVO, KEEPER_LINE_NOT_PAVO, PAVO_LINE_PACE and PAVO_LESSONS_INVALID, so the request never reaches Pavo unstandardized."
   }
  },
  "review": {
@@ -2861,7 +2869,8 @@
      "checks": [
       "migration/production/bible/plan_check.py::OPEN_NOT_SPOKEN",
       "migration/production/bible/plan_check.py::KEEPER_OPENS",
-      "migration/production/bible/plan_check.py::CLIMAX_MISSING"
+      "migration/production/bible/plan_check.py::CLIMAX_MISSING",
+      "migration/production/bible/plan_check.py::HOOK_NOT_PAVO"
      ],
      "residual": "whether the first spoken line lands as a conflict is a judgement on the words; plan_check fixes its form (a character's or God's line from 0 s, never the Keeper or narration first)"
     },
@@ -2911,7 +2920,8 @@
       "migration/production/bible/episode_build.py::def face_flags",
       "migration/production/bible/episode_build.py::def still_mouth_flags",
       "migration/production/bible/episode_build.py::def lipsync_flags",
-      "migration/production/bible/episode_preflight.py::def probe_rows"
+      "migration/production/bible/episode_preflight.py::def probe_rows",
+      "migration/production/bible/plan_check.py::CHARACTER_LINE_NOT_PAVO"
      ],
      "residual": "AI artifacts in a generated frame (a hand, a face, a stray mark) and the painterly finish: no tool measures them; the 20-frame sheet of the composed file is where they are seen"
     },
