@@ -1856,6 +1856,10 @@
    "early": "migration/production/bible/plan_check.py::episode_build.predict(plan, est)",
    "note": "E106: compose_shots, short_engine.check_shots / talk_problems / speed and the composed establishing share run at plan time on the planned clip lengths (compose_prediction) and in preflight on the measured voice; residual: Pavo's clip a few hundredths shorter than asked (clip_check measures it)"
   },
+  "SHOT_TRIM_INVALID": {
+   "class": "N",
+   "why": "E273: approve-shot and speech-check --trim-out are the review's own local commands (Claude, after the frame review, before the PR): they stop no generation, voice or render, and refuse only a wrong out point"
+  },
   "SOURCE_ARCHIVE_IDENTITY_MISMATCH": {
    "class": "I",
    "guard": "migration/production/pilot_render.py::SOURCE_SHA256"
