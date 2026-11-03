@@ -4017,6 +4017,25 @@
      "direction"
     ]
    }
+  },
+  {
+   "id": "E273",
+   "date": "2026-11-03",
+   "class": [
+    "drift"
+   ],
+   "prior": [
+    "E270"
+   ],
+   "error": "flood-ends-long release: channel-privacy release was refused (BUZZY_LONG_HANDOFF_INVALID) because the long's handoff binds plans/flood-ends-long.json, which the later Pavo rebuild edited after the approved file was uploaded; the gate was failing on today's tree for a file whose gate had passed at upload.",
+   "fix": "Run the unchanged publication_binding on the tree of the commit publish.yml uploaded from (release-plan evidence_commit), after proving every pilot evidence file is byte-identical today. The gate and the frozen criteria are not loosened.",
+   "antidote": {
+    "file": "migration/publish/test_channel_privacy.py",
+    "contains": "def test_an_evidence_commit_is_checked_on_its_own_tree_and_only_if_the_evidence_is_unchanged",
+    "covers": [
+     "drift"
+    ]
+   }
   }
  ]
 }
