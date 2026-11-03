@@ -13,7 +13,7 @@ if ($phase -eq 0) {
   $ok = $false
   for ($i = 0; $i -lt 14; $i++) { $sb = New-Object System.Text.StringBuilder 256; [void][W.U]::GetWindowText([W.U]::GetForegroundWindow(), $sb, 256); if ($sb.ToString() -eq 'Salvar como') { $ok = $true; break }; Start-Sleep 2 }
   if (-not $ok) { & $ui -act type -text "{ESC}" -wait 1 | Out-Null; "NODIALOG $still"; exit 7 }
-  & $ui -act type -text "$png~" -wait 4 | Out-Null
+  & $ui -act type -text "$png~" -wait 4 | Out-Null $ui -act type -text "$png~" -wait 4 -nofocus | Out-Null
   & $ui -act type -text "{ESC}" -wait 2 | Out-Null
   & C:\HeroVerse\save.ps1 -still $still -sy 0 -aspect $aspect -branch $branch -run $run
 }

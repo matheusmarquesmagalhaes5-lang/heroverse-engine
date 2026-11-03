@@ -72,3 +72,14 @@ trusting the coordinates):
    below), then upscale it to the plan's still size and take it through the still review (`scene_stills.py approve`).
    One image at a time, and at most 30 a day.
 5. A login page, a usage-limit message or any challenge stops the run, which is reported. Nothing is worked around.
+
+### Robust focus (2026-11-03)
+
+The first click on the app only focuses it, and the owner's Chrome (or its ChatGPT extension) can take the foreground at any
+time, so a send, a download click or a keystroke could land in another window (the Babel long's first builder prompt sat unsent in
+the composer). `ui.ps1` (repo copy: `desktop-app/ui.ps1`) now does, before EVERY click, keystroke or scroll: find the ChatGPT window
+handle, restore it if minimized, `AttachThreadInput` + `BringWindowToTop` + `SetForegroundWindow` + `SetFocus`, and verify with
+`GetForegroundWindow`, up to 3 tries. If ChatGPT cannot be the foreground nothing is clicked or typed (`FOCUS_FAILED`, exit 9), and the
+click/type/scroll checks again just before acting (`FOCUS_LOST`). `-nofocus` is only for the "Salvar como" dialog (typing the path),
+never for clicks. If the foreground keeps changing within seconds the owner is using the PC: wait 5 minutes and retry; report
+to the coordinator when it persists more than 30 minutes.
