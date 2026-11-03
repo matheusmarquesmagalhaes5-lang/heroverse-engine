@@ -65,6 +65,13 @@ def boundaries(sentences, start, end, total):
         out.append(f"CUT_ENDS_INSIDE_SPEECH at {end} s (end in the silence after a sentence)")
     if not out and (first is None or last is None or last < first):
         out.append("CUT_HAS_NO_SENTENCE")
+    if not out:   # E275: the render fades picture and sound over FADE s at both edges; speech must not sit under a fade
+        if sentences[first]["start"] - start < FADE - TOL:
+            out.append(f"CUT_FADE_OVERLAPS_SPEECH at {start} s (>= {FADE} s of silence before the first word, "
+                        f"which starts at {sentences[first]['start']} s)")
+        if end - sentences[last]["end"] < FADE - TOL:
+            out.append(f"CUT_FADE_OVERLAPS_SPEECH at {end} s (>= {FADE} s of silence after the last word, "
+                        f"which ends at {sentences[last]['end']} s)")
     return out, first, last
 
 

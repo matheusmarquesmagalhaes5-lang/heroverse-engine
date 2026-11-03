@@ -4095,6 +4095,43 @@
      "drift"
     ]
    }
+  },
+  {
+   "id": "E275",
+   "date": "2026-11-03",
+   "class": [
+    "instrument"
+   ],
+   "prior": [
+    "E120",
+    "E131",
+    "E137",
+    "E139",
+    "E148",
+    "E152",
+    "E166",
+    "E169",
+    "E185",
+    "E186",
+    "E231",
+    "E233",
+    "E238",
+    "E253",
+    "E255",
+    "E262",
+    "E266",
+    "E267",
+    "E273"
+   ],
+   "error": "flood-ends-long cuts: the first cuts started 0.1 s before the first word and were rendered and sent to local review with the 0.25 s picture and audio fade-in covering the first word (local review flagged speech at the first frame); short_cuts.check only required the cut to sit in the silence, not clear of the fade.",
+   "fix": "Re-cut with 0.25 s of silence before the first word and after the last word (sentence gaps of 0.35 s); short_cuts.check now refuses CUT_FADE_OVERLAPS_SPEECH. The first render stays on record as a failed attempt; the new files are reviewed under their own hashes.",
+   "antidote": {
+    "file": "migration/production/bible/test_long_first.py",
+    "contains": "E275: the render fades both edges",
+    "covers": [
+     "instrument"
+    ]
+   }
   }
  ]
 }
