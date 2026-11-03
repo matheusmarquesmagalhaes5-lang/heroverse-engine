@@ -1,19 +1,19 @@
 {
  "cadence": {
-  "long_per_week": 3.5,
-  "shorts_per_week": 14,
+  "long_per_week": 7,
+  "shorts_per_week": 28,
   "clock_runs_per_week": 7,
   "mining_runs_per_week": 7,
   "pr_cycles_per_week": 10
  },
  "reserve_share": 0.2,
- "budget": 239000000,
+ "budget": 430200000,
  "allocations": {
-  "long": 34804447,
-  "shorts": 61497265,
-  "clocks": 43005351,
-  "reviews_prs": 51892936,
-  "reserve": 47800001
+  "long": 83326798,
+  "shorts": 147233202,
+  "clocks": 51480464,
+  "reviews_prs": 62119536,
+  "reserve": 86040000
  },
- "scaled_to_budget": 0.68
+ "scaled_to_budget": 0.814
 }

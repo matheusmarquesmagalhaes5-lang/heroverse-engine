@@ -175,9 +175,11 @@ class Budget(unittest.TestCase):
         self.assertEqual(d["used"], 100)
         self.assertEqual(d["sessions"]["sess1"]["output_tokens"], 100)
 
-    def test_config_is_half_of_a_positive_cap(self):
+    def test_config_leaves_headroom_under_a_positive_cap(self):
         cfg = json.loads((ROOT / "migration/ops/token_budget.json").read_text())
-        self.assertEqual(cfg["project_share"], 0.5)   # owner, 2026-10-31: half of the weekly tokens, never more
+        # owner 2026-10-31: half of the weekly tokens; owner 2026-11-03 lifted it ("pode tirar a trava de tokens,
+        # so distribuir melhor") to 0.9, keeping 10% so the account's weekly limit never stops the routines
+        self.assertEqual(cfg["project_share"], 0.9)
         self.assertGreater(cfg["weekly_cap_tokens"], 0)
 
     def test_settings_wires_the_hook_on_every_tool_and_prompt(self):

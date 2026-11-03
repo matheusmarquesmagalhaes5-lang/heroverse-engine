@@ -1,7 +1,7 @@
 {
-  "_doc": "Claude Code token budget for this project. Counted weighted tokens = input + cache_creation + output + cache_read_weight * cache_read. Budget = weekly_cap_tokens * project_share. weekly_cap_tokens is calibrated from the owner's Claude app usage panel (owner 2026-11-01: 'guide by this'): at 2026-11-01T07:09Z the panel showed 'Todos os modelos' 13% used for the week resetting Saturday 15:59 BRT, while this meter counted 62.17M weighted tokens for the same week, so the cap is about 62.17M / 0.13 = 478M (earlier 201M was a lower bound from one limit error). Re-calibrate from the panel whenever it disagrees with this meter.",
+  "_doc": "Claude Code token budget for this project. Counted weighted tokens = input + cache_creation + output + cache_read_weight * cache_read. Budget = weekly_cap_tokens * project_share. weekly_cap_tokens is calibrated from the owner's Claude app usage panel (owner 2026-11-01: 'guide by this'): at 2026-11-01T07:09Z the panel showed 'Todos os modelos' 13% used for the week resetting Saturday 15:59 BRT, while this meter counted 62.17M weighted tokens for the same week, so the cap is about 62.17M / 0.13 = 478M (earlier 201M was a lower bound from one limit error). Re-calibrate from the panel whenever it disagrees with this meter. Owner 2026-11-03: 'pode tirar a trava de tokens, só distribuir melhor' - project_share raised 0.5 -> 0.9 (10% of the weekly cap left so the account limit never stops the routines).",
   "weekly_cap_tokens": 478000000,
-  "project_share": 0.5,
+  "project_share": 0.9,
   "cache_read_weight": 0.1,
   "reset": {
     "weekday": "Saturday",

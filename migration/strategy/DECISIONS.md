@@ -595,3 +595,14 @@ the Keeper's lit "Most miss this" line. Both earlier masters stay on record (evi
   long's audio muted. The second master (sha256 f4553a09…) is not claimed at the 9.5 floor (one scene held ~16 s on top,
   audio not heard by ear, a recognizer repeat at "bow"/"carried"): no review, not published, evidence kept.
 - E276: `test_gemini_short_review` counted cuts as corpus Shorts and turned every PR check red once the cuts were published.
+
+## 2026-11-03 — Token budget: the hard lock lifted, allocations redistributed (owner order)
+
+- Owner, 2026-11-03: "Pode tirar a trava de tokens. Só você distribuir melhor tudo." The Shorts allocation had blocked
+  new work at 63.5M of 61.5M while clocks (1.1M of 43M) and reviews/PRs (7.7M of 52M) sat almost unused.
+- `project_share` 0.5 → 0.9 of the calibrated weekly cap (478M): 430.2M. 10% stays free so the account's own weekly
+  limit never stops the routines (a hit there would stop everything, which the owner's "never stop" rule forbids).
+- Cadence for the plan now follows the battle plan: 7 longs/compilations and 28 Shorts (4/day) a week, 7 clock and 7
+  mining runs, 10 PR cycles. Rebuilt with `token_budget.py plan --write`: long 83.3M, Shorts 147.2M, clocks 51.5M,
+  reviews/PRs 62.1M, reserve 86.0M. The hook still enforces the total and each allocation; the coordinator re-balances
+  again by PR if one activity runs dry while others sit idle.

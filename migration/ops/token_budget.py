@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Claude Code token budget for this project: half of the weekly cap, planned by real cost, enforced by a hook.
+"""Claude Code token budget for this project: project_share (0.9, owner 2026-11-03) of the weekly cap, planned by real cost, enforced by a hook.
 
 Sums assistant `usage` from ~/.claude/projects/*heroverse*/**/*.jsonl (subagents included) inside the current
 weekly window, merges with the persisted ledger (max per session), and stops the session over budget.
@@ -284,7 +284,7 @@ def plan_text(s, plan):
 
 def status_text(s):
     return (f"week {s['window_start'][:16]}Z..{s['window_end'][:16]}Z\n"
-            f"used {s['used']:,} of budget {s['budget']:,} ({s['pct']}%); budget is half of the estimated "
+            f"used {s['used']:,} of budget {s['budget']:,} ({s['pct']}%); budget is the project share of the estimated "
             f"weekly cap {s['weekly_cap_tokens']:,}\n"
             f"projected end of week {s['projected_end_of_week']:,}"
             + ("  (over budget)" if s["projected_end_of_week"] > s["budget"] else ""))
@@ -324,7 +324,7 @@ def hook_action(data):
 
 def refusal(s, action, est, why):
     return (f"TOKEN_BUDGET_EXCEEDED: {why} (action {action or '-'}, estimate p90 {est:,}; project used {s['used']:,} of "
-            f"{s['budget']:,} weighted tokens, {s['pct']}%, half of the weekly cap; reset {s['window_end'][:16]}Z). "
+            f"{s['budget']:,} weighted tokens, {s['pct']}%, project share of the weekly cap; reset {s['window_end'][:16]}Z). "
             f"Stop; only `python3 -I -B migration/ops/token_budget.py status` and `git status` are allowed. "
             f"Report to the owner; do not work around it.")
 
