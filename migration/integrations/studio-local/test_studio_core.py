@@ -187,6 +187,20 @@ class MappingTests(unittest.TestCase):
 
 
 class RunnerImportTests(unittest.TestCase):
+    def test_logged_in_uses_cookie_names_only_with_a_list(self):
+        try:
+            import runner  # noqa: E402
+        except Exception as e:  # noqa: BLE001
+            self.skipTest(f"runner import: {e}")
+        calls = []
+
+        class Ctx:
+            def cookies(self, urls):      # Playwright takes ONE argument: a url or a list of urls
+                calls.append(urls)
+                return [{"name": "SAPISID", "value": "secret"}]
+        self.assertTrue(runner.logged_in(Ctx()))
+        self.assertIsInstance(calls[0], list)
+
     def test_dry_run_prints_pending_without_browser(self):
         try:
             import runner  # noqa: E402
