@@ -60,5 +60,18 @@
  "credits": {
   "vidiq": 0,
   "pavo": 0
+ },
+ "attributes": {
+  "hook_type": "keeper_reflection_on_long_moment",
+  "hook_line": "God did not hang that rainbow because Noah was perfect, and the story says so plainly.",
+  "title_pattern": "statement_pipe_story_kjv",
+  "first_visual": "rainbow_and_family_scene",
+  "ai_scenes": 2,
+  "slot_utc": null,
+  "transition": "crossfade",
+  "seconds": 21.167,
+  "voice": "kokoro_am_michael",
+  "compose": "reflection-split-screen",
+  "structure": "keeper-reflection"
  }
 }
