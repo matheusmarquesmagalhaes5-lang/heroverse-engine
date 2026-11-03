@@ -6,6 +6,13 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
 `../../strategy/DECISIONS.md` ("2026-11-02 — Battle plan to YPP").
 
 ## Current delivery: flood-ends-long (Genesis 8-9, buzzy-long, plan `plans/flood-ends-long.json`)
+- 2026-11-03 (coordinator-focused run 16:47Z, Short coverage only): the free 11-05 13:30Z slot is filled by a NEW cut `flood-ends-remembered-cut`
+  (33.2-56.18 s of flood-ends-long, "God remembered Noah", sentence edges 0.25 s clear; short-cuts run 41679507140, local-review 41680232127,
+  review 8.9, one held scene, audio by ASR and measures, not by ear). Published private, public at 2026-11-05T13:30Z (publish-episode run
+  41682203109): https://youtube.com/shorts/dnrv9m2ZDhE; studio related-video entry added. Next 48 h are full (11-03 18:30 to 11-05 13:30). The
+  reflection top range 62.65-84 s stays free for reflection 1; free sentence-safe ranges left: none >= 20 s outside it. Short-cuts.yml and
+  local-review.yml run only from main (merge the spec first). Untouched: Babel long, M2 compilation, ChatGPT app.
+
 
 - 30 stills approved as sources (#646, #649). ChatGPT stills are available: the 1 Nov limit applied only to the
   Codex/Work tab. All stills use ONE chat, "HeroVerse — stills" (if a limit or error appears: close the app, wait
