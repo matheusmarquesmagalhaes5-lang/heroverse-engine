@@ -857,5 +857,31 @@ class NoRendererReadsTheNewQaYet(unittest.TestCase):
         self.assertIn("STORY_V3_ROWS", qa_pilot)
 
 
+class ReflectionWindowReserved(unittest.TestCase):
+    """E289: a long reserves its Keeper reflection's top window (20-30 s, 3+ shots, no still over ~8 s) before the shots are
+    fixed; an existing long without one only warns, a malformed window is refused."""
+
+    def test_absent_warns_malformed_is_refused_and_a_sound_window_is_clean(self):
+        import long_plan_check as lc
+        absent = {"long": {"pilot": "pilot-001"}}
+        self.assertEqual(lc.reflection_window_report(absent)[0], [])
+        self.assertTrue(lc.reflection_window_report(absent)[1][0].startswith("REFLECTION_WINDOW_NOT_RESERVED"))
+        for bad in ({"start": 10}, {"start": 30, "end": 20}, {"start": 0, "end": 12}, {"start": 0, "end": 45},
+                    {"start": "a", "end": 30}, [0, 25]):
+            problems, warnings = lc.reflection_window_report({"long": {"reflection_window": bad}})
+            self.assertTrue(problems and problems[0].startswith("REFLECTION_WINDOW"), bad)
+            self.assertEqual(warnings, [])
+        self.assertEqual(lc.reflection_window_report({"long": {"reflection_window": {"start": 56.28, "end": 80.27}}}), ([], []))
+        # the checker carries the warning (not a problem) for a long without a window, and refuses a malformed one
+        p = plan()
+        result = check(p)
+        self.assertTrue(any(w.startswith("REFLECTION_WINDOW_NOT_RESERVED") for w in result["warnings"]))
+        self.assertEqual(result["problems"], [])
+        p["long"] = {"reflection_window": {"start": 0, "end": 5}}
+        self.assertIn("REFLECTION_WINDOW", codes(check(p)))
+        p["long"] = {"reflection_window": {"start": 30, "end": 55}}
+        self.assertEqual(check(p)["warnings"], [])
+
+
 if __name__ == "__main__":
     unittest.main()

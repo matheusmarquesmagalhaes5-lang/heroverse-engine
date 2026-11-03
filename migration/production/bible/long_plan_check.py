@@ -705,7 +705,31 @@ def check(plan, chars=None, gate_values=None, criteria=None, arc_table=None):
                                                        and (by_id.get(k) or {}).get("audio_route") == pn.KOKORO)},
                 "pavo_minutes_sequential": round((len(scenes) * PAVO_SCENE_S + len(talk) * PAVO_TALK_S) / 60),
                 "upscale_minutes_1440p": round(clip_seconds * UPSCALE_S_PER_CLIP_S / 60)}
-    return {"problems": problems, "pending": pending, "estimate": estimate}
+    window_problems, warnings = reflection_window_report(plan)
+    return {"problems": problems + window_problems, "pending": pending, "warnings": warnings, "estimate": estimate}
+
+
+REFLECTION_WINDOW_S = (20.0, 30.0)   # E289: the seconds of the long that the Keeper reflection's top clip is reserved from
+
+
+def reflection_window_report(plan):
+    """E289 (coordinator 2026-11-03, flood reflection 1 held at 9.3): a long's plan reserves ONE window for its Keeper
+    reflection's top clip, `long.reflection_window` {start, end}: 20-30 s of the master with 3 or more shots, none a
+    still held over ~8 s, outside the cuts' ranges. (problems, warnings): a malformed window is a problem; a long
+    without one is a WARNING (REFLECTION_WINDOW_NOT_RESERVED), so the long that already exists still builds but a new
+    one is told before its shots are fixed, not after its reflection is rendered and held."""
+    long = plan.get("long")
+    window = long.get("reflection_window") if isinstance(long, dict) else None
+    if window is None:
+        return [], ["REFLECTION_WINDOW_NOT_RESERVED (long.reflection_window {start, end}: 20-30 s of the master with 3 or "
+                    "more shots, no still held over ~8 s, outside the cuts' ranges)"]
+    ok = (isinstance(window, dict) and all(type(window.get(k)) in (int, float) for k in ("start", "end"))
+          and 0 <= window["start"] < window["end"]
+          and REFLECTION_WINDOW_S[0] <= window["end"] - window["start"] <= REFLECTION_WINDOW_S[1])
+    if not ok:
+        return [f"REFLECTION_WINDOW (long.reflection_window {{start, end}}, {REFLECTION_WINDOW_S[0]:.0f}-"
+                f"{REFLECTION_WINDOW_S[1]:.0f} s long)"], []
+    return [], []
 
 
 def frozen_qa_problem(path=QA, plan=None):

@@ -659,3 +659,12 @@ WILL be used. Organize it at EDIT time." "Learn every day, so there is no rework
 - Edit-time use (OPERATIONS "Editing rule"): trim, crossfade and retime fix a usable generation; TALK_ATTEMPTS stays 1.
 - `strategy/pavo_lessons.md`: dated, evidence-linked lessons; production reads it, Inteligência Viva appends daily.
 
+## 2026-11-03 — Flood reflection 1 held at 9.3; what the next reflection must have (coordinator)
+
+Reflection 1 on our audio (three clips, master 08276e85, reflection-shorts run 41660551928, local-review 41661153948) was reviewed honestly at 9.3
+(pacing 9.0: a 16.2 s held still; audio 9.0) and is NOT published; nothing below 9.5 is published and flood reflection 1 stops here. Rules:
+- Every long's plan reserves one reflection top window of 20-30 s with 3 or more shots (no still held over ~8 s), outside the cuts' ranges
+  (`long.reflection_window {start, end}`; long_plan_check warns REFLECTION_WINDOW_NOT_RESERVED for a long without one and refuses a malformed one, E289).
+- Close the inter-clip silences of a reflection to 0.3 s at most.
+- Re-measure sync after any retime.
+- The reflection pace is judged after the render's own retime (`plan_check.reflection_retime`, E288); the stored clips are re-judged on our audio by `shot-remux.yml`.
