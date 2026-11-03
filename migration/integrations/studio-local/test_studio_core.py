@@ -137,6 +137,18 @@ class MappingTests(unittest.TestCase):
         self.assertTrue([s for s in skipped2 if s["why"] != "NOT_PUBLIC"])
         self.assertTrue(all(s["why"] in ("NO_TARGET", "TARGET_NOT_PUBLIC", "NOT_PUBLIC") for s in skipped2))
 
+    def test_the_newest_public_compilation_of_a_short_wins(self):
+        """M2: a Short chaptered by the Genesis 5-7 compilation and the complete Noah one points to the newer (higher pilot)."""
+        e = self.entries()
+        e["pilot-018:aa"] = {"video_id": "COMPLETE018", "uploaded_at": "2026-11-04"}
+        comps = [("pilot-003", ["g-02-short"]), ("pilot-018", ["g-02-short", None])]
+        pub = {v: None for v in (self.L, self.COMP, "COMPLETE018", self.S2)}
+        jobs, _ = rm.build(e, {"arcs": []}, {}, comps, pub, already_done={})
+        self.assertEqual({j["video_id"]: j["target_video_id"] for j in jobs}[self.S2], "COMPLETE018")
+        pub.pop("COMPLETE018")                                   # not public yet: the older compilation still serves
+        jobs, _ = rm.build(e, {"arcs": []}, {}, comps, pub, already_done={})
+        self.assertEqual({j["video_id"]: j["target_video_id"] for j in jobs}[self.S2], self.COMP)
+
     def test_compilation_not_public_falls_back_to_arc_or_newest(self):
         pub = {v: None for v in (self.L, "LONG2LONG02", self.S2)}
         jobs, _ = self.build(pub)

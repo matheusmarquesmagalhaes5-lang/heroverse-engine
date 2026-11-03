@@ -101,7 +101,7 @@ def build(entries, arcs, cut_sources, compilations, public, already_done=ALREADY
             return v["long_video_id"], "its source long"
         if v["kind"] == "cut":
             return pilot_video.get(cut_sources.get(v["ref"])), "cut of its source long"
-        for pilot, shorts in compilations:
+        for pilot, shorts in sorted(compilations, reverse=True):   # M2: the newest compilation (highest pilot) that chapters it and is public
             t = pilot_video.get(pilot)
             if v["ref"] in shorts and t in public:
                 return t, "chapter of the compilation"
