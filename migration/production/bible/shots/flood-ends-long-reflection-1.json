@@ -59,13 +59,35 @@
     "instrument": "ffprobe stream durations"
    },
    "score": 9.5,
-   "note": "Approved clip unchanged, now used cut at 5.32 s (E281) inside the silence after the line's last word, because the clip's own audio carries a trailing Pavo mumble after it. Frames of the trimmed clip viewed as a contact sheet (same Keeper, no artefacts; the picture is the frames of the earlier full-size review, only shortened). The pinned ASR (faster-whisper small.en) hears exactly the line on the trimmed media (speech-check --trim-out 5.32; the voice-similarity measure was not taken: resemblyzer unavailable offline); lips flags empty, music and singing 0. Audio NOT heard by ear: this session cannot play audio.",
+   "note": "Approved clip unchanged, used cut at 5.38 s (E282) inside the silence after the line's last word (clip audio carries a trailing 'for carried'). Frames of the trimmed clip viewed as a contact sheet (same Keeper, no artefacts). Pinned ASR hears exactly the line on the trimmed media (speech-check --trim-out 5.38); lips flags empty; voice-similarity measure not taken (resemblyzer unavailable offline). Audio NOT heard by ear: this session cannot play audio.",
    "probe_record": "migration/evidence/shots/flood-ends-long-reflection-1/41562885923.json",
    "run_id": "41562885923",
    "source_run": null,
    "approved_at": "2026-11-03",
    "model": "claude-session-reviewer",
-   "trim_out_s": 5.32
+   "trim_out_s": 5.38
+  },
+  "k-r4": {
+   "asset": "shot-flood-ends-long-reflection-1-k-r4-sha256-b1cd73da0127ebac6f994a95342920614c5a4cf6315e60e2d8d7ac768a81e9c5.mp4",
+   "clip_sha256": "b1cd73da0127ebac6f994a95342920614c5a4cf6315e60e2d8d7ac768a81e9c5",
+   "request_sha256": "e8ef6972e6518798f1403ad71cd3002c8ac08a7b881c082b4ab8ce430d7db2e2",
+   "clip_seconds": 9.416667,
+   "requested_clip_seconds": 9,
+   "media": {
+    "version": "clip-media-v1",
+    "clip_sha256": "b1cd73da0127ebac6f994a95342920614c5a4cf6315e60e2d8d7ac768a81e9c5",
+    "video_seconds": 9.416667,
+    "audio_seconds": 9.408,
+    "instrument": "ffprobe stream durations"
+   },
+   "score": 9.5,
+   "note": "Second of two k-r4 generations (the first, 41637504153, was kept but its pinned ASR heard 'it round every was' mid-line, untrimmable). This one: full-size frame sheet viewed, same Keeper, lips follow the line, no artefacts. The clip's own audio adds a trailing 'right?' after the last word; used cut at 8.48 s (E282) inside the silence 8.20-8.55 s. Pinned ASR hears exactly the line on the trimmed media (speech-check --trim-out 8.48); lips flags empty; voice-similarity measure not taken (resemblyzer unavailable offline). Audio NOT heard by ear: this session cannot play audio.",
+   "probe_record": "migration/evidence/shots/flood-ends-long-reflection-1/41639242332.json",
+   "run_id": "41639242332",
+   "source_run": null,
+   "approved_at": "2026-11-03",
+   "model": "claude-session-reviewer",
+   "trim_out_s": 8.48
   }
  }
 }
