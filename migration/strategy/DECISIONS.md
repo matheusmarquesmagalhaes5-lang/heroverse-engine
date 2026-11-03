@@ -563,3 +563,9 @@ which uploads nothing and approves nothing: it refuses unless the video is still
 is out of the hold plan and `publication_binding.py` still passes; it reads the status back and records the release in the ledger.
 publish.yml cannot do it: a resumed upload never changes privacy. The rebuild with Pavo clips (E271/E272) stays a separate,
 later version and does not block this one. The cuts (Shorts) follow once it is public.
+
+Executor 2026-11-03 (E275, flood-ends-long cuts): the owner-released long 1m-NUJhkdMY is public (channel-privacy release run 41558453690). Three
+cuts (dove 66 s, rainbow 73 s, door 40 s) were rendered by short-cuts.yml and each reviewed by local-review.yml on its own sha256. A first dove
+cut was refused before publish: it began 0.1 s before the first word, under the 0.25 s fade-in; the cut was re-made 0.25 s clear of speech and
+`short_cuts.check` now refuses `CUT_FADE_OVERLAPS_SPEECH`. The first door cut opened on nine seconds of a dark still, so it was re-made to open on
+the Keeper's lit "Most miss this" line. Both earlier masters stay on record (evidence branches) and were never published.
