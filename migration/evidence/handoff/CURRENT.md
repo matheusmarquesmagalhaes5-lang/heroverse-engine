@@ -60,6 +60,11 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
   not driven in this run). Next run: thumbs candidate, approve, `check-record`, `publish-episode.yml` at the first free slot;
   then Noah compilation (due 11-04) and the Babel script (runway 0).
 
+- 2026-11-03 (scheduled run 09:19 UTC): genesis-10-short thumbnail APPROVED (PR #719, 9.5): vertical crop of the approved still
+  flood-ends-long-s-joy, text THE DOVE RETURNS, no new generation; `check-record` passes. Next: `publish-episode.yml
+  episode=genesis-10-short publish_at=2026-11-03T23:30:00Z` after the merge, then read-back; reflection 1 master; genesis-11-short;
+  Noah/Genesis 1-9 compilation (due 11-04) not started in this run.
+
 ## Next moments
 
 - M2 compilation "Complete Story of Noah (Genesis 5-9)" is due 2026-11-04.
