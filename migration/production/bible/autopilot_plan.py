@@ -222,7 +222,7 @@ def gates(plan, path=None):
     result = plan_check.check(plan)
     problems += result['problems']
     if path:
-        problems = plan_check.path_problems(str(path), plan) + problems
+        problems = plan_check.strict_problems(str(path), plan) + problems
         problems += ['PENDING ' + p for p in result['pending']]
     problems += overlap_problems(plan)
     return problems, result.get('estimate')

@@ -93,9 +93,17 @@ A plan that passes is also run through the build's own functions (E106): episode
 records, shares, length, the compose's cuts and holds on the planned clip lengths) and reference_problems (kept
 reference records and images, counted as the request sends them); their refusals come back as "BUILD <code> ...".
 
+- E290, --strict only (and episode_build.check_plan), every long-first long and bridge Short (tracks buzzy-long,
+  buzzy) not in PAVO_COVERAGE_GRANDFATHERED: the hook (first shot) is a Pavo talking shot, the Keeper or a speaking
+  human character (HOOK_NOT_PAVO); a character's quoted speech is that character's own talking shot, alone on screen,
+  with approved references (CHARACTER_LINE_NOT_PAVO); every Keeper line is talking (KEEPER_LINE_NOT_PAVO, unless a
+  `pavo_fallback` probe record shows both generations visually broken); every talking prompt is pavo_prompt.build's
+  (PAVO_PROMPT_NOT_STANDARD); each Keeper line fits E277's pace (PAVO_LINE_PACE); the lessons file is readable.
+
 usage: plan_check.py PLAN.json [--strict]   prints JSON {problems, pending, estimate}; exit 1 on a problem
                                             (--strict: also on a pending row and on a path episode.yml would refuse,
-                                            PLAN_PATH / PLAN_EPISODE_MISMATCH; episode_build runs it strict)
+                                            PLAN_PATH / PLAN_EPISODE_MISMATCH, and on E290's Pavo coverage;
+                                            episode_build runs it strict)
 """
 import hashlib
 import json
@@ -1300,8 +1308,174 @@ def check(plan, chars=None):
 def keeper_hook(plan, i, shot):
     """Owner order 2026-11-02 (flood-ends-long): a long-first long (16:9) may open on a talking-Keeper hook, its very
     first shot. Only that shot, only a talking one (Pavo lips on our audio): any other Keeper shot keeps the rule that
-    he comes after the climax and speaks only the insight and the close."""
-    return long_first(plan) and i == 0 and shot.get("kind") == "keeper" and not voiceover(shot)
+    he comes after the climax and speaks only the insight and the close. E290 (owner 2026-11-03): a bridge Short
+    (track buzzy) may open the same way, since its hook must be a Pavo talking shot and God is never shown: a hook that
+    quotes God is the Keeper saying it ("And God said...") or a human character speaking."""
+    return (long_first(plan) or bridge(plan)) and i == 0 and shot.get("kind") == "keeper" and not voiceover(shot)
+
+
+def bridge(plan):
+    return isinstance(plan, dict) and plan.get("track") == BRIDGE_TRACK
+
+
+# E290 (owner 2026-11-03: "You are not doing the HOOK in Pavo, nor the CHARACTERS' lines; only the Keeper at the end.
+# Do them in Pavo."). In every long-first long and every bridge Short the hook, every on-screen character line and
+# every Keeper line are Pavo talking shots whose prompts come from pavo_prompt.build. Plans published before the rule
+# keep the rules they were made under (each id is a published video; test_plan_check holds the set frozen).
+BRIDGE_TRACK = "buzzy"
+PAVO_COVERAGE_TRACKS = (LONG_FIRST_TRACK, BRIDGE_TRACK)
+PAVO_COVERAGE_FROM = "2026-11-03"
+PAVO_COVERAGE_GRANDFATHERED = {
+    "flood-ends-long": "pilot-017, YouTube 1m-NUJhkdMY, public 2026-11-03",
+    "genesis-09-short": "YouTube IYSxVKTikSs, published before 2026-11-03",
+    "genesis-10-short": "YouTube B5H2n_iyYV4, uploaded 2026-11-03 before the rule",
+}
+SPEECH_VERBS = r"(?:said|saith|spake|answered|cried|called)"
+EVIDENCE_SHOTS = ROOT / "migration/evidence/shots"
+
+
+def pavo_gated(plan):
+    """The plan falls under E290's Pavo coverage: a long-first or bridge track and not a grandfathered published plan."""
+    return (isinstance(plan, dict) and plan.get("track") in PAVO_COVERAGE_TRACKS
+            and plan.get("episode") not in PAVO_COVERAGE_GRANDFATHERED)
+
+
+def character_speech(text, chars):
+    """The character a narration line quotes ("And Noah said unto his sons, ..."): its id, or None. God's words and
+    the Keeper's own are not a character's line."""
+    for cid, c in sorted(chars.items()):
+        if cid in (ch.NARRATOR, ch.GOD) or not isinstance(c, dict) or not c.get("name"):
+            continue
+        name = re.escape(re.sub(r"(?i)^the\s+", "", c["name"]))
+        if re.search(rf"(?i)\b(?:the\s+)?{name}\s+{SPEECH_VERBS}\b[^.;:]{{0,60}}?,\s+[A-Z]", text):
+            return cid
+    return None
+
+
+def pavo_fallback_problem(plan, shot, root=None):
+    """None when the shot's `pavo_fallback` {"run": <shot-probe run id>} names a committed probe record in which EVERY
+    generation of this same shot has a hard (visual) flag: the DECISIONS fallback ladder, taken only after Pavo really
+    failed. Words flags are not a failure since E287 (our audio is laid over the picture). Else the reason."""
+    fb = shot.get("pavo_fallback")
+    if not isinstance(fb, dict) or not re.fullmatch(r"\d{6,}", str(fb.get("run") or "")):
+        return "no pavo_fallback {\"run\": <shot-probe run id>} proving both generations had a visual defect"
+    base = Path(root) / "migration/evidence/shots" if root else EVIDENCE_SHOTS
+    path = base / str(plan.get("episode")) / f"{fb['run']}.json"
+    try:
+        rec = json.loads(path.read_text())
+    except (OSError, ValueError):
+        return f"pavo_fallback run {fb['run']}: no probe record {path.name} for {plan.get('episode')}"
+    clips = ((rec.get("shots") or {}).get(shot.get("id")) or {}).get("clips") or []
+    if not clips or not all(c.get("hard_flags") for c in clips):
+        return (f"pavo_fallback run {fb['run']}: not every generation of {shot.get('id')} has a hard flag (a usable "
+                "generation is used and fixed at edit time, E287)")
+    return None
+
+
+def pavo_prompt_problems(i, shot, plan, chars):
+    """E290: a talking shot's prompt is the one pavo_prompt.build composes from its `pavo` fields, word for word."""
+    import pavo_prompt
+    bad = pavo_prompt.field_problems(shot, chars, plan)
+    if bad:
+        return [f"PAVO_PROMPT_NOT_STANDARD shot {i} {b.split(' ', 1)[1]}" for b in bad]
+    try:
+        built = pavo_prompt.build(shot, plan, chars)
+    except SystemExit as exc:
+        return [f"PAVO_PROMPT_NOT_STANDARD shot {i} {shot.get('id')} ({exc})"]
+    if shot.get("prompt") != built:
+        return [f"PAVO_PROMPT_NOT_STANDARD shot {i} {shot.get('id')} (the prompt is not pavo_prompt.build's from its "
+                f"`pavo` fields; set it to: {built!r})"]
+    return []
+
+
+def pavo_coverage_problems(plan, chars=None, root=None):
+    """E290, plan_check --strict (and episode_build.check_plan) for every long-first long and bridge Short that is not
+    grandfathered:
+    - HOOK_NOT_PAVO: the first shot is a Pavo talking shot, the Keeper chest-up or a speaking human character. God is
+      never shown with a face, so a hook that quotes God is said by the Keeper or a character, never God's sky.
+    - CHARACTER_LINE_NOT_PAVO: a character's quoted KJV speech is never narration; it is a speaking shot of that
+      character alone on screen (no second person), APPROVED with kept reference images.
+    - KEEPER_LINE_NOT_PAVO: every Keeper line (the critical insight and the close) is a talking shot, never the
+      voice-over, unless `pavo_fallback` proves both generations had a visual defect.
+    - PAVO_PROMPT_NOT_STANDARD: every talking shot's prompt comes from pavo_prompt.build (fields in `pavo`).
+    - PAVO_LINE_PACE: each Keeper line fits E277's pace with at most the 10 % edit-time retime (E286/E290).
+    - PAVO_LESSONS_INVALID: production reads migration/strategy/pavo_lessons.md before writing any Pavo request."""
+    if not pavo_gated(plan):
+        return []
+    import pavo_prompt
+    chars = chars if chars is not None else ch.registry()
+    shots = [s for s in plan.get("shots") or [] if isinstance(s, dict)]
+    if not shots or not isinstance(plan.get("narration"), list):
+        return []
+    out = []
+    try:
+        pavo_prompt.lessons(Path(root) / "migration/strategy/pavo_lessons.md" if root else None)
+    except SystemExit as exc:
+        out.append(str(exc))
+    first = shots[0]
+    hook_talks = talking(first) and (first.get("kind") == "keeper" or speaking(first))
+    if not hook_talks and pavo_fallback_problem(plan, first, root):
+        why = ("God's voice over a sky is not a talking shot: God is never shown with a face, so the Keeper says it "
+               "(\"And God said...\") or a human character speaks" if speaking(first) and first.get("speaker") == ch.GOD
+               else "the Keeper chest-up or a speaking human character, on Pavo, from 0 s")
+        out.append(f"HOOK_NOT_PAVO shot 0 {first.get('id')} ({why})")
+    try:
+        items, carried = sequence(plan)
+    except (KeyError, IndexError, TypeError):
+        return out
+    for k, line in enumerate(plan["narration"]):
+        who = character_speech(str(line.get("text", "")), chars) if isinstance(line, dict) else None
+        if who:
+            out.append(f"CHARACTER_LINE_NOT_PAVO line {k} ({who}'s quoted words are narration: give them to a speaking "
+                       f"shot of {who}, `speaker` + `line` + `reference`, on Pavo with {who}'s approved reference)")
+    for i, s in enumerate(shots):
+        if speaking(s) and s.get("speaker") not in (ch.GOD, ch.NARRATOR):
+            who, c = s["speaker"], chars.get(s["speaker"]) or {}
+            if s.get("characters") != [who]:
+                out.append(f"CHARACTER_LINE_NOT_PAVO shot {i} {s.get('id')} ({who} speaks alone on screen: "
+                           f"`characters` [{who!r}], no second person)")
+            if c.get("status") != "APPROVED" or not c.get("refs"):
+                out.append(f"CHARACTER_LINE_NOT_PAVO shot {i} {s.get('id')} ({who} needs APPROVED kept reference images "
+                           "for its Pavo talking shot)")
+        if s.get("kind") == "keeper" and voiceover(s):
+            why = pavo_fallback_problem(plan, s, root)
+            if why:
+                out.append(f"KEEPER_LINE_NOT_PAVO shot {i} {s.get('id')} (the Keeper's insight and close are Pavo talking "
+                           f"shots; {why})")
+        if talking(s):
+            out += pavo_prompt_problems(i, s, plan, chars)
+        if s.get("kind") == "keeper" and talking(s) and i < len(carried):
+            out += keeper_line_pace_problems(i, s, [items[k] for k in carried[i]])
+    return out
+
+
+def keeper_line_pace_problems(i, s, lines):
+    """E290 + E277: a talking Keeper line's pace, estimated before any probe the way reflection_pace_problems estimates
+    it (the Keeper's measured Kokoro pace, a pause per sentence break), after the build's own talking retime
+    (talk_retime: the words are sped up or slowed by up to 10 % to fit a 4-12 s clip). The pace heard then must stay
+    within E288's one factor: an edit-time slowing of at most 10 % brings it inside REFLECTION_WPM_MAX
+    (reflection_retime). A line the retime speeds up past that is refused: a few words fewer or one more sentence."""
+    text = [x["text"].strip() for x in lines]
+    n = sum(words(x) for x in text)
+    breaks = sum(len(re.findall(r"[.!?](?=\s+\S)", x)) for x in text)
+    seconds = n / VOICE_PACE["keeper"] + REFLECTION_BREAK * breaks
+    if not n or not seconds:
+        return []
+    wpm = n / seconds * 60
+    gaps = LINE_GAP * (len(lines) - 1)
+    fit = talk_retime(sum(words(x["text"]) / pace(x) for x in lines), gaps)
+    heard = wpm / (fit[1] if fit else 1.0)
+    tempo = reflection_retime(heard)
+    if tempo < REFLECTION_RETIME_MIN:
+        return [f"PAVO_LINE_PACE shot {i} {s.get('id')} (~{wpm:.0f} wpm, ~{heard:.0f} after the clip retime x"
+                f"{1 / fit[1] if fit else 1.0:.3f}; more than a {round((1 - REFLECTION_RETIME_MIN) * 100)} % slowing "
+                f"to {REFLECTION_WPM_MAX} wpm: change a few words or add a sentence break BEFORE any Pavo clip)"]
+    return []
+
+
+def strict_problems(path, plan, chars=None):
+    """--strict, ready to dispatch: the path episode.yml takes and E290's Pavo coverage."""
+    return path_problems(path, plan) + pavo_coverage_problems(plan, chars)
 
 
 def long_first(plan):
@@ -1396,6 +1570,8 @@ def reflection_check(plan, chars, problems, pending):
         problems += prompt_problems(i, s)
         problems += keeper_prompt_problems(i, s, keeper, plan.get("aspect_ratio"))
         problems += safe_area_problems(i, s)   # his face is centred: the half is cropped from the middle
+        if s.get("pavo") is not None:   # E290: a builder-made prompt stays the builder's, word for word
+            problems += pavo_prompt_problems(i, s, plan, chars)
         gaps = 0.0
         span = est[i]
         slowest = words(items[i]["text"]) / slowest_pace(items[i])
@@ -1883,7 +2059,7 @@ def main(argv):
     plan = json.loads(Path(args[0]).read_text())
     result = check(plan)
     if "--strict" in argv:   # strict = ready to dispatch: the path episode.yml will take (a draft may live anywhere)
-        result["problems"] = path_problems(args[0], plan) + result["problems"]
+        result["problems"] = strict_problems(args[0], plan) + result["problems"]   # and E290's Pavo coverage
     print(json.dumps(dict(plan=args[0], **result), indent=1))
     if result["problems"] or ("--strict" in argv and result["pending"]):
         return 1

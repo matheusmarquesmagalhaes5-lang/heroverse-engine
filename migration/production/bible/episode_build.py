@@ -105,6 +105,7 @@ import reviewer_identity  # noqa: E402
 import clip_timing  # noqa: E402
 import existing_edit  # noqa: E402
 import pavo_audio  # noqa: E402  (E287: a talking clip's audio is OUR request audio, never Pavo's track)
+import pavo_prompt  # noqa: E402  (E290: the one builder of a Pavo talking-shot prompt)
 
 VOICE = {"voice_id": "am_michael", "speed": 1.0}   # the pinned engine voice (qa_pilot.voice_model_pinned)
 LINE_GAP = plan_check.LINE_GAP
@@ -228,7 +229,9 @@ def is_window(shot):
 def check_plan(plan, chars=None):
     """plan_check for a Short, long_plan_check (and its frozen story QA) for a long: {problems, pending, ...}."""
     if not is_long(plan):
-        return plan_check.check(plan, chars)
+        result = plan_check.check(plan, chars)
+        result["problems"] += plan_check.pavo_coverage_problems(plan, chars)   # E290: hook, character and Keeper lines
+        return result
     import long_plan_check
     result = long_plan_check.check(plan, chars)
     frozen = long_plan_check.frozen_qa_problem(plan=plan)
@@ -695,6 +698,7 @@ def lines_step(plan, work):
     save(work / "compose-timeline.json", {"voice_seconds": voice_seconds, "sentences": sentences,
                                           "voice_id": VOICE["voice_id"], "speed": VOICE["speed"], "sample_rate": rate})
     result = plan_layout(plan, layout, voice_seconds, problems)
+    by_id = {s["id"]: s for s in plan["shots"]}
     for folder, records in (("keeper", result["keeper"]), ("speakers", result["speakers"])):
         for sid, record in records.items():   # each talking clip's input audio, cut from the rebuilt track
             if record.get("voiceover"):        # plan B: a silent Keeper clip takes no input audio
@@ -705,6 +709,9 @@ def lines_step(plan, work):
             out = work / folder / f"{sid}.wav"
             run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", native, "-ac", "1", "-ar", "44100", "-c:a",
                  "pcm_s16le", out])
+            if pavo_prompt.standard(by_id.get(sid)):   # E290: our exact line, then clean silence (the tail mumbles)
+                pad = pavo_prompt.tail_pad(record["seconds"], talk_need(record["seconds"]))
+                record["tail_pad_s"] = pad_wav(out, pad)
             record["wav"] = rel(out)
     result["retimed"] = retimes
     problems = result["problems"]
@@ -713,6 +720,14 @@ def lines_step(plan, work):
     if problems:
         raise SystemExit("LINES_REFUSED " + "; ".join(problems))
     return result
+
+
+def pad_wav(path, seconds):
+    """E290: append `seconds` of digital silence to a talking shot's input WAV (in place); returns the seconds added."""
+    params, frames = read_wav(path)
+    n = int(round(seconds * params.framerate))
+    write_wav(path, params, frames + b"\x00" * (n * params.sampwidth * params.nchannels))
+    return round(n / params.framerate, 3)
 
 
 # ---------- reference images ----------
@@ -996,7 +1011,12 @@ def request(shot, index, plan, layout, refs, chars=None, route=None):
     # reference_keys is the one order (reference_problems counts the same sets at plan time, E106)
     references = [p for key, cid, field in reference_keys(shot)
                   for p in (refs.get(key) if field == VO_REFS else (refs.get(key) or refs[cid]))]
-    if talks:
+    if talks and pavo_prompt.standard(shot):   # E290: the one builder; the plan's prompt must be its output
+        built = pavo_prompt.build(shot, plan, chars)
+        if built != prompt:
+            raise SystemExit(f"PAVO_PROMPT_NOT_STANDARD {shot['id']} (the plan's prompt is not pavo_prompt.build's from "
+                             "its `pavo` fields; plan_check --strict shows the expected text)")
+    if talks:   # a standard prompt already binds Image 1 and the audio clause: bind_prompt leaves it unchanged
         prompt = bind_prompt(prompt, speaker_of(shot), chars)
     if len(references) > ch.MAX_REFS:
         raise SystemExit(f"REFERENCES_OVER_{ch.MAX_REFS} {shot['id']}")
@@ -1076,6 +1096,8 @@ def request_digest(req, shot, words=None, chars=None):
     if req["audios"]:
         who = speaker_of(shot)
         audio = {"speaker": who, "voice": voice_of(who, chars), "words": list(words or [])}
+        if pavo_prompt.standard(shot):   # E290: the input audio ends on pavo_prompt.TAIL_PAD of silence (lines_step)
+            audio["tail_pad"] = pavo_prompt.VERSION
     elif native_speech(req, shot):   # Pavo speaks the line itself (its voice description is in the prompt)
         audio = {"route": pavo_native.NATIVE, "speaker": pavo_native.speaker(shot), "words": list(words or [])}
     # E118: no `seconds`: a voice-over or talking shot's clip seconds are derived from measured line timing, which

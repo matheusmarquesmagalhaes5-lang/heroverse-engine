@@ -645,3 +645,17 @@ ASR (faster-whisper small.en, word timings, run locally on the exact master) hea
 (5.84-6.26 s), a second "own bow" (11.02-11.42 s), "for carried" (16.74-17.74 s); volumedetect shows speech-level energy there (about -10 to
 -14 dB), so these are in the clips' audio, not recognizer noise. The 9.5 audio claim stays pending. The fix belongs in the render (trim each
 clip at its last required word), not in the gate. Also: the top still (the ark on the sea, 21 s) does not show the rainbow the lines name.
+
+## 2026-11-03 — Pavo for the hook, the character lines and the Keeper; one prompt builder; daily lessons (owner order)
+
+Owner, verbatim in substance: "You are not doing the HOOK in Pavo, nor the CHARACTERS' lines; only the Keeper at the end.
+Do them in Pavo." "Pavo does EXACTLY what you tell it. The failure is the prompt's organization." "What Pavo generates
+WILL be used. Organize it at EDIT time." "Learn every day, so there is no rework." (E290)
+- Every new long-first long and bridge Short: the hook, each on-screen character line and every Keeper line are Pavo
+  talking shots (`plan_check --strict`: HOOK_NOT_PAVO, CHARACTER_LINE_NOT_PAVO, KEEPER_LINE_NOT_PAVO). God is never
+  shown: a hook that quotes God is said by the Keeper or a character. Published plans are grandfathered by id.
+- Prompts come only from `pavo_prompt.build` in the owner's fixed order (PROMPT_GUIDE "Pavo talking-shot prompt
+  standard"); our exact Kokoro line goes in with a 0.3 s silence pad; a Keeper line is checked for pace before any probe.
+- Edit-time use (OPERATIONS "Editing rule"): trim, crossfade and retime fix a usable generation; TALK_ATTEMPTS stays 1.
+- `strategy/pavo_lessons.md`: dated, evidence-linked lessons; production reads it, Inteligência Viva appends daily.
+

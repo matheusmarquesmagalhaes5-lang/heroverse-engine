@@ -1552,6 +1552,121 @@ class CompilationKeeperPlan(unittest.TestCase):
         self.assertIn("REFLECTION_PACE", " ".join(pc.check(fast)["problems"]))
 
 
+# E290 (owner 2026-11-03): "You are not doing the HOOK in Pavo, nor the CHARACTERS' lines; only the Keeper at the end."
+KEEPER_SETTING = "Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him."
+
+
+def pavo_bridge(episode="genesis-90-short"):
+    """genesis-10-short as a NEW bridge Short (not grandfathered), made to the E290 rule: Noah speaks the hook on
+    Pavo (a stand-in line; the gate is about who speaks and how), every Keeper line talks, every prompt is built."""
+    import pavo_prompt
+    plan = json.loads((HERE / "plans/genesis-10-short.json").read_text())
+    plan["episode"] = episode
+    for i, s in enumerate(plan["shots"]):
+        if s["kind"] == "keeper":
+            s.pop("voiceover", None)
+            s["pavo"] = {"emotion": ("calm", "grave", "warm")[i % 3], "setting": KEEPER_SETTING, "wardrobe": "fire"}
+            s["prompt"] = pavo_prompt.build(s, plan)
+    hook = plan["shots"][0]
+    for k in ("seconds", "first_frame", "pavo_hook"):
+        hook.pop(k, None)
+    hook.update(speaker="noah", characters=["noah"], pavo={
+        "emotion": "solemn", "setting": "Dawn on the wet hillside, pale gold light on his face, mist behind him."})
+    hook["prompt"] = pavo_prompt.build(hook, plan)
+    return plan
+
+
+class PavoCoverage(unittest.TestCase):
+    def found(self, plan, root=None):
+        return [x.split()[0] for x in pc.pavo_coverage_problems(plan, root=root)]
+
+    def test_e290_the_hook_character_lines_and_keeper_lines_are_pavo_and_prompts_come_from_the_builder(self):
+        old = json.loads((HERE / "plans/genesis-10-short.json").read_text())
+        old["episode"] = "genesis-90-short"   # the same plan made today: God's sky opens, the Keeper is a voice-over
+        problems = pc.pavo_coverage_problems(old)
+        self.assertEqual([x.split()[0] for x in problems], ["HOOK_NOT_PAVO"] + ["KEEPER_LINE_NOT_PAVO"] * 3, problems)
+        self.assertIn("God is never shown with a face", problems[0])
+        import episode_build as eb
+        self.assertIn("HOOK_NOT_PAVO", [x.split()[0] for x in eb.check_plan(old)["problems"]])   # the build refuses too
+        self.assertIn("HOOK_NOT_PAVO", [x.split()[0] for x in pc.strict_problems("x.json", old)])
+
+        good = pavo_bridge()
+        self.assertEqual(pc.pavo_coverage_problems(good), [])
+        crowd = copy.deepcopy(good)
+        crowd["shots"][0]["characters"] = ["noah", "eve"]
+        self.assertIn("CHARACTER_LINE_NOT_PAVO", self.found(crowd))   # he speaks alone: no second person
+        told = copy.deepcopy(good)
+        told["narration"][0]["text"] = "And Noah said unto his sons, Go forth of the ark with me."
+        self.assertIn("CHARACTER_LINE_NOT_PAVO", self.found(told))    # a character's words are never narration
+        told["narration"][0]["text"] = "And God spake unto Noah, saying, Go forth of the ark."
+        self.assertNotIn("CHARACTER_LINE_NOT_PAVO", self.found(told))
+        adhoc = copy.deepcopy(good)
+        adhoc["shots"][-1]["prompt"] = adhoc["shots"][-1]["prompt"].replace("warm look", "kind look")
+        self.assertEqual(self.found(adhoc), ["PAVO_PROMPT_NOT_STANDARD"])
+        bare = copy.deepcopy(good)
+        bare["shots"][-1].pop("pavo")
+        self.assertEqual(self.found(bare), ["PAVO_PROMPT_NOT_STANDARD"])
+        god = copy.deepcopy(good)
+        god["shots"][0] = json.loads((HERE / "plans/genesis-10-short.json").read_text())["shots"][0]
+        self.assertEqual(self.found(god), ["HOOK_NOT_PAVO"])
+        # a bridge Short may now open on the talking Keeper ("And God said..."), like a long (E272)
+        self.assertTrue(pc.keeper_hook(good, 0, dict(good["shots"][-1], id="k-hook")))
+        self.assertFalse(pc.keeper_hook(good, 0, dict(good["shots"][-1], voiceover=True)))
+        self.assertFalse(pc.keeper_hook(dict(good, track=None), 0, good["shots"][-1]))
+
+    def test_the_voice_over_fallback_needs_a_probe_record_whose_every_generation_is_visually_broken(self):
+        with tempfile.TemporaryDirectory() as t:
+            root = Path(t)
+            (root / "migration/strategy").mkdir(parents=True)
+            (root / "migration/strategy/pavo_lessons.md").write_text((HERE.parents[2] / "migration/strategy/pavo_lessons.md")
+                                                                     .read_text())
+            plan = pavo_bridge()
+            i = next(n for n, s in enumerate(plan["shots"]) if s["id"] == "k-close")
+            plan["shots"][i] = json.loads((HERE / "plans/genesis-10-short.json").read_text())["shots"][i]
+            self.assertEqual(self.found(plan, root), ["KEEPER_LINE_NOT_PAVO"])
+            plan["shots"][i]["pavo_fallback"] = {"run": "41574608645"}
+            rec = root / "migration/evidence/shots/genesis-90-short/41574608645.json"
+            rec.parent.mkdir(parents=True)
+            real = json.loads((HERE.parents[1] / "evidence/shots/genesis-10-short/41574608645.json").read_text())
+            rec.write_text(json.dumps(real))   # words flags only: under E287 those clips are usable, not a fallback
+            self.assertEqual(self.found(plan, root), ["KEEPER_LINE_NOT_PAVO"])
+            for c in real["shots"]["k-close"]["clips"]:
+                c["hard_flags"] = ["FACE_NOT_FOUND"]
+            rec.write_text(json.dumps(real))
+            self.assertEqual(self.found(plan, root), [])
+            (root / "migration/strategy/pavo_lessons.md").write_text("# empty\n")
+            self.assertEqual(self.found(plan, root), ["PAVO_LESSONS_INVALID"])
+
+    def test_a_keeper_line_the_clip_retime_would_speed_past_e277_is_refused_before_any_probe(self):
+        import pavo_prompt
+        fast = " ".join(["word"] * 21) + " now."   # 22 words in one sentence: sped up ~6 % into a 8 s clip
+        self.assertEqual(self.found(dict(pavo_bridge(), narration=pavo_bridge()["narration"][:-1] + [
+            {"kind": "cta", "text": fast}])), ["PAVO_LINE_PACE"])
+        ok = " ".join(["word"] * 22) + " now."
+        self.assertEqual(self.found(dict(pavo_bridge(), narration=pavo_bridge()["narration"][:-1] + [
+            {"kind": "cta", "text": ok}])), [])
+        self.assertTrue(pavo_prompt.KEEPER_GAZE in pavo_bridge()["shots"][-1]["prompt"])
+
+    def test_only_new_long_first_and_bridge_plans_are_gated_and_the_published_ones_are_frozen(self):
+        self.assertEqual(set(pc.PAVO_COVERAGE_GRANDFATHERED), {"flood-ends-long", "genesis-09-short", "genesis-10-short"})
+        ledger = (HERE.parents[1] / "publish/ledger.json").read_text()
+        for ep, why in pc.PAVO_COVERAGE_GRANDFATHERED.items():
+            plan = json.loads((HERE / "plans" / f"{ep}.json").read_text())
+            self.assertIn(plan["track"], pc.PAVO_COVERAGE_TRACKS)
+            self.assertEqual(pc.pavo_coverage_problems(plan), [], ep)
+            video = re.search(r"YouTube (\S+?),", why).group(1)
+            record = HERE / "episodes" / f"{ep}.json"
+            self.assertTrue(video in ledger or (record.exists() and json.loads(record.read_text()).get("video_id") == video), ep)
+        for f in sorted((HERE / "plans").glob("*.json")):   # every other gated plan in the repository passes the gate
+            plan = json.loads(f.read_text())
+            if pc.pavo_gated(plan):
+                self.assertEqual(pc.pavo_coverage_problems(plan), [], f.name)
+        for track in (None, "bible-short", pc.REFLECTION_TRACK, pc.COMPILATION_KEEPER_TRACK):
+            old = json.loads((HERE / "plans/genesis-10-short.json").read_text())
+            old.update(episode="genesis-90-short", track=track)
+            self.assertEqual(pc.pavo_coverage_problems(old), [], track)
+
+
 # the long's plan (bible-long-plan-v1) and story QA v2/v3 run here too, so pr-checks.yml runs them unchanged
 from test_long_plan_check import DraftArc1, Grammar as LongGrammar, NoRendererReadsTheNewQaYet, StoryQa  # noqa: E402,F401,E501
 

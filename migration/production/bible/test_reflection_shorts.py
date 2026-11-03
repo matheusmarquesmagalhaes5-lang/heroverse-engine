@@ -23,6 +23,7 @@ import buzzy_long as bl  # noqa: E402
 import episode_build as eb  # noqa: E402
 import native_review as nr  # noqa: E402
 import plan_check as pc  # noqa: E402
+import pavo_prompt  # noqa: E402
 import publish_episode as pe  # noqa: E402
 import reflection_shorts as rs  # noqa: E402
 import test_long_first as tlf  # noqa: E402
@@ -180,7 +181,8 @@ class Scaffold(unittest.TestCase):
             self.assertEqual((plan["track"], plan["aspect_ratio"], plan["episode"]), (pc.REFLECTION_TRACK, "1:1", EPISODE))
             self.assertNotEqual(plan["shots"][0]["prompt"], plan["shots"][1]["prompt"])
             self.assertEqual([x["text"] for x in plan["narration"]], [SEG1, SEG2])
-            self.assertIn("a gentle questioning look", plan["shots"][1]["prompt"])
+            self.assertIn("with a questioning look", plan["shots"][1]["prompt"])
+            self.assertEqual(plan["shots"][1]["prompt"], pavo_prompt.build(plan["shots"][1], plan))   # E290: the builder's
             noisy = tlf.long_plan()
             noisy["shots"] = [s for s in noisy["shots"] if s["kind"] != "keeper"]
             (root / "migration/production/bible/plans/genesis-long-test.json").write_text(json.dumps(noisy))

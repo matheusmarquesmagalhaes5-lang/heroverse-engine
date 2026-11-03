@@ -160,7 +160,8 @@ The plan is `bible-plan-v2`, with narration records and ordered shots. `plan_che
 sequence: narration in the Keeper's pinned voice and each speaking character's own line/voice.
 
 - **Opening (0–3%):** a spoken conflict starts at zero, through an approved character or God's exact KJV voice.
-  The Keeper, a title card or unrelated atmosphere does not open the episode.
+  The Keeper, a title card or unrelated atmosphere does not open the episode. Exception (E272, E290): a long-first
+  long and a bridge Short (track `buzzy`) open on a Pavo talking shot, the Keeper or a speaking human character (below).
 - **Stake/open loop (3–10%):** establish the danger, question or conflict clearly.
 - **Escalation (10–60%):** rising story steps with a visual action and continuing question; cuts maintain momentum.
 - **Climax (60–80%):** the decisive story moment is acted, with people on screen and a `climax:true` scene.
@@ -188,6 +189,50 @@ digest equals the request's WAV (`pavo_audio.assert_ours`, recorded as the clip'
 Pavo's track, do not run `speech-check` on such a clip, do not discard a good picture for its returned sound. Lip sync, the
 face and the visual checks stay strict and run against our audio (`lipsync_check` on the kept clip). A clip is regenerated
 only for a VISUAL defect (the face lost, a broken render, lips out of sync with our audio), never for the words.
+
+## Pavo talking-shot prompt standard
+
+Owner, 2026-11-03 (E290): "Pavo does EXACTLY what you tell it. The failure is the prompt's organization." What Pavo
+generates is used, so the request is right before it is sent.
+
+**Coverage (every `buzzy-long` long and every `buzzy` bridge Short; `plan_check --strict` and `episode_build`):**
+- The FIRST shot (hook) is a Pavo talking shot: the Keeper chest-up or a speaking human character
+  (`HOOK_NOT_PAVO`). God is never shown with a face, so a hook that quotes God is the Keeper saying it ("And God
+  said…") or a human character speaking; God's voice over a sky is not a hook.
+- Every on-screen line a human character speaks (a quoted KJV speech of Noah, Abraham…) is that character's own
+  talking shot, alone on screen, APPROVED with kept references; never narration (`CHARACTER_LINE_NOT_PAVO`). A
+  non-talking scene uses still motion or footage.
+- Every Keeper line, the critical insight and the close, is a talking shot (`KEEPER_LINE_NOT_PAVO`). The voice-over is
+  allowed only with `"pavo_fallback": {"run": "<shot-probe run>"}` whose record shows a hard (visual) flag on every
+  generation of that shot (the DECISIONS ladder after a real failure; a words flag is not one since E287).
+- Plans published before the rule (flood-ends-long, genesis-09-short, genesis-10-short) are grandfathered by id
+  (`plan_check.PAVO_COVERAGE_GRANDFATHERED`, held frozen by a test).
+
+**Prompt: one builder, fixed order.** A talking shot carries `"pavo": {"emotion", "setting", "wardrobe", "gaze"}` and
+its `prompt` is exactly `pavo_prompt.build`'s (`PAVO_PROMPT_NOT_STANDARD` otherwise; never hand-written):
+
+1. reference binding: "Image 1 is the narrator." / "Image 1 is Noah.";
+2. style: the series style line;
+3. framing: "Close-up from the chest up, his face large in the centre of the frame, static camera, the speaker
+   centred in the frame.";
+4. identity: the character bible's look and one wardrobe variant, word for word;
+5. setting and light: the shot's `setting`; a scene adds its period sentence;
+6. action: "speaks the words of the audio clip, his lips moving in sync with the voice; his lips move only while the
+   voice speaks, his mouth closed and still before the first word and after the last word, no extra words, no
+   humming, no mouthing after the line.";
+7. emotion: one adjective and one gaze (`pavo_prompt.GAZES`; the Keeper always "straight into the camera");
+8. negatives: "No text, no logos, no second person, no hand over the mouth, no head turn away." (a scene adds its
+   period exclusion sentence).
+
+**Audio.** The input audio is our exact Kokoro line plus `pavo_prompt.TAIL_PAD` (0.3 s) of digital silence, capped
+0.05 s before the clip's end (`episode_build.lines_step`, `tail_pad_s`); the request digest records `tail_pad`, so
+an approved legacy clip keeps its request. The kept clip carries that same WAV (E287).
+
+**Pace before any probe.** A Keeper line whose clip retime (`talk_retime`) would speed it past E277's band within
+E288's one 10 % slowing is refused (`PAVO_LINE_PACE`); a reflection keeps `REFLECTION_PACE`.
+
+**Lessons.** `migration/strategy/pavo_lessons.md` is read before any Pavo request (`pavo_prompt.build` refuses a
+missing or malformed file, `PAVO_LESSONS_INVALID`). `reflection_shorts.py scaffold` builds its segments the same way.
 
 **Generation cap and fallback (E264, owner: no rework; E287).** A talking or voice-over shot plans `TALK_ATTEMPTS = 1`
 generation and takes a second only when the first has a visual defect (`episode_build.visual_defect`; the ceiling every
