@@ -89,7 +89,7 @@
   "hook_type": "narrated_story_hook",
   "hook_line": "So he took the gentlest bird he had. A dove. If there was any dry place left in the world, she would find it.",
   "title_pattern": "hook_emoji_pipe_story_kjv",
-  "first_visual": "dove_in_hand",
+  "first_visual": "s-hands",
   "ai_scenes": 6,
   "slot_utc": "05:30",
   "transition": "cut",
@@ -98,56 +98,5 @@
   "compose": "engine",
   "structure": "bible-story-cut"
  },
- "slot": "2026-11-03T05:30:00Z",
- "review": {
-  "overall": 9.1,
-  "reviewer": "claude-session-reviewer",
-  "output_sha256": "5ddb53fca0d66b0cbf14a89fc1bb5cd073aecb97b2c4a68562a6ac4d0c601430",
-  "scores": {
-   "opening_and_promise": 9.0,
-   "picture_quality": 9.0,
-   "figure_and_background_integrity": 9.0,
-   "captions_readable_and_synced": 9.0,
-   "audio_clarity_and_mix": 9.0,
-   "pacing_and_visual_variety": 8.5,
-   "scripture_on_screen": 9.0,
-   "policy_safe": 10.0
-  },
-  "issues": [
-   "00:00 The local review flagged speech at the first frame (category a). Measured on this exact file: the first 0.3 s is room tone at about -33 to -45 dBFS and the speech rises from about 0.3 to 0.4 s, after the 0.25 s fade-in, and the cut was made 0.25 s clear of the first word (short_cuts.check, E275). The first word is intact; the flag is the recognizer's timestamp, not a cut-off word.",
-   "00:32 to 00:55 About 23 s on two stills with slow camera motion (Noah's back, then the ark at dusk) while 'Still only water ... He waited' is told; no defect, a retention risk. The long's own pacing, kept as cut.",
-   "00:18 to 00:30 and 00:40 to 00:54 The small 'Genesis 8:9 / 8:10 - KJV' label above the KJV caption is tiny at phone size; readable at full resolution.",
-   "01:00 to 01:04 The recognizer heard 'so no one knew' for the KJV 'so Noah knew'; the caption frame at 01:02 shows 'knew that'. Recognizer slip, not verified by ear."
-  ],
-  "defects": [
-   {
-    "issue": 0,
-    "category": "info",
-    "resolved": false
-   },
-   {
-    "issue": 1,
-    "category": "info",
-    "resolved": false
-   },
-   {
-    "issue": 2,
-    "category": "d",
-    "resolved": false
-   },
-   {
-    "issue": 3,
-    "category": "info",
-    "resolved": false
-   }
-  ],
-  "publish_decision": {
-   "decision": "publish",
-   "by": "claude-session-reviewer",
-   "note": "Defect list of local review 41563279263 and the frame sheets of this exact master (sha256 5ddb53fc...): no speech cut off mid-word or mid-sentence (the first-frame flag was measured on the file and is a timestamp artefact), every scene fits its line and the story order holds (dove in hand, dove over water, Noah with the dove, the ark at dusk while he waits, the dove with the olive leaf), no audio error (-14.1 LUFS, true peak -1.5 dBTP, no silence inside speech), no policy issue. The cut starts and ends 0.25 s clear of speech and ends on the KJV line 'so Noah knew that the waters were abated'. Owner order of 2026-11-03 to cut the long."
-  },
-  "process": "local-review.yml run 41563279263 (pinned local ASR + ffmpeg measures + session reviewer's own look at the frame sheets) of this exact cut master, rendered by short-cuts.yml from the clean master of the published long flood-ends-long; E250 defect-finder gate for track buzzy-cut. Scores are information and are not the gate. Local review (E268): audio was judged from the faster-whisper small.en transcript with word times plus ffmpeg loudness/peak/silence measures and my own amplitude readback of the first and last 0.8 s of the exact file; I did not listen to the sound, so delivery, diction and music taste are not claimed. Picture: the 1 frame / 2 s sheets were viewed, one full-size frame per cut, detectors ran on every frame at 320x180.",
-  "run_id": "41563279263"
- },
- "video_id": "ESuoDa9sGng"
+ "slot": "2026-11-03T05:30:00Z"
 }

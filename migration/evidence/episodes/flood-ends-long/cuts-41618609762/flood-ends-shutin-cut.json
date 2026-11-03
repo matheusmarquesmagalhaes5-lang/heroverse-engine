@@ -1,0 +1,81 @@
+{
+ "version": "bible-cut-v1",
+ "id": "flood-ends-shutin-cut",
+ "spec": "migration/production/bible/cuts/flood-ends-long.json",
+ "parent": {
+  "long": "flood-ends-long",
+  "pilot": "pilot-017",
+  "report": "migration/evidence/episodes/flood-ends-long/report-41484825424.json",
+  "clean_master_sha256": "95307e831eee4c06f826715b5d974a6fcdcacfe6029e6e57bcb8879d777b1eea",
+  "start": 5.75,
+  "end": 33.4,
+  "x": 0.5
+ },
+ "output_sha256": "c9893a06a9685d137c119b943163798f1df2631483f965191112e01a959eee88",
+ "seconds": 27.667,
+ "frame": [
+  1080,
+  1920
+ ],
+ "lufs": -14.1,
+ "true_peak_dbfs": -1.4,
+ "sentences": [
+  {
+   "segment": "n01",
+   "text": "What if you had been shut inside a wooden ship for more than a year, with every animal on earth breathing around you in the dark?",
+   "start": 0.253,
+   "end": 8.04,
+   "line": 1,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n01",
+   "text": "What if the water finally began to fall, and still nobody told you when you could walk out?",
+   "start": 8.22,
+   "end": 14.044,
+   "line": 1,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n02",
+   "text": "Eight people.",
+   "start": 14.394,
+   "end": 15.589,
+   "line": 2,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n02",
+   "text": "One door, shut by God Himself.",
+   "start": 15.769,
+   "end": 18.265,
+   "line": 2,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n02",
+   "text": "And outside, nothing but grey water to every horizon.",
+   "start": 18.445,
+   "end": 22.434,
+   "line": 2,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n02",
+   "text": "Stay with me, because the way this story ends will change what waiting means.",
+   "start": 22.614,
+   "end": 27.393,
+   "line": 2,
+   "line_kind": "story"
+  }
+ ],
+ "advice": [
+  "ends on a story line: a KJV line or the Keeper's insight closes a cut best"
+ ],
+ "checks": {
+  "frame_1080x1920": true,
+  "lufs_band": true,
+  "true_peak_ceiling": true,
+  "length": true
+ }
+}

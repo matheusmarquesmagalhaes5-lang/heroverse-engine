@@ -1,0 +1,133 @@
+{
+ "version": "bible-cut-v1",
+ "id": "flood-ends-altar-cut",
+ "spec": "migration/production/bible/cuts/flood-ends-long.json",
+ "parent": {
+  "long": "flood-ends-long",
+  "pilot": "pilot-017",
+  "report": "migration/evidence/episodes/flood-ends-long/report-41484825424.json",
+  "clean_master_sha256": "95307e831eee4c06f826715b5d974a6fcdcacfe6029e6e57bcb8879d777b1eea",
+  "start": 338.47,
+  "end": 382.17,
+  "x": 0.5
+ },
+ "output_sha256": "057a971751d831a699e6bb663d658d1ff5172b4459ec7c24871a0f966cab9f22",
+ "seconds": 43.7,
+ "frame": [
+  1080,
+  1920
+ ],
+ "lufs": -14.1,
+ "true_peak_dbfs": -1.6,
+ "sentences": [
+  {
+   "segment": "n36",
+   "text": "And Noah builded an altar unto the Lord;",
+   "start": 0.27,
+   "end": 3.236,
+   "kind": "scripture",
+   "reference": "Genesis 8:20 (KJV)",
+   "line": 36,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n36",
+   "text": "and took of every clean beast, and of every clean fowl, and offered burnt offerings on the altar.",
+   "start": 3.416,
+   "end": 9.965,
+   "kind": "scripture",
+   "reference": "Genesis 8:20 (KJV)",
+   "line": 36,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n37",
+   "text": "Before building a house, before planting a field, Noah built an altar.",
+   "start": 10.315,
+   "end": 14.795,
+   "line": 37,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n37",
+   "text": "The first thing he did on the new earth was say thank you.",
+   "start": 14.975,
+   "end": 18.41,
+   "line": 37,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n38",
+   "text": "And the Lord smelled a sweet savour;",
+   "start": 18.76,
+   "end": 21.064,
+   "kind": "scripture",
+   "reference": "Genesis 8:21 (KJV)",
+   "line": 38,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n38",
+   "text": "and the Lord said in his heart, I will not again curse the ground any more for man’s sake;",
+   "start": 21.244,
+   "end": 26.748,
+   "kind": "scripture",
+   "reference": "Genesis 8:21 (KJV)",
+   "line": 38,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n38",
+   "text": "for the imagination of man’s heart is evil from his youth;",
+   "start": 26.928,
+   "end": 30.938,
+   "kind": "scripture",
+   "reference": "Genesis 8:21 (KJV)",
+   "line": 38,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n38",
+   "text": "neither will I again smite any more every thing living, as I have done.",
+   "start": 31.118,
+   "end": 35.769,
+   "kind": "scripture",
+   "reference": "Genesis 8:21 (KJV)",
+   "line": 38,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n39",
+   "text": "And God answered with a promise.",
+   "start": 36.119,
+   "end": 38.38,
+   "line": 39,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n39",
+   "text": "He knew the human heart was still broken.",
+   "start": 38.56,
+   "end": 41.291,
+   "line": 39,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n39",
+   "text": "He chose mercy anyway.",
+   "start": 41.471,
+   "end": 43.434,
+   "line": 39,
+   "line_kind": "story"
+  }
+ ],
+ "advice": [
+  "ends on a story line: a KJV line or the Keeper's insight closes a cut best"
+ ],
+ "checks": {
+  "frame_1080x1920": true,
+  "lufs_band": true,
+  "true_peak_ceiling": true,
+  "length": true
+ }
+}
