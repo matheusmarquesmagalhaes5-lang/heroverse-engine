@@ -1,0 +1,195 @@
+{
+ "version": "bible-cut-v1",
+ "id": "flood-ends-leaf-cut",
+ "spec": "migration/production/bible/cuts/flood-ends-long.json",
+ "parent": {
+  "long": "flood-ends-long",
+  "pilot": "pilot-017",
+  "report": "migration/evidence/episodes/flood-ends-long/report-41484825424.json",
+  "clean_master_sha256": "95307e831eee4c06f826715b5d974a6fcdcacfe6029e6e57bcb8879d777b1eea",
+  "start": 235.54,
+  "end": 298.77,
+  "x": 0.5
+ },
+ "output_sha256": "b1ab37e9f698ae5d42e7e60bcfae5b0508457e1b8535fa3580e8fe76c257a448",
+ "seconds": 63.233,
+ "frame": [
+  1080,
+  1920
+ ],
+ "lufs": -14.1,
+ "true_peak_dbfs": -1.5,
+ "sentences": [
+  {
+   "segment": "n25",
+   "text": "One green leaf.",
+   "start": 0.246,
+   "end": 1.633,
+   "line": 25,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n25",
+   "text": "Somewhere out there, something was growing again.",
+   "start": 1.813,
+   "end": 4.991,
+   "line": 25,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n25",
+   "text": "And when Noah held it, he knew:",
+   "start": 5.171,
+   "end": 7.219,
+   "line": 25,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n25",
+   "text": "the waters were really going.",
+   "start": 7.399,
+   "end": 9.277,
+   "line": 25,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n26",
+   "text": "Eight people who had not smiled in months passed that leaf from hand to hand like treasure.",
+   "start": 9.627,
+   "end": 15.109,
+   "line": 26,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n26",
+   "text": "A single leaf.",
+   "start": 15.289,
+   "end": 16.697,
+   "line": 26,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n26",
+   "text": "It was the first word of the new world.",
+   "start": 16.877,
+   "end": 19.288,
+   "line": 26,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n27",
+   "text": "And he stayed yet other seven days;",
+   "start": 19.638,
+   "end": 22.198,
+   "kind": "scripture",
+   "reference": "Genesis 8:12 (KJV)",
+   "line": 27,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n27",
+   "text": "and sent forth the dove;",
+   "start": 22.378,
+   "end": 24.17,
+   "kind": "scripture",
+   "reference": "Genesis 8:12 (KJV)",
+   "line": 27,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n27",
+   "text": "which returned not again unto him any more.",
+   "start": 24.35,
+   "end": 27.465,
+   "kind": "scripture",
+   "reference": "Genesis 8:12 (KJV)",
+   "line": 27,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n28",
+   "text": "Seven days later he sent her out one last time.",
+   "start": 27.815,
+   "end": 31.271,
+   "line": 28,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n28",
+   "text": "And she never came back.",
+   "start": 31.451,
+   "end": 33.221,
+   "line": 28,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n28",
+   "text": "That silence was the best news of all:",
+   "start": 33.401,
+   "end": 36.068,
+   "line": 28,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n28",
+   "text": "the dove had found a home.",
+   "start": 36.248,
+   "end": 38.083,
+   "line": 28,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n29",
+   "text": "And it came to pass in the six hundredth and first year, in the first month, the first day of the month, the waters were dried up from off the earth:",
+   "start": 38.433,
+   "end": 47.435,
+   "kind": "scripture",
+   "reference": "Genesis 8:13 (KJV)",
+   "line": 29,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n29",
+   "text": "and Noah removed the covering of the ark, and looked, and, behold, the face of the ground was dry.",
+   "start": 47.615,
+   "end": 53.823,
+   "kind": "scripture",
+   "reference": "Genesis 8:13 (KJV)",
+   "line": 29,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n30",
+   "text": "Dry ground at last, right before his eyes.",
+   "start": 54.173,
+   "end": 57.309,
+   "line": 30,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n30",
+   "text": "And still the door stayed shut.",
+   "start": 57.489,
+   "end": 59.601,
+   "line": 30,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n30",
+   "text": "The One who closed it had not yet said open.",
+   "start": 59.781,
+   "end": 62.981,
+   "line": 30,
+   "line_kind": "story"
+  }
+ ],
+ "advice": [
+  "ends on a story line: a KJV line or the Keeper's insight closes a cut best"
+ ],
+ "checks": {
+  "frame_1080x1920": true,
+  "lufs_band": true,
+  "true_peak_ceiling": true,
+  "length": true
+ }
+}
