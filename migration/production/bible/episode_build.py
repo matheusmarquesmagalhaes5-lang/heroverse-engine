@@ -2114,6 +2114,105 @@ def adopt_step(plan, run_dir, lip_python, face_model, out, ids, source_run, shee
     return record
 
 
+def remux_items(text):
+    """shot-remux.yml's input: [(shot id, clip sha256 prefix)] from "k-r1:dae7a9,k-r2:7f043f" (6-64 hex digits)."""
+    out = []
+    for item in [x.strip() for x in (text or "").split(",") if x.strip()]:
+        sid, _, pre = item.partition(":")
+        if not SHOT_ID_INPUT.fullmatch(sid) or not re.fullmatch(r"[0-9a-f]{6,64}", pre):
+            raise SystemExit(f"REMUX_SHOTS_REFUSED {item!r} (shot-id:clip-sha256-prefix, comma separated)")
+        out.append((sid, pre))
+    if not out or len(set(out)) != len(out):
+        raise SystemExit("REMUX_SHOTS_REFUSED (a non-empty list without repeats)")
+    return out
+
+
+def remux_source(episode, shot_id, prefix, shots_dir=None):
+    """(record file, full clip sha256, the record's shot entry) of the STORED clip a remux starts from: a committed
+    shot-probe record of this episode that holds exactly one clip of this shot with this sha256 prefix."""
+    found = set()
+    for f in sorted((Path(shots_dir) if shots_dir else REPO / "migration" / "evidence" / "shots" / episode).glob("*.json")):
+        try:
+            entry = (load(f).get("shots") or {}).get(shot_id) or {}
+        except (OSError, ValueError):
+            continue
+        for c in entry.get("clips") or []:
+            if str(c.get("clip_sha256") or "").startswith(prefix) and c.get("uploaded") is True:
+                found.add((f, c["clip_sha256"]))
+    if len({sha for _, sha in found}) != 1:
+        raise SystemExit(f"REMUX_SOURCE_CLIP {shot_id}:{prefix} ({len({sha for _, sha in found})} stored clips match: one "
+                         "uploaded clip of this shot in a committed probe record is needed)")
+    f, sha = sorted(found)[0]
+    return f, sha, load(f)["shots"][shot_id]
+
+
+def remux_step(plan, work, lip_python, face_model, out, items, src_dir, sheet=None, shots_dir=None):
+    """E288 (E287 for a clip already stored): the SAME Pavo picture, nothing generated, with OUR request audio laid over
+    it, then judged as a fresh probe clip. For each (shot, clip sha256 prefix): the stored clip (src_dir, by its asset
+    name and sha256) must come from a request equal to the one the plan sends now (SHOT_REQUEST_CHANGED: its words, voice,
+    prompt and references, so our line is the line Pavo animated); the line's WAV is the one `lines` regenerated in CI
+    (deterministic Kokoro, same pins as the probe); pavo_audio.mux_ours puts it on the picture (stream copy, PCM) and
+    assert_ours records the digest proof; the build's own checks (lipsync_check: SyncNet offset and confidence, the face,
+    clip_check) then run on the muxed clip against that same audio, thresholds unchanged. The result is a probe record
+    (pavo_audio "ours", the clip's `audio` proof, `remux_of` the stored sha256) that approve-shot accepts like any probed
+    clip; a clip that fails a check is recorded with its flags and is not approvable."""
+    work, out, src_dir = Path(work), Path(out), Path(src_dir)
+    layout, refs = load(work / "layout.json"), load(work / "refs.json")
+    bad = request_problems(plan, layout, refs)
+    if bad:
+        raise SystemExit("REQUESTS_REFUSED " + "; ".join(bad))
+    sheet = sheet or sheet_step
+    out.mkdir(parents=True, exist_ok=True)
+    (work / "clips").mkdir(parents=True, exist_ok=True)
+    record = {"episode": plan["episode"], "plan_sha256": None, "attempts": 0, "shots": {}, "pavo_audio": pavo_audio.ROUTE,
+              "remux": True}
+    index = {s["id"]: i for i, s in enumerate(plan["shots"])}
+    changed = []
+    for sid, prefix in items:
+        shot, i = plan["shots"][index[sid]], index[sid]
+        if not plan_check.talking(shot) or native_speech(request(shot, i, plan, layout, refs), shot):
+            raise SystemExit(f"REMUX_NOT_A_KOKORO_TALKING_SHOT {sid} (only a talking shot whose line is our Kokoro audio)")
+        record_file, sha, entry = remux_source(plan["episode"], sid, prefix, shots_dir)
+        stored = src_dir / shot_asset_name(plan["episode"], sid, sha)
+        if not stored.is_file() or sha256(stored) != sha:
+            raise SystemExit(f"REMUX_STORED_CLIP_MISSING {sid} {stored.name} (the release asset, by its sha256)")
+        now, canonical = request_identity(shot, i, plan, layout, refs)
+        if now != entry.get("request_sha256"):
+            changed.append(sid)
+            continue
+        line = REPO / talk_record(layout, shot)["wav"]
+        raw = work / "clips" / f"{sid}-stored.mp4"
+        shutil.copyfile(stored, raw)
+        final = work / "clips" / f"{sid}.mp4"
+        pavo_audio.mux_ours(raw, line, final)
+        proof = pavo_audio.assert_ours(final, line)
+        _, _, check, _, _ = shot_runner(shot, i, plan, layout, refs, work, None, None, lip_python, face_model)
+        flags, measures = check(final)
+        new_sha = sha256(final)
+        asset = shot_asset_name(plan["episode"], sid, new_sha)
+        shutil.copyfile(final, out / asset)
+        label = f"{sid}-remux.jpg"
+        sheet(out / asset, out / label)
+        row = {"round": "remux", "remux_of": sha, "source_record": rel(record_file), "asset": asset,
+               "clip_sha256": new_sha, "flags": flags, "measures": {k: measures[k] for k in ("lipsync", "faces", "still_mouth")
+                                                                   if k in measures} or measures,
+               "audio": proof, "sheet": label, "generations": []}
+        row.update(flag_split_fields(flags))
+        record["shots"][sid] = {"kind": shot["kind"], "request_sha256": now, "request": canonical, "clips": [row],
+                                "clip_seconds": entry.get("clip_seconds")}
+        print(json.dumps({"shot": sid, "remux": asset, "of": sha[:12], "flags": flags}))
+    save(out / "probe.json", record)
+    if changed:
+        raise SystemExit("SHOT_REQUEST_CHANGED " + " ".join(changed) + " (the stored clip was made from another request than "
+                         "the plan sends now: its line is not the line Pavo animated)")
+    return record
+
+
+def flag_split_fields(flags):
+    split = flag_split(flags)
+    return {"hard_flags": split["hard"], "words_flags": split["words"], "soft_flags": split["soft"]}
+
+
 def measure_clip_step(record_path, shot_id, clip_path, out_dir=None):
     """Measure an existing recorded clip by hash, without rewriting its approval or claiming a new review."""
     record_path = Path(record_path)
@@ -2587,6 +2686,13 @@ def main(argv):
                 spent = sum(d.get("generated", 0) for d in load(ledger)["days"].values()) - int(used)
                 rec.update(plan_sha256=sha256(argv[2]), pavo_budget={"units_before": int(used), "units_this_run": spent})
                 save(out, rec)
+    elif cmd == "remux-assets" and len(argv) == 3:   # shot-remux.yml: the stored clips' release asset names (env SHOTS)
+        for sid, prefix in remux_items(os.environ.get("SHOTS", "")):
+            print(shot_asset_name(plan["episode"], sid, remux_source(plan["episode"], sid, prefix)[1]))
+    elif cmd == "remux" and len(argv) == 8:       # E288: PLAN WORK LIP FACE OUT SRC_DIR (env SHOTS)
+        record = remux_step(plan, argv[3], argv[4], argv[5], argv[6], remux_items(os.environ.get("SHOTS", "")), argv[7])
+        record["plan_sha256"] = sha256(argv[2])
+        save(Path(argv[6]) / "probe.json", record)
     elif cmd == "adopt" and len(argv) == 8:       # E114: ADOPT PLAN RUN_DIR LIP FACE OUT SOURCE_RUN (env SHOTS)
         ids, _ = probe_ids(plan, os.environ.get("SHOTS", ""), 1)
         if not re.fullmatch(r"[0-9]{6,20}", argv[7]):
