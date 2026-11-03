@@ -6,6 +6,10 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
 `../../strategy/DECISIONS.md` ("2026-11-02 — Battle plan to YPP").
 
 ## Current delivery: flood-ends-long (Genesis 8-9, buzzy-long, plan `plans/flood-ends-long.json`)
+- 2026-11-03 20:30Z (scheduled run, Babel long): shot-probe 41706470686 failed because it ran before PR #786 (27 still_motion approvals) was in main
+  (s-* judged as Pavo requests, INVALID_DURATION; E294 names it now: STILL_NOT_APPROVED). #786 merged (CI green); shot-probe re-dispatched on main for
+  k-hook,b-brick,b-tower,b-name,k-restrain,k-irony,k-name,k-close (attempts=1, 0 credits). Next: review the probe sheets, approve-shot by PR, then
+  episode_build preflight / episode.yml / review / publish. Nothing else changed; no Short gap reported (8 scheduled).
 - 2026-11-03 (coordinator-focused run 16:47Z, Short coverage only): the free 11-05 13:30Z slot is filled by a NEW cut `flood-ends-remembered-cut`
   (33.2-56.18 s of flood-ends-long, "God remembered Noah", sentence edges 0.25 s clear; short-cuts run 41679507140, local-review 41680232127,
   review 8.9, one held scene, audio by ASR and measures, not by ear). Published private, public at 2026-11-05T13:30Z (publish-episode run
