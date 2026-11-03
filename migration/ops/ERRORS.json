@@ -4022,6 +4022,42 @@
    "id": "E273",
    "date": "2026-11-03",
    "class": [
+    "instrument"
+   ],
+   "prior": [
+    "E120",
+    "E131",
+    "E137",
+    "E139",
+    "E148",
+    "E152",
+    "E166",
+    "E169",
+    "E185",
+    "E186",
+    "E231",
+    "E233",
+    "E238",
+    "E253",
+    "E255",
+    "E262",
+    "E266",
+    "E267"
+   ],
+   "error": "flood-ends-long shot-probe 41547308176: k-bow generation 1 (face plainly visible in all 20 frames of 41547308176-k-bow-1-1.jpg) was flagged FACE_NOT_FOUND (face_frames 0.71 < 0.8): lipsync_check.face_track ran the MediaPipe landmarker at its default 0.5 confidences, which lose a small, hooded, firelit face in 29 % of frames. A hard flag from a false negative would have forced the Kokoro fallback on a good clip. Also, k-hook's clip carried a trailing Pavo mumble after 'open it' and there was no way to fix it in the edit, so its words check (pinned ASR) failed on the whole clip.",
+   "fix": "lipsync_check.FACE_CONFIDENCE 0.4 for the video tracker (detection, presence and tracking): k-bow 0.71 -> 0.92, k-hook 0.81 -> 0.85, k-close 0.99 -> 0.96, k-insight 0.92 -> 0.96, 11 face-free scene clips 0-0.01; FACE_FRAMES_MIN stays 0.8 and the --faces God-shot check keeps its default. The k-bow generation was re-measured on the same bytes (flags empty, originals kept in the record). episode_build: per-shot trim_out_s (approve-shot --trim-out, speech-check --trim-out measures the words, lips and voice on the trimmed media and the sidecar carries the trim; the build and the long's upscale apply it and re-run every check on the trimmed media; the upscale record must carry the same trim). k-hook trimmed at 6.0 s: the pinned ASR hears the line exactly.",
+   "antidote": {
+    "file": "migration/production/bible/test_lipsync_check.py",
+    "contains": "def test_e273_the_lip_tracker_finds_a_small_hooded_firelit_face_without_loosening_the_share",
+    "covers": [
+     "instrument"
+    ]
+   }
+  },
+  {
+   "id": "E274",
+   "date": "2026-11-03",
+   "class": [
     "drift"
    ],
    "prior": [

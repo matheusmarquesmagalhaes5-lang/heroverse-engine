@@ -46,6 +46,12 @@ AUDIO_CORR_MIN = 0.85
 MOUTH_CORR_MIN = 0.45
 SPEAK_TO_PAUSE_MIN = 1.5
 FACE_FRAMES_MIN = 0.8
+# E273: the landmarker's default confidences (0.5) lost a small, hooded, firelit face for 29 % of the frames of
+# flood-ends-long k-bow (frame sheet 41547308176-k-bow-1-1.jpg shows the face in every frame): FACE_NOT_FOUND on a clip
+# whose face is plainly there. face_track (the video tracker that measures the lips) runs at FACE_CONFIDENCE: k-bow
+# 0.71 -> 0.92, k-hook 0.81 -> 0.85, k-close 0.99 -> 0.96, k-insight 0.92 -> 0.96, 11 face-free scene clips 0-0.01.
+# FACE_FRAMES_MIN stays 0.8 and the --faces God-shot check (still images) keeps the default.
+FACE_CONFIDENCE = 0.4
 LAG_MAX_MS = 84            # the audio check's lag limit: two frames of a 24 fps Pavo clip (~2 at the 25 fps of SyncNet)
 FACE_SAMPLE_EVERY = 4      # --faces: every 4th frame (6 a second at 24 fps, the clip's own rate)
 FPS_SYNC = 25              # SyncNet's frame rate (syncnet.FPS): the sync check decodes every clip at this rate
@@ -142,13 +148,16 @@ def mouth_sync(opening, fps, clip_env):
     return round(corr, 3), int(round(lag / fps * 1000)), round(float(ratio), 2)
 
 
-def landmarker(model, mode):
+def landmarker(model, mode, confidence=None):
     import hashlib
     from mediapipe.tasks.python import BaseOptions, vision
     if hashlib.sha256(open(model, "rb").read()).hexdigest() != MODEL_SHA256:
         raise SystemExit("FACE_MODEL_HASH_MISMATCH")
+    levels = {} if confidence is None else {"min_face_detection_confidence": confidence,
+                                            "min_face_presence_confidence": confidence,
+                                            "min_tracking_confidence": confidence}
     options = vision.FaceLandmarkerOptions(base_options=BaseOptions(model_asset_path=model), running_mode=mode,
-                                           num_faces=1)
+                                           num_faces=1, **levels)
     return vision.FaceLandmarker.create_from_options(options)
 
 
@@ -311,7 +320,7 @@ def face_track(clip, model, fps=FPS_SYNC, start=None, duration=None, keep=False)
     import cv2
     import mediapipe as mp
     from mediapipe.tasks.python import vision
-    lm = landmarker(model, vision.RunningMode.VIDEO)
+    lm = landmarker(model, vision.RunningMode.VIDEO, FACE_CONFIDENCE)
     rate = fps or _probe(clip)[1]
     opening, boxes, kept = [], [], []
     for i, frame in enumerate(frames(clip, fps, start, duration)):

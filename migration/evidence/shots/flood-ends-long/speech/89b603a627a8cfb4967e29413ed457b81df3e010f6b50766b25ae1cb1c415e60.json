@@ -1,0 +1,27 @@
+{
+ "shot": "k-bow",
+ "clip_sha256": "89b603a627a8cfb4967e29413ed457b81df3e010f6b50766b25ae1cb1c415e60",
+ "measures": {
+  "asr": {
+   "model_bin_sha256": "11b220779aea4c6f3ce9d2549c8a95ea869ed84066864b999531ef53e594fe5b",
+   "text": "God hung his bow in the sky, pointed away from us. Mercy or from us was his idea.",
+   "speech_span": [
+    0.0,
+    6.5
+   ]
+  },
+  "music": 0.0,
+  "singing": 0.0,
+  "lufs": -25.1,
+  "voice": {
+   "reference": null,
+   "same": null,
+   "others": []
+  },
+  "lips": []
+ },
+ "verdict": [
+  "SPEECH_WORDS_NOT_EXACT",
+  "VOICE_REFERENCE_MISSING"
+ ]
+}
