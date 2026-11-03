@@ -1,0 +1,115 @@
+{
+ "version": "bible-compilation-plan-v1",
+ "id": "arc-02-noah-complete-compilation",
+ "pilot": "pilot-018",
+ "status": "2026-11-03: battle plan M2, the complete Noah story: Shorts genesis-06..09 and the public long flood-ends-long (Genesis 8-9), with the Keeper's hook and close as Kokoro voice-over on approved stills (the Pavo talking clips were all SPEECH_WORDS_NOT_EXACT). True length, no padding.",
+ "title": "The Complete Story of Noah (Genesis 5-9) KJV",
+ "publish_at": "2026-11-04T13:30:00Z",
+ "chapters": [
+  {
+   "short": "genesis-06-short",
+   "title": "Enoch Walked With God",
+   "reference": "Genesis 5:21-24",
+   "end_s": 70.6
+  },
+  {
+   "short": "genesis-07-short",
+   "title": "God Sees the Earth Corrupt",
+   "reference": "Genesis 6:5-13",
+   "end_s": 165.9
+  },
+  {
+   "short": "genesis-08-short",
+   "title": "Noah Builds the Ark",
+   "reference": "Genesis 6:14-22",
+   "end_s": 168.0
+  },
+  {
+   "short": "genesis-09-short",
+   "title": "The Flood Begins",
+   "reference": "Genesis 7",
+   "end_s": 165.7
+  },
+  {
+   "long": {
+    "id": "flood-ends-long",
+    "pilot": "pilot-017",
+    "video_id": "1m-NUJhkdMY",
+    "sha256": "9a2d0f24e74c7117eedcbdd73992fbc284efb9402b6f82dba98f096a64635692",
+    "seconds": 501.832,
+    "asset": "bible-flood-ends-long-sha256-9a2d0f24e74c7117eedcbdd73992fbc284efb9402b6f82dba98f096a64635692.mp4"
+   },
+   "title": "The Flood Ends: The Raven, the Dove and the Rainbow",
+   "reference": "Genesis 8-9"
+  }
+ ],
+ "chapter_zero": "The Keeper's question",
+ "chapter_last": "The Keeper's honest question",
+ "hook": {
+  "text": "What if obeying God meant building a ship with no rain in sight? Here is Noah's whole story, Genesis five to nine.",
+  "commentary": "Keeper's own words, marked apart from scripture; the ship is Genesis 6:14-22 and the rain is Genesis 7:4.",
+  "voiceover": {
+   "approved_still": "arc-01-long-k-promise-2",
+   "still": "migration/production/bible/stills/arc-01-long-k-promise-2.jpg",
+   "still_sha256": "fd3ffd3708872b1b662c649649b917cfc95f9f2c49f6d047b3105c2d98542065",
+   "voice_id": "am_michael",
+   "speed": 1.0
+  },
+  "pavo_attempt": {
+   "probe_run": 41629339290,
+   "speech_check_run": 41636192512,
+   "result": "2 Pavo generations at an exact 0-credit quote, attempts=1: every generation SPEECH_WORDS_NOT_EXACT and VOICE_NOT_CONSISTENT (the speech check heard garbled tails); voice-over fallback",
+   "conversation_ids": [
+    "375972935007472320",
+    "375974356956020544"
+   ]
+  },
+  "quote": "0 credits (no Pavo call: Kokoro voice-over on an approved still)"
+ },
+ "close": {
+  "text": "Noah did all that God commanded him, before one drop fell. So what is God asking of you, that you cannot yet see?",
+  "commentary": "Keeper's own interpretive question, marked apart from scripture; Genesis 6:22 'Thus did Noah; according to all that God commanded him, so did he.'",
+  "voiceover": {
+   "approved_still": "arc-01-long-k-promise-3",
+   "still": "migration/production/bible/stills/arc-01-long-k-promise-3.jpg",
+   "still_sha256": "d06d4d2eb4d0120dc4dfdab01b737d4d14a57dd52759e60e3284826973e5636f",
+   "voice_id": "am_michael",
+   "speed": 1.0
+  },
+  "pavo_attempt": {
+   "probe_run": 41629339290,
+   "speech_check_run": 41636192512,
+   "result": "2 Pavo generations at an exact 0-credit quote, attempts=1: every generation SPEECH_WORDS_NOT_EXACT and VOICE_NOT_CONSISTENT (the speech check heard garbled tails); voice-over fallback",
+   "conversation_ids": [
+    "375976099236347712",
+    "375977586163222592"
+   ]
+  },
+  "quote": "0 credits (no Pavo call: Kokoro voice-over on an approved still)"
+ },
+ "thumbnail": {
+  "short": "flood-ends-long",
+  "at": 450.0,
+  "y": 0.4,
+  "line1": "NOAH'S ARK",
+  "line2": "THE WHOLE STORY, GENESIS 5-9"
+ },
+ "tags": [
+  "noah's ark",
+  "noah",
+  "the flood",
+  "genesis 6",
+  "genesis 7",
+  "genesis 8",
+  "genesis 9",
+  "rainbow covenant",
+  "enoch",
+  "bible story",
+  "kjv bible",
+  "bible stories",
+  "full bible story"
+ ],
+ "playlist": null,
+ "first_comment": "Which moment in Noah's story would you have found hardest to trust: the years of building, the seven days of waiting, or the months afloat with no land in sight? I read it from the King James Version; the notes between the scenes are the Keeper's own.",
+ "description": "The Complete Story of Noah, read from the King James Version: Enoch who walked with God (Genesis 5:21-24), the corruption of the earth and the building of the ark (Genesis 6), the flood begins (Genesis 7), and the flood ends with the raven, the dove, the altar and the rainbow covenant (Genesis 8:1-9:17). Five stories in one sitting, with the Keeper's honest questions at the open and the close.\n\nChapters\n{chapters}\n\nThe stories this video is built from:\n{links}\n\nScripture quotations: King James Version (public domain). The Keeper's commentary is the channel's own interpretation, spoken apart from the scripture.\nOriginal narration and owned music by HeroVerse. Narration voices are AI-generated. Visuals are AI-generated or animated illustrations: an artistic Bible-story reconstruction, not footage of historical events.\n\nSubscribe for the whole Bible, one story at a time."
+}

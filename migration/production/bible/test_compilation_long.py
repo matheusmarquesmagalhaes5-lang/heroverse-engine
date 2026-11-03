@@ -54,6 +54,25 @@ class PlanTests(unittest.TestCase):
             mutate(bad["chapters"][-1])
             self.assertTrue(any("not a public long" in x for x in cl.plan_problems(bad)))
 
+    def test_e283_the_complete_noah_plan_uses_the_voiceover_fallback_and_the_release_master(self):
+        plan = cl.load(ROOT / "migration/production/bible/compilations/arc-02-noah-complete-compilation.json")
+        self.assertEqual(cl.plan_problems(plan), [])
+        self.assertEqual(plan["title"], "The Complete Story of Noah (Genesis 5-9) KJV")
+        self.assertEqual([cl.chapter_id(c) for c in plan["chapters"]],
+                         [f"genesis-0{n}-short" for n in (6, 7, 8, 9)] + ["flood-ends-long"])
+        self.assertEqual(cl.sources(plan)[-1][1], "bible-flood-ends-long-sha256-" + plan["chapters"][-1]["long"]["sha256"] + ".mp4")
+        self.assertTrue(cl.has_voiceover(plan))
+        for key in ("hook", "close"):
+            self.assertNotIn("Genesis five to seven", plan[key]["text"])
+        for mutate, text in ((lambda p: p["hook"]["voiceover"].update(still_sha256="0" * 64), "still missing or changed"),
+                             (lambda p: p["close"]["voiceover"].update(voice_id="af_heart"), "pinned voice"),
+                             (lambda p: p["close"].update(quote="0 credits (exact, fresh)"), "no-Pavo zero-credit"),
+                             (lambda p: p["hook"].pop("pavo_attempt"), "Pavo attempt"),
+                             (lambda p: p["chapters"][-1]["long"].update(asset="bible-other-sha256-" + "0" * 64 + ".mp4"), "release master")):
+            bad = copy.deepcopy(plan)
+            mutate(bad)
+            self.assertTrue(any(text in x for x in cl.plan_problems(bad)), text)
+
     def test_refusals(self):
         plan = cl.load(PLAN)
         for mutate, text in ((lambda p: p["chapters"].reverse(), "canonical order"),
