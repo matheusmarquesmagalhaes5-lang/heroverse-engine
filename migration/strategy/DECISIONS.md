@@ -574,3 +574,24 @@ the Keeper's lit "Most miss this" line. Both earlier masters stay on record (evi
 - Moment M1 closing, M2 due 11-04. Trigger "long not public by 11-03 23:30": not hit (flood-ends-long public since 01:15Z, measured via vidIQ; 1 view; duration 8:22, shorter than the 15-20 min planned).
 - No new daily report (latest 11-02 18:48): goal numbers carried over (subs 301 measured; long hours 27.9 estimated; hours bind). Deadlines unchanged (11-15, max 12-01).
 - Action: funnel links and Facebook post of the long today; Noah compilation is production's next build; later longs target 12-15 min. Experiments unread until the M3 checkpoint 11-05. vidIQ used: 5 credits.
+
+## 2026-11-03 — Coordinator continuation (01:45 UTC): genesis-10 bridge Short, Noah compilation length, Keeper reflection v2
+- Bridge Short genesis-10 (9:16): the ChatGPT desktop scripts take `-plan`, `-aspect`, `-branch`, `-run` (repo copy in
+  `migration/integrations/chatgpt-local/desktop-app/`, flood defaults unchanged; 9:16 centre-crop to 1080x1920). 18 stills in
+  the ONE chat "HeroVerse — stills", no usage-limit message, no restart needed; s-voice and s-ararat were re-made without the
+  ark in the prompt (E122 needs reference images the desktop route cannot attach). All 18 approved, 17 scene shots approved as
+  still-motion sources. Pavo talking Keeper (k-insight, k-close): 4 generations, all `AUDIO_NOT_OUR_LINE` (E264), so both
+  shots stay on the Keeper voice-over over reviewed still motion. Master 170.97 s, -14.5 LUFS; `local-review.yml` 41583119894;
+  record written with the true basis (audio by transcript and measures, not by ear). Not published: the thumbnail
+  (`THUMB_NOT_APPROVED`) needs a Noah close-up made with the approved references, and the owner rules forbid Pavo for stills.
+- Noah compilation (M2) length: the public Genesis material (Shorts genesis-01..09 = 14.7 min, plus flood-ends-long 8.4 min) is
+  23 min, below the 40 min marathon line. No padding and no inflated title: ship "The Complete Story of Noah (Genesis 5-9) KJV"
+  at its true length (about 19 min: Shorts genesis-06..09, flood-ends-long, a new Keeper hook and close). `compilation_long.py`
+  now accepts a public 16:9 long as a chapter (PR #695, test `test_a_public_long_is_a_chapter`). Not built yet: the new Pavo
+  hook and close (2 generations each, best used) and the plan file.
+- Keeper reflection v2 #1 from flood-ends-long (`reflections/flood-ends-long-1.json`): three Pavo talking segments approved
+  (k-r1 reworded after 2 flagged generations; k-r2 reworded for the 165 wpm pace gate; k-r3 as first approved). The first render
+  heard the long's own voice under the Keeper and doubled the Keeper in the top half, so the top clip is now scenes only with the
+  long's audio muted. The second master (sha256 f4553a09…) is not claimed at the 9.5 floor (one scene held ~16 s on top,
+  audio not heard by ear, a recognizer repeat at "bow"/"carried"): no review, not published, evidence kept.
+- E276: `test_gemini_short_review` counted cuts as corpus Shorts and turned every PR check red once the cuts were published.

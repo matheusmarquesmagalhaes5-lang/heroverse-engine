@@ -45,6 +45,15 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
   reviewed on its own hash (local-review) and published by `publish-episode.yml` with the long's link. Still to do for the
   long: pinned comment (first comment 403, see ledger), `arcs.json`, the Pavo rebuild is a later version.
 
+- 2026-11-03 (Claude session, after the coordinator's 01:45 UTC decisions): `1m-NUJhkdMY` is public; the three cuts are
+  scheduled by the coordinator (05:30, 13:30, 18:30 UTC). Bridge Short genesis-10 is BUILT and reviewed but NOT published:
+  master sha256 `a1f99c4f…` (episode.yml run 41581203357, 170.97 s), record `episodes/genesis-10-short.json` (review 9.5, slot
+  2026-11-03T23:30Z), blocked only by `THUMB_NOT_APPROVED` (needs a Noah close-up thumbnail spec + approved candidate; Pavo is
+  not allowed for stills). Next: thumbs spec/candidate, `episode_build.py check-record`, `publish-episode.yml` at the free slot
+  (23:30 UTC today, else 2026-11-04 13:30). Keeper reflection #1 rendered (run 41576620259) but not claimed at 9.5 (see DECISIONS).
+  Noah compilation: `compilation_long.py` takes a public long as a chapter; the plan and a new Pavo hook/close are still to do
+  (due 2026-11-04). The chat "HeroVerse — stills" is kept for the genesis-11 stills (delete it when those are done).
+
 ## Next moments
 
 - M2 compilation "Complete Story of Noah (Genesis 5-9)" is due 2026-11-04.
