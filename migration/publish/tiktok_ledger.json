@@ -79,9 +79,9 @@
    "at": "2026-11-03T14:18:37.496846+00:00"
   },
   "bible:flood-ends-door-cut:0f88e0bc5a9cbb24524bfedda11c0706cef42b7038fe99899d9afe18e6b48eff": {
-   "status": "QUEUED",
+   "status": "SENT",
    "buffer_post_id": "6aea3447033b67220a5fce2c",
-   "buffer_status": "sending",
+   "buffer_status": "sent",
    "youtube_video_id": "qENUe7ZAu6k",
    "at": "2026-11-03T19:21:43.074121+00:00"
   }
