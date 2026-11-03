@@ -1,0 +1,37 @@
+{
+ "id": "genesis-10-11-long-s-ramps-2026110303-1",
+ "still": "genesis-10-11-long-s-ramps",
+ "episode": "genesis-10-11-long",
+ "shot": "s-ramps",
+ "run": "2026110303",
+ "status": "DRAFT",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow tilt up. A towering stepped tower of brick rising in great terraces with long ramps climbing its sides and lines of tiny workers carrying loads up them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Hard afternoon sun, long shadows down the terraces. Overwhelming and proud. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "sent_prompt": "Create an image, 16:9 landscape, no text. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow tilt up. A towering stepped tower of brick rising in great terraces with long ramps climbing its sides and lines of tiny workers carrying loads up them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Hard afternoon sun, long shadows down the terraces. Overwhelming and proud. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "engine": "chatgpt-desktop",
+ "models": [
+  "chatgpt-images"
+ ],
+ "generated_by": "ChatGPT Windows app on the owner's PC (Create image), one request at a time",
+ "source": "chatgpt-desktop",
+ "download": {
+  "file": "genesis-10-11-long-s-ramps.png",
+  "sha256": "537e49c1c514360c63b40ea2eb3614ed7ce85e10b3be53347dccc10d64961c21",
+  "size_bytes": 2783648,
+  "pixels": [
+   1672,
+   941
+  ]
+ },
+ "references": [],
+ "licence": {
+  "note": "OpenAI Terms of Use: the user owns the Output; made at the owner's request in his own session (README Licence and account risk)"
+ },
+ "upscaler": "System.Drawing HighQualityBicubic centre crop to 16:9 -> 1920x1080, JPEG quality 93",
+ "aspect_ratio": "16:9",
+ "size": [
+  1920,
+  1080
+ ],
+ "repo_path": "migration/production/bible/stills/candidates/genesis-10-11-long-s-ramps-2026110303-1.jpg",
+ "sha256": "da102d6eac521db191074c421df182a3ee77d44b9b079adf1dcc3c23cffccc1f"
+}

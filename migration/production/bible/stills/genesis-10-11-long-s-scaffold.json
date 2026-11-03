@@ -2,6 +2,25 @@
  "id": "genesis-10-11-long-s-scaffold",
  "episode": "genesis-10-11-long",
  "shot": "s-scaffold",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow drift. Workers on a high reed-and-rope scaffold passing bricks hand to hand along a chain, the tower wall rising behind them, a wide hazy plain far below, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Late golden sun and drifting dust. Dizzy and triumphant. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow drift. Workers on a high reed-and-rope scaffold passing bricks hand to hand along a chain, the tower wall rising behind them, a wide hazy plain far below, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Late golden sun and drifting dust. Dizzy and triumphant. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-scaffold.jpg",
+ "sha256": "d9de2fe3a923b6eb5f280325c54ee20bbeb86083bc87fe9c9f0de4e102490f8a",
+ "size": [
+  1920,
+  1080
+ ],
+ "candidate": "genesis-10-11-long-s-scaffold-2026110303-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-03",
+  "score": 9.5,
+  "note": "Actual frame viewed: workers on a reed-and-rope scaffold passing bricks along the tower wall, faces turned away, plain far below.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "c38ab2b2df6c5dbdf81c108da3e169a6cd26f5fed6f28333d0a681c95382b1d9",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

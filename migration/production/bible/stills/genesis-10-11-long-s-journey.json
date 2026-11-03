@@ -2,6 +2,25 @@
  "id": "genesis-10-11-long-s-journey",
  "episode": "genesis-10-11-long",
  "shot": "s-journey",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow pan. A long caravan of families with donkeys and carts crossing a vast hazy plain toward a wide brown river, seen from far behind, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Late afternoon haze, dust glowing gold. Weary and hopeful. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow pan. A long caravan of families with donkeys and carts crossing a vast hazy plain toward a wide brown river, seen from far behind, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Late afternoon haze, dust glowing gold. Weary and hopeful. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-journey.jpg",
+ "sha256": "e4e9d6a46f565238662f457ef0b69e5fc3a005b998cf2040c6c532ea031df1c6",
+ "size": [
+  1920,
+  1080
+ ],
+ "candidate": "genesis-10-11-long-s-journey-2026110303-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-03",
+  "score": 9.5,
+  "note": "Actual frame viewed: caravan of families with donkeys and a cart on a hazy plain toward a river, seen from behind, golden dust.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "3a2094b6c46921c5353c4be283063b8a4aac47a4c8ae19806f0829b94b4a5717",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

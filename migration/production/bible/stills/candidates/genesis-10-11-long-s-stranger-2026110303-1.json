@@ -1,0 +1,37 @@
+{
+ "id": "genesis-10-11-long-s-stranger-2026110303-1",
+ "still": "genesis-10-11-long-s-stranger",
+ "episode": "genesis-10-11-long",
+ "shot": "s-stranger",
+ "run": "2026110303",
+ "status": "DRAFT",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Close-up, slow push-in. A woman and a man face to face at a river landing at dawn, both reaching out and speaking, neither understanding, their children clinging to their robes, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Soft cold dawn light on faces turned half away. Aching and tender. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "sent_prompt": "Create an image, 16:9 landscape, no text. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Close-up, slow push-in. A woman and a man face to face at a river landing at dawn, both reaching out and speaking, neither understanding, their children clinging to their robes, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Soft cold dawn light on faces turned half away. Aching and tender. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "engine": "chatgpt-desktop",
+ "models": [
+  "chatgpt-images"
+ ],
+ "generated_by": "ChatGPT Windows app on the owner's PC (Create image), one request at a time",
+ "source": "chatgpt-desktop",
+ "download": {
+  "file": "genesis-10-11-long-s-stranger.png",
+  "sha256": "e47607fbe19d77cef4473cdac19abe43ec3b6429cb3d00f66e6d71c621a38499",
+  "size_bytes": 2372496,
+  "pixels": [
+   1672,
+   941
+  ]
+ },
+ "references": [],
+ "licence": {
+  "note": "OpenAI Terms of Use: the user owns the Output; made at the owner's request in his own session (README Licence and account risk)"
+ },
+ "upscaler": "System.Drawing HighQualityBicubic centre crop to 16:9 -> 1920x1080, JPEG quality 93",
+ "aspect_ratio": "16:9",
+ "size": [
+  1920,
+  1080
+ ],
+ "repo_path": "migration/production/bible/stills/candidates/genesis-10-11-long-s-stranger-2026110303-1.jpg",
+ "sha256": "84dbc58f1918ca7f716aa7f31a9bc47cfc3803edde77cd685c371bb4d8a17696"
+}

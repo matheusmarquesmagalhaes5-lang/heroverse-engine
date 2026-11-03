@@ -2,6 +2,25 @@
  "id": "genesis-10-11-long-s-top",
  "episode": "genesis-10-11-long",
  "shot": "s-top",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow push-in. The unfinished top terrace of the tower against huge dark storm clouds gathering above it, a few tiny workers frozen at its edge looking up, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Heavy grey light breaking through dark clouds. Uneasy and charged. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow push-in. The unfinished top terrace of the tower against huge dark storm clouds gathering above it, a few tiny workers frozen at its edge looking up, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Heavy grey light breaking through dark clouds. Uneasy and charged. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-top.jpg",
+ "sha256": "9b5f70f678d45151f26ba7693038153d1c2e080bc37db08d456bd4d0980619c2",
+ "size": [
+  1920,
+  1080
+ ],
+ "candidate": "genesis-10-11-long-s-top-2026110303-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-03",
+  "score": 9.5,
+  "note": "Actual frame viewed: the unfinished top terrace under heavy storm clouds with a few tiny workers at the edge looking up, charged light.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "c1a73dc23bf6acae9379174a604d1f1b8e3be3b6c853fc9d1df9b7dd0ab28584",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

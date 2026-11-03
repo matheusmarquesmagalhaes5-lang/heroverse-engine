@@ -2,6 +2,25 @@
  "id": "genesis-10-11-long-s-kingdom",
  "episode": "genesis-10-11-long",
  "shot": "s-kingdom",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow push-in. The first brick city of a young kingdom on a wide river plain at sunrise, simple flat-roofed houses and workshops, smoke rising, tiny figures on the riverbank, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Warm sunrise light on the river. Curious and ominous. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow push-in. The first brick city of a young kingdom on a wide river plain at sunrise, simple flat-roofed houses and workshops, smoke rising, tiny figures on the riverbank, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Warm sunrise light on the river. Curious and ominous. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-kingdom.jpg",
+ "sha256": "fd075d2e214791cbdc5bbde82852b5ed4203377a5569c3d9ad5fb9d1cdd1cb8c",
+ "size": [
+  1920,
+  1080
+ ],
+ "candidate": "genesis-10-11-long-s-kingdom-2026110303-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-03",
+  "score": 9.5,
+  "note": "Actual frame viewed: a first brick river town at sunrise with smoke and tiny figures, flat roofs, no modern items or text.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "5facc63da980b4c0ff1baec96ea7d97761ebcc15057210a286415fc8c4bd1f50",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

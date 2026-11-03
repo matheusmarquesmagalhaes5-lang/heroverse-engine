@@ -2,6 +2,25 @@
  "id": "genesis-10-11-long-s-roadwest",
  "episode": "genesis-10-11-long",
  "shot": "s-roadwest",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow pan. A long line of small figures with donkeys heading west over rolling hills at sunrise, the tower tiny and distant on the plain behind them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Low sunrise light and long blue shadows. Lonely and vast. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow pan. A long line of small figures with donkeys heading west over rolling hills at sunrise, the tower tiny and distant on the plain behind them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Low sunrise light and long blue shadows. Lonely and vast. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-roadwest.jpg",
+ "sha256": "a6c27e52bd4779cff3d2f42ef066194d6174ff27efd8b8d6c99238b9bfb81005",
+ "size": [
+  1920,
+  1080
+ ],
+ "candidate": "genesis-10-11-long-s-roadwest-2026110303-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-03",
+  "score": 9.5,
+  "note": "Actual frame viewed: a long caravan with donkeys heading west over hills at sunrise, the tower tiny and distant behind.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "f9a84348f1baa0b880b021bb2e96bb64b07479d77949f6a5e089e01735479336",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

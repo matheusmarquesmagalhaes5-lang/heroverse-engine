@@ -2,6 +2,25 @@
  "id": "genesis-10-11-long-s-down",
  "episode": "genesis-10-11-long",
  "shot": "s-down",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow pull-back. A single broad shaft of brilliant white light falling through a hole in thick clouds onto the plain, lighting the whole tower from above, tiny workers on the ramps frozen and looking up, no figure in the light, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Brilliant white light cutting through dark cloud. Awe and dread. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow pull-back. A single broad shaft of brilliant white light falling through a hole in thick clouds onto the plain, lighting the whole tower from above, tiny workers on the ramps frozen and looking up, no figure in the light, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Brilliant white light cutting through dark cloud. Awe and dread. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-down.jpg",
+ "sha256": "607d3fd677f3adfc91a5d938805fead1168a938ae47a834124508faff086393a",
+ "size": [
+  1920,
+  1080
+ ],
+ "candidate": "genesis-10-11-long-s-down-2026110303-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-03",
+  "score": 9.5,
+  "note": "Actual frame viewed: a single shaft of white light through dark cloud falling on the stepped tower, tiny workers on the ramps, no figure in the light.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "6ae7955fc65e95f7ad269c9dff4c3d9ff9e25ddeaf23e44f87a18b87e701da9b",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

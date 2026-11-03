@@ -1,0 +1,37 @@
+{
+ "id": "genesis-10-11-long-s-roadsouth-2026110303-1",
+ "still": "genesis-10-11-long-s-roadsouth",
+ "episode": "genesis-10-11-long",
+ "shot": "s-roadsouth",
+ "run": "2026110303",
+ "status": "DRAFT",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow pan. A few figures walking beside a wide shining river through green reeds toward a far horizon, a flock of birds rising, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Warm late-afternoon light on water. Quiet and resolute. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "sent_prompt": "Create an image, 16:9 landscape, no text. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow pan. A few figures walking beside a wide shining river through green reeds toward a far horizon, a flock of birds rising, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Warm late-afternoon light on water. Quiet and resolute. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "engine": "chatgpt-desktop",
+ "models": [
+  "chatgpt-images"
+ ],
+ "generated_by": "ChatGPT Windows app on the owner's PC (Create image), one request at a time",
+ "source": "chatgpt-desktop",
+ "download": {
+  "file": "genesis-10-11-long-s-roadsouth.png",
+  "sha256": "6348629b80ff3691f3e0bc3fb374eccd9556f9e6d96006dc4b60e971957ae50b",
+  "size_bytes": 2623531,
+  "pixels": [
+   1672,
+   941
+  ]
+ },
+ "references": [],
+ "licence": {
+  "note": "OpenAI Terms of Use: the user owns the Output; made at the owner's request in his own session (README Licence and account risk)"
+ },
+ "upscaler": "System.Drawing HighQualityBicubic centre crop to 16:9 -> 1920x1080, JPEG quality 93",
+ "aspect_ratio": "16:9",
+ "size": [
+  1920,
+  1080
+ ],
+ "repo_path": "migration/production/bible/stills/candidates/genesis-10-11-long-s-roadsouth-2026110303-1.jpg",
+ "sha256": "f33f34f33229d36735aba5efe843d8b75853e7ed290b0a6bd5b32c3e80eb6e23"
+}

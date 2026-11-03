@@ -1,0 +1,37 @@
+{
+ "id": "genesis-10-11-long-s-pitch-2026110303-1",
+ "still": "genesis-10-11-long-s-pitch",
+ "episode": "genesis-10-11-long",
+ "shot": "s-pitch",
+ "run": "2026110303",
+ "status": "DRAFT",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Close-up, slow push-in. A worker in silhouette seen from behind kneels and pours thick black pitch from a clay jar onto a row of fired bricks, pressing the next brick into it, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Warm low firelight on glossy black pitch. Heavy and busy. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "sent_prompt": "Create an image, 16:9 landscape, no text. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Close-up, slow push-in. A worker in silhouette seen from behind kneels and pours thick black pitch from a clay jar onto a row of fired bricks, pressing the next brick into it, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Warm low firelight on glossy black pitch. Heavy and busy. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "engine": "chatgpt-desktop",
+ "models": [
+  "chatgpt-images"
+ ],
+ "generated_by": "ChatGPT Windows app on the owner's PC (Create image), one request at a time",
+ "source": "chatgpt-desktop",
+ "download": {
+  "file": "genesis-10-11-long-s-pitch.png",
+  "sha256": "5896ee5747af403932f4055729066ac519b40dea61983b7a180b1f898df622b1",
+  "size_bytes": 2271208,
+  "pixels": [
+   1672,
+   941
+  ]
+ },
+ "references": [],
+ "licence": {
+  "note": "OpenAI Terms of Use: the user owns the Output; made at the owner's request in his own session (README Licence and account risk)"
+ },
+ "upscaler": "System.Drawing HighQualityBicubic centre crop to 16:9 -> 1920x1080, JPEG quality 93",
+ "aspect_ratio": "16:9",
+ "size": [
+  1920,
+  1080
+ ],
+ "repo_path": "migration/production/bible/stills/candidates/genesis-10-11-long-s-pitch-2026110303-1.jpg",
+ "sha256": "5d353cead529b87ac7ea1064e4a9f9458127047c55c3f28723985f5bbab4c0eb"
+}
