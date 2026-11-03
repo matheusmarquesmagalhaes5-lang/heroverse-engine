@@ -1,6 +1,27 @@
 {
  "episode": "flood-ends-long-reflection-1",
  "shots": {
+  "k-r1": {
+   "asset": "shot-flood-ends-long-reflection-1-k-r1-sha256-dae7a90d6e87c022739337f751c125c8457acaa29c2fe886b9929df38caef388.mp4",
+   "clip_sha256": "dae7a90d6e87c022739337f751c125c8457acaa29c2fe886b9929df38caef388",
+   "request_sha256": "b43cbae82b9742c58d76207e33d7b55c43b2d2980fbf3650a51935612db487c2",
+   "clip_seconds": 6.583333,
+   "requested_clip_seconds": 6,
+   "media": {
+    "version": "clip-media-v1",
+    "clip_sha256": "dae7a90d6e87c022739337f751c125c8457acaa29c2fe886b9929df38caef388",
+    "video_seconds": 6.583333,
+    "audio_seconds": 6.56,
+    "instrument": "ffprobe stream durations"
+   },
+   "score": 9.5,
+   "note": "Single generation, no flags. Frame sheet of the actual clip viewed at full size: same Keeper, lips follow the line, hand gesture, no artefacts. Audio judged by the pinned ASR words check (clean) and measures (audio corr 0.93, SyncNet conf 7.6), NOT by ear: this session cannot play audio.",
+   "probe_record": "migration/evidence/shots/flood-ends-long-reflection-1/41567543843.json",
+   "run_id": "41567543843",
+   "source_run": null,
+   "approved_at": "2026-11-03",
+   "model": "claude-session-reviewer"
+  },
   "k-r2": {
    "asset": "shot-flood-ends-long-reflection-1-k-r2-sha256-3a1695926490792fb7531f0c398bb1aaa2340ff693155402133a4c469678ebc0.mp4",
    "clip_sha256": "3a1695926490792fb7531f0c398bb1aaa2340ff693155402133a4c469678ebc0",
