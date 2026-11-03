@@ -207,6 +207,17 @@ class Queue(unittest.TestCase):
         wf = (Path(rq.__file__).resolve().parents[2] / ".github/workflows/reconcile.yml").read_text()
         self.assertIn("comment) gh workflow run first-comment.yml", wf)
 
+    def test_released_long_without_schedule_is_retried_for_its_first_comment(self):
+        # E264: the held long pilot-017 has publish_at null; its owner release time starts the comment retry
+        with tempfile.TemporaryDirectory() as t:
+            pilot(t, "pilot-006", "2026-10-17T08:00:00Z")
+            (Path(t) / "pilot-006" / "schedule.json").write_text(json.dumps({"publish_at": None, "shorts_slots": []}))
+            entry = {"video_id": "v6", "steps": {"first_comment": "PENDING: HTTP_403 forbidden"}}
+            ledger = {"entries": {"pilot-006:" + "a" * 64: entry}}
+            self.assertEqual(rq.pending_comments(t, ledger, NOW), [])   # never released: still held
+            entry["released"] = {"at": "2026-10-17T09:00:00+00:00", "privacy": "public"}
+            self.assertEqual(rq.pending_comments(t, ledger, NOW), ["pilot-006"])
+
     def test_prayer_pilots_are_retired_from_every_queue(self):
         # owner, 2026-10-26: "stop the prayer videos"; only a Bible-story long is imaged, previewed, rendered,
         # reviewed, approved, published, given Shorts, rescheduled or retried for its first comment

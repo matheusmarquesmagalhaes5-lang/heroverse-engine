@@ -209,6 +209,20 @@ def existing_comment(s, vid, text):
     return None
 
 
+def not_public_reason(s, vid):
+    """"video not public yet (...)" while the video is private or scheduled, else None. An unreadable status is "not
+    known", never a reason to skip the attempt."""
+    try:
+        r = s.get(API + "videos", params={"part": "status", "id": vid})
+        items = (r.json() or {}).get("items") or [] if r.status_code < 300 else []
+        status = items[0].get("status", {}) if items else {}
+    except Exception:  # noqa: BLE001 - best effort only
+        return None
+    if status.get("privacyStatus") == "private":
+        return f"video not public yet (privacy=private, publishAt={status.get('publishAt')})"
+    return None
+
+
 def first_comment(s, vid, text, tries=3):
     """Post the channel's first comment. Returns the comment-thread id, or "PENDING: <reason>" when YouTube refuses
     (missing scope, comments disabled, private or scheduled video) or stays unavailable. Never raises."""
@@ -218,6 +232,9 @@ def first_comment(s, vid, text, tries=3):
     found = existing_comment(s, vid, text)
     if found:
         return found
+    deferred = not_public_reason(s, vid)   # E264: commentThreads.insert answers 403 forbidden on a private/scheduled video
+    if deferred:
+        return "PENDING: " + deferred
     body = {"snippet": {"videoId": vid, "topLevelComment": {"snippet": {"textOriginal": text}}}}
     reason = "NOT_ATTEMPTED"
     for i in range(tries):

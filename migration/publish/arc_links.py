@@ -46,7 +46,7 @@ BLOCK_HEAD = "▶ This story in Shorts:"
 NEXT = "Next story: {} https://youtu.be/{}"
 WRITABLE = ("title", "description", "tags", "categoryId", "defaultLanguage", "defaultAudioLanguage")
 TOKENINFO = "https://oauth2.googleapis.com/tokeninfo"
-TRANSIENT = re.compile(r"HTTP_(409|429|5\d\d)|NOT_ATTEMPTED|NO_ID_IN_RESPONSE|Error\b|Timeout|Connection")
+TRANSIENT = re.compile(r"HTTP_(409|429|5\d\d)|NOT_ATTEMPTED|video not public yet|NO_ID_IN_RESPONSE|Error\b|Timeout|Connection")
 RECHECK = timedelta(hours=6)   # a video seen not public is looked at again after this (todo stays quiet meanwhile)
 # Data API v3 discovery document: videos.update accepts any of these; commentThreads.insert only youtube.force-ssl
 UPDATE_SCOPES = {"https://www.googleapis.com/auth/youtube", "https://www.googleapis.com/auth/youtube.force-ssl",

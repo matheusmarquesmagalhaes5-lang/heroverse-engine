@@ -34,7 +34,7 @@ def refusal(code, reason, message="refused"):
 class FakeSession:
     """Mocked YouTube session: no network. comment_answer is what commentThreads.insert returns."""
 
-    def __init__(self, comment_answer=None, privacy="private", existing=()):
+    def __init__(self, comment_answer=None, privacy="public", existing=()):
         self.calls, self.comment_answer, self.privacy, self.existing = [], comment_answer, privacy, list(existing)
         self.comment_bodies = []
 
@@ -119,6 +119,15 @@ class PublishStep(unittest.TestCase):
                 self.assertTrue(receipt["steps"]["first_comment"].startswith("PENDING: HTTP_"))
                 self.assertIn(answer.json()["error"]["errors"][0]["reason"], receipt["steps"]["first_comment"])
                 self.assertTrue(receipt["steps"]["thumbnail"] and receipt["steps"]["captions"])
+
+    def test_private_or_scheduled_video_defers_the_comment_without_attempting_it(self):
+        # E264: commentThreads.insert answers 403 forbidden on a private/scheduled video; it was attempted and the 403 looked final
+        with tempfile.TemporaryDirectory() as t:
+            fake = FakeSession(privacy="private")
+            receipt = self.run_once(Path(t), fake)
+            self.assertTrue(receipt["steps"]["first_comment"].startswith("PENDING: video not public yet (privacy=private"))
+            self.assertEqual(posts(fake), [])
+        self.assertEqual(pv.first_comment(FakeSession(privacy="unlisted"), "V", "ok"), "Ugz-comment-1")
 
     def test_network_error_is_pending(self):
         class Broken(FakeSession):

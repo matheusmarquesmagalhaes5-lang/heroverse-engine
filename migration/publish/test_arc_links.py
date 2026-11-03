@@ -326,6 +326,13 @@ class ArcLinks(unittest.TestCase):
         self.assertFalse(any("comment_terminal" in state[ep] for ep in SHORTS))
         self.assertEqual(f.todo("2026-10-28T13:41:00+00:00"), ["arc-01"])
 
+    def test_comment_deferred_on_a_private_video_is_not_terminal(self):
+        # E264: a 403 on a private/scheduled video is not a refusal for good; it is retried once public
+        al_apply = al.apply
+        self.assertTrue(al.TRANSIENT.search("PENDING: video not public yet (privacy=private, publishAt=None)"))
+        self.assertIsNone(al.TRANSIENT.search("PENDING: HTTP_403 forbidden: The comment thread could not be created"))
+        self.assertTrue(callable(al_apply))
+
     def test_long_must_be_processed_as_well_as_public(self):
         self.f.yt.vids[LONG]["status"]["uploadStatus"] = "uploaded"
         lines = self.f.run()
