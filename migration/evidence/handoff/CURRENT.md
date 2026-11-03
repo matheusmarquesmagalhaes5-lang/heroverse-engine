@@ -173,6 +173,20 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
   (`Start-Process shell:AppsFolder...` first), and stop if another window (the owner's Chrome, driven by the ChatGPT extension) keeps taking
   the foreground. One builder reference prompt was sent at 13:30 in "HeroVerse — stills" (not downloaded).
 
+- 2026-11-03 (Claude, genesis-10-11-long, Babel long): PLAN, STILLS, SOURCES, THUMBNAIL and 5 of 7 PAVO CLIPS READY; BLOCKED on 3 clips.
+  Main has `plans/genesis-10-11-long.json` (34 shots, plan_check --strict clean, ~8 min), the builder (APPROVED, #776), 27 stills approved on
+  viewed frames, 27 still-motion source approvals, the thumbnail (builder face, "WHY GOD SCATTERED THEM", 9.5) and the sealed probe record
+  41714272567 (the record job's push timed out 3x with HTTP 408; sealed from the run artifact with `probe-assets`, clips verified in the release).
+  Approved clips: k-hook and b-name on Pavo's own audio (ASR exact); k-irony and k-close on our line over Pavo's picture (`pavo_audio: ours`,
+  shot-remux 41731930737, no flags). The Pavo own track garbled 5 of 7 lines (speech-check run 41729891998). BLOCKED: b-brick, b-tower
+  (the builder's KJV lines) and k-restrain: on Pavo's track the words are wrong; on our line the lips are out of sync (SyncNet offset -13,
+  conf 0.9), and `shot-probe` refuses a new generation (PROBE_STORED_GENERATIONS, E292: no visual-defect flag on every stored one).
+  k-name was dropped from the plan (first generation shows a second hooded person, second FACE_NOT_FOUND). Needs a coordinator decision:
+  allow one more generation for those three shots (the lips-out-of-sync flag on the ours route is the visual defect), or accept the flagged
+  remuxed clips. Not built, not reviewed, not published. Lease released. ChatGPT desktop route: ui.ps1 now has robust focus plus an
+  owner-busy guard (PRs #777); one drive_run quirk: pass `-File` with a comma list, never inside `-c` (an id list became one string and
+  sent two empty prompts).
+
 ## Next moments
 
 - M2 compilation "Complete Story of Noah (Genesis 5-9)" is due 2026-11-04.
