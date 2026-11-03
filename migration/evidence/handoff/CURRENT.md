@@ -61,8 +61,8 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
   then Noah compilation (due 11-04) and the Babel script (runway 0).
 
 - 2026-11-03 (scheduled run 09:19 UTC): genesis-10-short thumbnail APPROVED (PR #719, 9.5): vertical crop of the approved still
-  flood-ends-long-s-joy, text THE DOVE RETURNS, no new generation; `check-record` passes. Next: `publish-episode.yml
-  episode=genesis-10-short publish_at=2026-11-03T23:30:00Z` after the merge, then read-back; reflection 1 master; genesis-11-short;
+  flood-ends-long-s-joy, text THE DOVE RETURNS, no new generation; `check-record` passes. PUBLISHED (run 41610783260): https://youtube.com/shorts/B5H2n_iyYV4 private, public at 2026-11-03T23:30Z, thumbnail set,
+  first comment HTTP 403 (known). Next: 11-04 slots (05:30, 13:30, 18:30, 23:30) are EMPTY; reflection 1 master; genesis-11-short;
   Noah/Genesis 1-9 compilation (due 11-04) not started in this run.
 
 ## Next moments
