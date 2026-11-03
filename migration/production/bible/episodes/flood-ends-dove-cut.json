@@ -85,6 +85,19 @@
   "vidiq": 0,
   "pavo": 0
  },
+ "attributes": {
+  "hook_type": "narrated_story_hook",
+  "hook_line": "So he took the gentlest bird he had. A dove. If there was any dry place left in the world, she would find it.",
+  "title_pattern": "hook_emoji_pipe_story_kjv",
+  "first_visual": "dove_in_hand",
+  "ai_scenes": 6,
+  "slot_utc": "05:30",
+  "transition": "cut",
+  "seconds": 66.067,
+  "voice": "kokoro_am_michael",
+  "compose": "engine",
+  "structure": "bible-story-cut"
+ },
  "slot": "2026-11-03T05:30:00Z",
  "review": {
   "overall": 9.1,

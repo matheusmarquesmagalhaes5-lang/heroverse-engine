@@ -384,6 +384,9 @@ class Cuts(unittest.TestCase):
             self.assertEqual([x["kind"] for x in ep["narration"]], ["scripture", "story", "insight"])
             self.assertEqual(ep["narration"][1]["text"], "Noah heard it and went on building. His sons carried the beams.")
             self.assertNotIn("review", ep)   # never a copied score: its own native review and decision come next
+            sys.path.insert(0, str(ROOT / "migration/mining"))
+            import live_intel   # a record carries what a later verdict compares (migration/mining/live_intel.py)
+            self.assertEqual([k for k in live_intel.REQUIRED_ATTRIBUTES if k not in ep["attributes"]], [])
 
 
 class CutRecords(unittest.TestCase):

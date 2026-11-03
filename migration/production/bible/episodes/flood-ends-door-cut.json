@@ -71,6 +71,19 @@
   "vidiq": 0,
   "pavo": 0
  },
+ "attributes": {
+  "hook_type": "keeper_insight_hook",
+  "hook_line": "Most miss this: Noah saw dry ground and still waited. He stepped out when God said go. The One who shut the door opened it.",
+  "title_pattern": "hook_pipe_story_kjv",
+  "first_visual": "keeper_face_firelit",
+  "ai_scenes": 4,
+  "slot_utc": "18:30",
+  "transition": "cut",
+  "seconds": 40.033,
+  "voice": "kokoro_am_michael",
+  "compose": "engine",
+  "structure": "bible-story-cut"
+ },
  "slot": "2026-11-03T18:30:00Z",
  "review": {
   "overall": 9.1,

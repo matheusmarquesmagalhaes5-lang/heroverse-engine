@@ -84,6 +84,19 @@
   "vidiq": 0,
   "pavo": 0
  },
+ "attributes": {
+  "hook_type": "narrated_fear_question_hook",
+  "hook_line": "But the first time a dark cloud gathered over the hills, imagine the fear. Would the water come back? Every child who had heard the stories would look up and wonder.",
+  "title_pattern": "hook_emoji_pipe_story_kjv",
+  "first_visual": "storm_over_the_family",
+  "ai_scenes": 7,
+  "slot_utc": "13:30",
+  "transition": "cut",
+  "seconds": 72.6,
+  "voice": "kokoro_am_michael",
+  "compose": "engine",
+  "structure": "bible-story-cut"
+ },
  "slot": "2026-11-03T13:30:00Z",
  "review": {
   "overall": 9.1,
