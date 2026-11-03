@@ -52,7 +52,7 @@ def sources(spec, root=ROOT):
     return plan, cl.load(Path(root) / spec["report"])
 
 
-def boundaries(sentences, start, end, total):
+def boundaries(sentences, start, end, total, fade=0.0):
     """Problems of one range on the sentence timeline: it starts in the silence before a sentence (never inside one)
     and ends in the silence after one; (problems, first sentence index, last sentence index)."""
     out = []
@@ -65,12 +65,12 @@ def boundaries(sentences, start, end, total):
         out.append(f"CUT_ENDS_INSIDE_SPEECH at {end} s (end in the silence after a sentence)")
     if not out and (first is None or last is None or last < first):
         out.append("CUT_HAS_NO_SENTENCE")
-    if not out:   # E275: the render fades picture and sound over FADE s at both edges; speech must not sit under a fade
-        if sentences[first]["start"] - start < FADE - TOL:
-            out.append(f"CUT_FADE_OVERLAPS_SPEECH at {start} s (>= {FADE} s of silence before the first word, "
+    if not out and fade:   # E275: a render that fades picture and sound over `fade` s at both edges (the cuts) keeps speech out of it
+        if sentences[first]["start"] - start < fade - TOL:
+            out.append(f"CUT_FADE_OVERLAPS_SPEECH at {start} s (>= {fade} s of silence before the first word, "
                         f"which starts at {sentences[first]['start']} s)")
-        if end - sentences[last]["end"] < FADE - TOL:
-            out.append(f"CUT_FADE_OVERLAPS_SPEECH at {end} s (>= {FADE} s of silence after the last word, "
+        if end - sentences[last]["end"] < fade - TOL:
+            out.append(f"CUT_FADE_OVERLAPS_SPEECH at {end} s (>= {fade} s of silence after the last word, "
                         f"which ends at {sentences[last]['end']} s)")
     return out, first, last
 
@@ -130,7 +130,7 @@ def check(spec, root=ROOT, spec_path=None):
             bad.append(f"CUT_X {cid} (0-1, the 9:16 window's centre across the frame)")
         if not CUT_SECONDS[0] <= end - start <= CUT_SECONDS[1]:
             bad.append(f"CUT_LENGTH {cid} {end - start:.2f} s ({CUT_SECONDS[0]:.0f}-{CUT_SECONDS[1]:.0f})")
-        found, first, last = boundaries(sentences, start, end, total)
+        found, first, last = boundaries(sentences, start, end, total, FADE)
         bad += [f"{p.split()[0]} {cid} {' '.join(p.split()[1:])}" for p in found]
         if not found:
             out[cid] = {"first": first, "last": last, "seconds": round(end - start, 3),
