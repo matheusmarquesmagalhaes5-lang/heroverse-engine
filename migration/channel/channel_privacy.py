@@ -200,14 +200,35 @@ def release_problems(item, ledger, hold, binding=None):
         return problems + ["QA_UNREADABLE"]
     if (ledger.get("entries", {}).get(f"{pilot}:{sha}") or {}).get("video_id") != vid:
         problems.append("VIDEO_NOT_THE_LEDGER_UPLOAD_OF_THIS_FILE")
-    problems += (binding or publication_binding)(pilot)
+    problems += (binding or publication_binding)(pilot, item.get("evidence_commit"))
     return problems
 
 
-def publication_binding(pilot):
-    """The same fail-closed revalidation publish.yml runs before an upload (publication_binding.py)."""
-    done = subprocess.run([sys.executable, "-I", "-B", str(ROOT / "migration/publish/publication_binding.py"),
-                           str(ROOT / "migration/production" / pilot)], capture_output=True, text=True)
+BOUND_FILES = ("out/qa.json", "inspection/APPROVAL.json", "out/manifest.json", "out/gate.json", "out/handoff.json",
+               "out/review.json", "out/package.json", "inspection/thumbnail.jpg", "inspection/claude_review.json")
+
+
+def publication_binding(pilot, evidence_commit=None):
+    """The same fail-closed revalidation publish.yml ran before the upload (publication_binding.py).
+    A release happens after the upload, and the shared plan may have moved on since (a later rebuild edits
+    the plan the handoff binds). So the check runs on the tree of the commit publish.yml uploaded from
+    (EVIDENCE_DIR/<commit>, a checkout made by the workflow), with that tree's own code, after proving that
+    every evidence file of the pilot is byte-identical today. The gate is not loosened: same script, same files."""
+    root = ROOT
+    if evidence_commit:
+        if not re.fullmatch(r"[0-9a-f]{40}", evidence_commit) or not os.environ.get("EVIDENCE_DIR"):
+            return ["EVIDENCE_COMMIT_UNUSABLE"]
+        root = Path(os.environ["EVIDENCE_DIR"]) / evidence_commit
+        if not (root / "migration/publish/publication_binding.py").is_file():
+            return ["EVIDENCE_TREE_MISSING"]
+        changed = [n for n in BOUND_FILES
+                   if (ROOT / "migration/production" / pilot / n).exists() != (root / "migration/production" / pilot / n).exists()
+                   or ((ROOT / "migration/production" / pilot / n).exists()
+                       and (ROOT / "migration/production" / pilot / n).read_bytes() != (root / "migration/production" / pilot / n).read_bytes())]
+        if changed:
+            return ["EVIDENCE_CHANGED_SINCE_UPLOAD " + ",".join(changed)]
+    done = subprocess.run([sys.executable, "-I", "-B", str(root / "migration/publish/publication_binding.py"),
+                           str(root / "migration/production" / pilot)], capture_output=True, text=True)
     return [] if done.returncode == 0 else ["PUBLICATION_BINDING_FAILED " + done.stdout.strip()[:300]]
 
 

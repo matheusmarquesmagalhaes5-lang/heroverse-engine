@@ -5,7 +5,9 @@
  "releases": [
   {
    "video_id": "1m-NUJhkdMY",
-   "pilot": "pilot-017"
+   "pilot": "pilot-017",
+   "evidence_commit": "4450ebba5c42fb98b22b8567eee7f1810dc8e711"
   }
- ]
+ ],
+ "evidence_note": "evidence_commit = head of publish.yml run 41524618475, whose publication_binding gate passed for this exact file; the plan the handoff binds changed afterwards for the later Pavo rebuild, so the same gate is re-run on that tree (all pilot evidence files must be byte-identical today)."
 }

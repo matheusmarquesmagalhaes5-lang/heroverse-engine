@@ -4,7 +4,9 @@ public video (owner, 2026-10-26: the scheduled prayer longs pilot-008 and pilot-
 import contextlib
 import io
 import json
+import os
 from pathlib import Path
+import shutil
 import sys
 import tempfile
 import unittest
@@ -106,7 +108,7 @@ class Release(unittest.TestCase):
             (t / "ledger.json").write_text(json.dumps(ledger))
             error = None
             with patch.object(cp, "token", return_value="fixture"), patch.object(cp, "call", yt), \
-                    patch.object(cp, "publication_binding", lambda pilot: list(binding)), \
+                    patch.object(cp, "publication_binding", lambda pilot, commit=None: list(binding)), \
                     patch.object(cp, "LEDGER", t / "ledger.json"), patch.object(cp, "HOLD_PLAN", t / "hold.json"), \
                     patch.object(cp, "PUBLICATION_HOLD", t / "none"), contextlib.redirect_stdout(io.StringIO()):
                 try:
@@ -149,6 +151,20 @@ class Release(unittest.TestCase):
     def test_a_video_still_uploading_is_refused(self):
         change, yt, error, _ = self.run_release({"privacyStatus": "private", "uploadStatus": "failed"})
         self.assertEqual((change["problems"], yt.writes), (["UPLOAD_NOT_USABLE"], []))
+
+    def test_an_evidence_commit_is_checked_on_its_own_tree_and_only_if_the_evidence_is_unchanged(self):
+        with tempfile.TemporaryDirectory() as t:
+            sha = "a" * 40
+            ev = Path(t) / sha
+            pilot = ev / "migration/production/pilot-017"
+            (ev / "migration/publish").mkdir(parents=True)
+            shutil.copytree(ROOT / "migration/production/pilot-017", pilot)
+            (ev / "migration/publish/publication_binding.py").write_text("import sys\nsys.exit(0)\n")
+            with patch.dict(os.environ, {"EVIDENCE_DIR": t}):
+                self.assertEqual(cp.publication_binding("pilot-017", sha), [])
+                (pilot / "out/gate.json").write_text("{}")                      # evidence altered since the upload
+                self.assertTrue(cp.publication_binding("pilot-017", sha)[0].startswith("EVIDENCE_CHANGED_SINCE_UPLOAD"))
+                self.assertEqual(cp.publication_binding("pilot-017", "zz"), ["EVIDENCE_COMMIT_UNUSABLE"])
 
     def test_the_release_plan_and_workflow_are_wired(self):
         plan = json.loads((ROOT / "migration/channel/release-plan.json").read_text())
