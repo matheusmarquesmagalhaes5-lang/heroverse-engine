@@ -135,7 +135,7 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
 - 2026-11-03 (coordinator, flood reflection 1 closed): master 08276e85 stays evidence, held at 9.3, NOT published. 2026-11-05 05:30Z is already taken by the
   scheduled grace cut (JlKX5Tw3kjM) and leaf (public since 13:04Z); ararat was dropped (ORIGINAL_SHARE), so no reviewed stock cut is left for another slot.
   New: DECISIONS 2026-11-03 rules (reserved reflection window, inter-clip silences <= 0.3 s, re-measure sync after a retime), two pavo_lessons,
-  long_plan_check warns REFLECTION_WINDOW_NOT_RESERVED (E289).
+  long_plan_check warns REFLECTION_WINDOW_NOT_RESERVED (E291).
 
 ## Next moments
 

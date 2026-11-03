@@ -709,11 +709,11 @@ def check(plan, chars=None, gate_values=None, criteria=None, arc_table=None):
     return {"problems": problems + window_problems, "pending": pending, "warnings": warnings, "estimate": estimate}
 
 
-REFLECTION_WINDOW_S = (20.0, 30.0)   # E289: the seconds of the long that the Keeper reflection's top clip is reserved from
+REFLECTION_WINDOW_S = (20.0, 30.0)   # E291: the seconds of the long that the Keeper reflection's top clip is reserved from
 
 
 def reflection_window_report(plan):
-    """E289 (coordinator 2026-11-03, flood reflection 1 held at 9.3): a long's plan reserves ONE window for its Keeper
+    """E291 (coordinator 2026-11-03, flood reflection 1 held at 9.3): a long's plan reserves ONE window for its Keeper
     reflection's top clip, `long.reflection_window` {start, end}: 20-30 s of the master with 3 or more shots, none a
     still held over ~8 s, outside the cuts' ranges. (problems, warnings): a malformed window is a problem; a long
     without one is a WARNING (REFLECTION_WINDOW_NOT_RESERVED), so the long that already exists still builds but a new

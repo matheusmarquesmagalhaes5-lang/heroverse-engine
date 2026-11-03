@@ -858,7 +858,7 @@ class NoRendererReadsTheNewQaYet(unittest.TestCase):
 
 
 class ReflectionWindowReserved(unittest.TestCase):
-    """E289: a long reserves its Keeper reflection's top window (20-30 s, 3+ shots, no still over ~8 s) before the shots are
+    """E291: a long reserves its Keeper reflection's top window (20-30 s, 3+ shots, no still over ~8 s) before the shots are
     fixed; an existing long without one only warns, a malformed window is refused."""
 
     def test_absent_warns_malformed_is_refused_and_a_sound_window_is_clean(self):
