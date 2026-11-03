@@ -1,0 +1,675 @@
+{
+ "version": "ypp-market-model-v2",
+ "panel_captured_at": "2026-11-03T09:58:20Z",
+ "channels_in_panel": 1797,
+ "channels_modelled": 431,
+ "retention_scenarios": {
+  "low": 0.2,
+  "mid": 0.3,
+  "high": 0.45
+ },
+ "bands": [
+  {
+   "activity_days": [
+    0,
+    30
+   ],
+   "channels": 374,
+   "eligible_low": {
+    "k": 2,
+    "share": 0.0053,
+    "wilson90": [
+     0.0018,
+     0.016
+    ]
+   },
+   "eligible_mid": {
+    "k": 2,
+    "share": 0.0053,
+    "wilson90": [
+     0.0018,
+     0.016
+    ]
+   },
+   "eligible_high": {
+    "k": 2,
+    "share": 0.0053,
+    "wilson90": [
+     0.0018,
+     0.016
+    ]
+   },
+   "subs_1000": {
+    "k": 13,
+    "wilson90": [
+     0.0222,
+     0.054
+    ]
+   }
+  },
+  {
+   "activity_days": [
+    31,
+    60
+   ],
+   "channels": 36,
+   "eligible_low": {
+    "k": 5,
+    "share": 0.1389,
+    "wilson90": [
+     0.0693,
+     0.259
+    ]
+   },
+   "eligible_mid": {
+    "k": 5,
+    "share": 0.1389,
+    "wilson90": [
+     0.0693,
+     0.259
+    ]
+   },
+   "eligible_high": {
+    "k": 6,
+    "share": 0.1667,
+    "wilson90": [
+     0.0887,
+     0.2912
+    ]
+   },
+   "subs_1000": {
+    "k": 9,
+    "wilson90": [
+     0.1517,
+     0.3833
+    ]
+   }
+  },
+  {
+   "activity_days": [
+    61,
+    90
+   ],
+   "channels": 5,
+   "eligible_low": {
+    "k": 0,
+    "share": 0.0,
+    "wilson90": [
+     0.0,
+     0.3512
+    ]
+   },
+   "eligible_mid": {
+    "k": 0,
+    "share": 0.0,
+    "wilson90": [
+     0.0,
+     0.3512
+    ]
+   },
+   "eligible_high": {
+    "k": 0,
+    "share": 0.0,
+    "wilson90": [
+     0.0,
+     0.3512
+    ]
+   },
+   "subs_1000": {
+    "k": 0,
+    "wilson90": [
+     0.0,
+     0.3512
+    ]
+   }
+  },
+  {
+   "activity_days": [
+    91,
+    180
+   ],
+   "channels": 13,
+   "eligible_low": {
+    "k": 0,
+    "share": 0.0,
+    "wilson90": [
+     0.0,
+     0.1723
+    ]
+   },
+   "eligible_mid": {
+    "k": 0,
+    "share": 0.0,
+    "wilson90": [
+     0.0,
+     0.1723
+    ]
+   },
+   "eligible_high": {
+    "k": 1,
+    "share": 0.0769,
+    "wilson90": [
+     0.0174,
+     0.2823
+    ]
+   },
+   "subs_1000": {
+    "k": 3,
+    "wilson90": [
+     0.0962,
+     0.4581
+    ]
+   }
+  },
+  {
+   "activity_days": [
+    181,
+    365
+   ],
+   "channels": 3,
+   "eligible_low": {
+    "k": 1,
+    "share": 0.3333,
+    "wilson90": [
+     0.0783,
+     0.7465
+    ]
+   },
+   "eligible_mid": {
+    "k": 1,
+    "share": 0.3333,
+    "wilson90": [
+     0.0783,
+     0.7465
+    ]
+   },
+   "eligible_high": {
+    "k": 1,
+    "share": 0.3333,
+    "wilson90": [
+     0.0783,
+     0.7465
+    ]
+   },
+   "subs_1000": {
+    "k": 1,
+    "wilson90": [
+     0.0783,
+     0.7465
+    ]
+   }
+  }
+ ],
+ "fast_le_90d_profile": {
+  "channels": 7,
+  "median_uploads_per_day": 0.257,
+  "median_short_share": 0.0,
+  "median_long_seconds": 1633.0,
+  "median_top_video_share": 0.302,
+  "median_subscribers": 7090,
+  "median_subs_per_day": 202.57
+ },
+ "rest_le_90d_profile": {
+  "channels": 408,
+  "median_uploads_per_day": 0.585,
+  "median_short_share": 1.0,
+  "median_long_seconds": 509.5,
+  "median_top_video_share": 0.467,
+  "median_subscribers": 13.0,
+  "median_subs_per_day": 1.34
+ },
+ "fast_le_90d_channels": [
+  {
+   "channel_id": "UCsZB-J7OE7JspQCTgW4spdg",
+   "title": "CITIES UNCOVERED",
+   "activity_days": 13,
+   "subscribers": 2680,
+   "videos": 10,
+   "long_videos": 10,
+   "short_videos": 0,
+   "long_views": 369141,
+   "short_views": 0,
+   "uploads_per_day": 0.769,
+   "short_share": 0.0,
+   "median_long_seconds": 1385,
+   "top_share": 0.284,
+   "queries": [
+    "story of noah"
+   ],
+   "subs_per_day": 206.15,
+   "long_hours_low": 27389.0,
+   "eligible_long_low": true,
+   "long_hours_mid": 41083.5,
+   "eligible_long_mid": true,
+   "long_hours_high": 61625.3,
+   "eligible_long_high": true,
+   "eligible_shorts": false
+  },
+  {
+   "channel_id": "UCMijVbJw_OKi-ns1VPM19EQ",
+   "title": "Rouf on fire",
+   "activity_days": 23,
+   "subscribers": 236000,
+   "videos": 10,
+   "long_videos": 0,
+   "short_videos": 10,
+   "long_views": 0,
+   "short_views": 30467947,
+   "uploads_per_day": 0.435,
+   "short_share": 1.0,
+   "median_long_seconds": null,
+   "top_share": 0.285,
+   "queries": [
+    "TRACKED"
+   ],
+   "subs_per_day": 10260.87,
+   "long_hours_low": 0.0,
+   "eligible_long_low": false,
+   "long_hours_mid": 0.0,
+   "eligible_long_mid": false,
+   "long_hours_high": 0.0,
+   "eligible_long_high": false,
+   "eligible_shorts": true
+  },
+  {
+   "channel_id": "UCoeacMVR7UO-0axE_BxjcuQ",
+   "title": "Mic Legends",
+   "activity_days": 34,
+   "subscribers": 1050,
+   "videos": 7,
+   "long_videos": 7,
+   "short_videos": 0,
+   "long_views": 91606,
+   "short_views": 0,
+   "uploads_per_day": 0.206,
+   "short_share": 0.0,
+   "median_long_seconds": 892,
+   "top_share": 0.731,
+   "queries": [
+    "story of noah"
+   ],
+   "subs_per_day": 30.88,
+   "long_hours_low": 4492.3,
+   "eligible_long_low": true,
+   "long_hours_mid": 6738.5,
+   "eligible_long_mid": true,
+   "long_hours_high": 10107.8,
+   "eligible_long_high": true,
+   "eligible_shorts": false
+  },
+  {
+   "channel_id": "UCOGL2D26c9m4jyvx2vDwXaQ",
+   "title": "Deep Past",
+   "activity_days": 35,
+   "subscribers": 7090,
+   "videos": 11,
+   "long_videos": 11,
+   "short_videos": 0,
+   "long_views": 1062089,
+   "short_views": 0,
+   "uploads_per_day": 0.314,
+   "short_share": 0.0,
+   "median_long_seconds": 5773,
+   "top_share": 0.302,
+   "queries": [
+    "TRACKED"
+   ],
+   "subs_per_day": 202.57,
+   "long_hours_low": 343244.3,
+   "eligible_long_low": true,
+   "long_hours_mid": 514866.5,
+   "eligible_long_mid": true,
+   "long_hours_high": 772299.8,
+   "eligible_long_high": true,
+   "eligible_shorts": false
+  },
+  {
+   "channel_id": "UCqrfXHv3jh3YmWJ8-qzPxNQ",
+   "title": "Dastan-e- Islam",
+   "activity_days": 35,
+   "subscribers": 2330,
+   "videos": 9,
+   "long_videos": 9,
+   "short_videos": 0,
+   "long_views": 427798,
+   "short_views": 0,
+   "uploads_per_day": 0.257,
+   "short_share": 0.0,
+   "median_long_seconds": 1570,
+   "top_share": 0.465,
+   "queries": [
+    "story of noah"
+   ],
+   "subs_per_day": 66.57,
+   "long_hours_low": 55059.3,
+   "eligible_long_low": true,
+   "long_hours_mid": 82588.9,
+   "eligible_long_mid": true,
+   "long_hours_high": 123883.4,
+   "eligible_long_high": true,
+   "eligible_shorts": false
+  },
+  {
+   "channel_id": "UCLuXMSqr-nAjyjdBq_JxQUA",
+   "title": "Gospel Library",
+   "activity_days": 47,
+   "subscribers": 7760,
+   "videos": 11,
+   "long_videos": 11,
+   "short_videos": 0,
+   "long_views": 733228,
+   "short_views": 0,
+   "uploads_per_day": 0.234,
+   "short_share": 0.0,
+   "median_long_seconds": 1696,
+   "top_share": 0.299,
+   "queries": [
+    "TRACKED"
+   ],
+   "subs_per_day": 165.11,
+   "long_hours_low": 105105.8,
+   "eligible_long_low": true,
+   "long_hours_mid": 157658.7,
+   "eligible_long_mid": true,
+   "long_hours_high": 236488.1,
+   "eligible_long_high": true,
+   "eligible_shorts": false
+  },
+  {
+   "channel_id": "UCgqb2E1K2iaz7R9R8KMsPVg",
+   "title": "PicVersion",
+   "activity_days": 54,
+   "subscribers": 11900,
+   "videos": 4,
+   "long_videos": 4,
+   "short_videos": 0,
+   "long_views": 662859,
+   "short_views": 0,
+   "uploads_per_day": 0.074,
+   "short_share": 0.0,
+   "median_long_seconds": 13665,
+   "top_share": 0.974,
+   "queries": [
+    "kjv bible story",
+    "story of moses"
+   ],
+   "subs_per_day": 220.37,
+   "long_hours_low": 614972.4,
+   "eligible_long_low": true,
+   "long_hours_mid": 922458.5,
+   "eligible_long_mid": true,
+   "long_hours_high": 1383687.8,
+   "eligible_long_high": true,
+   "eligible_shorts": false
+  }
+ ],
+ "by_strategy_low_retention": {
+  "long_20min_plus_daily": [
+   {
+    "activity_days": [
+     0,
+     30
+    ],
+    "n": 14,
+    "k_low_retention": 1,
+    "share": 0.0714,
+    "wilson90": [
+     0.0161,
+     0.2656
+    ]
+   },
+   {
+    "activity_days": [
+     31,
+     60
+    ],
+    "n": 0,
+    "k_low_retention": 0,
+    "share": null,
+    "wilson90": null
+   },
+   {
+    "activity_days": [
+     61,
+     90
+    ],
+    "n": 0,
+    "k_low_retention": 0,
+    "share": null,
+    "wilson90": null
+   },
+   {
+    "activity_days": [
+     91,
+     180
+    ],
+    "n": 0,
+    "k_low_retention": 0,
+    "share": null,
+    "wilson90": null
+   }
+  ],
+  "long_20min_plus_slower": [
+   {
+    "activity_days": [
+     0,
+     30
+    ],
+    "n": 20,
+    "k_low_retention": 0,
+    "share": 0.0,
+    "wilson90": [
+     0.0,
+     0.1192
+    ]
+   },
+   {
+    "activity_days": [
+     31,
+     60
+    ],
+    "n": 8,
+    "k_low_retention": 4,
+    "share": 0.5,
+    "wilson90": [
+     0.2486,
+     0.7514
+    ]
+   },
+   {
+    "activity_days": [
+     61,
+     90
+    ],
+    "n": 0,
+    "k_low_retention": 0,
+    "share": null,
+    "wilson90": null
+   },
+   {
+    "activity_days": [
+     91,
+     180
+    ],
+    "n": 3,
+    "k_low_retention": 0,
+    "share": 0.0,
+    "wilson90": [
+     0.0,
+     0.4742
+    ]
+   }
+  ],
+  "long_3_to_20min": [
+   {
+    "activity_days": [
+     0,
+     30
+    ],
+    "n": 31,
+    "k_low_retention": 0,
+    "share": 0.0,
+    "wilson90": [
+     0.0,
+     0.0803
+    ]
+   },
+   {
+    "activity_days": [
+     31,
+     60
+    ],
+    "n": 5,
+    "k_low_retention": 1,
+    "share": 0.2,
+    "wilson90": [
+     0.046,
+     0.5647
+    ]
+   },
+   {
+    "activity_days": [
+     61,
+     90
+    ],
+    "n": 0,
+    "k_low_retention": 0,
+    "share": null,
+    "wilson90": null
+   },
+   {
+    "activity_days": [
+     91,
+     180
+    ],
+    "n": 2,
+    "k_low_retention": 0,
+    "share": 0.0,
+    "wilson90": [
+     0.0,
+     0.575
+    ]
+   }
+  ],
+  "mixed_long_and_shorts": [
+   {
+    "activity_days": [
+     0,
+     30
+    ],
+    "n": 69,
+    "k_low_retention": 0,
+    "share": 0.0,
+    "wilson90": [
+     0.0,
+     0.0377
+    ]
+   },
+   {
+    "activity_days": [
+     31,
+     60
+    ],
+    "n": 5,
+    "k_low_retention": 0,
+    "share": 0.0,
+    "wilson90": [
+     0.0,
+     0.3512
+    ]
+   },
+   {
+    "activity_days": [
+     61,
+     90
+    ],
+    "n": 2,
+    "k_low_retention": 0,
+    "share": 0.0,
+    "wilson90": [
+     0.0,
+     0.575
+    ]
+   },
+   {
+    "activity_days": [
+     91,
+     180
+    ],
+    "n": 3,
+    "k_low_retention": 0,
+    "share": 0.0,
+    "wilson90": [
+     0.0,
+     0.4742
+    ]
+   }
+  ],
+  "shorts_heavy": [
+   {
+    "activity_days": [
+     0,
+     30
+    ],
+    "n": 240,
+    "k_low_retention": 1,
+    "share": 0.0042,
+    "wilson90": [
+     0.0009,
+     0.0185
+    ]
+   },
+   {
+    "activity_days": [
+     31,
+     60
+    ],
+    "n": 18,
+    "k_low_retention": 0,
+    "share": 0.0,
+    "wilson90": [
+     0.0,
+     0.1307
+    ]
+   },
+   {
+    "activity_days": [
+     61,
+     90
+    ],
+    "n": 3,
+    "k_low_retention": 0,
+    "share": 0.0,
+    "wilson90": [
+     0.0,
+     0.4742
+    ]
+   },
+   {
+    "activity_days": [
+     91,
+     180
+    ],
+    "n": 5,
+    "k_low_retention": 0,
+    "share": 0.0,
+    "wilson90": [
+     0.0,
+     0.3512
+    ]
+   }
+  ]
+ },
+ "subscriber_conversion": {
+  "channels": 15,
+  "subs_per_1000_long_views_p25": 6.68,
+  "median": 9.8,
+  "p75": 12.18
+ },
+ "limits": [
+  "Public statistics only: real watch hours, retention, CTR, monetization status and RPM of other channels are unknown; eligibility is a proxy under stated retention scenarios.",
+  "Cross-sectional: share of channels of a given activity age already over the proxy, not a followed cohort. Daily panels add trajectories.",
+  "Discovery requires an upload in the last 30 days that search returns; channels that stopped or were removed are missing (survivorship).",
+  "Upload samples are the most recent 50-200 videos; channels with longer histories are excluded from activity-age bands (marked truncated)."
+ ]
+}
