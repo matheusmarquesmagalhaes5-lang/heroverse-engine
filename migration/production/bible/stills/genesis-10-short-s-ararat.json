@@ -2,6 +2,25 @@
  "id": "genesis-10-short-s-ararat",
  "episode": "genesis-10-short",
  "shot": "s-ararat",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. A few figures in silhouette, their backs to the camera, stand on the bare rocky top of a mountain, centred in the frame, flood water lying all around below them to the horizon. Grey day, mist on the peaks. Still and vast. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. A few figures in silhouette, their backs to the camera, stand on the bare rocky top of a mountain, centred in the frame, flood water lying all around below them to the horizon. Grey day, mist on the peaks. Still and vast. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-10-short-s-ararat.jpg",
+ "sha256": "19bcb206729f40bc7df68bea8173f27277080e1fe85143d8961147d7cf2f5521",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-10-short-s-ararat-2026110303-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-03",
+  "score": 9.5,
+  "note": "ChatGPT desktop 9:16 candidate (prompt without the ark): viewed at full size: painterly Old-Master light, period-correct, no text or modern objects, subject centred.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "0b1e061eff3c03374e2853a022d6194154050bead7b9310477e28a2d92e97c67",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }
