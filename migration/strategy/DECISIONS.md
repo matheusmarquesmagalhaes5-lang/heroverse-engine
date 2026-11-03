@@ -552,3 +552,14 @@ God's voice (s-voice) stays a scene: God is never shown with a face, and Genesis
 ## 2026-11-03 — Inteligência Viva (extra run, owner request)
 - Moment M2 (Noah compilation due 11-04); M1 closing as flood-ends-long goes public. No trigger fired. Goal numbers carried over from 11-02 (subs 301 measured; long hours 27.9 estimated; hours bind). No vidIQ credits used.
 - live-plan: 4 Shorts/day (2-3 cuts or bridges + 1 Keeper reflection v2), slots 05:30/13:30/18:30/23:30 UTC (05:30 and 18:30 are unmeasured exploration), next long Genesis 10-11 (script runway 0), compilation 11-04.
+
+## 2026-11-03 — flood-ends-long: the held version is released as it is (owner order)
+
+Owner, 2026-11-03: "Pode soltar aquele longo… faça os recortes… a partir de agora não erre mais." On 2026-11-03 the owner released
+the held version as is: pilot-017 (YouTube 1m-NUJhkdMY, approved by approve.yml run 41521201681 and uploaded by publish.yml run
+41524618475, unscheduled by channel-privacy run 41536206003) goes public without waiting for the Pavo-talking rebuild. It is removed
+from `channel/hold-plan.json` (the prayer-long hold stays). Route: `channel-privacy.yml` mode `release` (`release-plan.json`),
+which uploads nothing and approves nothing: it refuses unless the video is still the ledger's upload of the pilot's exact file,
+is out of the hold plan and `publication_binding.py` still passes; it reads the status back and records the release in the ledger.
+publish.yml cannot do it: a resumed upload never changes privacy. The rebuild with Pavo clips (E271/E272) stays a separate,
+later version and does not block this one. The cuts (Shorts) follow once it is public.

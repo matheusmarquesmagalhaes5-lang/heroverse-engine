@@ -34,6 +34,11 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
   probe; preflight PASS). k-bow failed the pinned ASR words check on both generations and stays on the Kokoro
   voice-over fallback; see DECISIONS. Next: `episode.yml` rebuild, then the review of the new master.
 
+- 2026-11-03 owner order: "Pode soltar aquele longo": the held version of 1m-NUJhkdMY is released as it is (DECISIONS
+  2026-11-03). It is out of `hold-plan.json`; `channel-privacy.yml` mode `release` (`release-plan.json`) makes it public and
+  records the read-back. Then the cuts via `short-cuts.yml` (`cuts/flood-ends-long.json`), spaced across the day. The Pavo
+  rebuild is a later separate version.
+
 ## Next moments
 
 - M2 compilation "Complete Story of Noah (Genesis 5-9)" is due 2026-11-04.
