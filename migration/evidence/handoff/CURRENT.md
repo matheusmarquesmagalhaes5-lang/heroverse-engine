@@ -149,6 +149,18 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
   voice-over version 1zsZZgDCAG0 (pilot-018, 13:30Z) stays scheduled until the new upload is read back scheduled, then goes to `hold-plan.json`.
   Antidote E292: `shot-probe` refuses a line with stored generations unless a visual-defect flag is on all of them (PROBE_STORED_GENERATIONS).
 
+- 2026-11-03 (Claude session, genesis-10-11-long, Babel long, not yet built): `builder` is in `characters.json` as DRAFT (original
+  Babylonian brick-maker, voice bm_lewis; APPROVED only after its reference still is reviewed, by PR). Its Kokoro pace is measured in
+  CI by the new `voice-pace.yml` (run 41673996439, calibrated on Cain 3.340 = 3.340): 3.383 w/s, in `voice_pace.py` (PRs #769, #771, #772).
+  The plan `plans/genesis-10-11-long.json` (35 shots: 27 stills, hook + 4 Keeper insights/close + 3 builder lines, all Pavo talking, God's
+  11:6-7 read by the Keeper over clouds, `long.reflection_window` 410-431 s; ~9 min, not 15: 30 stills at 20 s cap it) passes
+  `plan_check --strict` except the missing approved stills, the builder approval and the builder pace entry (now merged). It lives on branch
+  `claude/babel-long-plan` with 27 DRAFT still records; it is not in main yet. Next: the 27 stills + the builder reference through the
+  ChatGPT desktop route (branch `-branch claude/babel-long-plan`), approve, plan PR, then shot-probe / episode / review / publish.
+  Desktop route lesson (2026-11-03): the first click on the app only focuses it; send only after the app is the foreground window
+  (`Start-Process shell:AppsFolder...` first), and stop if another window (the owner's Chrome, driven by the ChatGPT extension) keeps taking
+  the foreground. One builder reference prompt was sent at 13:30 in "HeroVerse — stills" (not downloaded).
+
 ## Next moments
 
 - M2 compilation "Complete Story of Noah (Genesis 5-9)" is due 2026-11-04.
