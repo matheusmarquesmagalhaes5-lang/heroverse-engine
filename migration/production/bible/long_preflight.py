@@ -59,7 +59,7 @@ PROBE_BATCH_SHARE = 0.7
 PROBE_ROUNDS = 2              # shot-probe.yml's default attempts: two clean candidates for Claude to choose from
 # expected generations a round makes for one shot (make_shot regenerates a failed clip): a scene ~1.2 (E108/E114 frame
 # misses happen after the checks, at the review), a talking clip: 1 generation plus a second 6 times in 10 (its lips
-# pass rate ~0.4, keeper-lipsync-rate), capped at TALK_ATTEMPTS = 2 (E264)
+# pass rate ~0.4, keeper-lipsync-rate), capped at TALK_ATTEMPTS_MAX = 2 (E264; E286: a second one only for a visual defect)
 GENERATIONS_PER_ROUND = {"talking": 1.6, "voice_over": 1.2, "scene": 1.2}
 sys.path.insert(0, str(REPO / "migration" / "integrations" / "pavo"))
 import quota  # noqa: E402  (E128: the shared free-model budget; stdlib only)

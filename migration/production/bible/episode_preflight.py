@@ -24,7 +24,7 @@ Steps (each one is the build's own code, not a copy):
   6. talking lines: each talking shot's line, with its speaker, the reference images it sends and the prompt binding,
      must have a direct 0-credit Pavo probe in evidence/pavo/setups.json (lips-check passes over generations on that
      line: #419 showed the rate belongs to the line, not to the setup). None is PROBE_REQUIRED; a rate whose chance
-     within TALK_ATTEMPTS is under MIN_SHOT_CHANCE is PROBE_RATE_LOW. The run's chance is reported.
+     within TALK_ATTEMPTS_MAX is under MIN_SHOT_CHANCE is PROBE_RATE_LOW. The run's chance is reported.
 The report is PASS only when every step ran and found nothing. --write saves it to
 evidence/preflight/<episode>.json (bound to the plan's and characters.json's sha256); episode.yml runs
 verify-preflight on main before any secret is used, so a build without a PASS preflight of that exact plan stops in
@@ -136,8 +136,8 @@ def cf_images_today(today=None, run=subprocess.run):
     return n
 
 
-MIN_SHOT_CHANCE = 0.9         # a talking shot must pass its lips check within TALK_ATTEMPTS at least this often
-MIN_PROBE_GENERATIONS = 6     # a line's rate is read from at least this many direct generations (TALK_ATTEMPTS)
+MIN_SHOT_CHANCE = 0.9         # a talking shot must pass its lips check within TALK_ATTEMPTS_MAX at least this often
+MIN_PROBE_GENERATIONS = 6     # a line's rate is read from at least this many direct generations (TALK_ATTEMPTS_MAX)
 # a voice-over Keeper prompt: 2 direct generations, the owner-approved plan B protocol (keeper-vo/calibration.json
 # build_probes), all passing; the still-mouth result was decided by the reference and the gaze, which plan_check
 # fixes (KEEPER_VO_POSE, the talking frame alone), not by a line. Read by the rule of succession below, 2 of 2 is 0.75
@@ -528,11 +528,11 @@ def preflight(plan_path, voice=None, refs=False, chars=None, setups=None, today_
         for r in rows:
             r.pop("matched", None)
         report["setups"] = {"shots": rows, "probes_required": missing, "rate_low": low,
-                            "talk_attempts": eb.TALK_ATTEMPTS, "min_shot_chance": MIN_SHOT_CHANCE,
+                            "talk_attempts": eb.TALK_ATTEMPTS_MAX, "min_shot_chance": MIN_SHOT_CHANCE,
                             "run_chance_all_talking_shots": chance}
         blockers += [probe_required(r) for r in rows if r.get("shot") in missing]
         blockers += [f"PROBE_RATE_LOW {r['shot']} ({'still mouth' if r.get('kind') == 'still_mouth' else 'lips'} passed "
-                     f"{r['passed']}: {r['shot_chance']} within {eb.TALK_ATTEMPTS} attempts < {MIN_SHOT_CHANCE})"
+                     f"{r['passed']}: {r['shot_chance']} within {eb.TALK_ATTEMPTS_MAX} attempts < {MIN_SHOT_CHANCE})"
                      for r in rows if r.get("shot") in low]
     # E114: which shots still need a probed, reviewed and approved clip (shot-probe.yml, approve-shot). Not a blocker
     # of this report (an approval comes after it, by its own PR); verify-preflight refuses the build until none is left

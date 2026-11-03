@@ -43,6 +43,7 @@ sys.path.insert(0, str(ROOT / "migration" / "production"))
 import buzzy_long  # noqa: E402
 import compilation_long as cl  # noqa: E402
 import kjv_check  # noqa: E402
+import pavo_audio  # noqa: E402
 import publish_episode as pe  # noqa: E402
 import short_cuts  # noqa: E402
 import short_engine  # noqa: E402
@@ -205,11 +206,17 @@ def segment_problems(spec, root=ROOT):
             bad.append(f"SEGMENT_CLIP_HARD_FLAG {sid} {','.join(split['hard'])} (no face, a broken render or a policy "
                        "problem: never shipped)")
         accepted = eb.accepted_flags(approved, sha)
+        proof = approved.get("audio")   # E286: the clip's audio is OUR request audio (pavo_audio): the words are the request's
+        if proof is not None and proof != clip.get("audio"):
+            bad.append(f"SEGMENT_AUDIO_NOT_OURS {sid} (the approval's audio proof is not the probe record's for this clip)")
+        elif proof is not None:
+            split = dict(split, words=[])   # exact by construction; a broken mux is refused at approve-shot and the render
         if [f for f in split["words"] if f not in accepted]:
             bad.append(f"SEGMENT_CLIP_WORDS_UNPROVEN {sid} (AUDIO_NOT_OUR_LINE needs the pinned ASR's proof on this "
                        "clip: episode_build.py speech-check, then approve-shot)")
         out.append({"shot": sid, "asset": asset, "clip_sha256": sha, "seconds": trim if trim is not None else seconds,
-                    "trim_out_s": trim, "text": seg["text"].strip(), "flags": split, "accepted_flags": accepted, "score": score})
+                    "trim_out_s": trim, "text": seg["text"].strip(), "flags": split, "accepted_flags": accepted, "score": score,
+                    **({"audio": proof} if proof is not None else {})})
     return bad, out
 
 
@@ -497,6 +504,8 @@ def render(spec_path, clean, work, out_dir, root=ROOT):
         path = work / "clips" / f"{c['shot']}.mp4"
         if not path.is_file() or cl.sha256(path) != c["clip_sha256"]:
             raise SystemExit(f"CLIP_FILE_MISSING {c['shot']} (reflection_shorts.py fetch-clips: the approved clip's exact bytes)")
+        if c.get("audio") is not None:   # E286: its audio digest is the request's own, on the approved bytes
+            pavo_audio.verify(path, c["audio"])
         if c.get("trim_out_s") is not None:   # E282: the clip is used as approved, cut right after the line's last word
             (work / "trimmed").mkdir(parents=True, exist_ok=True)
             path = eb.trim_media(path, c["trim_out_s"], work / "trimmed" / f"{c['shot']}.mp4")
