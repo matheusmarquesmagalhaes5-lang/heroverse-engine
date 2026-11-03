@@ -5,12 +5,15 @@ deleted; the receipt keeps each video's previous privacy so it can be undone.
 
   plan  : list every upload of the exact channel and classify language
   apply : set privacyStatus=private for the videos in a reviewed plan file
-usage: channel_privacy.py plan OUT_JSON | apply PLAN_JSON OUT_RECEIPT
+usage: channel_privacy.py plan OUT_JSON | apply PLAN_JSON OUT_RECEIPT | unschedule PLAN_JSON OUT_RECEIPT
+       | release PLAN_JSON OUT_RECEIPT
 """
+from datetime import datetime, timezone
 import json
 import os
 from pathlib import Path
 import re
+import subprocess
 import sys
 import urllib.parse
 import urllib.request
@@ -175,6 +178,97 @@ def unschedule(plan_path, out):
         raise SystemExit("UNSCHEDULE_INCOMPLETE")
 
 
+ROOT = Path(__file__).resolve().parents[2]
+LEDGER = ROOT / "migration/publish/ledger.json"
+HOLD_PLAN = ROOT / "migration/channel/hold-plan.json"
+PUBLICATION_HOLD = ROOT / "migration/ops/PUBLICATION_HOLD"
+
+
+def release_problems(item, ledger, hold, binding=None):
+    """Offline checks for one release entry (owner 2026-11-03: the held long goes public as it is). Fail closed:
+    the video must be the upload the ledger recorded for the pilot's exact approved file, must no longer be in the
+    hold plan, and the pilot's publication evidence (QA, APPROVAL, manifest, prepublish gate) must still bind that file."""
+    vid, pilot = item.get("video_id"), item.get("pilot")
+    if not vid or not re.fullmatch(r"pilot-\d{3}", pilot or ""):
+        return ["RELEASE_ENTRY_INVALID"]
+    problems = []
+    if vid in (hold.get("to_unschedule") or []):
+        problems.append("VIDEO_STILL_IN_HOLD_PLAN")
+    try:
+        sha = json.loads((ROOT / "migration/production" / pilot / "out/qa.json").read_text())["output_sha256"]
+    except (OSError, ValueError, KeyError):
+        return problems + ["QA_UNREADABLE"]
+    if (ledger.get("entries", {}).get(f"{pilot}:{sha}") or {}).get("video_id") != vid:
+        problems.append("VIDEO_NOT_THE_LEDGER_UPLOAD_OF_THIS_FILE")
+    problems += (binding or publication_binding)(pilot)
+    return problems
+
+
+def publication_binding(pilot):
+    """The same fail-closed revalidation publish.yml runs before an upload (publication_binding.py)."""
+    done = subprocess.run([sys.executable, "-I", "-B", str(ROOT / "migration/publish/publication_binding.py"),
+                           str(ROOT / "migration/production" / pilot)], capture_output=True, text=True)
+    return [] if done.returncode == 0 else ["PUBLICATION_BINDING_FAILED " + done.stdout.strip()[:300]]
+
+
+def release(plan_path, out):
+    """Release a held, already-uploaded and already-approved video: privacy -> public now (no publishAt).
+    Never uploads, never approves, never changes a video that is already public. Reversible by hand: the receipt
+    keeps the previous status. The ledger entry of the exact file records the release."""
+    plan_record = json.loads(Path(plan_path).read_text())
+    if plan_record["channel_id"] != CHANNEL:
+        raise SystemExit("CHANNEL_IDENTITY_MISMATCH")
+    if PUBLICATION_HOLD.exists():
+        raise SystemExit("PUBLICATION_HOLD")
+    ledger = json.loads(LEDGER.read_text())
+    hold = json.loads(HOLD_PLAN.read_text())
+    tok = token()
+    receipt = []
+    for item in plan_record["releases"]:
+        vid = item.get("video_id")
+        problems = release_problems(item, ledger, hold)
+        if problems:
+            receipt.append({"video_id": vid, "result": "REFUSED", "problems": problems})
+            continue
+        current = call(tok, "GET", "videos", {"part": "status,snippet", "id": vid})["items"]
+        if not current or current[0]["snippet"]["channelId"] != CHANNEL:
+            receipt.append({"video_id": vid, "result": "SKIPPED_NOT_OWNED_OR_MISSING"})
+            continue
+        status = current[0]["status"]
+        before = {"privacy": status["privacyStatus"], "publishAt": status.get("publishAt"),
+                  "uploadStatus": status.get("uploadStatus")}
+        if before["privacy"] == "public":
+            receipt.append({"video_id": vid, "before": before, "result": "ALREADY_PUBLIC"})
+            continue
+        if before["uploadStatus"] not in ("uploaded", "processed"):
+            receipt.append({"video_id": vid, "before": before, "result": "REFUSED", "problems": ["UPLOAD_NOT_USABLE"]})
+            continue
+        body = {"id": vid, "status": {"privacyStatus": "public", "embeddable": status.get("embeddable", True),
+                                      "license": status.get("license", "youtube"),
+                                      "publicStatsViewable": status.get("publicStatsViewable", True),
+                                      "selfDeclaredMadeForKids": status.get("madeForKids", False),
+                                      "containsSyntheticMedia": status.get("containsSyntheticMedia", True)}}
+        call(tok, "PUT", "videos", {"part": "status"}, body)
+        read = call(tok, "GET", "videos", {"part": "status,snippet", "id": vid})["items"][0]["status"]   # the read-back
+        ok = read["privacyStatus"] == "public"
+        receipt.append({"video_id": vid, "before": before,
+                        "after": {"privacy": read["privacyStatus"], "publishAt": read.get("publishAt"),
+                                  "uploadStatus": read.get("uploadStatus")},
+                        "verified_at": datetime.now(timezone.utc).isoformat(), "result": "RELEASED" if ok else "UNEXPECTED"})
+        if ok:
+            key = f"{item['pilot']}:" + json.loads((ROOT / "migration/production" / item["pilot"] / "out/qa.json").read_text())["output_sha256"]
+            ledger["entries"][key]["released"] = {"at": receipt[-1]["verified_at"], "privacy": "public",
+                                                  "receipt": Path(out).name, "plan": Path(plan_path).name}
+            LEDGER.write_text(json.dumps(ledger, indent=1) + "\n")
+    Path(out).write_text(json.dumps({"version": "channel-release-receipt-v1", "channel_id": CHANNEL,
+                                     "plan": Path(plan_path).name, "reason": plan_record.get("reason"),
+                                     "undo": "set the video back to its 'before' privacy (and publishAt)",
+                                     "changes": receipt}, indent=1) + "\n")
+    print(json.dumps({"released": sum(r["result"] == "RELEASED" for r in receipt), "total": len(receipt), "changes": receipt}))
+    if any(r["result"] not in ("RELEASED", "ALREADY_PUBLIC") for r in receipt):
+        raise SystemExit("RELEASE_INCOMPLETE")
+
+
 if __name__ == "__main__":
     if sys.argv[1] == "plan":
         plan(sys.argv[2])
@@ -182,5 +276,7 @@ if __name__ == "__main__":
         apply(sys.argv[2], sys.argv[3])
     elif sys.argv[1] == "unschedule":
         unschedule(sys.argv[2], sys.argv[3])
+    elif sys.argv[1] == "release":
+        release(sys.argv[2], sys.argv[3])
     else:
         raise SystemExit(__doc__)

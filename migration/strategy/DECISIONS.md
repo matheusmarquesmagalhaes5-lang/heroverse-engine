@@ -548,3 +548,14 @@ video, joined to their neighbours by a short picture crossfade, never a hard jum
 (`episode_build.LONG_XFADE` 0.3 s, `short_engine.transitions`) blends the picture into and out of each talking shot inside the
 silence next to his words, so no word is cut, faded or overlapped; the Shorts keep cuts only (hookify block-shorts-fade-wipe).
 God's voice (s-voice) stays a scene: God is never shown with a face, and Genesis 8-9 has no other on-screen speaker.
+
+## 2026-11-03 — flood-ends-long: the held version is released as it is (owner order)
+
+Owner, 2026-11-03: "Pode soltar aquele longo… faça os recortes… a partir de agora não erre mais." On 2026-11-03 the owner released
+the held version as is: pilot-017 (YouTube 1m-NUJhkdMY, approved by approve.yml run 41521201681 and uploaded by publish.yml run
+41524618475, unscheduled by channel-privacy run 41536206003) goes public without waiting for the Pavo-talking rebuild. It is removed
+from `channel/hold-plan.json` (the prayer-long hold stays). Route: `channel-privacy.yml` mode `release` (`release-plan.json`),
+which uploads nothing and approves nothing: it refuses unless the video is still the ledger's upload of the pilot's exact file,
+is out of the hold plan and `publication_binding.py` still passes; it reads the status back and records the release in the ledger.
+publish.yml cannot do it: a resumed upload never changes privacy. The rebuild with Pavo clips (E271/E272) stays a separate,
+later version and does not block this one. The cuts (Shorts) follow once it is public.
