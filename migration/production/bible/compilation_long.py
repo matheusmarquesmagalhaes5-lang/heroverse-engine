@@ -9,7 +9,11 @@ quote, committed with their zero-cost record; their audio is our own Kokoro line
 (FADE) and is brought to LUFS by gain only, so a join has no pop and no cut speech.
 
 usage: compilation_long.py inputs PLAN            asset name and sha256 of each source master, one per line
-       compilation_long.py build PLAN SRC_DIR OUT_DIR   SRC_DIR holds the masters by asset name
+       compilation_long.py build PLAN SRC_DIR OUT_DIR [VOICE_DIR]   SRC_DIR holds the masters by asset name; VOICE_DIR the
+                                                 Kokoro lines hook.wav / close.wav of a voice-over Keeper segment (E281)
+       compilation_long.py voice-needed PLAN     exit 0 when a Keeper segment is a voice-over (needs Kokoro in CI)
+       compilation_long.py voice-script PLAN WORK   WORK/voice-script.json for pilot_render.py voice
+       compilation_long.py voice-cut PLAN WORK VOICE_DIR   cut the voice-over lines out of WORK/voice.wav
        compilation_long.py qa PLAN OUT_DIR              measure the master, write out/qa.json (criteria compilation-qa-criteria-v1)
        compilation_long.py materialize PLAN OUT_DIR     write the pilot's publication inputs (no review, no approval)
        compilation_long.py verify PILOT_DIR [VIDEO]
@@ -125,6 +129,8 @@ def plan_problems(plan, episodes=EPISODES, root=ROOT):
                     and re.fullmatch(r"[0-9a-f]{64}", str(l.get("sha256", "")))
                     and type(l.get("seconds")) in (int, float) and l["seconds"] > 10):
                 bad.append(f"{cid} is not a public long with pilot, video_id, master sha256 and seconds")
+            elif l.get("asset") is not None and l["asset"] != f"bible-{l['id']}-sha256-{l['sha256']}.mp4":
+                bad.append(f"{cid} asset must be bible-<id>-sha256-<master sha256>.mp4 (the release master, not another file)")
         else:
             parts.append(ep.get("part"))
             if ep.get("format") != "short" or not ep.get("video_id") or not re.fullmatch(r"[0-9a-f]{64}", ep.get("output_sha256", "")):
@@ -138,6 +144,9 @@ def plan_problems(plan, episodes=EPISODES, root=ROOT):
         bad.append("shorts are not consecutive parts in canonical order")
     for key in ("hook", "close"):
         k = plan.get(key) or {}
+        if "voiceover" in k:   # E281: the Keeper's Kokoro voice-over on an approved still (no Pavo clip for this segment)
+            bad += voiceover_problems(key, k, root)
+            continue
         if not all(isinstance(k.get(f), str) and k[f] for f in ("text", "video", "audio", "video_sha256", "audio_sha256",
                                                                    "conversation_id", "quote")):
             bad.append(key + " Keeper clip record incomplete")
@@ -151,12 +160,78 @@ def plan_problems(plan, episodes=EPISODES, root=ROOT):
     return bad
 
 
+VOICEOVER_QUOTE = "0 credits (no Pavo call: Kokoro voice-over on an approved still)"
+VOICE_ID = "am_michael"   # episode_build.VOICE: the pinned engine voice
+
+
+def voiceover_problems(key, k, root=ROOT):
+    """The voice-over fallback (owner: when both Pavo generations of a Keeper line are wrong, the Kokoro voice-over over an
+    approved still): the line, an approved 16:9 Keeper still by sha256, the pinned voice, and the record of the Pavo
+    attempt that failed. Nothing is generated at this stage and nothing costs a credit."""
+    v = k.get("voiceover")
+    out = []
+    if not (isinstance(k.get("text"), str) and k["text"].strip() and isinstance(v, dict)):
+        return [key + " voice-over record incomplete"]
+    if v.get("voice_id") != VOICE_ID or v.get("speed") != 1.0:
+        out.append(f"{key} voice-over is not the pinned voice")
+    if k.get("quote") != VOICEOVER_QUOTE:
+        out.append(f"{key} voice-over quote must be the no-Pavo zero-credit statement")
+    attempt = k.get("pavo_attempt")
+    if not (isinstance(attempt, dict) and attempt.get("probe_run") and attempt.get("speech_check_run") and attempt.get("result")):
+        out.append(f"{key} voice-over needs the record of the Pavo attempt that failed")
+    p = Path(root) / str(v.get("still", ""))
+    if not p.is_file() or sha256(p) != v.get("still_sha256"):
+        out.append(f"{key} still missing or changed")
+    else:
+        approved = Path(root) / "migration/production/bible/stills" / f"{v.get('approved_still')}.json"
+        if not approved.is_file() or load(approved).get("status") != "APPROVED" \
+                or load(approved).get("sha256") != v["still_sha256"]:
+            out.append(f"{key} still is not an approved still of that sha256")
+    return out
+
+
+def keeper_record(k):
+    """The manifest's record of a Keeper segment: the Pavo clip's job and hashes, or the voice-over's still and Pavo attempt."""
+    if "voiceover" in k:
+        return {"quote": k["quote"], "voice_over": {f: k["voiceover"][f] for f in ("approved_still", "still_sha256", "voice_id", "speed")},
+                "pavo_attempt": k["pavo_attempt"]}
+    return {f: k[f] for f in ("conversation_id", "quote", "video_sha256", "audio_sha256")}
+
+
+def has_voiceover(plan):
+    return any("voiceover" in (plan.get(key) or {}) for key in ("hook", "close"))
+
+
+def voice_script(plan_path, work):
+    """WORK/voice-script.json for pilot_render.py voice: the voice-over lines of the plan (segment id = hook / close)."""
+    plan = load(plan_path)
+    refuse(plan_problems(plan))
+    segs = [{"id": key, "text": plan[key]["text"], "pause_after": 0.0} for key in ("hook", "close") if "voiceover" in plan[key]]
+    save(Path(work) / "voice-script.json", {"voice": {"voice_id": VOICE_ID, "speed": 1.0}, "segments": segs})
+
+
+def voice_cut(plan_path, work, voice_dir):
+    """The Kokoro lines of WORK/voice.wav cut at their own sentence times into VOICE_DIR/<hook|close>.wav."""
+    plan = load(plan_path)
+    tl = load(Path(work) / "timeline.json")
+    Path(voice_dir).mkdir(parents=True, exist_ok=True)
+    for key in ("hook", "close"):
+        if "voiceover" not in plan[key]:
+            continue
+        mine = [x for x in tl["sentences"] if x["segment"] == key]
+        if not mine:
+            raise SystemExit(f"VOICE_LINE_MISSING {key}")
+        a, b = mine[0]["start"], mine[-1]["end"]
+        run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-ss", f"{a:.3f}", "-t", f"{b - a:.3f}", "-i", Path(work) / "voice.wav",
+             "-c:a", "pcm_s16le", Path(voice_dir) / f"{key}.wav"])
+
+
 def sources(plan, episodes=EPISODES):
     """[(short id, asset name, sha256, record)] in the plan's canonical order."""
     out = []
     for c in plan["chapters"]:
         ep = chapter_record(c, episodes)
-        asset = (f"{ep['pilot']}-sha256-{ep['output_sha256']}.mp4" if is_long(c)
+        asset = ((c["long"].get("asset") or f"{ep['pilot']}-sha256-{ep['output_sha256']}.mp4") if is_long(c)
                  else f"bible-{c['short']}-sha256-{ep['output_sha256']}.mp4")
         out.append((chapter_id(c), asset, ep["output_sha256"], ep))
     return out
@@ -255,6 +330,32 @@ def render_keeper(video, audio, out):
          "-map", "[a]", "-t", f"{d:.3f}", *ENC, out])
 
 
+def render_keeper_still(still, audio, out):
+    """The voice-over fallback segment: the approved Keeper still with a slow push-in (a still beat at each end, as
+    render_keeper) and our Kokoro line after the first beat; same audio chain, same fades."""
+    d = duration(audio) + 2 * BEAT
+    v, a = fades(d)
+    frames = int(d * FPS) + 1
+    graph = (f"[0:v]scale=3840:2160:flags=lanczos,zoompan=z='min(1.0+0.00045*on,1.08)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':"
+             f"d=1:s={W}x{H}:fps={FPS},setsar=1,{v}[v];"
+             f"[1:a]aresample=48000,aformat=channel_layouts=stereo,{gain_filter(audio)},adelay={int(BEAT * 1000)}:all=1,"
+             f"apad=whole_dur={d:.3f},{a}[a]")
+    run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-loop", "1", "-framerate", str(FPS), "-t", f"{d:.3f}", "-i", still,
+         "-i", audio, "-filter_complex", graph, "-map", "[v]", "-map", "[a]", "-frames:v", str(frames), "-t", f"{d:.3f}",
+         *ENC, out])
+
+
+def render_key(plan, key, voice_dir, out):
+    k = plan[key]
+    if "voiceover" in k:
+        wav = Path(voice_dir or "") / f"{key}.wav"
+        if not wav.is_file():
+            raise SystemExit(f"VOICE_LINE_MISSING {key} (compilation_long.py voice-cut first)")
+        render_keeper_still(ROOT / k["voiceover"]["still"], wav, out)
+    else:
+        render_keeper(ROOT / k["video"], ROOT / k["audio"], out)
+
+
 def thumbnail(src, spec, out):
     """A 1280x720 frame of a Short's master: a 16:9 window of its vertical picture (spec: at, y fraction) plus our title."""
     ys = max(0.0, min(1.0, float(spec.get("y", 0.4))))
@@ -281,7 +382,7 @@ def clock(t):
     return f"{t // 60}:{t % 60:02d}"
 
 
-def build(plan_path, src_dir, out_dir):
+def build(plan_path, src_dir, out_dir, voice_dir=None):
     plan = load(plan_path)
     refuse(plan_problems(plan))
     src_dir, out = Path(src_dir), Path(out_dir)
@@ -294,7 +395,7 @@ def build(plan_path, src_dir, out_dir):
 
     seg = out / "segments"
     seg.mkdir(exist_ok=True)
-    render_keeper(ROOT / plan["hook"]["video"], ROOT / plan["hook"]["audio"], seg / "00-hook.mp4")
+    render_key(plan, "hook", voice_dir, seg / "00-hook.mp4")
     add("hook", "hook", seg / "00-hook.mp4")
     verified = []
     for k, (sid, asset, sha, ep) in enumerate(sources(plan), 1):
@@ -308,7 +409,7 @@ def build(plan_path, src_dir, out_dir):
         (render_long if is_long(c) else render_short)(master, seg / f"{k:02d}b-short.mp4", c.get("end_s"), card)
         add(kind, sid, seg / f"{k:02d}b-short.mp4", source_sha256=sha, chapter=c["title"],
             **({"end_s": c["end_s"]} if c.get("end_s") else {}))
-    render_keeper(ROOT / plan["close"]["video"], ROOT / plan["close"]["audio"], seg / "99-close.mp4")
+    render_key(plan, "close", voice_dir, seg / "99-close.mp4")
     add("close", "close", seg / "99-close.mp4")
     lst = out / "concat.txt"
     lst.write_text("".join(f"file '{p.resolve()}'\n" for p in segs))
@@ -355,7 +456,7 @@ def qa(plan_path, out_dir):
         and all(len(s["sha256"]) == 64 for s in src) and [r["source_sha256"] for r in shorts] == [s["sha256"] for s in src],
         "canonical_order": [r["kind"] for r in tl["segments"]] == ["hook"] + ["long" if is_long(c) else "short" for c in plan["chapters"]] + ["close"]
         and [r.get("chapter") for r in shorts] == [c["title"] for c in plan["chapters"]],   # E258: card over each Short
-        "keeper_clips_zero_credit": plan["hook"]["quote"] == plan["close"]["quote"] == "0 credits (exact, fresh)",
+        "keeper_clips_zero_credit": all(plan[key]["quote"] in ("0 credits (exact, fresh)", VOICEOVER_QUOTE) for key in ("hook", "close")),
         "music_and_voice_owned": True,   # the Shorts' own recorded sources (Kokoro voice, owned music) and our Kokoro hook/close
     }
     doc = {"version": "compilation-qa-v1", "criteria_version": CRITERIA,
@@ -414,8 +515,7 @@ def materialize(plan_path, out_dir, root=ROOT):
     manifest = {"version": MANIFEST_VERSION, "pilot_id": plan["pilot"], "compilation": plan["id"], "output_sha256": sha,
                 "output_seconds": round(dur, 3), "criteria_version": CRITERIA, "burned_captions": "kept from the Shorts",
                 "sources": load(out / "sources.json"), "segments": manifest_tl["segments"], "chapters": rows,
-                "keeper_clips": {k: {f: plan[k][f] for f in ("conversation_id", "quote", "video_sha256", "audio_sha256")}
-                                 for k in ("hook", "close")}}
+                "keeper_clips": {k: keeper_record(plan[k]) for k in ("hook", "close")}}
     package = {"version": "pilot-package-v1", "pilot_id": plan["pilot"], "series": SERIES, "episode": plan["id"],
                "title": plan["title"], "title_length": len(plan["title"]), "description": text, "tags": plan["tags"],
                "category_id": "29", "playlist": plan.get("playlist"), "default_language": "en", "made_for_kids": False,
@@ -471,8 +571,14 @@ def main(argv):
         refuse(plan_problems(plan))
         for _, asset, sha, _ in sources(plan):
             print(asset, sha)
-    elif cmd == "build" and len(argv) == 5:
+    elif cmd == "build" and len(argv) in (5, 6):
         build(*argv[2:])
+    elif cmd == "voice-needed" and len(argv) == 3:
+        return 0 if has_voiceover(load(argv[2])) else 1
+    elif cmd == "voice-script" and len(argv) == 4:
+        voice_script(*argv[2:])
+    elif cmd == "voice-cut" and len(argv) == 5:
+        voice_cut(*argv[2:])
     elif cmd == "qa" and len(argv) == 4:
         return qa(argv[2], argv[3])
     elif cmd == "materialize" and len(argv) == 4:

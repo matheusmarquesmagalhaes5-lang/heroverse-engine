@@ -43,10 +43,26 @@ jobs:
             bash migration/ci/assets.sh download --repo "$GITHUB_REPOSITORY" --pattern "$name" -O "$RUNNER_TEMP/src/$name" --clobber
             echo "$sha  $RUNNER_TEMP/src/$name" | sha256sum -c -
           done < "$RUNNER_TEMP/inputs.txt"
+      - name: Kokoro voice-over lines of a voice-over Keeper segment (E281, the pinned voice runtime of shot-probe.yml, skipped for Pavo clips)
+        run: |
+          set -eo pipefail
+          if ! python3 -I -B migration/production/bible/compilation_long.py voice-needed "$PLAN"; then echo "NO_VOICE_OVER_SEGMENT"; exit 0; fi
+          APT_UPDATE_TIMEOUT=300s APT_INSTALL_TIMEOUT=600s bash migration/ci/apt_install.sh espeak-ng
+          python3 -m venv "$RUNNER_TEMP/voice"
+          "$RUNNER_TEMP/voice/bin/pip" install --disable-pip-version-check -q 'kokoro-onnx==0.4.9' 'onnxruntime==1.20.1' 'numpy==2.2.6' 'espeakng-loader==0.2.4' 'soundfile==0.13.1'
+          work="$GITHUB_WORKSPACE/.episode/voice"; mkdir -p "$work"
+          python3 -I -B migration/production/bible/compilation_long.py voice-script "$PLAN" "$work"
+          python3 -I -B migration/production/pilot_render.py prepare "$work" HeroVerse_Linux_Source_Ready_20261013_v2.zip
+          ESPEAK_DATA_PATH=$("$RUNNER_TEMP/voice/bin/python" -I -c "import espeakng_loader as e;print(e.get_data_path())")
+          test -d "$ESPEAK_DATA_PATH" || { echo "ESPEAK_DATA_MISSING"; exit 1; }
+          export ESPEAK_DATA_PATH
+          "$RUNNER_TEMP/voice/bin/python" -I -B migration/production/pilot_render.py voice "$work" "$work/voice-script.json"
+          python3 -I -B migration/production/bible/compilation_long.py voice-cut "$PLAN" "$work" "$RUNNER_TEMP/voice-lines"
+          sha256sum "$RUNNER_TEMP"/voice-lines/*.wav
       - name: Build, measure (compilation-qa-criteria-v1) and materialize the pilot's publication inputs
         run: |
           set -o pipefail
-          python3 -I -B migration/production/bible/compilation_long.py build "$PLAN" "$RUNNER_TEMP/src" "$RUNNER_TEMP/out" | tee "$RUNNER_TEMP/build.json"
+          python3 -I -B migration/production/bible/compilation_long.py build "$PLAN" "$RUNNER_TEMP/src" "$RUNNER_TEMP/out" "$RUNNER_TEMP/voice-lines" | tee "$RUNNER_TEMP/build.json"
           python3 -I -B migration/production/bible/compilation_long.py qa "$PLAN" "$RUNNER_TEMP/out" || true
           python3 -I -B migration/production/bible/compilation_long.py materialize "$PLAN" "$RUNNER_TEMP/out"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
