@@ -323,7 +323,7 @@ def cut_root(t, cuts):
     return root, spec, path
 
 
-def cut(cid="genesis-07-cut-1", start=0.2, end=22.2, **kw):
+def cut(cid="genesis-07-cut-1", start=0.2, end=22.3, **kw):
     return {"id": cid, "start": start, "end": end, "title": "Seven days #shorts",
             "description": "Genesis 7 (public domain KJV), AI visuals. The full story: the long video.", **kw}
 
@@ -342,8 +342,14 @@ class Cuts(unittest.TestCase):
                             (cut(title=""), "CUT_TITLE")):
                 spec["cuts"] = [c]
                 self.assertTrue(any(p.startswith(code) for p in sc.check(spec, root)["problems"]), (c, code))
+            # E275: the render fades both edges over 0.25 s, so speech may not sit under a fade (0.5 s first word, 22.0 s last end)
+            for c in (cut(start=0.4), cut(end=22.2)):
+                spec["cuts"] = [c]
+                self.assertTrue(any(p.startswith("CUT_FADE_OVERLAPS_SPEECH") for p in sc.check(spec, root)["problems"]), c)
+            spec["cuts"] = [cut(start=0.25, end=22.3)]
+            self.assertEqual(sc.check(spec, root)["problems"], [])
             # the shortest coherent unit is still 20 s; a sentence-edge end in the silence after the insight passes
-            spec["cuts"] = [cut(start=4.2, end=24.5)]
+            spec["cuts"] = [cut(start=4.1, end=24.5)]
             self.assertEqual(sc.check(spec, root)["problems"], [])
             self.assertTrue(sc.check(spec, root)["cuts"]["genesis-07-cut-1"]["advice"])   # ends on a story line
             spec["cuts"] = [cut(end=200.0)]
