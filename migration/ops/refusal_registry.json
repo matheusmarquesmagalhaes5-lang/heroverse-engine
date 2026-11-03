@@ -2834,6 +2834,22 @@
   "SHOT_AUDIO_NOT_OURS": {
    "class": "N",
    "why": "E287: approve-shot is the review's own local command: a clip of a probe record made under pavo_audio \"ours\" is approved only with the proof that its audio is the request's own WAV (the probe's pavo_audio.assert_ours); it stops no generation, voice or render, and the probe cannot write a record without that proof"
+  },
+  "REMUX_SHOTS_REFUSED": {
+   "class": "N",
+   "why": "E288: shot-remux.yml puts our request audio over a stored clip before any approval; these refuse a wrong input, a source clip that is not exactly one uploaded clip of a committed probe record, a missing release asset or a shot that is not a Kokoro talking shot, and stop no generation, voice or render"
+  },
+  "REMUX_SOURCE_CLIP": {
+   "class": "N",
+   "why": "E288: shot-remux.yml puts our request audio over a stored clip before any approval; these refuse a wrong input, a source clip that is not exactly one uploaded clip of a committed probe record, a missing release asset or a shot that is not a Kokoro talking shot, and stop no generation, voice or render"
+  },
+  "REMUX_STORED_CLIP_MISSING": {
+   "class": "N",
+   "why": "E288: shot-remux.yml puts our request audio over a stored clip before any approval; these refuse a wrong input, a source clip that is not exactly one uploaded clip of a committed probe record, a missing release asset or a shot that is not a Kokoro talking shot, and stop no generation, voice or render"
+  },
+  "REMUX_NOT_A_KOKORO_TALKING_SHOT": {
+   "class": "N",
+   "why": "E288: shot-remux.yml puts our request audio over a stored clip before any approval; these refuse a wrong input, a source clip that is not exactly one uploaded clip of a committed probe record, a missing release asset or a shot that is not a Kokoro talking shot, and stop no generation, voice or render"
   }
  },
  "review": {

@@ -138,6 +138,13 @@ digest on the approved bytes (`SEGMENT_AUDIO_NOT_OURS`). Pavo's own speech (`aud
 checks. Evidence: `evidence/pavo-audio-eval/20261103.json` (`pavo-audio-eval.yml`, 21 stored clips, nothing generated: 13 of
 the 16 rejected only for words or audio hold sync with our audio). Legacy approvals (Pavo's track kept) keep the E266 rules.
 
+A clip stored before E287 (Pavo's track kept) is re-judged on our audio by `shot-remux.yml` (E288; plan + `shots` =
+`shot:sha256-prefix` of uploaded clips in committed probe records; no Pavo call, no secret, nothing generated): the stored
+picture by its sha256, the plan's request must still equal the one that made it, our regenerated Kokoro WAV laid over it
+(`pavo_audio.mux_ours`), the strict `lipsync_check`/`clip_check` on that same audio, then the new clip (its own content-hash
+asset) and a probe record (`pavo_audio: ours`, `audio` proof, `remux_of`) on branch `claude/shot-remux-<episode>-<run>`;
+`approve-shot` then runs on that record like on any probed clip.
+
 A reflection record has `track: keeper-reflection`, `layout: keeper-reflection`, `parent` {long, pilot, clean_master_sha256,
 start, end}, `segments` [{shot, asset, clip_sha256}] and no review. A new file is a new review; the long's score is never
 copied. Today only a long-first long with a caption-free master and sentence timeline can be the source (a compilation, as
