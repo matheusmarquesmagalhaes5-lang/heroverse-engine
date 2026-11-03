@@ -59,7 +59,7 @@ SEGMENTS = (2, 4)                  # plan_check.REFLECTION_SEGMENTS: one approve
 WPM_BAND = (115, 165)              # the accepted words-per-minute band of the narration (QA)
 VOICE_AT = 0.3                     # the first clip starts this long after the top clip
 XFADE = 0.2                        # the crossfade between two clips: inside the previous clip's silent tail
-XFADE_MIN = 0.08                   # E281: the shortest crossfade after a TRIMMED clip (its silent tail is what the trim left)
+XFADE_MIN = 0.08                   # E282: the shortest crossfade after a TRIMMED clip (its silent tail is what the trim left)
 TAIL_MIN = 0.6                     # the Short keeps this long after the last clip ends
 TAIL_MAX = 3.0                     # ... and no more (the last frame is held: no long frozen face)
 TAIL_CLEAR = 0.02                  # the previous clip is silent this much longer than the crossfade (no word is faded)
@@ -166,7 +166,7 @@ def segment_problems(spec, root=ROOT):
             bad.append(f"SEGMENT_CLIP_SECONDS {sid} ({seconds!r}: the measured seconds of a {CLIP_SECONDS[0]:.0f}-"
                        f"{CLIP_SECONDS[1]:.0f} s Pavo clip)")
             seconds = None
-        # E281 (owner: a minor imperfection is fixed in the edit): the approved out point of a clip whose Pavo tail
+        # E282 (owner: a minor imperfection is fixed in the edit): the approved out point of a clip whose Pavo tail
         # mumbles after the last word; the clip is used cut there
         trim = approved.get("trim_out_s")
         if trim is not None:
@@ -186,7 +186,7 @@ def segment_problems(spec, root=ROOT):
         if said != eb.spoken_words(seg["text"]):
             bad.append(f"SEGMENT_CLIP_WRONG_WORDS {sid} (the clip was made for other words than the segment's: a "
                        "hard defect, probe the new text)")
-        if trim is not None:   # E281: the pinned ASR heard exactly the line on the clip as cut (speech-check --trim-out)
+        if trim is not None:   # E282: the pinned ASR heard exactly the line on the clip as cut (speech-check --trim-out)
             side = Path(root) / "migration" / "evidence" / "shots" / spec["id"] / "speech" / f"{sha}.json"
             try:
                 proof = cl.load(side)
@@ -224,7 +224,7 @@ def timeline(segments):
 
 
 def join_fades(segments, spans):
-    """E281: the crossfade after each clip but the last, from the silence it keeps after its last word. A full clip keeps
+    """E282: the crossfade after each clip but the last, from the silence it keeps after its last word. A full clip keeps
     the gate: XFADE + TAIL_CLEAR of silence or the render refuses. A TRIMMED clip (cut inside the silence after the
     last word) has what the cut left, so its crossfade shortens to that silence less TAIL_CLEAR, never under XFADE_MIN:
     the crossfade still never runs over a word."""
@@ -496,7 +496,7 @@ def render(spec_path, clean, work, out_dir, root=ROOT):
         path = work / "clips" / f"{c['shot']}.mp4"
         if not path.is_file() or cl.sha256(path) != c["clip_sha256"]:
             raise SystemExit(f"CLIP_FILE_MISSING {c['shot']} (reflection_shorts.py fetch-clips: the approved clip's exact bytes)")
-        if c.get("trim_out_s") is not None:   # E281: the clip is used as approved, cut right after the line's last word
+        if c.get("trim_out_s") is not None:   # E282: the clip is used as approved, cut right after the line's last word
             (work / "trimmed").mkdir(parents=True, exist_ok=True)
             path = eb.trim_media(path, c["trim_out_s"], work / "trimmed" / f"{c['shot']}.mp4")
         if not has_audio(path):
@@ -507,7 +507,7 @@ def render(spec_path, clean, work, out_dir, root=ROOT):
     for c, s in zip(segments, seconds):
         if abs(s - c["seconds"]) > 0.15:
             raise SystemExit(f"CLIP_SECONDS_CHANGED {c['shot']} {s:.2f} s measured, {c['seconds']} s approved")
-    fades = join_fades(segments, spans)   # the crossfade never runs over his last word (E281: shorter after a trimmed clip)
+    fades = join_fades(segments, spans)   # the crossfade never runs over his last word (E282: shorter after a trimmed clip)
     offsets, bottom_end = timeline([dict(c, seconds=s, fade=f) for c, s, f in zip(segments, seconds, fades + [XFADE])])
     if bottom_end + TAIL_MIN > d:
         raise SystemExit(f"CLIPS_TOO_LONG_FOR_CLIP {bottom_end:.2f} s of Keeper clips in {d:.2f} s")

@@ -76,7 +76,7 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
   stays off main (render evidence on branch `claude/reflection-flood-ends-long-reflection-1-41630141252`). Next: `reflection_shorts.render` must
   cut each clip at the end of its last required word (pinned ASR), re-render, review, then slot 2026-11-05T05:30Z (spec already carries it).
 
-- 2026-11-03 (reflection 1 trim, E281): `reflection_shorts.py` now honours each approved clip's `trim_out_s` (the check re-verifies the
+- 2026-11-03 (reflection 1 trim, E282): `reflection_shorts.py` now honours each approved clip's `trim_out_s` (the check re-verifies the
   pinned ASR's words on the trimmed media; the render cuts the clip, a shorter crossfade follows a trimmed clip). k-r1 5.40 s,
   k-r2 4.24 s, k-r3 5.32 s (from the ASR word timings, inside the silence; ASR now hears exactly each line, audio not heard by ear).
   BLOCKED, not published: the three trimmed clips are 14.9 s of Keeper speech, and the top clip is 21.2 s (the Short floor is

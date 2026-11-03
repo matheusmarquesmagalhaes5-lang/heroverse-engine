@@ -462,7 +462,7 @@ class Render(unittest.TestCase):
             side.write_text(json.dumps({"shot": "k-r1", "clip_sha256": sha, "trim_out_s": sidecar_trim(sidecar, trim),
                                         "measures": {"asr": {"model_bin_sha256": pinned, "text": heard}}}))
 
-    def test_e281_the_check_honours_an_approved_trim_and_reverifies_the_words_on_the_trimmed_clip(self):
+    def test_e282_the_check_honours_an_approved_trim_and_reverifies_the_words_on_the_trimmed_clip(self):
         with tempfile.TemporaryDirectory() as t:
             root, spec, _ = make_root(t)
             self.assertEqual(rs.check(spec, root)["reflection"]["clips"][0]["seconds"], 10.0)
@@ -481,7 +481,7 @@ class Render(unittest.TestCase):
             self.assertEqual((first["trim_out_s"], first["seconds"]), (9.55, 9.55))   # the used length is the out point
             self.assertIsNone(got["reflection"]["clips"][1]["trim_out_s"])
 
-    def test_e281_a_trimmed_clip_shortens_its_crossfade_a_full_clip_keeps_the_gate(self):
+    def test_e282_a_trimmed_clip_shortens_its_crossfade_a_full_clip_keeps_the_gate(self):
         spans = [(0.0, 9.4, 9.6, 0.2), (0.0, 9.0, 10.0, 1.0)]
         trimmed = [{"shot": "a", "trim_out_s": 9.6}, {"shot": "b"}]
         self.assertEqual(rs.join_fades(trimmed, spans), [0.18])
@@ -494,7 +494,7 @@ class Render(unittest.TestCase):
         parts, label = rs.bottom_graph([9.6, 10.0], 0.5, 22.0, fades=[0.18])
         self.assertTrue(any("xfade=transition=fade:duration=0.18:offset=9.420" in p for p in parts), parts)
 
-    def test_e281_render_cuts_each_clip_at_its_approved_out_point(self):
+    def test_e282_render_cuts_each_clip_at_its_approved_out_point(self):
         with tempfile.TemporaryDirectory() as t:
             root, spec, path, clean, work = self.prepare(t)
             self.trim_k_r1(root, 9.55, "line")
