@@ -1471,6 +1471,29 @@ class KeeperFraming16x9(unittest.TestCase):
         self.assertIn("16:9", (HERE / "PROMPT_GUIDE.md").read_text().split("Keeper framing at 16:9")[1][:600])
 
 
+class ReflectionPaceBeforePavo(unittest.TestCase):
+    """E277: the render's VOICE_PACE gate (115-165 wpm) is judged at plan time, before any shot-probe generation."""
+    R1 = "God did not hang that rainbow because Noah was perfect, and the story says so plainly."
+    R3 = "So if you are waiting on God tonight, you are not forgotten. You are carried."
+
+    def lines(self, r2):
+        return [{"text": t} for t in (self.R1, r2, self.R3)]
+
+    def test_the_lines_that_rendered_at_169_wpm_are_refused_and_the_reworded_ones_pass(self):
+        old = self.lines("He failed again, the way people do, and God still hung up His own bow.")
+        new = self.lines("He failed again, the way people do. Still, God hung up His own bow.")
+        self.assertTrue(any(p.startswith("REFLECTION_PACE") for p in pc.reflection_pace_problems(old)))
+        self.assertEqual(pc.reflection_pace_problems(new), [])
+
+    def test_the_gate_equals_the_renderers_band(self):
+        import reflection_shorts as rs
+        self.assertEqual(pc.REFLECTION_WPM_MAX, rs.WPM_BAND[1])
+
+    def test_the_live_reflection_plan_passes_it(self):
+        plan = json.loads((HERE / "plans" / "flood-ends-long-reflection-1.json").read_text())
+        self.assertEqual(pc.reflection_pace_problems(plan["narration"]), [])
+
+
 # the long's plan (bible-long-plan-v1) and story QA v2/v3 run here too, so pr-checks.yml runs them unchanged
 from test_long_plan_check import DraftArc1, Grammar as LongGrammar, NoRendererReadsTheNewQaYet, StoryQa  # noqa: E402,F401,E501
 

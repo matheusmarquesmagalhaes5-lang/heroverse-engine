@@ -4175,6 +4175,50 @@
      "drift"
     ]
    }
+  },
+  {
+   "id": "E277",
+   "date": "2026-11-03",
+   "class": [
+    "drift"
+   ],
+   "prior": [
+    "E100",
+    "E102",
+    "E126",
+    "E130",
+    "E132",
+    "E133",
+    "E145",
+    "E146",
+    "E147",
+    "E149",
+    "E150",
+    "E151",
+    "E152",
+    "E153",
+    "E166",
+    "E167",
+    "E168",
+    "E169",
+    "E189",
+    "E218",
+    "E236",
+    "E243",
+    "E245",
+    "E270",
+    "E274",
+    "E276"
+   ],
+   "error": "flood-ends-long-reflection-1: reflection_shorts.py render refused the master with VOICE_PACE 169 wpm (band 115-165) after three Pavo clips were already made and approved, so two lines were reworded and probed a second time: a render-time speech check ran only after generation.",
+   "fix": "plan_check.reflection_check now estimates the reflection's pace (words over the Keeper's measured Kokoro pace plus a pause per sentence break) and refuses REFLECTION_PACE over the render's 165 wpm, so shot-probe.yml (which runs plan_check --strict) refuses the line before any generation. No render gate loosened.",
+   "antidote": {
+    "file": "migration/production/bible/test_plan_check.py",
+    "contains": "def test_the_lines_that_rendered_at_169_wpm_are_refused_and_the_reworded_ones_pass",
+    "covers": [
+     "drift"
+    ]
+   }
   }
  ]
 }

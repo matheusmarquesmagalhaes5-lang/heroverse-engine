@@ -138,6 +138,8 @@ LONG_FIRST_RATIOS = ("16:9",)
 REFLECTION_TRACK = "keeper-reflection"
 REFLECTION_RATIOS = ("1:1",)
 REFLECTION_SEGMENTS = (2, 4)
+REFLECTION_WPM_MAX = 165         # reflection_shorts.WPM_BAND[1]: the render refuses a faster measured pace (a test keeps them equal)
+REFLECTION_BREAK = 0.40         # E277: seconds of pause each sentence break inside the lines adds to the Keeper's measured speech
 REFLECTION_WORDS = (20, 80)          # publish_episode.REFLECTION_WORDS
 SAFE_AREA = re.compile(r"(?i)\bcent(?:er|re)d in the frame\b")
 OFF_CENTRE = re.compile(r"(?i)\boff[- ]cent(?:er|re)\b|\brule of thirds\b|\bsplit[- ]screen\b|"
@@ -1305,6 +1307,22 @@ def reflection(plan):
     return isinstance(plan, dict) and plan.get("track") == REFLECTION_TRACK
 
 
+def reflection_pace_problems(items):
+    """E277: reflection_shorts.py render refuses a Keeper whose measured pace passes REFLECTION_WPM_MAX (VOICE_PACE 169 wpm
+    on the first render of flood-ends-long-reflection-1, after its clips were already made on Pavo). Kokoro's Keeper runs
+    at VOICE_PACE words a second (172 wpm) and only the pauses inside the speech bring it down, so the same estimate is made
+    here, before any shot-probe: the words over the pace plus REFLECTION_BREAK for every sentence break inside the lines."""
+    text = [x["text"].strip() for x in items]
+    n = sum(words(t) for t in text)
+    breaks = sum(len(re.findall(r"[.!?](?=\s+\S)", t)) for t in text)
+    seconds = n / VOICE_PACE["keeper"] + REFLECTION_BREAK * breaks
+    wpm = n / seconds * 60 if seconds else 0.0
+    if wpm > REFLECTION_WPM_MAX:
+        return [f"REFLECTION_PACE ~{wpm:.0f} wpm ({n} words, {breaks} sentence breaks; the render refuses over "
+                f"{REFLECTION_WPM_MAX}): add a sentence break or cut words BEFORE any Pavo clip is made"]
+    return []
+
+
 def reflection_check(plan, chars, problems, pending):
     """The reflection plan's own rules (it has no story to tell: no open, climax, scenes or shares). Each of its 2-4
     shots is a talking Keeper (never a voice-over, never a still motion: the owner rule is the Keeper really
@@ -1367,6 +1385,7 @@ def reflection_check(plan, chars, problems, pending):
             problems.append(f"REFLECTION_SEGMENT_NOT_A_SENTENCE line {i} (a segment ends on . ! or ?: never cut inside a "
                             "sentence)")
     total_words = sum(words(x["text"]) for x in items)
+    problems += reflection_pace_problems(items)
     if not REFLECTION_WORDS[0] <= total_words <= REFLECTION_WORDS[1]:
         problems.append(f"REFLECTION_LENGTH {total_words} words ({REFLECTION_WORDS[0]}-{REFLECTION_WORDS[1]})")
     if keeper.get("status") != "APPROVED" or not keeper.get("refs"):
