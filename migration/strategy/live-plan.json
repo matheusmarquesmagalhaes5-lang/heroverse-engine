@@ -1,12 +1,12 @@
 {
- "date": "2026-11-02",
- "run": "daily Inteligência Viva (second run of 11-02; no new daily report, main unchanged, so goal numbers and experiments carry over from the first run)",
+ "date": "2026-11-03",
+ "run": "extra run requested by the owner (~00:50 UTC 11-03). No new daily report (latest is 11-02 18:48), so goal numbers are carried over; no vidIQ credits used today in this run.",
  "deadline": {
   "target": "2026-11-15",
   "max": "2026-12-01"
  },
  "goal": {
-  "subs_now": 300,
+  "subs_now": 301,
   "subs_rate_7d": "2.7/day (measured: 281 on 10-25 -> 300 on 11-01)",
   "subs_rate_28d": "not available (channel history only from 10-18: 2.7/day over 14 d, measured)",
   "long_hours_365d": "27.9 (own estimate from Analytics rows; Studio counter not read)",
@@ -33,7 +33,8 @@
    "long_hours": "~1,900 (estimate)"
   },
   "on_track": false,
-  "honesty": "Neither date is reachable at any pace we can plausibly produce; the deadline stays as the owner fixed it, and the plan maximises accumulation. 4,000 h at ~8 min per view = ~30,000 long views; our longs have 385 total."
+  "honesty": "Neither date is reachable at any pace we can plausibly produce; the deadline stays as the owner fixed it, and the plan maximises accumulation. 4,000 h at ~8 min per view = ~30,000 long views; our longs have 385 total.",
+  "asof": "2026-11-02 18:48 UTC daily report (measured subs 301; hours still an own estimate 27.9)"
  },
  "strategy": [
   {
@@ -78,17 +79,22 @@
   }
  ],
  "experiments_review": [
-  "Experiments from the first 11-02 run are <1 day old, no readings yet: flood-ends-long unpublished, funnel and A/B not started. All kept (status unchanged)."
+  "flood-ends-long: <1 day since release, no reading; kept, metric starts at public time (7-day views and avg view duration, thresholds unchanged).",
+  "Short->long funnel, packaging A/B, subscribe conversion: no new readings; all kept. M3 checkpoint 11-05 will be the first real read."
  ],
  "quantities": {
   "longs": 1,
-  "short_cuts": 2,
-  "bridge_shorts": 1,
-  "keeper_reflections": 0,
-  "note": "flood-ends-long is already in production; cuts only after the long's gate passes; bridge Short genesis-10 continues in parallel only if stills exist. At least 1 Short/day."
+  "compilations": 1,
+  "short_cuts": "2-3 (cuts of flood-ends-long, bridge Shorts when no cut exists)",
+  "bridge_shorts": "0-1 (genesis-10 only if 9:16 stills exist)",
+  "keeper_reflections": 1,
+  "shorts_per_day": 4,
+  "note": "owner rule 4 Shorts/day = 2-3 cuts or bridges + 1 Keeper reflection v2 (split screen ~30 s, Pavo talking Keeper bottom half, 2-4 clips). Never below 1 Short/day; keep 48 h Short buffer. 1 long = Genesis 10-11 script/production starts; compilation M2 due 11-04."
  },
  "slots_utc": [
+  "05:30",
   "13:30",
+  "18:30",
   "23:30"
  ],
  "flood_ends_long_publication": {
@@ -99,17 +105,22 @@
  },
  "next_longs": [
   {
-   "story": "flood-ends-long (Genesis 8-9)",
-   "title": "Why Did God Send the Rainbow After the Flood? | Noah's Ark Ends | Genesis 8-9 Bible Story (KJV)",
-   "title_variant_b": "After 150 Days Without Land, Noah Opened the Window | Genesis 8-9 (KJV)",
-   "thumbnail_line": "THE WATER STOPPED",
-   "hook": "question that puts the viewer on the ark, then the stakes, then the promise (structure from 11-01 mining; test, not rule)",
+   "story": "genesis-10-11-long (Babel and the nations, Genesis 10-11)",
+   "title": "Why Did God Scatter the Builders of Babel? | Tower of Babel | Genesis 11 Bible Story (KJV)",
+   "hook": "question title, same 15-20 min structure as flood-ends-long",
    "target_length_s": 900,
-   "series/playlist": "Noah arc, playlist 'Genesis Stories (KJV)' after the arc-02 compilation"
+   "blocking": "script not written (runway 0.0 days); stills via ChatGPT chat route"
+  },
+  {
+   "story": "abraham-call-long (Genesis 12-13)",
+   "title": "He Left Everything Without Knowing Where | The Call of Abraham | Genesis 12 (KJV)",
+   "target_length_s": 900,
+   "blocking": "after Babel; arc-04 anchor"
   }
  ],
  "cuts_first": [
-  "2 coherent cuts of flood-ends-long (raven/dove; rainbow covenant) 20-90 s, each with its own native defect review, link to the long"
+  "raven/dove cut and rainbow-covenant cut of flood-ends-long (in progress by the coordinator), each 20-90 s with native defect review and a link to the long",
+  "Keeper reflection v2: split screen ~30 s, top = long's moment, bottom = Pavo talking Keeper (2-4 clips); Pavo only at a fresh exact 0-credit quote, generate at most 2 per line, pick the best"
  ],
  "packaging_refresh": [
   {
@@ -126,25 +137,56 @@
   }
  ],
  "funnel_actions": [
-  "pinned comment on every new Short -> the long",
-  "end screen and playlist on flood-ends-long -> next Genesis Short",
-  "TikTok mirror stays through tiktok.yml"
+  "every Short/cut pinned comment -> flood-ends-long until the Noah compilation is public (11-04), then -> compilation",
+  "end screen and playlist on flood-ends-long -> Noah compilation / next Genesis Short",
+  "TikTok mirror through tiktok.yml"
  ],
  "capacity": {
   "lease": "shared lease respected (not read this run)",
-  "chatgpt_stills": "AVAILABLE (the 1 Nov limit was the Codex/Work tab only; the Chat tab made all 30 flood-ends-long stills, approved)",
-  "flux": "daily allocation exhausted 11-01; retry after 00:00 UTC",
-  "buzzy": "41,994 credits measured 11-01; ledger has no newer balance; ceiling 100/day",
-  "pavo": "0-credit quote only; the pavo MCP did not connect this run",
+  "chatgpt_stills": "<=30/day available",
+  "buzzy": "<=100 credits/day; last balance 41,994 on 11-01",
+  "pavo": "0-credit quote only; MCP still connecting at this run",
+  "vidiq": "no credits used in this run; 80 of 150 used on 11-02",
   "token_budget": "agent_mining check passed",
-  "vidiq": "80 of 150 credits used today (45 first run + 5 outliers + 25 video_watch audit pending); balance ~3,089 on 11-18 renewal",
-  "pc": "owner's PC availability not verified this run"
+  "binds": "4 Shorts/day with Pavo-talking Keeper reflection is the tightest item; script runway for the next long is 0"
  },
- "why": "Hours bind by two orders of magnitude; the only lever that moves them is longs people find and watch. Test one demand-backed long, wire the funnel, test packaging, and keep subscribers moving with the daily Short. Volume is last.",
+ "why": "Hours bind (27.9/4,000, estimate). flood-ends-long is the first demand test; the Noah compilation (11-04) is the cheapest hours lever (zero generation); 4 Shorts/day per owner rule add subscriber flow and funnel links.",
  "confidence": {
   "goal_numbers": "measured (subs) / own estimate (hours)",
-  "strategy": "low-medium: the only demand evidence is competitor outliers; first own test is flood-ends-long",
-  "slot": "low"
+  "strategy": "low-medium",
+  "slots": "low (05:30 and 18:30 unmeasured)"
  },
- "cross_niche_status": "2026-11-02 cross-niche pool (evidence/vidiq/20261102/cross-niche-outliers.json): 8 winners, breakout 40-126, but 6 of 8 are one cowboy-romance cluster and no weak contrasts yet -> NOT validated, test only. Transferable test: title = emotional turn + withheld reveal, as title B packaging test; 2h+ length not copied. Structure audit of 93wYHx79Mso submitted; result still pending at write time."
+ "cross_niche_status": "2026-11-02 cross-niche pool (evidence/vidiq/20261102/cross-niche-outliers.json): 8 winners, breakout 40-126, but 6 of 8 are one cowboy-romance cluster and no weak contrasts yet -> NOT validated, test only. Transferable test: title = emotional turn + withheld reveal, as title B packaging test; 2h+ length not copied. Structure audit of 93wYHx79Mso submitted; result still pending at write time.",
+ "battle_plan": {
+  "moment": "M2 (due 2026-11-04): 'The Complete Story of Noah (Genesis 5-9) KJV' compilation, 40-60 min. M1 closes when flood-ends-long (1m-NUJhkdMY) is verified public; the owner released it as is and it is being made public now.",
+  "triggers_hit": [
+   "M1 trigger (long not public by 11-03 23:30): NOT hit; it is being made public at ~00:50 UTC 11-03",
+   "M3 (11-05 checkpoint) not yet due; M5 not yet due"
+  ],
+  "actions": [
+   "Verify 1m-NUJhkdMY is public, then arcs.json link, pinned comment and playlist; Facebook Page gets the long",
+   "Build the Noah compilation from approved G06-G09 media, the Noah compilation and flood-ends-long; publish 11-04; then repoint every live Short's pinned comment and related video to it",
+   "Cuts of flood-ends-long (coordinator session is making them) feed the 4-Shorts/day schedule, each with a funnel link",
+   "Write the next long script (Genesis 10-11 Babel) now: script runway is 0.0 days"
+  ]
+ },
+ "slots_note": "estimate, thin data: only 13:30 and 23:30 UTC have own performance data (best Short 532 views at 13:30; 23:30 got 328/302). 05:30 and 18:30 are exploration slots, to be judged after 3 days; Short slots only after the long is public.",
+ "next_compilations": [
+  {
+   "title": "The Complete Story of Noah (Genesis 5-9) KJV",
+   "due": "2026-11-04",
+   "length_min": "40-60",
+   "sources": "approved G06-G09 media, Noah compilation (arc-02), flood-ends-long",
+   "zero_generation_cost": true
+  },
+  {
+   "title": "Creation to Cain (Genesis 1-4) KJV",
+   "due": "2026-11-08"
+  }
+ ],
+ "distribution": [
+  "Facebook Page (id 61595804835184): flood-ends-long and cuts as Reels, with the new avatar/banner",
+  "Buffer free mirror of already-public Shorts only",
+  "no new spending"
+ ]
 }
