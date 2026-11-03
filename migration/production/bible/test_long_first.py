@@ -357,6 +357,27 @@ class Cuts(unittest.TestCase):
             spec["track"] = "buzzy"
             self.assertTrue(sc.check(spec, root)["problems"][0].startswith("SPEC_VERSION"))
 
+    def test_a_cut_with_its_record_is_not_rendered_again(self):
+        """E282: re-running a cuts spec must not re-encode a cut that already has its record."""
+        with tempfile.TemporaryDirectory() as tmp:
+            eps = Path(tmp) / "migration/production/bible/episodes"
+            eps.mkdir(parents=True)
+            (eps / "old-cut.json").write_text("{}")
+            spec = Path(tmp) / "spec.json"
+            spec.write_text(json.dumps({"long": "x", "pilot": "p", "cuts": [{"id": "old-cut", "start": 1, "end": 30}]}))
+            clean = Path(tmp) / "clean.mp4"
+            clean.write_bytes(b"x")
+            old = (sc.check, sc.sources, sc.cl.sha256, sc.cl.run)
+            sc.check = lambda *a, **k: {"problems": [], "cuts": {"old-cut": {"first": 0, "last": 0, "advice": []}}}
+            sc.sources = lambda *a, **k: ({}, {"composed": {"clean": {"output_sha256": "s"}, "sentences": []}})
+            sc.cl.sha256 = lambda *a, **k: "s"
+            sc.cl.run = lambda *a, **k: self.fail("ffmpeg ran for a cut that already has its record")
+            try:
+                sc.render(spec, clean, Path(tmp) / "out", root=tmp)
+            finally:
+                sc.check, sc.sources, sc.cl.sha256, sc.cl.run = old
+            self.assertEqual(list((Path(tmp) / "out").glob("*")), [])
+
     def test_no_two_shorts_of_one_long_repeat_footage_or_speech(self):
         # E279 (owner, 2026-11-03: "Nao pode ter trechos repetidos nos shorts"): a cut or reflection clip may share only the fade
         # margin (0.25 s, silence in both) with another Short of the same long
