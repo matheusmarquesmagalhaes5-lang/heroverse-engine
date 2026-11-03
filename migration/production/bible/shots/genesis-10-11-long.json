@@ -1,0 +1,518 @@
+{
+ "episode": "genesis-10-11-long",
+ "shots": {
+  "s-babble": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-10-11-long-s-babble (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "motion_engine": "cinematic-v2",
+   "still": "genesis-10-11-long-s-babble",
+   "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-babble.jpg",
+   "clip_sha256": null,
+   "still_sha256": "90e27cae17683279ed2feb7c595ebe68d782f7560422167c1f4333e4686412b3",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 20,
+   "request_sha256": "a0215f5e836ca4fcd620861db7547bb6e0135ef847fd73c79143b422fb1b1aa0"
+  },
+  "s-babel": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-10-11-long-s-babel (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "motion_engine": "cinematic-v2",
+   "still": "genesis-10-11-long-s-babel",
+   "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-babel.jpg",
+   "clip_sha256": null,
+   "still_sha256": "68cca726845282bf013f369f30b8d8c99fdbd084ae51207bfda3e048cde9f7fc",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 18,
+   "request_sha256": "4a745da3b65acf2a1dd4f0d4735a7a006d96d7369c268ba6cdd7031a8737c9e0"
+  },
+  "s-behold": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-10-11-long-s-behold (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "motion_engine": "cinematic-v2",
+   "still": "genesis-10-11-long-s-behold",
+   "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-behold.jpg",
+   "clip_sha256": null,
+   "still_sha256": "faf456bbc815a5408b4a6b4dd166c967eca61a423f9ad354326dbcb24569af1d",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 20,
+   "request_sha256": "19d6f74a724199864fa58204de9177a2d73554c75b2268847d1495408f272701"
+  },
+  "s-clay": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-10-11-long-s-clay (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "motion_engine": "cinematic-v2",
+   "still": "genesis-10-11-long-s-clay",
+   "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-clay.jpg",
+   "clip_sha256": null,
+   "still_sha256": "f4e9b7ab6669d7939e5ba95f80486b88ea89e0b3bfe5adffd209953d48738df6",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 18,
+   "request_sha256": "5bb534813501424ad2af2ed8a7978b3eaf4b635d3a8cc820e993b6192f0eace0"
+  },
+  "s-confound": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-10-11-long-s-confound (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "motion_engine": "cinematic-v2",
+   "still": "genesis-10-11-long-s-confound",
+   "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-confound.jpg",
+   "clip_sha256": null,
+   "still_sha256": "be395e1ada5d02a6b41c18ccc56401b05f5879a02ecf514b336759491d724421",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 20,
+   "request_sha256": "c1845c3b7f5d43258a51226fc8cd31ecb7593a2e276ef70bca73520d9dfa54fe"
+  },
+  "s-down": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-10-11-long-s-down (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "motion_engine": "cinematic-v2",
+   "still": "genesis-10-11-long-s-down",
+   "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-down.jpg",
+   "clip_sha256": null,
+   "still_sha256": "607d3fd677f3adfc91a5d938805fead1168a938ae47a834124508faff086393a",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 20,
+   "request_sha256": "78b36705a28c866b9592c94fb041678d5aef567f7a0c83f400b5eb92021f7162"
+  },
+  "s-foundation": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-10-11-long-s-foundation (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "motion_engine": "cinematic-v2",
+   "still": "genesis-10-11-long-s-foundation",
+   "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-foundation.jpg",
+   "clip_sha256": null,
+   "still_sha256": "3c8dd669d4f17c61cb5022b5e5ee67e078e09a7d18c19ff0efb733ec35f6b898",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 20,
+   "request_sha256": "6d130c176495f8367c5950df3ed3f8a08baa3a92083a7eaf7d5e6269bd5bfd21"
+  },
+  "s-gathered": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-10-11-long-s-gathered (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "motion_engine": "cinematic-v2",
+   "still": "genesis-10-11-long-s-gathered",
+   "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-gathered.jpg",
+   "clip_sha256": null,
+   "still_sha256": "d1b8f57bd8731066fe4316ce7038a44541289cd11ada9d834f11129b07cf3a4f",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 18,
+   "request_sha256": "6613a283a342b912b8f1b6981aa24fbd01062163b1fb6ec396421245049a5dde"
+  },
+  "s-journey": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-10-11-long-s-journey (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "motion_engine": "cinematic-v2",
+   "still": "genesis-10-11-long-s-journey",
+   "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-journey.jpg",
+   "clip_sha256": null,
+   "still_sha256": "e4e9d6a46f565238662f457ef0b69e5fc3a005b998cf2040c6c532ea031df1c6",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 18,
+   "request_sha256": "434872c95908f641b5be0ef7641216de934946271adc9bdc838ce08ca372d2ad"
+  },
+  "s-kiln": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-10-11-long-s-kiln (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "motion_engine": "cinematic-v2",
+   "still": "genesis-10-11-long-s-kiln",
+   "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-kiln.jpg",
+   "clip_sha256": null,
+   "still_sha256": "8a8585dcd98128a45d70234501994c058bce5efbe4d960b094cbfb28c9cde241",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 18,
+   "request_sha256": "9ae16f2585527c230d7083b75962248260d19494fcb0795b46267602c58fb76d"
+  },
+  "s-kingdom": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-10-11-long-s-kingdom (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "motion_engine": "cinematic-v2",
+   "still": "genesis-10-11-long-s-kingdom",
+   "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-kingdom.jpg",
+   "clip_sha256": null,
+   "still_sha256": "fd075d2e214791cbdc5bbde82852b5ed4203377a5569c3d9ad5fb9d1cdd1cb8c",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 20,
+   "request_sha256": "1bc6c052ea8d872cdac2d893b9e5e7b06020c7239e4482ef8b282e68231c1311"
+  },
+  "s-mighty": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-10-11-long-s-mighty (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "motion_engine": "cinematic-v2",
+   "still": "genesis-10-11-long-s-mighty",
+   "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-mighty.jpg",
+   "clip_sha256": null,
+   "still_sha256": "590cffae4117c2860ec8368dfa8e90e815e08cbea68a49cc2053143ba050abe6",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 18,
+   "request_sha256": "f39f7bcca9cee7fa8e207d3538c08fba324364331686268938f200dd8678f8e8"
+  },
+  "s-nations": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-10-11-long-s-nations (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "motion_engine": "cinematic-v2",
+   "still": "genesis-10-11-long-s-nations",
+   "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-nations.jpg",
+   "clip_sha256": null,
+   "still_sha256": "795769372979241f8935d2759c05bcc38274d2089637c13f2cec2b2efa3a58fa",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 18,
+   "request_sha256": "bc3b1e7cc328ad3b4dbd1ee343fc038583e4ed92e73713d054ca8e1ebcbab3bb"
+  },
+  "s-onetongue": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-10-11-long-s-onetongue (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "motion_engine": "cinematic-v2",
+   "still": "genesis-10-11-long-s-onetongue",
+   "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-onetongue.jpg",
+   "clip_sha256": null,
+   "still_sha256": "a2ab860662f6ca6e4d99cc00e13cdd4f38ec232f2d87052f703682ff68b41cca",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 18,
+   "request_sha256": "339e883f75e3df18dc54ed97634a5f0983bd723987650b2514eba184eb1c56a3"
+  },
+  "s-parting": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-10-11-long-s-parting (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "motion_engine": "cinematic-v2",
+   "still": "genesis-10-11-long-s-parting",
+   "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-parting.jpg",
+   "clip_sha256": null,
+   "still_sha256": "138991af5651c7d73acd5aea3b391c901a34264d471cbbf3f52f1f7c96fe89c4",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 18,
+   "request_sha256": "51e3a29f9637c92d8afaba959a90c801209aad8a736afe2678fdd4ecc1e4379f"
+  },
+  "s-pitch": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-10-11-long-s-pitch (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "motion_engine": "cinematic-v2",
+   "still": "genesis-10-11-long-s-pitch",
+   "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-pitch.jpg",
+   "clip_sha256": null,
+   "still_sha256": "5d353cead529b87ac7ea1064e4a9f9458127047c55c3f28723985f5bbab4c0eb",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 18,
+   "request_sha256": "a12aeddf1000ecfcf304ca2d995eadc5de5ead47562a348593a25929b84d2558"
+  },
+  "s-ramps": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-10-11-long-s-ramps (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "motion_engine": "cinematic-v2",
+   "still": "genesis-10-11-long-s-ramps",
+   "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-ramps.jpg",
+   "clip_sha256": null,
+   "still_sha256": "da102d6eac521db191074c421df182a3ee77d44b9b079adf1dcc3c23cffccc1f",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 20,
+   "request_sha256": "86fc62c66ad2aaef9c8a9dc4ac63b6dc466f61e2da1b5d7965a0a1b809997388"
+  },
+  "s-roadeast": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-10-11-long-s-roadeast (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "motion_engine": "cinematic-v2",
+   "still": "genesis-10-11-long-s-roadeast",
+   "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-roadeast.jpg",
+   "clip_sha256": null,
+   "still_sha256": "003f3d2b925b4b452efddfbdee651a96e3a4b875dce8a7871968351a98a6526a",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 7,
+   "request_sha256": "1b4ad6ce14e80c37094a14b996f50a4064cc0e939b475672f62891b0013cb6de"
+  },
+  "s-roadsouth": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-10-11-long-s-roadsouth (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "motion_engine": "cinematic-v2",
+   "still": "genesis-10-11-long-s-roadsouth",
+   "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-roadsouth.jpg",
+   "clip_sha256": null,
+   "still_sha256": "f33f34f33229d36735aba5efe843d8b75853e7ed290b0a6bd5b32c3e80eb6e23",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 7,
+   "request_sha256": "bc5e07bfeb8e5b7ae2059ad054bfaefdf96b77007a5f2d0f4f2761e540a6c845"
+  },
+  "s-roadwest": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-10-11-long-s-roadwest (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "motion_engine": "cinematic-v2",
+   "still": "genesis-10-11-long-s-roadwest",
+   "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-roadwest.jpg",
+   "clip_sha256": null,
+   "still_sha256": "a6c27e52bd4779cff3d2f42ef066194d6174ff27efd8b8d6c99238b9bfb81005",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 7,
+   "request_sha256": "f73794058490a1e3289adf7183b0f2fbf7fd60cbe09aff5a3b3550a75e835be1"
+  },
+  "s-scaffold": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-10-11-long-s-scaffold (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "motion_engine": "cinematic-v2",
+   "still": "genesis-10-11-long-s-scaffold",
+   "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-scaffold.jpg",
+   "clip_sha256": null,
+   "still_sha256": "d9de2fe3a923b6eb5f280325c54ee20bbeb86083bc87fe9c9f0de4e102490f8a",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 20,
+   "request_sha256": "cb8f22d2c773fcca772e5254cbbeca2dce58061d431b36abbece50a4b2e32469"
+  },
+  "s-star": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-10-11-long-s-star (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "motion_engine": "cinematic-v2",
+   "still": "genesis-10-11-long-s-star",
+   "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-star.jpg",
+   "clip_sha256": null,
+   "still_sha256": "5eeb2a21911170caffd09a34f904af1ae1e3e003d32921bcd3aed1f3b5603c60",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 20,
+   "request_sha256": "c9da83d3dca73d3adefc53a7bc5a451e40ec6f7dc1493a9c465fa6416f17fa02"
+  },
+  "s-stranger": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-10-11-long-s-stranger (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "motion_engine": "cinematic-v2",
+   "still": "genesis-10-11-long-s-stranger",
+   "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-stranger.jpg",
+   "clip_sha256": null,
+   "still_sha256": "5ded358a49a20d4ba5ac1590ba411684ea1b542bcb33245e6866fbaea8fd1065",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 20,
+   "request_sha256": "a22ac9c31d37e9f8f35980587ae12cc6b45b05a22dc243f64aa13093e3336582"
+  },
+  "s-tools": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-10-11-long-s-tools (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "motion_engine": "cinematic-v2",
+   "still": "genesis-10-11-long-s-tools",
+   "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-tools.jpg",
+   "clip_sha256": null,
+   "still_sha256": "154b7b1a233b640e3a26cf7e479a326b30fc632c17f6ff96be1cd5224a0ea45b",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 18,
+   "request_sha256": "be2bae7f77f408cc005e6dcae06b3e41742f73829c0179e1b18a85314345b111"
+  },
+  "s-top": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-10-11-long-s-top (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "motion_engine": "cinematic-v2",
+   "still": "genesis-10-11-long-s-top",
+   "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-top.jpg",
+   "clip_sha256": null,
+   "still_sha256": "9b5f70f678d45151f26ba7693038153d1c2e080bc37db08d456bd4d0980619c2",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 20,
+   "request_sha256": "8b95efe8476d0a79b5713c90a3043fa136c792192baba37cb67aee6dddaaa0d4"
+  },
+  "s-unfinished": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-10-11-long-s-unfinished (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "motion_engine": "cinematic-v2",
+   "still": "genesis-10-11-long-s-unfinished",
+   "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-unfinished.jpg",
+   "clip_sha256": null,
+   "still_sha256": "e6e404a4ecc76f67f5c49639e2c92e1f58477da58ddc509560ae5f30bac92468",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 20,
+   "request_sha256": "f974a4f340ee3d90d918727bbfc83c51fde8f7c6418bc6218d40c7a5794982dd"
+  },
+  "s-ur": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-10-11-long-s-ur (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-03",
+   "motion_engine": "cinematic-v2",
+   "still": "genesis-10-11-long-s-ur",
+   "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-ur.jpg",
+   "clip_sha256": null,
+   "still_sha256": "55132b3cf10836d13ecd0aec705ba9bbb47e5867841be86948ce26ad72e7c048",
+   "frame": [
+    2560,
+    1440
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 18,
+   "request_sha256": "cfdad9fb3b63e67b0c782377f78999bb71194526a96fd24d2b308bdd57c07ae7"
+  }
+ }
+}
