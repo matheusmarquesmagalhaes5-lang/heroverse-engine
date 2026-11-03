@@ -46,7 +46,7 @@
   },
   {
    "kind": "story",
-   "text": "Rewind to the days after the flood. Eight survivors had become families, and the families were becoming nations."
+   "text": "Rewind to the days after the flood. Eight survivors had become families, and families were becoming nations."
   },
   {
    "kind": "scripture",
@@ -55,7 +55,7 @@
   },
   {
    "kind": "story",
-   "text": "But one detail comes before the scattering. For a little while, they were still together."
+   "text": "But first, for a little while, they were still together."
   },
   {
    "kind": "scripture",
@@ -164,6 +164,10 @@
    "kind": "scripture",
    "text": "And the Lord said, Behold, the people is one, and they have all one language; and this they begin to do: and now nothing will be restrained from them, which they have imagined to do.",
    "reference": "Genesis 11:6 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Hear the diagnosis in His words: a people with one tongue and one purpose, and no one left to say stop."
   },
   {
    "kind": "scripture",
@@ -315,7 +319,7 @@
     7,
     8
    ],
-   "seconds": 16,
+   "seconds": 18,
    "kind": "scene",
    "characters": [],
    "first_frame": "genesis-10-11-long-s-mighty",
@@ -353,7 +357,7 @@
    "lines": [
     13
    ],
-   "seconds": 16,
+   "seconds": 18,
    "kind": "scene",
    "characters": [],
    "first_frame": "genesis-10-11-long-s-clay",
@@ -366,7 +370,7 @@
     14,
     15
    ],
-   "seconds": 16,
+   "seconds": 18,
    "kind": "scene",
    "characters": [],
    "first_frame": "genesis-10-11-long-s-kiln",
@@ -408,7 +412,7 @@
    "lines": [
     17
    ],
-   "seconds": 16,
+   "seconds": 18,
    "kind": "scene",
    "characters": [],
    "first_frame": "genesis-10-11-long-s-gathered",
@@ -520,7 +524,8 @@
    "id": "s-behold",
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow push-in. A vast circle of clouds opening above the tower, slow churning grey and gold, one great shaft of light pouring down over the plain, a crowd of tiny workers below with their faces turned up, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Golden light through churning clouds. Solemn and majestic. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
    "lines": [
-    28
+    28,
+    29
    ],
    "seconds": 20,
    "kind": "scene",
@@ -532,8 +537,8 @@
    "id": "s-confound",
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow drift. A great wind sweeping across the plain, tearing the reeds flat and whirling dust around the foot of the tower under a sky of boiling clouds, a crowd of tiny workers bracing against it, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Dark sky and a thin line of gold light at the horizon. Stern and sudden. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
    "lines": [
-    29,
-    30
+    30,
+    31
    ],
    "seconds": 20,
    "kind": "scene",
@@ -545,7 +550,7 @@
    "kind": "keeper",
    "id": "k-restrain",
    "lines": [
-    31
+    32
    ],
    "ambience": "the open desert at night: a small campfire crackling softly and a light night wind",
    "audio_route": "kokoro",
@@ -561,7 +566,7 @@
    "id": "s-babble",
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow push-in. Two workers on a ramp seen from behind and in deep shadow, one pointing up, the other shaking his head, both with their faces turned away from us, a stack of bricks between them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Hard light and swirling dust. Bewildered and rising panic. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
    "lines": [
-    32
+    33
    ],
    "seconds": 20,
    "kind": "scene",
@@ -573,8 +578,8 @@
    "id": "s-stranger",
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Close-up, slow push-in. A woman and a man seen from behind at a river landing at dawn, facing each other with open hands, their faces hidden, two small children clinging to their robes and looking away, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Soft cold dawn light on their backs and shoulders. Aching and tender. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
    "lines": [
-    33,
-    34
+    34,
+    35
    ],
    "seconds": 20,
    "kind": "scene",
@@ -586,8 +591,8 @@
    "id": "s-tools",
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow pull-back. Hundreds of workers standing still among dropped tools and scattered bricks, turning to one another with open hands, the tower silent behind them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Flat grey dusk light. Stunned and lost. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
    "lines": [
-    35,
-    36
+    36,
+    37
    ],
    "seconds": 18,
    "kind": "scene",
@@ -599,8 +604,8 @@
    "id": "s-parting",
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow drift. A family of a man, a woman and two children gathering bundles and turning away from the crowd toward a distant trail at dusk, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Low amber dusk light. Heartbreaking and quiet. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
    "lines": [
-    37,
-    38
+    38,
+    39
    ],
    "seconds": 18,
    "kind": "scene",
@@ -612,7 +617,7 @@
    "id": "s-roadwest",
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow pan. A long line of small figures with donkeys heading west over rolling hills at sunrise, the tower tiny and distant on the plain behind them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Low sunrise light and long blue shadows. Lonely and vast. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
    "lines": [
-    39
+    40
    ],
    "seconds": 7,
    "kind": "scene",
@@ -624,7 +629,7 @@
    "id": "s-roadeast",
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow pan. A small group of travellers climbing a dry mountain pass toward a pale morning sky, mist in the valley below, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Cool pale dawn light. Resolute and small. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
    "lines": [
-    40
+    41
    ],
    "seconds": 7,
    "kind": "scene",
@@ -636,7 +641,7 @@
    "id": "s-roadsouth",
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow pan. A few figures walking beside a wide shining river through green reeds toward a far horizon, a flock of birds rising, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Warm late-afternoon light on water. Quiet and resolute. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
    "lines": [
-    41
+    42
    ],
    "seconds": 7,
    "kind": "scene",
@@ -648,7 +653,7 @@
    "id": "s-unfinished",
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow pull-back. The unfinished tower alone on the empty plain at dawn with open scaffolds, a few dropped bricks and cold ashes, long mist across the ground, one lone figure in the distance walking away, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Cold silver dawn light, mist on the ground. Hollow and silent. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
    "lines": [
-    42
+    43
    ],
    "seconds": 20,
    "kind": "scene",
@@ -660,8 +665,8 @@
    "id": "s-babel",
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow push-in. A single worn brick lying in the dust at the foot of the empty tower with long grass already growing through the cracks, early light behind, a child in silhouette far behind it walking away, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Soft low light on dust and grass. Wistful and still. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
    "lines": [
-    43,
-    44
+    44,
+    45
    ],
    "seconds": 18,
    "kind": "scene",
@@ -673,7 +678,7 @@
    "kind": "keeper",
    "id": "k-irony",
    "lines": [
-    45
+    46
    ],
    "ambience": "the open desert at night: a small campfire crackling softly and a light night wind",
    "audio_route": "kokoro",
@@ -689,8 +694,8 @@
    "id": "s-ur",
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow push-in. A distant river town of simple brick houses at twilight on the plain, a tiny family with a lamp walking toward it, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Blue twilight with a warm lamp glow. Tender and expectant. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
    "lines": [
-    46,
-    47
+    47,
+    48
    ],
    "seconds": 18,
    "kind": "scene",
@@ -702,8 +707,8 @@
    "id": "s-star",
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow tilt up. A lone traveller on a dark hilltop looking up at a sky full of stars, one bright star above him, campfire embers at his feet, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Deep blue night with starlight and a faint ember glow. Humble and full of wonder. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
    "lines": [
-    48,
-    49
+    49,
+    50
    ],
    "seconds": 20,
    "kind": "scene",
@@ -715,7 +720,7 @@
    "kind": "keeper",
    "id": "k-name",
    "lines": [
-    50
+    51
    ],
    "ambience": "the open desert at night: a small campfire crackling softly and a light night wind",
    "audio_route": "kokoro",
@@ -731,7 +736,7 @@
    "kind": "keeper",
    "id": "k-close",
    "lines": [
-    51
+    52
    ],
    "ambience": "the open desert at night: a small campfire crackling softly and a light night wind",
    "audio_route": "kokoro",
