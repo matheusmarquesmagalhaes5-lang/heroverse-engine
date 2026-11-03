@@ -18,11 +18,11 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))   # python -I adds no script directory
-import lipsync_check as lc  # noqa: E402
 import pavo_audio  # noqa: E402
 
 
 def evaluate(clip, line, model, weights, out_dir):
+    import lipsync_check as lc   # numpy and MediaPipe: only the lip environment has them
     clip, line, out_dir = Path(clip), Path(line), Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     own = lc.check(str(clip), str(line), model, weights)              # as judged today: Pavo's returned track
