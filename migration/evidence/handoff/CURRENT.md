@@ -6,6 +6,16 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
 `../../strategy/DECISIONS.md` ("2026-11-02 — Battle plan to YPP").
 
 ## Current delivery: flood-ends-long (Genesis 8-9, buzzy-long, plan `plans/flood-ends-long.json`)
+- 2026-11-04 ~13:50Z (Claude, Babel long): BUILT, NOT published. PRs #817 (k-restrain narration over s-babble; `preflight.yml`), #818, #821 (E298:
+  preflight predicts approved Pavo-audio clips at their measured length), #822/#825 (preflight PASS 41816472148 / 41823807412), #823 (s-kiln, s-pitch,
+  s-babble re-approved for their current requests), #824 (E299: s-down's own shaft of light read ROTATED_PICTURE), #828 (report). episode.yml
+  41825314647: master sha256 3f2ede85... (483.8 s, -14.5 LUFS, 30 fps; release asset bible-genesis-10-11-long-sha256-3f2ede85...). local-review
+  41837825877 ran (evidence artifact). **Blocker:** buzzy-long-pilot.yml 41838677721 QA FAIL `buzzy_shot_in_episode` (frozen buzzy-long-qa-criteria-v1,
+  E242: a buzzy-long long needs one approved Buzzy shot in the Buzzy ledger). Babel has none, and a new Buzzy generation would spend the prepaid
+  Buzzy balance ("a tool balance is not a new authorization"), so no shot was made and no gate was loosened. Pilot branch
+  `claude/long-genesis-10-11-long-41838677721` (pilot-020, QA FAIL) left unmerged. No review score was claimed; approve/publish/cuts not run.
+  Needs: an authorized zero-cost Buzzy route (or the owner's/coordinator's ruling on using the existing Buzzy balance for one silent shot), then the
+  pilot, the real review, approve.yml -> prepublish_gate.py -> publish.yml and the cuts. M2: 1zsZZgDCAG0 is public (oEmbed 200 after 13:30Z). Lease released.
 - 2026-11-04 ~13:00Z (scheduled continuation, Short coverage): bridge genesis-11-short built (episode.yml 41807208722), local-review 41828042141, record + approved thumbnail PR #826 merged, publish-episode 41829718655: private, public 2026-11-05T18:30Z, https://youtube.com/shorts/2OwoWRx3thE; studio related-video entry added. Slots 11-05 23:30 and 11-06 05:30 still FREE (no cut left; next bridge genesis-12-short, no stills yet). Babel long: episode.yml 41825314647 (another session, after preflight PR #825) was running; not touched. Episode runs 41823691848 failed PREFLIGHT_STALE (code changed after preflight; fixed by #825).
 - 2026-11-04 ~10:00Z (Claude, coordinator decision after the cap): k-restrain is now Keeper narration (Kokoro) over the approved still
   s-babble; the talking shot is removed from the plan (plan_check --strict clean, estimate 480.2 s). New `preflight.yml` runs the long's voice
