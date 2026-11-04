@@ -23,6 +23,18 @@
    "time_utc": "14:10",
    "credits": 41994,
    "source": "buzzy.now header, owner's browser, read by the coordinator through Desktop Commander"
+  },
+  {
+   "date": "2026-11-04",
+   "time_utc": "14:23",
+   "credits": 41262,
+   "source": "buzzy.now header, owner's Chrome, read by the coordinator through Desktop Commander (screenshot C:\\HeroVerse\\shot-buzzy.png), before the genesis-10-11-long s-roadwest clip"
+  },
+  {
+   "date": "2026-11-04",
+   "time_utc": "14:30",
+   "credits": null,
+   "source": "AFTER reading NOT obtained: maxchrome.ps1 run twice (the second after Start-Process chrome https://buzzy.now/ and 12 s) by Claude through Desktop Commander; both screenshots showed other windows/tabs in the foreground, not the Buzzy header; nothing in them was used or recorded, and nothing was typed or clicked. Pending a reading by the coordinator."
   }
  ],
  "calls": [
@@ -238,6 +250,27 @@
    "source_image": "flood-ends-long-s-dove-out (approved still, sha256 471086ba46fc0ae5d6714ec8024224f0a05b32121d75e377f94e8de06c5d02be)",
    "url": "https://res-prod.buzzy.now/file-service/41bd45e9-15f1-3c27-a02e-877c5dc83303.mp4",
    "purpose": "image-to-video of the approved s-dove-out still, 12 s: the dove circles over the grey water (non-speaking action peak); 5 frames viewed, clip_check clean"
+  },
+  {
+   "date": "2026-11-04",
+   "time_utc": "14:25",
+   "project_id": "6aeb40396214367746304be6",
+   "model": "dreamina-seedance-2-0-mini-260615",
+   "resolution": "720p",
+   "aspect_ratio": "16:9",
+   "tool": "generate_video",
+   "executor": "claude (Claude Code session_01J6965eGRpV1J5ZDLkPxvjc)",
+   "authorization": "coordinator decision 2026-11-04 under the owner's Buzzy rule of 2026-10-31 (support only, lowest-credit model, balance before/after): the buzzy-long track needs one Buzzy shot (E242); exactly one generation, no retry",
+   "credits": "unknown until the after-balance is read (before 41262 at 14:23Z); estimate ~46 for 8 s at 720p from the 2026-11-01/02 calls of this model",
+   "output": "1256x720 24 fps hevc, 8.04 s, with generated audio (not used: silent source)",
+   "task_id": "gt_autAOWIUNndGMEvmautAOeX2U8N6eXu8",
+   "node_id": "6aeb4039e5f653c37a797bbc",
+   "episode_shot": "genesis-10-11-long s-roadwest",
+   "duration_s": 8,
+   "output_sha256": "86678f6da5b46effdcd6683050eaf6d63509705a40e56e9687d40fc011cc8671",
+   "source_image": "genesis-10-11-long-s-roadwest (approved still, raw.githubusercontent URL of main)",
+   "url": "https://res-prod.buzzy.now/file-service/226b912d-de5e-32aa-86b6-a9d729ac850d.mp4",
+   "purpose": "image-to-video of the approved s-roadwest still: the caravan of families and donkeys walks away toward the sun (the scattering, non-speaking action peak); 8 frames viewed, consistent figures, no faces, no text"
   }
  ],
  "non_generation_calls": [
