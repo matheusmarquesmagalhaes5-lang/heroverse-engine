@@ -6,6 +6,11 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
 `../../strategy/DECISIONS.md` ("2026-11-02 — Battle plan to YPP").
 
 ## Current delivery: flood-ends-long (Genesis 8-9, buzzy-long, plan `plans/flood-ends-long.json`)
+- 2026-11-04 ~01:40Z (Claude, Babel long): owner accepted b-brick's lip lag ("3 aceita o atraso pois sei que o atraso é bem pequeno"): b-brick
+  approved 9.5 with accepted_flags MOUTH_NOT_IN_SYNC, quote in the note (PR #801). The long moves to pilot-020 (pilot-019 is the Noah M2 Pavo
+  compilation). speech-check 41753401453 (pinned ASR on our Kokoro line in each clip): b-brick heard exact ("thoroughly" is the ASR spelling of
+  throughly); b-tower heard "a city IN a tower, whose TARP may reach unto Heaven" (bm_lewis slurs "and a" and lengthens "top"): not confirmed by
+  ear, an open audio question before the build. k-restrain has NO clip; owner decision pending (no Pavo, no still switch without him).
 - 2026-11-04 ~00:30Z (Claude, Babel long, owner "Autorizo" for 1 more Pavo generation of b-brick, b-tower, k-restrain): PR #798 merged (CI green):
   `channel/owner_regen.json` + E295 (a listed shot passes E292 below its cap, one generation; every submitted generation counts, a NO_VIDEO
   round included). b-brick's line is now the builder's speech only ("And they said one to another, Go to, let us make brick, and burn them

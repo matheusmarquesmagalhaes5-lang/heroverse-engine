@@ -2,57 +2,34 @@
  "episode": "genesis-10-11-long",
  "shots": {
   "b-brick": {
-   "asset": "shot-genesis-10-11-long-b-brick-sha256-9e9a877241ad73c1a3efe8e91b74930729e65fc2c4ad8518ffa1226172b85aff.mp4",
-   "clip_sha256": "9e9a877241ad73c1a3efe8e91b74930729e65fc2c4ad8518ffa1226172b85aff",
-   "request_sha256": "c471d6ab1158eb92a0d813612119149266eca0ac13cf2f92cc797880b9fab44a",
-   "clip_seconds": 7.291667,
-   "requested_clip_seconds": 7,
+   "asset": "shot-genesis-10-11-long-b-brick-sha256-f95d2899455f5dcd5846d194b139e487c8bce823c5da5527ed3208c129b6b49f.mp4",
+   "clip_sha256": "f95d2899455f5dcd5846d194b139e487c8bce823c5da5527ed3208c129b6b49f",
+   "request_sha256": "278b239df49f1e87f4366223f8fca27c9468558e503e4bfdcb4aa518f8f7e140",
+   "clip_seconds": 5.166667,
+   "requested_clip_seconds": 5,
    "media": {
     "version": "clip-media-v1",
-    "clip_sha256": "9e9a877241ad73c1a3efe8e91b74930729e65fc2c4ad8518ffa1226172b85aff",
-    "video_seconds": 7.291667,
-    "audio_seconds": 7.328,
+    "clip_sha256": "f95d2899455f5dcd5846d194b139e487c8bce823c5da5527ed3208c129b6b49f",
+    "video_seconds": 5.166667,
+    "audio_seconds": 5.167007,
     "instrument": "ffprobe stream durations"
    },
    "score": 9.5,
-   "note": "Frames viewed (20 across 7 s): the approved builder, same face as the reference (black hair tied back, thin moustache, clay-spattered linen tunic), brickyard and kiln glow behind, lips moving on the line, eyes to the camera, no second person or text. Sync offset -1, conf 9.59.",
-   "probe_record": "migration/evidence/shots/genesis-10-11-long/41714272567.json",
-   "run_id": "41714272567",
+   "note": "Owner-authorized regeneration (E295), pavo_audio ours: our exact Kokoro KJV line (Genesis 11:3, 16 words) over Pavo's picture. Frames viewed (20 across 5.2 s at 4 fps): the approved builder close, same face, tied-back hair, thin moustache, clay-spattered tunic and arms, brick stacks and smoking kiln at dusk behind; mouth moves through the line; no second face, no text, no artifact; face in every frame. MEASURED DEFECT ACCEPTED BY THE OWNER: the mouth lags our line (SyncNet offset 5, conf 3.46, soft flag MOUTH_NOT_IN_SYNC). Owner decision 2026-11-04, verbatim: \"3 aceita o atraso pois sei que o atraso é bem pequeno\". The 9.5 rests on that acceptance; without it the lag would keep this clip below 9.5.",
+   "probe_record": "migration/evidence/shots/genesis-10-11-long/41743247133.json",
+   "run_id": "41743247133",
    "source_run": null,
-   "approved_at": "2026-11-03",
+   "approved_at": "2026-11-04",
    "model": "claude-session-reviewer",
-   "speech": {
-    "route": "pavo",
-    "clip_sha256": "9e9a877241ad73c1a3efe8e91b74930729e65fc2c4ad8518ffa1226172b85aff",
-    "onset": 0.0,
-    "end": 7.291,
-    "gain_db": -4.9,
-    "lufs": -21.6,
-    "matched_lufs": -26.5,
-    "narration_lufs": -26.5,
-    "true_peak_db": -7.5,
-    "tp_db": -1.5,
-    "limited": false,
-    "flags": []
-   },
    "audio": {
-    "route": "pavo",
-    "sha256": "f9ca94911f8c5a8603d794a3e83b7b137739ebafd68e2de2fa6ff9f335dcb204",
-    "samples": 323165,
-    "seconds": 7.328,
-    "lufs": -21.6,
-    "true_peak_db": -7.5,
-    "narration_lufs": -26.5
+    "route": "ours",
+    "sha256": "12d7cf54c22c4d988a43a355e72db2431d6416d55809bbd7a2470278329b4d23",
+    "samples": 208858,
+    "seconds": 4.736
    },
-   "review_notes": {
-    "line": "go to let us make brick and burn them throughly and they had brick for stone and slime had they for morter",
-    "asr_text": null,
-    "words_differ": null,
-    "asr": "not run on this clip (episode_build.py speech-check)",
-    "warnings": [
-     "WARN_KJV_WORDS"
-    ]
-   }
+   "accepted_flags": [
+    "MOUTH_NOT_IN_SYNC"
+   ]
   },
   "b-name": {
    "asset": "shot-genesis-10-11-long-b-name-sha256-2a6f55fb7b99ba6a8ad7950519353dacab7be95503aa91cb7ecef8d5e0ea5f67.mp4",
