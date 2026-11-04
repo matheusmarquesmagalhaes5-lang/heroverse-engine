@@ -67,7 +67,7 @@ class Planner(unittest.TestCase):
         return ap.draft(self.sb.ledger, 'k', 'genesis-11-short', self.sb.plans, NOW, self.sb.post(replies), **kw)
 
     def test_s1_picks_first_unplanned_short_in_arc_order(self):
-        self.assertEqual(ap.next_episode(plans_dir=HERE / 'plans')[0], 'genesis-12-short')
+        self.assertEqual(ap.next_episode(plans_dir=HERE / 'plans')[0], 'genesis-13-short')
         self.assertEqual(ap.series_row(12), ('The tower of Babel', 'Genesis 11:1-9'))
         self.assertEqual(ap.series_row(14)[1], 'Genesis 12-19')
 
