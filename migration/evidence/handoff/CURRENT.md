@@ -6,6 +6,9 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
 `../../strategy/DECISIONS.md` ("2026-11-02 — Battle plan to YPP").
 
 ## Current delivery: flood-ends-long (Genesis 8-9, buzzy-long, plan `plans/flood-ends-long.json`)
+- 2026-11-04 ~09:00Z (scheduled continuation, Short coverage): bridge genesis-11-short was BLOCKED (voice 167.4 s, band 170-179): one sentence added to
+  narration line 15 + s-grass 9->12 s; local Kokoro preflight PASS (0 credits), PR #810 (CI running). Next after merge: episode.yml (Pavo-free, Keeper
+  voice-over reuse), local-review, record, check-record, thumbnail, publish-episode.yml at 11-05 18:30Z, studio related-video entry. Slots 11-05 18:30/23:30 still free.
 - 2026-11-04 ~07:30Z (Claude, owner standing rule "as regras são fixas"): PR #804 merged (E296): `owner_regen.json` `standing_rule` +
   `episode_build.standing_rule_verdict`: a talking line whose stored generations all failed (words, sync, NO_VIDEO) takes ONE generation per new
   `pavo_prompt.build` prompt revision with a lesson naming shot+revision, `pavo_audio "pavo"`, max 3 extra per line (counted after run 41784344028);
