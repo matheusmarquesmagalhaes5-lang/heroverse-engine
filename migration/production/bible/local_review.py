@@ -47,6 +47,17 @@ MIN_COVERAGE = 0.95
 MAX_DRIFT_START, MAX_DRIFT_END = 1.0, 1.5   # whisper's word times jitter by about 0.8 s (flood run 41509047639)
 MIN_VOICE_OVER_MUSIC_DB = 4.0
 FREEZE_MIN = 3.0
+# Owner-approved research 2026-11-04 (TOOLS-MARKET item 2): per-sentence word error rate against the exact script and UTMOS22
+# naturalness, both CPU, both WARN ONLY. The thresholds are PROVISIONAL (not yet calibrated on accepted masters); they never
+# enter `issues`, `machine_verdict` or any gate. Promoting one to a refusal needs a recorded calibration (OPERATIONS.md).
+WER_SENTENCE_WARN, WER_OVERALL_WARN, WER_MIN_WORDS = 0.30, 0.12, 4
+UTMOS_SENTENCE_WARN, UTMOS_MEAN_WARN = 2.0, 2.8     # MOS 1-5 on the full mix (music lowers it); see UTMOS['limits']
+UTMOS_MAX_CLIPS, UTMOS_CLIP_MIN, UTMOS_CLIP_MAX = 120, 1.5, 20.0
+UTMOS = {'repo': 'tarepan/SpeechMOS', 'tag': 'v1.2.0', 'commit': 'ed25eacbfa42b99156c36ebec67a733b5dbb9b79',
+         'weights': 'utmos22_strong_step7459_v1.pt', 'weights_bytes': 411179119,
+         'weights_sha256': '38aa51ab79e2a4e09a1449758a4b37e9cbb2e8235a49662a732d33a9ba1e9bff',
+         'packages': 'torch==2.5.1+cpu torchaudio==2.5.1+cpu',
+         'limits': 'UTMOS22 scores clean speech; a mix with music reads lower, so it is a trend and a warning, never a score'}
 FONT = '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
 CATEGORY_CRITERION = {'a': 'audio_clarity_and_mix', 'b': 'opening_and_promise', 'c': 'audio_clarity_and_mix',
                       'd': 'captions_readable_and_synced', 'f': 'picture_quality'}
@@ -246,6 +257,146 @@ def speech_gaps(sentences, heard):
         if inside:
             gaps.append({'start': round(a['end'], 2), 'seconds': round(gap, 2)})
     return gaps
+
+
+# ---------------------------------------------------------------- 1b. per-sentence WER and UTMOS (WARN only)
+def sentence_wer(sentences, heard):
+    """Word error rate per script sentence from the same normalised alignment as compare(): a near-spelled word
+    (ratio >= 0.75) is still a substitution here (strict WER) and is also counted in `near`."""
+    exp, owner = [], []
+    for n, s in enumerate(sentences):
+        for t in norm_tokens(s['text']):
+            exp.append(t)
+            owner.append(n)
+    got = [w['t'] for w in heard]
+    rows = {}
+
+    def row(n):
+        return rows.setdefault(n, {'sentence': n, 'ref_words': 0, 'sub': 0, 'del': 0, 'ins': 0, 'near': 0, 'at': None})
+
+    for n in owner:
+        row(n)['ref_words'] += 1
+
+    def at(n, j):
+        if rows[n]['at'] is None and heard:
+            rows[n]['at'] = round(heard[min(max(j, 0), len(heard) - 1)]['start'], 2)
+
+    for tag, i1, i2, j1, j2 in difflib.SequenceMatcher(None, exp, got, autojunk=False).get_opcodes():
+        if tag == 'equal':
+            for k in range(i2 - i1):
+                at(owner[i1 + k], j1 + k)
+        elif tag == 'replace':
+            pairs = min(i2 - i1, j2 - j1)
+            for k in range(pairs):
+                r = row(owner[i1 + k])
+                at(owner[i1 + k], j1 + k)
+                r['sub'] += 1
+                r['near'] += difflib.SequenceMatcher(None, exp[i1 + k], got[j1 + k]).ratio() >= 0.75
+            for k in range(i1 + pairs, i2):
+                row(owner[k])['del'] += 1
+                at(owner[k], j1 + pairs)
+            if j2 - j1 > pairs:
+                row(owner[i2 - 1] if i2 > i1 else owner[max(i1 - 1, 0)])['ins'] += j2 - j1 - pairs
+        elif tag == 'delete':
+            for k in range(i1, i2):
+                row(owner[k])['del'] += 1
+                at(owner[k], j1)
+        elif tag == 'insert' and exp:
+            row(owner[i1 - 1] if i1 > 0 else owner[0])['ins'] += j2 - j1
+    out = []
+    for n in sorted(rows):
+        r = rows[n]
+        r['wer'] = round((r['sub'] + r['del'] + r['ins']) / r['ref_words'], 3) if r['ref_words'] else None
+        if r['at'] is None and sentences[n].get('start') is not None:
+            r['at'] = sentences[n]['start']
+        out.append(r)
+    total = sum(r['ref_words'] for r in out)
+    errors = sum(r['sub'] + r['del'] + r['ins'] for r in out)
+    return {'overall': {'ref_words': total, 'errors': errors, 'wer': round(errors / total, 4) if total else None,
+                        'near_matches': sum(r['near'] for r in out)},
+            'sentences': out}
+
+
+def sentence_spans(sentences, heard, cmp_):
+    """Heard (start, end) of each sentence from its matched words (the clip UTMOS listens to)."""
+    by = {}
+    for k, j in enumerate(cmp_['matched_index']):
+        if j is not None:
+            by.setdefault(cmp_['owner'][k], []).append(j)
+    return {n: (heard[min(js)]['start'], heard[max(js)]['end']) for n, js in by.items()}
+
+
+def utmos_scores(samples, spans, predict, rate=16000):
+    """predict(list of float32 arrays) -> list of MOS floats. Clips are the heard sentence spans, 1.5-20 s, evenly
+    thinned to UTMOS_MAX_CLIPS; the model is the pinned UTMOS22 strong learner (CPU)."""
+    clips = [(n, a, b) for n, (a, b) in sorted(spans.items()) if UTMOS_CLIP_MIN <= b - a <= UTMOS_CLIP_MAX]
+    if len(clips) > UTMOS_MAX_CLIPS:
+        step = len(clips) / UTMOS_MAX_CLIPS
+        clips = [clips[int(k * step)] for k in range(UTMOS_MAX_CLIPS)]
+    if not clips:
+        return {'status': 'NO_CLIPS', 'sentences': []}
+    scores = predict([samples[int(a * rate):int(b * rate)] for _, a, b in clips])
+    rows = [{'sentence': n, 'at': round(a, 2), 'seconds': round(b - a, 1), 'mos': round(float(m), 3)}
+            for (n, a, b), m in zip(clips, scores)]
+    values = [r['mos'] for r in rows]
+    return {'status': 'OK', 'clips': len(rows), 'mean': round(sum(values) / len(values), 3), 'min': min(values),
+            'sentences': rows}
+
+
+def load_utmos(tool_dir):
+    """Pinned UTMOS22 on CPU from `tool_dir` (code at UTMOS['commit'], the weights file at UTMOS['weights_sha256']),
+    or None when the optional step did not install it. Never raises: the review does not depend on it."""
+    try:
+        tool_dir = Path(tool_dir)
+        weights = tool_dir / UTMOS['weights']
+        if not (tool_dir / 'code').is_dir() or not weights.is_file():
+            return None
+        h = hashlib.sha256()
+        with open(weights, 'rb') as f:
+            for block in iter(lambda: f.read(1 << 20), b''):
+                h.update(block)
+        if h.hexdigest() != UTMOS['weights_sha256']:
+            return None
+        import torch
+        sys.path.insert(0, str(tool_dir / 'code'))
+        from speechmos.utmos22.strong.model import UTMOS22Strong
+        model = UTMOS22Strong()
+        model.load_state_dict(torch.load(weights, map_location='cpu'))
+        model.eval()
+        torch.set_num_threads(os.cpu_count() or 2)
+
+        def predict(clips):
+            out = []
+            with torch.no_grad():
+                for c in clips:
+                    out.append(float(model(torch.from_numpy(c).unsqueeze(0), 16000)[0]))
+            return out
+        return predict
+    except Exception:   # noqa: BLE001 - optional tool: absence is reported as NOT_RUN, not a failed review
+        return None
+
+
+def warnings_for(m):
+    """(seconds, text) WARNs from WER and UTMOS. Provisional thresholds; never defects, never a gate."""
+    out = []
+    a = m['audio']
+    w = a.get('wer')
+    if w:
+        o = w['overall']
+        if o['wer'] is not None and o['wer'] > WER_OVERALL_WARN:
+            out.append((0, f"overall word error rate {o['wer']:.1%} against the script ({o['errors']} of {o['ref_words']} words)"))
+        for r in w['sentences']:
+            if r['ref_words'] >= WER_MIN_WORDS and r['wer'] is not None and r['wer'] > WER_SENTENCE_WARN:
+                out.append((r['at'] or 0, f"sentence {r['sentence']} word error rate {r['wer']:.0%} "
+                                          f"({r['sub']} substituted, {r['del']} missing, {r['ins']} extra of {r['ref_words']})"))
+    u = a.get('utmos')
+    if u and u.get('status') == 'OK':
+        if u['mean'] < UTMOS_MEAN_WARN:
+            out.append((0, f"mean UTMOS naturalness {u['mean']} over {u['clips']} sentences is below {UTMOS_MEAN_WARN}"))
+        for r in u['sentences']:
+            if r['mos'] < UTMOS_SENTENCE_WARN:
+                out.append((r['at'], f"sentence {r['sentence']} UTMOS naturalness {r['mos']} is below {UTMOS_SENTENCE_WARN} (listen to it)"))
+    return sorted(out)
 
 
 # ---------------------------------------------------------------- 2. audio quality
@@ -532,6 +683,7 @@ def public_evidence(i, ev, run_id, status='EVIDENCE_COMPLETE'):
         key = CATEGORY_CRITERION.get(c)
         if key:
             links.setdefault(key, []).append(n)
+    warn = [issue(t, 'warn', x) for t, x in warnings_for(ev['measures'])] if status == 'EVIDENCE_COMPLETE' else []
     floor = nr.floor_for(i['plan'])
     clean = status == 'EVIDENCE_COMPLETE' and not found
     out = {'version': 'native-review-public-v1', 'provider': 'local', 'review_version': VERSION,
@@ -547,6 +699,9 @@ def public_evidence(i, ev, run_id, status='EVIDENCE_COMPLETE'):
            'transcript': ev.get('transcript', []), 'frame_sheets': ev.get('frame_sheets', []),
            'reviewed_at': ev.get('reviewed_at')}
     if status == 'EVIDENCE_COMPLETE':
+        out['warnings'] = warn[:nr.PUBLIC_LIST_LIMIT * 3]
+        out['warnings_note'] = ('WER and UTMOS are provisional, uncalibrated WARNs for the session reviewer to listen to; '
+                                'they are not defects, not a score and not a gate')
         out.update(report_validated=True, scores={k: None for k in nr.RUBRIC}, overall=None,
                    scores_note='machine measures are not a score: the session reviewer scores after viewing the frame sheets and reading the transcript',
                    criterion_issues=links, issues=issues[:nr.PUBLIC_LIST_LIMIT * 3],
@@ -592,7 +747,7 @@ def transcribe(model_dir, samples):
     return rows
 
 
-def analyze(i, master, model_dir, out_dir, run_id, asr=transcribe):
+def analyze(i, master, model_dir, out_dir, run_id, asr=transcribe, utmos_dir=None, utmos_predict=None):
     """Hear and see the exact master; write public-evidence.json and the frame sheets. Never an approval."""
     master = Path(master)
     require(hashlib.sha256(master.read_bytes()).hexdigest() == i['sha256'], 'MASTER_SHA256_MISMATCH')
@@ -615,6 +770,15 @@ def analyze(i, master, model_dir, out_dir, run_id, asr=transcribe):
         audio['compare'] = cmp_
         audio['timing'] = sentence_timing(sentences, heard, cmp_)
         audio['sentence_starts'] = {n: s['start'] for n, s in enumerate(sentences) if s.get('start') is not None}
+        audio['wer'] = sentence_wer(sentences, heard)
+        predict = utmos_predict or (load_utmos(utmos_dir) if utmos_dir else None)
+        if predict is None:
+            audio['utmos'] = {'status': 'NOT_RUN', 'reason': 'optional UTMOS step not installed on this run'}
+        else:
+            try:
+                audio['utmos'] = utmos_scores(samples, sentence_spans(sentences, heard, cmp_), predict)
+            except Exception as e:   # noqa: BLE001 - WARN-only measure must not fail the review
+                audio['utmos'] = {'status': 'ERROR', 'reason': type(e).__name__}
     video = dict(detect_video(master))
     video['frames'] = scan_frames(master, sentences)
     video['pacing'] = pacing(video['scene_changes'], info['duration'])
@@ -625,6 +789,8 @@ def analyze(i, master, model_dir, out_dir, run_id, asr=transcribe):
         pub['audio']['compare'].pop('matched_index', None)
         pub['audio']['compare'].pop('owner', None)
     pub['audio'].pop('sentence_starts', None)
+    if 'utmos' in pub['audio']:
+        pub['audio']['utmos']['model'] = {k: UTMOS[k] for k in ('repo', 'tag', 'commit', 'weights_sha256')}
     from datetime import datetime, timezone
     ev = {'measures': measures, 'measures_public': pub, 'reference_source': ref['source'],
           'transcript': [{'start': s['start'], 'end': s['end'], 'text': s['text']} for s in segments],
@@ -643,6 +809,12 @@ def summary(p):
         c = a['compare']
         lines.append(f"- transcript match {c['coverage']}: {c['matched_words']} of {c['expected_words']} script words heard; "
                      f"{len(c['missing'])} missing runs, {len(c['extra'])} extra runs, {len(c['garbled'])} garbled")
+    if a.get('wer'):
+        o = a['wer']['overall']
+        u = a.get('utmos') or {}
+        lines.append(f"- WER {o['wer']} ({o['errors']}/{o['ref_words']} words, {o['near_matches']} near-spelled); UTMOS "
+                     + (f"mean {u['mean']} min {u['min']} over {u['clips']} sentences" if u.get('status') == 'OK' else str(u.get('status'))))
+        lines += [f'- WARN {x}' for x in p.get('warnings', [])[:20]]
     lines.append(f"- frame sheets: {len(p['frame_sheets'])} (artifact local-review-frames, 1 frame / 2 s, 60 s per sheet)")
     return '\n'.join(lines) + '\n'
 
@@ -656,7 +828,8 @@ def main(argv):
             return 0
         if phase == 'analyze':
             temp = Path(os.environ['RUNNER_TEMP'])
-            p, _ = analyze(i, temp / 'master.mp4', temp / 'models/whisper', temp / 'local-review', os.environ.get('GITHUB_RUN_ID', ''))
+            p, _ = analyze(i, temp / 'master.mp4', temp / 'models/whisper', temp / 'local-review', os.environ.get('GITHUB_RUN_ID', ''),
+                           utmos_dir=temp / 'utmos')
             sm = os.environ.get('GITHUB_STEP_SUMMARY')
             if sm:
                 with open(sm, 'a') as f:
