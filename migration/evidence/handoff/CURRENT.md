@@ -6,6 +6,12 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
 `../../strategy/DECISIONS.md` ("2026-11-02 — Battle plan to YPP").
 
 ## Current delivery: flood-ends-long (Genesis 8-9, buzzy-long, plan `plans/flood-ends-long.json`)
+- 2026-11-04 ~18:40Z (scheduled continuation, Short coverage): next bridge Short PLANNED: `plans/genesis-12-short.json` (Babel, Genesis 11:1-9, 9:16,
+  17 FLUX scenes + 3 Keeper voice-over, no Pavo; plan_check --strict clean except STILL_NOT_APPROVED; kjv_check PASS), 17 DRAFT still records, PR #841 (test_autopilot_plan now
+  expects genesis-13-short as the next unplanned). **Blocker: no stills yet.** scene-stills 41888133039 GUARD_CF_ALLOCATION_USED (32 used of ~44, 34 asked);
+  41888285625 CF_DAILY_ALLOCATION_EXHAUSTED (HTTP 429). FLUX resets 00:00Z. ChatGPT app route not driven (last drive.ps1 log: FAIL at 00:23 local; not retried blind).
+  Next: after 00:00Z scene-stills.yml with shots s-voice..s-babel candidates 2 (<=34), review the sheets, approve by PR, then preflight.yml, episode.yml, local-review, record, check-record,
+  thumbnail, publish-episode.yml at the first free slot (11-06 05:30Z at best; 11-05 23:30Z is NOT coverable), studio related-video entry. Last scheduled Short is still 11-05 18:30Z.
 - 2026-11-04 16:25Z (coordinator read, recorded by Claude): Buzzy balance 40974. Readings 41262 (14:23Z) -> 41214 (~15:20Z, #834: 48 credits for
   the s-roadwest clip) -> 40974 (16:25Z): 240 credits UNEXPLAINED (no other Buzzy call in the ledger or CURRENT in that window). Reconcile on the
   Buzzy usage page before any further Buzzy generation. Balance-read procedure (new window first) is in the ledger's `balance_read_procedure`.
