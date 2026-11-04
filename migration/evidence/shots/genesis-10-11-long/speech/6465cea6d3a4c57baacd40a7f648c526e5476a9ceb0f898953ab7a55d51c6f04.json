@@ -1,0 +1,36 @@
+{
+ "shot": "k-restrain",
+ "clip_sha256": "6465cea6d3a4c57baacd40a7f648c526e5476a9ceb0f898953ab7a55d51c6f04",
+ "measures": {
+  "asr": {
+   "model_bin_sha256": "11b220779aea4c6f3ce9d2549c8a95ea869ed84066864b999531ef53e594fe5b",
+   "text": "Nothing could stop them. So this time, so this time, God, God did not send water.",
+   "speech_span": [
+    0.0,
+    7.0
+   ]
+  },
+  "music": 0.0,
+  "singing": 0.0,
+  "lufs": -23.1,
+  "voice": {
+   "reference": "392c43b242eb01e9e39b29f911b0282619504067217a279a36c6041acb61546d",
+   "same": 0.7183,
+   "others": [
+    0.7773
+   ],
+   "others_references": [
+    "d4f416826b28b66d5386226a4ec49ed48e1c18cedcc96ce9a2a78ece9633fe8f"
+   ]
+  },
+  "lips": []
+ },
+ "verdict": [
+  "VOICE_NOT_CONSISTENT"
+ ],
+ "review_notes": {
+  "line": "nothing could stop them so this time god did not send water he scattered them",
+  "asr_text": "Nothing could stop them. So this time, so this time, God, God did not send water.",
+  "words_differ": true
+ }
+}
