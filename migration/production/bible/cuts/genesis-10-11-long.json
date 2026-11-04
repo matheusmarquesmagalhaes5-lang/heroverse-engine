@@ -1,0 +1,47 @@
+{
+ "version": "bible-cuts-v1",
+ "track": "buzzy-cut",
+ "long": "genesis-10-11-long",
+ "pilot": "pilot-020",
+ "report": "migration/evidence/episodes/genesis-10-11-long/report-41850571431.json",
+ "cuts": [
+  {
+   "id": "babel-confusion-cut",
+   "start": 297.2,
+   "end": 353.2,
+   "slot": "2026-11-05T23:30:00Z",
+   "title": "God Didn't Knock Down the Tower | The Confusion of Tongues, Genesis 11 (KJV) #shorts",
+   "description": "No lightning, no flood, not one brick struck: at Babel God quietly took away their words (Genesis 11:7, King James Version).\n\nWatch the full story of Babel: https://youtu.be/KwFjnZ20yGA\n\nScripture: King James Version (public domain), Genesis 11:7.\nVisuals: AI-generated scenes (GPT-image stills with camera motion, Pavo, Buzzy). Narration: AI voice. Music: original, owned.\n\n#bible #genesis #biblestory #towerofbabel",
+   "tags": [
+    "tower of babel",
+    "babel",
+    "genesis 11",
+    "confusion of tongues",
+    "bible story",
+    "kjv bible",
+    "christian shorts",
+    "bible stories"
+   ],
+   "first_comment": "Imagine calling to your own brother and hearing a stranger's words. Watch the full story of Babel here: https://youtu.be/KwFjnZ20yGA"
+  },
+  {
+   "id": "babel-climb-cut",
+   "start": 202.9,
+   "end": 263.85,
+   "slot": "2026-11-06T05:30:00Z",
+   "title": "Do We Really Need God? | Building the Tower of Babel, Genesis 11 (KJV) #shorts",
+   "description": "Terrace upon terrace, millions of bricks, one quiet question in every one of them, until the sky above Babel began to change (Genesis 11).\n\nWatch the full story of Babel: https://youtu.be/KwFjnZ20yGA\n\nScripture: King James Version (public domain), Genesis 11.\nVisuals: AI-generated scenes (GPT-image stills with camera motion). Narration: AI voice. Music: original, owned.\n\n#bible #genesis #biblestory #towerofbabel",
+   "tags": [
+    "tower of babel",
+    "babel",
+    "genesis 11",
+    "bible story",
+    "kjv bible",
+    "christian shorts",
+    "bible stories",
+    "nimrod"
+   ],
+   "first_comment": "Every brick was an answer to one question: do we need God? Watch the full story of Babel here: https://youtu.be/KwFjnZ20yGA"
+  }
+ ]
+}
