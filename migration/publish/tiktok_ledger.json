@@ -100,9 +100,9 @@
    "at": "2026-11-04T06:16:05.021621+00:00"
   },
   "bible:flood-ends-landing-cut:a18c7aa267ea0d155a05030cd0da290fa43fe53d21cc2b87b2beb18f8d8d4d30": {
-   "status": "QUEUED",
+   "status": "SENT",
    "buffer_post_id": "6aeb3ecabef027e187d030d3",
-   "buffer_status": "sending",
+   "buffer_status": "sent",
    "youtube_video_id": "42wuoj5qw7c",
    "at": "2026-11-04T14:18:49.544967+00:00"
   }
