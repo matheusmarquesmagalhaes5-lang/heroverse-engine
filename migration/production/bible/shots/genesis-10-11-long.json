@@ -108,56 +108,30 @@
    }
   },
   "b-tower": {
-   "asset": "shot-genesis-10-11-long-b-tower-sha256-c6b9882bdbf295a41469cb5fb7e0e262f903c023165de535dbd0867d60c46e68.mp4",
-   "clip_sha256": "c6b9882bdbf295a41469cb5fb7e0e262f903c023165de535dbd0867d60c46e68",
+   "asset": "shot-genesis-10-11-long-b-tower-sha256-dd60b36b5b8c6c5cf1b09131922382292460701bf9b66395dc4c0aa1a0eb1fb9.mp4",
+   "clip_sha256": "dd60b36b5b8c6c5cf1b09131922382292460701bf9b66395dc4c0aa1a0eb1fb9",
    "request_sha256": "be64ae9ff1bcba1cad99906aa61bdc800065d63b3a245a943f7785e316cde641",
    "clip_seconds": 5.166667,
    "requested_clip_seconds": 5,
    "media": {
     "version": "clip-media-v1",
-    "clip_sha256": "c6b9882bdbf295a41469cb5fb7e0e262f903c023165de535dbd0867d60c46e68",
+    "clip_sha256": "dd60b36b5b8c6c5cf1b09131922382292460701bf9b66395dc4c0aa1a0eb1fb9",
     "video_seconds": 5.166667,
-    "audio_seconds": 5.184,
+    "audio_seconds": 5.167007,
     "instrument": "ffprobe stream durations"
    },
    "score": 9.5,
-   "note": "Frames viewed: the builder, same face and tunic, brick stacks and kiln behind, defiant speaking look, lips moving, no second person, no text; sync offset -1, conf 8.60, face found in every frame.",
-   "probe_record": "migration/evidence/shots/genesis-10-11-long/41714272567.json",
-   "run_id": "41714272567",
+   "note": "Owner-authorized regeneration (E295), pavo_audio ours: our exact Kokoro KJV line (Genesis 11:4, 17 words) over Pavo's picture, words exact by construction. Frames viewed (20 across 5.2 s at 4 fps): the approved builder, same face, tied-back hair, thin moustache, rope over one shoulder, dust on tunic and arms, on the brick scaffold with the unfinished tower, kiln smoke and dusk sky behind; mouth opens and closes through the line and rests in the 0.6 s tail; no second face, no text, no artifact. SyncNet offset -1, conf 8.31, face in every frame, no flags. Audio judged by its digest (the request WAV) and silence map, not by ear.",
+   "probe_record": "migration/evidence/shots/genesis-10-11-long/41743247133.json",
+   "run_id": "41743247133",
    "source_run": null,
-   "approved_at": "2026-11-03",
+   "approved_at": "2026-11-04",
    "model": "claude-session-reviewer",
-   "speech": {
-    "route": "pavo",
-    "clip_sha256": "c6b9882bdbf295a41469cb5fb7e0e262f903c023165de535dbd0867d60c46e68",
-    "onset": 0.0,
-    "end": 5.166,
-    "gain_db": -4.6,
-    "lufs": -22.9,
-    "matched_lufs": -27.5,
-    "narration_lufs": -27.5,
-    "true_peak_db": -5.2,
-    "tp_db": -1.5,
-    "limited": false,
-    "flags": []
-   },
    "audio": {
-    "route": "pavo",
-    "sha256": "a4090d66770eae8076463e37301e4aaea6886995be798b50fbad2c2bc75b4557",
-    "samples": 228615,
-    "seconds": 5.184,
-    "lufs": -22.9,
-    "true_peak_db": -5.2,
-    "narration_lufs": -27.5
-   },
-   "review_notes": {
-    "line": "go to let us build us a city and a tower whose top may reach unto heaven",
-    "asr_text": null,
-    "words_differ": null,
-    "asr": "not run on this clip (episode_build.py speech-check)",
-    "warnings": [
-     "WARN_KJV_WORDS"
-    ]
+    "route": "ours",
+    "sha256": "13591f1ede3c8355f55318a518e3e8dc706259cc053e22ef187ed17a6e1ec48b",
+    "samples": 205110,
+    "seconds": 4.651
    }
   },
   "k-close": {

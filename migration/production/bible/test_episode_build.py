@@ -464,6 +464,14 @@ class Generation(unittest.TestCase):
             with self.assertRaises(SystemExit) as err:
                 eb.probe_ids(plan, "k-a", "1", d, regen)
             self.assertIn("PROBE_STORED_GENERATIONS k-a", str(err.exception))
+            # a failed round (NO_VIDEO, no stored clip) still spends the authorization
+            (Path(d) / "2.json").unlink()
+            (Path(d) / "3.json").write_text(json.dumps({"shots": {"k-a": {"clips": [
+                {"round": 1, "error": "SHOT_FAILED k-a after 1 generations: NO_VIDEO",
+                 "generations": [{"generation": 1, "submission": "submitted", "flags": ["NO_VIDEO"]}]}]}}}))
+            self.assertEqual(eb.submitted_generations("ep-x", ["k-a"], d), {"k-a": 2})
+            with self.assertRaises(SystemExit):
+                eb.probe_ids(plan, "k-a", "1", d, regen)
             # an entry asking for more than one extra generation, or without the owner's reply, authorizes nothing
             for bad in ({"extra_generations": 2}, {"owner_reply": ""}):
                 entry = dict({"episode": "ep-x", "shots": ["k-b"], "stored_at_authorization": 1, "extra_generations": 1,
@@ -473,6 +481,8 @@ class Generation(unittest.TestCase):
         # the committed record: the three Babel lines, one extra generation each, nothing else
         caps = eb.owner_regen_caps("genesis-10-11-long")
         self.assertEqual(caps, {"b-brick": 2, "b-tower": 2, "k-restrain": 2})
+        # spent by shot-probe 41743247133 (b-brick and b-tower stored, k-restrain NO_VIDEO): no further generation
+        self.assertEqual(eb.owner_authorized_shots("genesis-10-11-long", ["b-brick", "b-tower", "k-restrain"]), [])
         self.assertEqual(eb.owner_regen_caps("arc-02-noah-compilation-keeper"), {})
 
     def test_e264_a_talking_shot_costs_two_generations_and_one_probe_round(self):

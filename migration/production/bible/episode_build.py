@@ -2038,8 +2038,29 @@ def owner_authorized_shots(episode, ids, shots_dir=None, path=None):
     """The shots of `ids` that the owner authorized ONE more generation for (owner_regen_caps) and whose stored
     generations are still below that cap: they take EXACTLY ONE new generation (probe_step max_generations=1)."""
     caps = owner_regen_caps(episode, path)
-    stored = stored_generations(episode, ids, shots_dir)
-    return [sid for sid in dict.fromkeys(ids) if sid in caps and len(stored.get(sid, [])) < caps[sid]]
+    spent = submitted_generations(episode, ids, shots_dir)
+    return [sid for sid in dict.fromkeys(ids) if sid in caps and spent.get(sid, 0) < caps[sid]]
+
+
+def submitted_generations(episode, ids, shots_dir=None):
+    """{shot id: generations submitted to Pavo} in the committed probe records of this episode, a failed round included
+    (E295: a generation that came back NO_VIDEO still spent the owner's authorization). A remux row is not one."""
+    root = Path(shots_dir) if shots_dir else REPO / "migration" / "evidence" / "shots" / str(episode)
+    out = {}
+    for f in sorted(root.glob("*.json")):
+        try:
+            shots = load(f).get("shots") or {}
+        except (OSError, ValueError):
+            continue
+        for sid in ids:
+            for c in (shots.get(sid) or {}).get("clips") or []:
+                if not isinstance(c, dict) or c.get("remux_of"):
+                    continue
+                gens = [g for g in c.get("generations") or [] if isinstance(g, dict) and g.get("submission") == "submitted"]
+                n = len(gens) or (1 if c.get("clip_sha256") else 0)
+                if n:
+                    out[sid] = out.get(sid, 0) + n
+    return out
 
 
 def older_template_shots(episode, ids, shots_dir=None):
