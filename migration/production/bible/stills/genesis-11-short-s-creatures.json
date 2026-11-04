@@ -2,6 +2,25 @@
  "id": "genesis-11-short-s-creatures",
  "episode": "genesis-11-short",
  "shot": "s-creatures",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. Herds of sheep, goats, oxen and camels spread out across a wide green valley and birds rise over it, a family in silhouette, in ankle-length rough undyed wool robes and head-cloths, barefoot, watching from the hillside in the foreground. Bright day. Abundant. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. Herds of sheep, goats, oxen and camels spread out across a wide green valley and birds rise over it, a family in silhouette, in ankle-length rough undyed wool robes and head-cloths, barefoot, watching from the hillside in the foreground. Bright day. Abundant. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-11-short-s-creatures.jpg",
+ "sha256": "2342e616c9e15b7a492431498c89aa8a2e18e10d11efe1b9d3a0f13b1bc315a7",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-11-short-s-creatures-41778952922-2",
+ "engine": "cloudflare-workers-ai:@cf/black-forest-labs/flux-1-schnell",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-04",
+  "score": 9.5,
+  "note": "Viewed: animals and birds across a green plain with a family on a rise.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "f77f8c6fb4045df8b2ffdd1455e7ddf5e9380ca2cbf4101e044e0dbe2c511093",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

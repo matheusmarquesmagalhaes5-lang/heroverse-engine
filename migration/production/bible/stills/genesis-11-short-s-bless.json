@@ -2,6 +2,25 @@
  "id": "genesis-11-short-s-bless",
  "episode": "genesis-11-short",
  "shot": "s-bless",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. Golden late light falls over a family of eight seen from behind, in ankle-length rough undyed wool robes and head-cloths, barefoot, standing with raised open hands on a green hillside above a wide washed valley. Golden late light. Blessed. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. Golden late light falls over a family of eight seen from behind, in ankle-length rough undyed wool robes and head-cloths, barefoot, standing with raised open hands on a green hillside above a wide washed valley. Golden late light. Blessed. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-11-short-s-bless.jpg",
+ "sha256": "7270e5299eef0d36c29a8b8b593e1ce7613083bce158c2abe325b6ad591b7563",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-11-short-s-bless-41778952922-1",
+ "engine": "cloudflare-workers-ai:@cf/black-forest-labs/flux-1-schnell",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-04",
+  "score": 9.5,
+  "note": "Viewed: family from behind, raised hands, golden light, no faces, period robes.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "a2535afb75accf0753f3dc8bca9ebfed5d62a627b979db1e4d29fedac0da6984",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

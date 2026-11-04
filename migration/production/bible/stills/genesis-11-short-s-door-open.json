@@ -2,6 +2,25 @@
  "id": "genesis-11-short-s-door-open",
  "episode": "genesis-11-short",
  "shot": "s-door-open",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. A great square door of rough pitch-black timber swings down open, bright daylight flooding in over a family seen from behind, their faces never visible, in ankle-length rough undyed wool robes and head-cloths, barefoot, shielding their eyes. Bright morning light. Release. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. A great square door of rough pitch-black timber swings down open, bright daylight flooding in over a family seen from behind, their faces never visible, in ankle-length rough undyed wool robes and head-cloths, barefoot, shielding their eyes. Bright morning light. Release. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-11-short-s-door-open.jpg",
+ "sha256": "eb755437e1163f745edc64b6690c2118be5ad3a3f141eb496ccbdffdbe5ac4c1",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-11-short-s-door-open-41778247076-2",
+ "engine": "cloudflare-workers-ai:@cf/black-forest-labs/flux-1-schnell",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-04",
+  "score": 9.5,
+  "note": "Viewed on the sheet: family silhouetted in the open door, backlit, no faces, period robes.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "bd33450509f1e3254811772e2c3708c859c433e67c68fd6385ce40fd28b8e4c6",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }
