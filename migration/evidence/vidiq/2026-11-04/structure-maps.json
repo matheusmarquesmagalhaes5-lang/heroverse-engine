@@ -1,0 +1,318 @@
+{
+ "date": "2026-11-04",
+ "observed_at": "2026-11-04 (vidIQ reads the same day; views are a snapshot, not final)",
+ "labels": {
+  "MEASURED": "value read from vidIQ/YouTube metadata or from a transcript on 2026-11-04",
+  "VIDIQ_MODEL": "vidIQ-computed (outlierScore, vph): a model output, not a YouTube number",
+  "ESTIMATE": "our arithmetic or reading; stated as such",
+  "NOT_MEASURED": "not observable from outside the channel (CTR, retention, impressions) or not run for cost"
+ },
+ "method_limits": [
+  "Transcript timestamps come in ~15 s caption blocks: the first-5-s technique is read from the first words, other times are +/-15 s.",
+  "Cut rate and visual pacing are NOT measurable from a transcript; the only measured cut rates are the 2026-10-26 audits (evidence/vidiq/20261026/bible_story_shorts.json).",
+  "CTR, retention and impressions of other channels are not observable; transcript structure is a proxy, not a cause.",
+  "Mine structure only. No topic wording or visual is copied; non-canonical content (2 Enoch, Nephilim attacks) is recorded as a pattern, never as material."
+ ],
+ "maps": [
+  {
+   "id": "CuQ1-DJVniI",
+   "kind": "bible-short",
+   "len": "2:54",
+   "first_line": "Thousands were dead, completely beyond hope. Then God asked one man, 'Can these bones live?'",
+   "hook_0_5": "stakes statement (thousands dead, no hope) + a quoted question from God inside the first 5 s",
+   "hook_0_30": "scene set in 2 sentences; the question is asked a second time at 0:33 (open loop #1, paid 1:09)",
+   "promise": "the question itself ('can these bones live?'); the title says 'most powerful vision'",
+   "rehooks": [
+    "0:33 question repeated",
+    "0:50 command to prophesy",
+    "1:41 'But they were completely lifeless' (second loop: breath)"
+   ],
+   "peaks": [
+    "1:09 sound/earth trembles",
+    "1:25 'one bone found another, then another' (rising repetition)",
+    "1:56 breath enters, eyes open"
+   ],
+   "payoff": "1:56-2:12 (about 70% of runtime)",
+   "cta": "2:44 'Comment: My dry bones will live' + follow",
+   "ending": "comment question, no loop",
+   "pacing": "about 4 s per sentence (estimate), one escalating verb chain at 1:25"
+  },
+  {
+   "id": "ohJdEFM3MPQ",
+   "kind": "bible-short",
+   "len": "1:18",
+   "first_line": "Why did God remove the Garden of Eden from Earth?",
+   "hook_0_5": "the title question spoken verbatim as line 1; line 2 (0:05) promise: 'the answer is astonishing'",
+   "hook_0_30": "recap in 2 sentences (gates slammed, cherubim), then a time jump 'Thousands of years later... Enoch' at 0:16 (a second beginning)",
+   "promise": "'the answer is astonishing'",
+   "rehooks": [
+    "0:16 time jump",
+    "0:50 'Then Paul said...' / 'Then Jesus turned to the dying thief' (two chained 'Then' beats)"
+   ],
+   "peaks": [
+    "0:33 'Before him stood paradise'"
+   ],
+   "payoff": "1:05 'Maybe Eden was never truly lost' (a soft reframe, not a reveal)",
+   "cta": "1:12 'drop an amen'",
+   "ending": "statement + CTA",
+   "pacing": "about 20 words per 8 s, no filler (estimate)"
+  },
+  {
+   "id": "I8tEhxU8hHQ",
+   "kind": "bible-short",
+   "len": "0:29",
+   "first_line": "(Arabic) He built a giant ship on dry land. Everyone laughed at him. Then the rain began to pour.",
+   "hook_0_5": "the title is the first line: an act, a reaction (mockery) and a reversal ('Then it rained') in 3 short sentences",
+   "hook_0_30": "the whole story compressed (flood, mountain, dove, rainbow); description: 'The complete story of Noah's Ark in 30 seconds'",
+   "promise": "complete story in 30 s (description)",
+   "rehooks": [],
+   "peaks": [
+    "0:16 dove with an olive leaf"
+   ],
+   "payoff": "moral at the end: 'Trust God when it does not make sense. After every storm there is'",
+   "cta": "none spoken",
+   "ending": "transcript ends mid-sentence on 'After every storm there is' (INFERRED loop mechanic: the cut joins the first line; not confirmed by watching)",
+   "pacing": "29 s, about 1 sentence per 3 s (estimate); likes 1,056 / 20,242 views = 5.2% (MEASURED)"
+  },
+  {
+   "id": "RmhywUMP3i4",
+   "kind": "bible-short",
+   "len": "2:12",
+   "first_line": "[panting] 'Stay back, or I'll bash the boy's head against the rocks.' (first speech at 0:07)",
+   "hook_0_5": "cold open in the middle of the crisis, dialogue only, no introduction (0-7 s music/breath, then a threat)",
+   "hook_0_30": "the father explains the stakes inside the scene (0:27); no narrator yet",
+   "promise": "implicit: will the boy be freed",
+   "rehooks": [
+    "0:44 'Anything is possible to those who believe' / 'help my unbelief' (emotional hinge)"
+   ],
+   "peaks": [
+    "0:44 belief line",
+    "1:03 command 'come out of him'",
+    "1:23 the scream"
+   ],
+   "payoff": "1:03-1:23",
+   "cta": "none heard",
+   "ending": "at 1:39 a narrator starts explaining the story AFTER the climax (inverted order: scene first, context after)",
+   "pacing": "long held lines; scene-led. Content may be re-cut film footage (cannot verify): do not use as a model for originality"
+  },
+  {
+   "id": "et-vCpWWdQU",
+   "kind": "bible-long",
+   "len": "14:16",
+   "first_line": "Before there were stars, before there was sky, before there was anything at all, there was God.",
+   "hook_0_5": "cosmic scene-setting, no question",
+   "hook_0_30": "creation recap, then 'But on the sixth day, God did something different' at 0:51 (first turn)",
+   "promise": "the title ('The Full Story') plus chapter list in the description (11 chapters, one every ~1.2 min)",
+   "rehooks": [
+    "0:51 'God did something different'",
+    "3:19 'But something was missing'",
+    "5:19 'Everything. Except one.'",
+    "6:10 'a serpent came'",
+    "8:56 'Adam. Where are you?'",
+    "11:45 'God did something extraordinary' (animal skins)",
+    "12:35 'But here is what most people miss' (Genesis 3:15)"
+   ],
+   "insights": [
+    "3:35 'Think about that for a moment'",
+    "4:08 rib: not head, not foot",
+    "7:16 'the oldest lie ever told'",
+    "9:13 'Now think carefully about that question'",
+    "12:02 link to the cross"
+   ],
+   "peaks": [
+    "4:26 'bone of my bones'",
+    "8:23 shame",
+    "11:28 'dust to dust'",
+    "12:18 the cross link"
+   ],
+   "payoff": "12:51 the promise of the offspring who crushes the serpent (about 90% of runtime)",
+   "cta": "13:58 subscribe, only at the end",
+   "ending": "moral summary then CTA",
+   "pacing": "7 re-hooks + 5 insights in 14 min (counted from the transcript): one beat per ~70 s; mean re-hook gap 2.0 min"
+  },
+  {
+   "id": "eQB06k2CDlg",
+   "kind": "bible-long",
+   "len": "13:10",
+   "first_line": "It was the middle of winter. A hungry lion wandered silently through the snowy village.",
+   "hook_0_5": "in-scene cold open at the moment of maximum danger, concrete detail (paw prints, snow, pit)",
+   "hook_0_30": "0:15 the roar from the pit; 0:24 'But to understand this, we must first return to the beginning' (the scene is frozen: loop #1 opened)",
+   "promise": "0:47 'it is the story of the most dangerous man in the Bible' (title promise stated at 47 s)",
+   "rehooks": [
+    "0:24 flashback device (closed at 1:02, 38 s later)",
+    "1:34 'what he didn't know was that this little movement would pull him into a dangerous bloody game for the throne' (loop #2, paid 6:12-11:06)",
+    "3:29 'The Egyptians had a secret weapon. A giant.'",
+    "6:28 'when a king is dying, dangerous men start to get greedy'",
+    "7:34 'Adonijah made one massive mistake. He didn't invite Benaiah.' (dramatic irony)"
+   ],
+   "peaks": [
+    "4:35 spear",
+    "9:30 the ground shook",
+    "11:23 Joab at the altar"
+   ],
+   "payoff": "12:12 promotion to supreme commander",
+   "cta": "13:03 'comment which country you watch from' (only at the end)",
+   "ending": "moral line 12:46 then CTA",
+   "pacing": "four set-pieces of 1.5-6 min each (lion 0:15, Moab 2:05, giant 3:29, coup 6:12); short declarative sentences (estimate 8-14 words)"
+  },
+  {
+   "id": "wFn6ZQWsVpY",
+   "kind": "bible-long",
+   "len": "15:11",
+   "first_line": "'Who do you think you are, boy?' (first speech 0:14)",
+   "hook_0_5": "cold open of a dialogue scene, no narration",
+   "hook_0_30": "0:14 one-line thesis: 'An army saw a giant. But one shepherd boy saw something they had forgotten.'; 0:32 flash-forward of the payoff line ('But I come against you in the name of the Lord')",
+   "promise": "0:50 'to understand how a shepherd stood where an army was afraid to stand, we must return to the beginning' (same device as EyeBible)",
+   "rehooks": [
+    "0:50 return to the beginning",
+    "2:20 40 days of challenge",
+    "5:47 'the first voice telling you that you cannot may come from someone close'",
+    "10:10 refuses armour",
+    "13:24 application paragraph"
+   ],
+   "peaks": [
+    "7:21 lion and bear testimony",
+    "12:05 'I come in the name of the Lord of hosts'",
+    "13:07 'the giant has fallen'"
+   ],
+   "payoff": "12:22-13:07 (about 82-86% of runtime)",
+   "cta": "14:45 'write amen' (soft), repeated 15:01",
+   "ending": "three consecutive closing paragraphs 13:41-15:01 (long tail)",
+   "pacing": "acted dialogue scenes with character voices; narrator lines 2-3 sentences"
+  },
+  {
+   "id": "JMz4iCPMo8w",
+   "kind": "bible-long",
+   "len": "19:30",
+   "first_line": "Before he became Satan, he was heaven's brightest creation.",
+   "hook_0_5": "a reversal claim that reframes a famous figure (paradox of identity)",
+   "hook_0_30": "0:15 world-building; 1:06 'He was not created evil. He was created glorious.'",
+   "promise": "2:10 'This is the story of the fall of Lucifer' (title promise said at 130 s, teased from 0:00)",
+   "rehooks": [
+    "1:22 'until something unthinkable happened'",
+    "1:55 'the greatest rebellion in all of creation'",
+    "4:38 'until something began to change inside him'",
+    "8:25 'rebellion requires followers'",
+    "13:16 'something else he could attack... humanity'",
+    "16:15 God's promise to the serpent"
+   ],
+   "peaks": [
+    "7:52 'I will make myself like the most high'",
+    "11:06 judgment",
+    "11:38 'HOW YOU ARE FALLEN'"
+   ],
+   "payoff": "11:06-13:00",
+   "cta": "19:12 comment + subscribe, only at the end",
+   "ending": "continuation to Eden and redemption (the story is bridged forward)",
+   "pacing": "19 scripture citations with chapter and verse (count of references read in the transcript), one about every 60 s; capitalised emphasis words"
+  },
+  {
+   "id": "zURuppTrHro",
+   "kind": "bible-long",
+   "len": "20:36",
+   "first_line": "In the beginning, God created the heavens and the earth.",
+   "hook_0_5": "none",
+   "hook_0_30": "plain narration of Genesis 1, one sentence per ~25 s",
+   "promise": "none spoken; the title question is answered at about 10:18-11:32",
+   "rehooks": [],
+   "peaks": [],
+   "payoff": "none distinguishable",
+   "cta": "none",
+   "ending": "recap 18:57-20:11",
+   "pacing": "still-image slideshow; one plain sentence per ~25 s (MEASURED from timestamps). Wins with no hook: title question + thumbnail + length + topic demand"
+  },
+  {
+   "id": "uhj_fjAgc6I",
+   "kind": "cross-long",
+   "len": "13:44",
+   "first_line": "(Tamil) What happens if you throw a god's idol into the sea?",
+   "hook_0_5": "a question, spoken before any music (0:00)",
+   "hook_0_30": "0:17 cut to 1649 as a flash-forward; 0:32 chant/song",
+   "promise": "0:48 the idol speaks: 'the statue you will worship tomorrow is not me; a lemon floats on the sea, a hawk circles above it, that is where I wait' (a concrete clue = open loop)",
+   "rehooks": [
+    "1:20 'to know what the dream means we must go back' (rewind)",
+    "7:19 'Remember the night you saw at the start? It comes now' (explicit loop callback, 6.5 min after opening)",
+    "13:14 'the answer is in the next video'"
+   ],
+   "peaks": [
+    "2:48 'not only blood fell on the sand, a generation's faith fell'",
+    "6:38 'waves stopped'",
+    "9:00 the lemon and the hawk are found"
+   ],
+   "payoff": "8:42-9:16",
+   "cta": "13:31 subscribe",
+   "ending": "series cliffhanger to the next episode",
+   "pacing": "a sung refrain returns at 0:32, 3:25, 5:16, 8:11, 10:20 (about every 2 min); narration alternates plain-spoken lines and sung verse"
+  },
+  {
+   "id": "Lwq9JVCljq0",
+   "kind": "cross-long",
+   "len": "16:14",
+   "first_line": "On March 4th, 1973, 300 miles from the Galapagos Islands, Maurice and Marilyn Bailey woke as a sperm whale struck their yacht...",
+   "hook_0_5": "date, place, names and the inciting event in one sentence",
+   "hook_0_30": "the situation (no radio, no beacon, nobody searching) by 0:32; then a channel intro and a subscribe request at 0:32-0:49 BEFORE the story restarts at 0:49",
+   "promise": "the number in the title (117 days) is counted down in the narration: day 60 (8:19), day 80 storm (9:08), day 100 ship passes (11:17), day 117 rescue (13:10)",
+   "rehooks": [
+    "0:49 'now let's begin' restart",
+    "8:35 ships seen and lost",
+    "10:30 two weeks without rain",
+    "11:17 'close to breaking them'",
+    "12:06 'if death came it would find them working'"
+   ],
+   "peaks": [
+    "11:33 the ship does not turn",
+    "12:06 decision against despair",
+    "13:26 the ship changes course"
+   ],
+   "payoff": "13:10 rescue (about 80%)",
+   "cta": "0:32 and 15:48 (subscribe twice)",
+   "ending": "epilogue 14:14-15:46",
+   "pacing": "dense formal narration, long paragraphs; a named narrator persona ('I'm Daniel Mercer')"
+  },
+  {
+   "id": "LyR4KxJ1-s0",
+   "kind": "cross-long",
+   "len": "10:48",
+   "first_line": "Appalachia has always had its share of outlaws... none were meaner than Moses Harshaw.",
+   "hook_0_5": "a superlative claim",
+   "hook_0_30": "0:15 the proof is shown up front (a thorn bush on the grave, a tombstone that reads 'Died and gone to hell'); 0:32 'This is his incredible true story'",
+   "promise": "0:32 (title claim 'MOST EVIL Man' restated at 32 s)",
+   "rehooks": [
+    "0:47 omens and a blood-red moon (atmosphere loop)",
+    "5:15 horse beaten twice",
+    "6:05 land lottery",
+    "8:00 strap on the neck",
+    "8:47 'the most evil took place in 1849'"
+   ],
+   "peaks": [
+    "8:47 grave dug up for the dress refund"
+   ],
+   "payoff": "9:20 divorce, tombstone, estate to the wife",
+   "cta": "10:15 three comment questions at the very end",
+   "ending": "twist 10:13: the house is now a bed and breakfast ($169 a night)",
+   "pacing": "a folksy narrator with asides ('Now, don't get me wrong', 'Well, anyways'): voice persona; escalating atrocities, one per ~1.5 min"
+  },
+  {
+   "id": "HU68FClr82M",
+   "kind": "cross-short",
+   "len": "2:42",
+   "first_line": "(Hindi) What you see in this picture is not a painting or art. It really happened. A woman who killed her husband for the country.",
+   "hook_0_5": "a static image + 'this really happened' + the shocking fact, all in the first 8 s",
+   "hook_0_30": "0:12 'but how many people know her name today?' (a question at 14 s); 0:16 'this is the story of...'",
+   "promise": "0:16",
+   "rehooks": [
+    "0:49 'from here her life would change completely'",
+    "1:05 'the fear came true'",
+    "1:36 'one side the country, one side the husband'"
+   ],
+   "peaks": [
+    "1:21 she acts against her husband to save the leader",
+    "2:09 poverty and no recognition"
+   ],
+   "payoff": "2:09-2:25",
+   "cta": "2:25 comment question + like + subscribe",
+   "ending": "loop-back to the title idea: 'we remember fictional spy heroes, but India had a real woman spy'",
+   "pacing": "a new beat about every 15 s (estimate), chronological, one claim per sentence"
+  }
+ ]
+}

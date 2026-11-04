@@ -1,0 +1,342 @@
+{
+ "date": "2026-11-04",
+ "observed_at": "2026-11-04 (vidIQ reads the same day; views are a snapshot, not final)",
+ "labels": {
+  "MEASURED": "value read from vidIQ/YouTube metadata or from a transcript on 2026-11-04",
+  "VIDIQ_MODEL": "vidIQ-computed (outlierScore, vph): a model output, not a YouTube number",
+  "ESTIMATE": "our arithmetic or reading; stated as such",
+  "NOT_MEASURED": "not observable from outside the channel (CTR, retention, impressions) or not run for cost"
+ },
+ "method_limits": [
+  "Transcript timestamps come in ~15 s caption blocks: the first-5-s technique is read from the first words, other times are +/-15 s.",
+  "Cut rate and visual pacing are NOT measurable from a transcript; the only measured cut rates are the 2026-10-26 audits (evidence/vidiq/20261026/bible_story_shorts.json).",
+  "CTR, retention and impressions of other channels are not observable; transcript structure is a proxy, not a cause.",
+  "Mine structure only. No topic wording or visual is copied; non-canonical content (2 Enoch, Nephilim attacks) is recorded as a pattern, never as material."
+ ],
+ "pools": {
+  "bible-short": {
+   "n": 8,
+   "channels": 8,
+   "max_channel_share": "1/8",
+   "rows": [
+    {
+     "id": "RmhywUMP3i4",
+     "ch": "Apostles And Prophet Tv",
+     "subs": 17500,
+     "views": 2672790,
+     "len_s": 132,
+     "pub": "2026-10-14",
+     "title": "THE DEMON LEFT THE BOY! | Jesus Performed a Miraculous Deliverance | Cinematic Bible Story",
+     "outlier": 1496.4,
+     "thumb": "cinematic still, dark, close faces; no overlaid text (auto/frame style)",
+     "structure_mapped": true,
+     "note": "channel also supplied a winner in the 2026-10-26 audit (JGbu9802o9o); same channel, counted once per pool"
+    },
+    {
+     "id": "PB94aZkknfA",
+     "ch": "Bible Chronicles",
+     "subs": 2740,
+     "views": 1372462,
+     "len_s": 68,
+     "pub": "2026-09-23",
+     "title": "The Bitter Water of Marah | Exodus 15:22-25 | Bible Story",
+     "outlier": 1146.4,
+     "thumb": "not read",
+     "structure_mapped": false,
+     "note": "no captions on YouTube (no speech or no caption track): structure NOT mapped; title is a plain label (name + reference) and still 1.37M"
+    },
+    {
+     "id": "CuQ1-DJVniI",
+     "ch": "The Faith Archives",
+     "subs": 43000,
+     "views": 1408841,
+     "len_s": 174,
+     "pub": "2026-08-26",
+     "title": "Ezekiel in the Valley of Dry Bones: The Most Powerful Vision in the Bible! | Ezekiel 37 #shorts",
+     "outlier": 422.0,
+     "thumb": "not read",
+     "structure_mapped": true,
+     "note": ""
+    },
+    {
+     "id": "ohJdEFM3MPQ",
+     "ch": "Bible & Reality TV",
+     "subs": 218000,
+     "views": 2715690,
+     "len_s": 78,
+     "pub": "2026-07-26",
+     "title": "Why did God remove the Garden of Eden from Earth?",
+     "outlier": 4.19,
+     "thumb": "not read",
+     "structure_mapped": true,
+     "note": "channel average is high (outlier 4.19 is vs its own typical video); non-canonical source (2 Enoch): pattern only. Same channel has 5 videos of 0.9-2.7M in the list (sum 9.0M, MEASURED) so it counts once"
+    },
+    {
+     "id": "1L5oHMbZeho",
+     "ch": "Bible Hidden Truth",
+     "subs": 1400,
+     "views": 57061,
+     "len_s": 11,
+     "pub": "2026-09-20",
+     "title": "Who Really Stopped the Giants From Storming Noah's Ark? #shorts",
+     "outlier": 40.1,
+     "thumb": "not read",
+     "structure_mapped": false,
+     "note": "11 s, no captions; the description admits the giants attack is not in the Bible; comment-bait in the description; structure NOT mapped"
+    },
+    {
+     "id": "I8tEhxU8hHQ",
+     "ch": "The Bible Story House",
+     "subs": 1200,
+     "views": 20242,
+     "len_s": 29,
+     "pub": "2026-10-28",
+     "title": "He Built a Giant Ship on Dry Land. Then It Rained | Noah's Ark #shorts",
+     "outlier": 101.9,
+     "thumb": "not read",
+     "structure_mapped": true,
+     "note": "narrated in Arabic with an English title; transcript ends mid-sentence ('After every storm there is...')"
+    },
+    {
+     "id": "AIAkc2Gkamo",
+     "ch": "Cleed",
+     "subs": 20100,
+     "views": 15300,
+     "len_s": 73,
+     "pub": "n/a",
+     "title": "One Man. One Ark. God's Promise That Changed Everything.",
+     "outlier": 24,
+     "thumb": "n/a",
+     "structure_mapped": false,
+     "note": "carried from evidence/vidiq/20261102/in-niche-outliers.json (2 days old, not re-read)"
+    },
+    {
+     "id": "uhwNfZjs4n4",
+     "ch": "Echoes of Scripture",
+     "subs": 12500,
+     "views": 11900,
+     "len_s": 81,
+     "pub": "n/a",
+     "title": "Methuselah Lived 969 Years... Longer Than Anyone Else in the Bible",
+     "outlier": 16,
+     "thumb": "n/a",
+     "structure_mapped": false,
+     "note": "carried from evidence/vidiq/20261102/in-niche-outliers.json (2 days old, not re-read)"
+    }
+   ]
+  },
+  "bible-long": {
+   "n": 7,
+   "channels": 7,
+   "max_channel_share": "1/7",
+   "rows": [
+    {
+     "id": "FaYEXkK6RsA",
+     "ch": "Bible Stories TV 247",
+     "subs": null,
+     "views": 396697,
+     "len_s": 1674,
+     "pub": "2026-10-08",
+     "title": "NOAH AND THE GREAT FLOOD | The Full Bible Story of Noah's Ark | Genesis 6-9",
+     "outlier": 189.6,
+     "thumb": "protagonist (old bearded man, intense face) 40% of frame, giant gold 'THE STORY OF NOAH', ark + animals at left, storm light",
+     "structure_mapped": "0-30 s only (2026-11-01 transcript)",
+     "note": "subs not captured; hook is calm (no question)"
+    },
+    {
+     "id": "et-vCpWWdQU",
+     "ch": "Tales From Ancient Lands",
+     "subs": 8610,
+     "views": 498972,
+     "len_s": 856,
+     "pub": "2026-05-16",
+     "title": "Adam and Eve - The Full Story | Garden of Eden, The Serpent & The Fall",
+     "outlier": 236.0,
+     "thumb": "two characters + big coloured serpent, 'ADAM & EVE' + 'The Choice That Changed Everything'",
+     "structure_mapped": true,
+     "note": ""
+    },
+    {
+     "id": "eQB06k2CDlg",
+     "ch": "EyeBible",
+     "subs": 42600,
+     "views": 507665,
+     "len_s": 790,
+     "pub": "2026-05-31",
+     "title": "The Most Dangerous Man In The Bible: The FULL Story Of Benaiah | Animated Bible Story",
+     "outlier": 233.9,
+     "thumb": "single armoured hero, dark blue, one word 'BENAIAH'",
+     "structure_mapped": true,
+     "note": ""
+    },
+    {
+     "id": "wFn6ZQWsVpY",
+     "ch": "HolyBibleVerse tv",
+     "subs": 5620,
+     "views": 569406,
+     "len_s": 911,
+     "pub": "2026-08-19",
+     "title": "David and Goliath: The Great Battle | Full Christian Movie Bible Story",
+     "outlier": 71.5,
+     "thumb": "action frame: sling stone vs spear, 'DAVID AND GOLIATH' in gold",
+     "structure_mapped": true,
+     "note": ""
+    },
+    {
+     "id": "JMz4iCPMo8w",
+     "ch": "Stories of the Olives",
+     "subs": 59600,
+     "views": 665314,
+     "len_s": 1170,
+     "pub": "2026-05-23",
+     "title": "The Story of Lucifer Falling From Heaven",
+     "outlier": 53.2,
+     "thumb": "winged figure in fire, giant gold 'LUCIFER', 'THE FALLEN ANGEL'",
+     "structure_mapped": true,
+     "note": "transcript has a gap 16:33-18:56"
+    },
+    {
+     "id": "zURuppTrHro",
+     "ch": "Bible Stories (3.9K)",
+     "subs": 3900,
+     "views": 35500,
+     "len_s": 1236,
+     "pub": "n/a (2026-11-02 read)",
+     "title": "Why God Cast Adam & Eve Out of Eden | The First Sin & Fall of Man | Genesis Bible Story",
+     "outlier": 198,
+     "thumb": "question text 'Why God Cast ADAM & EVE Out of Eden?' + subtitle, both characters, garden, 4 keywords top-right",
+     "structure_mapped": true,
+     "note": "views carried from 2026-11-02, not re-read; the narration is a still-image slideshow with one plain sentence per ~25 s"
+    },
+    {
+     "id": "_WD8NVhD5Ps",
+     "ch": "Owens Bible",
+     "subs": 20500,
+     "views": 710017,
+     "len_s": 521,
+     "pub": "2026-10-15",
+     "title": "Unexpected Discoveries That Confirm The Bible",
+     "outlier": 72.6,
+     "thumb": "not read",
+     "structure_mapped": false,
+     "note": "archaeology list, not a story; stats only"
+    }
+   ]
+  },
+  "cross-niche": {
+   "n": 7,
+   "channels": 7,
+   "max_channel_share": "1/7",
+   "note": "6 of the 8 rows from the 11-02 cross pool were one cowboy cluster and are excluded; only its best-audited row is kept",
+   "rows": [
+    {
+     "id": "93wYHx79Mso",
+     "ch": "Frontier Ever After",
+     "subs": 1000,
+     "views": 8600,
+     "len_s": 1671,
+     "pub": "2026-10 (11-02 read)",
+     "title": "(cowboy romance, premise-first)",
+     "outlier": 42,
+     "structure_mapped": "video_watch audit 2026-11-02",
+     "kind": "long",
+     "note": "the 11-02 audit; the other 6/8 of that pool were one cowboy cluster and are NOT used"
+    },
+    {
+     "id": "uhj_fjAgc6I",
+     "ch": "Era Reborn Tamil",
+     "subs": 16700,
+     "views": 1059380,
+     "len_s": 824,
+     "pub": "2026-08-27",
+     "title": "How the Dutch Stole Thiruchendur Murugan | The Forgotten History",
+     "outlier": 1513.4,
+     "structure_mapped": true,
+     "kind": "long",
+     "note": "Tamil narration, translated by Claude (partial); dramatized AI history"
+    },
+    {
+     "id": "Lwq9JVCljq0",
+     "ch": "Extreme Survival Stories",
+     "subs": 32000,
+     "views": 194408,
+     "len_s": 974,
+     "pub": "2026-10-10",
+     "title": "117 Days Lost at Sea: The Incredible Survival of a Married Couple",
+     "outlier": 38.3,
+     "structure_mapped": true,
+     "kind": "long",
+     "note": ""
+    },
+    {
+     "id": "LyR4KxJ1-s0",
+     "ch": "The Appalachia Channel",
+     "subs": 64100,
+     "views": 566490,
+     "len_s": 648,
+     "pub": "2026-09-07",
+     "title": "America's MOST EVIL Man: The FORGOTTEN TRUE story of Moses Harshaw",
+     "outlier": 14.9,
+     "structure_mapped": true,
+     "kind": "long",
+     "note": "content touches slavery and violence; structure only"
+    },
+    {
+     "id": "HU68FClr82M",
+     "ch": "Himanshu Uncovers",
+     "subs": 37000,
+     "views": 14734040,
+     "len_s": 162,
+     "pub": "2026-08-24",
+     "title": "Real Life Dhurandhar: Neera Arya's Untold Story | India's First Woman Spy | Hindi Shorts",
+     "outlier": null,
+     "structure_mapped": true,
+     "kind": "short",
+     "note": "Hindi narration, translated by Claude; title borrows a trending name; views/subs = 398x (our arithmetic)"
+    },
+    {
+     "id": "vnCaetgtVmw",
+     "ch": "Lost Snapshots",
+     "subs": 125,
+     "views": 10872,
+     "len_s": 856,
+     "pub": "2026-10-31",
+     "title": "100 Extraordinary Historical Photos That Capture Moments You Won't Believe Happened",
+     "outlier": 265.2,
+     "structure_mapped": false,
+     "kind": "long",
+     "note": "4 days old, photo compilation; stats only"
+    },
+    {
+     "id": "dHp3IpHMYrU",
+     "ch": "The Long Fear",
+     "subs": 3100,
+     "views": 93100,
+     "len_s": 11333,
+     "pub": "(11-02 read)",
+     "title": "(3 h 08 min story)",
+     "outlier": 46,
+     "structure_mapped": false,
+     "kind": "long",
+     "note": "sleep-length format; stats only; carried from 11-02"
+    }
+   ]
+  }
+ },
+ "pool_counts": {
+  "bible_breakouts": 15,
+  "bible_structure_mapped": "9 full transcript maps (4 Shorts: RmhywUMP3i4, CuQ1-DJVniI, ohJdEFM3MPQ, I8tEhxU8hHQ; 5 longs: et-vCpWWdQU, eQB06k2CDlg, wFn6ZQWsVpY, JMz4iCPMo8w, zURuppTrHro) + 1 partial (FaYEXkK6RsA, 0-30 s only); 2 Shorts have no captions (PB94aZkknfA, 1L5oHMbZeho)",
+  "cross_breakouts": 7,
+  "cross_structure_mapped": 5,
+  "cross_gap": "requirement was 6 mapped cross-niche; 5 are mapped (one is the 11-02 audit). The sixth was not run: 10 credits of the 150/day cap were left",
+  "weak_contrasts_bible": "see weak-contrasts.json (7 longs + 8 Shorts)"
+ },
+ "searches_used": [
+  "vidiq_youtube_search 'Bible story' short, viewCount, since 2026-05-04",
+  "vidiq_youtube_search 'Bible story' medium, viewCount, since 2026-05-04",
+  "vidiq_youtube_search 'forgotten true story of history documentary' medium, viewCount, since 2026-05-04",
+  "vidiq_youtube_search 'true story history shorts untold' short, viewCount, since 2026-08-04 (rows mostly Indian-language; one used)",
+  "vidiq_youtube_search date-ordered Bible queries, two windows (new uploads: useless as contrasts; Sep 15-Oct 12 window: used for weak contrasts)",
+  "vidiq_outliers NOT used (returned an off-topic list on 11-04 whatever the query)"
+ ]
+}

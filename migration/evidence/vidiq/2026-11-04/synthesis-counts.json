@@ -1,0 +1,60 @@
+{
+ "date": "2026-11-04",
+ "observed_at": "2026-11-04 (vidIQ reads the same day; views are a snapshot, not final)",
+ "labels": {
+  "MEASURED": "value read from vidIQ/YouTube metadata or from a transcript on 2026-11-04",
+  "VIDIQ_MODEL": "vidIQ-computed (outlierScore, vph): a model output, not a YouTube number",
+  "ESTIMATE": "our arithmetic or reading; stated as such",
+  "NOT_MEASURED": "not observable from outside the channel (CTR, retention, impressions) or not run for cost"
+ },
+ "method_limits": [
+  "Transcript timestamps come in ~15 s caption blocks: the first-5-s technique is read from the first words, other times are +/-15 s.",
+  "Cut rate and visual pacing are NOT measurable from a transcript; the only measured cut rates are the 2026-10-26 audits (evidence/vidiq/20261026/bible_story_shorts.json).",
+  "CTR, retention and impressions of other channels are not observable; transcript structure is a proxy, not a cause.",
+  "Mine structure only. No topic wording or visual is copied; non-canonical content (2 Enoch, Nephilim attacks) is recorded as a pattern, never as material."
+ ],
+ "counts_note": "counts are over MAPPED videos only; n is stated; every count is MEASURED from transcripts/metadata unless marked INFERRED",
+ "shorts_bible_mapped_n4": {
+  "first_spoken_content_is_stakes_question_or_event (not an introduction, reference or greeting)": "4/4",
+  "first line equals or restates the title or its paradox": "2/4 (ohJdEFM3MPQ verbatim, I8tEhxU8hHQ verbatim)",
+  "a question inside the first 5 s": "2/4 (CuQ1 God's question, ohJd title question)",
+  "cold open inside the scene (dialogue/action, no narrator)": "1/4 (RmhywUMP3i4)",
+  "comment-question CTA in the last 15 s": "2/4 (CuQ1, ohJd); 0/4 'follow for the next part' as the only CTA",
+  "story compressed to one idea and no recap of the previous episode": "4/4",
+  "length": "29 s, 78 s, 132 s, 174 s (all 8 Bible Shorts breakouts: 11, 29, 68, 73, 78, 81, 132, 174 s; median 75.5 s; 6/8 are <=90 s)"
+ },
+ "shorts_bible_all8_stats": {
+  "title_type": "question/paradox 3/8, superlative or number 4/8, plain label 1/8",
+  "views_ge_1M": "4/8 (RmhywUMP3i4, PB94aZkknfA, CuQ1-DJVniI, ohJdEFM3MPQ)",
+  "subs_under_50K": "7/8"
+ },
+ "combined_with_2026-10-26_audit": "14 Bible Shorts breakouts: lengths 170-179 s in 5 (10-26 pool) + 1 (CuQ1) = 6/14; <=90 s in 6/14 (this pool); 97 s and 132 s in 2/14. BOTH windows win: length is not established as a driver. The shared traits are an opening that states stakes/question and a cinematic, single-story treatment.",
+ "longs_bible_mapped_n6": {
+  "title contains 'Full Story' / 'FULL' / 'Full Movie' / 'The Full Bible Story'": "4/6 (FaYEXkK6RsA, et-vCpWWdQU, eQB06k2CDlg, wFn6ZQWsVpY)",
+  "title is a question": "1/6 (zURuppTrHro)",
+  "thumbnail = protagonist/pair face + 1-3 word name or question, baked-in gold/blue text": "6/6 (viewed)",
+  "length >= 13 min": "6/6 (13:10 to 27:54)",
+  "cold open in a scene or a paradox claim": "3/6 (eQB06k2CDlg, wFn6ZQWsVpY, JMz4iCPMo8w)",
+  "calm or no hook (wins on package/demand)": "3/6 (FaYEXkK6RsA, et-vCpWWdQU, zURuppTrHro)",
+  "title promise restated in the first 60 s": "2/3 hooked longs (EyeBible 0:47, HolyBibleVerse 0:50); Olives 2:10",
+  "'we must return to the beginning' device after a cold open": "2/2 cold-open scene videos (EyeBible 0:24, HolyBibleVerse 0:50) INFERRED to be a script template",
+  "re-hook/turn at least every ~3 min": "4/4 narrative winners; mean gap between re-hooks 1.8 min (eQB0), 2.0 (et-vC), 3.0 (JMz4), 3.1 (wFn6); longest gap 4.8 min (JMz4 8:25-13:16); FaYE/zURu: none measured",
+  "CTA before 2 min": "1/6 (FaYE subscribe at 1:02, 11-01 read); end-only CTA 4/6",
+  "views / subs": "58x (et-vC), 11.9x (eQB0), 101x (wFn6), 11.2x (JMz4), 9.1x (zURu) (our arithmetic, MEASURED inputs)"
+ },
+ "cross_niche_mapped_n5": {
+  "premise or claim inside the first 15 s": "5/5 (Frontier 0-15, Era Reborn question 0:00, Survival 0:01, Appalachia 0:00-0:32 claim, Himanshu 0-8)",
+  "question or 'what would happen' in the first 15 s": "2/5 (Era Reborn, Himanshu)",
+  "a concrete sign or proof shown up front that is paid late": "3/5 (Era Reborn lemon+hawk paid 7:19; Appalachia tombstone paid 9:20; Frontier loops paid 20:13+)",
+  "a number or countdown that is the title and runs through the narration": "1/5 (117 days)",
+  "recurring motif (song refrain / persona asides)": "2/5 (Era Reborn every ~2 min, Appalachia narrator asides)",
+  "ending teases the next video": "2/5 (Era Reborn, Frontier)",
+  "comment-question CTA at the end": "3/5 (Frontier, Appalachia, Himanshu); Era Reborn and Survival end on subscribe/next-video"
+ },
+ "winners_vs_weak": [
+  "Weak longs: 6/7 carry a label, chapter or episode-number title (no question, no conflict, no superlative); winners: 4/6 carry 'Full Story/FULL/Full Movie' and 1/6 a question, 1/6 'The Story of' + a dramatic name (MEASURED counts of titles).",
+  "Weak longs: 5/7 are under 10 min and 4 of those are 4:15-6:39 audio/reading formats; winners: 6/6 are 13:10-27:54 min.",
+  "Weak Shorts: 5/8 label titles (chapter or verse), 3/8 curiosity titles; 3 curiosity-title Shorts still sit at 77-156 views, so a curiosity title is not sufficient. Channel size is 103-1,020 subs for all 8.",
+  "NOT separable here: thumbnail (not read for weak videos), seed audience, upload hour, topic demand."
+ ]
+}

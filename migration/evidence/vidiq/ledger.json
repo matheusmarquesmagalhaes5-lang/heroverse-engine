@@ -1414,6 +1414,42 @@
    "credits": 5,
    "purpose": "cross-niche history query: identical off-topic list, unusable",
    "saved_to": "none"
+  },
+  {
+   "date": "2026-11-04",
+   "kind": "read",
+   "tool": "vidiq_youtube_search x8",
+   "credits": 40,
+   "purpose": "viral-structure mining: Bible Shorts and long breakouts, cross-niche history long and Shorts, two date-window pools for weak contrasts (one empty result was free; 2 date-ordered Noah/Shorts searches of same-day uploads were low value)",
+   "saved_to": "evidence/vidiq/2026-11-04/breakout-sample.json; evidence/vidiq/2026-11-04/weak-contrasts.json",
+   "outcome": "completed"
+  },
+  {
+   "date": "2026-11-04",
+   "kind": "read",
+   "tool": "vidiq_video_transcript x15",
+   "credits": 75,
+   "purpose": "transcripts for structure maps: 4 Bible Shorts, 5 Bible longs, 4 cross-niche, 2 case-study videos; 2 more calls returned no-caption errors",
+   "saved_to": "evidence/vidiq/2026-11-04/structure-maps.json; evidence/vidiq/2026-11-04/case-studies.json",
+   "outcome": "completed"
+  },
+  {
+   "date": "2026-11-04",
+   "kind": "read",
+   "tool": "vidiq_get_videos_by_ids",
+   "credits": 5,
+   "purpose": "metadata for 8 videos (case studies, FaYEXkK6RsA, no-caption Shorts)",
+   "saved_to": "evidence/vidiq/2026-11-04/breakout-sample.json; evidence/vidiq/2026-11-04/case-studies.json",
+   "outcome": "completed"
+  },
+  {
+   "date": "2026-11-04",
+   "kind": "account",
+   "tool": "vidiq_balance",
+   "credits": 0,
+   "purpose": "balance 3,069 before this run and 2,944 after = 125 credits; the itemised calls above sum to 120: one of the two no-caption transcript errors was probably charged 5 (not separable). Day total with the 15 earlier today = 140 of the 150/day cap; 10 left",
+   "saved_to": "-",
+   "outcome": "reconciled"
   }
  ]
 }
