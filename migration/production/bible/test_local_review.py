@@ -269,5 +269,111 @@ class Whole(unittest.TestCase):
                 L.inputs({'inputs': bad})
 
 
+class WerAndUtmos(unittest.TestCase):
+    """Per-sentence WER and UTMOS are WARN-only: they never become a defect, a verdict or a gate."""
+    S = Script.SENTENCES
+
+    def heard(self, text):
+        return L.flatten_heard([{'words': words(text, 0.5)}])
+
+    def test_a_perfect_reading_has_zero_wer_in_every_sentence(self):
+        w = L.sentence_wer(self.S, self.heard('And God said unto Noah go forth of the ark Bring forth with thee every living thing'))
+        self.assertEqual(w['overall']['wer'], 0.0)
+        self.assertEqual([r['wer'] for r in w['sentences']], [0.0, 0.0])
+        self.assertEqual(w['sentences'][0]['at'], 0.5)
+
+    def test_substituted_missing_and_extra_words_are_counted_in_the_right_sentence(self):
+        w = L.sentence_wer(self.S, self.heard('And God said unto Noah go forth of the banana Bring forth with thee every every living'))
+        a, b = w['sentences']
+        self.assertEqual((a['sub'], a['del'], a['ins']), (1, 0, 0))       # ark -> banana
+        self.assertEqual((b['sub'], b['del'], b['ins']), (0, 1, 1))       # thing missing, one extra word
+        self.assertEqual(w['overall']['errors'], 3)
+        self.assertEqual(w['overall']['ref_words'], a['ref_words'] + b['ref_words'])
+
+    def test_a_near_spelling_is_a_strict_substitution_and_is_counted_as_near(self):
+        w = L.sentence_wer([{'text': 'Shinar was a plain'}], self.heard('Shinars was a plain'))
+        self.assertEqual((w['sentences'][0]['sub'], w['sentences'][0]['near']), (1, 1))
+
+    def test_a_sentence_missing_entirely_is_all_deletions_with_a_time(self):
+        w = L.sentence_wer(self.S, self.heard('And God said unto Noah go forth of the ark'))
+        self.assertEqual(w['sentences'][1]['wer'], 1.0)
+        self.assertIsNotNone(w['sentences'][1]['at'])
+
+    def test_wer_warns_above_the_provisional_thresholds_and_is_not_a_defect(self):
+        bad = L.sentence_wer(self.S, self.heard('And God said unto Noah go forth of the banana Bring forth with thee every every living'))
+        m = measures(audio__wer=bad)
+        texts = [x for _, x in L.warnings_for(m)]
+        self.assertTrue(any('overall word error rate' in x for x in texts))
+        self.assertEqual(L.defects(m, 100.0), [])                     # a WARN is never a defect
+        clean = measures(audio__wer=L.sentence_wer(self.S, self.heard('And God said unto Noah go forth of the ark Bring forth with thee every living thing')))
+        self.assertEqual(L.warnings_for(clean), [])
+        self.assertEqual(L.warnings_for(measures()), [])
+
+    def test_short_sentences_do_not_warn_on_one_word(self):
+        w = L.sentence_wer([{'text': 'Go forth now'}], self.heard('Go back now'))
+        self.assertLess(w['sentences'][0]['ref_words'], L.WER_MIN_WORDS)
+        self.assertEqual(L.warnings_for(measures(audio__wer=dict(w, overall={'ref_words': 100, 'errors': 0, 'wer': 0.0, 'near_matches': 0}))), [])
+
+    def test_utmos_scores_the_heard_sentence_spans_with_the_injected_predictor(self):
+        import numpy as np
+        heard = self.heard('And God said unto Noah go forth of the ark Bring forth with thee every living thing')
+        cmp_ = L.compare(self.S, heard)
+        spans = L.sentence_spans(self.S, heard, cmp_)
+        seen = []
+        u = L.utmos_scores(np.zeros(16000 * 20, dtype='float32'), spans, lambda clips: (seen.append(len(clips)), [3.9, 1.4])[1])
+        self.assertEqual((u['status'], u['clips'], seen), ('OK', 2, [2]))
+        self.assertEqual(u['min'], 1.4)
+        m = measures(audio__utmos=u)
+        texts = [x for _, x in L.warnings_for(m)]
+        self.assertEqual(sum('UTMOS naturalness 1.4' in x for x in texts), 1)
+        self.assertEqual(L.utmos_scores(np.zeros(10, dtype='float32'), {}, lambda c: c)['status'], 'NO_CLIPS')
+
+    def test_utmos_is_thinned_and_unavailable_tool_is_none_never_an_error(self):
+        import numpy as np
+        spans = {n: (n * 3.0, n * 3.0 + 2.0) for n in range(300)}
+        u = L.utmos_scores(np.zeros(16000 * 1000, dtype='float32'), spans, lambda clips: [3.5] * len(clips))
+        self.assertEqual(u['clips'], L.UTMOS_MAX_CLIPS)
+        self.assertIsNone(L.load_utmos('/nonexistent/utmos'))
+        with tempfile.TemporaryDirectory() as d:
+            (Path(d) / 'code').mkdir()
+            (Path(d) / L.UTMOS['weights']).write_bytes(b'not the pinned weights')
+            self.assertIsNone(L.load_utmos(d))                       # hash mismatch: refused, not loaded
+
+    def test_the_pins_are_in_the_workflow(self):
+        self.assertEqual(len(L.UTMOS['commit']), 40)
+        self.assertRegex(L.UTMOS['weights_sha256'], r'^[0-9a-f]{64}$')
+        for text in (L.UTMOS['commit'], L.UTMOS['weights_sha256'], L.UTMOS['weights'], 'torch==2.5.1+cpu'):
+            self.assertIn(text, WORKFLOW)
+        step = WORKFLOW[WORKFLOW.index('Optional pinned UTMOS22'):WORKFLOW.index('Hear and see the whole master')]
+        self.assertIn('continue-on-error: true', step)
+        self.assertNotIn('secrets.', step)
+
+
+class WholeWithMeasures(unittest.TestCase):
+    def test_wer_and_utmos_reach_the_public_evidence_as_warnings_without_changing_the_verdict(self):
+        with tempfile.TemporaryDirectory() as d:
+            t = Path(d)
+            master = t / 'm.mp4'
+            subprocess.run(['ffmpeg', '-nostdin', '-v', 'error', '-y', '-f', 'lavfi', '-i', 'testsrc2=s=320x180:r=10:d=12',
+                            '-f', 'lavfi', '-i', 'sine=f=300:d=12', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-c:a', 'aac',
+                            '-shortest', str(master)], check=True)
+            i = {'plan': FLOOD, 'sha256': hashlib.sha256(master.read_bytes()).hexdigest()}
+            first = json.loads((ROOT / FLOOD).read_text())['narration'][0]['text']
+            fake = lambda dd, s: [{'start': 0.6, 'end': 5.0, 'text': first[:30], 'words': words(' '.join(first.split()[:6]), 0.6)}]
+            p, ev = L.analyze(i, master, t / 'model', t / 'out', '9', asr=fake, utmos_predict=lambda clips: [1.2] * len(clips))
+            self.assertEqual(ev['measures']['audio']['utmos']['status'], 'OK')
+            self.assertTrue(any('UTMOS' in w for w in p['warnings']))
+            self.assertTrue(any('word error rate' in w for w in p['warnings']))
+            for w in p['warnings']:
+                self.assertRegex(w, r'^\d\d:\d\d\.\d\d \[warn\] \S')
+            self.assertFalse(any('[warn]' in x for x in p['issues']))
+            self.assertIn('provisional', p['warnings_note'])
+            self.assertNotRegex((t / 'out/public/public-evidence.json').read_text(), r'https?://')
+            p2, ev2 = L.analyze(i, master, t / 'model', t / 'out2', '9', asr=fake)
+            self.assertEqual(ev2['measures']['audio']['utmos']['status'], 'NOT_RUN')
+            self.assertEqual(p['machine_verdict'], p2['machine_verdict'])
+            self.assertIn('WER', L.summary(p))
+
+
 if __name__ == '__main__':
     unittest.main()

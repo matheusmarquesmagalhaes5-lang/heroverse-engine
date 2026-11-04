@@ -202,6 +202,16 @@ sheet (1 frame / 2 s), black / frozen / duplicate-frame and scene-change evidenc
 score) and artifact `local-review-frames`. The session reviewer downloads both, views the sheets, reads the transcript
 and writes `claude_review.json` / the record `review` from what it saw and heard. No secret, no PC, no Free Tier proof.
 
+**Per-sentence WER and UTMOS in `local-review.yml` (2026-11-04, WARN only).** `local_review.py` now computes the word error
+rate of each script sentence against the pinned ASR transcript (`measures.audio.wer`: substituted/missing/extra words, strict, near
+spellings also counted) and, when the optional workflow step installed it, UTMOS22-strong naturalness on CPU
+(`measures.audio.utmos`: MOS per heard sentence, at most 120 clips; pinned SpeechMOS commit and weights sha256, no secret). Findings
+go to the public evidence key `warnings` as `MM:SS.ss [warn] ...`, never to `issues` or `machine_verdict`. Thresholds are
+PROVISIONAL and uncalibrated (sentence WER > 0.30 on 4+ words, overall WER > 0.12, sentence UTMOS < 2.0, mean < 2.8; UTMOS on a mix
+with music reads low). They stay WARNs until a run over the accepted masters is recorded in
+`evidence/reviewer-calibration/` and the numbers are changed by a PR that cites it. A failed UTMOS step does not fail the review
+(`utmos.status` is `NOT_RUN`). The session reviewer listens to every warned sentence; a warn is not a score.
+
 `native-review.yml` (Gemini, optional second opinion) uses the existing operator certificate and configured provider credential without exposing the
 credential to the caller. Verify current Free Tier eligibility before submission. Preserve upload/interaction IDs,
 raw answers, exact model identity and media binding. Reconcile uncertain outcomes rather than repeating a POST.

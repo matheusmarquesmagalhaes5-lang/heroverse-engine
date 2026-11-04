@@ -57,6 +57,18 @@ jobs:
             curl -fsSL --retry 3 --max-time 900 -o "$m/$name" "https://huggingface.co/Systran/faster-whisper-small.en/resolve/d1d751a5f8271d482d14ca55d9e2deeebbae577f/$name"
           done
           echo "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a  $m/model.bin" | sha256sum -c -
+      - name: Optional pinned UTMOS22 naturalness (CPU, WARN only; a failure here never fails the review)
+        continue-on-error: true
+        timeout-minutes: 25
+        run: |
+          u="$RUNNER_TEMP/utmos"; mkdir -p "$u"
+          timeout 1200s "$RUNNER_TEMP/rv/bin/pip" install --disable-pip-version-check --timeout 60 -q "torch==2.5.1+cpu" "torchaudio==2.5.1+cpu" --extra-index-url https://download.pytorch.org/whl/cpu
+          git init -q "$u/code"
+          git -C "$u/code" fetch -q --depth 1 https://github.com/tarepan/SpeechMOS ed25eacbfa42b99156c36ebec67a733b5dbb9b79
+          git -C "$u/code" checkout -q FETCH_HEAD
+          [ "$(git -C "$u/code" rev-parse HEAD)" = "ed25eacbfa42b99156c36ebec67a733b5dbb9b79" ]
+          curl -fsSL --retry 3 --max-time 900 -o "$u/utmos22_strong_step7459_v1.pt" "https://github.com/tarepan/SpeechMOS/releases/download/v1.0.0/utmos22_strong_step7459_v1.pt"
+          echo "38aa51ab79e2a4e09a1449758a4b37e9cbb2e8235a49662a732d33a9ba1e9bff  $u/utmos22_strong_step7459_v1.pt" | sha256sum -c -
       - name: Hear and see the whole master (ASR vs script, loudness, silence, frames, black / frozen / scenes)
         run: '"$RUNNER_TEMP/rv/bin/python" -I -B migration/production/bible/local_review.py analyze'
       - name: Preserve public evidence (no media, no secrets); the same artifact name native-review.yml uses
