@@ -6,6 +6,12 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
 `../../strategy/DECISIONS.md` ("2026-11-02 — Battle plan to YPP").
 
 ## Current delivery: flood-ends-long (Genesis 8-9, buzzy-long, plan `plans/flood-ends-long.json`)
+- 2026-11-04 ~22:40Z (Claude, session ...J5ZDLkPxvjc): review record pilot-020 (#844): audio listened to by the OWNER ("Babel ok", ~21:45Z) on a 540p
+  proxy whose audio stream is bit-identical to master 0386d34a (stream sha256 1f6edaca... checked), picture by Claude's frame review; no numeric score.
+  approve.yml 41923233107 GATE=PASS (APPROVAL.json by the workflow). The pilot alias pilot-020-sha256-0386d34a... was missing from the release (first pilot
+  run's put left none); buzzy-long-pilot 41924018239 uploaded it. publish.yml was run twice: 41923588575 (dispatched by the bot after the gate) uploaded
+  KwFjnZ20yGA PUBLIC at 22:15Z with no publish_at; my 41924476383 (publish_at 23:30Z) only reconciled the same video (one upload, receipt public, oEmbed 200).
+  The long went public ~75 min before the 23:30Z slot. Cuts: the other session's #846 spec is the one in use; my duplicate spec #849 was closed.
 - 2026-11-04 ~22:55Z (scheduled continuation): Babel cuts rendered (short-cuts 41924842630). Reviewed (frames + ASR, audio not heard by me; long's audio owner-listened): babel-confound-cut (local-review 41926160350) and babel-scatter-cut (41926169699), records with publish decision, check-record PASS. babel-climb-cut: local-review rerun pending (first run cancelled by concurrency). Next: PR+merge, publish-episode.yml confound 11-05 23:30Z, scatter 11-06 13:30Z, climb 11-06 05:30Z after its review, related-video entries.
 - 2026-11-04 ~22:30Z (scheduled continuation): **Babel long PUBLISHED** (pilot-020, publish.yml 41923588575, public, https://youtu.be/KwFjnZ20yGA; receipt migration/publish/receipts/pilot-020-41923588575.json). Cuts spec `cuts/genesis-10-11-long.json` (check PASS): babel-confound-cut 304.5-365.45 (slot 11-05 23:30Z), babel-climb-cut 160.1-245.7 (11-06 05:30Z), babel-scatter-cut 373.8-398.95 (11-06 13:30Z); reflection window 410-431 untouched (E279). Next: short-cuts.yml, local-review per cut, records/PR, publish-episode.yml at the slots, studio related-video entries, reflection Short. genesis-12-short stills still wait for FLUX 00:00Z.
 - 2026-11-04 ~18:40Z (scheduled continuation, Short coverage): next bridge Short PLANNED: `plans/genesis-12-short.json` (Babel, Genesis 11:1-9, 9:16,
@@ -339,3 +345,8 @@ accepted boundary.
   on the #751 branch before it merged (main PR checks green at 14:10Z). No open PR. Shorts in the next 48 h are unchanged; FREE: 2026-11-05 13:30Z
   (reflection 1 is held at 9.3; a livelier top range needs the long's per-shot time map, not in the report). The M2 Noah compilation Keeper clips
   (shot-probe 41652099686) belong to the other session in progress; not duplicated here.
+
+- 2026-11-04 (tools-market items 1-3, PRs #845 / #847 / this one): (1) `native-review.yml` `defect_scan=true` adds a timestamped, categorised defect list from Gemini
+  (detector only; calibration on the Babel master `0386d34a...` and one approved Short still PENDING a dispatch with Free Tier proof; owner accepted free-tier training use, DECISIONS);
+  (2) `local_review.py` per-sentence WER + optional pinned UTMOS as WARN-only `warnings` (thresholds provisional, uncalibrated); (3) `audience_report.py` (goal-report.yml) writes
+  `daily-report/audience.json` with retention and traffic sources (Short -> long funnel); first real run will confirm the browse mapping. No effect on the Babel long.
