@@ -789,3 +789,12 @@ Rules for Inteligência Viva and production (none edits a frozen QA file or gate
 
 Limits: 5 of the 6 requested cross-niche maps (10 credits were left under the cap); two winners have no captions; the weak sample
 is 24 days old and Genesis-5 heavy; Tamil and Hindi transcripts were translated by Claude.
+
+## 2026-11-04 — Tools market research
+
+Owner asked for a deep survey of connectors, plugins and skills. Result: `../evidence/research/TOOLS-MARKET-2026-11-04.md` (research evidence, not a directing document; research only; nothing installed or connected,
+no spending). The account's own catalog holds no enabled plugins and only generic skills; the useful assets are already wired (Gemini native review,
+Playwright Studio runner, Analytics API reports, vidIQ, manifold). Top picks: finish the Gemini calibration as the listening defect finder, add UTMOS and
+per-sentence WER to `local_review.py`, extend Analytics API funnel fields, run a MuseTalk/LatentSync lip-sync bake-off on free Kaggle GPU, use the
+unused vidIQ thumbnail/title scorers. Rejected: community FFmpeg and YouTube MCP wrappers, paid lip-sync services, `claude-code-action` on an API key.
+Models are defect finders, never a copied score; the human or authorized session review stays the approval.
