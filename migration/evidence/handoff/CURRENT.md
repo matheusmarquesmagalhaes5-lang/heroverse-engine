@@ -338,3 +338,8 @@ accepted boundary.
   on the #751 branch before it merged (main PR checks green at 14:10Z). No open PR. Shorts in the next 48 h are unchanged; FREE: 2026-11-05 13:30Z
   (reflection 1 is held at 9.3; a livelier top range needs the long's per-shot time map, not in the report). The M2 Noah compilation Keeper clips
   (shot-probe 41652099686) belong to the other session in progress; not duplicated here.
+
+- 2026-11-04 (tools-market items 1-3, PRs #845 / #847 / this one): (1) `native-review.yml` `defect_scan=true` adds a timestamped, categorised defect list from Gemini
+  (detector only; calibration on the Babel master `0386d34a...` and one approved Short still PENDING a dispatch with Free Tier proof; owner accepted free-tier training use, DECISIONS);
+  (2) `local_review.py` per-sentence WER + optional pinned UTMOS as WARN-only `warnings` (thresholds provisional, uncalibrated); (3) `audience_report.py` (goal-report.yml) writes
+  `daily-report/audience.json` with retention and traffic sources (Short -> long funnel); first real run will confirm the browse mapping. No effect on the Babel long.

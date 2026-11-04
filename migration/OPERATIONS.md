@@ -202,6 +202,15 @@ sheet (1 frame / 2 s), black / frozen / duplicate-frame and scene-change evidenc
 score) and artifact `local-review-frames`. The session reviewer downloads both, views the sheets, reads the transcript
 and writes `claude_review.json` / the record `review` from what it saw and heard. No secret, no PC, no Free Tier proof.
 
+**Audience retention and traffic sources (2026-11-04).** `goal-report.yml` runs `mining/audience_report.py` after the reach step
+(same bounded, never-failing shape, same `HERO_YT_AUTHORIZED_USER_JSON` and `yt-analytics.readonly` scope, Analytics API quota only).
+For the 10 newest longs and 30 newest Shorts it reads the retention curve (`elapsedVideoTimeRatio`), the traffic sources
+(`insightTrafficSourceType`, grouped Shorts feed / related / browse = `SUBSCRIBER` / search / other, raw types kept) and, for longs,
+the `RELATED_VIDEO` referrers resolved to our own Shorts plus top search terms. Output: `evidence/daily-report/audience.json` and the
+latest.md section "Audience retention and traffic sources" with the Short -> long funnel line. Statuses: OK, NO_DATA, UNKNOWN with a
+reason (e.g. SCOPE_MISSING); the last numbers are kept. The browse mapping (`SUBSCRIBER` = Studio's Browse features) and the overlap
+of the SHORTS source with related-from-our-Shorts are to be confirmed on the first real run; read them as bounds.
+
 **Per-sentence WER and UTMOS in `local-review.yml` (2026-11-04, WARN only).** `local_review.py` now computes the word error
 rate of each script sentence against the pinned ASR transcript (`measures.audio.wer`: substituted/missing/extra words, strict, near
 spellings also counted) and, when the optional workflow step installed it, UTMOS22-strong naturalness on CPU
