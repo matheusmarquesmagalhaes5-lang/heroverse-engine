@@ -1,0 +1,220 @@
+{
+ "date": "2026-11-04",
+ "observed_at": "2026-11-04 (vidIQ reads the same day; views are a snapshot, not final)",
+ "labels": {
+  "MEASURED": "value read from vidIQ/YouTube metadata or from a transcript on 2026-11-04",
+  "VIDIQ_MODEL": "vidIQ-computed (outlierScore, vph): a model output, not a YouTube number",
+  "ESTIMATE": "our arithmetic or reading; stated as such",
+  "NOT_MEASURED": "not observable from outside the channel (CTR, retention, impressions) or not run for cost"
+ },
+ "method_limits": [
+  "Transcript timestamps come in ~15 s caption blocks: the first-5-s technique is read from the first words, other times are +/-15 s.",
+  "Cut rate and visual pacing are NOT measurable from a transcript; the only measured cut rates are the 2026-10-26 audits (evidence/vidiq/20261026/bible_story_shorts.json).",
+  "CTR, retention and impressions of other channels are not observable; transcript structure is a proxy, not a cause.",
+  "Mine structure only. No topic wording or visual is copied; non-canonical content (2 Enoch, Nephilim attacks) is recorded as a pattern, never as material."
+ ],
+ "window": "videos published 2026-10-08..10-11 (about 24 days old on 11-04), same Genesis 5-9 topic area as the winners; views MEASURED 11-04",
+ "confound": "5 of the 7 weak longs are Genesis 5 (genealogy), a low-demand topic: title and topic effects cannot be separated in this sample",
+ "longs": [
+  {
+   "id": "PX33dsz777M",
+   "ch": "Jed D Ant YT",
+   "subs": 81300,
+   "views": 20,
+   "len": "4:39",
+   "title": "Bible Story Genesis Chapter 5 - The Generations Before the Flood",
+   "title_type": "label",
+   "description": "empty"
+  },
+  {
+   "id": "sbEoRE5XhFU",
+   "ch": "Read & Watch Bible",
+   "subs": 306,
+   "views": 69,
+   "len": "4:17",
+   "title": "Genesis Chapter 5 | The Generations from Adam to Noah | Read & Watch Bible.",
+   "title_type": "label"
+  },
+  {
+   "id": "KYqDOOU8Zf8",
+   "ch": "He Giveth Light",
+   "subs": 772,
+   "views": 11,
+   "len": "4:15",
+   "title": "Genesis Chapter 7 KJV | Noah & the Great Flood | Holy Bible Audio | Audio Bible",
+   "title_type": "label (audio reading)"
+  },
+  {
+   "id": "Jx413ehcDlA",
+   "ch": "JESUS HISTORY EXPLAINED",
+   "subs": 3100,
+   "views": 19,
+   "len": "6:39",
+   "title": "LEGO Bible Stories: Creation, Adam & Eve, and Noah's Ark | The Great Flood",
+   "title_type": "label (topic list)"
+  },
+  {
+   "id": "mMl54H7AGYQ",
+   "ch": "Heavenly Path",
+   "subs": 154,
+   "views": 11,
+   "len": "14:26",
+   "title": "Chapter 2 From Noah's Ark to Abraham: The Epic Story of Genesis",
+   "title_type": "label (several stories in one)"
+  },
+  {
+   "id": "FmZISoq5h2U",
+   "ch": "The Panel Bible",
+   "subs": 62,
+   "views": 62,
+   "len": "11:46",
+   "title": "Enoch: The Man Who Walked With God (Genesis 5) | The Panel Bible Ep 4",
+   "title_type": "label + episode number"
+  },
+  {
+   "id": "366bWHORqNQ",
+   "ch": "gospelgenga",
+   "subs": 34300,
+   "views": 3628,
+   "len": "9:44",
+   "title": "A FATHER'S HOPE BEFORE THE FLOOD. (Bible Anime)",
+   "title_type": "emotion statement, no conflict named; 0.1x subs"
+  }
+ ],
+ "shorts": [
+  {
+   "id": "bRTDYeQMHdY",
+   "ch": "The Bible With Mike",
+   "subs": 429,
+   "views": 156,
+   "len_s": 101,
+   "title": "What Age Rating Would Noah's Ark Get If It Was a Movie?!",
+   "title_type": "curiosity"
+  },
+  {
+   "id": "rPF9oSC_9BE",
+   "ch": "Frames Of Christ",
+   "subs": 524,
+   "views": 455,
+   "len_s": 29,
+   "title": "Animals Came To Noah's Ark In Pairs Genesis 7 Bible Story",
+   "title_type": "label"
+  },
+  {
+   "id": "6Q-oYTlLeIY",
+   "ch": "Little Faith Friends",
+   "subs": 103,
+   "views": 184,
+   "len_s": 51,
+   "title": "Genesis Chapter 13 | Abram and Lot Choose Different Paths | Bible Shorts",
+   "title_type": "label"
+  },
+  {
+   "id": "7Fj2ivS1kZU",
+   "ch": "Daily Curiosity",
+   "subs": 145,
+   "views": 81,
+   "len_s": 62,
+   "title": "Noah Survived the Flood, Then Made a Huge Mistake (Genesis 9)",
+   "title_type": "curiosity"
+  },
+  {
+   "id": "HjKtRfuUm_0",
+   "ch": "Biblical Wisdom",
+   "subs": 653,
+   "views": 77,
+   "len_s": 43,
+   "title": "Genesis 6 does not begin with a boat",
+   "title_type": "curiosity; hook text in the description is strong ('begins with giants... one Hebrew word')"
+  },
+  {
+   "id": "6kfxManzBjY",
+   "ch": "THE VERSE PROJECT",
+   "subs": 1020,
+   "views": 135,
+   "len_s": 11,
+   "title": "Genesis 8:20 - Noah Built an Altar Unto the LORD | EP 211",
+   "title_type": "verse label"
+  },
+  {
+   "id": "SCy4z8iAyEM",
+   "ch": "The Illustrated Narrations",
+   "subs": 725,
+   "views": 2,
+   "len_s": 29,
+   "title": "Go Forth from the Ark | Genesis 8",
+   "title_type": "label"
+  },
+  {
+   "id": "ZwWseNdn3FQ",
+   "ch": "The Illustrated Narrations",
+   "subs": 725,
+   "views": 7,
+   "len_s": 32,
+   "title": "An Olive Leaf Returns | Genesis 8",
+   "title_type": "label"
+  }
+ ],
+ "cross_niche_weak_examples": [
+  {
+   "id": "i7aNwlxzn-Q",
+   "ch": "UntoldStory",
+   "subs": 50800,
+   "views": 352,
+   "len": "13:04",
+   "title": "Great Zimbabwe: The Lost African Civilization | Untold History Documentary",
+   "note": "50.8K subs, 352 views: a good topic and a documentary label do not move views on their own"
+  },
+  {
+   "id": "c01TPaSk5hg",
+   "ch": "TrailerDecoded",
+   "subs": 53,
+   "views": 1019,
+   "len": "8:13",
+   "title": "Real Exorcism Forgotten By The People That Inspired The Movie Exorcist",
+   "note": ""
+  },
+  {
+   "id": "XL6ukxiMveo",
+   "ch": "Buried in the Tale",
+   "subs": 24,
+   "views": 603,
+   "len": "16:02",
+   "title": "The Forgotten History of Snow White (It's Not a Disney Movie)",
+   "note": ""
+  },
+  {
+   "id": "_hf6FdEqH1Y",
+   "ch": "Continent Archives",
+   "subs": 17,
+   "views": 171,
+   "len": "16:16",
+   "title": "How England Defeated France So Many Times But Still Lost | Full Documentary",
+   "note": ""
+  },
+  {
+   "id": "iuHa5L5GMLM",
+   "ch": "THE HIEROSTORY",
+   "subs": 45,
+   "views": 510,
+   "len": "5:34",
+   "title": "Lemuria: The Lost Continent That Never Existed (Ep. 5)",
+   "note": ""
+  },
+  {
+   "id": "CXYDLqSQESY",
+   "ch": "Epoch Verse",
+   "subs": 210,
+   "views": 83,
+   "len": "8:01",
+   "title": "The Battle of Wake Island: America's Forgotten Last Stand",
+   "note": ""
+  }
+ ],
+ "readings": [
+  "Weak longs: 6/7 carry a label, chapter or episode-number title (no question, no conflict, no superlative); winners: 4/6 carry 'Full Story/FULL/Full Movie' and 1/6 a question, 1/6 'The Story of' + a dramatic name (MEASURED counts of titles).",
+  "Weak longs: 5/7 are under 10 min and 4 of those are 4:15-6:39 audio/reading formats; winners: 6/6 are 13:10-27:54 min.",
+  "Weak Shorts: 5/8 label titles (chapter or verse), 3/8 curiosity titles; 3 curiosity-title Shorts still sit at 77-156 views, so a curiosity title is not sufficient. Channel size is 103-1,020 subs for all 8.",
+  "NOT separable here: thumbnail (not read for weak videos), seed audience, upload hour, topic demand."
+ ]
+}

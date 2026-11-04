@@ -1,0 +1,109 @@
+{
+ "date": "2026-11-04",
+ "observed_at": "2026-11-04 (vidIQ reads the same day; views are a snapshot, not final)",
+ "labels": {
+  "MEASURED": "value read from vidIQ/YouTube metadata or from a transcript on 2026-11-04",
+  "VIDIQ_MODEL": "vidIQ-computed (outlierScore, vph): a model output, not a YouTube number",
+  "ESTIMATE": "our arithmetic or reading; stated as such",
+  "NOT_MEASURED": "not observable from outside the channel (CTR, retention, impressions) or not run for cost"
+ },
+ "method_limits": [
+  "Transcript timestamps come in ~15 s caption blocks: the first-5-s technique is read from the first words, other times are +/-15 s.",
+  "Cut rate and visual pacing are NOT measurable from a transcript; the only measured cut rates are the 2026-10-26 audits (evidence/vidiq/20261026/bible_story_shorts.json).",
+  "CTR, retention and impressions of other channels are not observable; transcript structure is a proxy, not a cause.",
+  "Mine structure only. No topic wording or visual is copied; non-canonical content (2 Enoch, Nephilim attacks) is recorded as a pattern, never as material."
+ ],
+ "question": "How did 'monetized in 7-10 days' channels actually qualify?",
+ "official_rules": {
+  "source": "YouTube Help 72851 (opened 2026-11-04) and, for the early-access tier, a search snippet of YouTube Help 13429240 (not opened)",
+  "full_ads_tier": [
+   "1,000 subscribers + 4,000 public watch hours in 12 months",
+   "1,000 subscribers + 10 million public Shorts views in 90 days"
+  ],
+  "shorts_feed_hours": "watch hours from Shorts-feed views do NOT count toward the 4,000 hours (YouTube Help 72851)",
+  "early_access_tier": "500 subscribers + 3 public uploads in 90 d + 3M Shorts views in 90 d or 3,000 watch hours in 12 m: fan funding and shopping only, NOT ad revenue (search snippet, not opened)",
+  "reported_2027_change": "vidIQ blog (not confirmed on YouTube's own page as fetched): from 2027-02-01 the full tier doubles (8,000 h or 20M Shorts views). YouTube Help only says the updated terms start 2027-02-01."
+ },
+ "cases": [
+  {
+   "id": "-8BmzwwZhUk",
+   "label": "E'Calm - 'The YouTube Shorts System That Got Me Monetized in 7 Days'",
+   "views": 271974,
+   "published": "2026-05-23",
+   "evidence": "full transcript + metadata",
+   "niche": "basketball Shorts (clips taken from TikTok)",
+   "format": "Shorts, edited in CapCut (captions, overlays, scoreboard)",
+   "claim": "channel created 2026-02-10, monetized 'in the same February', $3,700 in 28 days, $7,700 in 90 days",
+   "route_stated": "not stated; Shorts path implied",
+   "what_does_not_add_up": [
+    "the title says 7 days, the transcript says 'monetized in the same February' (up to ~18 days), and the video is three months later",
+    "he says the account is 5 YEARS old and that 'you should use an old account / warm it up': it is not a new channel",
+    "10M Shorts views in <=18 days would need ~550K views/day; he says each video gets '40K+' views",
+    "no subscriber or watch-hour counter is shown"
+   ],
+   "reading": "INFERENCE: either the old account already had subscribers/hours/views history, or the early-access tier was counted as 'monetized'. Not verifiable.",
+   "risk": "re-uploading TikTok clips is the 'reused/inauthentic content' risk YouTube enforces; he says so himself. Sells courses (Gumroad), a vidIQ affiliate link, a '$400K system' upsell. HYPE + COURSE."
+  },
+  {
+   "id": "umkq-HyBvH0",
+   "label": "AI Cash Tom - 'This Skeleton Channel Got Monetized in 7 Days'",
+   "views": 962,
+   "published": "2026-04-27",
+   "evidence": "full transcript + metadata",
+   "niche": "AI skeleton Shorts ('What if you tried X for 1 year?')",
+   "format": "Shorts, 9:16, AI images -> AI video clips -> ElevenLabs voice -> CapCut",
+   "claim": "'channels like Skelly Skills pulled 21 million views with only 28 videos in 1 month'",
+   "route_stated": "Shorts path implied (21M views in a month would exceed 10M)",
+   "what_does_not_add_up": [
+    "the 7-day claim is about a DIFFERENT channel whose analytics are not shown",
+    "I found no independent source for '21M views / 28 videos / 1 month' (a web search returned other skeleton channels only)",
+    "no subscriber number, no monetization proof"
+   ],
+   "reading": "UNVERIFIED. If true it is the Shorts-views route with a viral format, not hours.",
+   "useful_structure": "title = first spoken line; 'generate 10-s clips and use the best 2-3 s'; hook uses the wildest motion first; month-by-month escalation with jokes; captions 1-2 words. HYPE (962 views, free prompt doc as lead magnet)."
+  },
+  {
+   "id": "WZx_jYN9Gz4",
+   "label": "Arti Creator - 'MONETIZED IN 7 DAYS: My Faceless Channel's Revenue & Analytics'",
+   "views": 8170,
+   "published": "2024-07-03",
+   "evidence": "metadata and chapter titles only (transcript not read)",
+   "niche": "faceless automation",
+   "format": "'4-video strategy' and 'compilation cash cow' (chapters)",
+   "route_stated": "not stated",
+   "reading": "chapter titles point to compilations of existing videos; unverified; 2 years old",
+   "risk": "reuse"
+  },
+  {
+   "id": "medium-cosmoskay1",
+   "label": "Medium - 'How To Monetize A YouTube channel in 7 days With AI'",
+   "evidence": "search snippet only (page returned 403)",
+   "claim": "the author says the 7 days were rounded: 'it took me nine days'",
+   "reading": "no route, no numbers verified"
+  },
+  {
+   "id": "medium-shinefirstlk",
+   "label": "Medium - 'I MONETIZED a YouTube Channel In 7 Days'",
+   "evidence": "page returned 403; not read",
+   "reading": "UNVERIFIED"
+  },
+  {
+   "id": "syrax",
+   "label": "'I MONETIZED A Youtube Channel In 5/8 Days Only To Prove It's NOT Luck'",
+   "evidence": "digest page empty; not read",
+   "reading": "UNVERIFIED"
+  },
+  {
+   "id": "gumroad",
+   "label": "Gumroad/Payhip pages ('monetized in 7 days', 'already monetized')",
+   "evidence": "search snippets only",
+   "reading": "sales pages; one sells pre-monetized channels (marketing, unverified)"
+  }
+ ],
+ "verdict": [
+  "No verifiable case found of a brand-new channel reaching 1,000 subs + 4,000 public long hours in 7-10 days. Hours need ~240,000 viewed minutes inside 12 months.",
+  "The only mechanically plausible fast routes are (a) 10M Shorts views in 90 days after a viral hit (about 555K views/day if done in 18 days), (b) an aged or pre-existing channel with history, (c) 'monetized' meaning the 500-subscriber early-access tier (fan funding only), (d) buying a pre-monetized channel. Which one each creator used is NOT shown in the sources read.",
+  "Every case read is a course/lead-magnet seller; two are 'YouTube Shorts' with reused or templated clips. Treat as hype for planning.",
+  "Transferable (structure only): the first spoken line equals the title; the strongest motion first; one-idea escalating script. These match the Bible Shorts winners, not a monetization shortcut."
+ ]
+}

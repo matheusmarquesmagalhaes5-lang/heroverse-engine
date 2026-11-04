@@ -740,3 +740,52 @@ dia lá que tem a renovação, na verdade no horário que tem a renovação... o
 - Work is routed by model tier, and tier and optional work move with the pace verdict; see `../OPERATIONS.md`
   "Model routing and weekly pacing". Quality is never lowered to pace.
 - `token_plan.json` was rebalanced for the rest of the week toward the Babel long and the next long, with a small reserve.
+
+## 2026-11-04 — Viral structure mining (Inteligência Viva, owner order)
+
+Owner, 2026-11-04: map the viral structure behind breakout videos and turn it into production specs. Full map, evidence table
+with links and counts: `../structures/viral-structure-2026-11-04.md`; data and pool labels: `../evidence/vidiq/2026-11-04/`.
+vidIQ 125 credits (3,069 -> 2,944; 140 of 150/day with the 15 earlier today; ledger updated). No manifold, no new generation.
+
+What the evidence says (counts are over mapped videos; CTR/retention of other channels are not observable):
+- "Monetized in 7-10 days": no verifiable case. The one with numbers used a 5-year-old account and its own transcript
+  contradicts the title; the rest are course sellers or unreadable. Routes unchanged: 1,000 subs + 4,000 public long hours,
+  or 1,000 subs + 10M public Shorts views in 90 days (Shorts-feed hours do not count). The 500-sub early-access tier is fan
+  funding only. vidIQ reports the thresholds double on 2027-02-01 (not confirmed on YouTube's page).
+- Breakout sample: 15 Bible videos (8 Shorts, 7 longs) from 15 channels, 7 cross-niche from 7, 21 weak contrasts. Inside the
+  video the pattern is real but does not separate winners from weak (3/6 Bible long winners have no hook). The separators are the
+  package and the length: "Full Story"/question title 5/6 vs label titles 6/7 of the weak; face + 1-3 word thumbnail 6/6;
+  13:10-27:54 min 6/6 vs 5/7 weak under 10 min. Shorts winners open on stakes/question/event 4/4; 6/8 run <=90 s, while the
+  10-26 audit had 5/6 at 170-179 s: length is not a proven driver.
+- Route: the Shorts route needs ~370K views/day to land by 12-01 (we have 2,668 in 90 days): not reachable. Hours need 3,971 h:
+  one breakout long (one FaYEXkK6RsA-class video, 397K views in 27 days, would exceed it) or session-length compilations (8,000
+  views at 30 min = 4,000 h). The deadline stays 2026-11-15 target, 2026-12-01 max.
+
+Rules for Inteligência Viva and production (none edits a frozen QA file or gate):
+1. **Long hook** (first 60 s): a scene at its most dangerous moment or one identity-reversal sentence in 0-25 s, no stacked abstract
+   "What if" questions; the title promise in one sentence by ~50 s; a "we must go back" return device when a cold open is used,
+   closed within ~60 s; one forward hook by ~1:30 paid in the second half. The 11-01 hook rule was modelled on a 1,100-view video;
+   superseded by this one.
+2. **Long title**: a "Full Story"/"Complete Story" element OR a question OR "the most [superlative] ... in the Bible", with the
+   protagonist in the first 40 characters; reference and "(KJV)" after the pipe; never a chapter label, "Part N", an episode number
+   or "audio reading" as the title. Title the Creation-to-Cain compilation on the Adam and Eve demand (a question about why God
+   sent them out + the Genesis 1-4 range).
+3. **Long thumbnail**: one face or a pair at ~40% of the frame in strong emotion or action; at most 4 baked-in words (the name or
+   the title question); one story object; high contrast; text complements the title. One attribute per Studio Test & Compare.
+4. **Long length and cadence**: new story longs 13-20 min (floor 13:00), compilations 40-60 min; a turn or open loop at least every
+   3 min and never a gap above 5 min; 2-3 marked insight lines per 10 min; comment-question CTA only in the last 30 s; no subscribe
+   plea before the payoff; the last 20 s name the next story. The Babel build (8.1 min) is below the floor: coordinator decision
+   under the frozen gates, not changed here.
+5. **Short template (variant A, 60-90 s)**: 0-3 s one spoken line (<=14 words) that states the stake or paradox of the title and never
+   refers to a previous part; 3-10 s who and what is at risk; 10-55 s two or three escalations each ending unresolved; 55-68 s payoff
+   with one exact KJV line; 68-75 s one answerable comment question, last clause able to lead back into line 1. Title = hook line
+   first; no label-only titles. Test: 1 of the 4 daily Shorts as variant A for 7 days; success median views >= 2x the variant-B
+   median of the same days, kill <= 1x; sparse data stays inconclusive. The 170-s bridge stays variant B with its first line fixed.
+6. **Cadence**: 4 Shorts/day (owner rule) and one long per story/one compilation per arc are unchanged; the evidence shows no
+   cadence effect, the change is the content of each slot. Re-package the oldest published longs (title and thumbnail only, never
+   the accepted media), one attribute per test, read 7-day views and CTR in Studio.
+7. Content limits: two Bible Shorts winners use non-canonical material (2 Enoch, giants at the ark) and one may be re-cut film;
+   KJV-only and original media stay. Pattern only, never wording or visuals.
+
+Limits: 5 of the 6 requested cross-niche maps (10 credits were left under the cap); two winners have no captions; the weak sample
+is 24 days old and Genesis-5 heavy; Tamil and Hindi transcripts were translated by Claude.
