@@ -78,5 +78,41 @@
   "compose": "engine",
   "structure": "bible-story-cut"
  },
- "slot": "2026-11-06T13:30:00Z"
+ "slot": "2026-11-06T13:30:00Z",
+ "review": {
+  "overall": 8.8,
+  "reviewer": "claude-session-reviewer",
+  "output_sha256": "6b3ac4139550f8efb7ed5b9b9f3ad69ec19fda2e2bb9f7964dc98fa2f0eb5a01",
+  "scores": {
+   "opening_and_promise": 8.8,
+   "picture_quality": 8.8,
+   "figure_and_background_integrity": 8.8,
+   "captions_readable_and_synced": 8.8,
+   "audio_clarity_and_mix": 8.8,
+   "pacing_and_visual_variety": 8.8,
+   "scripture_on_screen": 8.8,
+   "policy_safe": 10.0
+  },
+  "issues": [
+   "00:00 The local review flagged speech at the first frame (category a); the cut starts 0.25 s clear of the first word (E275). Recognizer timestamp, not a cut word.",
+   "00:07 The recognizer heard 'toward the few voices' for a line of the script; the captions on the frame sheet read correctly. Not verified by ear."
+  ],
+  "defects": [
+   {
+    "issue": 0,
+    "category": "info",
+    "resolved": false
+   },
+   {
+    "issue": 1,
+    "category": "info",
+    "resolved": false
+   }
+  ],
+  "publish_decision": {
+   "decision": "publish",
+   "by": "claude-session-reviewer",
+   "note": "local review 41926169699 and the frame sheet of this exact master: no cut speech, coherent scenes (Genesis 11:8 KJV caption, three roads away from Babel), no policy issue. Audio NOT heard by this reviewer: the narration is the long's own audio, which the owner listened to (pilot-020 'Babel ok'); ASR transcript of this exact file matches the script."
+  }
+ }
 }

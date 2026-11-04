@@ -76,5 +76,47 @@
   "compose": "engine",
   "structure": "bible-story-cut"
  },
- "slot": "2026-11-05T23:30:00Z"
+ "slot": "2026-11-05T23:30:00Z",
+ "review": {
+  "overall": 8.8,
+  "reviewer": "claude-session-reviewer",
+  "output_sha256": "a001b8cd58bfef7726bda8f1c2f2614e687ff45a9b75ee17871eccab9d609223",
+  "scores": {
+   "opening_and_promise": 8.8,
+   "picture_quality": 8.8,
+   "figure_and_background_integrity": 8.8,
+   "captions_readable_and_synced": 8.8,
+   "audio_clarity_and_mix": 8.8,
+   "pacing_and_visual_variety": 8.8,
+   "scripture_on_screen": 8.8,
+   "policy_safe": 10.0
+  },
+  "issues": [
+   "00:00 The local review flagged speech at the first frame (category a). The cut starts 0.25 s clear of the first word (short_cuts.check, E275); the flag is the recognizer's timestamp, not a cut-off word.",
+   "00:30 to 00:46 The centre 9:16 crop shows the figure's face partly at the frame edge; the hand and the sunset read clearly. Cosmetic.",
+   "00:09 The longest stretch without a scene change is 19.4 s over the clay scene with the KJV-free Keeper narration; no defect, a retention risk."
+  ],
+  "defects": [
+   {
+    "issue": 0,
+    "category": "info",
+    "resolved": false
+   },
+   {
+    "issue": 1,
+    "category": "d",
+    "resolved": false
+   },
+   {
+    "issue": 2,
+    "category": "info",
+    "resolved": false
+   }
+  ],
+  "publish_decision": {
+   "decision": "publish",
+   "by": "claude-session-reviewer",
+   "note": "local review 41926160350 and the frame sheet of this exact master: no cut speech (edges 0.25 s clear), coherent scenes matching the lines, no policy issue. Audio NOT heard by this reviewer: the narration is the long's own audio, which the owner listened to (pilot-020 'Babel ok'); ASR transcript of this exact file matches the script."
+  }
+ }
 }
