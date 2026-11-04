@@ -1,0 +1,303 @@
+{
+ "version": "bible-buzzy-long-script-v1",
+ "pilot_id": "pilot-020",
+ "archetype": "bible-buzzy-long",
+ "series": "buzzy-long",
+ "episode": "genesis-10-11-long",
+ "working_title": "Why Did God Scatter the Builders of Babel? | Tower of Babel | Genesis 11 Bible Story (KJV)",
+ "criteria_version": "buzzy-long-qa-criteria-v1",
+ "segments": [
+  {
+   "id": "n00",
+   "kind": "story",
+   "text": "One language. One plan. One tower to reach the sky. Then God came down. Why?"
+  },
+  {
+   "id": "n01",
+   "kind": "story",
+   "text": "Rewind to the days after the flood. Eight survivors had become families, and families were becoming nations."
+  },
+  {
+   "id": "n02",
+   "kind": "scripture",
+   "text": "These are the families of the sons of Noah, after their generations, in their nations: and by these were the nations divided in the earth after the flood.",
+   "reference": "Genesis 10:32 (KJV)"
+  },
+  {
+   "id": "n03",
+   "kind": "story",
+   "text": "But first, for a little while, they were still together."
+  },
+  {
+   "id": "n04",
+   "kind": "scripture",
+   "text": "And the whole earth was of one language, and of one speech.",
+   "reference": "Genesis 11:1 (KJV)"
+  },
+  {
+   "id": "n05",
+   "kind": "story",
+   "text": "Think about what that means. No translators. No strangers whose words you cannot understand. Every mother, every trader and every child spoke the same tongue, and nothing they said was ever lost between them."
+  },
+  {
+   "id": "n06",
+   "kind": "story",
+   "text": "And among those first nations rose a man the Bible remembers by a single word: mighty."
+  },
+  {
+   "id": "n07",
+   "kind": "scripture",
+   "text": "And Cush begat Nimrod: he began to be a mighty one in the earth.",
+   "reference": "Genesis 10:8 (KJV)"
+  },
+  {
+   "id": "n08",
+   "kind": "scripture",
+   "text": "He was a mighty hunter before the Lord: wherefore it is said, Even as Nimrod the mighty hunter before the Lord.",
+   "reference": "Genesis 10:9 (KJV)"
+  },
+  {
+   "id": "n09",
+   "kind": "scripture",
+   "text": "And the beginning of his kingdom was Babel, and Erech, and Accad, and Calneh, in the land of Shinar.",
+   "reference": "Genesis 10:10 (KJV)"
+  },
+  {
+   "id": "n10",
+   "kind": "story",
+   "text": "The Bible does not say that he built the tower. It only says that his kingdom began at Babel. Remember that name, because this story is about to break right there."
+  },
+  {
+   "id": "n11",
+   "kind": "scripture",
+   "text": "And it came to pass, as they journeyed from the east, that they found a plain in the land of Shinar; and they dwelt there.",
+   "reference": "Genesis 11:2 (KJV)"
+  },
+  {
+   "id": "n12",
+   "kind": "story",
+   "text": "A wide, flat plain between two rivers. Rich mud, endless reeds and the sky stretching down to every horizon. It was a perfect place to live, and it had one problem. There was no stone anywhere."
+  },
+  {
+   "id": "n13",
+   "kind": "story",
+   "text": "So they used what they had. They dug the river clay with their bare hands, pressed it into wooden moulds, and set the soft bricks out in rows under the burning sun. Hundreds, then thousands, then more than anyone could count."
+  },
+  {
+   "id": "n14",
+   "kind": "story",
+   "text": "Then they learned the secret of fire. A brick baked hard in a kiln is no longer soft mud. It is as strong as rock, and it will last for thousands of years."
+  },
+  {
+   "id": "n15",
+   "kind": "scripture",
+   "text": "And they said one to another, Go to, let us make brick, and burn them throughly.",
+   "reference": "Genesis 11:3 (KJV)"
+  },
+  {
+   "id": "n16",
+   "kind": "scripture",
+   "text": "And they had brick for stone, and slime had they for morter.",
+   "reference": "Genesis 11:3 (KJV)"
+  },
+  {
+   "id": "n17",
+   "kind": "story",
+   "text": "Slime is the old word for bitumen, the black, sticky tar that seeped out of the ground in that land. It glued every brick to the next one. Nothing they built there would ever fall apart on its own."
+  },
+  {
+   "id": "n18",
+   "kind": "story",
+   "text": "Now picture the whole human race standing on one plain at dusk. Not one voice raised against another. One people, with one language, and one idea, and then someone said it out loud."
+  },
+  {
+   "id": "n19",
+   "kind": "scripture",
+   "text": "Go to, let us build us a city and a tower, whose top may reach unto heaven;",
+   "reference": "Genesis 11:4 (KJV)"
+  },
+  {
+   "id": "n20",
+   "kind": "scripture",
+   "text": "and let us make us a name, lest we be scattered abroad upon the face of the whole earth.",
+   "reference": "Genesis 11:4 (KJV)"
+  },
+  {
+   "id": "n21",
+   "kind": "story",
+   "text": "The foundation alone took years: a platform of fired brick wider than a village, every brick carried in by hand."
+  },
+  {
+   "id": "n22",
+   "kind": "story",
+   "text": "Thousands of people, all working toward one plan, because every one of them understood every word. That is what one language gives: speed, trust and strength."
+  },
+  {
+   "id": "n23",
+   "kind": "story",
+   "text": "Then it began to climb. Terrace upon terrace, with long ramps winding up its sides like a road to the clouds, and a line of workers on every ramp, from the first light to the last."
+  },
+  {
+   "id": "n24",
+   "kind": "story",
+   "text": "A tower like that takes millions of bricks. Each one was baked, carried and set by someone who believed that this would make them great."
+  },
+  {
+   "id": "n25",
+   "kind": "story",
+   "text": "Higher than the birds, higher than the hills. Men worked on ropes and reed scaffolds, passing bricks from hand to hand, and every time one looked down, the whole plain looked smaller."
+  },
+  {
+   "id": "n26",
+   "kind": "story",
+   "text": "And every brick laid was an answer to one quiet question: do we really need God, when we can reach the heavens ourselves?"
+  },
+  {
+   "id": "n27",
+   "kind": "story",
+   "text": "Then the sky above the tower began to change. The clouds thickened, the light turned grey, and the wind stopped. Something was coming, and it was not a storm."
+  },
+  {
+   "id": "n28",
+   "kind": "story",
+   "text": "Up on the top terrace the builders felt dizzy with what they had done. Nobody had ever stood so high."
+  },
+  {
+   "id": "n29",
+   "kind": "scripture",
+   "text": "And the Lord came down to see the city and the tower, which the children of men builded.",
+   "reference": "Genesis 11:5 (KJV)"
+  },
+  {
+   "id": "n30",
+   "kind": "story",
+   "text": "Read that verse slowly. They said their tower would reach unto heaven, and the Lord still had to come down to see it."
+  },
+  {
+   "id": "n31",
+   "kind": "scripture",
+   "text": "And the Lord said, Behold, the people is one, and they have all one language; and this they begin to do: and now nothing will be restrained from them, which they have imagined to do.",
+   "reference": "Genesis 11:6 (KJV)"
+  },
+  {
+   "id": "n32",
+   "kind": "story",
+   "text": "Hear the diagnosis in His words: a people with one tongue and one purpose, and no one left to say stop."
+  },
+  {
+   "id": "n33",
+   "kind": "scripture",
+   "text": "Go to, let us go down, and there confound their language, that they may not understand one another’s speech.",
+   "reference": "Genesis 11:7 (KJV)"
+  },
+  {
+   "id": "n34",
+   "kind": "story",
+   "text": "No lightning. No flood. Not one brick was struck. God did not knock down the tower. He quietly took away their words."
+  },
+  {
+   "id": "n35",
+   "kind": "insight",
+   "text": "He said nothing would be restrained from them. So after water, He chose distance."
+  },
+  {
+   "id": "n36",
+   "kind": "story",
+   "text": "Picture the moment it happened. A man on the scaffold calls down for more clay, and the man below hears sounds he has never heard in his life. He shouts louder. The words come back as noise."
+  },
+  {
+   "id": "n37",
+   "kind": "story",
+   "text": "Imagine waking up the next morning. You turn to the person beside you, and you cannot say good morning. You cannot ask for water. You cannot even say sorry."
+  },
+  {
+   "id": "n38",
+   "kind": "story",
+   "text": "A father cannot understand his own brother. A mother calls her child, and a stranger answers."
+  },
+  {
+   "id": "n39",
+   "kind": "story",
+   "text": "Hands that had worked as one stopped in the middle of the air. Friends became strangers in the middle of a sentence. And the great chain of bricks, which had never once broken, went still."
+  },
+  {
+   "id": "n40",
+   "kind": "story",
+   "text": "The tower was still standing, every brick in its place. But the one thing that had built it, a single shared voice, was gone."
+  },
+  {
+   "id": "n41",
+   "kind": "scripture",
+   "text": "So the Lord scattered them abroad from thence upon the face of all the earth: and they left off to build the city.",
+   "reference": "Genesis 11:8 (KJV)"
+  },
+  {
+   "id": "n42",
+   "kind": "story",
+   "text": "Families picked up their children and walked away, each one toward the few voices they could still understand."
+  },
+  {
+   "id": "n43",
+   "kind": "story",
+   "text": "Some went west, toward the sea and the sunset."
+  },
+  {
+   "id": "n44",
+   "kind": "story",
+   "text": "Some went east, toward the mountains."
+  },
+  {
+   "id": "n45",
+   "kind": "story",
+   "text": "And some followed the great river south into the unknown."
+  },
+  {
+   "id": "n46",
+   "kind": "scripture",
+   "text": "Therefore is the name of it called Babel; because the Lord did there confound the language of all the earth: and from thence did the Lord scatter them abroad upon the face of all the earth.",
+   "reference": "Genesis 11:9 (KJV)"
+  },
+  {
+   "id": "n47",
+   "kind": "story",
+   "text": "Babel. They wanted to make a name that would reach the heavens, and they got one that sounds like babble. The name they built for themselves became the name of their confusion."
+  },
+  {
+   "id": "n48",
+   "kind": "story",
+   "text": "Centuries later a great city called Babylon would rise near this very plain. Babylon is simply Babel, said in Greek."
+  },
+  {
+   "id": "n49",
+   "kind": "insight",
+   "text": "They built the tower to avoid being scattered. The tower is what scattered them."
+  },
+  {
+   "id": "n50",
+   "kind": "story",
+   "text": "And yet the story did not end there. Generations later, down the same great river, in a city called Ur, a man named Abram was born."
+  },
+  {
+   "id": "n51",
+   "kind": "scripture",
+   "text": "Now these are the generations of Terah: Terah begat Abram, Nahor, and Haran; and Haran begat Lot.",
+   "reference": "Genesis 11:27 (KJV)"
+  },
+  {
+   "id": "n52",
+   "kind": "story",
+   "text": "Here is the answer that Babel was waiting for. The builders tried to make their own name great. But to this one quiet man God would say something very different."
+  },
+  {
+   "id": "n53",
+   "kind": "scripture",
+   "text": "and I will make of thee a great nation, and I will bless thee, and make thy name great; and thou shalt be a blessing:",
+   "reference": "Genesis 12:2 (KJV)"
+  },
+  {
+   "id": "n54",
+   "kind": "cta",
+   "text": "What are you building your name on? Tell me below. Next: the man who left everything. Subscribe."
+  }
+ ]
+}
