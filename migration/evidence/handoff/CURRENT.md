@@ -6,6 +6,17 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
 `../../strategy/DECISIONS.md` ("2026-11-02 — Battle plan to YPP").
 
 ## Current delivery: flood-ends-long (Genesis 8-9, buzzy-long, plan `plans/flood-ends-long.json`)
+- 2026-11-04 ~09:50Z (Claude, Babel long under the standing rule E296): PRs #808, #811, #813 (prompt revisions), records #809, #812, #815.
+  b-tower: one new generation (probe 41795895378, 0 credits, sync clean) but speech-check 41799225714 heard "Let us build us a city in a tower ...
+  heaven at the end" and the brickyard instead of the scaffold, so b-tower KEEPS its approved clip (dd60b36b, our Kokoro line over Pavo's picture;
+  plan entry restored exactly as approved, pavo_audio ours). b-brick unchanged (owner accepted its lag). k-restrain: 3 revisions, 3 generations,
+  all failed (41795895378 garbled end; 41800469765 repeated words "so this time, so this time, God, God" and dropped the last sentence;
+  41804402265 FACE_NOT_FOUND). **Standing-rule cap reached: check-probe refuses k-restrain (PROBE_SAME_PROMPT now, PROBE_STANDING_CAP for any new prompt: 3 of 3 spent). k-restrain has NO approvable
+  clip, so the Babel long is NOT built, reviewed or published.** Second blocker for the build: the long's `episode_build.py preflight --voice`
+  needs a local Kokoro venv; this cloud session has none and the owner's PC (Desktop Commander, C:\HeroVerse) has no Kokoro or repo checkout.
+  Ways out, inside the rules: (a) k-restrain as Keeper narration over a still (Plan B, `voiceover:true`; the line is not KJV) if the owner's
+  "Pavo speaks every Keeper line" is read as allowing Plan B after the cap, or (b) drop k-restrain from the plan (length gate 480 s must still
+  pass). Not decided here: the standing rule says Pavo speaks every Keeper line and stops at the cap. Lease released.
 - 2026-11-04 ~09:30Z (scheduled continuation, Short coverage): episode run 41800680935 failed in verify-preflight (SHOT_NOT_REVIEWED 16 scenes, SHOT_REQUEST_CHANGED k-insight after the #810 length fix). Fix: approve-source still_motion for the 16 approved genesis-11 stills + k-insight re-approval (claude-session-reviewer); verify-preflight now PREFLIGHT_PASS. Next after merge: episode.yml (genesis-11-short), local-review, record, check-record, thumbnail, publish-episode.yml at 11-05 18:30Z, studio related-video entry.
 - 2026-11-04 ~09:00Z (scheduled continuation, Short coverage): bridge genesis-11-short was BLOCKED (voice 167.4 s, band 170-179): one sentence added to
   narration line 15 + s-grass 9->12 s; local Kokoro preflight PASS (0 credits), PR #810 (CI running). Next after merge: episode.yml (Pavo-free, Keeper
