@@ -75,7 +75,7 @@
   },
   {
    "kind": "story",
-   "text": "The family stood together in the wet grass and looked up for a long time. Every rainbow since has carried that same promise, hanging in the sky after the storm."
+   "text": "The family stood together in the wet grass and looked up for a long time. Every rainbow since has carried that same promise, hanging in the sky after the storm, for every person who looks up and believes."
   },
   {
    "kind": "insight",
@@ -279,7 +279,7 @@
    "lines": [
     14
    ],
-   "seconds": 9,
+   "seconds": 12,
    "characters": [],
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Wide shot, slow pull back. The family in silhouette stands in the wet grass under the fading rainbow as evening comes. Evening glow. Quiet hope. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
    "first_frame": "genesis-11-short-s-grass",
