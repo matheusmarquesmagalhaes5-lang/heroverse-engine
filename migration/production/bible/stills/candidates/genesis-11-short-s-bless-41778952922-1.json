@@ -1,0 +1,37 @@
+{
+ "id": "genesis-11-short-s-bless-41778952922-1",
+ "still": "genesis-11-short-s-bless",
+ "episode": "genesis-11-short",
+ "shot": "s-bless",
+ "run": "41778952922",
+ "status": "DRAFT",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. Golden late light falls over a family of eight seen from behind, in ankle-length rough undyed wool robes and head-cloths, barefoot, standing with raised open hands on a green hillside above a wide washed valley. Golden late light. Blessed. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "sent_prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. Golden late light falls over a family of eight seen from behind, in ankle-length rough undyed wool robes and head-cloths, barefoot, standing with raised open hands on a green hillside above a wide washed valley. Golden late light. Blessed. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos., tall vertical composition, the whole subject inside the central third of the frame",
+ "engine": "cloudflare-workers-ai:@cf/black-forest-labs/flux-1-schnell",
+ "models": {
+  "@cf/black-forest-labs/flux-1-schnell": {
+   "license": "apache-2.0",
+   "revision": "workers-ai-managed",
+   "source": "https://huggingface.co/black-forest-labs/FLUX.1-schnell"
+  }
+ },
+ "generated_by": "HeroVerse pipeline (AI-generated image)",
+ "source": "cf-flux",
+ "conversation_id": null,
+ "quote": null,
+ "references": [],
+ "pavo": null,
+ "upscaler": {
+  "model": "Real-ESRGAN general x4v3 (output 4x of a 576 px input)",
+  "licence": "bsd-3-clause",
+  "weights_sha256": "8dc7edb9ac80ccdc30c3a5dca6616509367f05fbc184ad95b731f05bece96292",
+  "source": "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.5.0/realesr-general-x4v3.pth"
+ },
+ "aspect_ratio": "9:16",
+ "size": [
+  1080,
+  1920
+ ],
+ "repo_path": "migration/production/bible/stills/candidates/genesis-11-short-s-bless-41778952922-1.jpg",
+ "sha256": "7270e5299eef0d36c29a8b8b593e1ce7613083bce158c2abe325b6ad591b7563"
+}

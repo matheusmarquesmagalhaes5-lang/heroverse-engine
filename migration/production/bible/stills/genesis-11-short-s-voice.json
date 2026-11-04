@@ -2,6 +2,25 @@
  "id": "genesis-11-short-s-voice",
  "episode": "genesis-11-short",
  "shot": "s-voice",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. The last storm clouds rolling away over a washed green valley, a pale rainbow brightening across the sky and sunlight sweeping over the wet grass. Late afternoon after rain. Vast and gentle. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No people, no text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. The last storm clouds rolling away over a washed green valley, a pale rainbow brightening across the sky and sunlight sweeping over the wet grass. Late afternoon after rain. Vast and gentle. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No people, no text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-11-short-s-voice.jpg",
+ "sha256": "f3b09fb5866e902bf7487e8eee84600b6b3d56769e692a1118302b8e011c5a70",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-11-short-s-voice-41778247076-1",
+ "engine": "cloudflare-workers-ai:@cf/black-forest-labs/flux-1-schnell",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-04",
+  "score": 9.5,
+  "note": "Viewed: storm clouds breaking with light rays over green plain, empty land, no people.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "b6491d9c6953cbf7a0b386add6aa706f2c8ac793692caa082a85ec8a5de42aa1",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

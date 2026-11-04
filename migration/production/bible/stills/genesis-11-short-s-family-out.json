@@ -2,6 +2,25 @@
  "id": "genesis-11-short-s-family-out",
  "episode": "genesis-11-short",
  "shot": "s-family-out",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. A family of eight seen from behind, their faces never visible, in ankle-length rough undyed wool robes and head-cloths, barefoot, bundles on their shoulders, walks down a broad plank ramp onto wet green ground under a clearing sky. Bright morning. Grateful. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. A family of eight seen from behind, their faces never visible, in ankle-length rough undyed wool robes and head-cloths, barefoot, bundles on their shoulders, walks down a broad plank ramp onto wet green ground under a clearing sky. Bright morning. Grateful. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-11-short-s-family-out.jpg",
+ "sha256": "946ea316fe9bec04223ff741e79a4f3b04237c3c5325faa574537bbbe700e9f3",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-11-short-s-family-out-41778247076-1",
+ "engine": "cloudflare-workers-ai:@cf/black-forest-labs/flux-1-schnell",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-04",
+  "score": 9.5,
+  "note": "Viewed: family from behind on plank ramp over green land, period robes, no faces.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "5b6f84d127d1dcfa1abf18125fa31bce6d57723b4e418931c7e27f65d590a4de",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

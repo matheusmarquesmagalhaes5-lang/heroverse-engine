@@ -2,6 +2,25 @@
  "id": "genesis-11-short-s-bow-hung",
  "episode": "genesis-11-short",
  "shot": "s-bow-hung",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. The great arc of a rainbow spans from mountain to mountain over a shining green valley, tiny figures in silhouette, in ankle-length rough undyed wool robes and head-cloths, barefoot, beneath it. Golden light. Peace. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. The great arc of a rainbow spans from mountain to mountain over a shining green valley, tiny figures in silhouette, in ankle-length rough undyed wool robes and head-cloths, barefoot, beneath it. Golden light. Peace. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-11-short-s-bow-hung.jpg",
+ "sha256": "5991b669de33cc590a06d3460aab24d53d006e2773d56ad37c83e550fe27539f",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-11-short-s-bow-hung-41778952922-1",
+ "engine": "cloudflare-workers-ai:@cf/black-forest-labs/flux-1-schnell",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-04",
+  "score": 9.5,
+  "note": "Viewed: light rays through clouds over green valley, four small figures, no faces.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "aa612a0957fa71898074f2756b01839795ecdd968ec17dc6f306efe77ec03b0c",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

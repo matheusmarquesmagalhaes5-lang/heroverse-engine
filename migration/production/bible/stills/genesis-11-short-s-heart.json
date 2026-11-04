@@ -2,6 +2,25 @@
  "id": "genesis-11-short-s-heart",
  "episode": "genesis-11-short",
  "shot": "s-heart",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. A family seen from behind, their faces never visible, in ankle-length rough undyed wool robes and head-cloths, barefoot, sitting close together on a green hillside at evening, the low sun throwing long shadows. Evening, warm low sun. Sobering. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. A family seen from behind, their faces never visible, in ankle-length rough undyed wool robes and head-cloths, barefoot, sitting close together on a green hillside at evening, the low sun throwing long shadows. Evening, warm low sun. Sobering. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-11-short-s-heart.jpg",
+ "sha256": "47c891f2db863cd984456c7a6cdd5b420b2525b6644bc7bb6679cb2ec62455f1",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-11-short-s-heart-41778247076-1",
+ "engine": "cloudflare-workers-ai:@cf/black-forest-labs/flux-1-schnell",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-04",
+  "score": 9.5,
+  "note": "Viewed: three seated figures from behind at golden sunset, quiet mood, no faces.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "6f3bdeda89a8aae67ba86458307958d59c7b722c87cc1fee6ca9ca81a1565f93",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

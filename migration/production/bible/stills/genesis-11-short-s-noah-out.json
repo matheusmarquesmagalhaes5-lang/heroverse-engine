@@ -2,6 +2,25 @@
  "id": "genesis-11-short-s-noah-out",
  "episode": "genesis-11-short",
  "shot": "s-noah-out",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. An old man with short grey hair on a bare head, in a plain brown wool robe belted with a rope, barefoot, seen from behind, his face never visible, steps from a plank ramp onto wet green grass, sheep and goats walking past him onto the hillside. Bright morning after rain. Grateful and solemn. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. An old man with short grey hair on a bare head, in a plain brown wool robe belted with a rope, barefoot, seen from behind, his face never visible, steps from a plank ramp onto wet green grass, sheep and goats walking past him onto the hillside. Bright morning after rain. Grateful and solemn. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-11-short-s-noah-out.jpg",
+ "sha256": "413f9bce32f14481ea25b9ee861cbad30f1ab530bcfc427e8088ad87d5efd876",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-11-short-s-noah-out-41778247076-1",
+ "engine": "cloudflare-workers-ai:@cf/black-forest-labs/flux-1-schnell",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-04",
+  "score": 9.5,
+  "note": "Viewed: old man steps off the plank ramp onto grass among sheep, from behind.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "776a0d8b7edda6f52c5f27019efe039b516a9aa2d663db9469e5a31166031fde",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

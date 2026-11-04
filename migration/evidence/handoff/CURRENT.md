@@ -6,6 +6,10 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
 `../../strategy/DECISIONS.md` ("2026-11-02 — Battle plan to YPP").
 
 ## Current delivery: flood-ends-long (Genesis 8-9, buzzy-long, plan `plans/flood-ends-long.json`)
+- 2026-11-04 ~05:50Z (scheduled continuation, Short coverage): last scheduled Short is 11-05 13:30Z; FREE 11-05 18:30, 23:30, 11-06 05:30.
+  All 10 flood cuts are used. Bridge Short genesis-11-short: 16 FLUX stills (scene-stills runs 41778247076, 41778952922, 0 credits, 16 of ~44/day)
+  viewed on the sheets and APPROVED (9.5); `plan_check --strict` is clean. Next: episode_build preflight (Pavo talking shots / probe per
+  pavo_lessons), episode.yml, local-review, record, check-record, thumbnail, publish-episode.yml with publish_at = free slot, studio related-video entry.
 - 2026-11-04 ~01:40Z (Claude, Babel long): owner accepted b-brick's lip lag ("3 aceita o atraso pois sei que o atraso é bem pequeno"): b-brick
   approved 9.5 with accepted_flags MOUTH_NOT_IN_SYNC, quote in the note (PR #801). The long moves to pilot-020 (pilot-019 is the Noah M2 Pavo
   compilation). speech-check 41753401453 (pinned ASR on our Kokoro line in each clip): b-brick heard exact ("thoroughly" is the ASR spelling of

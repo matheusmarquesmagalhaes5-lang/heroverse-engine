@@ -2,6 +2,25 @@
  "id": "genesis-11-short-s-noah-altar",
  "episode": "genesis-11-short",
  "shot": "s-noah-altar",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. An old man with short grey hair on a bare head, in a plain brown wool robe belted with a rope, barefoot, seen from behind, his face never visible, kneels before a low altar of rough field stones as white smoke rises straight up into the clear sky. Morning light, smoke drifting. Reverent. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. An old man with short grey hair on a bare head, in a plain brown wool robe belted with a rope, barefoot, seen from behind, his face never visible, kneels before a low altar of rough field stones as white smoke rises straight up into the clear sky. Morning light, smoke drifting. Reverent. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-11-short-s-noah-altar.jpg",
+ "sha256": "598db88a2239278c4910b3daa5c5fa2aa67e16c94a930f2824460443686764ab",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-11-short-s-noah-altar-41778247076-2",
+ "engine": "cloudflare-workers-ai:@cf/black-forest-labs/flux-1-schnell",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-04",
+  "score": 9.5,
+  "note": "Viewed: old man kneeling at a stone altar with smoke, from behind, period robe, barefoot.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "ffce4ebf4b085076a37ac9665a24e7c0416f5c26f90993dbf4ad65f62c49cac8",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

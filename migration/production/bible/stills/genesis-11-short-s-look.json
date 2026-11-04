@@ -2,6 +2,25 @@
  "id": "genesis-11-short-s-look",
  "episode": "genesis-11-short",
  "shot": "s-look",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. A family seen from behind, their faces never visible, in ankle-length rough undyed wool robes and head-cloths, barefoot, looking up at a rainbow in silence, a small child among them pointing at it. Golden light after rain. Promise. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. A family seen from behind, their faces never visible, in ankle-length rough undyed wool robes and head-cloths, barefoot, looking up at a rainbow in silence, a small child among them pointing at it. Golden light after rain. Promise. The ancient Near East in the days of the flood: the open water, the mountains of Ararat and the empty new earth. No stone buildings, towers, churches, glass lanterns, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-11-short-s-look.jpg",
+ "sha256": "95637b8c8e2a29768b5e260d4fbb98712af3a43d39d85134f7dbe1211fac72dd",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-11-short-s-look-41778952922-1",
+ "engine": "cloudflare-workers-ai:@cf/black-forest-labs/flux-1-schnell",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-04",
+  "score": 9.5,
+  "note": "Viewed: family from behind looking at a rainbow by water, child in front.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "2118da4ee503ae60e9f168e4af85d3e014353f7f1a82ba40ccbff8fa2899bc61",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }
