@@ -590,6 +590,26 @@ class Generation(unittest.TestCase):
         committed = eb.standing_rule(REAL_OWNER_REGEN)   # the committed record carries the owner's rule
         self.assertEqual((committed["max_extra_per_line"], committed["pavo_audio"]), (3, "pavo"))
 
+    def test_e299_a_still_whose_own_light_reads_rotated_is_not_a_turned_picture(self):
+        # E299: episode.yml 41820510399 stopped at SHOT_APPROVED_CLIP_FAILED s-down ROTATED_PICTURE: the approved still (a
+        # vertical shaft of light between dark clouds) reads "rotated" by E117's luma profile. The still itself is held
+        # and checked: its own profile is not a turn; a still that does not read rotated keeps the flag on its clip
+        import tempfile
+        seen = []
+        rotated = lambda clip, aspect=None: (seen.append(aspect), ["ROTATED_PICTURE"])[1]
+        upright = lambda clip, aspect=None: []
+        with tempfile.TemporaryDirectory() as d:
+            still = Path(d) / "s.jpg"
+            subprocess.run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-f", "lavfi", "-i", "color=c=gray:s=320x180",
+                            "-frames:v", "1", str(still)], check=True)
+            self.assertTrue(eb.still_profile_is_own(still, "16:9", flags=rotated))
+            self.assertFalse(eb.still_profile_is_own(still, "16:9", flags=upright))
+            self.assertFalse(eb.still_profile_is_own(Path(d) / "missing.jpg", "16:9", flags=rotated))
+        self.assertEqual(seen, ["16:9"])
+        real = eb.REPO / "migration/production/bible/stills/genesis-10-11-long-s-down.jpg"
+        if real.is_file():   # the real still's own profile, with the real clip_check
+            self.assertTrue(eb.still_profile_is_own(real, "16:9"))
+
     def test_e264_a_talking_shot_costs_two_generations_and_one_probe_round(self):
         # E264 (no rework): 6 generations x rounds spent up to 36 near-identical clips for 3 Keeper lines
         import long_preflight as lp

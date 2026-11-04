@@ -1416,6 +1416,26 @@ def clip_flags(path, aspect=None):
     return clip_check.check(str(path), aspect)["flags"]
 
 
+def still_profile_is_own(still, aspect=None, flags=None):
+    """E299: True when the approved still ITSELF, held for 2 s exactly as clip_check reads a clip, already carries the
+    ROTATED_PICTURE profile (s-down of genesis-10-11-long: one vertical shaft of light between dark storm clouds makes the
+    columns spread more than the rows). E117's flag is for a provider that turned the picture; a still in our camera
+    motion keeps the orientation of the still Claude viewed and approved, so the profile is the picture's own. A turn
+    added by the motion engine still flags: then the still itself does not read rotated."""
+    still = Path(still)
+    if not still.is_file():
+        return False
+    flags = flags or clip_flags
+    import tempfile
+    with tempfile.TemporaryDirectory() as d:
+        probe = Path(d) / "still.mp4"
+        w, h = (1080, 1920) if aspect == "9:16" else (1920, 1080)
+        subprocess.run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-loop", "1", "-t", "2", "-i", str(still), "-r", "30",
+                        "-vf", f"scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},format=yuv420p",
+                        "-c:v", "libx264", "-preset", "veryfast", str(probe)], check=True)
+        return "ROTATED_PICTURE" in flags(probe, aspect)
+
+
 def lipsync_flags(lip_python, face_model, clip, wav):
     done = subprocess.run([str(lip_python), "-I", "-B", str(HERE / "lipsync_check.py"), str(clip), str(wav),
                            str(face_model)], capture_output=True, text=True)
@@ -1942,6 +1962,10 @@ def generate_step(plan, work, lip_python, face_model, approvals=None, fetch=fetc
             entry["motion_direction"] = directions[shot["id"]]
         if source in shot_sources.SILENT_SOURCES:   # a Buzzy clip, a licensed clip or a still in motion: no person, no speech
             flags, measures = clip_flags(final, plan.get("aspect_ratio", "9:16")), None
+            if source == "still_motion" and "ROTATED_PICTURE" in flags and \
+                    still_profile_is_own(REPO / str(approved.get("repo_path") or ""), plan.get("aspect_ratio", "9:16")):
+                flags = [f for f in flags if f != "ROTATED_PICTURE"]   # E299: the approved still's own light, not a turn
+                entry["rotation_profile"] = "the approved still itself reads ROTATED_PICTURE (E299): its own composition"
         else:
             flags, measures = check(final)
             ok = accepted_flags(approved, approved["clip_sha256"])   # E266: soft measures the approval recorded, this clip only
