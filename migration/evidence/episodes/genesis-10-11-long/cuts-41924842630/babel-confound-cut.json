@@ -1,0 +1,193 @@
+{
+ "version": "bible-cut-v1",
+ "id": "babel-confound-cut",
+ "spec": "migration/production/bible/cuts/genesis-10-11-long.json",
+ "parent": {
+  "long": "genesis-10-11-long",
+  "pilot": "pilot-020",
+  "report": "migration/evidence/episodes/genesis-10-11-long/report-41850571431.json",
+  "clean_master_sha256": "d771913c16b690d9530d5946c85af187656bca1b4e37834de76508b5a91682a9",
+  "start": 304.514,
+  "end": 365.45,
+  "x": 0.5
+ },
+ "output_sha256": "a001b8cd58bfef7726bda8f1c2f2614e687ff45a9b75ee17871eccab9d609223",
+ "seconds": 60.967,
+ "frame": [
+  1080,
+  1920
+ ],
+ "lufs": -14.0,
+ "true_peak_dbfs": -1.8,
+ "sentences": [
+  {
+   "segment": "n34",
+   "text": "No lightning.",
+   "start": 0.27,
+   "end": 1.507,
+   "line": 34,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n34",
+   "text": "No flood.",
+   "start": 1.687,
+   "end": 2.882,
+   "line": 34,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n34",
+   "text": "Not one brick was struck.",
+   "start": 3.062,
+   "end": 4.918,
+   "line": 34,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n34",
+   "text": "God did not knock down the tower.",
+   "start": 5.098,
+   "end": 7.487,
+   "line": 34,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n34",
+   "text": "He quietly took away their words.",
+   "start": 7.667,
+   "end": 10.099,
+   "line": 34,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n35",
+   "text": "He said nothing would be restrained from them.",
+   "start": 10.449,
+   "end": 13.222,
+   "line": 35,
+   "line_kind": "insight"
+  },
+  {
+   "segment": "n35",
+   "text": "So after water, He chose distance.",
+   "start": 13.402,
+   "end": 15.898,
+   "line": 35,
+   "line_kind": "insight"
+  },
+  {
+   "segment": "n36",
+   "text": "Picture the moment it happened.",
+   "start": 16.248,
+   "end": 18.275,
+   "line": 36,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n36",
+   "text": "A man on the scaffold calls down for more clay, and the man below hears sounds he has never heard in his life.",
+   "start": 18.455,
+   "end": 25.58,
+   "line": 36,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n36",
+   "text": "He shouts louder.",
+   "start": 25.76,
+   "end": 27.232,
+   "line": 36,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n36",
+   "text": "The words come back as noise.",
+   "start": 27.412,
+   "end": 29.546,
+   "line": 36,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n37",
+   "text": "Imagine waking up the next morning.",
+   "start": 29.896,
+   "end": 32.605,
+   "line": 37,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n37",
+   "text": "You turn to the person beside you, and you cannot say good morning.",
+   "start": 32.785,
+   "end": 37.094,
+   "line": 37,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n37",
+   "text": "You cannot ask for water.",
+   "start": 37.274,
+   "end": 39.216,
+   "line": 37,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n37",
+   "text": "You cannot even say sorry.",
+   "start": 39.396,
+   "end": 41.486,
+   "line": 37,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n38",
+   "text": "A father cannot understand his own brother.",
+   "start": 41.836,
+   "end": 44.695,
+   "line": 38,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n38",
+   "text": "A mother calls her child, and a stranger answers.",
+   "start": 44.875,
+   "end": 48.416,
+   "line": 38,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n39",
+   "text": "Hands that had worked as one stopped in the middle of the air.",
+   "start": 48.766,
+   "end": 52.478,
+   "line": 39,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n39",
+   "text": "Friends became strangers in the middle of a sentence.",
+   "start": 52.658,
+   "end": 56.114,
+   "line": 39,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n39",
+   "text": "And the great chain of bricks, which had never once broken, went still.",
+   "start": 56.294,
+   "end": 60.646,
+   "line": 39,
+   "line_kind": "story"
+  }
+ ],
+ "advice": [
+  "ends on a story line: a KJV line or the Keeper's insight closes a cut best"
+ ],
+ "checks": {
+  "frame_1080x1920": true,
+  "lufs_band": true,
+  "true_peak_ceiling": true,
+  "length": true
+ }
+}

@@ -1,0 +1,85 @@
+{
+ "version": "bible-cut-v1",
+ "id": "babel-scatter-cut",
+ "spec": "migration/production/bible/cuts/genesis-10-11-long.json",
+ "parent": {
+  "long": "genesis-10-11-long",
+  "pilot": "pilot-020",
+  "report": "migration/evidence/episodes/genesis-10-11-long/report-41850571431.json",
+  "clean_master_sha256": "d771913c16b690d9530d5946c85af187656bca1b4e37834de76508b5a91682a9",
+  "start": 373.642,
+  "end": 398.95,
+  "x": 0.5
+ },
+ "output_sha256": "6b3ac4139550f8efb7ed5b9b9f3ad69ec19fda2e2bb9f7964dc98fa2f0eb5a01",
+ "seconds": 25.333,
+ "frame": [
+  1080,
+  1920
+ ],
+ "lufs": -14.1,
+ "true_peak_dbfs": -1.6,
+ "sentences": [
+  {
+   "segment": "n41",
+   "text": "So the Lord scattered them abroad from thence upon the face of all the earth:",
+   "start": 0.27,
+   "end": 5.049,
+   "kind": "scripture",
+   "reference": "Genesis 11:8 (KJV)",
+   "line": 41,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n41",
+   "text": "and they left off to build the city.",
+   "start": 5.229,
+   "end": 7.49,
+   "kind": "scripture",
+   "reference": "Genesis 11:8 (KJV)",
+   "line": 41,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n42",
+   "text": "Families picked up their children and walked away, each one toward the few voices they could still understand.",
+   "start": 7.84,
+   "end": 14.774,
+   "line": 42,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n43",
+   "text": "Some went west, toward the sea and the sunset.",
+   "start": 15.124,
+   "end": 18.217,
+   "line": 43,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n44",
+   "text": "Some went east, toward the mountains.",
+   "start": 18.567,
+   "end": 21.042,
+   "line": 44,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n45",
+   "text": "And some followed the great river south into the unknown.",
+   "start": 21.392,
+   "end": 25.061,
+   "line": 45,
+   "line_kind": "story"
+  }
+ ],
+ "advice": [
+  "ends on a story line: a KJV line or the Keeper's insight closes a cut best"
+ ],
+ "checks": {
+  "frame_1080x1920": true,
+  "lufs_band": true,
+  "true_peak_ceiling": true,
+  "length": true
+ }
+}

@@ -1,0 +1,183 @@
+{
+ "version": "bible-cut-v1",
+ "id": "babel-climb-cut",
+ "spec": "migration/production/bible/cuts/genesis-10-11-long.json",
+ "parent": {
+  "long": "genesis-10-11-long",
+  "pilot": "pilot-020",
+  "report": "migration/evidence/episodes/genesis-10-11-long/report-41850571431.json",
+  "clean_master_sha256": "d771913c16b690d9530d5946c85af187656bca1b4e37834de76508b5a91682a9",
+  "start": 159.923,
+  "end": 245.826,
+  "x": 0.5
+ },
+ "output_sha256": "6621f23170c759a281fd1bec5f8d9d2922d7b4a6dc268ffdb6ca570ba0c9867f",
+ "seconds": 85.933,
+ "frame": [
+  1080,
+  1920
+ ],
+ "lufs": -14.2,
+ "true_peak_dbfs": -1.6,
+ "sentences": [
+  {
+   "segment": "n18",
+   "text": "Now picture the whole human race standing on one plain at dusk.",
+   "start": 0.27,
+   "end": 4.686,
+   "line": 18,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n18",
+   "text": "Not one voice raised against another.",
+   "start": 4.866,
+   "end": 7.554,
+   "line": 18,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n18",
+   "text": "One people, with one language, and one idea, and then someone said it out loud.",
+   "start": 7.734,
+   "end": 12.918,
+   "line": 18,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n19",
+   "text": "Go to, let us build us a city and a tower, whose top may reach unto heaven;",
+   "start": 13.268,
+   "end": 17.919,
+   "speaker": "builder",
+   "kind": "scripture",
+   "reference": "Genesis 11:4 (KJV)",
+   "line": 19,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n20",
+   "text": "and let us make us a name, lest we be scattered abroad upon the face of the whole earth.",
+   "start": 18.269,
+   "end": 23.435,
+   "speaker": "builder",
+   "kind": "scripture",
+   "reference": "Genesis 11:4 (KJV)",
+   "line": 20,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n21",
+   "text": "The foundation alone took years:",
+   "start": 23.785,
+   "end": 26.089,
+   "line": 21,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n21",
+   "text": "a platform of fired brick wider than a village, every brick carried in by hand.",
+   "start": 26.269,
+   "end": 31.475,
+   "line": 21,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n22",
+   "text": "Thousands of people, all working toward one plan, because every one of them understood every word.",
+   "start": 31.825,
+   "end": 38.395,
+   "line": 22,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n22",
+   "text": "That is what one language gives:",
+   "start": 38.575,
+   "end": 40.858,
+   "line": 22,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n22",
+   "text": "speed, trust and strength.",
+   "start": 41.038,
+   "end": 42.894,
+   "line": 22,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n23",
+   "text": "Then it began to climb.",
+   "start": 43.244,
+   "end": 45.057,
+   "line": 23,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n23",
+   "text": "Terrace upon terrace, with long ramps winding up its sides like a road to the clouds, and a line of workers on every ramp, from the first light to the last.",
+   "start": 45.237,
+   "end": 55.819,
+   "line": 23,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n24",
+   "text": "A tower like that takes millions of bricks.",
+   "start": 56.169,
+   "end": 58.899,
+   "line": 24,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n24",
+   "text": "Each one was baked, carried and set by someone who believed that this would make them great.",
+   "start": 59.079,
+   "end": 64.733,
+   "line": 24,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n25",
+   "text": "Higher than the birds, higher than the hills.",
+   "start": 65.083,
+   "end": 67.813,
+   "line": 25,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n25",
+   "text": "Men worked on ropes and reed scaffolds, passing bricks from hand to hand, and every time one looked down, the whole plain looked smaller.",
+   "start": 67.993,
+   "end": 77.06,
+   "line": 25,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n26",
+   "text": "And every brick laid was an answer to one quiet question:",
+   "start": 77.41,
+   "end": 81.442,
+   "line": 26,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n26",
+   "text": "do we really need God, when we can reach the heavens ourselves?",
+   "start": 81.622,
+   "end": 85.633,
+   "line": 26,
+   "line_kind": "story"
+  }
+ ],
+ "advice": [
+  "ends on a story line: a KJV line or the Keeper's insight closes a cut best"
+ ],
+ "checks": {
+  "frame_1080x1920": true,
+  "lufs_band": true,
+  "true_peak_ceiling": true,
+  "length": true
+ }
+}
