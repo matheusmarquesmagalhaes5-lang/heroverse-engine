@@ -180,7 +180,7 @@
   },
   {
    "kind": "insight",
-   "text": "Nothing could stop them. So God did not send a flood. He scattered them."
+   "text": "He said nothing would be restrained from them. So after water, He chose distance."
   },
   {
    "kind": "story",
@@ -545,27 +545,10 @@
    "figures": "anonymous"
   },
   {
-   "kind": "keeper",
-   "id": "k-restrain",
-   "lines": [
-    32
-   ],
-   "ambience": "the open desert at night: a small campfire crackling softly and a light night wind",
-   "audio_route": "kokoro",
-   "pavo": {
-    "emotion": "grave, intent",
-    "setting": "Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him.",
-    "wardrobe": "fire",
-    "gaze": "straight into the camera",
-    "mood": "Calm and grave"
-   },
-   "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a grave, intent look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Calm and grave. No text, no logos.",
-   "pavo_audio": "pavo"
-  },
-  {
    "id": "s-babble",
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow push-in. Two workers on a ramp seen from behind and in deep shadow, one pointing up, the other shaking his head, both with their faces turned away from us, a stack of bricks between them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Hard light and swirling dust. Bewildered and rising panic. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
    "lines": [
+    32,
     33
    ],
    "seconds": 20,

@@ -6,6 +6,9 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
 `../../strategy/DECISIONS.md` ("2026-11-02 — Battle plan to YPP").
 
 ## Current delivery: flood-ends-long (Genesis 8-9, buzzy-long, plan `plans/flood-ends-long.json`)
+- 2026-11-04 ~10:00Z (Claude, coordinator decision after the cap): k-restrain is now Keeper narration (Kokoro) over the approved still
+  s-babble; the talking shot is removed from the plan (plan_check --strict clean, estimate 480.2 s). New `preflight.yml` runs the long's voice
+  preflight in Actions. Next: preflight.yml on the plan, PR its report, episode.yml, local-review, review, approve/gate/publish, cuts.
 - 2026-11-04 ~09:50Z (Claude, Babel long under the standing rule E296): PRs #808, #811, #813 (prompt revisions), records #809, #812, #815.
   b-tower: one new generation (probe 41795895378, 0 credits, sync clean) but speech-check 41799225714 heard "Let us build us a city in a tower ...
   heaven at the end" and the brickyard instead of the scaffold, so b-tower KEEPS its approved clip (dd60b36b, our Kokoro line over Pavo's picture;

@@ -717,3 +717,13 @@ owner's order is Pavo's own audio, the clip in full. The fix is the prompt and t
   free Pavo quota (0 credits by exact quote). At the cap it stops and reports. A probe of a talking line whose plan says
   `pavo_audio: "ours"` is refused (the error that discarded Pavo's audio in probe 41743247133). Executors decide inside
   these rules and do not ask the owner per line.
+
+## 2026-11-04 — Babel k-restrain becomes Keeper narration after the Pavo cap (coordinator, under the owner's fixed rules)
+- The owner's standing rule (E296) gave k-restrain 3 extra Pavo generations, one per prompt revision; all failed (probe
+  41795895378 garbled ending; 41800469765 repeated words and a dropped sentence; 41804402265 FACE_NOT_FOUND). At the cap
+  the line stops. Coordinator decision (the owner said not to consult him): k-restrain is a normal narration beat in the
+  Keeper's Kokoro voice over the existing approved still s-babble (the scattering moment), no new image and no new Pavo
+  generation. The talking shot k-restrain is removed from `plans/genesis-10-11-long.json`; its line ("He said nothing would
+  be restrained from them. So after water, He chose distance.") opens s-babble. b-tower keeps its approved clip.
+- The long's voice preflight runs in Actions (`preflight.yml`: the existing `episode_build.py preflight --voice --refs
+  --write` with the pinned Kokoro runtime), since no Kokoro is installed locally.
