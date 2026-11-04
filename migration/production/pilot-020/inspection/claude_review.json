@@ -1,0 +1,141 @@
+{
+ "version": "claude-review-compilation-v1",
+ "model": "claude-session-reviewer",
+ "pilot_id": "pilot-020",
+ "output_sha256": "0386d34a1501477d6ea487b3c3cf53caedb0a898d70e7b15feb90e36bad09937",
+ "reviewed_at": "2026-11-04T21:45:00Z",
+ "native_review": {
+  "run_id": 41860696043,
+  "model": "local:faster-whisper-small.en@d1d751a5+ffmpeg",
+  "status": "EVIDENCE_COMPLETE",
+  "duration_seconds": 483.861
+ },
+ "human_listener": {
+  "who": "owner (channel owner, in chat)",
+  "verdict_verbatim": "Babel ok",
+  "when": "2026-11-04 ~21:45Z",
+  "what": "watched and listened to scratchpad/master/babel-revisao-540p.mp4, a 540p proxy made by the coordinator from master 0386d34a... with the audio stream copied bit-identical (ffmpeg -c:a copy); audio-stream digest 1f6edacaa3baf99c... equal for proxy and master, checked by Claude",
+  "pointed_to": [
+   "00:55",
+   "02:17-02:22",
+   "06:51"
+  ]
+ },
+ "evidence": [
+  "Audio: listened to by the OWNER on a 540p proxy whose audio stream is bit-identical to this master (stream sha256 1f6edacaa3baf99c9b2e78e6ee60b9325f2095c1c405ac400450c2538afc37a2 for both); he was pointed to 00:55, 02:17-02:22 and 06:51 and replied verbatim \"Babel ok\". Claude did not hear the audio (this executor cannot play audio).",
+  "Measured: local-review.yml run 41860696043 on this exact master: pinned small.en ASR coverage 0.981 (1251 of 1275 words), -14.5 LUFS, LRA 2.1, -1.3 dBTP, no silence, no speech gap.",
+  "Picture: Claude viewed the build's 20-frame sheet of this master (episode.yml 41850571431) and the 8-frame sheet of the Buzzy s-roadwest clip: scenes match their lines in Genesis 10-11 order; the builder keeps one face; God is never shown (11:5 and 11:6-7 are light through clouds); KJV cards readable. The picture of the proxy is the owner's view; the 1080p picture judgement is Claude's frame review, not a full-motion watch."
+ ],
+ "issues": [
+  "00:55.45 [a] sentence 16 only 0% heard (garbled or cut)",
+  "02:17.53 [a] sentence 37 only 12% heard (garbled or cut)",
+  "02:17.53 [d] sentence 37 heard +2.44s / -2.17s from its caption timeline",
+  "02:20.10 [a] script words not heard (sentence 37): \"said one to another go to let us make brick and burn\"",
+  "02:22.62 [d] sentence 38 heard -2.52s / -0.46s from its caption timeline",
+  "06:51.43 [a] sentence 105 only 0% heard (garbled or cut)",
+  "00:55.58 [info] heard \"miety\" for \"mighty\" (sentence 16)",
+  "01:12.54 [info] heard \"a\" for \"erech\" (sentence 21)",
+  "01:13.34 [info] heard \"a\" for \"accad\" (sentence 21)",
+  "01:14.10 [info] heard \"calna\" for \"calneh\" (sentence 21)",
+  "03:07.80 [info] heard \"whiter\" for \"wider\" (sentence 48)",
+  "06:57.38 [info] heard \"babel\" for \"babble\" (sentence 106)",
+  "07:12.20 [info] heard \"a\" for \"the\" (sentence 110)",
+  "00:00.00 [info] speech opens on frame 0 by plan (cold open); confirm the first word is whole when listening to the sheet times",
+  "06:50.57 [info] longest stretch without a scene change 73.29 s"
+ ],
+ "defects": [
+  {
+   "issue": 0,
+   "category": "a",
+   "resolved": true
+  },
+  {
+   "issue": 1,
+   "category": "a",
+   "resolved": true
+  },
+  {
+   "issue": 2,
+   "category": "d",
+   "resolved": true
+  },
+  {
+   "issue": 3,
+   "category": "a",
+   "resolved": true
+  },
+  {
+   "issue": 4,
+   "category": "d",
+   "resolved": true
+  },
+  {
+   "issue": 5,
+   "category": "a",
+   "resolved": true
+  },
+  {
+   "issue": 6,
+   "category": "info",
+   "resolved": true
+  },
+  {
+   "issue": 7,
+   "category": "info",
+   "resolved": true
+  },
+  {
+   "issue": 8,
+   "category": "info",
+   "resolved": true
+  },
+  {
+   "issue": 9,
+   "category": "info",
+   "resolved": true
+  },
+  {
+   "issue": 10,
+   "category": "info",
+   "resolved": true
+  },
+  {
+   "issue": 11,
+   "category": "info",
+   "resolved": true
+  },
+  {
+   "issue": 12,
+   "category": "info",
+   "resolved": true
+  },
+  {
+   "issue": 13,
+   "category": "info",
+   "resolved": true
+  },
+  {
+   "issue": 14,
+   "category": "info",
+   "resolved": true
+  }
+ ],
+ "classification_notes": {
+  "0": "Owner listened at 00:55 (proxy with bit-identical audio) and approved: the Kokoro line is whole; 'mighty' is the pinned small.en ASR's 'miety' (issue 6).",
+  "1": "Owner listened at 02:17-02:22 (b-brick, the builder's Genesis 11:3 line on our Kokoro audio over Pavo's picture, owner-accepted lip lag) and approved; the audio is present at -16 dB mean in the master; the ASR miss is the model's, not a cut.",
+  "2": "Caption-timeline offset measured by ASR on the same unrecognised builder line; the owner heard it and approved; information, not blocking ([d]).",
+  "3": "Same as issue 1: the words were heard by the owner; the pinned ASR did not recognise bm_lewis's archaic KJV phrasing.",
+  "4": "Follows from issue 2 (ASR alignment after the unrecognised line); owner approved.",
+  "5": "Owner listened at 06:51 and approved: 'Babel' is spoken; the ASR returned nothing for the single word.",
+  "13": "Cold open by plan (the Keeper's hook starts on frame 0); the owner watched the opening.",
+  "14": "73 s at 06:50 is the ASR/scene detector's measure across slow still-motion shots of the dispersal (s-parting, roads, s-unfinished, s-babel are separate stills); information only."
+ },
+ "strongest_moment": "05:14-05:34: the confusion of tongues: the man on the scaffold calls down and the man below hears only noise.",
+ "overall": null,
+ "scores_note": "No numeric score: the owner's verdict was \"Babel ok\" and Claude did not hear the audio, so no score is claimed (the buzzy-long track is a defect gate; scores gate nothing).",
+ "publish_decision": {
+  "decision": "publish",
+  "by": "claude-session-reviewer",
+  "note": "Decided on the owner's listening verdict (\"Babel ok\", proxy with identical audio, pointed at the three [a] flags) plus Claude's frame review: no speech cut, no scene against its line or story order, no policy issue (God not depicted, KJV exact, one Buzzy silent shot ledgered). Every [a] resolved by the owner's listening."
+ }
+}
