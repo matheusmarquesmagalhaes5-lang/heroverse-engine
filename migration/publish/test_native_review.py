@@ -453,6 +453,59 @@ class Review(unittest.TestCase):
         self.assertIn('native-review/receipt.cms', w)
 
 
+class DefectScan(unittest.TestCase):
+    """Owner 2026-11-04: Gemini listening pass for longs is a timestamped defect detector, never a score or approval."""
+
+    D = {'timestamp': '00:55', 'category': 'mispronunciation', 'heard_or_seen': 'mighty',
+         'note': 'vowel clipped, medium sure', 'confidence': 'medium'}
+
+    def test_prompt_adds_the_defect_scan_only_when_asked_and_the_default_is_unchanged(self):
+        for track in (None, 'buzzy-long', 'compilation', 'buzzy-cut'):
+            base = n.prompt(642.3, track)
+            self.assertEqual(base, n.prompt(642.3, track, False))
+            self.assertNotIn('DEFECT SCAN', base)
+            scan = n.prompt(642.3, track, True)
+            self.assertTrue(scan.startswith(base))
+            for c in n.DEFECT_CATEGORIES:
+                self.assertIn(c, scan)
+        self.assertIn('approves nothing', n.prompt(642.3, 'buzzy-long', True))
+
+    def test_validate_defects_requires_a_wellformed_in_media_categorised_list(self):
+        n.validate_defects({'defects': []}, 642.3)
+        n.validate_defects({'defects': [self.D, dict(self.D, timestamp='10:41.5', category='sync')]}, 642.3)
+        n.validate_defects({'defects': [dict(self.D, timestamp='00:10:41')]}, 1500)
+        for bad in (None, 'x', {}, [1], [dict(self.D, category='great')], [dict(self.D, timestamp='11:00')],
+                    [dict(self.D, timestamp='00:75')], [dict(self.D, timestamp='55')], [dict(self.D, note=' ')],
+                    [dict(self.D, confidence='sure')], [self.D] * 201):
+            with self.assertRaises(n.Refusal, msg=repr(bad)):
+                n.validate_defects({'defects': bad}, 642.3)
+        with self.assertRaises(n.Refusal):
+            n.validate_defects({}, 642.3)
+
+    def test_flag_is_validated_and_submit_uses_it(self):
+        src = (ROOT / 'migration/production/bible/native_review.py').read_text()
+        self.assertIn("i.get('defect_scan') == 'true'", src)
+        self.assertIn('DEFECT_SCAN_FLAG_INVALID', src)
+        w = (ROOT / '.github/workflows/native-review.yml').read_text()
+        self.assertIn('defect_scan:', w)
+        self.assertNotIn('APPROVAL.json', w)
+
+    def test_public_evidence_lists_defects_as_information_without_private_fields(self):
+        report = PublicEvidence().report()
+        report['defects'] = [dict(self.D, note='see files/synthfile42 https://example.invalid/x')]
+        i = dict(PublicEvidence.I, defect_scan='true')
+        r = dict(PublicEvidence.PRIVATE, status='EVIDENCE_COMPLETE', report=report)
+        p = n.public_evidence(i, r, '1')
+        self.assertTrue(p['defect_scan'] and p['scores_are_information_only'])
+        self.assertEqual(p['defects'][0]['timestamp'], '00:55')
+        self.assertFalse(p['production_approved'] or p['publication_ready'])
+        self.assertNotIn('synthfile42', json.dumps(p))
+        self.assertNotIn('example.invalid', json.dumps(p))
+        self.assertIn('Defect scan', n.summary_markdown(p))
+        plain = n.public_evidence(PublicEvidence.I, r, '1')
+        self.assertNotIn('defects', plain)
+
+
 class PublicEvidence(unittest.TestCase):
     """E233: a score must not exist only inside a receipt encrypted to one executor's key."""
 

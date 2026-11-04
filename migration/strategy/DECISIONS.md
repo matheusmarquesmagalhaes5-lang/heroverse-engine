@@ -798,3 +798,11 @@ Playwright Studio runner, Analytics API reports, vidIQ, manifold). Top picks: fi
 per-sentence WER to `local_review.py`, extend Analytics API funnel fields, run a MuseTalk/LatentSync lip-sync bake-off on free Kaggle GPU, use the
 unused vidIQ thumbnail/title scorers. Rejected: community FFmpeg and YouTube MCP wrappers, paid lip-sync services, `claude-code-action` on an API key.
 Models are defect finders, never a copied score; the human or authorized session review stays the approval.
+
+## 2026-11-04 — Gemini free tier may train on what we send: owner accepts
+
+Asked "Gemini grátis: a faixa grátis pode usar o que enviamos para treinar os modelos, inclusive vídeos antes de publicar. Aceita?"
+(~21:50Z), the owner answered "Sim". Recorded as the owner's acceptance: free-tier Gemini may be used on unpublished masters, still
+only under the Free Tier proof, the no-spend rule and the exact-media binding. Gemini remains a defect detector for the session
+review (`native-review.yml` `defect_scan`, timestamped mispronunciation/garbled/loudness/music-voice/sync/visual defects); it never
+approves and no score is copied to other media.
