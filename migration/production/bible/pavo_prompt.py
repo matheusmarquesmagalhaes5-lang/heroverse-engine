@@ -27,6 +27,15 @@ The input audio of such a shot is our exact Kokoro line as lines_step cuts it (T
 no added silence; the clip is cut at the last word, E273/E282, and carries our audio, E287). Production reads LESSONS
 before writing any Pavo request: `build` refuses while the file is missing or malformed.
 
+SILENT CLIPS (owner, 2026-11-04 ~22:50Z): "Pode continuar fazendo com pavo mais coloca só vídeos sem narração.. e coloca a
+narração por fora..". A shot with `"pavo_mode": "silent"` (pavo_audio "none") is a Pavo clip in which nobody speaks: the
+character acts or reacts, mouth closed, no lip-sync; every spoken word (Keeper lines, a character's KJV line, narration)
+is our Kokoro audio laid over the picture. `build` then fills TEMPLATE_SILENT (SILENT_VERSION) from `pavo` fields
+{"action", "setting", "mood", "wardrobe"?, "view"?, "camera"?}: Image 1 is the character, "centred in the frame", what he
+does, "No talking, no lip movement, no dialogue." The prompt never asks for speech or lip-sync (SILENT_SPEECH); a
+CHARACTER's line is voiced over a clip in which he is not visibly mouthing it (`view` three-quarter or profile, never
+frontal, no look into the lens). God is never shown. Pavo's own audio is never used.
+
 usage: pavo_prompt.py lessons                       the parsed lessons (JSON), exit 1 when the file is malformed
        pavo_prompt.py lesson DATE KIND TEXT EVIDENCE   append one lesson (KIND worked|failed|rule) under DATE
 """
@@ -41,6 +50,8 @@ sys.path.insert(0, str(ROOT / "migration/production/characters"))
 import characters as ch  # noqa: E402
 
 VERSION = "pavo-talk-v2"
+SILENT_MODE = "silent"
+SILENT_VERSION = "pavo-silent-v1"   # the silent template's own version (VERSION stays: approved talking digests carry it)
 LESSONS = ROOT / "migration/strategy/pavo_lessons.md"
 EVIDENCE = "migration/evidence/pavo-prompt-analysis/20261103.json"
 STYLE = "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain."
@@ -65,11 +76,31 @@ TAIL_PAD = 0.0             # seconds of silence added after the last word: none,
 TAIL_PAD_MARGIN = 0.05     # the padded line stays at least this much shorter than the clip (mux_ours cuts at the picture)
 LINE_WORDS_MAX = 25        # the longest passing line of record (flood k-insight); 12-17 words passed 26 of 31
 FIELDS = ("emotion", "setting", "wardrobe", "gaze", "mood")
+SILENT_FIELDS = ("action", "setting", "mood", "wardrobe", "view", "camera")
+TEMPLATE_SILENT = ("Image 1 is {label}. {style} {framing}, {camera}. {Label}, {identity}, {view}, centred in the frame, "
+                   "{action}, {pron} mouth closed. {setting} {mood}.{period} {silence} {negatives}")
+SILENCE = "No talking, no lip movement, no dialogue."
+VIEWS = {"frontal": "facing the camera", "three-quarter": "turned three-quarters from the camera",
+         "profile": "seen in profile"}
+CAMERAS = ("static camera", "slow push-in", "slow pan")
+SILENT_SPEECH = re.compile(
+    r"(?i)\b(speak\w*|spoke\w*|talk\w*|says?|said|saying|tell\w*|told|whisper\w*|sing\w*|sung|chant\w*|recit\w*|"
+    r"narrat(?:e|es|ed|ing|ion)|words?|audio|voices?|lip[- ]?sync\w*|lips? (?:moving|move|moves|part|parts|parting|open\w*)|"
+    r"mouth (?:moving|moves|move|open\w*)|opens? (?:his|her|its) mouth|open mouth|shout\w*|yell\w*|cr(?:y|ies|ying)|"
+    r"call(?:s|ing)? out|mutter\w*|murmur\w*|ask\w*|answer\w*|repl(?:y|ies|ying)|declare\w*|command\w*|"
+    r"preach\w*|dialogue|conversation|mouthing)\b")
+FRONTAL_GAZE = re.compile(r"(?i)\b(?:into|at|toward|towards|to) the (?:camera|lens|viewer)\b|\bfaces? the (?:camera|lens)\b")
+ACTION_RE = re.compile(r"^[a-z][a-z ,'-]{8,160}$")
 LOOK = re.compile(r"^[a-z]+(?:-[a-z]+)?(?:,? [a-z]+(?:-[a-z]+)?){0,2}$")
 MOOD = re.compile(r"^[A-Z][a-z]+ and [a-z]+$")
 SUBJECT = {"his": "He", "her": "She", "its": "It"}
 LESSON_DATE = re.compile(r"^## (\d{4}-\d{2}-\d{2})$")
 LESSON_LINE = re.compile(r"^- \*\*(worked|failed|rule)\*\* (.+) Evidence: (.+)$")
+
+
+def is_silent(shot):
+    """The shot is a silent Pavo clip: `"pavo_mode": "silent"` (our audio goes over it, Pavo's is never used)."""
+    return isinstance(shot, dict) and shot.get("pavo_mode") == SILENT_MODE
 
 
 def standard(shot):
@@ -89,6 +120,8 @@ def tail_pad(speech_seconds, clip_seconds):
 
 def field_problems(shot, chars, plan=None):
     """[] or the reasons the shot's `pavo` fields cannot be built (PAVO_FIELDS_INVALID)."""
+    if is_silent(shot):
+        return silent_field_problems(shot, chars, plan)
     f, sid, who = shot.get("pavo"), shot.get("id"), speaker(shot)
     if not isinstance(f, dict):
         return [f"PAVO_FIELDS_INVALID {sid} (a talking shot carries `pavo`: {', '.join(FIELDS)})"]
@@ -118,6 +151,59 @@ def field_problems(shot, chars, plan=None):
     gaze = f.get("gaze", KEEPER_GAZE)
     if gaze not in GAZES or (who == ch.NARRATOR and gaze != KEEPER_GAZE):
         out.append(f"PAVO_FIELDS_INVALID {sid} (`gaze` is one of {', '.join(GAZES)}; the Keeper looks {KEEPER_GAZE})")
+    return out
+
+
+def silent_speech(prompt):
+    """The speech or lip-sync words a silent clip's prompt asks for (the fixed silence sentence taken out), else None."""
+    m = SILENT_SPEECH.search(str(prompt or "").replace(SILENCE, ""))
+    return m.group(0) if m else None
+
+
+def silent_field_problems(shot, chars, plan=None):
+    """[] or the reasons a silent shot's `pavo` fields cannot be built (PAVO_FIELDS_INVALID, PAVO_SILENT_SPEECH)."""
+    f, sid, who = shot.get("pavo"), shot.get("id"), speaker(shot)
+    if not isinstance(f, dict):
+        return [f"PAVO_FIELDS_INVALID {sid} (a silent shot carries `pavo`: {', '.join(SILENT_FIELDS)})"]
+    out = []
+    unknown = sorted(set(f) - set(SILENT_FIELDS))
+    if unknown:
+        out.append(f"PAVO_FIELDS_INVALID {sid} (unknown silent field(s) {', '.join(unknown)})")
+    c = chars.get(who) if isinstance(who, str) else None
+    if not c or who == ch.GOD:
+        return out + [f"PAVO_FIELDS_INVALID {sid} (speaker {who!r} is not a characters.json character: God is never shown)"]
+    for key in ("action", "setting", "mood"):
+        value = f.get(key)
+        if isinstance(value, str) and (m := SILENT_SPEECH.search(value)):
+            out.append(f"PAVO_SILENT_SPEECH {sid} (`{key}` asks for speech or lip-sync: {m.group(0)!r}; nobody speaks in a "
+                       "silent clip, the words are our audio laid over it)")
+    action = f.get("action")
+    if not isinstance(action, str) or not ACTION_RE.fullmatch(action):
+        out.append(f"PAVO_FIELDS_INVALID {sid} (`action`: what {who} does, lower case, no full stop, e.g. \"works the "
+                   "clay with both hands\")")
+    mood = f.get("mood")
+    if not isinstance(mood, str) or not MOOD.fullmatch(mood):
+        out.append(f"PAVO_FIELDS_INVALID {sid} (`mood` is \"<Adjective> and <adjective>\", e.g. \"Tender and grave\")")
+    s = f.get("setting")
+    if not isinstance(s, str) or not 20 <= len(s) <= 400 or not s.strip().endswith(".") or "Image" in s:
+        out.append(f"PAVO_FIELDS_INVALID {sid} (`setting`: one or two sentences of place and light, 20-400 characters)")
+    wardrobe = c.get("wardrobe") or {}
+    if who == ch.NARRATOR and f.get("wardrobe") not in wardrobe:
+        out.append(f"PAVO_FIELDS_INVALID {sid} (`wardrobe` is one of the Keeper's: {', '.join(sorted(wardrobe))})")
+    elif f.get("wardrobe") is not None and f.get("wardrobe") not in wardrobe:
+        out.append(f"PAVO_FIELDS_INVALID {sid} (`wardrobe` of {who}: {', '.join(sorted(wardrobe)) or 'none'})")
+    view = f.get("view", "frontal")
+    if view not in VIEWS:
+        out.append(f"PAVO_FIELDS_INVALID {sid} (`view` is one of {', '.join(VIEWS)})")
+    elif who != ch.NARRATOR and shot.get("kind") != "keeper" and isinstance(shot.get("line"), str):
+        if view == "frontal" or (isinstance(action, str) and FRONTAL_GAZE.search(action)):
+            out.append(f"PAVO_SILENT_FRONTAL {sid} ({who}'s line is voiced over this clip: he is shown working, looking "
+                       "away or in profile, never a frontal face visibly mouthing it; `view` three-quarter or profile)")
+    if f.get("camera", CAMERAS[0]) not in CAMERAS:
+        out.append(f"PAVO_FIELDS_INVALID {sid} (`camera` is one of {', '.join(CAMERAS)})")
+    if shot.get("pavo_audio") not in (None, "none"):
+        out.append(f"PAVO_SILENT_AUDIO {sid} (a silent clip has pavo_audio \"none\", not {shot.get('pavo_audio')!r}: Pavo's "
+                   "own audio is never used)")
     return out
 
 
@@ -166,6 +252,8 @@ def build(shot, plan, chars=None):
     bad = field_problems(shot, chars, plan)
     if bad:
         raise SystemExit(bad[0])
+    if is_silent(shot):
+        return build_silent(shot, plan, chars)
     words = line_words(shot, plan)
     if len(words) > LINE_WORDS_MAX:
         raise SystemExit(f"PAVO_LINE_WORDS {shot.get('id')} ({len(words)} words; no line above {LINE_WORDS_MAX} words "
@@ -188,6 +276,30 @@ def build(shot, plan, chars=None):
                            identity=identity, pose=pose, action=ACTION.format(pron=pron), emotion=f["emotion"],
                            setting=f["setting"].strip(), mood=f.get("mood") or PASSING_LOOKS[f["emotion"]],
                            period=period, negatives=NEGATIVES)
+
+
+def build_silent(shot, plan, chars):
+    """The prompt of a silent Pavo clip (TEMPLATE_SILENT, SILENT_VERSION): the passing talking prompt's framing, identity,
+    setting and mood sentences, with what the character DOES in place of speech and the silence sentence."""
+    import plan_check
+    f, who = shot["pavo"], speaker(shot)
+    c = chars[who]
+    pron = c.get("pronoun", "his")
+    keeper = who == ch.NARRATOR
+    aspect = (plan or {}).get("aspect_ratio", "9:16")
+    label = "the narrator" if keeper else c.get("name", who)
+    identity = c["look"] + (f", {c['wardrobe'][f['wardrobe']]}" if f.get("wardrobe") else "")
+    framing = CHEST_UP.format(pron=pron) if keeper and aspect != "9:16" else MEDIUM_CLOSE_UP
+    period = ""
+    if shot.get("kind") == "scene":
+        per = plan_check.period(plan)
+        if per:
+            period = f" {per['setting']} {per['exclude']}"
+    return TEMPLATE_SILENT.format(label=label, Label=label[0].upper() + label[1:], style=STYLE, framing=framing,
+                                  camera=f.get("camera", CAMERAS[0]), identity=identity,
+                                  view=VIEWS[f.get("view", "frontal")], action=f["action"], pron=pron,
+                                  setting=f["setting"].strip(), mood=f["mood"], period=period, silence=SILENCE,
+                                  negatives=NEGATIVES)
 
 
 def append_lesson(date, kind, text, evidence, path=None):

@@ -2920,6 +2920,18 @@
     "migration/production/bible/episode_build.py::def standing_rule_verdict("
    ],
    "note": "E296: the standing rule covers talking shots on pavo_prompt.build (E293) only"
+  },
+  "PAVO_SILENT_SPEECH": {
+   "class": "A",
+   "early": [
+    "migration/production/bible/plan_check.py::def silent_problems(",
+    "migration/production/bible/pavo_prompt.py::def silent_field_problems("
+   ],
+   "note": "E300 (owner 2026-11-04, silent Pavo clips): a silent shot whose prompt or fields ask for speech or lip-sync is refused by plan_check (prompt_problems, pavo_coverage_problems, strict) and pavo_prompt.build before any request; episode_build.request repeats it as a last guard."
+  },
+  "WARN_FACE_NOT_FOUND_PROFILE": {
+   "class": "N",
+   "why": "E300: a reviewer note in a silent clip's measures (silent_warnings), not a refusal: the landmarker reads frontal faces, so a profile view's missing face is judged by the reviewer's real look"
   }
  },
  "review": {
