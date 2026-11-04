@@ -1,0 +1,80 @@
+{
+ "version": "bible-episode-v1",
+ "id": "babel-confound-cut",
+ "series": "The Bible, story by story (KJV)",
+ "part": 1,
+ "passage": "Genesis 10-11:9 (KJV, public domain), with Genesis 11:26-28 and 12:2",
+ "format": "short",
+ "track": "buzzy-cut",
+ "parent": {
+  "long": "genesis-10-11-long",
+  "pilot": "pilot-020",
+  "clean_master_sha256": "d771913c16b690d9530d5946c85af187656bca1b4e37834de76508b5a91682a9",
+  "start": 304.514,
+  "end": 365.45
+ },
+ "output_sha256": "a001b8cd58bfef7726bda8f1c2f2614e687ff45a9b75ee17871eccab9d609223",
+ "seconds": 60.967,
+ "frame": [
+  1080,
+  1920
+ ],
+ "narration": [
+  {
+   "kind": "story",
+   "text": "No lightning. No flood. Not one brick was struck. God did not knock down the tower. He quietly took away their words."
+  },
+  {
+   "kind": "insight",
+   "text": "He said nothing would be restrained from them. So after water, He chose distance."
+  },
+  {
+   "kind": "story",
+   "text": "Picture the moment it happened. A man on the scaffold calls down for more clay, and the man below hears sounds he has never heard in his life. He shouts louder. The words come back as noise."
+  },
+  {
+   "kind": "story",
+   "text": "Imagine waking up the next morning. You turn to the person beside you, and you cannot say good morning. You cannot ask for water. You cannot even say sorry."
+  },
+  {
+   "kind": "story",
+   "text": "A father cannot understand his own brother. A mother calls her child, and a stranger answers."
+  },
+  {
+   "kind": "story",
+   "text": "Hands that had worked as one stopped in the middle of the air. Friends became strangers in the middle of a sentence. And the great chain of bricks, which had never once broken, went still."
+  }
+ ],
+ "scripture": [],
+ "title": "No Lightning. No Flood. God Took Their Words 🗼 | Tower of Babel, Genesis 11 (KJV) #shorts",
+ "description": "God did not knock down the tower. He quietly took away their words (Genesis 11, King James Version).\n\nWatch the full story, Genesis 10-11: https://youtu.be/KwFjnZ20yGA\n\nScripture: King James Version (public domain), Genesis 11:1-9.\nVisuals: AI-generated scenes (Buzzy, GPT-image stills with camera motion). Narration: AI voice. Music: original, owned.\n\n#bible #genesis #towerofbabel #shorts",
+ "tags": [
+  "tower of babel",
+  "babel",
+  "genesis 11",
+  "bible story",
+  "kjv bible",
+  "christian shorts",
+  "bible stories"
+ ],
+ "category_id": "29",
+ "first_comment": "Watch the full story of Babel here: https://youtu.be/KwFjnZ20yGA",
+ "credits": {
+  "vidiq": 0,
+  "pavo": 0
+ },
+ "attributes": {
+  "hook_type": "narrated_story_hook",
+  "hook_line": "No lightning. No flood. Not one brick was struck. God did not knock down the tower. He quietly took away their words.",
+  "title_pattern": "hook_emoji_pipe_story_kjv",
+  "first_visual": "s-confound",
+  "ai_scenes": 4,
+  "slot_utc": "23:30",
+  "transition": "cut",
+  "seconds": 60.967,
+  "voice": "kokoro_am_michael",
+  "compose": "engine",
+  "structure": "bible-story-cut"
+ },
+ "slot": "2026-11-05T23:30:00Z"
+}

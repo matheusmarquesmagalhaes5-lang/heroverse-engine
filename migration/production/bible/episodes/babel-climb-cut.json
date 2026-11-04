@@ -1,0 +1,105 @@
+{
+ "version": "bible-episode-v1",
+ "id": "babel-climb-cut",
+ "series": "The Bible, story by story (KJV)",
+ "part": 1,
+ "passage": "Genesis 10-11:9 (KJV, public domain), with Genesis 11:26-28 and 12:2",
+ "format": "short",
+ "track": "buzzy-cut",
+ "parent": {
+  "long": "genesis-10-11-long",
+  "pilot": "pilot-020",
+  "clean_master_sha256": "d771913c16b690d9530d5946c85af187656bca1b4e37834de76508b5a91682a9",
+  "start": 159.923,
+  "end": 245.826
+ },
+ "output_sha256": "6621f23170c759a281fd1bec5f8d9d2922d7b4a6dc268ffdb6ca570ba0c9867f",
+ "seconds": 85.933,
+ "frame": [
+  1080,
+  1920
+ ],
+ "narration": [
+  {
+   "kind": "story",
+   "text": "Now picture the whole human race standing on one plain at dusk. Not one voice raised against another. One people, with one language, and one idea, and then someone said it out loud."
+  },
+  {
+   "kind": "scripture",
+   "text": "Go to, let us build us a city and a tower, whose top may reach unto heaven;",
+   "reference": "Genesis 11:4 (KJV)",
+   "speaker": "builder"
+  },
+  {
+   "kind": "scripture",
+   "text": "and let us make us a name, lest we be scattered abroad upon the face of the whole earth.",
+   "reference": "Genesis 11:4 (KJV)",
+   "speaker": "builder"
+  },
+  {
+   "kind": "story",
+   "text": "The foundation alone took years: a platform of fired brick wider than a village, every brick carried in by hand."
+  },
+  {
+   "kind": "story",
+   "text": "Thousands of people, all working toward one plan, because every one of them understood every word. That is what one language gives: speed, trust and strength."
+  },
+  {
+   "kind": "story",
+   "text": "Then it began to climb. Terrace upon terrace, with long ramps winding up its sides like a road to the clouds, and a line of workers on every ramp, from the first light to the last."
+  },
+  {
+   "kind": "story",
+   "text": "A tower like that takes millions of bricks. Each one was baked, carried and set by someone who believed that this would make them great."
+  },
+  {
+   "kind": "story",
+   "text": "Higher than the birds, higher than the hills. Men worked on ropes and reed scaffolds, passing bricks from hand to hand, and every time one looked down, the whole plain looked smaller."
+  },
+  {
+   "kind": "story",
+   "text": "And every brick laid was an answer to one quiet question: do we really need God, when we can reach the heavens ourselves?"
+  }
+ ],
+ "scripture": [
+  {
+   "reference": "Genesis 11:4 (KJV)",
+   "text": "Go to, let us build us a city and a tower, whose top may reach unto heaven;"
+  },
+  {
+   "reference": "Genesis 11:4 (KJV)",
+   "text": "and let us make us a name, lest we be scattered abroad upon the face of the whole earth."
+  }
+ ],
+ "title": "One Language, One Plan, One Tower to the Sky 🗼 | Tower of Babel, Genesis 11 (KJV) #shorts",
+ "description": "A whole people, one plain, one idea: let us build us a city and a tower (Genesis 11, King James Version).\n\nWatch the full story, Genesis 10-11: https://youtu.be/KwFjnZ20yGA\n\nScripture: King James Version (public domain), Genesis 11:1-9.\nVisuals: AI-generated scenes (Buzzy, GPT-image stills with camera motion). Narration: AI voice. Music: original, owned.\n\n#bible #genesis #towerofbabel #shorts",
+ "tags": [
+  "tower of babel",
+  "babel",
+  "genesis 11",
+  "bible story",
+  "kjv bible",
+  "christian shorts",
+  "bible stories"
+ ],
+ "category_id": "29",
+ "first_comment": "Watch the full story of Babel here: https://youtu.be/KwFjnZ20yGA",
+ "credits": {
+  "vidiq": 0,
+  "pavo": 0
+ },
+ "attributes": {
+  "hook_type": "narrated_story_hook",
+  "hook_line": "Now picture the whole human race standing on one plain at dusk. Not one voice raised against another. One people, with one language, and one idea, and then someone said it out loud.",
+  "title_pattern": "hook_emoji_pipe_story_kjv",
+  "first_visual": "s-pitch",
+  "ai_scenes": 7,
+  "slot_utc": "05:30",
+  "transition": "cut",
+  "seconds": 85.933,
+  "voice": "kokoro_am_michael",
+  "compose": "engine",
+  "structure": "bible-story-cut"
+ },
+ "slot": "2026-11-06T05:30:00Z"
+}
