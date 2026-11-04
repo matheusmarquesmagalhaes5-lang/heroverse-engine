@@ -1,0 +1,283 @@
+{
+ "plan": "migration/production/bible/plans/genesis-10-11-long.json",
+ "episode": "genesis-10-11-long",
+ "checked_at": "2026-11-04T10:48:12Z",
+ "plan_check": {
+  "problems": [],
+  "pending": [],
+  "estimate": {
+   "seconds": 480.2,
+   "keeper_share": 0.035,
+   "lesson_share": 0.048,
+   "establishing_share": 0.0,
+   "lines": 55,
+   "shots": 33,
+   "spoken_lines": 3,
+   "words": 1275
+  }
+ },
+ "characters": [
+  {
+   "id": "keeper",
+   "status": "APPROVED",
+   "refs": [
+    "front"
+   ],
+   "talk_refs": [
+    "talk"
+   ],
+   "voice": "am_michael",
+   "image_records": [
+    "ch-keeper-front",
+    "ch-keeper-talk"
+   ]
+  },
+  {
+   "id": "builder",
+   "status": "APPROVED",
+   "refs": [
+    "front"
+   ],
+   "talk_refs": [],
+   "voice": "bm_lewis",
+   "image_records": [
+    "ch-builder-front"
+   ]
+  }
+ ],
+ "cf_images": {
+  "recorded_today": 0,
+  "daily_allocation": 44,
+  "sheets_needed": {},
+  "fits_today": true
+ },
+ "voice": {
+  "ran": true,
+  "reused": false,
+  "checkpoint_sha256": "0bd508e3317eba2abd384bb469269578de1d284545dcffb5e1b0c9f7d45bdba4",
+  "problems": [],
+  "pace": {
+   "narration": [
+    1.87,
+    2.28,
+    2.72,
+    3.21,
+    3.09,
+    2.31,
+    2.36,
+    2.96,
+    2.67,
+    3.01,
+    2.83,
+    3.05,
+    2.55,
+    2.74,
+    3.02,
+    3.16,
+    2.99,
+    2.6,
+    2.6,
+    2.34,
+    2.86,
+    2.92,
+    2.67,
+    2.8,
+    2.81,
+    2.85,
+    3.3,
+    3.12,
+    2.89,
+    2.91,
+    2.74,
+    2.24,
+    2.57,
+    2.78,
+    2.5,
+    2.43,
+    2.95,
+    2.97,
+    3.19,
+    2.59,
+    2.93,
+    2.42,
+    2.73,
+    2.99,
+    2.81,
+    2.4,
+    2.8,
+    2.62,
+    2.12,
+    2.92,
+    3.22,
+    2.09
+   ],
+   "builder": [
+    3.38,
+    3.66,
+    3.89
+   ]
+  },
+  "measured": {
+   "total": 483.882,
+   "keeper_share": 0.044,
+   "lesson_share": 0.057,
+   "retimed": {
+    "k-irony": {
+     "speech": 5.001,
+     "retimed": 4.55,
+     "atempo": 1.0991
+    },
+    "k-close": {
+     "speech": 8.144,
+     "retimed": 8.55,
+     "atempo": 0.9525
+    }
+   }
+  }
+ },
+ "requests": {
+  "ran": true,
+  "problems": [],
+  "digests": {
+   "k-hook": "884449f2f106a727d8f26f12f428cf4adad2600f5c332ab50e52968bb7be04ba",
+   "s-nations": "25725ae98806390e5be02da5c8f4e7be39896b28ec65293e90e64401df4d3b3d",
+   "s-onetongue": "0900be3819760abf3d3a3dd6aa73519a127316936a862c3ea7187ed08d016c46",
+   "s-mighty": "137fc1102a08a22acd5de6897d531c9f56c8263b39ca050059e7655d820f3c0e",
+   "s-kingdom": "45edf69fadaa958b1eeb9c93170e2735703b719af3c3d38aa6d8d1bcadffa9a7",
+   "s-journey": "5f887ff597637fcad1618292d6e55d345bc7992e6f193f6d7cfd411b644d21d6",
+   "s-clay": "f61a6c2ef662279d35b4921e0311ea2c9b567c262944f65eeb6bb19695e49f5b",
+   "s-kiln": "fd0a54b1b3482178743df3f3b0e90128f3da02c0782a3c7e0f9ea41c2b03db7f",
+   "b-brick": "278b239df49f1e87f4366223f8fca27c9468558e503e4bfdcb4aa518f8f7e140",
+   "s-pitch": "88cd8d25e0e80fa7f083492ce58f8c19ead8379ebc7121c9424dbefbb697a85f",
+   "s-gathered": "b9306ed46894799b45b6c6d4ba0d452c318d1a5bbc63ac924032ae87589c5419",
+   "b-tower": "be64ae9ff1bcba1cad99906aa61bdc800065d63b3a245a943f7785e316cde641",
+   "b-name": "cb82e22522ea990ea1f8038a71c1b6e7d30702ea86daa9fc6b7a4a7783ac37c2",
+   "s-foundation": "bfe5da3c5ac05397ca4afe8c256be1d599c02ba49b2429160ecfaa21b00ce1f4",
+   "s-ramps": "e6696fcc918e540a48ae40e43bd12a5c6c47d1f5b79d0750580102d4363d9298",
+   "s-scaffold": "3ddcb9f41291f6ef2937004105a44fe54c7d6688bd5c0d4b7df6ef2f15670607",
+   "s-top": "9c5cb96b8892f68f0372c119141f6d84fb14fe07a89588b8a380530b20ee44db",
+   "s-down": "b746385b8fe6d184e50607f81a71c18d46b95947d293478202f415cd3493dbdf",
+   "s-behold": "22d2f837694283fcc33044ed35b89fee5f0782b52dad56d9e3abb700f4690601",
+   "s-confound": "5a470dd5f760f63311c04b64924d16f8d29f4d2f1d0d0e0dc9f0132705cab92d",
+   "s-babble": "d5abc24b71e7b7292200a92bd617c4cf6a2dec2775e7e0122494c14b62721398",
+   "s-stranger": "c8f843c3a9ba6dbe1442ad819a648c2970ad68b77ad51f07e1135d4e3643be25",
+   "s-tools": "410d8e340e350840ad619291dabe920e97bae2ee61c4773b3aa09b2fc65f6a2b",
+   "s-parting": "ae42be9a6d2f775c8c26ea37852d41916a3e57e2af35911eb6321c9610ea65f5",
+   "s-roadwest": "d80355b982413c73fd44472b58ee27f33dd7e64dde559ae23eaf1ce610e50603",
+   "s-roadeast": "f140839d382c5f8f1c96de7f0cc45eb237ad45228ac5d782859e6a26540356c6",
+   "s-roadsouth": "cdd1beee309513b5683990ccb105f2d84ddb2a2bc4c18ae0056be2b6f1d1a1d2",
+   "s-unfinished": "f50d5e1c7b295c07ce59d59581165b64f31c96b8e0b8157c9d7480ebac1d4f1b",
+   "s-babel": "710b845a96a2c4c9a15cb4450d1eebcc9dfc61f1578e3b062581b486df8dab9d",
+   "k-irony": "9123cc7ce018b7c263033096efb6095a3e498ba978065af64b884b63b92a09a5",
+   "s-ur": "3498a27d5154a00225ca029b83848d79de0132e6613ad46e369587ed04efeef1",
+   "s-star": "0452bb6a7ef5c64b892aa86415d27b1bade88b8386a59b70605fbbb2e7c791a8",
+   "k-close": "0d99df4fa382ec421d43e1dd281ef669eb8d0e28d563f52761e020db8d56d984"
+  },
+  "needs": {
+   "k-hook": 8.0,
+   "s-nations": 18,
+   "s-onetongue": 18,
+   "s-mighty": 18,
+   "s-kingdom": 20,
+   "s-journey": 18,
+   "s-clay": 18,
+   "s-kiln": 18,
+   "b-brick": 5,
+   "s-pitch": 18,
+   "s-gathered": 18,
+   "b-tower": 5,
+   "b-name": 5.166,
+   "s-foundation": 20,
+   "s-ramps": 20,
+   "s-scaffold": 20,
+   "s-top": 20,
+   "s-down": 20,
+   "s-behold": 20,
+   "s-confound": 20,
+   "s-babble": 20,
+   "s-stranger": 20,
+   "s-tools": 18,
+   "s-parting": 18,
+   "s-roadwest": 7,
+   "s-roadeast": 7,
+   "s-roadsouth": 7,
+   "s-unfinished": 20,
+   "s-babel": 18,
+   "k-irony": 5,
+   "s-ur": 18,
+   "s-star": 20,
+   "k-close": 9
+  }
+ },
+ "setups": {
+  "shots": [
+   {
+    "kind": "approved_clip",
+    "shot": "k-hook",
+    "clip_sha256": "5ba6ab4c8cac066eb529ededd5fa50c0519301bc283c9e354845b9f6a3a1012c",
+    "probe": "none needed: the approved clip of this exact request is the evidence (approve-shot, E271); the build fetches that clip"
+   },
+   {
+    "kind": "approved_clip",
+    "shot": "b-brick",
+    "clip_sha256": "f95d2899455f5dcd5846d194b139e487c8bce823c5da5527ed3208c129b6b49f",
+    "probe": "none needed: the approved clip of this exact request is the evidence (approve-shot, E271); the build fetches that clip"
+   },
+   {
+    "kind": "approved_clip",
+    "shot": "b-tower",
+    "clip_sha256": "dd60b36b5b8c6c5cf1b09131922382292460701bf9b66395dc4c0aa1a0eb1fb9",
+    "probe": "none needed: the approved clip of this exact request is the evidence (approve-shot, E271); the build fetches that clip"
+   },
+   {
+    "kind": "approved_clip",
+    "shot": "b-name",
+    "clip_sha256": "2a6f55fb7b99ba6a8ad7950519353dacab7be95503aa91cb7ecef8d5e0ea5f67",
+    "probe": "none needed: the approved clip of this exact request is the evidence (approve-shot, E271); the build fetches that clip"
+   },
+   {
+    "kind": "approved_clip",
+    "shot": "k-irony",
+    "clip_sha256": "e0b63a2b0ac905884be574d0df3b51e6740cbeff838a4947ced0cc47e70dabe4",
+    "probe": "none needed: the approved clip of this exact request is the evidence (approve-shot, E271); the build fetches that clip"
+   },
+   {
+    "kind": "approved_clip",
+    "shot": "k-close",
+    "clip_sha256": "9cb8d139a452d8a66b419d68ae10800e5f7d4c989d1ad21888061dd814daf3fa",
+    "probe": "none needed: the approved clip of this exact request is the evidence (approve-shot, E271); the build fetches that clip"
+   }
+  ],
+  "probes_required": [],
+  "rate_low": [],
+  "talk_attempts": 2,
+  "min_shot_chance": 0.9,
+  "run_chance_all_talking_shots": 1.0
+ },
+ "shot_review": [
+  "SHOT_REQUEST_CHANGED s-kiln s-pitch s-babble (the plan's request is no longer the one the approved clip was made from: probe and approve again)"
+ ],
+ "binding": {
+  "plan": "d9c00f3988516de97d2e8a68e44dc45f61d56e01bf7576e393bd022cc00de72b",
+  "characters": "cfc5fc3b0e2b8075f319068bbe5bab2d7e836943b9161d1b2825d1012d9a7b04",
+  "image_records": {
+   "ch-keeper-front.json": "666eb65f6fc26529aa71af95bba873ac4bdb123c599b30d7e2fe7e1986399932",
+   "ch-keeper-talk.json": "c431a6013669385cb236c64158160cc6966337cdfb8ada711ed98f58b509b6cc",
+   "ch-builder-front.json": "e5c799cca6240a0727b36e6c4b49c175181cb70a3cba56de20f77e4d2b955ba8"
+  },
+  "setups": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "code": {
+   "episode_build.py": "f88e418de5ff073233ed56fc0945ae3370d63a17679502ac6ba606b7e41f72a6",
+   "plan_check.py": "860561a88a7a5503bc73b190b77bfcc69895d10e7a8067b83f6e20ecf3b1237c",
+   "voice_pace.py": "79873a74e40eba90eef2e38526ea2827e95de3ff64048d1666e69fb0aa04214f",
+   "lipsync_check.py": "5fa7aed2dbe007c556fd3e693ae31d0ef9c5bd11a4132773aa06eb78bf552983",
+   "syncnet.py": "0f6e65316b50850629e488e6167ad7159efc3b2480d27ced3166311e054633f7",
+   "episode_preflight.py": "0a3037f95dcf5ac1cfac307391a1cd96e6825e1a60b4d0d28181f6aea0d0f65c",
+   "clip_timing.py": "44626ba6ea7f807a62a99dcabcca3751d55c01ce452718efe1fc1b9e6db73509",
+   "reviewer_identity.py": "b813ceb46a450e21f7fd3fd08b38fe77094f1b3fafaec8db3251f56f954be24d",
+   "owner_quality_policy.py": "093de8b9883d18d6e6f8eb08989696d180bb890556cc89de34aecb5fdcedb3ca"
+  }
+ },
+ "blockers": [],
+ "status": "PASS"
+}
