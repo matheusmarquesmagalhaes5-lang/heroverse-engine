@@ -34,7 +34,19 @@
    "date": "2026-11-04",
    "time_utc": "14:30",
    "credits": null,
-   "source": "AFTER reading NOT obtained: maxchrome.ps1 run twice (the second after Start-Process chrome https://buzzy.now/ and 12 s) by Claude through Desktop Commander; both screenshots showed other windows/tabs in the foreground, not the Buzzy header; nothing in them was used or recorded, and nothing was typed or clicked. Pending a reading by the coordinator."
+   "source": "AFTER reading NOT obtained: maxchrome.ps1 run twice (the second after Start-Process chrome https://buzzy.now/ and 12 s) by Claude through Desktop Commander; both screenshots showed other windows/tabs in the foreground, not the Buzzy header; nothing in them was used or recorded, and nothing was typed or clicked. Pending a reading by the coordinator. Superseded: read later (41214 ~15:20Z, #834; 40974 16:25Z)."
+  },
+  {
+   "date": "2026-11-04",
+   "time_utc": "15:20",
+   "credits": 41214,
+   "source": "buzzy.now header via Desktop Commander, scheduled continuation session (#834), after the s-roadwest clip"
+  },
+  {
+   "date": "2026-11-04",
+   "time_utc": "16:25",
+   "credits": 40974,
+   "source": "buzzy.now header, owner's Chrome, read by the coordinator through Desktop Commander (new window, then maxchrome.ps1)"
   }
  ],
  "calls": [
@@ -273,7 +285,9 @@
    "output_sha256": "86678f6da5b46effdcd6683050eaf6d63509705a40e56e9687d40fc011cc8671",
    "source_image": "genesis-10-11-long-s-roadwest (approved still, raw.githubusercontent URL of main)",
    "url": "https://res-prod.buzzy.now/file-service/226b912d-de5e-32aa-86b6-a9d729ac850d.mp4",
-   "purpose": "image-to-video of the approved s-roadwest still: the caravan of families and donkeys walks away toward the sun (the scattering, non-speaking action peak); 8 frames viewed, consistent figures, no faces, no text"
+   "purpose": "image-to-video of the approved s-roadwest still: the caravan of families and donkeys walks away toward the sun (the scattering, non-speaking action peak); 8 frames viewed, consistent figures, no faces, no text",
+   "balance_later": 40974,
+   "balance_note": "41262 (14:23Z) -> 41214 (~15:20Z) = 48 credits for this clip; 41214 -> 40974 (16:25Z) = 240 more credits UNEXPLAINED: no other Buzzy call is in this ledger or in CURRENT between 14:23Z and 16:25Z (checked 2026-11-04); either other Buzzy activity on the account in that window (not by this engine's recorded calls) or a later charge for this clip. Delta 14:23->16:25 is 288. Open: reconcile on the Buzzy account's usage page before any further Buzzy generation."
   }
  ],
  "non_generation_calls": [
@@ -283,5 +297,6 @@
    "purpose": "project, Noah reference upload, local preview cut placed on the project canvas (no generation)"
   }
  ],
- "stop_reason_20261031": "Experiment rule: credit cost never visible through the connector, so generation stopped after 3 clips (ai-story agent mode not run: every step bills, and its run_prompt/story steps also expose no cost)."
+ "stop_reason_20261031": "Experiment rule: credit cost never visible through the connector, so generation stopped after 3 clips (ai-story agent mode not run: every step bills, and its run_prompt/story steps also expose no cost).",
+ "balance_read_procedure": "Desktop Commander on the owner's PC (owner 2026-11-04: \"Quando precisar, entra no desktop commander e faz\"): powershell -NoProfile -Command \"Start-Process chrome '--new-window https://buzzy.now/'\", wait 15 s, then powershell -NoProfile -ExecutionPolicy Bypass -File C:\\HeroVerse\\maxchrome.ps1 (maximizes, Esc, screenshot C:\\HeroVerse\\shot-buzzy.png); read only the credits next to the lightning icon left of \"Upgrade\". Without --new-window the screenshot showed another window (2026-11-04). Never type, click or read anything else in the owner's browser."
 }

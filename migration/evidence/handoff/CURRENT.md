@@ -6,6 +6,9 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
 `../../strategy/DECISIONS.md` ("2026-11-02 — Battle plan to YPP").
 
 ## Current delivery: flood-ends-long (Genesis 8-9, buzzy-long, plan `plans/flood-ends-long.json`)
+- 2026-11-04 16:25Z (coordinator read, recorded by Claude): Buzzy balance 40974. Readings 41262 (14:23Z) -> 41214 (~15:20Z, #834: 48 credits for
+  the s-roadwest clip) -> 40974 (16:25Z): 240 credits UNEXPLAINED (no other Buzzy call in the ledger or CURRENT in that window). Reconcile on the
+  Buzzy usage page before any further Buzzy generation. Balance-read procedure (new window first) is in the ledger's `balance_read_procedure`.
 - 2026-11-04 ~16:10Z (Claude, Babel long): ONE Buzzy clip made under the owner's Buzzy rule (coordinator decision): s-roadwest, task
   gt_autAOWIUNndGMEvmautAOeX2U8N6eXu8, dreamina-seedance-2-0-mini 720p 16:9, 8 s, sha256 86678f6d... (ledger #832; balance BEFORE 41262 at
   14:23Z by the coordinator; balance AFTER NOT read: maxchrome.ps1 screenshots showed other windows, nothing else read or touched; pending),
