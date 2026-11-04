@@ -6,6 +6,7 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
 `../../strategy/DECISIONS.md` ("2026-11-02 — Battle plan to YPP").
 
 ## Current delivery: flood-ends-long (Genesis 8-9, buzzy-long, plan `plans/flood-ends-long.json`)
+- 2026-11-04 ~13:00Z (scheduled continuation, Short coverage): bridge genesis-11-short built (episode.yml 41807208722), local-review 41828042141, record + approved thumbnail PR #826 merged, publish-episode 41829718655: private, public 2026-11-05T18:30Z, https://youtube.com/shorts/2OwoWRx3thE; studio related-video entry added. Slots 11-05 23:30 and 11-06 05:30 still FREE (no cut left; next bridge genesis-12-short, no stills yet). Babel long: episode.yml 41825314647 (another session, after preflight PR #825) was running; not touched. Episode runs 41823691848 failed PREFLIGHT_STALE (code changed after preflight; fixed by #825).
 - 2026-11-04 ~10:00Z (Claude, coordinator decision after the cap): k-restrain is now Keeper narration (Kokoro) over the approved still
   s-babble; the talking shot is removed from the plan (plan_check --strict clean, estimate 480.2 s). New `preflight.yml` runs the long's voice
   preflight in Actions. Next: preflight.yml on the plan, PR its report, episode.yml, local-review, review, approve/gate/publish, cuts.
