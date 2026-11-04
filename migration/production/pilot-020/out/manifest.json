@@ -1,0 +1,45 @@
+{
+ "version": "bible-buzzy-long-manifest-v1",
+ "pilot_id": "pilot-020",
+ "episode": "genesis-10-11-long",
+ "output_sha256": "3f2ede8588ed49e12804f818eb98815b4212eb9ebb596ca68a5c80e6b6536951",
+ "output_seconds": 483.797,
+ "criteria_version": "buzzy-long-qa-criteria-v1",
+ "burned_captions": "16:9 captions from the sentence timeline (short_engine)",
+ "clean_master": {
+  "output_sha256": "72e886e6bd3d267ed0fa55b638dd4a14ba46e0cefe4474450d5995f4ba6ec13d",
+  "seconds": 483.8,
+  "release_asset": "bible-genesis-10-11-long-clean-sha256-72e886e6bd3d267ed0fa55b638dd4a14ba46e0cefe4474450d5995f4ba6ec13d.mp4"
+ },
+ "build_run": "41825314647",
+ "chapters": [
+  [
+   0,
+   "One language, one tower"
+  ],
+  [
+   110.942,
+   "Brick and slime"
+  ],
+  [
+   173.191,
+   "Let us build a tower"
+  ],
+  [
+   263.914,
+   "The Lord came down"
+  ],
+  [
+   314.942,
+   "The language confounded"
+  ],
+  [
+   398.989,
+   "Why it is called Babel"
+  ],
+  [
+   455.314,
+   "A name God gives"
+  ]
+ ]
+}

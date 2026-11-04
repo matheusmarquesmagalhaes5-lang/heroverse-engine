@@ -1,0 +1,24 @@
+{
+ "version": "buzzy-long-handoff-v1",
+ "pilot_id": "pilot-020",
+ "episode": "genesis-10-11-long",
+ "output_sha256": "3f2ede8588ed49e12804f818eb98815b4212eb9ebb596ca68a5c80e6b6536951",
+ "source_plan": {
+  "file": "migration/production/bible/plans/genesis-10-11-long.json",
+  "sha256": "d9c00f3988516de97d2e8a68e44dc45f61d56e01bf7576e393bd022cc00de72b"
+ },
+ "build_report": {
+  "file": "migration/evidence/episodes/genesis-10-11-long/report-41825314647.json",
+  "sha256": "0659750d809c9889f801b423d8a5b2114844a909622fdcc83041a54d17785e60"
+ },
+ "release_asset": "pilot-020-sha256-3f2ede8588ed49e12804f818eb98815b4212eb9ebb596ca68a5c80e6b6536951.mp4",
+ "files": {
+  "script.json": "107d48a7194c39781d7afa93ff08745b6509559d5b7903d71b92353b40fc9fcf",
+  "schedule.json": "f3159f8e8578383b7c1acb00e96c71e6950d3d19af8c860390f3e981d78e9503",
+  "out/manifest.json": "ea800a164e905dda41810cbc4346eb4ad4248a4d8377ecfcd7d5e1f545997c99",
+  "out/timeline.json": "8f559299ff35fafcfb9db2a56366b69e5574a1f67b984b03bd785abed2624839",
+  "out/package.json": "e41934ab15b7568f069f518d8efe05e397a686a6e8d488f88fb6d9bab5055b3d"
+ },
+ "review_status": "AWAITING_REVIEW",
+ "approval_created": false
+}

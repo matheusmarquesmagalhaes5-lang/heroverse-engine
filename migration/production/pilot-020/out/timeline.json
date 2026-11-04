@@ -1,0 +1,2132 @@
+{
+ "output_sha256": "3f2ede8588ed49e12804f818eb98815b4212eb9ebb596ca68a5c80e6b6536951",
+ "sentences": [
+  {
+   "segment": "n00",
+   "text": "One language.",
+   "start": 0.0,
+   "end": 1.298,
+   "line": 0,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n00",
+   "text": "One plan.",
+   "start": 1.478,
+   "end": 2.65,
+   "line": 0,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n00",
+   "text": "One tower to reach the sky.",
+   "start": 2.829,
+   "end": 5.022,
+   "line": 0,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n00",
+   "text": "Then God came down.",
+   "start": 5.202,
+   "end": 7.011,
+   "line": 0,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n00",
+   "text": "Why?",
+   "start": 7.191,
+   "end": 8.0,
+   "line": 0,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n01",
+   "text": "Rewind to the days after the flood.",
+   "start": 8.35,
+   "end": 10.867,
+   "line": 1,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n01",
+   "text": "Eight survivors had become families, and families were becoming nations.",
+   "start": 11.047,
+   "end": 15.826,
+   "line": 1,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n02",
+   "text": "These are the families of the sons of Noah, after their generations, in their nations:",
+   "start": 16.176,
+   "end": 21.808,
+   "kind": "scripture",
+   "reference": "Genesis 10:32 (KJV)",
+   "line": 2,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n02",
+   "text": "and by these were the nations divided in the earth after the flood.",
+   "start": 21.988,
+   "end": 26.468,
+   "kind": "scripture",
+   "reference": "Genesis 10:32 (KJV)",
+   "line": 2,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n03",
+   "text": "But first, for a little while, they were still together.",
+   "start": 26.818,
+   "end": 29.933,
+   "line": 3,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n04",
+   "text": "And the whole earth was of one language, and of one speech.",
+   "start": 30.283,
+   "end": 34.165,
+   "kind": "scripture",
+   "reference": "Genesis 11:1 (KJV)",
+   "line": 4,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n05",
+   "text": "Think about what that means.",
+   "start": 34.515,
+   "end": 36.414,
+   "line": 5,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n05",
+   "text": "No translators.",
+   "start": 36.594,
+   "end": 38.087,
+   "line": 5,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n05",
+   "text": "No strangers whose words you cannot understand.",
+   "start": 38.267,
+   "end": 41.638,
+   "line": 5,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n05",
+   "text": "Every mother, every trader and every child spoke the same tongue, and nothing they said was ever lost between them.",
+   "start": 41.818,
+   "end": 49.199,
+   "line": 5,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n06",
+   "text": "And among those first nations rose a man the Bible remembers by a single word:",
+   "start": 49.549,
+   "end": 55.245,
+   "line": 6,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n06",
+   "text": "mighty.",
+   "start": 55.425,
+   "end": 56.343,
+   "line": 6,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n07",
+   "text": "And Cush begat Nimrod:",
+   "start": 56.693,
+   "end": 58.485,
+   "kind": "scripture",
+   "reference": "Genesis 10:8 (KJV)",
+   "line": 7,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n07",
+   "text": "he began to be a mighty one in the earth.",
+   "start": 58.665,
+   "end": 61.417,
+   "kind": "scripture",
+   "reference": "Genesis 10:8 (KJV)",
+   "line": 7,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n08",
+   "text": "He was a mighty hunter before the Lord:",
+   "start": 61.767,
+   "end": 64.391,
+   "kind": "scripture",
+   "reference": "Genesis 10:9 (KJV)",
+   "line": 8,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n08",
+   "text": "wherefore it is said, Even as Nimrod the mighty hunter before the Lord.",
+   "start": 64.571,
+   "end": 69.627,
+   "kind": "scripture",
+   "reference": "Genesis 10:9 (KJV)",
+   "line": 8,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n09",
+   "text": "And the beginning of his kingdom was Babel, and Erech, and Accad, and Calneh, in the land of Shinar.",
+   "start": 69.977,
+   "end": 76.291,
+   "kind": "scripture",
+   "reference": "Genesis 10:10 (KJV)",
+   "line": 9,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n10",
+   "text": "The Bible does not say that he built the tower.",
+   "start": 76.641,
+   "end": 79.649,
+   "line": 10,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n10",
+   "text": "It only says that his kingdom began at Babel.",
+   "start": 79.829,
+   "end": 82.987,
+   "line": 10,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n10",
+   "text": "Remember that name, because this story is about to break right there.",
+   "start": 83.167,
+   "end": 87.561,
+   "line": 10,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n11",
+   "text": "And it came to pass, as they journeyed from the east, that they found a plain in the land of Shinar;",
+   "start": 87.911,
+   "end": 94.482,
+   "kind": "scripture",
+   "reference": "Genesis 11:2 (KJV)",
+   "line": 11,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n11",
+   "text": "and they dwelt there.",
+   "start": 94.662,
+   "end": 96.113,
+   "kind": "scripture",
+   "reference": "Genesis 11:2 (KJV)",
+   "line": 11,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n12",
+   "text": "A wide, flat plain between two rivers.",
+   "start": 96.463,
+   "end": 99.321,
+   "line": 12,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n12",
+   "text": "Rich mud, endless reeds and the sky stretching down to every horizon.",
+   "start": 99.501,
+   "end": 104.408,
+   "line": 12,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n12",
+   "text": "It was a perfect place to live, and it had one problem.",
+   "start": 104.588,
+   "end": 108.407,
+   "line": 12,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n12",
+   "text": "There was no stone anywhere.",
+   "start": 108.587,
+   "end": 110.592,
+   "line": 12,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n13",
+   "text": "So they used what they had.",
+   "start": 110.942,
+   "end": 112.969,
+   "line": 13,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n13",
+   "text": "They dug the river clay with their bare hands, pressed it into wooden moulds, and set the soft bricks out in rows under the burning sun.",
+   "start": 113.149,
+   "end": 121.618,
+   "line": 13,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n13",
+   "text": "Hundreds, then thousands, then more than anyone could count.",
+   "start": 121.798,
+   "end": 125.873,
+   "line": 13,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n14",
+   "text": "Then they learned the secret of fire.",
+   "start": 126.223,
+   "end": 128.569,
+   "line": 14,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n14",
+   "text": "A brick baked hard in a kiln is no longer soft mud.",
+   "start": 128.749,
+   "end": 132.568,
+   "line": 14,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n14",
+   "text": "It is as strong as rock, and it will last for thousands of years.",
+   "start": 132.748,
+   "end": 137.185,
+   "line": 14,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n15",
+   "text": "And they said one to another, Go to, let us make brick, and burn them throughly.",
+   "start": 137.535,
+   "end": 142.271,
+   "speaker": "builder",
+   "kind": "scripture",
+   "reference": "Genesis 11:3 (KJV)",
+   "line": 15,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n16",
+   "text": "And they had brick for stone, and slime had they for morter.",
+   "start": 142.621,
+   "end": 146.44,
+   "kind": "scripture",
+   "reference": "Genesis 11:3 (KJV)",
+   "line": 16,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n17",
+   "text": "Slime is the old word for bitumen, the black, sticky tar that seeped out of the ground in that land.",
+   "start": 146.79,
+   "end": 153.211,
+   "line": 17,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n17",
+   "text": "It glued every brick to the next one.",
+   "start": 153.391,
+   "end": 155.973,
+   "line": 17,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n17",
+   "text": "Nothing they built there would ever fall apart on its own.",
+   "start": 156.153,
+   "end": 159.843,
+   "line": 17,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n18",
+   "text": "Now picture the whole human race standing on one plain at dusk.",
+   "start": 160.193,
+   "end": 164.609,
+   "line": 18,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n18",
+   "text": "Not one voice raised against another.",
+   "start": 164.789,
+   "end": 167.477,
+   "line": 18,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n18",
+   "text": "One people, with one language, and one idea, and then someone said it out loud.",
+   "start": 167.657,
+   "end": 172.841,
+   "line": 18,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n19",
+   "text": "Go to, let us build us a city and a tower, whose top may reach unto heaven;",
+   "start": 173.191,
+   "end": 177.842,
+   "speaker": "builder",
+   "kind": "scripture",
+   "reference": "Genesis 11:4 (KJV)",
+   "line": 19,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n20",
+   "text": "and let us make us a name, lest we be scattered abroad upon the face of the whole earth.",
+   "start": 178.192,
+   "end": 183.358,
+   "speaker": "builder",
+   "kind": "scripture",
+   "reference": "Genesis 11:4 (KJV)",
+   "line": 20,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n21",
+   "text": "The foundation alone took years:",
+   "start": 183.708,
+   "end": 186.012,
+   "line": 21,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n21",
+   "text": "a platform of fired brick wider than a village, every brick carried in by hand.",
+   "start": 186.192,
+   "end": 191.398,
+   "line": 21,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n22",
+   "text": "Thousands of people, all working toward one plan, because every one of them understood every word.",
+   "start": 191.748,
+   "end": 198.34,
+   "line": 22,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n22",
+   "text": "That is what one language gives:",
+   "start": 198.52,
+   "end": 200.802,
+   "line": 22,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n22",
+   "text": "speed, trust and strength.",
+   "start": 200.982,
+   "end": 202.838,
+   "line": 22,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n23",
+   "text": "Then it began to climb.",
+   "start": 203.188,
+   "end": 205.002,
+   "line": 23,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n23",
+   "text": "Terrace upon terrace, with long ramps winding up its sides like a road to the clouds, and a line of workers on every ramp, from the first light to the last.",
+   "start": 205.182,
+   "end": 215.763,
+   "line": 23,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n24",
+   "text": "A tower like that takes millions of bricks.",
+   "start": 216.113,
+   "end": 218.844,
+   "line": 24,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n24",
+   "text": "Each one was baked, carried and set by someone who believed that this would make them great.",
+   "start": 219.024,
+   "end": 224.677,
+   "line": 24,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n25",
+   "text": "Higher than the birds, higher than the hills.",
+   "start": 225.027,
+   "end": 227.758,
+   "line": 25,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n25",
+   "text": "Men worked on ropes and reed scaffolds, passing bricks from hand to hand, and every time one looked down, the whole plain looked smaller.",
+   "start": 227.938,
+   "end": 237.004,
+   "line": 25,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n26",
+   "text": "And every brick laid was an answer to one quiet question:",
+   "start": 237.354,
+   "end": 241.386,
+   "line": 26,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n26",
+   "text": "do we really need God, when we can reach the heavens ourselves?",
+   "start": 241.566,
+   "end": 245.577,
+   "line": 26,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n27",
+   "text": "Then the sky above the tower began to change.",
+   "start": 245.927,
+   "end": 249.02,
+   "line": 27,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n27",
+   "text": "The clouds thickened, the light turned grey, and the wind stopped.",
+   "start": 249.2,
+   "end": 253.126,
+   "line": 27,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n27",
+   "text": "Something was coming, and it was not a storm.",
+   "start": 253.306,
+   "end": 256.228,
+   "line": 27,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n28",
+   "text": "Up on the top terrace the builders felt dizzy with what they had done.",
+   "start": 256.578,
+   "end": 261.058,
+   "line": 28,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n28",
+   "text": "Nobody had ever stood so high.",
+   "start": 261.238,
+   "end": 263.564,
+   "line": 28,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n29",
+   "text": "And the Lord came down to see the city and the tower, which the children of men builded.",
+   "start": 263.914,
+   "end": 269.375,
+   "kind": "scripture",
+   "reference": "Genesis 11:5 (KJV)",
+   "line": 29,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n30",
+   "text": "Read that verse slowly.",
+   "start": 269.725,
+   "end": 271.517,
+   "line": 30,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n30",
+   "text": "They said their tower would reach unto heaven, and the Lord still had to come down to see it.",
+   "start": 271.697,
+   "end": 277.094,
+   "line": 30,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n31",
+   "text": "And the Lord said, Behold, the people is one, and they have all one language;",
+   "start": 277.444,
+   "end": 282.308,
+   "kind": "scripture",
+   "reference": "Genesis 11:6 (KJV)",
+   "line": 31,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n31",
+   "text": "and this they begin to do:",
+   "start": 282.488,
+   "end": 284.451,
+   "kind": "scripture",
+   "reference": "Genesis 11:6 (KJV)",
+   "line": 31,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n31",
+   "text": "and now nothing will be restrained from them, which they have imagined to do.",
+   "start": 284.631,
+   "end": 289.559,
+   "kind": "scripture",
+   "reference": "Genesis 11:6 (KJV)",
+   "line": 31,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n32",
+   "text": "Hear the diagnosis in His words:",
+   "start": 289.909,
+   "end": 292.384,
+   "line": 32,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n32",
+   "text": "a people with one tongue and one purpose, and no one left to say stop.",
+   "start": 292.564,
+   "end": 297.129,
+   "line": 32,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n33",
+   "text": "Go to, let us go down, and there confound their language, that they may not understand one another’s speech.",
+   "start": 297.479,
+   "end": 304.412,
+   "kind": "scripture",
+   "reference": "Genesis 11:7 (KJV)",
+   "line": 33,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n34",
+   "text": "No lightning.",
+   "start": 304.762,
+   "end": 306.0,
+   "line": 34,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n34",
+   "text": "No flood.",
+   "start": 306.18,
+   "end": 307.374,
+   "line": 34,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n34",
+   "text": "Not one brick was struck.",
+   "start": 307.554,
+   "end": 309.41,
+   "line": 34,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n34",
+   "text": "God did not knock down the tower.",
+   "start": 309.59,
+   "end": 311.98,
+   "line": 34,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n34",
+   "text": "He quietly took away their words.",
+   "start": 312.16,
+   "end": 314.592,
+   "line": 34,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n35",
+   "text": "He said nothing would be restrained from them.",
+   "start": 314.942,
+   "end": 317.694,
+   "line": 35,
+   "line_kind": "insight"
+  },
+  {
+   "segment": "n35",
+   "text": "So after water, He chose distance.",
+   "start": 317.874,
+   "end": 320.37,
+   "line": 35,
+   "line_kind": "insight"
+  },
+  {
+   "segment": "n36",
+   "text": "Picture the moment it happened.",
+   "start": 320.72,
+   "end": 322.746,
+   "line": 36,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n36",
+   "text": "A man on the scaffold calls down for more clay, and the man below hears sounds he has never heard in his life.",
+   "start": 322.926,
+   "end": 330.052,
+   "line": 36,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n36",
+   "text": "He shouts louder.",
+   "start": 330.232,
+   "end": 331.704,
+   "line": 36,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n36",
+   "text": "The words come back as noise.",
+   "start": 331.884,
+   "end": 334.017,
+   "line": 36,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n37",
+   "text": "Imagine waking up the next morning.",
+   "start": 334.367,
+   "end": 337.076,
+   "line": 37,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n37",
+   "text": "You turn to the person beside you, and you cannot say good morning.",
+   "start": 337.256,
+   "end": 341.566,
+   "line": 37,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n37",
+   "text": "You cannot ask for water.",
+   "start": 341.746,
+   "end": 343.687,
+   "line": 37,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n37",
+   "text": "You cannot even say sorry.",
+   "start": 343.867,
+   "end": 345.958,
+   "line": 37,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n38",
+   "text": "A father cannot understand his own brother.",
+   "start": 346.308,
+   "end": 349.145,
+   "line": 38,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n38",
+   "text": "A mother calls her child, and a stranger answers.",
+   "start": 349.325,
+   "end": 352.866,
+   "line": 38,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n39",
+   "text": "Hands that had worked as one stopped in the middle of the air.",
+   "start": 353.216,
+   "end": 356.907,
+   "line": 39,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n39",
+   "text": "Friends became strangers in the middle of a sentence.",
+   "start": 357.087,
+   "end": 360.543,
+   "line": 39,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n39",
+   "text": "And the great chain of bricks, which had never once broken, went still.",
+   "start": 360.723,
+   "end": 365.075,
+   "line": 39,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n40",
+   "text": "The tower was still standing, every brick in its place.",
+   "start": 365.425,
+   "end": 368.988,
+   "line": 40,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n40",
+   "text": "But the one thing that had built it, a single shared voice, was gone.",
+   "start": 369.168,
+   "end": 373.498,
+   "line": 40,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n41",
+   "text": "So the Lord scattered them abroad from thence upon the face of all the earth:",
+   "start": 373.848,
+   "end": 378.627,
+   "kind": "scripture",
+   "reference": "Genesis 11:8 (KJV)",
+   "line": 41,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n41",
+   "text": "and they left off to build the city.",
+   "start": 378.807,
+   "end": 381.068,
+   "kind": "scripture",
+   "reference": "Genesis 11:8 (KJV)",
+   "line": 41,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n42",
+   "text": "Families picked up their children and walked away, each one toward the few voices they could still understand.",
+   "start": 381.418,
+   "end": 388.352,
+   "line": 42,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n43",
+   "text": "Some went west, toward the sea and the sunset.",
+   "start": 388.702,
+   "end": 391.795,
+   "line": 43,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n44",
+   "text": "Some went east, toward the mountains.",
+   "start": 392.145,
+   "end": 394.62,
+   "line": 44,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n45",
+   "text": "And some followed the great river south into the unknown.",
+   "start": 394.97,
+   "end": 398.639,
+   "line": 45,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n46",
+   "text": "Therefore is the name of it called Babel;",
+   "start": 398.989,
+   "end": 401.784,
+   "kind": "scripture",
+   "reference": "Genesis 11:9 (KJV)",
+   "line": 46,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n46",
+   "text": "because the Lord did there confound the language of all the earth:",
+   "start": 401.964,
+   "end": 405.782,
+   "kind": "scripture",
+   "reference": "Genesis 11:9 (KJV)",
+   "line": 46,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n46",
+   "text": "and from thence did the Lord scatter them abroad upon the face of all the earth.",
+   "start": 405.962,
+   "end": 411.018,
+   "kind": "scripture",
+   "reference": "Genesis 11:9 (KJV)",
+   "line": 46,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n47",
+   "text": "Babel.",
+   "start": 411.368,
+   "end": 412.328,
+   "line": 47,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n47",
+   "text": "They wanted to make a name that would reach the heavens, and they got one that sounds like babble.",
+   "start": 412.508,
+   "end": 418.14,
+   "line": 47,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n47",
+   "text": "The name they built for themselves became the name of their confusion.",
+   "start": 418.32,
+   "end": 422.758,
+   "line": 47,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n48",
+   "text": "Centuries later a great city called Babylon would rise near this very plain.",
+   "start": 423.108,
+   "end": 428.377,
+   "line": 48,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n48",
+   "text": "Babylon is simply Babel, said in Greek.",
+   "start": 428.557,
+   "end": 431.437,
+   "line": 48,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n49",
+   "text": "They built the tower to avoid being scattered.",
+   "start": 431.787,
+   "end": 434.213,
+   "line": 49,
+   "line_kind": "insight"
+  },
+  {
+   "segment": "n49",
+   "text": "The tower is what scattered them.",
+   "start": 434.377,
+   "end": 436.337,
+   "line": 49,
+   "line_kind": "insight"
+  },
+  {
+   "segment": "n50",
+   "text": "And yet the story did not end there.",
+   "start": 436.687,
+   "end": 439.141,
+   "line": 50,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n50",
+   "text": "Generations later, down the same great river, in a city called Ur, a man named Abram was born.",
+   "start": 439.321,
+   "end": 446.595,
+   "line": 50,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n51",
+   "text": "Now these are the generations of Terah:",
+   "start": 446.945,
+   "end": 449.847,
+   "kind": "scripture",
+   "reference": "Genesis 11:27 (KJV)",
+   "line": 51,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n51",
+   "text": "Terah begat Abram, Nahor, and Haran;",
+   "start": 450.027,
+   "end": 452.971,
+   "kind": "scripture",
+   "reference": "Genesis 11:27 (KJV)",
+   "line": 51,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n51",
+   "text": "and Haran begat Lot.",
+   "start": 453.151,
+   "end": 454.964,
+   "kind": "scripture",
+   "reference": "Genesis 11:27 (KJV)",
+   "line": 51,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n52",
+   "text": "Here is the answer that Babel was waiting for.",
+   "start": 455.314,
+   "end": 458.407,
+   "line": 52,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n52",
+   "text": "The builders tried to make their own name great.",
+   "start": 458.587,
+   "end": 461.275,
+   "line": 52,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n52",
+   "text": "But to this one quiet man God would say something very different.",
+   "start": 461.455,
+   "end": 465.573,
+   "line": 52,
+   "line_kind": "story"
+  },
+  {
+   "segment": "n53",
+   "text": "and I will make of thee a great nation, and I will bless thee, and make thy name great;",
+   "start": 465.923,
+   "end": 471.512,
+   "kind": "scripture",
+   "reference": "Genesis 12:2 (KJV)",
+   "line": 53,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n53",
+   "text": "and thou shalt be a blessing:",
+   "start": 471.692,
+   "end": 473.697,
+   "kind": "scripture",
+   "reference": "Genesis 12:2 (KJV)",
+   "line": 53,
+   "line_kind": "scripture"
+  },
+  {
+   "segment": "n54",
+   "text": "What are you building your name on?",
+   "start": 474.047,
+   "end": 476.191,
+   "line": 54,
+   "line_kind": "cta"
+  },
+  {
+   "segment": "n54",
+   "text": "Tell me below.",
+   "start": 476.38,
+   "end": 477.765,
+   "line": 54,
+   "line_kind": "cta"
+  },
+  {
+   "segment": "n54",
+   "text": "Next:",
+   "start": 477.953,
+   "end": 478.847,
+   "line": 54,
+   "line_kind": "cta"
+  },
+  {
+   "segment": "n54",
+   "text": "the man who left everything.",
+   "start": 479.035,
+   "end": 481.135,
+   "line": 54,
+   "line_kind": "cta"
+  },
+  {
+   "segment": "n54",
+   "text": "Subscribe.",
+   "start": 481.324,
+   "end": 482.597,
+   "line": 54,
+   "line_kind": "cta"
+  }
+ ],
+ "shots": [
+  {
+   "shot": "k-hook",
+   "kind": "keeper",
+   "start": 0.0,
+   "end": 8.0,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-nations",
+   "kind": "scene",
+   "start": 8.0,
+   "end": 11.714,
+   "src_start": 0.0,
+   "speed": 1.2379
+  },
+  {
+   "shot": "s-nations",
+   "kind": "scene",
+   "start": 11.714,
+   "end": 15.428,
+   "src_start": 3.0,
+   "speed": 1.2379
+  },
+  {
+   "shot": "s-nations",
+   "kind": "scene",
+   "start": 15.428,
+   "end": 19.142,
+   "src_start": 6.0,
+   "speed": 1.2379
+  },
+  {
+   "shot": "s-nations",
+   "kind": "scene",
+   "start": 19.142,
+   "end": 22.855,
+   "src_start": 9.0,
+   "speed": 1.2379
+  },
+  {
+   "shot": "s-nations",
+   "kind": "scene",
+   "start": 22.855,
+   "end": 26.569,
+   "src_start": 12.0,
+   "speed": 1.2379
+  },
+  {
+   "shot": "s-nations",
+   "kind": "scene",
+   "start": 26.569,
+   "end": 30.283,
+   "src_start": 15.0,
+   "speed": 1.2379
+  },
+  {
+   "shot": "s-onetongue",
+   "kind": "scene",
+   "start": 30.283,
+   "end": 34.136,
+   "src_start": 0.0,
+   "speed": 1.0703
+  },
+  {
+   "shot": "s-onetongue",
+   "kind": "scene",
+   "start": 34.136,
+   "end": 37.989,
+   "src_start": 3.6,
+   "speed": 1.0703
+  },
+  {
+   "shot": "s-onetongue",
+   "kind": "scene",
+   "start": 37.989,
+   "end": 41.843,
+   "src_start": 7.2,
+   "speed": 1.0703
+  },
+  {
+   "shot": "s-onetongue",
+   "kind": "scene",
+   "start": 41.843,
+   "end": 45.696,
+   "src_start": 10.8,
+   "speed": 1.0703
+  },
+  {
+   "shot": "s-onetongue",
+   "kind": "scene",
+   "start": 45.696,
+   "end": 49.549,
+   "src_start": 14.4,
+   "speed": 1.0703
+  },
+  {
+   "shot": "s-mighty",
+   "kind": "scene",
+   "start": 49.549,
+   "end": 52.954,
+   "src_start": 0.0,
+   "speed": 1.1349
+  },
+  {
+   "shot": "s-mighty",
+   "kind": "scene",
+   "start": 52.954,
+   "end": 56.358,
+   "src_start": 3.0,
+   "speed": 1.1349
+  },
+  {
+   "shot": "s-mighty",
+   "kind": "scene",
+   "start": 56.358,
+   "end": 59.763,
+   "src_start": 6.0,
+   "speed": 1.1349
+  },
+  {
+   "shot": "s-mighty",
+   "kind": "scene",
+   "start": 59.763,
+   "end": 63.168,
+   "src_start": 9.0,
+   "speed": 1.1349
+  },
+  {
+   "shot": "s-mighty",
+   "kind": "scene",
+   "start": 63.168,
+   "end": 66.572,
+   "src_start": 12.0,
+   "speed": 1.1349
+  },
+  {
+   "shot": "s-mighty",
+   "kind": "scene",
+   "start": 66.572,
+   "end": 69.977,
+   "src_start": 15.0,
+   "speed": 1.1349
+  },
+  {
+   "shot": "s-kingdom",
+   "kind": "scene",
+   "start": 69.977,
+   "end": 73.564,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-kingdom",
+   "kind": "scene",
+   "start": 73.564,
+   "end": 77.151,
+   "src_start": 4.103,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-kingdom",
+   "kind": "scene",
+   "start": 77.151,
+   "end": 80.737,
+   "src_start": 8.207,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-kingdom",
+   "kind": "scene",
+   "start": 80.737,
+   "end": 84.324,
+   "src_start": 12.31,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-kingdom",
+   "kind": "scene",
+   "start": 84.324,
+   "end": 87.911,
+   "src_start": 16.413,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-journey",
+   "kind": "scene",
+   "start": 87.911,
+   "end": 91.749,
+   "src_start": 0.0,
+   "speed": 1.2795
+  },
+  {
+   "shot": "s-journey",
+   "kind": "scene",
+   "start": 91.749,
+   "end": 95.588,
+   "src_start": 3.0,
+   "speed": 1.2795
+  },
+  {
+   "shot": "s-journey",
+   "kind": "scene",
+   "start": 95.588,
+   "end": 99.427,
+   "src_start": 6.0,
+   "speed": 1.2795
+  },
+  {
+   "shot": "s-journey",
+   "kind": "scene",
+   "start": 99.427,
+   "end": 103.265,
+   "src_start": 9.0,
+   "speed": 1.2795
+  },
+  {
+   "shot": "s-journey",
+   "kind": "scene",
+   "start": 103.265,
+   "end": 107.103,
+   "src_start": 12.0,
+   "speed": 1.2795
+  },
+  {
+   "shot": "s-journey",
+   "kind": "scene",
+   "start": 107.103,
+   "end": 110.942,
+   "src_start": 15.0,
+   "speed": 1.2795
+  },
+  {
+   "shot": "s-clay",
+   "kind": "scene",
+   "start": 110.942,
+   "end": 114.762,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-clay",
+   "kind": "scene",
+   "start": 114.762,
+   "end": 118.582,
+   "src_start": 4.727,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-clay",
+   "kind": "scene",
+   "start": 118.582,
+   "end": 122.403,
+   "src_start": 9.453,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-clay",
+   "kind": "scene",
+   "start": 122.403,
+   "end": 126.223,
+   "src_start": 14.18,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-kiln",
+   "kind": "scene",
+   "start": 126.223,
+   "end": 129.994,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-kiln",
+   "kind": "scene",
+   "start": 129.994,
+   "end": 133.764,
+   "src_start": 7.115,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-kiln",
+   "kind": "scene",
+   "start": 133.764,
+   "end": 137.535,
+   "src_start": 14.229,
+   "speed": 1.0
+  },
+  {
+   "shot": "b-brick",
+   "kind": "speaker",
+   "start": 137.535,
+   "end": 142.271,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-pitch",
+   "kind": "scene",
+   "start": 142.271,
+   "end": 145.855,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-pitch",
+   "kind": "scene",
+   "start": 145.855,
+   "end": 149.44,
+   "src_start": 3.604,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-pitch",
+   "kind": "scene",
+   "start": 149.44,
+   "end": 153.024,
+   "src_start": 7.208,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-pitch",
+   "kind": "scene",
+   "start": 153.024,
+   "end": 156.609,
+   "src_start": 10.812,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-pitch",
+   "kind": "scene",
+   "start": 156.609,
+   "end": 160.193,
+   "src_start": 14.416,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-gathered",
+   "kind": "scene",
+   "start": 160.193,
+   "end": 163.442,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-gathered",
+   "kind": "scene",
+   "start": 163.442,
+   "end": 166.692,
+   "src_start": 4.917,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-gathered",
+   "kind": "scene",
+   "start": 166.692,
+   "end": 169.942,
+   "src_start": 9.834,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-gathered",
+   "kind": "scene",
+   "start": 169.942,
+   "end": 173.191,
+   "src_start": 14.751,
+   "speed": 1.0
+  },
+  {
+   "shot": "b-tower",
+   "kind": "speaker",
+   "start": 173.191,
+   "end": 178.192,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "b-name",
+   "kind": "speaker",
+   "start": 178.192,
+   "end": 183.358,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-foundation",
+   "kind": "scene",
+   "start": 183.358,
+   "end": 187.324,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-foundation",
+   "kind": "scene",
+   "start": 187.324,
+   "end": 191.29,
+   "src_start": 4.009,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-foundation",
+   "kind": "scene",
+   "start": 191.29,
+   "end": 195.256,
+   "src_start": 8.017,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-foundation",
+   "kind": "scene",
+   "start": 195.256,
+   "end": 199.222,
+   "src_start": 12.026,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-foundation",
+   "kind": "scene",
+   "start": 199.222,
+   "end": 203.188,
+   "src_start": 16.034,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-ramps",
+   "kind": "scene",
+   "start": 203.188,
+   "end": 206.828,
+   "src_start": 0.0,
+   "speed": 1.0919
+  },
+  {
+   "shot": "s-ramps",
+   "kind": "scene",
+   "start": 206.828,
+   "end": 210.468,
+   "src_start": 3.333,
+   "speed": 1.0919
+  },
+  {
+   "shot": "s-ramps",
+   "kind": "scene",
+   "start": 210.468,
+   "end": 214.107,
+   "src_start": 6.667,
+   "speed": 1.0919
+  },
+  {
+   "shot": "s-ramps",
+   "kind": "scene",
+   "start": 214.107,
+   "end": 217.747,
+   "src_start": 10.0,
+   "speed": 1.0919
+  },
+  {
+   "shot": "s-ramps",
+   "kind": "scene",
+   "start": 217.747,
+   "end": 221.387,
+   "src_start": 13.333,
+   "speed": 1.0919
+  },
+  {
+   "shot": "s-ramps",
+   "kind": "scene",
+   "start": 221.387,
+   "end": 225.027,
+   "src_start": 16.667,
+   "speed": 1.0919
+  },
+  {
+   "shot": "s-scaffold",
+   "kind": "scene",
+   "start": 225.027,
+   "end": 228.51,
+   "src_start": 0.0,
+   "speed": 1.045
+  },
+  {
+   "shot": "s-scaffold",
+   "kind": "scene",
+   "start": 228.51,
+   "end": 231.994,
+   "src_start": 3.333,
+   "speed": 1.045
+  },
+  {
+   "shot": "s-scaffold",
+   "kind": "scene",
+   "start": 231.994,
+   "end": 235.477,
+   "src_start": 6.667,
+   "speed": 1.045
+  },
+  {
+   "shot": "s-scaffold",
+   "kind": "scene",
+   "start": 235.477,
+   "end": 238.96,
+   "src_start": 10.0,
+   "speed": 1.045
+  },
+  {
+   "shot": "s-scaffold",
+   "kind": "scene",
+   "start": 238.96,
+   "end": 242.444,
+   "src_start": 13.333,
+   "speed": 1.045
+  },
+  {
+   "shot": "s-scaffold",
+   "kind": "scene",
+   "start": 242.444,
+   "end": 245.927,
+   "src_start": 16.667,
+   "speed": 1.045
+  },
+  {
+   "shot": "s-top",
+   "kind": "scene",
+   "start": 245.927,
+   "end": 249.524,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-top",
+   "kind": "scene",
+   "start": 249.524,
+   "end": 253.122,
+   "src_start": 4.101,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-top",
+   "kind": "scene",
+   "start": 253.122,
+   "end": 256.719,
+   "src_start": 8.201,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-top",
+   "kind": "scene",
+   "start": 256.719,
+   "end": 260.317,
+   "src_start": 12.302,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-top",
+   "kind": "scene",
+   "start": 260.317,
+   "end": 263.914,
+   "src_start": 16.403,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-down",
+   "kind": "scene",
+   "start": 263.914,
+   "end": 267.296,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-down",
+   "kind": "scene",
+   "start": 267.296,
+   "end": 270.679,
+   "src_start": 5.539,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-down",
+   "kind": "scene",
+   "start": 270.679,
+   "end": 274.062,
+   "src_start": 11.078,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-down",
+   "kind": "scene",
+   "start": 274.062,
+   "end": 277.444,
+   "src_start": 16.617,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-behold",
+   "kind": "scene",
+   "start": 277.444,
+   "end": 280.783,
+   "src_start": 0.0,
+   "speed": 1.0017
+  },
+  {
+   "shot": "s-behold",
+   "kind": "scene",
+   "start": 280.783,
+   "end": 284.122,
+   "src_start": 3.333,
+   "speed": 1.0017
+  },
+  {
+   "shot": "s-behold",
+   "kind": "scene",
+   "start": 284.122,
+   "end": 287.462,
+   "src_start": 6.667,
+   "speed": 1.0017
+  },
+  {
+   "shot": "s-behold",
+   "kind": "scene",
+   "start": 287.462,
+   "end": 290.801,
+   "src_start": 10.0,
+   "speed": 1.0017
+  },
+  {
+   "shot": "s-behold",
+   "kind": "scene",
+   "start": 290.801,
+   "end": 294.14,
+   "src_start": 13.333,
+   "speed": 1.0017
+  },
+  {
+   "shot": "s-behold",
+   "kind": "scene",
+   "start": 294.14,
+   "end": 297.479,
+   "src_start": 16.667,
+   "speed": 1.0017
+  },
+  {
+   "shot": "s-confound",
+   "kind": "scene",
+   "start": 297.479,
+   "end": 300.972,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-confound",
+   "kind": "scene",
+   "start": 300.972,
+   "end": 304.464,
+   "src_start": 4.127,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-confound",
+   "kind": "scene",
+   "start": 304.464,
+   "end": 307.957,
+   "src_start": 8.254,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-confound",
+   "kind": "scene",
+   "start": 307.957,
+   "end": 311.449,
+   "src_start": 12.381,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-confound",
+   "kind": "scene",
+   "start": 311.449,
+   "end": 314.942,
+   "src_start": 16.507,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-babble",
+   "kind": "scene",
+   "start": 314.942,
+   "end": 318.827,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-babble",
+   "kind": "scene",
+   "start": 318.827,
+   "end": 322.712,
+   "src_start": 4.029,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-babble",
+   "kind": "scene",
+   "start": 322.712,
+   "end": 326.597,
+   "src_start": 8.057,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-babble",
+   "kind": "scene",
+   "start": 326.597,
+   "end": 330.482,
+   "src_start": 12.086,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-babble",
+   "kind": "scene",
+   "start": 330.482,
+   "end": 334.367,
+   "src_start": 16.115,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-stranger",
+   "kind": "scene",
+   "start": 334.367,
+   "end": 338.137,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-stranger",
+   "kind": "scene",
+   "start": 338.137,
+   "end": 341.907,
+   "src_start": 4.058,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-stranger",
+   "kind": "scene",
+   "start": 341.907,
+   "end": 345.676,
+   "src_start": 8.115,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-stranger",
+   "kind": "scene",
+   "start": 345.676,
+   "end": 349.446,
+   "src_start": 12.173,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-stranger",
+   "kind": "scene",
+   "start": 349.446,
+   "end": 353.216,
+   "src_start": 16.23,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-tools",
+   "kind": "scene",
+   "start": 353.216,
+   "end": 356.655,
+   "src_start": 0.0,
+   "speed": 1.1462
+  },
+  {
+   "shot": "s-tools",
+   "kind": "scene",
+   "start": 356.655,
+   "end": 360.093,
+   "src_start": 3.0,
+   "speed": 1.1462
+  },
+  {
+   "shot": "s-tools",
+   "kind": "scene",
+   "start": 360.093,
+   "end": 363.532,
+   "src_start": 6.0,
+   "speed": 1.1462
+  },
+  {
+   "shot": "s-tools",
+   "kind": "scene",
+   "start": 363.532,
+   "end": 366.971,
+   "src_start": 9.0,
+   "speed": 1.1462
+  },
+  {
+   "shot": "s-tools",
+   "kind": "scene",
+   "start": 366.971,
+   "end": 370.409,
+   "src_start": 12.0,
+   "speed": 1.1462
+  },
+  {
+   "shot": "s-tools",
+   "kind": "scene",
+   "start": 370.409,
+   "end": 373.848,
+   "src_start": 15.0,
+   "speed": 1.1462
+  },
+  {
+   "shot": "s-parting",
+   "kind": "scene",
+   "start": 373.848,
+   "end": 377.562,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-parting",
+   "kind": "scene",
+   "start": 377.562,
+   "end": 381.275,
+   "src_start": 4.762,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-parting",
+   "kind": "scene",
+   "start": 381.275,
+   "end": 384.988,
+   "src_start": 9.524,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-parting",
+   "kind": "scene",
+   "start": 384.988,
+   "end": 388.702,
+   "src_start": 14.287,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-roadwest",
+   "kind": "scene",
+   "start": 388.702,
+   "end": 392.145,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-roadeast",
+   "kind": "scene",
+   "start": 392.145,
+   "end": 394.97,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-roadsouth",
+   "kind": "scene",
+   "start": 394.97,
+   "end": 396.98,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-roadsouth",
+   "kind": "scene",
+   "start": 396.98,
+   "end": 398.989,
+   "src_start": 4.991,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-unfinished",
+   "kind": "scene",
+   "start": 398.989,
+   "end": 402.084,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-unfinished",
+   "kind": "scene",
+   "start": 402.084,
+   "end": 405.178,
+   "src_start": 5.635,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-unfinished",
+   "kind": "scene",
+   "start": 405.178,
+   "end": 408.273,
+   "src_start": 11.27,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-unfinished",
+   "kind": "scene",
+   "start": 408.273,
+   "end": 411.368,
+   "src_start": 16.905,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-babel",
+   "kind": "scene",
+   "start": 411.368,
+   "end": 414.771,
+   "src_start": 0.0,
+   "speed": 1.1344
+  },
+  {
+   "shot": "s-babel",
+   "kind": "scene",
+   "start": 414.771,
+   "end": 418.174,
+   "src_start": 3.0,
+   "speed": 1.1344
+  },
+  {
+   "shot": "s-babel",
+   "kind": "scene",
+   "start": 418.174,
+   "end": 421.577,
+   "src_start": 6.0,
+   "speed": 1.1344
+  },
+  {
+   "shot": "s-babel",
+   "kind": "scene",
+   "start": 421.577,
+   "end": 424.981,
+   "src_start": 9.0,
+   "speed": 1.1344
+  },
+  {
+   "shot": "s-babel",
+   "kind": "scene",
+   "start": 424.981,
+   "end": 428.384,
+   "src_start": 12.0,
+   "speed": 1.1344
+  },
+  {
+   "shot": "s-babel",
+   "kind": "scene",
+   "start": 428.384,
+   "end": 431.787,
+   "src_start": 15.0,
+   "speed": 1.1344
+  },
+  {
+   "shot": "k-irony",
+   "kind": "keeper",
+   "start": 431.787,
+   "end": 436.337,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-ur",
+   "kind": "scene",
+   "start": 436.337,
+   "end": 440.132,
+   "src_start": 0.0,
+   "speed": 1.0543
+  },
+  {
+   "shot": "s-ur",
+   "kind": "scene",
+   "start": 440.132,
+   "end": 443.928,
+   "src_start": 3.6,
+   "speed": 1.0543
+  },
+  {
+   "shot": "s-ur",
+   "kind": "scene",
+   "start": 443.928,
+   "end": 447.723,
+   "src_start": 7.2,
+   "speed": 1.0543
+  },
+  {
+   "shot": "s-ur",
+   "kind": "scene",
+   "start": 447.723,
+   "end": 451.519,
+   "src_start": 10.8,
+   "speed": 1.0543
+  },
+  {
+   "shot": "s-ur",
+   "kind": "scene",
+   "start": 451.519,
+   "end": 455.314,
+   "src_start": 14.4,
+   "speed": 1.0543
+  },
+  {
+   "shot": "s-star",
+   "kind": "scene",
+   "start": 455.314,
+   "end": 459.061,
+   "src_start": 0.0,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-star",
+   "kind": "scene",
+   "start": 459.061,
+   "end": 462.807,
+   "src_start": 4.063,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-star",
+   "kind": "scene",
+   "start": 462.807,
+   "end": 466.554,
+   "src_start": 8.127,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-star",
+   "kind": "scene",
+   "start": 466.554,
+   "end": 470.3,
+   "src_start": 12.19,
+   "speed": 1.0
+  },
+  {
+   "shot": "s-star",
+   "kind": "scene",
+   "start": 470.3,
+   "end": 474.047,
+   "src_start": 16.253,
+   "speed": 1.0
+  },
+  {
+   "shot": "k-close",
+   "kind": "keeper",
+   "start": 474.047,
+   "end": 483.797,
+   "src_start": 0.0,
+   "speed": 1.0
+  }
+ ]
+}
