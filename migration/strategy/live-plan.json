@@ -1,87 +1,89 @@
 {
- "date": "2026-11-03",
- "run": "daily run ~05:20 UTC 11-03; still no new daily report (latest 11-02 18:48), goal numbers carried over; vidIQ 5 credits used (3,089 balance before).",
+ "date": "2026-11-04",
+ "run": "daily run 11-04 ~05:30 UTC; no daily report newer than 11-03 09:58; subs read live from vidIQ (310); hours still own estimate 27.9; vidIQ 15 credits used (balance 3,084 before).",
  "deadline": {
   "target": "2026-11-15",
   "max": "2026-12-01"
  },
  "goal": {
-  "subs_now": 301,
-  "subs_rate_7d": "2.7/day (measured: 281 on 10-25 -> 300 on 11-01)",
-  "subs_rate_28d": "not available (channel history only from 10-18: 2.7/day over 14 d, measured)",
-  "long_hours_365d": "27.9 (own estimate from Analytics rows; Studio counter not read)",
-  "hours_rate_7d": "~2.1 long h/day (ESTIMATE: 39.2 all-content h in 7 d x 0.37 long share measured in per-video rows)",
+  "subs_now": 310,
+  "subs_rate_7d": "~2.9/day (measured: 281 on 10-25 -> 310 on 11-04, 29 in 10 d); last ~24 h +8 (302 -> 310, measured)",
+  "subs_rate_28d": "not available (channel history only from 10-18)",
+  "long_hours_365d": "27.9 (own estimate from Analytics rows, 11-03 report; no newer report; Studio counter not read)",
+  "hours_rate_7d": "~2 long h/day (ESTIMATE, carried: new longs have 5 and 15 views total, measured via vidIQ 11-04)",
   "hours_rate_28d": "not available",
   "gap": {
-   "subs": 700,
+   "subs": 690,
    "long_hours": 3972.1
   },
   "required_rates_target": {
-   "subs_per_day": 53.8,
-   "long_hours_per_day": 305.6,
-   "basis": "13 days 11-02..11-15"
+   "subs_per_day": 62.7,
+   "long_hours_per_day": 361.1,
+   "basis": "11 days 11-04..11-15"
   },
   "required_rates_max": {
-   "subs_per_day": 24.1,
-   "long_hours_per_day": 137.0,
-   "basis": "29 days 11-02..12-01"
+   "subs_per_day": 25.6,
+   "long_hours_per_day": 147.1,
+   "basis": "27 days 11-04..12-01"
   },
-  "binding_constraint": "long watch hours (needs ~65x the current pace for 12-01; subscribers need ~9x)",
-  "weakest_factor": "long impressions (discovery): 12 longs got 7,154 impressions in ~2 weeks (~600 each); CTR 1.92% and average view ~4.3 min are secondary; Shorts sent 0 views to longs",
+  "binding_constraint": "long watch hours (needs ~70x the current estimated pace for 12-01; subscribers ~9x)",
+  "weakest_factor": "long impressions/views: flood-ends-long has 5 views and Noah-begins 15 (measured, 35 h and 3 d after release) while same-topic Shorts get 169-687; Shorts -> long click-through is ~0",
   "eta_days_current_pace": {
-   "subs": "~258",
+   "subs": "~238 (690/2.9)",
    "long_hours": "~1,900 (estimate)"
   },
   "on_track": false,
-  "honesty": "Neither date is reachable at any pace we can plausibly produce; the deadline stays as the owner fixed it, and the plan maximises accumulation. 4,000 h at ~8 min per view = ~30,000 long views; our longs have 385 total.",
-  "asof": "2026-11-02 18:48 UTC daily report (measured subs 301; hours still an own estimate 27.9)"
+  "honesty": "Neither date is reachable at any pace we can plausibly produce; deadline stays as the owner fixed it. 4,000 h at ~6 min/view needs ~40,000 long views; our 12+2 public longs have ~400 in total.",
+  "asof": "2026-11-04 vidIQ live subs (310); hours from 11-03 daily report"
  },
  "strategy": [
   {
-   "lever": "long length + search-demand topic (hours per view and per impression)",
-   "action": "flood-ends-long (Genesis 8-9) 15-20 min with 'Why...' question title, Genesis chapters in title, KJV; then one such long per story/arc as capacity allows",
-   "evidence": "in-niche (measured, vidIQ 11-02): a 3.9K-sub channel's 20.6 min 'Why God Cast Adam & Eve Out...' got 35.5K views (198x); our prayer longs: 4.3 min average per view (estimate 27.8 h / 385 views)",
-   "expected_effect": "estimate: 1 long at 10 min average x 1,000 views = ~167 h; first test of the demand",
-   "metric": "7-day views and average view duration of flood-ends-long",
-   "success_threshold": ">=300 views and >=6 min average within 7 d",
-   "kill_threshold": "<100 views or <3 min average within 7 d -> revisit packaging before making more",
-   "status": "new"
+   "lever": "Compilation as the hours engine and the funnel target",
+   "action": "Publish the Noah compilation 11-04 16:00Z; every Short/cut/long links to it; second compilation (Creation to Cain) 11-08",
+   "evidence": "measured: 12 longs average ~7 views each; hours per viewer scale with session length; compilation costs no generation",
+   "expected_effect": "estimate: 300 views x 12 min = 60 h (not enough alone, the biggest cheap lever)",
+   "metric": "views and average view duration of the compilation, 72 h",
+   "success_threshold": ">=300 views and >=10 min average in 7 d",
+   "kill_threshold": "<100 views in 7 d -> stop compilations, put capacity into search-demand longs",
+   "status": "new (due today)"
   },
   {
-   "lever": "Short -> long funnel",
-   "action": "pinned comment + description link of each Short and each cut to flood-ends-long; cuts end on an open loop ('what happened after the flood?') and set related video; Short slots only after the long is public",
-   "evidence": "measured: 0 of 10 longs received any view from Shorts (daily report funnel table)",
-   "expected_effect": "estimate: if 1% of ~2,000 Short views/week click, +20 long views/week",
-   "metric": "views of the long with source Shorts / related video",
-   "success_threshold": ">=20 long views from Shorts in 7 d",
-   "kill_threshold": "0 in 7 d -> move the link to end screens/playlist only",
-   "status": "new"
+   "lever": "Short -> long funnel repair",
+   "action": "Description first line = link to the long/compilation; pinned comment; related video set at publish; end the Short on an open loop",
+   "evidence": "measured: 0 long views from Shorts; 169-687 Short views vs 5 long views for the same story",
+   "expected_effect": "estimate: 1% of ~1,000 daily Short views = ~10 long views/day",
+   "metric": "long views with source Shorts/related",
+   "success_threshold": ">=20 in 7 d",
+   "kill_threshold": "0 at M3 11-05 -> end screens + playlist only",
+   "status": "keep, at risk"
   },
   {
-   "lever": "packaging A/B on the long",
-   "action": "title A 'Why Did God Send the Rainbow After the Flood? | Noah's Ark Ends | Genesis 8-9 Bible Story (KJV)'; B 'After 150 Days Without Land, Noah Opened the Window | Genesis 8-9 (KJV)'; thumbnail line 'THE WATER STOPPED'; swap to B at 48 h if CTR <2%",
-   "evidence": "measured: our long CTR 1.92% (range 0.4-3.6%); winners put a question/paradox in the title (Noah Shorts 20.2K views 'Then it rained')",
-   "expected_effect": "estimate: +0.5 pt CTR = +25% views at same impressions",
-   "metric": "CTR from Reporting API",
-   "success_threshold": ">=3% CTR",
-   "kill_threshold": "<1.5% after 1,000 impressions -> rebuild thumbnail",
-   "status": "new"
+   "lever": "Search-demand long + question title",
+   "action": "Babel long 12-15 min with the question title; Abraham next",
+   "evidence": "in-niche (11-02): 20.6 min 'Why God Cast Adam & Eve Out' 35.5K views on 3.9K-sub channel; our 8:22 flood long has 5 views",
+   "expected_effect": "unknown; one more test",
+   "metric": "7-d views/avg duration",
+   "success_threshold": ">=300 views and >=6 min",
+   "kill_threshold": "<100 views",
+   "status": "keep"
   },
   {
-   "lever": "subscribe conversion / cadence",
-   "action": "keep 1 Bible Short a day (13:30 or 23:30 UTC); Keeper CTA at the emotional peak, one line; cuts from the long carry the Keeper insight",
-   "evidence": "measured: 8 Bible Shorts 1,885 views, 26 subs (1.38 per 100 views); 24 older Shorts 3,193 views, 66 subs; best Bible Short 532 views",
-   "expected_effect": "estimate: 1.4 subs/100 views x ~300 views/Short = ~4 subs/Short; 2.7 subs/day now",
-   "metric": "subs gained per Short (7 d)",
-   "success_threshold": ">=4 per Short",
-   "kill_threshold": "<1.5 per Short over 5 Shorts -> change CTA/format",
+   "lever": "Subscribe conversion via Shorts cadence",
+   "action": "4 Shorts/day, Keeper CTA at peak",
+   "evidence": "measured: subs +8 in ~24 h; ~2.9/day over 10 d",
+   "expected_effect": "estimate: 3-4 subs per Short",
+   "metric": "subs per Short (7 d)",
+   "success_threshold": ">=4",
+   "kill_threshold": "<1.5 over 5 Shorts",
    "status": "keep"
   }
  ],
  "experiments_review": [
-  "flood-ends-long: <1 day since release, no reading; kept, metric starts at public time (7-day views and avg view duration, thresholds unchanged).",
-  "Short->long funnel, packaging A/B, subscribe conversion: no new readings; all kept. M3 checkpoint 11-05 will be the first real read.",
-  "11-03: flood-ends-long went public 01:15Z (1 view at check); all four experiments unread, kept. Length is 8:22 vs the 15-20 min assumed: success threshold unchanged, shortfall noted."
+  "flood-ends-long (id 1m-NUJhkdMY): 5 views at ~28 h public (measured, vidIQ 11-04). Kill threshold is <100 views/<3 min at 7 d (11-10): too early to kill, but the pace is ~4/day, so it will miss unless the funnel moves. KEEP, read at M3 11-05.",
+  "Short -> long funnel: no fresh source data (latest report 11-03: 0 views from Shorts to 10 longs). The same-day Shorts (ESuoDa9sGng 441 views, IDL92dFIK2Y 169) did not lift the long above 5 views. Treat as failing; M3 rule applies 11-05 (move funnel to end screen/playlist; description link above the fold).",
+  "Packaging A/B: no CTR read for the new long; title B swap decision at M3. Unchanged.",
+  "Subscribe conversion/cadence: KEEP. Subs +8 in ~24 h (measured) with 2 Shorts (441 + 169 views); the 11-03 05:30 Short is the best recent Bible Short on day 1.",
+  "Noah compilation (M2): scheduled pilot-019 publish_at 2026-11-04T16:00Z per CURRENT; not yet public at this run."
  ],
  "quantities": {
   "longs": 1,
@@ -90,7 +92,7 @@
   "bridge_shorts": "0-1 (genesis-10 only if 9:16 stills exist)",
   "keeper_reflections": 1,
   "shorts_per_day": 4,
-  "note": "owner rule 4 Shorts/day = 2-3 cuts or bridges + 1 Keeper reflection v2 (split screen ~30 s, Pavo talking Keeper bottom half, 2-4 clips). Never below 1 Short/day; keep 48 h Short buffer. 1 long = Genesis 10-11 script/production starts; compilation M2 due 11-04."
+  "note": "unchanged: 1 long (Babel, in build) + 1 compilation (due today) + 4 Shorts/day (2-3 cuts/bridges + 1 Keeper reflection). Capacity binds on the Babel long (pilot-020): b-tower audio and k-restrain decision pending, not on Shorts."
  },
  "slots_utc": [
   "05:30",
@@ -143,31 +145,32 @@
   "TikTok mirror through tiktok.yml"
  ],
  "capacity": {
-  "lease": "shared lease respected (not read this run)",
+  "lease": "released idle per CURRENT 11-04 01:40Z",
   "chatgpt_stills": "<=30/day available",
-  "buzzy": "<=100 credits/day; last balance 41,994 on 11-01",
-  "pavo": "0-credit quote only; MCP still connecting at this run",
-  "vidiq": "no credits used in this run; 80 of 150 used on 11-02",
+  "buzzy": "<=100 credits/day; balance not read",
+  "pavo": "MCP connected; 0-credit quote only; owner extra generations for b-brick/b-tower/k-restrain SPENT (E295)",
+  "vidiq": "15 of 150 used today; balance 3,084 before; renewal 11-18",
   "token_budget": "agent_mining check passed",
-  "binds": "4 Shorts/day with Pavo-talking Keeper reflection is the tightest item; script runway for the next long is 0"
+  "binds": "Babel long: b-tower ear check + k-restrain owner decision"
  },
- "why": "Hours bind (27.9/4,000, estimate). flood-ends-long is the first demand test; the Noah compilation (11-04) is the cheapest hours lever (zero generation); 4 Shorts/day per owner rule add subscriber flow and funnel links.",
+ "why": "Hours bind (27.9/4,000 est.; +~2 h/day); new longs get ~5-15 views. The compilation (today) and the funnel repair at M3 are the only levers that move hours without generation; the Babel long is the demand test.",
  "confidence": {
-  "goal_numbers": "measured (subs) / own estimate (hours)",
+  "goal_numbers": "subs measured live; hours own estimate (stale 11-03)",
   "strategy": "low-medium",
-  "slots": "low (05:30 and 18:30 unmeasured)"
+  "slots": "low"
  },
- "cross_niche_status": "2026-11-02 cross-niche pool (evidence/vidiq/20261102/cross-niche-outliers.json): 8 winners, breakout 40-126, but 6 of 8 are one cowboy-romance cluster and no weak contrasts yet -> NOT validated, test only. Transferable test: title = emotional turn + withheld reveal, as title B packaging test; 2h+ length not copied. Structure audit of 93wYHx79Mso submitted; result still pending at write time.",
+ "cross_niche_status": "2026-11-04: both vidIQ outliers queries returned an identical off-topic list (query text ignored; 10 credits spent, nothing usable). Pool counts unchanged from 11-02 (cross-niche not validated; in-niche test only). Do not repeat that call form; use the query form of 11-02.",
  "battle_plan": {
-  "moment": "M1 (11-02/03) closing; M2 due 11-04",
+  "moment": "M2 (11-04): first arc compilation 'Complete Story of Noah' scheduled 16:00Z; M3 checkpoint 11-05",
   "triggers_hit": [
-   "M1 'long not public by 11-03 23:30': NOT hit - flood-ends-long public since 2026-11-03T01:15Z (measured, vidIQ: 1 view, 8:22 duration)"
+   "M1 trigger not hit (long public since 11-03T01:15Z)",
+   "M3 early signal (not yet a trigger, data 48 h only on 11-05): long has 5 views, so the 'views from Shorts = 0' rule is expected to fire on 11-05"
   ],
   "actions": [
-   "Measured: the public long is 8:22, not the 15-20 min the lever assumed; judge its 7-day thresholds (>=300 views, >=6 min avg) against that length and make Babel/next longs 12-15 min",
-   "Pin comment + description link to the long on every Short/cut today; Facebook Page post of the long",
-   "Build the Noah compilation (M2, 11-04) - first priority of production after the cuts",
-   "Keep 4 Shorts/day with 48 h buffer; M3 read 11-05"
+   "Publish the Noah compilation at 16:00Z (production); on publish, repoint every live Short's pinned comment / related video to it and put the compilation link in the first line of every description",
+   "Babel long (pilot-020) continues; blocked on b-tower audio-by-ear and k-restrain owner decision: if still blocked at 11-05 23:30Z, take the ladder: Keeper narration over still for k-restrain (Plan B) and release",
+   "Keep 4 Shorts/day, 48 h buffer (full to 11-05 13:30Z per CURRENT)",
+   "11-05 M3: apply the three rules mechanically with the 48 h Analytics read"
   ]
  },
  "slots_note": "estimate, thin data: only 13:30 and 23:30 UTC have own performance data (best Short 532 views at 13:30; 23:30 got 328/302). 05:30 and 18:30 are exploration slots, to be judged after 3 days; Short slots only after the long is public.",
@@ -188,5 +191,10 @@
   "Facebook Page (id 61595804835184): flood-ends-long and cuts as Reels, with the new avatar/banner",
   "Buffer free mirror of already-public Shorts only",
   "no new spending"
+ ],
+ "lessons_applied": [
+  "E292/E295: no re-probe of spent shots",
+  "pavo_audio route set before the probe",
+  "no repeated passages between Shorts of one long (11-03 rule)"
  ]
 }
