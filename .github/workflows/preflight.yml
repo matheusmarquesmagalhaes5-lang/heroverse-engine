@@ -1,6 +1,6 @@
 name: HeroVerse preflight (episode_build.py preflight --voice --refs --write in Actions, with the pinned Kokoro runtime; no Pavo, no spend)
 run-name: "preflight: ${{ inputs.plan }}"
-# E297 (coordinator 2026-11-04): no Kokoro is installed locally (owner 2026-11-03), and a long's committed preflight needs
+# Coordinator 2026-11-04: no Kokoro is installed locally (owner 2026-11-03), and a long's committed preflight needs
 # `episode_build.py preflight PLAN --voice VOICE_PYTHON PREPARED_WORK --refs --write`. This job runs exactly that command
 # with the same voice runtime and prepared work as shot-probe.yml / episode.yml, then puts the report on
 # claude/preflight-<episode>-<run> for a PR. It sends nothing to Pavo and uses no secret.

@@ -570,5 +570,20 @@ class StillMotionRequests(unittest.TestCase):
             eb.load_approvals = orig
 
 
+
+class PavoClipSeconds(unittest.TestCase):
+    def test_e297_a_pavo_audio_clip_is_predicted_at_its_measured_length(self):
+        # E298 (E297 did not hold, run 41814932888): run 41812250541 refused the Babel long with COMPOSE SPEAKER_CLIP_SHORT b-name (5.00 s for 5.17 s): the
+        # compose was predicted on the plan's requested 5 s while the approved clip (Pavo's own audio, laid out at its
+        # whole length) measures 5.17 s. The prediction uses the approval's measured clip_seconds for such shots only
+        plan = {"episode": "ep-x", "shots": [{"id": "b-a"}, {"id": "s-b"}]}
+        approvals = {"b-a": {"clip_seconds": 5.166667}, "s-b": {"clip_seconds": 9.9}}
+        with patch.object(pf.eb, "load_approvals", return_value=approvals), \
+                patch.object(pf.eb, "native_spans", return_value={"b-a": ([0], 0.0, 5.166)}), \
+                patch.object(pf.eb, "shot_seconds", return_value=5), patch.object(pf.eb, "is_window", return_value=False):
+            got = pf.predicted_clip_seconds(plan, {})
+        self.assertEqual(got, {"b-a": 5.166667, "s-b": 5.0})   # a shot without Pavo's own audio keeps its planned length
+
+
 if __name__ == "__main__":
     unittest.main()

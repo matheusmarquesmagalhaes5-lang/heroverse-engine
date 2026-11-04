@@ -4841,6 +4841,33 @@
      "process"
     ]
    }
+  },
+  {
+   "id": "E298",
+   "date": "2026-11-04",
+   "class": [
+    "process"
+   ],
+   "prior": [
+    "E287",
+    "E288",
+    "E290",
+    "E291",
+    "E292",
+    "E293",
+    "E295",
+    "E296",
+    "E297"
+   ],
+   "error": "E297's fix did not hold: preflight.yml run 41814932888 (on main with #819) still refused COMPOSE SPEAKER_CLIP_SHORT b-name (5.00 s for 5.17 s). compose_prediction predicted the approved Pavo-audio clip at talk_record(layout, shot)['seconds'], which for such a shot is the FROZEN pre-approval request (layout.pavo_requests, the plan's 5 s), not the clip's length. Root cause: the prediction used the request's seconds instead of the approved clip's measured length.",
+   "fix": "episode_preflight.predicted_clip_seconds passes compose_prediction the approval's measured clip_seconds for every eb.native_spans shot (approved clip with Pavo's own audio, laid out at its whole length); other shots keep their planned length; with no such shot compose_prediction keeps its defaults.",
+   "antidote": {
+    "file": "migration/production/bible/test_episode_preflight.py",
+    "contains": "def test_e297_a_pavo_audio_clip_is_predicted_at_its_measured_length",
+    "covers": [
+     "process"
+    ]
+   }
   }
  ]
 }
