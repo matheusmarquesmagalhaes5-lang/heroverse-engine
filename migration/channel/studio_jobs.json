@@ -148,6 +148,27 @@
    "target_video_id": "1m-NUJhkdMY",
    "reason": "short flood-ends-remembered-cut: its source long",
    "target_title": "The Flood Ends: The Raven, the Dove and the Rainbow (Genesis 8-9, KJV)"
+  },
+  {
+   "video_id": "oCLyzfDe4fY",
+   "action": "related_video",
+   "target_video_id": "KwFjnZ20yGA",
+   "reason": "cut babel-confound-cut: cut of its source long",
+   "target_title": "Why Did God Scatter the Builders of Babel? | Tower of Babel | Genesis 11 Bible Story (KJV)"
+  },
+  {
+   "video_id": "sTMFtnTsVYI",
+   "action": "related_video",
+   "target_video_id": "KwFjnZ20yGA",
+   "reason": "cut babel-climb-cut: cut of its source long",
+   "target_title": "Why Did God Scatter the Builders of Babel? | Tower of Babel | Genesis 11 Bible Story (KJV)"
+  },
+  {
+   "video_id": "cg5Prm599HE",
+   "action": "related_video",
+   "target_video_id": "KwFjnZ20yGA",
+   "reason": "cut babel-scatter-cut: cut of its source long",
+   "target_title": "Why Did God Scatter the Builders of Babel? | Tower of Babel | Genesis 11 Bible Story (KJV)"
   }
  ]
 }
