@@ -1,0 +1,64 @@
+name: HeroVerse preflight (episode_build.py preflight --voice --refs --write in Actions, with the pinned Kokoro runtime; no Pavo, no spend)
+run-name: "preflight: ${{ inputs.plan }}"
+# E297 (coordinator 2026-11-04): no Kokoro is installed locally (owner 2026-11-03), and a long's committed preflight needs
+# `episode_build.py preflight PLAN --voice VOICE_PYTHON PREPARED_WORK --refs --write`. This job runs exactly that command
+# with the same voice runtime and prepared work as shot-probe.yml / episode.yml, then puts the report on
+# claude/preflight-<episode>-<run> for a PR. It sends nothing to Pavo and uses no secret.
+on:
+  workflow_dispatch:
+    inputs:
+      plan:
+        description: Plan path (migration/production/bible/plans/<episode-id>.json)
+        required: true
+permissions:
+  contents: read
+concurrency:
+  group: heroverse-preflight-${{ inputs.plan }}
+  cancel-in-progress: false
+jobs:
+  preflight:
+    if: github.repository == 'matheusmagah-cpu/heroverse-engine' && github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    permissions:
+      contents: write   # the release's reference images (refs) and the report branch; no secret in this job
+    env:
+      PLAN: ${{ inputs.plan }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - name: Plan path
+        run: |
+          [[ "$PLAN" =~ ^migration/production/bible/plans/[a-z0-9]+(-[a-z0-9]+)*\.json$ ]] || { echo "PLAN_PATH_REFUSED"; exit 1; }
+          test -f "$PLAN" || { echo "PLAN_MISSING"; exit 1; }
+          ep=$(python3 -I -c "import json,sys;print(json.load(open(sys.argv[1]))['episode'])" "$PLAN")
+          [[ "$ep" =~ ^[a-z0-9]+(-[a-z0-9]+)*$ ]] || { echo "EPISODE_ID_REFUSED"; exit 1; }
+          echo "EP=$ep" >> "$GITHUB_ENV"
+          echo "WORK=$GITHUB_WORKSPACE/.episode/preflight-$ep" >> "$GITHUB_ENV"
+      - name: Tools and the pinned voice runtime (as shot-probe.yml)
+        run: |
+          APT_UPDATE_TIMEOUT=300s APT_INSTALL_TIMEOUT=600s bash migration/ci/apt_install.sh ffmpeg espeak-ng fonts-dejavu-core
+          python3 -m venv "$RUNNER_TEMP/voice"
+          "$RUNNER_TEMP/voice/bin/pip" install --disable-pip-version-check -q 'kokoro-onnx==0.4.9' 'onnxruntime==1.20.1' 'numpy==2.2.6' 'espeakng-loader==0.2.4' 'soundfile==0.13.1'
+          mkdir -p "$WORK"
+      - name: Prepared work (pilot_render.py prepare) and the preflight with voice and references
+        run: |
+          python3 -I -B migration/production/pilot_render.py prepare "$WORK" HeroVerse_Linux_Source_Ready_20261013_v2.zip
+          ESPEAK_DATA_PATH=$("$RUNNER_TEMP/voice/bin/python" -I -c "import espeakng_loader as e;print(e.get_data_path())")
+          test -d "$ESPEAK_DATA_PATH" || { echo "ESPEAK_DATA_MISSING"; exit 1; }
+          export ESPEAK_DATA_PATH
+          rc=0
+          python3 -I -B migration/production/bible/episode_build.py preflight "$PLAN" --voice "$RUNNER_TEMP/voice/bin/python" "$WORK" --refs --write > "$RUNNER_TEMP/preflight.json" || rc=$?
+          python3 -I -c "import json,sys;r=json.load(open(sys.argv[1]));print('PREFLIGHT', r.get('status'), json.dumps(r.get('blockers'))[:3000])" "$RUNNER_TEMP/preflight.json"
+          echo "RC=$rc" >> "$GITHUB_ENV"
+      - name: Report on claude/preflight-<episode>-<run> for the PR
+        run: |
+          branch="claude/preflight-$EP-$GITHUB_RUN_ID"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -q -b "$branch"
+          git add "migration/evidence/preflight/$EP.json"
+          git commit -q -m "Preflight $EP (run $GITHUB_RUN_ID): episode_build.py preflight --voice --refs --write"
+          git push -q origin "HEAD:refs/heads/$branch"
+          echo "BRANCH $branch"
+          exit "$RC"
