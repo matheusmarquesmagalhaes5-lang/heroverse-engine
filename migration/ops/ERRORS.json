@@ -4868,6 +4868,53 @@
      "process"
     ]
    }
+  },
+  {
+   "id": "E299",
+   "date": "2026-11-04",
+   "class": [
+    "instrument"
+   ],
+   "prior": [
+    "E120",
+    "E131",
+    "E137",
+    "E139",
+    "E148",
+    "E152",
+    "E166",
+    "E169",
+    "E185",
+    "E186",
+    "E231",
+    "E233",
+    "E238",
+    "E253",
+    "E255",
+    "E262",
+    "E266",
+    "E267",
+    "E273",
+    "E275",
+    "E279",
+    "E280",
+    "E281",
+    "E282",
+    "E283",
+    "E284",
+    "E285",
+    "E286",
+    "E289"
+   ],
+   "error": "Babel long build (episode.yml 41820510399) stopped at SHOT_APPROVED_CLIP_FAILED s-down ROTATED_PICTURE: the approved still (a vertical shaft of light through dark storm clouds over the tower) has columns that spread more than its rows, so E117's luma-profile heuristic, made for a provider that turns a picture, flagged our own camera motion of an upright, viewed and approved still. Root cause: the rotation instrument judged a still in motion without its source still as the reference.",
+   "fix": "episode_build.still_profile_is_own: for a still_motion source, the approved still itself is held for 2 s at the plan's aspect and read by the same clip_check; when the still already reads ROTATED_PICTURE, the profile is the picture's own and the flag is dropped for that clip (recorded as rotation_profile in the report). A turn added by the motion engine still flags, because then the still itself does not read rotated. Every other source keeps E117 unchanged.",
+   "antidote": {
+    "file": "migration/production/bible/test_episode_build.py",
+    "contains": "def test_e299_a_still_whose_own_light_reads_rotated_is_not_a_turned_picture",
+    "covers": [
+     "instrument"
+    ]
+   }
   }
  ]
 }
