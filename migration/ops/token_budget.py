@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Claude Code token budget for this project: project_share (0.9, owner 2026-11-03) of the weekly cap, planned by real cost, enforced by a hook.
+"""Claude Code token budget for this project: project_share (0.97, owner 2026-11-04) of the weekly cap, planned by real cost, enforced by a hook.
 
 Sums assistant `usage` from ~/.claude/projects/*heroverse*/**/*.jsonl (subagents included) inside the current
 weekly window, merges with the persisted ledger (max per session), and stops the session over budget.
-Commands: status | plan [--write] | costs [--write] | check [--action T] | record [--action T --actual N].
+Commands: status | pace | plan [--write] | costs [--write] | check [--action T] | record [--action T --actual N].
 Offline, deterministic. There is no warn-only path: over the budget (or the activity's allocation) is exit 2.
 See migration/SYSTEM.md "Token budget"."""
 import json
@@ -290,6 +290,71 @@ def status_text(s):
             + ("  (over budget)" if s["projected_end_of_week"] > s["budget"] else ""))
 
 
+# recommended share of the hourly target by model tier: (opus, sonnet, haiku); see OPERATIONS "Model routing and weekly pacing"
+MODEL_SPLIT = {"AHEAD": (0.05, 0.65, 0.30), "ON_PACE": (0.15, 0.70, 0.15), "BEHIND": (0.20, 0.70, 0.10)}
+PACE_BAND = (0.85, 1.05)   # rate/target below 0.85 = BEHIND, above 1.05 = AHEAD
+
+
+def message_records(projects_dir, start, end):
+    """[(timestamp, weighted tokens)] for each assistant message in [start, end), from the local transcripts."""
+    cfg, out = load_config(), []
+    for f, _ in transcripts(projects_dir, start):
+        try:
+            _, msgs, _ = read_transcript(f, start, end)
+        except OSError:
+            continue
+        out += [(ts, weighted(v, cfg)) for ts, v, _ in msgs.values()]
+    return out
+
+
+def pace(cfg, state, records, now):
+    """Pace toward the weekly reset: use ~100% of the project budget at the reset, never earlier."""
+    start = datetime.fromisoformat(state["window_start"])
+    end = datetime.fromisoformat(state["window_end"])
+    budget = cfg["weekly_cap_tokens"] * cfg["project_share"]
+    remaining = budget - state["used"]
+    hours_left = max((end - now).total_seconds() / 3600, 0.0)
+    target = remaining / hours_left if hours_left else 0.0
+    rate = {}
+    for h in (6, 24):
+        span = min(h, max((now - start).total_seconds() / 3600, 1e-9))   # a week younger than h hours: use its age
+        rate[h] = sum(w for ts, w in records if ts > now - timedelta(hours=h)) / span
+    basis = rate[24]
+    ratio = basis / target if target > 0 else (float("inf") if basis > 0 else 1.0)
+    hit_at = None
+    if remaining <= 0:
+        verdict, hit_at = "AHEAD", now
+    elif basis * hours_left > remaining:
+        hit_at = now + timedelta(hours=remaining / basis)
+        verdict = "AHEAD" if ratio > PACE_BAND[1] else "ON_PACE"
+    else:
+        verdict = "BEHIND" if ratio < PACE_BAND[0] else "ON_PACE"
+    spare = max(remaining - basis * hours_left, 0) if verdict == "BEHIND" else 0
+    o, sn, hk = MODEL_SPLIT[verdict]
+    split = {"opus": round(target * o), "sonnet": round(target * sn), "haiku": round(target * hk)}
+    return {"verdict": verdict, "budget": round(budget), "used": state["used"], "remaining": round(remaining),
+            "hours_left": round(hours_left, 1), "target_per_hour": round(target),
+            "rate_6h": round(rate[6]), "rate_24h": round(rate[24]),
+            "hit_cap_at": hit_at.strftime("%Y-%m-%dT%H:%MZ") if verdict == "AHEAD" and hit_at else None,
+            "spare_tokens": round(spare), "split_per_hour": split, "reset": end.strftime("%Y-%m-%dT%H:%MZ")}
+
+
+def pace_text(p):
+    n = lambda x: f"{x / 1e6:.2f}M"
+    rows = [f"pace {p['verdict']}: remaining {n(p['remaining'])} of {n(p['budget'])} in {p['hours_left']} h "
+            f"(reset {p['reset']}); target {n(p['target_per_hour'])}/h",
+            f"rate last 6 h {n(p['rate_6h'])}/h, last 24 h {n(p['rate_24h'])}/h"]
+    if p["verdict"] == "AHEAD":
+        rows.append(f"would hit the budget at {p['hit_cap_at']}, before the reset: shift work down a model tier, slow optional work")
+    elif p["verdict"] == "BEHIND":
+        rows.append(f"spare capacity {n(p['spare_tokens'])} can be added before the reset: pull forward queued production, never lower quality")
+    else:
+        rows.append("on pace: keep the current rhythm")
+    s = p["split_per_hour"]
+    rows.append(f"recommended per hour: opus {n(s['opus'])}, sonnet {n(s['sonnet'])}, haiku {n(s['haiku'])}")
+    return "\n".join(rows)
+
+
 def hook_input():
     if sys.stdin is None or sys.stdin.isatty():
         return {}
@@ -378,6 +443,11 @@ def main(argv):
         projects = os.environ.get("TOKEN_BUDGET_PROJECTS_DIR") or Path.home() / ".claude/projects"
         if cmd == "status":
             print(status_text(compute(use_cache=False)))
+        elif cmd == "pace":
+            now = now_utc()
+            state = compute(cfg, now, use_cache=False)
+            recs = message_records(projects, datetime.fromisoformat(state["window_start"]), now + timedelta(seconds=1))
+            print(pace_text(pace(cfg, state, recs, now)))
         elif cmd == "check":
             return check(arg("--action"))
         elif cmd == "record":
@@ -394,7 +464,7 @@ def main(argv):
                 (HERE / "token_plan.json").write_text(json.dumps(plan, indent=1) + "\n")
             print(plan_text(compute(use_cache=False), plan))
         else:
-            print("usage: token_budget.py status|plan|costs|check|record", file=sys.stderr)
+            print("usage: token_budget.py status|pace|plan|costs|check|record", file=sys.stderr)
             return 64
         return 0
     except Exception as e:   # a broken meter is said aloud (exit 1 = non-blocking) and never looks like a green budget

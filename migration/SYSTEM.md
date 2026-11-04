@@ -173,12 +173,12 @@ corrected immediately. `strategy/DECISIONS.md` summarizes current policy; CURREN
 
 ## Token budget
 
-Hard rule (owner, 2026-10-31; E232): this project spends at most 50% of the weekly Claude Code cap, and the stop cannot
+Hard rule (owner, 2026-10-31; E232): this project spends at most its share of the weekly Claude Code cap (50%; raised 2026-11-03 to 90% and 2026-11-04 to 97%, see `token_budget.json`; `pace` aims to land at the reset), and the stop cannot
 be passed. On 2026-10-28 ~13:08Z the account hit the weekly limit and every agent stopped until the reset on 2026-10-31
 19:00Z, because nothing enforced a budget.
 - `migration/ops/token_budget.json`: `weekly_cap_tokens` (an ESTIMATE: weighted usage from the first surviving transcript,
   2026-10-27T13:22Z, to the first weekly-limit error, 2026-10-28T13:07:59Z, about 201M; the real cap is at least that),
-  `project_share` 0.5, `cache_read_weight` 0.1 (cache reads are cheap; counted tokens = input + cache creation + output +
+  `project_share` 0.97 (was 0.5), `cache_read_weight` 0.1 (cache reads are cheap; counted tokens = input + cache creation + output +
   0.1 x cache read), reset Saturday 19:00 UTC. There is no warn level: crossing is a stop.
 - Hook (`.claude/settings.json`, PreToolUse on every tool and UserPromptSubmit) runs `token_budget.py check`; exit 2 with
   TOKEN_BUDGET_EXCEEDED blocks. For an Agent call the hook takes the action type from the brief; for other tools, the tool kind.

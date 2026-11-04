@@ -727,3 +727,16 @@ owner's order is Pavo's own audio, the clip in full. The fix is the prompt and t
   be restrained from them. So after water, He chose distance.") opens s-babble. b-tower keeps its approved clip.
 - The long's voice preflight runs in Actions (`preflight.yml`: the existing `episode_build.py preflight --voice --refs
   --write` with the pinned Kokoro runtime), since no Kokoro is installed locally.
+
+## 2026-11-04 — Use 100% of the weekly Claude cap, landing at the reset (owner)
+
+Owner, 2026-11-04: "preciso que você analise aí e faça uma gestão para que a gente consiga utilizar os 100% bater no
+dia lá que tem a renovação, na verdade no horário que tem a renovação... organiza aí entre os seus modelos".
+- `token_budget.json` `project_share` 0.9 -> 0.97: 3% headroom so the account limit never stops the routines at the
+  very end. The goal is ~100% exactly at the weekly reset (Saturday 19:00 UTC), never earlier: hitting the cap early
+  stops every routine until the reset.
+- `token_budget.py pace` compares the remaining budget with the hours to the reset and the real burn rate (last 6 h and
+  24 h) and says AHEAD (the hour the budget would run out), ON_PACE or BEHIND (spare tokens), with a per-model split.
+- Work is routed by model tier, and tier and optional work move with the pace verdict; see `../OPERATIONS.md`
+  "Model routing and weekly pacing". Quality is never lowered to pace.
+- `token_plan.json` was rebalanced for the rest of the week toward the Babel long and the next long, with a small reserve.
