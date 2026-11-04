@@ -1,0 +1,36 @@
+{
+ "shot": "k-close",
+ "clip_sha256": "e438f9586d799f1cb930d3f5c0abd417a7827e9a67e08870e6f79af974e9a7d7",
+ "measures": {
+  "asr": {
+   "model_bin_sha256": "11b220779aea4c6f3ce9d2549c8a95ea869ed84066864b999531ef53e594fe5b",
+   "text": "He rayed before the rain turned cam. What is dayed before an asking of you?",
+   "speech_span": [
+    0.0,
+    4.72
+   ]
+  },
+  "music": 0.0,
+  "singing": 0.0,
+  "lufs": -17.5,
+  "voice": {
+   "reference": "392c43b242eb01e9e39b29f911b0282619504067217a279a36c6041acb61546d",
+   "same": 0.7862,
+   "others": [
+    0.8407
+   ],
+   "others_references": [
+    "d4f416826b28b66d5386226a4ec49ed48e1c18cedcc96ce9a2a78ece9633fe8f"
+   ]
+  },
+  "lips": []
+ },
+ "verdict": [
+  "VOICE_NOT_CONSISTENT"
+ ],
+ "review_notes": {
+  "line": "he obeyed before the rain came what is god asking of you",
+  "asr_text": "He rayed before the rain turned cam. What is dayed before an asking of you?",
+  "words_differ": true
+ }
+}

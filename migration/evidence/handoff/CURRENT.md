@@ -6,6 +6,18 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
 `../../strategy/DECISIONS.md` ("2026-11-02 — Battle plan to YPP").
 
 ## Current delivery: flood-ends-long (Genesis 8-9, buzzy-long, plan `plans/flood-ends-long.json`)
+- 2026-11-04 ~07:30Z (Claude, owner standing rule "as regras são fixas"): PR #804 merged (E296): `owner_regen.json` `standing_rule` +
+  `episode_build.standing_rule_verdict`: a talking line whose stored generations all failed (words, sync, NO_VIDEO) takes ONE generation per new
+  `pavo_prompt.build` prompt revision with a lesson naming shot+revision, `pavo_audio "pavo"`, max 3 extra per line (counted after run 41784344028);
+  a probe of a talking line with `pavo_audio "ours"` is refused (PROBE_PAVO_AUDIO_OURS). M2: PR #805 (12-word lines, revisions k-hook a6c707eb39ef,
+  k-close 54fb2d5e9662), shot-probe 41788575964 (0 credits, 1 generation each, record #806): picture/sync clean (SyncNet -1, conf 6.8/8.6), but
+  speech-check 41791133796 heard hook "...a boat with no rote, with no rain?" and close "He rayed before the rain turned cam. What is dayed before an
+  asking of you?": words NOT exact, NOT approved, nothing built. Per the coordinator's M2 limit (one generation each) M2 v2 stops for today:
+  **1zsZZgDCAG0 (pilot-018, voice-over hook/close) stays scheduled and publishes 2026-11-04T13:30Z, NOT held.** Standing-rule budget left: 2 extra
+  per M2 line. Babel: branch `claude/babel-standing-revision` (k-restrain a6c707eb39ef plain 14-word line, b-tower d23af7b80ca0, both pavo_audio
+  "pavo", lessons, plan_check strict clean 480.2 s, check-probe allows 1 each) was committed locally but the push was DENIED by the session's
+  permission guard; not pushed, not probed. Next: push that branch/PR from a session allowed to, shot-probe k-restrain,b-tower, speech-check, then
+  preflight/episode.yml/review/approve/gate/publish. Lease released.
 - 2026-11-04 ~05:50Z (scheduled continuation, Short coverage): last scheduled Short is 11-05 13:30Z; FREE 11-05 18:30, 23:30, 11-06 05:30.
   All 10 flood cuts are used. Bridge Short genesis-11-short: 16 FLUX stills (scene-stills runs 41778247076, 41778952922, 0 credits, 16 of ~44/day)
   viewed on the sheets and APPROVED (9.5); `plan_check --strict` is clean. Next: episode_build preflight (Pavo talking shots / probe per
