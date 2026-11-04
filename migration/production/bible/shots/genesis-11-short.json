@@ -22,8 +22,9 @@
   "k-insight": {
    "source": "still_motion",
    "score": 9.5,
-   "note": "Borrowed arc-01 Keeper still (approved 9.5), 9:16 centre crop; Kokoro voice-over.",
-   "approved_at": "2026-10-28",
+   "note": "Borrowed arc-01 Keeper still (approved 9.5), 9:16 centre crop, face whole; Kokoro voice-over. Re-approved for the changed request (bridge length fix).",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-04",
    "still_from": "arc-01-long-k-promise-2",
    "still": "arc-01-long-k-promise-2",
    "repo_path": "migration/production/bible/stills/arc-01-long-k-promise-2.jpg",
@@ -35,7 +36,7 @@
    ],
    "licence": "Pavo generated (owner-owned)",
    "clip_seconds": 12,
-   "request_sha256": "25a69f4d064ff1c188a96df25251e9c4c4e2ca8457948e8b76c89b2943214e4c"
+   "request_sha256": "1d04cf9340e63090aaa62bcfaeaa9cabca4799097b1d97b11f000389709aad9d"
   },
   "k-question": {
    "source": "pavo_reuse",
@@ -48,6 +49,294 @@
    "clip_seconds": 6,
    "from_score": 9.5,
    "request_sha256": "63d1b4761b0cc9bddd9563a4e795275bfd8cac9379784c02d5d79c1affdc8385"
+  },
+  "s-bless": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT/FLUX still (viewed on the sheet, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-04",
+   "still": "genesis-11-short-s-bless",
+   "repo_path": "migration/production/bible/stills/genesis-11-short-s-bless.jpg",
+   "clip_sha256": null,
+   "still_sha256": "7270e5299eef0d36c29a8b8b593e1ce7613083bce158c2abe325b6ad591b7563",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 9,
+   "request_sha256": "9ac878d5b7187366eb22ab9b17e33d1522e6639b68d960c780663320e43c27ca"
+  },
+  "s-bow-close": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT/FLUX still (viewed on the sheet, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-04",
+   "still": "genesis-11-short-s-bow-close",
+   "repo_path": "migration/production/bible/stills/genesis-11-short-s-bow-close.jpg",
+   "clip_sha256": null,
+   "still_sha256": "475af8f22519b98235b85c58dad026e572a87c89e3cf563301c22ad22a9f07a5",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 9,
+   "request_sha256": "760b4482197f51e4ad518e0dbff2ed04ea0a32e5de7cb5395a6efcb056e97899"
+  },
+  "s-bow-hung": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT/FLUX still (viewed on the sheet, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-04",
+   "still": "genesis-11-short-s-bow-hung",
+   "repo_path": "migration/production/bible/stills/genesis-11-short-s-bow-hung.jpg",
+   "clip_sha256": null,
+   "still_sha256": "5991b669de33cc590a06d3460aab24d53d006e2773d56ad37c83e550fe27539f",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 9,
+   "request_sha256": "d19f7144ecce10066258ef93cb01ae6aea0f22c12897383dfa08eff0a0f8e422"
+  },
+  "s-colour": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT/FLUX still (viewed on the sheet, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-04",
+   "still": "genesis-11-short-s-colour",
+   "repo_path": "migration/production/bible/stills/genesis-11-short-s-colour.jpg",
+   "clip_sha256": null,
+   "still_sha256": "02e91e1dc07840ffdfa2e825b5a01d67ceb0e1d80f6cdf46afeeb83b9965d2e3",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 10,
+   "request_sha256": "f83de62c758371ad6c32e810981b2e5aa542ebda9d59aa40acddfa52afd8d44b"
+  },
+  "s-covenant": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT/FLUX still (viewed on the sheet, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-04",
+   "still": "genesis-11-short-s-covenant",
+   "repo_path": "migration/production/bible/stills/genesis-11-short-s-covenant.jpg",
+   "clip_sha256": null,
+   "still_sha256": "9050512d4dd1dbe82becad0154e49bd3811e5729d3d7131449c7e67e5594a2c3",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 12,
+   "request_sha256": "5312cafecb4b72dabdfacdd72043ac8fb6790fa67f5a8b5d70d5202af65cfef1"
+  },
+  "s-creatures": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT/FLUX still (viewed on the sheet, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-04",
+   "still": "genesis-11-short-s-creatures",
+   "repo_path": "migration/production/bible/stills/genesis-11-short-s-creatures.jpg",
+   "clip_sha256": null,
+   "still_sha256": "2342e616c9e15b7a492431498c89aa8a2e18e10d11efe1b9d3a0f13b1bc315a7",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 9,
+   "request_sha256": "33b03ce674b20a9e25ff7813587a6c798ca9e8ab809ff68eda0a3a6f951759e0"
+  },
+  "s-door-open": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT/FLUX still (viewed on the sheet, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-04",
+   "still": "genesis-11-short-s-door-open",
+   "repo_path": "migration/production/bible/stills/genesis-11-short-s-door-open.jpg",
+   "clip_sha256": null,
+   "still_sha256": "eb755437e1163f745edc64b6690c2118be5ad3a3f141eb496ccbdffdbe5ac4c1",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 10,
+   "request_sha256": "561d31045d8047eab692fe3dbcde8fedb629984ac4691b2c4a69476e9af8cf63"
+  },
+  "s-family-out": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT/FLUX still (viewed on the sheet, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-04",
+   "still": "genesis-11-short-s-family-out",
+   "repo_path": "migration/production/bible/stills/genesis-11-short-s-family-out.jpg",
+   "clip_sha256": null,
+   "still_sha256": "946ea316fe9bec04223ff741e79a4f3b04237c3c5325faa574537bbbe700e9f3",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 8,
+   "request_sha256": "827527d8136821d6e3e785dfab255bba7d337ebd889d9f454a8ba8c37af77718"
+  },
+  "s-grass": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT/FLUX still (viewed on the sheet, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-04",
+   "still": "genesis-11-short-s-grass",
+   "repo_path": "migration/production/bible/stills/genesis-11-short-s-grass.jpg",
+   "clip_sha256": null,
+   "still_sha256": "24f534cb4fe00db2808751200f31d01f739a6c23a9b96fe23ad9f6efed1db5ea",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 12,
+   "request_sha256": "e8e8a0b8c151d188404b1a3ca0b4997cce0a2a7af8b4e4df3659641035929fe7"
+  },
+  "s-heart": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT/FLUX still (viewed on the sheet, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-04",
+   "still": "genesis-11-short-s-heart",
+   "repo_path": "migration/production/bible/stills/genesis-11-short-s-heart.jpg",
+   "clip_sha256": null,
+   "still_sha256": "47c891f2db863cd984456c7a6cdd5b420b2525b6644bc7bb6679cb2ec62455f1",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 9,
+   "request_sha256": "b39a4cba7817cc9f6130cb419bafa652a8efdab002c8286f330e277ce5802e7a"
+  },
+  "s-look": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT/FLUX still (viewed on the sheet, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-04",
+   "still": "genesis-11-short-s-look",
+   "repo_path": "migration/production/bible/stills/genesis-11-short-s-look.jpg",
+   "clip_sha256": null,
+   "still_sha256": "95637b8c8e2a29768b5e260d4fbb98712af3a43d39d85134f7dbe1211fac72dd",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 12,
+   "request_sha256": "1b4e7efe09e531f5324020234992a6a715d30fe0a8592da521335a056eda99c6"
+  },
+  "s-noah-altar": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT/FLUX still (viewed on the sheet, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-04",
+   "still": "genesis-11-short-s-noah-altar",
+   "repo_path": "migration/production/bible/stills/genesis-11-short-s-noah-altar.jpg",
+   "clip_sha256": null,
+   "still_sha256": "598db88a2239278c4910b3daa5c5fa2aa67e16c94a930f2824460443686764ab",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 9,
+   "request_sha256": "b97d8ee6a94b980c0c8ad3f61773d9b208d74ae5e151b48a156409ceb4e1993b"
+  },
+  "s-noah-out": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT/FLUX still (viewed on the sheet, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-04",
+   "still": "genesis-11-short-s-noah-out",
+   "repo_path": "migration/production/bible/stills/genesis-11-short-s-noah-out.jpg",
+   "clip_sha256": null,
+   "still_sha256": "413f9bce32f14481ea25b9ee861cbad30f1ab530bcfc427e8088ad87d5efd876",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 11,
+   "request_sha256": "58ccc7fd75ae57e7263c8573eded61aaadaed118c2135868eb92c12e1c870ac1"
+  },
+  "s-smoke": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT/FLUX still (viewed on the sheet, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-04",
+   "still": "genesis-11-short-s-smoke",
+   "repo_path": "migration/production/bible/stills/genesis-11-short-s-smoke.jpg",
+   "clip_sha256": null,
+   "still_sha256": "7479223312f4e2bacd9e36f1c2e0c3e8136f54a87b6c5495216d90898c34a8aa",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 12,
+   "request_sha256": "6dbc14c6924c0c84c3f526f761dc6340952afb5895b3f3e2ba17bde824ec31af"
+  },
+  "s-stones": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT/FLUX still (viewed on the sheet, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-04",
+   "still": "genesis-11-short-s-stones",
+   "repo_path": "migration/production/bible/stills/genesis-11-short-s-stones.jpg",
+   "clip_sha256": null,
+   "still_sha256": "6f75f50df53a8b6d20659a75130f73facb018cf892c6f58236cf2f906f682eb4",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 10,
+   "request_sha256": "2b6df1aac4723445ffd9d39ef33eb4626343a014507e74b79e2612fd3b28c668"
+  },
+  "s-voice": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved ChatGPT/FLUX still (viewed on the sheet, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-04",
+   "still": "genesis-11-short-s-voice",
+   "repo_path": "migration/production/bible/stills/genesis-11-short-s-voice.jpg",
+   "clip_sha256": null,
+   "still_sha256": "f3b09fb5866e902bf7487e8eee84600b6b3d56769e692a1118302b8e011c5a70",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 8,
+   "request_sha256": "529ddb10ff691846bc69eccbbfed4282d03cc6006fe1920570fe59f1497b0a8b"
   }
  }
 }
