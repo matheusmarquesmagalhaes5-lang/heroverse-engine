@@ -627,23 +627,19 @@
    "request_sha256": "bc5e07bfeb8e5b7ae2059ad054bfaefdf96b77007a5f2d0f4f2761e540a6c845"
   },
   "s-roadwest": {
-   "source": "still_motion",
+   "source": "buzzy",
    "score": 9.5,
-   "note": "Approved still genesis-10-11-long-s-roadwest (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "note": "Buzzy image-to-video (8 s) of the approved s-roadwest still (8 frames viewed 2026-11-04): the caravan of cloaked families and laden donkeys walks away along the ridge toward the low sun, the small tower far behind, figures from behind, no faces, no text, no speech (silent source, generated audio unused); the scattering, non-speaking action peak.",
    "model": "claude-session-reviewer",
-   "approved_at": "2026-11-03",
-   "motion_engine": "cinematic-v2",
-   "still": "genesis-10-11-long-s-roadwest",
-   "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-roadwest.jpg",
-   "clip_sha256": null,
-   "still_sha256": "a6c27e52bd4779cff3d2f42ef066194d6174ff27efd8b8d6c99238b9bfb81005",
-   "frame": [
-    2560,
-    1440
-   ],
-   "licence": "apache-2.0",
-   "clip_seconds": 7,
-   "request_sha256": "f73794058490a1e3289adf7183b0f2fbf7fd60cbe09aff5a3b3550a75e835be1"
+   "approved_at": "2026-11-04",
+   "task_id": "gt_autAOWIUNndGMEvmautAOeX2U8N6eXu8",
+   "buzzy_model": "dreamina-seedance-2-0-mini-260615",
+   "buzzy_resolution": "720p",
+   "asset": "shot-genesis-10-11-long-s-roadwest-sha256-86678f6da5b46effdcd6683050eaf6d63509705a40e56e9687d40fc011cc8671.mp4",
+   "clip_sha256": "86678f6da5b46effdcd6683050eaf6d63509705a40e56e9687d40fc011cc8671",
+   "clip_seconds": 8,
+   "licence": "generated (Buzzy)",
+   "request_sha256": "ba3c9891143c640968392ef27f8d8f70099db204b716534c31128499aa8a48a3"
   },
   "s-scaffold": {
    "source": "still_motion",
