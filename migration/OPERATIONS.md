@@ -211,6 +211,16 @@ latest.md section "Audience retention and traffic sources" with the Short -> lon
 reason (e.g. SCOPE_MISSING); the last numbers are kept. The browse mapping (`SUBSCRIBER` = Studio's Browse features) and the overlap
 of the SHORTS source with related-from-our-Shorts are to be confirmed on the first real run; read them as bounds.
 
+**Per-sentence WER and UTMOS in `local-review.yml` (2026-11-04, WARN only).** `local_review.py` now computes the word error
+rate of each script sentence against the pinned ASR transcript (`measures.audio.wer`: substituted/missing/extra words, strict, near
+spellings also counted) and, when the optional workflow step installed it, UTMOS22-strong naturalness on CPU
+(`measures.audio.utmos`: MOS per heard sentence, at most 120 clips; pinned SpeechMOS commit and weights sha256, no secret). Findings
+go to the public evidence key `warnings` as `MM:SS.ss [warn] ...`, never to `issues` or `machine_verdict`. Thresholds are
+PROVISIONAL and uncalibrated (sentence WER > 0.30 on 4+ words, overall WER > 0.12, sentence UTMOS < 2.0, mean < 2.8; UTMOS on a mix
+with music reads low). They stay WARNs until a run over the accepted masters is recorded in
+`evidence/reviewer-calibration/` and the numbers are changed by a PR that cites it. A failed UTMOS step does not fail the review
+(`utmos.status` is `NOT_RUN`). The session reviewer listens to every warned sentence; a warn is not a score.
+
 `native-review.yml` (Gemini, optional second opinion) uses the existing operator certificate and configured provider credential without exposing the
 credential to the caller. Verify current Free Tier eligibility before submission. Preserve upload/interaction IDs,
 raw answers, exact model identity and media binding. Reconcile uncertain outcomes rather than repeating a POST.
@@ -222,6 +232,19 @@ caller downloads that run's `native-review-upload` artifact, decrypts it with th
 exact master bytes once to the receipt's `upload_url` (`X-Goog-Upload-Command: upload, finalize`, offset 0). Until
 then the provider has no file and `Await exact-byte upload` can only time out. If a run timed out that way, upload
 to its saved `upload_url` and dispatch `resume_before_inference=<run>` with a fresh Free Tier proof.
+
+**Gemini listening defect scan for longs (owner 2026-11-04, DECISIONS "Gemini free tier").** Dispatch `native-review.yml` with
+`defect_scan=true` (plan = the long's plan, sha256/byte_size of the exact master, as any native review). The prompt adds a
+`defects` array: `{timestamp, category, heard_or_seen, note, confidence}`, category one of mispronunciation, garbled_word,
+loudness_jump, music_voice_clash, sync, visual_glitch, speech_cut, other. `validate_defects` refuses a malformed, out-of-media
+or uncategorised list; the public evidence (`native-review-public-evidence`, job summary) then carries `defect_scan: true`,
+`scores_are_information_only: true` and the sanitized `defects`. It is a detector: the session reviewer must listen to each
+timestamp and record the true reviewer in `claude_review.json`; scores are never copied and nothing is approved. The existing
+duplicate-content guard still applies to an unchanged master that already had a native review; when the master is large or the
+free quota is tight, dispatch per chapter segment (a separate file, so a separate sha256) and add the segment start to each
+timestamp. Calibration (Babel master `0386d34a...`: 00:55 "mighty", 02:17-02:22 b-brick, 06:51 "babel"; one approved Short)
+is run through this dispatch and recorded in `evidence/reviewer-calibration/long-defect-scan-calibration.json`; until that file
+shows the known defects found, treat an empty or partial list as no evidence of absence.
 
 ## Automation map (2026-11-02)
 

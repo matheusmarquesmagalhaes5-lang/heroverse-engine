@@ -6,6 +6,7 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
 `../../strategy/DECISIONS.md` ("2026-11-02 — Battle plan to YPP").
 
 ## Current delivery: flood-ends-long (Genesis 8-9, buzzy-long, plan `plans/flood-ends-long.json`)
+- 2026-11-04 ~22:30Z (scheduled continuation): **Babel long PUBLISHED** (pilot-020, publish.yml 41923588575, public, https://youtu.be/KwFjnZ20yGA; receipt migration/publish/receipts/pilot-020-41923588575.json). Cuts spec `cuts/genesis-10-11-long.json` (check PASS): babel-confound-cut 304.5-365.45 (slot 11-05 23:30Z), babel-climb-cut 160.1-245.7 (11-06 05:30Z), babel-scatter-cut 373.8-398.95 (11-06 13:30Z); reflection window 410-431 untouched (E279). Next: short-cuts.yml, local-review per cut, records/PR, publish-episode.yml at the slots, studio related-video entries, reflection Short. genesis-12-short stills still wait for FLUX 00:00Z.
 - 2026-11-04 ~18:40Z (scheduled continuation, Short coverage): next bridge Short PLANNED: `plans/genesis-12-short.json` (Babel, Genesis 11:1-9, 9:16,
   17 FLUX scenes + 3 Keeper voice-over, no Pavo; plan_check --strict clean except STILL_NOT_APPROVED; kjv_check PASS), 17 DRAFT still records, PR #841 (test_autopilot_plan now
   expects genesis-13-short as the next unplanned). **Blocker: no stills yet.** scene-stills 41888133039 GUARD_CF_ALLOCATION_USED (32 used of ~44, 34 asked);

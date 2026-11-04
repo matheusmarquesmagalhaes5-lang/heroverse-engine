@@ -171,6 +171,8 @@ def receive(i, root, receipt, legacy):
             track = legacy.track_for(i['plan']) if hasattr(legacy, 'track_for') else None
             if track:   # E250: a buzzy run submitted after the defect-finder prompt; earlier runs used the base prompt
                 known.add(hashlib.sha256(legacy.prompt(r['duration_seconds'], track).encode()).hexdigest())
+            if i.get('defect_scan') == 'true':
+                known = {hashlib.sha256(legacy.prompt(r['duration_seconds'], track, True).encode()).hexdigest()}
             need(r['prompt_sha256'] in known, 'RECOVERY_PROMPT_CHANGED')
             # Import only known fields; no caller-supplied score, response or approval survives.
             keys = ('version','run_id','plan','model','output_sha256','provider_sha256','byte_size',
@@ -271,6 +273,8 @@ def poll_saved(i, receipt, key, legacy, attempts=120):
             if i.get('recover_submitted_run'):
                 check_remote_binding(r,json.loads(body),i,key,legacy)
             legacy.validate_report(report, r['duration_seconds'])
+            if i.get('defect_scan') == 'true':
+                legacy.validate_defects(report, r['duration_seconds'])
         status = record_readback(receipt,body,validate,legacy.floor_for(i['plan']))
         if status != 'SUBMITTED':
             return status
