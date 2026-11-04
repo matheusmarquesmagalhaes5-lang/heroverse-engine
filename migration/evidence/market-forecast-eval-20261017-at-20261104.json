@@ -1,0 +1,13 @@
+{
+ "version": "market-forecast-evaluation-v1",
+ "registered": "2026-10-17T10:28:07Z",
+ "evaluated_at": "2026-11-04T08:16:24Z",
+ "elapsed_days": 17,
+ "scored_channels": 381,
+ "subscribers_mae_model": 3720.5,
+ "subscribers_mae_baseline": 2217.8,
+ "crossing_scored": 41,
+ "brier_model": 0.0512,
+ "brier_constant": 0.0,
+ "note": "Crossing is only final at +28 days; earlier evaluations are interim."
+}

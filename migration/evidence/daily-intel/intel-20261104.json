@@ -1,0 +1,817 @@
+{
+ "version": "daily-intel-v1",
+ "panel_captured_at": "2026-11-04T08:16:24Z",
+ "fast_channels": {
+  "christian": [],
+  "cross_niche": [
+   {
+    "channel_id": "UCMijVbJw_OKi-ns1VPM19EQ",
+    "title": "Rouf on fire",
+    "niche": "tracked",
+    "activity_days": 24,
+    "subscribers": 236000,
+    "subs_per_day": 9833.3,
+    "uploads_per_day": 0.42,
+    "short_share": 1.0,
+    "median_long_minutes": null
+   },
+   {
+    "channel_id": "UCsgIYxoP62W05QwGJdno_NQ",
+    "title": "REX0",
+    "niche": "tracked",
+    "activity_days": 14,
+    "subscribers": 133000,
+    "subs_per_day": 9500.0,
+    "uploads_per_day": 0.57,
+    "short_share": 1.0,
+    "median_long_minutes": null
+   },
+   {
+    "channel_id": "UC4yGb07f6pK5e4G5AQu09vg",
+    "title": "Heart Haven",
+    "niche": "tracked",
+    "activity_days": 22,
+    "subscribers": 60200,
+    "subs_per_day": 2736.4,
+    "uploads_per_day": 0.09,
+    "short_share": 1.0,
+    "median_long_minutes": null
+   },
+   {
+    "channel_id": "UCiqyj4b9sKWRGCZPoz6TT9w",
+    "title": "Blaster EDITS",
+    "niche": "tracked",
+    "activity_days": 32,
+    "subscribers": 68300,
+    "subs_per_day": 2134.4,
+    "uploads_per_day": 0.16,
+    "short_share": 1.0,
+    "median_long_minutes": null
+   },
+   {
+    "channel_id": "UCP06uk9Ma8tQBzalEdHnZxg",
+    "title": "ashadeepak.creations",
+    "niche": "bible",
+    "activity_days": 11,
+    "subscribers": 16100,
+    "subs_per_day": 1463.6,
+    "uploads_per_day": 0.27,
+    "short_share": 1.0,
+    "median_long_minutes": null
+   },
+   {
+    "channel_id": "UCeBgE-JsNm9lyfwaLjNJJ_w",
+    "title": "Yesuvin Varthai",
+    "niche": "tracked",
+    "activity_days": 7,
+    "subscribers": 9660,
+    "subs_per_day": 1380.0,
+    "uploads_per_day": 0.86,
+    "short_share": 0.83,
+    "median_long_minutes": 10.2
+   },
+   {
+    "channel_id": "UC3QwqNc3Gtk1TlkU5-pI8ow",
+    "title": "Gospel In Faith",
+    "niche": "tracked",
+    "activity_days": 3,
+    "subscribers": 3830,
+    "subs_per_day": 1276.7,
+    "uploads_per_day": 0.67,
+    "short_share": 1.0,
+    "median_long_minutes": null
+   },
+   {
+    "channel_id": "UCDTQjshTURKafCqcSgpFHSw",
+    "title": "Lão Bản 1992",
+    "niche": "tracked",
+    "activity_days": 16,
+    "subscribers": 5220,
+    "subs_per_day": 326.2,
+    "uploads_per_day": 0.56,
+    "short_share": 1.0,
+    "median_long_minutes": null
+   },
+   {
+    "channel_id": "UC-5Jz5ZoPStkzZCmF5qVDPQ",
+    "title": "King Z YouTube ",
+    "niche": "tracked",
+    "activity_days": 8,
+    "subscribers": 2580,
+    "subs_per_day": 322.5,
+    "uploads_per_day": 1.0,
+    "short_share": 1.0,
+    "median_long_minutes": null
+   },
+   {
+    "channel_id": "UCWhzq3yCoDbyN_oIkEiPavA",
+    "title": "Angrej Singh",
+    "niche": "tracked",
+    "activity_days": 18,
+    "subscribers": 4730,
+    "subs_per_day": 262.8,
+    "uploads_per_day": 0.67,
+    "short_share": 1.0,
+    "median_long_minutes": null
+   },
+   {
+    "channel_id": "UCsZB-J7OE7JspQCTgW4spdg",
+    "title": "CITIES UNCOVERED",
+    "niche": "bible",
+    "activity_days": 14,
+    "subscribers": 3230,
+    "subs_per_day": 230.7,
+    "uploads_per_day": 0.79,
+    "short_share": 0.0,
+    "median_long_minutes": 23.1
+   },
+   {
+    "channel_id": "UCOGL2D26c9m4jyvx2vDwXaQ",
+    "title": "Deep Past",
+    "niche": "tracked",
+    "activity_days": 36,
+    "subscribers": 7140,
+    "subs_per_day": 198.3,
+    "uploads_per_day": 0.31,
+    "short_share": 0.0,
+    "median_long_minutes": 96.2
+   },
+   {
+    "channel_id": "UC2ZH_goSJlVbPHy5mewxT9w",
+    "title": "Bible Stories Uncovered 🎬",
+    "niche": "bible",
+    "activity_days": 9,
+    "subscribers": 1090,
+    "subs_per_day": 121.1,
+    "uploads_per_day": 0.89,
+    "short_share": 0.88,
+    "median_long_minutes": 4.7
+   },
+   {
+    "channel_id": "UCl2pevv4Cmgk8dPCj4Ksuvg",
+    "title": "Little Cruwel",
+    "niche": "bible",
+    "activity_days": 19,
+    "subscribers": 2080,
+    "subs_per_day": 109.5,
+    "uploads_per_day": 0.16,
+    "short_share": 1.0,
+    "median_long_minutes": null
+   },
+   {
+    "channel_id": "UCTbd4_INB2mbsZ9P2zeA7Xg",
+    "title": "God Vision TV",
+    "niche": "tracked",
+    "activity_days": 13,
+    "subscribers": 1140,
+    "subs_per_day": 87.7,
+    "uploads_per_day": 0.23,
+    "short_share": 0.67,
+    "median_long_minutes": 8.2
+   },
+   {
+    "channel_id": "UCqrfXHv3jh3YmWJ8-qzPxNQ",
+    "title": "Dastan-e- Islam",
+    "niche": "bible",
+    "activity_days": 36,
+    "subscribers": 2400,
+    "subs_per_day": 66.7,
+    "uploads_per_day": 0.25,
+    "short_share": 0.0,
+    "median_long_minutes": 26.2
+   },
+   {
+    "channel_id": "UCZjTcPrslCoTa_C7MrRRoRw",
+    "title": "পাড়া সবজি",
+    "niche": "tracked",
+    "activity_days": 24,
+    "subscribers": 1200,
+    "subs_per_day": 50.0,
+    "uploads_per_day": 0.33,
+    "short_share": 0.12,
+    "median_long_minutes": 8.7
+   },
+   {
+    "channel_id": "UCa1-ZujARRxBz7RU6xOIxIA",
+    "title": "The Bible Musical",
+    "niche": "tracked",
+    "activity_days": 24,
+    "subscribers": 1070,
+    "subs_per_day": 44.6,
+    "uploads_per_day": 0.17,
+    "short_share": 0.75,
+    "median_long_minutes": 6.9
+   },
+   {
+    "channel_id": "UC4hRssnj95B6048eYn-LAAQ",
+    "title": "RandomSkils109",
+    "niche": "tracked",
+    "activity_days": 26,
+    "subscribers": 1070,
+    "subs_per_day": 41.2,
+    "uploads_per_day": 0.46,
+    "short_share": 1.0,
+    "median_long_minutes": null
+   },
+   {
+    "channel_id": "UCsNozu45Tmcg07P4-erK-Ig",
+    "title": "Rose_Surrenders",
+    "niche": "tracked",
+    "activity_days": 34,
+    "subscribers": 1200,
+    "subs_per_day": 35.3,
+    "uploads_per_day": 0.35,
+    "short_share": 1.0,
+    "median_long_minutes": null
+   },
+   {
+    "channel_id": "UCQTvKgA3MWPXtdJyAiGTk8A",
+    "title": "Ms. Chelsea's Classroom - Kids Christian Education",
+    "niche": "bible",
+    "activity_days": 36,
+    "subscribers": 1160,
+    "subs_per_day": 32.2,
+    "uploads_per_day": 0.33,
+    "short_share": 0.75,
+    "median_long_minutes": 15.1
+   },
+   {
+    "channel_id": "UCoeacMVR7UO-0axE_BxjcuQ",
+    "title": "Mic Legends",
+    "niche": "bible",
+    "activity_days": 35,
+    "subscribers": 1050,
+    "subs_per_day": 30.0,
+    "uploads_per_day": 0.2,
+    "short_share": 0.0,
+    "median_long_minutes": 14.9
+   }
+  ]
+ },
+ "winning_videos_christian_14d": [
+  {
+   "video_id": "Stv9uXekWGY",
+   "channel_id": "UC7AZOx2bzbj-rEGs1a2mJdg",
+   "channel": "Leavethenintynine",
+   "title": "You Feel Fine. God Says You're Dying. | Who Is He? Part 4",
+   "minutes": 4.3,
+   "views": 2,
+   "views_per_day": 3.5,
+   "publish_hour_utc": 18
+  },
+  {
+   "video_id": "W8oV-T7-sEo",
+   "channel_id": "UC8sZnad858kErgC8C8kN_SQ",
+   "channel": "VOICE OF FAITH AND INSPIRATION",
+   "title": "HELLO NOVEMBER! A NEW MONTH, A NEW BEGINNING, A NEW TESTIMONY 🙏✨ | POWERFUL MORNING PRAYER",
+   "minutes": 5.1,
+   "views": 6,
+   "views_per_day": 2.3,
+   "publish_hour_utc": 16
+  },
+  {
+   "video_id": "F5sb32fxuQc",
+   "channel_id": "UC7AZOx2bzbj-rEGs1a2mJdg",
+   "channel": "Leavethenintynine",
+   "title": "Why Would God Save Us? | Who Is He? Part 2",
+   "minutes": 5.0,
+   "views": 12,
+   "views_per_day": 1.1,
+   "publish_hour_utc": 17
+  },
+  {
+   "video_id": "KTtxOiFtpjE",
+   "channel_id": "UC7AZOx2bzbj-rEGs1a2mJdg",
+   "channel": "Leavethenintynine",
+   "title": "If God Is Real, Why Can't We See Him? | Who Is He? Part 1",
+   "minutes": 4.2,
+   "views": 15,
+   "views_per_day": 1.1,
+   "publish_hour_utc": 17
+  },
+  {
+   "video_id": "28lj-p2Wdg0",
+   "channel_id": "UC7AZOx2bzbj-rEGs1a2mJdg",
+   "channel": "Leavethenintynine",
+   "title": "How Does God Actually Save Us? | Who Is He? Part 3",
+   "minutes": 7.3,
+   "views": 7,
+   "views_per_day": 0.9,
+   "publish_hour_utc": 16
+  },
+  {
+   "video_id": "p9tKyS_Ig48",
+   "channel_id": "UC_EpQDkJYr34gCJkv7oweiA",
+   "channel": "Daily touch of heaven ",
+   "title": "Daily morning prayer ",
+   "minutes": 4.2,
+   "views": 2,
+   "views_per_day": 0.4,
+   "publish_hour_utc": 20
+  }
+ ],
+ "videos_considered": 6,
+ "directives": {
+  "duration_minutes_top_quartile": null,
+  "publish_hour_utc_top_quartile": [
+   [
+    18,
+    1
+   ]
+  ],
+  "title_feature_lift": {
+   "length": {
+    "top_share": 1.0,
+    "rest_share": 1.0,
+    "lift": 1.0
+   },
+   "has_number": {
+    "top_share": 1.0,
+    "rest_share": 0.6,
+    "lift": 1.67
+   },
+   "has_pipe": {
+    "top_share": 1.0,
+    "rest_share": 0.8,
+    "lift": 1.25
+   },
+   "has_colon": {
+    "top_share": 0.0,
+    "rest_share": 0.0,
+    "lift": null
+   },
+   "has_emoji": {
+    "top_share": 0.0,
+    "rest_share": 0.2,
+    "lift": 0.0
+   },
+   "caps_words": {
+    "top_share": 0.0,
+    "rest_share": 0.2,
+    "lift": 0.0
+   },
+   "second_person": {
+    "top_share": 1.0,
+    "rest_share": 0.0,
+    "lift": null
+   },
+   "says_prayer": {
+    "top_share": 0.0,
+    "rest_share": 0.4,
+    "lift": 0.0
+   },
+   "commentary_structure": {
+    "top_share": 0.0,
+    "rest_share": 0.0,
+    "lift": null
+   }
+  },
+  "title_terms_lift": [],
+  "commentary_videos_in_top_quartile": []
+ },
+ "bible": {
+  "shorts": {
+   "videos_considered": 208,
+   "seconds_top_quartile_median": 78,
+   "publish_hour_utc_top_quartile": [
+    [
+     13,
+     6
+    ],
+    [
+     23,
+     5
+    ],
+    [
+     17,
+     5
+    ],
+    [
+     1,
+     4
+    ]
+   ],
+   "title_feature_lift": {
+    "length": {
+     "top_share": 1.0,
+     "rest_share": 1.0,
+     "lift": 1.0
+    },
+    "has_number": {
+     "top_share": 0.327,
+     "rest_share": 0.417,
+     "lift": 0.78
+    },
+    "has_pipe": {
+     "top_share": 0.596,
+     "rest_share": 0.494,
+     "lift": 1.21
+    },
+    "has_colon": {
+     "top_share": 0.154,
+     "rest_share": 0.205,
+     "lift": 0.75
+    },
+    "has_emoji": {
+     "top_share": 0.558,
+     "rest_share": 0.436,
+     "lift": 1.28
+    },
+    "caps_words": {
+     "top_share": 0.154,
+     "rest_share": 0.083,
+     "lift": 1.85
+    },
+    "second_person": {
+     "top_share": 0.058,
+     "rest_share": 0.109,
+     "lift": 0.53
+    },
+    "says_prayer": {
+     "top_share": 0.019,
+     "rest_share": 0.006,
+     "lift": 3.0
+    },
+    "commentary_structure": {
+     "top_share": 0.038,
+     "rest_share": 0.058,
+     "lift": 0.67
+    }
+   },
+   "winners": [
+    {
+     "video_id": "dKG-gDtC504",
+     "channel_id": "UCP06uk9Ma8tQBzalEdHnZxg",
+     "channel": "ashadeepak.creations",
+     "title": "Mary Meets Elizabeth|EP02 #malayalam#jesus#bible#yt#marymatha#biblestories",
+     "seconds": 105,
+     "views": 664153,
+     "views_per_day": 70158.1,
+     "publish_hour_utc": 21
+    },
+    {
+     "video_id": "7e29CrleTmA",
+     "channel_id": "UC2ZH_goSJlVbPHy5mewxT9w",
+     "channel": "Bible Stories Uncovered 🎬",
+     "title": "David and Goliath Bible Story | The Young Shepherd Who Faced a Giant 🗡️📖",
+     "seconds": 74,
+     "views": 304265,
+     "views_per_day": 41194.8,
+     "publish_hour_utc": 23
+    },
+    {
+     "video_id": "gDkqSkiGFS4",
+     "channel_id": "UCP06uk9Ma8tQBzalEdHnZxg",
+     "channel": "ashadeepak.creations",
+     "title": "Life of Jesus Christ | Ep 3 – Mary’s Song of Praise#malayalam#bibile#yt#reels#bibile##bibile#ytviral",
+     "seconds": 111,
+     "views": 36218,
+     "views_per_day": 6237.9,
+     "publish_hour_utc": 12
+    },
+    {
+     "video_id": "qa73L-XoOjU",
+     "channel_id": "UCYlMv7MTDdBsLhoI-yF4vSw",
+     "channel": "Bible Unveiled",
+     "title": "185,000 Soldiers Died in One Night! The Angel Who Saved Jerusalem | Bible Unveiled",
+     "seconds": 109,
+     "views": 22854,
+     "views_per_day": 5728.6,
+     "publish_hour_utc": 8
+    },
+    {
+     "video_id": "zDLxCpApXd0",
+     "channel_id": "UCvux9Tlf2WBNcOUtvEFtKbg",
+     "channel": "Faith Of Steel",
+     "title": "The Book of Enoch reveals where the dead really go ✝️ #ethiopianbible #bookofenoch #bible",
+     "seconds": 157,
+     "views": 16995,
+     "views_per_day": 5363.7,
+     "publish_hour_utc": 4
+    },
+    {
+     "video_id": "iQbIx_TgmtM",
+     "channel_id": "UCRJ_19J0i6K4eHVnwfhNNpQ",
+     "channel": "Enochian Lore",
+     "title": "Why Did an Angel BEG a Mortal to Let Go? 😱 #bible #shorts",
+     "seconds": 72,
+     "views": 5910,
+     "views_per_day": 3611.7,
+     "publish_hour_utc": 17
+    },
+    {
+     "video_id": "CJqc37O_uEM",
+     "channel_id": "UCvux9Tlf2WBNcOUtvEFtKbg",
+     "channel": "Faith Of Steel",
+     "title": "Why no one talks about the giants of the Bible 📖 #ethiopianbible #bookofenoch #bible",
+     "seconds": 135,
+     "views": 4169,
+     "views_per_day": 3489.8,
+     "publish_hour_utc": 3
+    },
+    {
+     "video_id": "EYSD8IJG2bY",
+     "channel_id": "UCvux9Tlf2WBNcOUtvEFtKbg",
+     "channel": "Faith Of Steel",
+     "title": "Where the fallen angels were really cast ✝️ #ethiopianbible #bookofenoch #bible #christianity",
+     "seconds": 139,
+     "views": 2261,
+     "views_per_day": 2896.3,
+     "publish_hour_utc": 13
+    },
+    {
+     "video_id": "o1VuidubBCM",
+     "channel_id": "UCvux9Tlf2WBNcOUtvEFtKbg",
+     "channel": "Faith Of Steel",
+     "title": "Enoch names who was really behind the serpent 🐍📖 #ethiopianbible #bookofenoch #bible",
+     "seconds": 134,
+     "views": 4612,
+     "views_per_day": 2112.6,
+     "publish_hour_utc": 3
+    },
+    {
+     "video_id": "Oq0kTX4hfuU",
+     "channel_id": "UCZsPjVUHF5O-1L8hVqyNyZA",
+     "channel": "My Blox Story",
+     "title": "Noah trapped on a bus with a ghost that copies his every move #roblox #rblx #stories #noah #ghost",
+     "seconds": 95,
+     "views": 1544,
+     "views_per_day": 2036.5,
+     "publish_hour_utc": 14
+    },
+    {
+     "video_id": "lj_iTjMyuT4",
+     "channel_id": "UCHgpVfUv2VPsygP9gk0hdXA",
+     "channel": "JESORA",
+     "title": "What Happened When Jesus Spoke to the Storm? 🌊 | Bible Story #shorts",
+     "seconds": 50,
+     "views": 1380,
+     "views_per_day": 2036.2,
+     "publish_hour_utc": 16
+    },
+    {
+     "video_id": "17fiIGnRxhw",
+     "channel_id": "UCZsPjVUHF5O-1L8hVqyNyZA",
+     "channel": "My Blox Story",
+     "title": "Nora returns a missing student badge to a skeleton that steps out... #roblox #rblx #stories",
+     "seconds": 47,
+     "views": 1619,
+     "views_per_day": 2017.1,
+     "publish_hour_utc": 13
+    },
+    {
+     "video_id": "jlmLbeYAgJI",
+     "channel_id": "UCt_MV2JKi9CN2jhAgBTffsA",
+     "channel": "Snap Facts TV",
+     "title": "He Denied Jesus 3 Times… Watch What Jesus Did 💔🙏 #shorts",
+     "seconds": 45,
+     "views": 2252,
+     "views_per_day": 1998.1,
+     "publish_hour_utc": 5
+    },
+    {
+     "video_id": "2njQ4SgajJo",
+     "channel_id": "UC2ZH_goSJlVbPHy5mewxT9w",
+     "channel": "Bible Stories Uncovered 🎬",
+     "title": "THE FALL OF JERICHO: The Incredible Bible Story of Joshua.",
+     "seconds": 109,
+     "views": 2695,
+     "views_per_day": 1944.4,
+     "publish_hour_utc": 23
+    },
+    {
+     "video_id": "HSGGjNaAvcg",
+     "channel_id": "UCEMjz0fOy8AO8YBSB-wmJ_A",
+     "channel": "Bible Stories Unrolled",
+     "title": "Where Did Samson's Strength Really Come From? | Samson and Delilah",
+     "seconds": 54,
+     "views": 989,
+     "views_per_day": 1554.8,
+     "publish_hour_utc": 17
+    }
+   ]
+  },
+  "longs": {
+   "videos_considered": 78,
+   "seconds_top_quartile_median": 1271,
+   "publish_hour_utc_top_quartile": [
+    [
+     13,
+     2
+    ],
+    [
+     16,
+     2
+    ],
+    [
+     8,
+     2
+    ],
+    [
+     11,
+     2
+    ]
+   ],
+   "title_feature_lift": {
+    "length": {
+     "top_share": 1.0,
+     "rest_share": 1.0,
+     "lift": 1.0
+    },
+    "has_number": {
+     "top_share": 0.368,
+     "rest_share": 0.492,
+     "lift": 0.75
+    },
+    "has_pipe": {
+     "top_share": 0.526,
+     "rest_share": 0.746,
+     "lift": 0.71
+    },
+    "has_colon": {
+     "top_share": 0.0,
+     "rest_share": 0.22,
+     "lift": 0.0
+    },
+    "has_emoji": {
+     "top_share": 0.053,
+     "rest_share": 0.254,
+     "lift": 0.21
+    },
+    "caps_words": {
+     "top_share": 0.263,
+     "rest_share": 0.271,
+     "lift": 0.97
+    },
+    "second_person": {
+     "top_share": 0.316,
+     "rest_share": 0.051,
+     "lift": 6.21
+    },
+    "says_prayer": {
+     "top_share": 0.0,
+     "rest_share": 0.0,
+     "lift": null
+    },
+    "commentary_structure": {
+     "top_share": 0.0,
+     "rest_share": 0.102,
+     "lift": 0.0
+    }
+   },
+   "winners": [
+    {
+     "video_id": "fw1TCTG75hA",
+     "channel_id": "UCsZB-J7OE7JspQCTgW4spdg",
+     "channel": "CITIES UNCOVERED",
+     "title": "They Opened Jesus’ Tomb for the First Time in Centuries… What They Found Is Stranger Than You Think",
+     "seconds": 1519,
+     "views": 88866,
+     "views_per_day": 52557.5,
+     "publish_hour_utc": 15
+    },
+    {
+     "video_id": "wR5_pOfGPUk",
+     "channel_id": "UCsZB-J7OE7JspQCTgW4spdg",
+     "channel": "CITIES UNCOVERED",
+     "title": "Archaeologists Dug Under the City of David… What They Found Is Stranger Than You Think",
+     "seconds": 1659,
+     "views": 32769,
+     "views_per_day": 42257.3,
+     "publish_hour_utc": 13
+    },
+    {
+     "video_id": "DlCkmM53hUI",
+     "channel_id": "UCsZB-J7OE7JspQCTgW4spdg",
+     "channel": "CITIES UNCOVERED",
+     "title": "A Robot Went Inside “Noah’s Ark”… What It Found Is Stranger Than You Think",
+     "seconds": 1443,
+     "views": 89300,
+     "views_per_day": 19222.9,
+     "publish_hour_utc": 16
+    },
+    {
+     "video_id": "C5D1C802Qds",
+     "channel_id": "UCqrfXHv3jh3YmWJ8-qzPxNQ",
+     "channel": "Dastan-e- Islam",
+     "title": "Hazrat Nooh (AS) Ka Waqia | 950 Saal Ki Dawat Aur Khofnak Toofan | Qissa e Nooh",
+     "seconds": 3518,
+     "views": 146186,
+     "views_per_day": 14647.7,
+     "publish_hour_utc": 8
+    },
+    {
+     "video_id": "E41seVbafa4",
+     "channel_id": "UCcVKQvZO8fHG39o6agANj4g",
+     "channel": "True Faith Animation",
+     "title": "Noah – The Fall of the Nephilim | Full Biblical Movie 4K",
+     "seconds": 2718,
+     "views": 88326,
+     "views_per_day": 13394.3,
+     "publish_hour_utc": 18
+    },
+    {
+     "video_id": "DOuQjFz0j3s",
+     "channel_id": "UCsZB-J7OE7JspQCTgW4spdg",
+     "channel": "CITIES UNCOVERED",
+     "title": "A Camera Went Into Abraham’s Tomb… What It Captured Is Stranger Than You Think",
+     "seconds": 1239,
+     "views": 109174,
+     "views_per_day": 12293.3,
+     "publish_hour_utc": 11
+    },
+    {
+     "video_id": "BcLO5dleCZc",
+     "channel_id": "UCsZB-J7OE7JspQCTgW4spdg",
+     "channel": "CITIES UNCOVERED",
+     "title": "They Found a Hidden Stairway Into Abraham’s Tomb… What Was Down There Is Stranger Than You Think",
+     "seconds": 1223,
+     "views": 48789,
+     "views_per_day": 8701.8,
+     "publish_hour_utc": 17
+    },
+    {
+     "video_id": "mXVOQPcynyw",
+     "channel_id": "UCoeacMVR7UO-0axE_BxjcuQ",
+     "channel": "Mic Legends",
+     "title": "Trevor Noah’s Hilarious Indian Waiter Incident in Scotland 😂 | Stand-Up Comedy",
+     "seconds": 890,
+     "views": 72384,
+     "views_per_day": 6298.7,
+     "publish_hour_utc": 20
+    },
+    {
+     "video_id": "zRW0A7mskXU",
+     "channel_id": "UCsZB-J7OE7JspQCTgW4spdg",
+     "channel": "CITIES UNCOVERED",
+     "title": "The Oldest City on Earth Was Stranger Than You Think",
+     "seconds": 1385,
+     "views": 72712,
+     "views_per_day": 5744.2,
+     "publish_hour_utc": 16
+    },
+    {
+     "video_id": "oMJZJVAGG9E",
+     "channel_id": "UCQTvKgA3MWPXtdJyAiGTk8A",
+     "channel": "Ms. Chelsea's Classroom - Kids Christian Education",
+     "title": "Joseph and His Coat of Many Colors | Learn about Saving & Money | Ms. Chelsea Classroom S1E3",
+     "seconds": 898,
+     "views": 6162,
+     "views_per_day": 3417.7,
+     "publish_hour_utc": 13
+    },
+    {
+     "video_id": "s7JMDT5QIv0",
+     "channel_id": "UCgqb2E1K2iaz7R9R8KMsPVg",
+     "channel": "PicVersion",
+     "title": "The Book of EXODUS Full Movie KJV | Story of Moses | Moses and Pharaoh in the Bible",
+     "seconds": 13665,
+     "views": 20803,
+     "views_per_day": 3300.6,
+     "publish_hour_utc": 1
+    },
+    {
+     "video_id": "RdEKR6S58zM",
+     "channel_id": "UCsZB-J7OE7JspQCTgW4spdg",
+     "channel": "CITIES UNCOVERED",
+     "title": "Why No One Can Walk Through Jerusalem’s Sealed Golden Gate",
+     "seconds": 1484,
+     "views": 15849,
+     "views_per_day": 2276.9,
+     "publish_hour_utc": 9
+    },
+    {
+     "video_id": "IcAmr__Mez8",
+     "channel_id": "UCQTvKgA3MWPXtdJyAiGTk8A",
+     "channel": "Ms. Chelsea's Classroom - Kids Christian Education",
+     "title": "Noah's Ark for Kids | Animals, Weather & Rainbows | Learn Opposites | Ms. Chelsea's Classroom S1E2",
+     "seconds": 1013,
+     "views": 18912,
+     "views_per_day": 2140.8,
+     "publish_hour_utc": 12
+    },
+    {
+     "video_id": "aut4QYKJCAs",
+     "channel_id": "UCQTvKgA3MWPXtdJyAiGTk8A",
+     "channel": "Ms. Chelsea's Classroom - Kids Christian Education",
+     "title": "7 Days of Creation | Days of the Week, Plants & Seeds | Ms. Chelsea's Classroom S1E1",
+     "seconds": 904,
+     "views": 18895,
+     "views_per_day": 2136.3,
+     "publish_hour_utc": 12
+    },
+    {
+     "video_id": "N5PDHo6tfv4",
+     "channel_id": "UCqrfXHv3jh3YmWJ8-qzPxNQ",
+     "channel": "Dastan-e- Islam",
+     "title": "Hazrat Ilyas AS Ka Waqia | Unki Qaum Baal Ki Ibadat Kyun Karti Thi? | Dastan e Islam",
+     "seconds": 895,
+     "views": 4102,
+     "views_per_day": 684.7,
+     "publish_hour_utc": 8
+    }
+   ]
+  }
+ },
+ "scope": "Public data of today's panel. Associations, not causal effects; applied as hypotheses one variable at a time."
+}
