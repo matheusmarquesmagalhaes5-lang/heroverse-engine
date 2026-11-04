@@ -1,0 +1,27 @@
+{
+ "shot": "b-tower",
+ "clip_sha256": "dd60b36b5b8c6c5cf1b09131922382292460701bf9b66395dc4c0aa1a0eb1fb9",
+ "measures": {
+  "asr": {
+   "model_bin_sha256": "11b220779aea4c6f3ce9d2549c8a95ea869ed84066864b999531ef53e594fe5b",
+   "text": "Go to, let us build us a city in a tower, whose tarp may reach unto Heaven.",
+   "speech_span": [
+    0.0,
+    4.6
+   ]
+  },
+  "music": 0.0,
+  "singing": 0.0,
+  "lufs": -27.5,
+  "voice": {
+   "reference": null,
+   "same": null,
+   "others": []
+  },
+  "lips": []
+ },
+ "verdict": [
+  "SPEECH_WORDS_NOT_EXACT",
+  "VOICE_REFERENCE_MISSING"
+ ]
+}
