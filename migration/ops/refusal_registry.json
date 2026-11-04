@@ -2872,6 +2872,54 @@
   "WARN_KJV_WORDS": {
    "class": "N",
    "why": "owner 2026-11-03 (Pavo's own audio, clips in full): a warning in the review notes, never a refusal. A shot whose line is a direct KJV quotation (a `scripture` item) keeps the KJV-exact pillar: when the pinned ASR text differs from the line, or was not heard, speech-check and approve-shot record WARN_KJV_WORDS and the reviewer decides; no generation, voice or render stops"
+  },
+  "PROBE_PAVO_AUDIO_OURS": {
+   "class": "A",
+   "early": [
+    ".github/workflows/shot-probe.yml::episode_build.py check-probe",
+    "migration/production/bible/episode_build.py::def standing_rule_verdict("
+   ],
+   "note": "E296: under the owner's standing rule a probe of a talking line whose plan says pavo_audio \"ours\" is refused before any secret (Pavo's own track would be dropped)"
+  },
+  "PROBE_SAME_PROMPT": {
+   "class": "A",
+   "early": [
+    ".github/workflows/shot-probe.yml::episode_build.py check-probe",
+    "migration/production/bible/episode_build.py::def standing_rule_verdict("
+   ],
+   "note": "E296: one generation per prompt revision; check-probe refuses a line whose plan prompt was already generated"
+  },
+  "PROBE_STANDING_CAP": {
+   "class": "A",
+   "early": [
+    ".github/workflows/shot-probe.yml::episode_build.py check-probe",
+    "migration/production/bible/episode_build.py::def standing_rule_verdict("
+   ],
+   "note": "E296: at most 3 extra generations per line under the standing rule; check-probe stops and reports"
+  },
+  "PROBE_STANDING_LESSON": {
+   "class": "A",
+   "early": [
+    ".github/workflows/shot-probe.yml::episode_build.py check-probe",
+    "migration/production/bible/episode_build.py::def standing_rule_verdict("
+   ],
+   "note": "E296: the new prompt revision needs a pavo_prompt.py lesson naming the shot and the revision"
+  },
+  "PROBE_STANDING_NOT_FAILED": {
+   "class": "A",
+   "early": [
+    ".github/workflows/shot-probe.yml::episode_build.py check-probe",
+    "migration/production/bible/episode_build.py::def standing_rule_verdict("
+   ],
+   "note": "E296: a stored generation without a recorded failure (words, sync, NO_VIDEO) is used, not regenerated"
+  },
+  "PROBE_STANDING_NOT_STANDARD": {
+   "class": "A",
+   "early": [
+    ".github/workflows/shot-probe.yml::episode_build.py check-probe",
+    "migration/production/bible/episode_build.py::def standing_rule_verdict("
+   ],
+   "note": "E296: the standing rule covers talking shots on pavo_prompt.build (E293) only"
   }
  },
  "review": {
