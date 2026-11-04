@@ -1,0 +1,151 @@
+{
+ "episode": "genesis-10-11-long",
+ "plan_sha256": "08f117c7cdede666f7216aff6081a4fe1b950f691e0f1ab5d2c686ff69759817",
+ "attempts": 1,
+ "shots": {
+  "k-restrain": {
+   "kind": "keeper",
+   "request_sha256": "61ab1403bf0f360d0ebc8acb9b78e7d8f5c877b521875ee20bd43615e3ed41b1",
+   "request": {
+    "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a grave, intent look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Calm and grave. No text, no logos.",
+    "aspect_ratio": "16:9",
+    "sound": false,
+    "references": [
+     {
+      "image": "ch-keeper-talk",
+      "sha256": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
+     }
+    ],
+    "audio": {
+     "speaker": "keeper",
+     "voice": {
+      "voice_id": "am_michael",
+      "speed": 1.0
+     },
+     "words": [
+      "nothing",
+      "could",
+      "stop",
+      "them",
+      "so",
+      "god",
+      "did",
+      "not",
+      "send",
+      "a",
+      "flood",
+      "he",
+      "scattered",
+      "them"
+     ],
+     "tail_pad": "pavo-talk-v2"
+    }
+   },
+   "clips": [
+    {
+     "round": 1,
+     "error": "SHOT_FAILED k-restrain after 1 generations: FACE_NOT_FOUND,MOUTH_NOT_IN_SYNC",
+     "generations": [
+      {
+       "generation": 1,
+       "conversation_id": "376297186188856384",
+       "submission": "submitted",
+       "quoted_credits": 0,
+       "source": {
+        "width": 1280.0,
+        "height": 720.0,
+        "seconds": 6.0
+       },
+       "audio": {
+        "route": "pavo",
+        "sha256": "cc79a7052c02820b562fe33d6a51114529cb4ab4f9c2f15a10e1b60a1879ad70",
+        "samples": 290708,
+        "seconds": 6.592,
+        "lufs": -23.5,
+        "true_peak_db": -9.2,
+        "narration_lufs": -26.2
+       },
+       "flags": [
+        "FACE_NOT_FOUND",
+        "MOUTH_NOT_IN_SYNC"
+       ],
+       "lipsync": {
+        "audio": {
+         "corr": 1.0,
+         "lag_ms": 0
+        },
+        "mouth": {
+         "corr": -1.0,
+         "lag_ms": 0,
+         "speak_to_pause": 0.0,
+         "face_frames": 0.0,
+         "sync": null
+        }
+       },
+       "clip": "k-restrain-fail1.mp4"
+      }
+     ]
+    },
+    {
+     "round": 1,
+     "generation": 1,
+     "asset": "shot-genesis-10-11-long-k-restrain-sha256-9ca86a7a1e5cf0271cb0f7c9ee874dc4702199bb203e6ef8901cbd1ceca677b3.mp4",
+     "clip_sha256": "9ca86a7a1e5cf0271cb0f7c9ee874dc4702199bb203e6ef8901cbd1ceca677b3",
+     "flags": [
+      "FACE_NOT_FOUND",
+      "MOUTH_NOT_IN_SYNC"
+     ],
+     "hard_flags": [
+      "FACE_NOT_FOUND"
+     ],
+     "words_flags": [],
+     "soft_flags": [
+      "MOUTH_NOT_IN_SYNC"
+     ],
+     "measures": {
+      "lipsync": {
+       "audio": {
+        "corr": 1.0,
+        "lag_ms": 0
+       },
+       "mouth": {
+        "corr": -1.0,
+        "lag_ms": 0,
+        "speak_to_pause": 0.0,
+        "face_frames": 0.0,
+        "sync": null
+       }
+      }
+     },
+     "generations": [],
+     "sheet": "41804402265-k-restrain-1-1.jpg",
+     "audio": {
+      "route": "pavo",
+      "sha256": "cc79a7052c02820b562fe33d6a51114529cb4ab4f9c2f15a10e1b60a1879ad70",
+      "samples": 290708,
+      "seconds": 6.592,
+      "lufs": -23.5,
+      "true_peak_db": -9.2,
+      "narration_lufs": -26.2
+     },
+     "media": {
+      "version": "clip-media-v1",
+      "clip_sha256": "9ca86a7a1e5cf0271cb0f7c9ee874dc4702199bb203e6ef8901cbd1ceca677b3",
+      "video_seconds": 6.583333,
+      "audio_seconds": 6.592,
+      "instrument": "ffprobe stream durations"
+     },
+     "uploaded": true
+    }
+   ],
+   "clip_seconds": 6,
+   "kjv_quote": false
+  }
+ },
+ "pavo_audio": "pavo",
+ "pavo_budget": {
+  "units_before": 16,
+  "units_this_run": 2
+ },
+ "run_id": "41804402265"
+}
