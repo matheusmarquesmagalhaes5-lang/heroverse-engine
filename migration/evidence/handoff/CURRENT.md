@@ -6,6 +6,14 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
 `../../strategy/DECISIONS.md` ("2026-11-02 — Battle plan to YPP").
 
 ## Current delivery: flood-ends-long (Genesis 8-9, buzzy-long, plan `plans/flood-ends-long.json`)
+- 2026-11-04 ~14:00Z (Claude, Babel Buzzy shot, coordinator decision under the owner's Buzzy rule of 2026-10-31): STOPPED at step 1, nothing generated.
+  The Buzzy balance is not readable from this session: the Buzzy connector has no balance tool (list_model shows models only, no credits),
+  and the earlier readings came from the buzzy.now header in the owner's browser, which this session cannot see (Desktop Commander here
+  runs processes only; it does not drive or view the browser, and reading the logged-in session by other means was not attempted).
+  The rule requires a balance read before and after each generation, so no Buzzy clip was made. Next: a balance read by an executor that
+  can see the buzzy.now header (owner's browser), then one silent clip (lowest-credit video model, e.g. dreamina-seedance-2-0-mini-260615
+  720p 16:9, image-to-video of an approved Babel still such as s-confound/s-scatter peak, duration >= span + 2 s), plan PR, rebuild, pilot QA,
+  review by a reviewer who can listen, approve/gate/publish, cuts.
 - 2026-11-04 ~13:50Z (Claude, Babel long): BUILT, NOT published. PRs #817 (k-restrain narration over s-babble; `preflight.yml`), #818, #821 (E298:
   preflight predicts approved Pavo-audio clips at their measured length), #822/#825 (preflight PASS 41816472148 / 41823807412), #823 (s-kiln, s-pitch,
   s-babble re-approved for their current requests), #824 (E299: s-down's own shaft of light read ROTATED_PICTURE), #828 (report). episode.yml
