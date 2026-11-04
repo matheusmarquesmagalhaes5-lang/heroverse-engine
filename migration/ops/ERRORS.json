@@ -4815,6 +4815,51 @@
      "process"
     ]
    }
+  },
+  {
+   "id": "E297",
+   "date": "2026-11-04",
+   "class": [
+    "drift"
+   ],
+   "prior": [
+    "E100",
+    "E102",
+    "E126",
+    "E130",
+    "E132",
+    "E133",
+    "E145",
+    "E146",
+    "E147",
+    "E149",
+    "E150",
+    "E151",
+    "E152",
+    "E153",
+    "E166",
+    "E167",
+    "E168",
+    "E169",
+    "E189",
+    "E218",
+    "E236",
+    "E243",
+    "E245",
+    "E270",
+    "E274",
+    "E276",
+    "E277"
+   ],
+   "error": "Babel long preflight (preflight.yml run 41812250541) refused COMPOSE SPEAKER_CLIP_SHORT b-name (5.00 s for 5.17 s): the compose was predicted on the plan's requested 5 s while b-name's approved clip keeps Pavo's own audio and is laid out at its whole measured length (5.17 s, native_spans). Root cause: the preflight's compose prediction ignored the measured length of approved Pavo-audio clips that the build itself uses, so the prediction drifted from the build.",
+   "fix": "episode_preflight.predicted_clip_seconds: for the shots of eb.native_spans (approved clip with Pavo's own audio) the compose prediction uses the approval's measured clip_seconds; every other shot keeps its planned length, and with no such shot compose_prediction keeps its own defaults.",
+   "antidote": {
+    "file": "migration/production/bible/test_episode_preflight.py",
+    "contains": "def test_e297_a_pavo_audio_clip_is_predicted_at_its_measured_length",
+    "covers": [
+     "drift"
+    ]
+   }
   }
  ]
 }

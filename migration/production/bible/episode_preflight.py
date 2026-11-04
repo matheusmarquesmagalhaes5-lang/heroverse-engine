@@ -460,10 +460,27 @@ def voice_step_locked(plan, voice_python, prepared, work):
         layout = json.loads((work / "layout.json").read_text()) if (work / "layout.json").exists() else None
         problems = [str(exc)]
     if layout and not problems:   # a long's compose too (long_build.compose_problems, LONG_DESIGN slice 3)
-        problems = [f"COMPOSE {p}" for p in eb.compose_prediction(plan, layout)]
+        problems = [f"COMPOSE {p}" for p in eb.compose_prediction(plan, layout, predicted_clip_seconds(plan, layout))]
     return {"ran": True, "reused": reused, "checkpoint_sha256": eb.sha256(receipt_path),
             "problems": problems, "pace": measured_pace(plan, work),
             "measured": {k: layout[k] for k in ("total", "keeper_share", "lesson_share", "retimed")} if layout else None}
+
+
+def predicted_clip_seconds(plan, layout):
+    """E297: the clip lengths the compose is predicted on. A talking shot whose approved clip keeps Pavo's own audio
+    (eb.native_spans) is laid out at that clip's whole measured length, so its prediction uses the approval's measured
+    `clip_seconds`, not the plan's requested seconds (run 41812250541: b-name 5.00 s planned for its 5.17 s clip, a false
+    SPEAKER_CLIP_SHORT). Every other shot keeps its planned length; with no such shot, None (the planned lengths)."""
+    approvals = eb.load_approvals(plan) if plan.get("episode") else {}
+    native = eb.native_spans(plan, approvals)
+    if not native:
+        return None   # compose_prediction's own planned lengths
+    out = {s["id"]: float(eb.shot_seconds(s, i, plan, layout)) for i, s in enumerate(plan["shots"]) if not eb.is_window(s)}
+    for sid in native:
+        measured = (approvals.get(sid) or {}).get("clip_seconds")
+        if sid in out and isinstance(measured, (int, float)) and not isinstance(measured, bool) and measured > 0:
+            out[sid] = float(measured)
+    return out
 
 
 def refs_and_requests(plan, work):
