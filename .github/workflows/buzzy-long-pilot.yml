@@ -73,6 +73,10 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -q -b "$branch"
           git add "migration/production/$pilot"
-          git commit -q -m "Long-first $ep as $pilot (run $GITHUB_RUN_ID): QA and publication inputs for review"
-          git push -q origin "HEAD:refs/heads/$branch"
+          if git diff --cached --quiet; then
+            echo "NOTHING_NEW: $pilot inputs unchanged (rerun only refreshed the release asset); no branch pushed"
+          else
+            git commit -q -m "Long-first $ep as $pilot (run $GITHUB_RUN_ID): QA and publication inputs for review"
+            git push -q origin "HEAD:refs/heads/$branch"
+          fi
           echo "BRANCH $branch"; echo "SHA256 $sha"; cat "$RUNNER_TEMP/out/qa.json"
