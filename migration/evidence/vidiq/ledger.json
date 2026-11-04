@@ -1390,6 +1390,30 @@
    "credits": 5,
    "purpose": "verify flood-ends-long public (M1 trigger)",
    "saved_to": "none"
+  },
+  {
+   "date": "2026-11-04",
+   "kind": "read",
+   "tool": "vidiq_user_videos",
+   "credits": 5,
+   "purpose": "fresh public video stats (subs 310 read free via user_channels)",
+   "saved_to": "none"
+  },
+  {
+   "date": "2026-11-04",
+   "kind": "read",
+   "tool": "vidiq_outliers",
+   "credits": 5,
+   "purpose": "in-niche Babel query: returned identical off-topic list, unusable",
+   "saved_to": "none"
+  },
+  {
+   "date": "2026-11-04",
+   "kind": "read",
+   "tool": "vidiq_outliers",
+   "credits": 5,
+   "purpose": "cross-niche history query: identical off-topic list, unusable",
+   "saved_to": "none"
   }
  ]
 }

@@ -699,3 +699,8 @@ owner's order is Pavo's own audio, the clip in full. The fix is the prompt and t
   hook "What if obeying God meant building a ship with no rain in sight? Here is Noah's whole story."; close "Noah obeyed before one drop fell. What is
   God asking of you, that you cannot yet see?". plan_check strict (E277 pace included) passes.
 - The compilation uses the clips in full with their own audio (`pavo_audio` "pavo", #782); the ours-route remux approvals stay as evidence only.
+
+## 2026-11-04 — Inteligência Viva
+- Moment M2 (Noah compilation scheduled 16:00Z); M3 read 11-05. Triggers: none of M1/M2 hit; early M3 signal: the long has 5 views (measured, vidIQ) and Shorts send ~0 to longs, so the "views from Shorts = 0" rule is expected on 11-05.
+- Goal (subs measured live 310; long hours 27.9 own estimate from the 11-03 report): gap 690 subs / 3,972 h; needs 62.7 subs and 361 h per day for 11-15, 25.6 and 147 for 12-01; pace ~2.9 subs/day (measured) and ~2 h/day (estimate). Hours bind.
+- Action: compilation today; link it in the first description line and pinned comment of every Short; Babel long continues. vidIQ used 15 credits (3,084 before); 2 of the 3 calls (outliers) returned the same off-topic list whatever the query: do not repeat that call form, use the 11-02 form.
