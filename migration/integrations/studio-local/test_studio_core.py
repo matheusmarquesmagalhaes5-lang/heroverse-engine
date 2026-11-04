@@ -179,7 +179,8 @@ class MappingTests(unittest.TestCase):
         # published after the queue was written made this assertion red on main)
         self.assertFalse({j["video_id"] for j in cut} & set(rm.ALREADY_DONE))
         for j in cut:
-            self.assertEqual(j["target_video_id"], "1m-NUJhkdMY")
+            # each cut points to its own source long (flood, then Babel: E301)
+            self.assertIn(j["target_video_id"], {"1m-NUJhkdMY", "KwFjnZ20yGA"})
             self.assertTrue(j["reason"].endswith("cut of its source long"))
 
     def test_committed_queue_is_valid(self):
