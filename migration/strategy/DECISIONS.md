@@ -806,3 +806,20 @@ Asked "Gemini grátis: a faixa grátis pode usar o que enviamos para treinar os 
 only under the Free Tier proof, the no-spend rule and the exact-media binding. Gemini remains a defect detector for the session
 review (`native-review.yml` `defect_scan`, timestamped mispronunciation/garbled/loudness/music-voice/sync/visual defects); it never
 approves and no score is copied to other media.
+
+## 2026-11-04 — Pavo clips are silent; the narration goes over them (owner order, E300)
+- Owner, in chat 2026-11-04 ~22:50Z: "Pode continuar fazendo com pavo mais coloca só vídeos sem narração.. e coloca a
+  narração por fora..". Pavo stays our video engine, but its clips are silent action/acting clips: nobody speaks on camera,
+  no lip-sync; every spoken word (Keeper lines, character KJV lines, narration) is our Kokoro audio laid over the picture.
+  Pavo's own audio is never used. This replaces the talking-shot / Pavo-audio route (the 2026-11-03 "Pavo clips in full with
+  Pavo's own audio" order and the E296 standing rule's `pavo_audio: "pavo"`) for NEW plans; approvals and plans already made
+  under those routes keep their records, and `owner_regen.json` is not edited.
+- Why: Pavo's own speech garbled the KJV words in 3 longs and the talking shots failed repeatedly (E287, E290, E292, E293,
+  E295, E296); the picture was the part Pavo does well. E300.
+- Codified: shot fields `pavo_mode` "silent", `pavo_audio` "none", `pavo` {action, setting, mood, wardrobe?, view?, camera?};
+  `pavo_prompt.build` fills `TEMPLATE_SILENT` (`pavo-silent-v1`); `plan_check` refuses a prompt that asks for speech or
+  lip-sync, a character's line over a frontal face, Pavo audio, a plain still, God; the E290 coverage is met by a silent
+  Pavo clip of the character under the line; `episode_build` sends no audio, strips Pavo's track, checks `MOUTH_TALKING` and
+  the face (profile and open-mouth notes are reviewer WARNs); shot-probe allows silent shots, one generation per line per
+  prompt revision. PROMPT_GUIDE "Pavo silent-clip standard" is the spec; OPERATIONS has the note.
+

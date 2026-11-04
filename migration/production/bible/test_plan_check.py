@@ -1579,6 +1579,96 @@ def pavo_bridge(episode="genesis-90-short"):
     return plan
 
 
+def silent_bridge(episode="genesis-91-short"):
+    """pavo_bridge() made to the owner's 2026-11-04 rule: every Pavo clip is SILENT (pavo_mode "silent", pavo_audio
+    "none"); Noah's hook is a profile clip of him at work with his line voiced over it, the Keeper acts, silent."""
+    import pavo_prompt
+    plan = pavo_bridge(episode)
+    actions = ("watches the fire, then slowly nods", "lowers his eyes to the scroll in his hands",
+               "looks up from the scroll toward the stars")
+    for n, s in enumerate(x for x in plan["shots"] if x["kind"] == "keeper"):
+        s.pop("emotion", None)
+        s.update(pavo_mode="silent", pavo_audio="none", pavo={
+            "action": actions[n % 3], "setting": KEEPER_SETTING, "wardrobe": "fire", "mood": "Tender and grave"})
+        s["prompt"] = pavo_prompt.build(s, plan)
+    hook = plan["shots"][0]
+    hook.update(pavo_mode="silent", pavo_audio="none", seconds=8, pavo={
+        "action": "shapes the clay with both hands, eyes on his work", "view": "profile",
+        "setting": "Dawn on the wet hillside, pale gold light on his face, mist behind him.", "mood": "Solemn and grave"})
+    hook["prompt"] = pavo_prompt.build(hook, plan)
+    return plan
+
+
+class PavoSilentCoverage(unittest.TestCase):
+    """Owner 2026-11-04 ("só vídeos sem narração.. e coloca a narração por fora"): a silent Pavo clip of the character
+    under our Kokoro line satisfies the E290 hook, character-line and Keeper-line coverage; a plain still never does."""
+
+    def found(self, plan, root=None):
+        return [x.split()[0] for x in pc.pavo_coverage_problems(plan, root=root)]
+
+    def test_a_silent_clip_covers_the_hook_the_character_line_and_the_keeper_lines(self):
+        good = silent_bridge()
+        self.assertEqual(pc.pavo_coverage_problems(good), [])
+        self.assertEqual([x for x in pc.check(good)["problems"]], [])      # and the Short's own plan check agrees
+        hook, keeper = good["shots"][0], good["shots"][-1]
+        self.assertTrue(pc.silent(hook) and pc.silent(keeper))
+        self.assertFalse(pc.talking(hook) or pc.talking(keeper))           # nobody lip-syncs: no input audio, no lipsync
+        self.assertTrue(pc.speaking(hook) and pc.voiceover(keeper))        # their lines are our voice track
+        self.assertTrue(pc.pavo_silent(hook) and pc.pavo_silent(keeper))
+        # the same shots WITHOUT the silent mode keep the old refusals
+        plain = copy.deepcopy(good)
+        plain["shots"][-1] = json.loads((HERE / "plans/genesis-10-short.json").read_text())["shots"][-1]
+        self.assertEqual(self.found(plain), ["KEEPER_LINE_NOT_PAVO"])
+        # a silent hook still needs a character that is alone on screen with an APPROVED reference
+        crowd = copy.deepcopy(good)
+        crowd["shots"][0]["characters"] = ["noah", "eve"]
+        self.assertIn("CHARACTER_LINE_NOT_PAVO", self.found(crowd))
+        # a character's quoted words stay narration-free
+        told = copy.deepcopy(good)
+        told["narration"][0]["text"] = "And Noah said unto his sons, Go forth of the ark with me."
+        self.assertIn("CHARACTER_LINE_NOT_PAVO", self.found(told))
+
+    def test_a_plain_still_or_a_god_sky_is_not_a_silent_clip_under_a_covered_line(self):
+        good = silent_bridge()
+        still = copy.deepcopy(good)
+        still["shots"][0]["first_frame"] = "s-noah-ark"
+        self.assertIn("HOOK_NOT_PAVO", self.found(still))
+        self.assertIn("PAVO_SILENT_FRAMES", [x.split()[0] for x in pc.prompt_problems(0, still["shots"][0])])
+        bare = copy.deepcopy(good)
+        bare["shots"][-1].pop("pavo")
+        self.assertEqual(self.found(bare), ["KEEPER_LINE_NOT_PAVO", "PAVO_PROMPT_NOT_STANDARD"])
+        sky = copy.deepcopy(good)
+        sky["shots"][0] = json.loads((HERE / "plans/genesis-10-short.json").read_text())["shots"][0]
+        sky["shots"][0]["pavo_mode"] = "silent"   # God's sky is never a silent character clip
+        self.assertIn("HOOK_NOT_PAVO", self.found(sky))
+        self.assertIn("PAVO_SILENT_GOD", [x.split()[0] for x in pc.prompt_problems(0, sky["shots"][0])])
+
+    def test_a_silent_shot_whose_prompt_asks_for_speech_or_lip_sync_is_refused(self):
+        for needle in ("seen in profile", "No text, no logos."):
+            bad = silent_bridge()
+            bad["shots"][0]["prompt"] = bad["shots"][0]["prompt"].replace(needle, needle + " He speaks, lips moving in sync.")
+            self.assertIn("PAVO_SILENT_SPEECH", [x.split()[0] for x in pc.prompt_problems(0, bad["shots"][0])], needle)
+            self.assertIn("PAVO_PROMPT_NOT_STANDARD", self.found(bad))      # and it is no longer the builder's prompt
+            self.assertIn("PAVO_SILENT_SPEECH", [x.split()[0] for x in pc.check(bad)["problems"]])
+        fields = silent_bridge()
+        fields["shots"][-1]["pavo"]["action"] = "speaks to the camera"
+        self.assertIn("PAVO_SILENT_SPEECH", self.found(fields))
+        # the hook is a character's line voiced over a clip: never a frontal face visibly mouthing it
+        front = silent_bridge()
+        front["shots"][0]["pavo"]["view"] = "frontal"
+        self.assertIn("PAVO_SILENT_FRONTAL", self.found(front))
+
+    def test_a_silent_shot_takes_no_pavo_audio_and_is_a_clip_not_a_still(self):
+        for audio in ("pavo", "ours"):
+            bad = silent_bridge()
+            bad["shots"][-1]["pavo_audio"] = audio
+            self.assertIn("PAVO_SILENT_AUDIO", [x.split()[0] for x in pc.prompt_problems(0, bad["shots"][-1])], audio)
+        long = silent_bridge()
+        long["shots"][0]["seconds"] = 15
+        self.assertIn("PAVO_SILENT_SECONDS", [x.split()[0] for x in pc.prompt_problems(0, long["shots"][0])])
+        self.assertIn("SCENE_SECONDS", [x.split()[0] for x in pc.check(long)["problems"]])
+
+
 class PavoCoverage(unittest.TestCase):
     def found(self, plan, root=None):
         return [x.split()[0] for x in pc.pavo_coverage_problems(plan, root=root)]

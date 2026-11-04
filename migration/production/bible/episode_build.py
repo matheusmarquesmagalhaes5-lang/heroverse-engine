@@ -1053,6 +1053,14 @@ def request(shot, index, plan, layout, refs, chars=None, route=None):
         if built != prompt:
             raise SystemExit(f"PAVO_PROMPT_NOT_STANDARD {shot['id']} (the plan's prompt is not pavo_prompt.build's from "
                              "its `pavo` fields; plan_check --strict shows the expected text)")
+    if plan_check.silent(shot):   # owner 2026-11-04: a silent clip: the builder's prompt, no speech asked, no input audio
+        built = pavo_prompt.build(shot, plan, chars)
+        if built != prompt:
+            raise SystemExit(f"PAVO_PROMPT_NOT_STANDARD {shot['id']} (the plan's silent prompt is not pavo_prompt.build's "
+                             "from its `pavo` fields; plan_check --strict shows the expected text)")
+        heard = pavo_prompt.silent_speech(prompt)
+        if heard:
+            raise SystemExit(f"PAVO_SILENT_SPEECH {shot['id']} (the prompt asks for speech or lip-sync: {heard!r})")
     if talks:   # a standard prompt already binds Image 1 and the audio clause: bind_prompt leaves it unchanged
         prompt = bind_prompt(prompt, speaker_of(shot), chars)
     if len(references) > ch.MAX_REFS:
@@ -1141,6 +1149,8 @@ def request_digest(req, shot, words=None, chars=None):
     # differs between machines across a rounding boundary (genesis-08 k-insight, run 40483267526)
     canonical = {"prompt": req["prompt"], "aspect_ratio": req["aspect_ratio"], "sound": req["sound"],
                  "references": references, "audio": audio}
+    if plan_check.silent(shot):   # owner 2026-11-04: a silent clip has no audio; its template version is part of the request
+        canonical["silent"] = pavo_prompt.SILENT_VERSION
     frames = [req[f] for f in plan_check.FRAME_FIELDS if req.get(f)]
     if frames:   # image first: each still by its id and approved sha256 (a request without frames digests as before)
         canonical["frames"] = [{"still": Path(p).stem, "sha256": (plan_check.still_record(Path(p).stem) or {}).get(
@@ -1319,13 +1329,13 @@ def attempts_for(shot):
     """E98: the most generations one shot may take; every caller of make_shot passes it, and every budget is sized by
     it. A talking shot and a voice-over Keeper shot (plan B) plan TALK_ATTEMPTS = 1 and take a second only when the
     first has a visual defect (E287, make_shot's `regenerate`), so the ceiling is TALK_ATTEMPTS_MAX."""
-    return TALK_ATTEMPTS_MAX if plan_check.talking(shot) or plan_check.voiceover(shot) else ATTEMPTS
+    return TALK_ATTEMPTS_MAX if plan_check.talking(shot) or plan_check.voiceover(shot) or plan_check.silent(shot) else ATTEMPTS
 
 
 def probe_rounds_cap(shot):
     """E264: the most shot-probe rounds one shot may be probed in: 1 for a talking or voice-over shot (so at most
     TALK_ATTEMPTS_MAX = 2 generations a run), PROBE_ATTEMPTS_MAX for any other."""
-    return TALK_PROBE_ROUNDS_MAX if plan_check.talking(shot) or plan_check.voiceover(shot) else PROBE_ATTEMPTS_MAX
+    return TALK_PROBE_ROUNDS_MAX if plan_check.talking(shot) or plan_check.voiceover(shot) or plan_check.silent(shot) else PROBE_ATTEMPTS_MAX
 
 
 # E266 (owner 2026-11-02, "Pavo: generate, compare, use the best"): what a check flag means for a clip that is kept.
@@ -1479,6 +1489,27 @@ def still_mouth_flags(lip_python, face_model, clip):
                                                                "closed_opening", "face_frames", "frames")}}
 
 
+SILENT_NOT_CHECKED = ("MOUTH_NOT_CLOSED", "MOUTH_UNMEASURED")   # a silent actor may breathe, laugh softly or work: a note
+
+
+def silent_mouth_flags(lip_python, face_model, clip, shot=None):
+    """Owner 2026-11-04: a silent Pavo clip has no speech-like mouth motion while our line plays. The existing
+    lipsync_check --still-mouth measures it cheaply (the same landmarker and lip opening, over the whole clip, a superset
+    of the time our line plays): MOUTH_TALKING and FACE_NOT_FOUND stay hard flags (a face lost is a visual defect, as
+    ever). MOUTH_NOT_CLOSED and MOUTH_UNMEASURED are not flags here (an acting mouth may open a little): they are kept in
+    the measures as `silent_mouth.warnings` (WARN_MOUTH_NOT_CLOSED ...) for the reviewer's real look at the clip, which
+    stays the authority. A profile shot's missing face (view "profile") is a warning too: the landmarker reads frontal
+    faces, so the reviewer judges the face by eye (WARN_FACE_NOT_FOUND_PROFILE)."""
+    flags, measures = still_mouth_flags(lip_python, face_model, clip)
+    warnings = ["WARN_" + f for f in flags if f in SILENT_NOT_CHECKED]
+    kept = [f for f in flags if f not in SILENT_NOT_CHECKED]
+    if "FACE_NOT_FOUND" in kept and ((shot or {}).get("pavo") or {}).get("view") == "profile":
+        kept.remove("FACE_NOT_FOUND")
+        warnings.append("WARN_FACE_NOT_FOUND_PROFILE")
+    measures["still_mouth"]["silent_warnings"] = warnings
+    return kept, measures
+
+
 WIDE = re.compile(r"(?i)\b(?:extreme )?wide shot\b|\baerial\b")
 
 
@@ -1558,6 +1589,9 @@ def shot_runner(shot, index, plan, layout, refs, work, client, download, lip_pyt
 
     def check(path):
         flags = clip_flags(path, aspect)
+        if plan_check.silent(shot):   # owner 2026-11-04: nobody speaks on screen; our line plays from the voice track
+            more, measures = silent_mouth_flags(lip_python, face_model, path, shot)
+            return flags + more, measures
         if still:       # plan B: the Keeper on screen, silent; his line plays from the voice track
             more, measures = still_mouth_flags(lip_python, face_model, path)
             return flags + more, measures
@@ -1999,8 +2033,17 @@ def stored_template_version(entry):
     """The prompt-template version a stored shot entry was generated with: a standard talking shot's request records
     pavo_prompt.VERSION in its audio (`tail_pad`, request_digest); a hand-written prompt (before E290/E293) records none,
     so it is older than every version (None)."""
-    audio = ((entry or {}).get("request") or {}).get("audio") or {}
-    return audio.get("tail_pad") if isinstance(audio, dict) else None
+    request = (entry or {}).get("request") or {}
+    audio = request.get("audio") or {}
+    if isinstance(audio, dict) and audio.get("tail_pad"):
+        return audio["tail_pad"]
+    return request.get("silent")   # owner 2026-11-04: a silent clip records its template version (request_digest)
+
+
+def current_template(version):
+    """A stored version that is the current template of its family: the talking one (pavo_prompt.VERSION) or the silent
+    one (pavo_prompt.SILENT_VERSION): a silent line is not 'older' than the talking template, it has its own."""
+    return version in (pavo_prompt.VERSION, pavo_prompt.SILENT_VERSION)
 
 
 def stored_generations(episode, ids, shots_dir=None):
@@ -2035,7 +2078,7 @@ def stored_generation_problems(episode, ids, shots_dir=None, regen_path=None, st
             continue
         if all(visual_defect(c.get("flags")) for c, _ in rows):
             continue
-        if all(v != pavo_prompt.VERSION for _, v in rows):
+        if not any(current_template(v) for _, v in rows):
             continue   # every stored generation is from an older template: one generation with the current one is allowed
         out.append(sid)
     return out
@@ -2145,9 +2188,10 @@ def standing_rule_verdict(plan, sid, shots_dir=None, regen_path=None, lessons_pa
     if rule is None:
         return False, "no standing rule recorded"
     shot = next((s for s in plan.get("shots") or [] if s.get("id") == sid), None) or {}
-    if not plan_check.talking(shot) or not pavo_prompt.standard(shot):
-        return False, f"PROBE_STANDING_NOT_STANDARD {sid} (a talking shot on pavo_prompt.build, the E293 template)"
-    if pavo_audio.route_of(shot) != pavo_audio.PAVO:
+    quiet = plan_check.silent(shot)   # owner 2026-11-04: a silent clip has no audio route; one generation a prompt revision
+    if not (plan_check.talking(shot) or quiet) or not pavo_prompt.standard(shot):
+        return False, f"PROBE_STANDING_NOT_STANDARD {sid} (a talking or silent shot on pavo_prompt.build, the E293 template)"
+    if not quiet and pavo_audio.route_of(shot) != pavo_audio.PAVO:
         return False, f"PROBE_PAVO_AUDIO_OURS {sid} (the owner's rule: Pavo speaks the line, pavo_audio \"pavo\")"
     episode = plan.get("episode")
     root = Path(shots_dir) if shots_dir else REPO / "migration" / "evidence" / "shots" / str(episode)
@@ -2235,7 +2279,7 @@ def older_template_shots(episode, ids, shots_dir=None):
     older than the current one: they take EXACTLY ONE new generation (probe_step passes max_generations=1)."""
     out = []
     for sid, rows in stored_generations(episode, ids, shots_dir).items():
-        if not all(visual_defect(c.get("flags")) for c, _ in rows) and all(v != pavo_prompt.VERSION for _, v in rows):
+        if not all(visual_defect(c.get("flags")) for c, _ in rows) and not any(current_template(v) for _, v in rows):
             out.append(sid)
     return out
 
@@ -2265,6 +2309,12 @@ def probe_ids(plan, text, attempts, shots_dir=None, regen_path=None, lessons_pat
             raise SystemExit("PROBE_PAVO_AUDIO_OURS " + " ".join(ours) + " (the owner's standing rule: Pavo speaks the hook, "
                              "every character line and every Keeper line; the plan must say pavo_audio \"pavo\" before a "
                              "probe, or Pavo's own track is dropped)")
+    again_silent = [x for x in dict.fromkeys(ids) if plan_check.silent(by_id[x]) and any(
+        p == by_id[x].get("prompt") for _, p, _ in _probe_rows(plan.get("episode"), x, shots_dir))]
+    if again_silent:   # owner 2026-11-04 + E296: a silent line takes ONE generation per prompt revision, never two of one
+        raise SystemExit("PROBE_SAME_PROMPT " + " ".join(again_silent) + " (revision " + " ".join(
+            prompt_revision(by_id[x].get("prompt")) for x in again_silent) + " of a silent clip was already generated: "
+            "change the prompt, one generation a revision)")
     verdicts = {x: standing_rule_verdict(plan, x, shots_dir, regen_path, lessons_path) for x in dict.fromkeys(ids)}
     standing = [x for x, (ok, _) in verdicts.items() if ok]
     hard = [why for ok, why in verdicts.values() if not ok and why.startswith(("PROBE_STANDING_CAP", "PROBE_SAME_PROMPT"))]
