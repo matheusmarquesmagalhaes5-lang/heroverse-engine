@@ -1,0 +1,31 @@
+{
+ "version": "pilot-package-v1",
+ "pilot_id": "pilot-020",
+ "series": "buzzy-long",
+ "episode": "genesis-10-11-long",
+ "thumb_episode": "genesis-10-11-long",
+ "title": "Why Did God Scatter the Builders of Babel? | Tower of Babel | Genesis 11 Bible Story (KJV)",
+ "title_length": 90,
+ "description": "Genesis 10-11 (King James Version, public domain), dramatized with AI-generated visuals; the scenes are imagined, the quoted words are the KJV.\n\n0:00 One language, one tower\n1:50 Brick and slime\n2:53 Let us build a tower\n4:23 The Lord came down\n5:14 The language confounded\n6:39 Why it is called Babel\n7:35 A name God gives\n\nWhat are you building to make a name for yourself? Tell me in the comments.",
+ "tags": [
+  "tower of babel",
+  "babel",
+  "genesis 11",
+  "bible story",
+  "kjv",
+  "nimrod",
+  "confusion of tongues"
+ ],
+ "category_id": "29",
+ "playlist": null,
+ "default_language": "en",
+ "made_for_kids": false,
+ "privacy_on_upload": "private",
+ "thumbnail": "thumbnail.jpg",
+ "ai_generated_visuals": true,
+ "altered_or_synthetic_disclosure": "Bible-story reconstruction with synthetic narration; synthetic disclosure on.",
+ "first_comment": "They said let us make us a name. God said to Abram, I will make thy name great. What are you building your name on today?",
+ "output_sha256": "0386d34a1501477d6ea487b3c3cf53caedb0a898d70e7b15feb90e36bad09937",
+ "upload_performed": false,
+ "publication_performed": false
+}
