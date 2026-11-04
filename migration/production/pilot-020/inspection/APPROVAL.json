@@ -1,0 +1,20 @@
+{
+ "approved": true,
+ "output_sha256": "0386d34a1501477d6ea487b3c3cf53caedb0a898d70e7b15feb90e36bad09937",
+ "reviewer": "HeroVerse three-stage approval (owner rule 2026-10-19: mined structure + modeling + authenticity, no person approves)",
+ "reviewed_at": "2026-11-04T22:14:59Z",
+ "qa_status": "PASS",
+ "gates": {
+  "qa": "PASS",
+  "preflight": "PASS",
+  "scorecard_hard": "PASS",
+  "watched_review": {
+   "overall": null,
+   "model": "claude-session-reviewer"
+  },
+  "prepublish_gate": "PASS",
+  "structure": "PASS",
+  "authenticity": "PASS"
+ },
+ "notes": "Scorecard and watched review in out/review.json; final decision in out/gate.json."
+}
