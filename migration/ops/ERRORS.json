@@ -4790,6 +4790,31 @@
      "process"
     ]
    }
+  },
+  {
+   "id": "E296",
+   "date": "2026-11-04",
+   "class": [
+    "process"
+   ],
+   "prior": [
+    "E287",
+    "E288",
+    "E290",
+    "E291",
+    "E292",
+    "E293",
+    "E295"
+   ],
+   "error": "Per-line owner confirmation stalled production: each Pavo line whose stored generations failed (words on Pavo's own track, lips out of sync, NO_VIDEO) needed a fresh owner 'Autorizo' per line (E295), so the M2 Noah hook/close and the Babel lines sat blocked overnight waiting for a decision the owner had already given as fixed rules (\"Eu já te dei as regras.. não precisa ficar me consultando.. as regras são fixas.\"). In the same class, probe 41743247133 ran b-tower, b-brick and k-restrain with plan pavo_audio \"ours\", so Pavo's own track was discarded against the owner's rule. Root cause: E292/E295 encoded only per-line authorizations, not the owner's standing rule, and nothing refused a probe whose plan contradicted the Pavo-audio rule.",
+   "fix": "migration/channel/owner_regen.json `standing_rule` (owner quote, failures words/sync/NO_VIDEO, per_prompt_revision 1, max_extra_per_line 3, since_run, pavo_audio pavo). episode_build.standing_rule_verdict lets a talking line on pavo_prompt.build (E293) with pavo_audio pavo, whose stored generations ALL carry a recorded failure (flags, speech-check sidecar words_differ / SPEECH_WORDS_NOT_EXACT, a shot-remux sync flag, a NO_VIDEO round), take exactly ONE new generation when the plan's prompt differs from every stored request prompt (PROBE_SAME_PROMPT otherwise) and a pavo_prompt.py lesson names the shot and the 12-hex prompt revision (PROBE_STANDING_LESSON); at 3 generations after since_run it stops (PROBE_STANDING_CAP, on every path, E292's visual one too). Under the rule a probe of a talking shot whose route is \"ours\" is refused (PROBE_PAVO_AUDIO_OURS). The daily free Pavo quota stays enforced by the dispatch guard and the run-local ledger (E128). Every other refusal is unchanged.",
+   "antidote": {
+    "file": "migration/production/bible/test_episode_build.py",
+    "contains": "def test_e296_the_owners_standing_rule_one_generation_per_prompt_revision_up_to_three",
+    "covers": [
+     "process"
+    ]
+   }
   }
  ]
 }

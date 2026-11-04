@@ -1,10 +1,14 @@
 {
  "schema": "heroverse-owner-regen-v1",
- "note": "E295: the owner's recorded authorizations for ONE more Pavo generation of a line that already has stored generations (E292). episode_build.owner_regen_caps reads it: a listed (episode, shot) may hold at most stored_at_authorization + extra_generations stored generations; anything else stays refused by PROBE_STORED_GENERATIONS. Only the owner's own reply creates an entry.",
+ "note": "E295: the owner's recorded authorizations for ONE more Pavo generation of a line that already has stored generations (E292). episode_build.owner_regen_caps reads it: a listed (episode, shot) may hold at most stored_at_authorization + extra_generations stored generations; anything else stays refused by PROBE_STORED_GENERATIONS. Only the owner's own reply creates an entry. E296: `standing_rule` is the owner's standing rule of 2026-11-04 (no per-line consultation): episode_build.standing_rule_verdict lets a talking line whose stored generations ALL failed on words, sync or NO_VIDEO take ONE new generation per changed pavo_prompt.build prompt (a recorded pavo_prompt.py lesson names the shot and the revision), with pavo_audio \"pavo\", at most max_extra_per_line generations counted from the probe records after since_run, inside the daily free Pavo quota (dispatch guard, E128).",
  "authorizations": [
   {
    "episode": "genesis-10-11-long",
-   "shots": ["b-brick", "b-tower", "k-restrain"],
+   "shots": [
+    "b-brick",
+    "b-tower",
+    "k-restrain"
+   ],
    "stored_at_authorization": 1,
    "extra_generations": 1,
    "date": "2026-11-03",
@@ -12,5 +16,25 @@
    "owner_reply": "Autorizo",
    "context": "Babel long: on Pavo's own track the words of b-brick, b-tower and k-restrain were wrong (speech-check 41729891998); on our line the lips were out of sync (shot-remux 41731930737, SyncNet offset -13); shot-probe 41733618212 refused a second generation (E292). The new generation uses the rebuilt E293 prompts and shorter lines."
   }
- ]
+ ],
+ "standing_rule": {
+  "date": "2026-11-04",
+  "owner_quote": "Eu já te dei as regras.. não precisa ficar me consultando.. as regras são fixas.",
+  "owner_rules": [
+   "Pavo speaks the hook, every character line and every Keeper line",
+   "não existe esse negócio do clipe não passar… a questão é o prompt… sempre fazer o prompt modelado [no que passou]",
+   "Quero com o áudio do pavo também.. quero o vídeo do pavo na íntegra. A narração feita vai ser pras imagens",
+   "quality >= 9.5, no rework, no spending"
+  ],
+  "failures": [
+   "words",
+   "sync",
+   "NO_VIDEO"
+  ],
+  "per_prompt_revision": 1,
+  "max_extra_per_line": 3,
+  "since_run": 41784344028,
+  "pavo_audio": "pavo",
+  "quota": "daily free Pavo units only (dispatch_guard + run-local ledger, E128); 0 credits by exact quote"
+ }
 }

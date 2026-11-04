@@ -50,6 +50,10 @@ stub_ours()
 # Owner 2026-11-03 made "pavo" the default route. This suite's fixtures are the E287 world (our request audio over Pavo's
 # picture, fake bytes), so they run on the explicit "ours" route; the Pavo-audio route has its own tests in test_pavo_audio.py.
 eb.pavo_audio.DEFAULT = eb.pavo_audio.OURS
+# E296: the committed owner's standing rule refuses an "ours" probe; this E287-world suite reads no committed record by
+# default (the standing-rule test passes its own record and checks the committed one by path)
+REAL_OWNER_REGEN = eb.OWNER_REGEN
+eb.OWNER_REGEN = Path(__file__).resolve().parent / "no-such-owner-regen.json"
 
 
 # genesis-07-short.json as main had it before plan B (#413, commit 1c1ed79): the lip-synced Keeper. Run 40307414749
@@ -479,11 +483,87 @@ class Generation(unittest.TestCase):
                 regen.write_text(json.dumps({"authorizations": [entry]}))
                 self.assertEqual(eb.owner_regen_caps("ep-x", regen), {})
         # the committed record: the three Babel lines, one extra generation each, nothing else
-        caps = eb.owner_regen_caps("genesis-10-11-long")
+        caps = eb.owner_regen_caps("genesis-10-11-long", REAL_OWNER_REGEN)
         self.assertEqual(caps, {"b-brick": 2, "b-tower": 2, "k-restrain": 2})
         # spent by shot-probe 41743247133 (b-brick and b-tower stored, k-restrain NO_VIDEO): no further generation
-        self.assertEqual(eb.owner_authorized_shots("genesis-10-11-long", ["b-brick", "b-tower", "k-restrain"]), [])
-        self.assertEqual(eb.owner_regen_caps("arc-02-noah-compilation-keeper"), {})
+        self.assertEqual(eb.owner_authorized_shots("genesis-10-11-long", ["b-brick", "b-tower", "k-restrain"],
+                                                   path=REAL_OWNER_REGEN), [])
+        self.assertEqual(eb.owner_regen_caps("arc-02-noah-compilation-keeper", REAL_OWNER_REGEN), {})
+
+    def test_e296_the_owners_standing_rule_one_generation_per_prompt_revision_up_to_three(self):
+        # E296: per-line owner confirmation stalled production (E292/E295 each needed a fresh "Autorizo" per line). Owner
+        # 2026-11-04: "as regras são fixas". Under the recorded standing rule a talking line whose stored generations ALL
+        # failed on words, sync or NO_VIDEO takes ONE new generation per changed prompt (pavo_prompt.build, a lesson naming
+        # the shot and the revision), with Pavo's own audio, at most 3 extra in all; every other refusal stays
+        import tempfile
+        plan = {"episode": "ep-x", "aspect_ratio": "16:9",
+                "narration": [{"text": "What if obeying God meant building a ship with no rain in sight?"}],
+                "shots": [{"id": "k-a", "kind": "keeper", "lines": [0], "pavo_audio": "pavo",
+                           "pavo": {"emotion": "calm kind", "wardrobe": "fire",
+                                    "setting": "Night in the open desert, the campfire's warm flicker on his face."}}]}
+        shot = plan["shots"][0]
+        shot["prompt"] = eb.pavo_prompt.build(shot, plan)
+        rule = {"date": "2026-11-04", "owner_quote": "as regras são fixas", "since_run": 100, "max_extra_per_line": 3,
+                "per_prompt_revision": 1, "pavo_audio": "pavo", "failures": ["words", "sync", "NO_VIDEO"]}
+
+        def record(root, name, prompt, flags=None, sha=None, error=None):
+            clip = ({"round": 1, "error": error, "generations": [{"submission": "submitted", "flags": ["NO_VIDEO"]}]}
+                    if error else {"clip_sha256": sha or name.encode().hex().ljust(64, "0")[:64], "flags": flags or []})
+            (Path(root) / f"{name}.json").write_text(json.dumps({"shots": {"k-a": {
+                "request": {"prompt": prompt, "audio": {"tail_pad": eb.pavo_prompt.VERSION}}, "clips": [clip]}}}))
+
+        with tempfile.TemporaryDirectory() as d, tempfile.TemporaryDirectory() as r:
+            regen, lessons = Path(r) / "owner_regen.json", Path(r) / "lessons.md"
+            regen.write_text(json.dumps({"authorizations": [], "standing_rule": rule}))
+            lessons.write_text("# l\n\n## 2026-11-04\n- **rule** seed lesson. Evidence: E296\n")
+            old = shot["prompt"].replace("calm kind", "grave knowing")
+            record(d, "50", old, flags=["AUDIO_NOT_OUR_LINE"])           # failed on words, before the rule
+            # refused with the SAME prompt: the stored generation already used this revision
+            record(d, "60", shot["prompt"], flags=["AUDIO_NOT_OUR_LINE"])   # failed on words, same prompt as the plan
+            with self.assertRaises(SystemExit) as err:
+                eb.probe_ids(plan, "k-a", "1", d, regen, lessons)
+            self.assertIn("PROBE_SAME_PROMPT k-a", str(err.exception))
+            (Path(d) / "60.json").unlink()
+            # a new revision without its lesson is refused; with the lesson it is allowed, exactly one generation
+            rev = eb.prompt_revision(shot["prompt"])
+            with self.assertRaises(SystemExit) as err:
+                eb.probe_ids(plan, "k-a", "1", d, regen, lessons)
+            self.assertIn("PROBE_STANDING_LESSON k-a", str(err.exception))
+            eb.pavo_prompt.append_lesson("2026-11-04", "rule", f"k-a revision {rev}: look calm kind, modelled on the "
+                                         "passing k-insight prompt.", "E296", lessons)
+            self.assertEqual(eb.probe_ids(plan, "k-a", "1", d, regen, lessons), (["k-a"], 1))
+            self.assertEqual(eb.standing_rule_shots(plan, ["k-a"], d, regen, lessons), ["k-a"])
+            # a stored generation without a recorded failure is used, never regenerated
+            record(d, "51", old, flags=[])
+            with self.assertRaises(SystemExit) as err:
+                eb.probe_ids(plan, "k-a", "1", d, regen, lessons)
+            self.assertIn("PROBE_STANDING_NOT_FAILED k-a", str(err.exception))
+            (Path(d) / "51.json").unlink()
+            # pavo_audio "ours" is refused under the rule (the error that dropped Pavo's track)
+            ours = json.loads(json.dumps(plan))
+            ours["shots"][0]["pavo_audio"] = "ours"
+            with self.assertRaises(SystemExit) as err:
+                eb.probe_ids(ours, "k-a", "1", d, regen, lessons)
+            self.assertIn("PROBE_PAVO_AUDIO_OURS k-a", str(err.exception))
+            # refused over the cap: three extra generations after since_run (a NO_VIDEO round counts), each failed
+            for i, p in enumerate(("p1", "p2")):
+                record(d, str(101 + i), old + p, flags=["AUDIO_NOT_OUR_LINE"])
+            record(d, "103", old + "p3", error="SHOT_FAILED k-a after 1 generations: NO_VIDEO")
+            with self.assertRaises(SystemExit) as err:
+                eb.probe_ids(plan, "k-a", "1", d, regen, lessons)
+            self.assertIn("PROBE_STANDING_CAP k-a", str(err.exception))
+            # without the rule, the E292 refusal is unchanged
+            (Path(d) / "103.json").unlink()
+            regen.write_text(json.dumps({"authorizations": []}))
+            with self.assertRaises(SystemExit) as err:
+                eb.probe_ids(plan, "k-a", "1", d, regen, lessons)
+            self.assertIn("PROBE_STORED_GENERATIONS k-a", str(err.exception))
+            # a rule asking for more than 3, or without the owner's quote, grants nothing
+            for bad in ({"max_extra_per_line": 4}, {"owner_quote": ""}, {"pavo_audio": "ours"}):
+                regen.write_text(json.dumps({"standing_rule": dict(rule, **bad)}))
+                self.assertIsNone(eb.standing_rule(regen))
+        committed = eb.standing_rule(REAL_OWNER_REGEN)   # the committed record carries the owner's rule
+        self.assertEqual((committed["max_extra_per_line"], committed["pavo_audio"]), (3, "pavo"))
 
     def test_e264_a_talking_shot_costs_two_generations_and_one_probe_round(self):
         # E264 (no rework): 6 generations x rounds spent up to 36 near-identical clips for 3 Keeper lines

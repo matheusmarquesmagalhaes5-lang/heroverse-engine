@@ -1989,7 +1989,7 @@ def stored_generations(episode, ids, shots_dir=None):
     return stored
 
 
-def stored_generation_problems(episode, ids, shots_dir=None, regen_path=None):
+def stored_generation_problems(episode, ids, shots_dir=None, regen_path=None, standing=()):
     """E292 (no re-probe of a line that already has stored Pavo generations): the shots of `ids` whose stored generations
     in a committed probe record of this episode do not ALL carry a visual-defect flag (visual_defect: the picture or the
     lips, never the words flags) and are not ALL from an older prompt-template version than pavo_prompt.VERSION (the
@@ -1997,7 +1997,7 @@ def stored_generation_problems(episode, ids, shots_dir=None, regen_path=None):
     judged on our audio by shot-remux (E287, E288), not generated again. E295: a shot the owner authorized one more
     generation for (owner_authorized_shots) passes while its stored count is below the authorized cap."""
     out = []
-    owner = set(owner_authorized_shots(episode, ids, shots_dir, regen_path))
+    owner = set(owner_authorized_shots(episode, ids, shots_dir, regen_path)) | set(standing)
     for sid, rows in stored_generations(episode, ids, shots_dir).items():
         if sid in owner:
             continue
@@ -2042,6 +2042,141 @@ def owner_authorized_shots(episode, ids, shots_dir=None, path=None):
     return [sid for sid in dict.fromkeys(ids) if sid in caps and spent.get(sid, 0) < caps[sid]]
 
 
+# E296 (owner's standing rule, 2026-11-04: "as regras são fixas", no per-line consultation): Pavo speaks every talking
+# line with its own audio; a line whose stored generations ALL failed on words, sync or NO_VIDEO takes ONE new generation
+# per prompt revision (a changed pavo_prompt.build prompt, modelled on the passing prompts, explained by a recorded
+# `pavo_prompt.py lesson` that names the shot and the revision), at most STANDING_EXTRA_MAX in all from the rule's
+# `since_run`, inside the daily free Pavo quota that the dispatch guard and the run-local ledger already enforce (E128).
+STANDING_EXTRA_MAX = 3
+STANDING_FAILURES = ("words", "sync", "NO_VIDEO")
+
+
+def standing_rule(path=None):
+    """The owner's standing regeneration rule in migration/channel/owner_regen.json (E296), or None. A rule without
+    the owner's quote, a cap above STANDING_EXTRA_MAX or a route other than "pavo" grants nothing."""
+    try:
+        data = load(Path(path) if path else OWNER_REGEN)
+    except (OSError, ValueError):
+        return None
+    rule = data.get("standing_rule") if isinstance(data, dict) else None
+    if not isinstance(rule, dict) or not str(rule.get("owner_quote") or "").strip():
+        return None
+    cap, since = rule.get("max_extra_per_line"), rule.get("since_run")
+    if not (isinstance(cap, int) and 1 <= cap <= STANDING_EXTRA_MAX and isinstance(since, int) and since >= 0
+            and rule.get("pavo_audio") == pavo_audio.PAVO and rule.get("per_prompt_revision") == 1):
+        return None
+    return rule
+
+
+def prompt_revision(prompt):
+    """The 12-hex revision id of a Pavo prompt (sha256 of its text): the id a standing-rule lesson names."""
+    return hashlib.sha256(str(prompt or "").encode()).hexdigest()[:12]
+
+
+def _probe_rows(episode, sid, shots_dir=None):
+    """[(record stem, request prompt, clip row)] of one shot in this episode's committed probe records."""
+    root = Path(shots_dir) if shots_dir else REPO / "migration" / "evidence" / "shots" / str(episode)
+    out = []
+    for f in sorted(root.glob("*.json")):
+        try:
+            entry = (load(f).get("shots") or {}).get(sid) or {}
+        except (OSError, ValueError, AttributeError):
+            continue
+        prompt = (entry.get("request") or {}).get("prompt")
+        out += [(f.stem, prompt, c) for c in entry.get("clips") or [] if isinstance(c, dict)]
+    return out
+
+
+def generation_failure(row, remux_flags=(), sidecar=None):
+    """Why one stored generation of a talking line failed (E296), or None when nothing failed: "NO_VIDEO" (a submitted
+    round that returned no video), "words" (a words flag, or the pinned ASR sidecar heard other words), "sync" (a lips
+    flag on the clip or on a shot-remux of its picture), "visual" (any other flag: E292 already allows a new round)."""
+    gens = [g for g in row.get("generations") or [] if isinstance(g, dict)]
+    if not row.get("clip_sha256"):
+        if "NO_VIDEO" in str(row.get("error") or "") or any("NO_VIDEO" in (g.get("flags") or []) for g in gens):
+            return "NO_VIDEO"
+        return None
+    flags = list(row.get("flags") or [])
+    sc = sidecar if isinstance(sidecar, dict) else {}
+    if any(f in WORDS_FLAGS for f in flags) or (sc.get("review_notes") or {}).get("words_differ") is True \
+            or "SPEECH_WORDS_NOT_EXACT" in (sc.get("verdict") or []):
+        return "words"
+    if any(f in SOFT_FLAGS for f in flags + list(remux_flags)):
+        return "sync"
+    return "visual" if flags else None
+
+
+def standing_rule_verdict(plan, sid, shots_dir=None, regen_path=None, lessons_path=None):
+    """(True, "") when the owner's standing rule (E296) lets talking line `sid` take ONE new generation now, else
+    (False, the refusal). It never widens anything for a line without the rule's conditions."""
+    rule = standing_rule(regen_path)
+    if rule is None:
+        return False, "no standing rule recorded"
+    shot = next((s for s in plan.get("shots") or [] if s.get("id") == sid), None) or {}
+    if not plan_check.talking(shot) or not pavo_prompt.standard(shot):
+        return False, f"PROBE_STANDING_NOT_STANDARD {sid} (a talking shot on pavo_prompt.build, the E293 template)"
+    if pavo_audio.route_of(shot) != pavo_audio.PAVO:
+        return False, f"PROBE_PAVO_AUDIO_OURS {sid} (the owner's rule: Pavo speaks the line, pavo_audio \"pavo\")"
+    episode = plan.get("episode")
+    root = Path(shots_dir) if shots_dir else REPO / "migration" / "evidence" / "shots" / str(episode)
+    rows = _probe_rows(episode, sid, shots_dir)
+    remux = {}
+    for _, _, c in rows:
+        if c.get("remux_of"):
+            remux.setdefault(c["remux_of"], []).extend(c.get("flags") or [])
+    gens = [(stem, p, c) for stem, p, c in rows if not c.get("remux_of")]
+    failures, clean = [], []
+    for _, _, c in gens:
+        sc = None
+        if c.get("clip_sha256"):
+            try:
+                sc = load(root / "speech" / f"{c['clip_sha256']}.json")
+            except (OSError, ValueError):
+                sc = None
+        why = generation_failure(c, remux.get(c.get("clip_sha256"), ()), sc)
+        if why is not None:
+            failures.append(why)
+        elif c.get("clip_sha256"):
+            clean.append(c["clip_sha256"][:12])
+    if clean or not failures:
+        return False, (f"PROBE_STANDING_NOT_FAILED {sid} (a stored generation has no recorded failure on words, sync or "
+                       f"NO_VIDEO{': ' + ' '.join(clean) if clean else ''}: use it, or record its speech-check / shot-remux first)")
+    prompt = shot.get("prompt")
+    try:
+        built = pavo_prompt.build(shot, plan)
+    except SystemExit as exc:
+        return False, f"PROBE_STANDING_NOT_STANDARD {sid} ({exc})"
+    if built != prompt:
+        return False, f"PROBE_STANDING_NOT_STANDARD {sid} (the plan's prompt is not pavo_prompt.build's)"
+    rev = prompt_revision(prompt)
+    if any(p == prompt for _, p, _ in gens):
+        return False, f"PROBE_SAME_PROMPT {sid} (revision {rev} was already generated: change the prompt, one generation a revision)"
+    since = rule["since_run"]
+    spent = 0
+    for stem, _, c in gens:
+        if stem.isdigit() and int(stem) > since:
+            n = len([g for g in c.get("generations") or [] if isinstance(g, dict) and g.get("submission") == "submitted"])
+            spent += n or (1 if c.get("clip_sha256") else 0)
+    cap = rule["max_extra_per_line"]
+    if spent >= cap:
+        return False, (f"PROBE_STANDING_CAP {sid} ({spent} of {cap} extra generations spent under the owner's standing "
+                       "rule: stop and report)")
+    try:
+        known = pavo_prompt.lessons(lessons_path)
+    except SystemExit as exc:
+        return False, f"PROBE_STANDING_LESSON {sid} ({exc})"
+    if not any(sid in l["text"] and rev in (l["text"] + " " + l["evidence"]) for l in known):
+        return False, (f"PROBE_STANDING_LESSON {sid} (record `pavo_prompt.py lesson` naming {sid} and revision {rev}: "
+                       "what changed and which passing prompt it is modelled on)")
+    return True, ""
+
+
+def standing_rule_shots(plan, ids, shots_dir=None, regen_path=None, lessons_path=None):
+    """The shots of `ids` that the owner's standing rule lets take EXACTLY ONE new generation now (E296)."""
+    return [sid for sid in dict.fromkeys(ids)
+            if standing_rule_verdict(plan, sid, shots_dir, regen_path, lessons_path)[0]]
+
+
 def submitted_generations(episode, ids, shots_dir=None):
     """{shot id: generations submitted to Pavo} in the committed probe records of this episode, a failed round included
     (E295: a generation that came back NO_VIDEO still spent the owner's authorization). A remux row is not one."""
@@ -2073,7 +2208,7 @@ def older_template_shots(episode, ids, shots_dir=None):
     return out
 
 
-def probe_ids(plan, text, attempts, shots_dir=None, regen_path=None):
+def probe_ids(plan, text, attempts, shots_dir=None, regen_path=None, lessons_path=None):
     """shot-probe.yml's inputs, checked before any secret: ([shot ids of this plan], attempts 1-PROBE_ATTEMPTS_MAX)."""
     ids = [x.strip() for x in (text or "").split(",") if x.strip()]
     bad = [x for x in ids if not SHOT_ID_INPUT.fullmatch(x)]
@@ -2092,8 +2227,22 @@ def probe_ids(plan, text, attempts, shots_dir=None, regen_path=None):
     if talk:   # E264: no rework: a talking or voice-over shot is probed in one round (2 generations), then the fallback
         raise SystemExit("PROBE_ATTEMPTS_REFUSED " + " ".join(talk) + f" (a talking or voice-over shot takes at most "
                          f"{TALK_PROBE_ROUNDS_MAX} round: {TALK_ATTEMPTS} generation, a second only for a visual defect)")
-    again = stored_generation_problems(plan.get("episode"), ids, shots_dir, regen_path)
-    if again:   # E292: the owner's cap: every stored generation of a line is used (remux, trim, crossfade) before another is paid for
+    if standing_rule(regen_path) is not None:   # E296: the owner's rule: Pavo speaks every talking line
+        ours = [x for x in ids if plan_check.talking(by_id[x]) and pavo_audio.route_of(by_id[x]) == pavo_audio.OURS]
+        if ours:
+            raise SystemExit("PROBE_PAVO_AUDIO_OURS " + " ".join(ours) + " (the owner's standing rule: Pavo speaks the hook, "
+                             "every character line and every Keeper line; the plan must say pavo_audio \"pavo\" before a "
+                             "probe, or Pavo's own track is dropped)")
+    verdicts = {x: standing_rule_verdict(plan, x, shots_dir, regen_path, lessons_path) for x in dict.fromkeys(ids)}
+    standing = [x for x, (ok, _) in verdicts.items() if ok]
+    hard = [why for ok, why in verdicts.values() if not ok and why.startswith(("PROBE_STANDING_CAP", "PROBE_SAME_PROMPT"))]
+    if hard:   # E296: under the standing rule the cap and the one-generation-a-revision hold on every path, E292's too
+        raise SystemExit("; ".join(hard))
+    again = stored_generation_problems(plan.get("episode"), ids, shots_dir, regen_path, standing)
+    if again:
+        reasons = [verdicts[x][1] for x in again if verdicts[x][1].startswith("PROBE_STANDING_")]
+        if reasons:   # the standing rule applies to the line, and this is exactly why it refuses
+            raise SystemExit("; ".join(reasons))   # E292: the owner's cap: every stored generation of a line is used (remux, trim, crossfade) before another is paid for
         raise SystemExit("PROBE_STORED_GENERATIONS " + " ".join(again) + " (a line that already has stored generations is "
                          "judged on our audio by shot-remux.yml; a new probe needs a visual-defect flag recorded on ALL of them, "
                          f"stored generations that are ALL from a template older than {pavo_prompt.VERSION}, one new generation, "
@@ -2166,6 +2315,7 @@ def probe_step(plan, work, lip_python, face_model, out, ids, attempts, client=No
                                 "kjv_quote": kjv_quote(plan, sid)}   # owner 2026-11-03: WARN_KJV_WORDS applies
     single = set(older_template_shots(plan["episode"], ids))   # coordinator 2026-11-03: ONE new generation, no second
     single |= set(owner_authorized_shots(plan["episode"], ids))   # E295: the owner's one extra generation, no second
+    single |= set(standing_rule_shots(plan, ids))   # E296: one generation per prompt revision under the standing rule
     inflight = None   # review of #475: (shot, round) whose generations are not in the record yet
     blocked = set()   # E129 (review of #476): a shot whose prompt Pavo's filter refused is never sent again this run
     try:
