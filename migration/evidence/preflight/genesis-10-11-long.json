@@ -1,0 +1,274 @@
+{
+ "plan": "migration/production/bible/plans/genesis-10-11-long.json",
+ "episode": "genesis-10-11-long",
+ "checked_at": "2026-11-04T10:34:21Z",
+ "plan_check": {
+  "problems": [],
+  "pending": [],
+  "estimate": {
+   "seconds": 480.2,
+   "keeper_share": 0.035,
+   "lesson_share": 0.048,
+   "establishing_share": 0.0,
+   "lines": 55,
+   "shots": 33,
+   "spoken_lines": 3,
+   "words": 1275
+  }
+ },
+ "characters": [
+  {
+   "id": "keeper",
+   "status": "APPROVED",
+   "refs": [
+    "front"
+   ],
+   "talk_refs": [
+    "talk"
+   ],
+   "voice": "am_michael",
+   "image_records": [
+    "ch-keeper-front",
+    "ch-keeper-talk"
+   ]
+  },
+  {
+   "id": "builder",
+   "status": "APPROVED",
+   "refs": [
+    "front"
+   ],
+   "talk_refs": [],
+   "voice": "bm_lewis",
+   "image_records": [
+    "ch-builder-front"
+   ]
+  }
+ ],
+ "cf_images": {
+  "recorded_today": 0,
+  "daily_allocation": 44,
+  "sheets_needed": {},
+  "fits_today": true
+ },
+ "voice": {
+  "ran": true,
+  "reused": false,
+  "checkpoint_sha256": "239ce2bb6c20a5baf1c2731abe5ce35e18939d6329e8e671e006b9ea18ba026f",
+  "problems": [
+   "COMPOSE SPEAKER_CLIP_SHORT b-name (5.00 s for 5.17 s, a hold of at most 1.3 s)"
+  ],
+  "pace": {
+   "narration": [
+    1.87,
+    2.27,
+    2.71,
+    3.21,
+    3.11,
+    2.31,
+    2.36,
+    2.96,
+    2.67,
+    3.01,
+    2.84,
+    3.05,
+    2.55,
+    2.75,
+    3.02,
+    3.14,
+    2.99,
+    2.6,
+    2.6,
+    2.34,
+    2.86,
+    2.92,
+    2.67,
+    2.8,
+    2.81,
+    2.85,
+    3.3,
+    3.12,
+    2.89,
+    2.92,
+    2.74,
+    2.24,
+    2.55,
+    2.78,
+    2.5,
+    2.43,
+    2.95,
+    2.97,
+    3.19,
+    2.6,
+    2.93,
+    2.42,
+    2.73,
+    2.99,
+    2.81,
+    2.4,
+    2.8,
+    2.62,
+    2.12,
+    2.92,
+    3.22,
+    2.08
+   ],
+   "builder": [
+    3.38,
+    3.66,
+    3.89
+   ]
+  },
+  "measured": {
+   "total": 483.839,
+   "keeper_share": 0.044,
+   "lesson_share": 0.057,
+   "retimed": {
+    "k-irony": {
+     "speech": 5.001,
+     "retimed": 4.55,
+     "atempo": 1.0991
+    },
+    "k-close": {
+     "speech": 8.166,
+     "retimed": 8.55,
+     "atempo": 0.9551
+    }
+   }
+  }
+ },
+ "requests": {
+  "ran": false,
+  "problems": [],
+  "why": "needs --refs, a clean plan and a clean measured voice"
+ },
+ "setups": {
+  "shots": [
+   {
+    "speaker": "keeper",
+    "references": {
+     "ch-keeper-talk": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
+    },
+    "binding": "speaks the words of the audio clip, {pronoun} lips moving in sync with the voice",
+    "line": "one language one plan one tower to reach the sky then god came down why",
+    "shot": "k-hook",
+    "kind": "talk",
+    "probe": "PROBE_REQUIRED",
+    "generations": 0,
+    "minimum": 6
+   },
+   {
+    "speaker": "builder",
+    "references": {
+     "ch-builder-front": "2e569bc474691e2113df210a7afa1075f6a1bb1a7fb9d955d15b4a260851562f"
+    },
+    "binding": "speaks the words of the audio clip, {pronoun} lips moving in sync with the voice",
+    "line": "and they said one to another go to let us make brick and burn them throughly",
+    "shot": "b-brick",
+    "kind": "talk",
+    "probe": "PROBE_REQUIRED",
+    "generations": 0,
+    "minimum": 6
+   },
+   {
+    "speaker": "builder",
+    "references": {
+     "ch-builder-front": "2e569bc474691e2113df210a7afa1075f6a1bb1a7fb9d955d15b4a260851562f"
+    },
+    "binding": "speaks the words of the audio clip, {pronoun} lips moving in sync with the voice",
+    "line": "go to let us build us a city and a tower whose top may reach unto heaven",
+    "shot": "b-tower",
+    "kind": "talk",
+    "probe": "PROBE_REQUIRED",
+    "generations": 0,
+    "minimum": 6
+   },
+   {
+    "speaker": "builder",
+    "references": {
+     "ch-builder-front": "2e569bc474691e2113df210a7afa1075f6a1bb1a7fb9d955d15b4a260851562f"
+    },
+    "binding": "speaks the words of the audio clip, {pronoun} lips moving in sync with the voice",
+    "line": "and let us make us a name lest we be scattered abroad upon the face of the whole earth",
+    "shot": "b-name",
+    "kind": "talk",
+    "probe": "PROBE_REQUIRED",
+    "generations": 0,
+    "minimum": 6
+   },
+   {
+    "speaker": "keeper",
+    "references": {
+     "ch-keeper-talk": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
+    },
+    "binding": "speaks the words of the audio clip, {pronoun} lips moving in sync with the voice",
+    "line": "they built the tower to avoid being scattered the tower is what scattered them",
+    "shot": "k-irony",
+    "kind": "talk",
+    "probe": "PROBE_REQUIRED",
+    "generations": 0,
+    "minimum": 6
+   },
+   {
+    "speaker": "keeper",
+    "references": {
+     "ch-keeper-talk": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
+    },
+    "binding": "speaks the words of the audio clip, {pronoun} lips moving in sync with the voice",
+    "line": "what are you building your name on tell me below next the man who left everything subscribe",
+    "shot": "k-close",
+    "kind": "talk",
+    "probe": "PROBE_REQUIRED",
+    "generations": 0,
+    "minimum": 6
+   }
+  ],
+  "probes_required": [
+   "k-hook",
+   "b-brick",
+   "b-tower",
+   "b-name",
+   "k-irony",
+   "k-close"
+  ],
+  "rate_low": [],
+  "talk_attempts": 2,
+  "min_shot_chance": 0.9,
+  "run_chance_all_talking_shots": null
+ },
+ "shot_review": [
+  "REQUESTS_NOT_CHECKED"
+ ],
+ "binding": {
+  "plan": "d9c00f3988516de97d2e8a68e44dc45f61d56e01bf7576e393bd022cc00de72b",
+  "characters": "cfc5fc3b0e2b8075f319068bbe5bab2d7e836943b9161d1b2825d1012d9a7b04",
+  "image_records": {
+   "ch-keeper-front.json": "666eb65f6fc26529aa71af95bba873ac4bdb123c599b30d7e2fe7e1986399932",
+   "ch-keeper-talk.json": "c431a6013669385cb236c64158160cc6966337cdfb8ada711ed98f58b509b6cc",
+   "ch-builder-front.json": "e5c799cca6240a0727b36e6c4b49c175181cb70a3cba56de20f77e4d2b955ba8"
+  },
+  "setups": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "code": {
+   "episode_build.py": "f88e418de5ff073233ed56fc0945ae3370d63a17679502ac6ba606b7e41f72a6",
+   "plan_check.py": "860561a88a7a5503bc73b190b77bfcc69895d10e7a8067b83f6e20ecf3b1237c",
+   "voice_pace.py": "79873a74e40eba90eef2e38526ea2827e95de3ff64048d1666e69fb0aa04214f",
+   "lipsync_check.py": "5fa7aed2dbe007c556fd3e693ae31d0ef9c5bd11a4132773aa06eb78bf552983",
+   "syncnet.py": "0f6e65316b50850629e488e6167ad7159efc3b2480d27ced3166311e054633f7",
+   "episode_preflight.py": "1781cccdea1d34776e1a961a1c934cf357a66694579e1ec89ef83392709c6271",
+   "clip_timing.py": "44626ba6ea7f807a62a99dcabcca3751d55c01ce452718efe1fc1b9e6db73509",
+   "reviewer_identity.py": "b813ceb46a450e21f7fd3fd08b38fe77094f1b3fafaec8db3251f56f954be24d",
+   "owner_quality_policy.py": "093de8b9883d18d6e6f8eb08989696d180bb890556cc89de34aecb5fdcedb3ca"
+  }
+ },
+ "blockers": [
+  "VOICE COMPOSE SPEAKER_CLIP_SHORT b-name (5.00 s for 5.17 s, a hold of at most 1.3 s)",
+  "REQUESTS_NOT_CHECKED (run with --refs once the plan and the voice are clean)",
+  "PROBE_REQUIRED k-hook (0 of the >= 6 direct 0-credit Pavo generations of this line with its speaker, reference and binding, judged by lipsync_check, recorded in evidence/pavo/setups.json)",
+  "PROBE_REQUIRED b-brick (0 of the >= 6 direct 0-credit Pavo generations of this line with its speaker, reference and binding, judged by lipsync_check, recorded in evidence/pavo/setups.json)",
+  "PROBE_REQUIRED b-tower (0 of the >= 6 direct 0-credit Pavo generations of this line with its speaker, reference and binding, judged by lipsync_check, recorded in evidence/pavo/setups.json)",
+  "PROBE_REQUIRED b-name (0 of the >= 6 direct 0-credit Pavo generations of this line with its speaker, reference and binding, judged by lipsync_check, recorded in evidence/pavo/setups.json)",
+  "PROBE_REQUIRED k-irony (0 of the >= 6 direct 0-credit Pavo generations of this line with its speaker, reference and binding, judged by lipsync_check, recorded in evidence/pavo/setups.json)",
+  "PROBE_REQUIRED k-close (0 of the >= 6 direct 0-credit Pavo generations of this line with its speaker, reference and binding, judged by lipsync_check, recorded in evidence/pavo/setups.json)"
+ ],
+ "status": "BLOCKED"
+}
