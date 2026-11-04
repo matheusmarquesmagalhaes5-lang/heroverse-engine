@@ -101,5 +101,47 @@
   "compose": "engine",
   "structure": "bible-story-cut"
  },
- "slot": "2026-11-06T05:30:00Z"
+ "slot": "2026-11-06T05:30:00Z",
+ "review": {
+  "overall": 8.8,
+  "reviewer": "claude-session-reviewer",
+  "output_sha256": "6621f23170c759a281fd1bec5f8d9d2922d7b4a6dc268ffdb6ca570ba0c9867f",
+  "scores": {
+   "opening_and_promise": 8.8,
+   "picture_quality": 8.8,
+   "figure_and_background_integrity": 8.8,
+   "captions_readable_and_synced": 8.8,
+   "audio_clarity_and_mix": 8.8,
+   "pacing_and_visual_variety": 8.8,
+   "scripture_on_screen": 8.8,
+   "policy_safe": 10.0
+  },
+  "issues": [
+   "00:00 The local review flagged speech at the first frame (category a). The cut starts 0.25 s clear of the first word (E275); the flag is the recognizer's timestamp, not a cut word.",
+   "00:42 to 01:25 About 43 s on the terrace still while the Keeper narrates; no defect, a retention risk. The long's own pacing, kept as cut. The detector's 85.9 s 'no scene change' is its slow-motion limit, the sheet shows four scenes.",
+   "00:12 to 00:23 The talking builder's lips and the KJV caption (Genesis 11:4) sit together; sync not judged by ear."
+  ],
+  "defects": [
+   {
+    "issue": 0,
+    "category": "info",
+    "resolved": false
+   },
+   {
+    "issue": 1,
+    "category": "info",
+    "resolved": false
+   },
+   {
+    "issue": 2,
+    "category": "info",
+    "resolved": false
+   }
+  ],
+  "publish_decision": {
+   "decision": "publish",
+   "by": "claude-session-reviewer",
+   "note": "local review 41926740126 and the frame sheet of this exact master: no cut speech (edges 0.25 s clear), coherent scenes, KJV Genesis 11:4 caption, no policy issue. Audio NOT heard by this reviewer: the narration is the long's own audio, which the owner listened to (pilot-020 'Babel ok'); the ASR transcript of this file matches the script."
+  }
+ }
 }
