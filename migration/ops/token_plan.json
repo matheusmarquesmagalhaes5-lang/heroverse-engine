@@ -1,4 +1,5 @@
 {
+ "_doc": "2026-11-04 rebalance for the rest of the week (spent so far + planned left): long 85M left (Babel long and the next long), shorts 16M, clocks 20M, reviews/PRs 40M, reserve 35M for coordinator turns. Totals sum to budget (cap x 0.97).",
  "cadence": {
   "long_per_week": 7,
   "shorts_per_week": 28,
@@ -7,13 +8,13 @@
   "pr_cycles_per_week": 10
  },
  "reserve_share": 0.2,
- "budget": 430200000,
+ "budget": 463660000,
  "allocations": {
-  "long": 83326798,
-  "shorts": 147233202,
-  "clocks": 51480464,
-  "reviews_prs": 62119536,
-  "reserve": 86040000
+  "long": 119300000,
+  "shorts": 153800000,
+  "clocks": 23500000,
+  "reviews_prs": 47700000,
+  "reserve": 119360000
  },
  "scaled_to_budget": 0.814
 }

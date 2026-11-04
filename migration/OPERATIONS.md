@@ -304,7 +304,26 @@ One current home per subject:
   `BEAT_THE_REFERENCE_RULE.md`: research/measurement details subject to SYSTEM and current no-spending policy.
 - `STANDARD.md`: applicable rendering mechanics; historical audits and evidence are records, not another work queue.
 
+## Model routing and weekly pacing
+
+Owner 2026-11-04: use ~100% of the weekly Claude cap, landing at the reset (Saturday 19:00 UTC), never earlier
+(`project_share` 0.97). Run `python3 migration/ops/token_budget.py pace` at the start of a routine and before spawning
+heavy agents; it prints AHEAD / ON_PACE / BEHIND, the target tokens per hour and a per-model split.
+
+| Work | Model |
+| --- | --- |
+| Coordinator, final audiovisual judgement, tricky design or diagnosis | Opus, kept short |
+| Production, build, PR and CI agents, Inteligência Viva, reviews | Sonnet |
+| Light clock, polling, status reads, mechanical file moves | Haiku |
+
+- Never spawn Opus subagents for mechanical work; give each subagent the model that fits its task.
+- AHEAD (would hit the cap before the reset): shift work down one model tier and slow optional work (extra Shorts,
+  speculative research); keep the long in progress and its reviews.
+- BEHIND (spare capacity): pull forward queued production (the next long's stills and plan, extra Shorts within the
+  cadence cap in `token_plan.json`). Never lower quality or skip a review to use tokens.
+- ON_PACE: keep the rhythm. Re-run `pace` after any large agent; the 24 h rate drives the verdict.
+
 ## Shared Claude Code / ChatGPT execution: token budget
 
 The token budget (`SYSTEM.md` "Token budget") counts Claude Code only, from the local Claude transcripts. ChatGPT/Codex
-executor usage is a different account and is not counted here; the 50% cap governs Claude Code, and Codex keeps its own limits.
+executor usage is a different account and is not counted here; the project share (97%, owner 2026-11-04) of the weekly cap governs Claude Code, and Codex keeps its own limits.

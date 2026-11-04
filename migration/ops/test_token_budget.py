@@ -7,7 +7,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -178,8 +178,8 @@ class Budget(unittest.TestCase):
     def test_config_leaves_headroom_under_a_positive_cap(self):
         cfg = json.loads((ROOT / "migration/ops/token_budget.json").read_text())
         # owner 2026-10-31: half of the weekly tokens; owner 2026-11-03 lifted it ("pode tirar a trava de tokens,
-        # so distribuir melhor") to 0.9, keeping 10% so the account's weekly limit never stops the routines
-        self.assertEqual(cfg["project_share"], 0.9)
+        # so distribuir melhor") to 0.9; owner 2026-11-04 ("utilizar os 100%") to 0.97, keeping 3% headroom
+        self.assertEqual(cfg["project_share"], 0.97)
         self.assertGreater(cfg["weekly_cap_tokens"], 0)
 
     def test_settings_wires_the_hook_on_every_tool_and_prompt(self):
@@ -201,6 +201,47 @@ class Budget(unittest.TestCase):
         r = subprocess.run(["bash", "-c", cmds[0].replace(" check", " --help")], cwd=ROOT / "migration",
                            env=env, capture_output=True, text=True)
         self.assertNotIn("No such file", r.stderr)
+
+    def pace_at(self, now, used_by_hours_ago):
+        """pace() for CFG (budget 500, reset Sat 19:00Z) with `used_by_hours_ago` = [(hours ago, tokens)]."""
+        now = datetime.fromisoformat(now)
+        recs = [(now - timedelta(hours=h), w) for h, w in used_by_hours_ago]
+        state = tb.compute(CFG, now, use_cache=False)
+        state["used"] = sum(w for _, w in recs)
+        return tb.pace(CFG, state, recs, now)
+
+    def test_pace_ahead_names_the_hour_the_budget_runs_out(self):
+        # Wed 14:00Z, 77 h left; 300 used in the last 24 h: 12.5/h would burn the remaining 200 in 16 h, long before the reset
+        p = self.pace_at("2026-11-04T14:00:00+00:00", [(2, 100), (10, 100), (20, 100)])
+        self.assertEqual(p["verdict"], "AHEAD")
+        self.assertEqual(p["hit_cap_at"], "2026-11-05T06:00Z")
+        self.assertEqual(p["remaining"], 200)
+        self.assertEqual(p["hours_left"], 77.0)
+        self.assertLess(p["split_per_hour"]["opus"], p["split_per_hour"]["sonnet"])
+
+    def test_pace_behind_with_spare(self):
+        behind = self.pace_at("2026-11-04T14:00:00+00:00", [(60, 100), (3, 1)])
+        self.assertEqual(behind["verdict"], "BEHIND")
+        self.assertGreater(behind["spare_tokens"], 0)
+        self.assertGreater(behind["split_per_hour"]["opus"], 0)
+
+    def test_pace_on_pace_band(self):
+        # 115 used in 24 h = 4.8/h against a target of 385/77 = 5.0/h: inside the band
+        p = self.pace_at("2026-11-04T14:00:00+00:00", [(3, 115)])
+        self.assertEqual(p["verdict"], "ON_PACE", p)
+
+    def test_pace_budget_spent_is_ahead_now(self):
+        p = self.pace_at("2026-11-04T14:00:00+00:00", [(1, 500), (50, 10)])
+        self.assertEqual(p["verdict"], "AHEAD")
+        self.assertEqual(p["hit_cap_at"], "2026-11-04T14:00Z")
+
+    def test_pace_cli_prints_verdict_and_split(self):
+        self.write([entry("2026-10-31T20:00:00Z", "a", out=100)])
+        r = self.run_cli("pace")
+        self.assertEqual(r.returncode, 0, r.stderr)
+        self.assertRegex(r.stdout, r"pace (AHEAD|ON_PACE|BEHIND)")
+        self.assertIn("recommended per hour: opus", r.stdout)
+        self.assertIn("rate last 6 h", r.stdout)
 
 
 if __name__ == "__main__":
