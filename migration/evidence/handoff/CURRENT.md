@@ -6,6 +6,7 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
 `../../strategy/DECISIONS.md` ("2026-11-02 — Battle plan to YPP").
 
 ## Current delivery: flood-ends-long (Genesis 8-9, buzzy-long, plan `plans/flood-ends-long.json`)
+- 2026-11-04 ~15:20Z (scheduled continuation): Buzzy balance after the s-roadwest generation read on buzzy.now header via Desktop Commander: 41214 (before 41262) = 48 credits, recorded in the ledger. Next: Babel pilot/QA with the approved Buzzy shot, real review, approve/gate/publish; Short slots 11-05 23:30Z and later still FREE.
 - 2026-11-04 ~14:00Z (Claude, Babel Buzzy shot, coordinator decision under the owner's Buzzy rule of 2026-10-31): STOPPED at step 1, nothing generated.
   The Buzzy balance is not readable from this session: the Buzzy connector has no balance tool (list_model shows models only, no credits),
   and the earlier readings came from the buzzy.now header in the owner's browser, which this session cannot see (Desktop Commander here
