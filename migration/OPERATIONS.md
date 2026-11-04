@@ -158,6 +158,11 @@ every generation with a visible face and sync within the `lipsync_check` thresho
 small defects are fixed at EDIT time, never by a new generation: the tail is trimmed at the last word (`trim_out_s`,
 E273/E282), the join is a picture crossfade inside the silence (E272; Shorts keep cuts), a clip set faster than the band
 is retimed by at most 10 % (E286/E288). `TALK_ATTEMPTS` stays 1; a second generation only for a visual defect
+**Owner standing rule (2026-11-04, E296, DECISIONS):** no per-line consultation. A talking line whose stored generations all
+failed on words, sync or NO_VIDEO takes one `shot-probe` generation per prompt revision (changed `pavo_prompt.build` prompt +
+`pavo_prompt.py lesson` naming the shot and its 12-hex revision, `episode_build.prompt_revision`), `pavo_audio: "pavo"`, at most
+3 extra per line (`owner_regen.json` `standing_rule`); refusals PROBE_SAME_PROMPT, PROBE_STANDING_LESSON, PROBE_STANDING_CAP,
+PROBE_STANDING_NOT_FAILED, PROBE_PAVO_AUDIO_OURS.
 (`episode_build.visual_defect`). Prompts come only from `pavo_prompt.build` (PROMPT_GUIDE "Pavo talking-shot prompt
 standard"); production reads `strategy/pavo_lessons.md` first, and Inteligência Viva appends each day's probe and
 review outcomes with run ids (`pavo_prompt.py lesson DATE worked|failed|rule TEXT EVIDENCE`).
