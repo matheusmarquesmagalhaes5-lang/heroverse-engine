@@ -6,6 +6,7 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
 `../../strategy/DECISIONS.md` ("2026-11-02 — Battle plan to YPP").
 
 ## Current delivery: flood-ends-long (Genesis 8-9, buzzy-long, plan `plans/flood-ends-long.json`)
+- 2026-11-04 ~09:30Z (scheduled continuation, Short coverage): episode run 41800680935 failed in verify-preflight (SHOT_NOT_REVIEWED 16 scenes, SHOT_REQUEST_CHANGED k-insight after the #810 length fix). Fix: approve-source still_motion for the 16 approved genesis-11 stills + k-insight re-approval (claude-session-reviewer); verify-preflight now PREFLIGHT_PASS. Next after merge: episode.yml (genesis-11-short), local-review, record, check-record, thumbnail, publish-episode.yml at 11-05 18:30Z, studio related-video entry.
 - 2026-11-04 ~09:00Z (scheduled continuation, Short coverage): bridge genesis-11-short was BLOCKED (voice 167.4 s, band 170-179): one sentence added to
   narration line 15 + s-grass 9->12 s; local Kokoro preflight PASS (0 credits), PR #810 (CI running). Next after merge: episode.yml (Pavo-free, Keeper
   voice-over reuse), local-review, record, check-record, thumbnail, publish-episode.yml at 11-05 18:30Z, studio related-video entry. Slots 11-05 18:30/23:30 still free.
