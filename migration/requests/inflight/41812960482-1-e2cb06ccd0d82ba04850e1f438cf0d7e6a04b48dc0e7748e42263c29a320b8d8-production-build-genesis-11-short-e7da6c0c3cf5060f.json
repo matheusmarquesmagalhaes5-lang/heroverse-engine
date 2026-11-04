@@ -1,0 +1,16 @@
+{
+ "workflow": "episode.yml",
+ "inputs": {
+  "plan": "migration/production/bible/plans/genesis-11-short.json"
+ },
+ "_dispatch": {
+  "version": "request-claim-v1",
+  "state": "claimed",
+  "request_sha256": "e2cb06ccd0d82ba04850e1f438cf0d7e6a04b48dc0e7748e42263c29a320b8d8",
+  "original_path": "migration/requests/production-build-genesis-11-short-e7da6c0c3cf5060f.json",
+  "base_commit": "f157c7af2c3454d1d8ffcf2876771969a2f55550",
+  "dispatcher_run_id": "41812960482",
+  "dispatcher_attempt": "1",
+  "claimed_at": "2026-11-04T10:16:40.174375+00:00"
+ }
+}
