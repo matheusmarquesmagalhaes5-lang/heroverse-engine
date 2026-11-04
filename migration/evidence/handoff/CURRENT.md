@@ -6,6 +6,16 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
 `../../strategy/DECISIONS.md` ("2026-11-02 — Battle plan to YPP").
 
 ## Current delivery: flood-ends-long (Genesis 8-9, buzzy-long, plan `plans/flood-ends-long.json`)
+- 2026-11-04 ~16:10Z (Claude, Babel long): ONE Buzzy clip made under the owner's Buzzy rule (coordinator decision): s-roadwest, task
+  gt_autAOWIUNndGMEvmautAOeX2U8N6eXu8, dreamina-seedance-2-0-mini 720p 16:9, 8 s, sha256 86678f6d... (ledger #832; balance BEFORE 41262 at
+  14:23Z by the coordinator; balance AFTER NOT read: maxchrome.ps1 screenshots showed other windows, nothing else read or touched; pending),
+  ingest 41849388065, approved #833. Rebuilt: episode.yml 41850571431, master sha256 0386d34a... (483.86 s, -14.5 LUFS, -1.3 dBTP; #836).
+  buzzy-long-pilot 41860689158 QA PASS (pilot-020, PR #837). local-review 41860696043 (pinned small.en ASR + measures, NOT heard by ear):
+  coverage 0.981; flagged [a] sentence 16 (00:55, "mighty" heard "miety"), [a] sentence 37 at 02:17-02:22 = b-brick's builder line (12% heard,
+  "said one to another go to let us make brick and burn" not recognised; the segment's audio is present at -16 dB mean), [a] sentence 105 at
+  06:51 ("babel"). These need a listening reviewer. NO review score claimed, approve/publish/cuts NOT run. The master is in the release
+  (bible-genesis-10-11-long-sha256-0386d34a....mp4) for the owner to watch; next: his/the listening reviewer's verdict in
+  pilot-020/inspection/claude_review.json, approve.yml -> prepublish_gate.py -> publish.yml, cuts (E279) and the reflection window.
 - 2026-11-04 ~15:20Z (scheduled continuation): Buzzy balance after the s-roadwest generation read on buzzy.now header via Desktop Commander: 41214 (before 41262) = 48 credits, recorded in the ledger. Next: Babel pilot/QA with the approved Buzzy shot, real review, approve/gate/publish; Short slots 11-05 23:30Z and later still FREE.
 - 2026-11-04 ~14:00Z (Claude, Babel Buzzy shot, coordinator decision under the owner's Buzzy rule of 2026-10-31): STOPPED at step 1, nothing generated.
   The Buzzy balance is not readable from this session: the Buzzy connector has no balance tool (list_model shows models only, no credits),
