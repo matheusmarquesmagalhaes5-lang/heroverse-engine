@@ -33,6 +33,11 @@ on:
       receipt_certificate:
         description: Public PEM certificate for encrypted private evidence (never a private key)
         required: true
+      defect_scan:
+        description: "Also ask for the timestamped defect list (mispronunciation, garbled word, loudness jump, music/voice clash, sync, visual glitch, speech cut). Detector only: no approval, scores are information"
+        type: boolean
+        required: false
+        default: false
       owner_review_authorized:
         description: Owner explicitly designated this reviewer for this master
         type: boolean

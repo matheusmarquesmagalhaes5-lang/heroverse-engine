@@ -214,6 +214,19 @@ exact master bytes once to the receipt's `upload_url` (`X-Goog-Upload-Command: u
 then the provider has no file and `Await exact-byte upload` can only time out. If a run timed out that way, upload
 to its saved `upload_url` and dispatch `resume_before_inference=<run>` with a fresh Free Tier proof.
 
+**Gemini listening defect scan for longs (owner 2026-11-04, DECISIONS "Gemini free tier").** Dispatch `native-review.yml` with
+`defect_scan=true` (plan = the long's plan, sha256/byte_size of the exact master, as any native review). The prompt adds a
+`defects` array: `{timestamp, category, heard_or_seen, note, confidence}`, category one of mispronunciation, garbled_word,
+loudness_jump, music_voice_clash, sync, visual_glitch, speech_cut, other. `validate_defects` refuses a malformed, out-of-media
+or uncategorised list; the public evidence (`native-review-public-evidence`, job summary) then carries `defect_scan: true`,
+`scores_are_information_only: true` and the sanitized `defects`. It is a detector: the session reviewer must listen to each
+timestamp and record the true reviewer in `claude_review.json`; scores are never copied and nothing is approved. The existing
+duplicate-content guard still applies to an unchanged master that already had a native review; when the master is large or the
+free quota is tight, dispatch per chapter segment (a separate file, so a separate sha256) and add the segment start to each
+timestamp. Calibration (Babel master `0386d34a...`: 00:55 "mighty", 02:17-02:22 b-brick, 06:51 "babel"; one approved Short)
+is run through this dispatch and recorded in `evidence/reviewer-calibration/long-defect-scan-calibration.json`; until that file
+shows the known defects found, treat an empty or partial list as no evidence of absence.
+
 ## Automation map (2026-11-02)
 
 Three Claude scheduled tasks (routines) run the loop; no other clock is added. Each routine's final answer reaches
