@@ -268,9 +268,9 @@
   "s-babble": {
    "source": "still_motion",
    "score": 9.5,
-   "note": "Approved still genesis-10-11-long-s-babble (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "note": "Approved still genesis-10-11-long-s-babble (16:9 frame viewed again 2026-11-04 against its current lines, 9.5) in cinematic camera motion; re-approved for the plan's current request (lines/seconds changed by #798/#817); no person speaks in it, no lip-sync claimed.",
    "model": "claude-session-reviewer",
-   "approved_at": "2026-11-03",
+   "approved_at": "2026-11-04",
    "motion_engine": "cinematic-v2",
    "still": "genesis-10-11-long-s-babble",
    "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-babble.jpg",
@@ -282,7 +282,7 @@
    ],
    "licence": "apache-2.0",
    "clip_seconds": 20,
-   "request_sha256": "a0215f5e836ca4fcd620861db7547bb6e0135ef847fd73c79143b422fb1b1aa0"
+   "request_sha256": "1cd3a804637ff6e3b8452d3849834bddd1d9c4ea7a8ebc2b71af357cf1959524"
   },
   "s-babel": {
    "source": "still_motion",
@@ -439,9 +439,9 @@
   "s-kiln": {
    "source": "still_motion",
    "score": 9.5,
-   "note": "Approved still genesis-10-11-long-s-kiln (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "note": "Approved still genesis-10-11-long-s-kiln (16:9 frame viewed again 2026-11-04 against its current lines, 9.5) in cinematic camera motion; re-approved for the plan's current request (lines/seconds changed by #798/#817); no person speaks in it, no lip-sync claimed.",
    "model": "claude-session-reviewer",
-   "approved_at": "2026-11-03",
+   "approved_at": "2026-11-04",
    "motion_engine": "cinematic-v2",
    "still": "genesis-10-11-long-s-kiln",
    "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-kiln.jpg",
@@ -453,7 +453,7 @@
    ],
    "licence": "apache-2.0",
    "clip_seconds": 18,
-   "request_sha256": "9ae16f2585527c230d7083b75962248260d19494fcb0795b46267602c58fb76d"
+   "request_sha256": "6c18e28cb502685677d8d6e95827632c9cdc9d8f0cf2dd6811fd0ccc23f384f5"
   },
   "s-kingdom": {
    "source": "still_motion",
@@ -553,9 +553,9 @@
   "s-pitch": {
    "source": "still_motion",
    "score": 9.5,
-   "note": "Approved still genesis-10-11-long-s-pitch (actual 16:9 frame viewed, 9.5) in cinematic camera motion fitted to the line; no person speaks in it, no lip-sync claimed.",
+   "note": "Approved still genesis-10-11-long-s-pitch (16:9 frame viewed again 2026-11-04 against its current lines, 9.5) in cinematic camera motion; re-approved for the plan's current request (lines/seconds changed by #798/#817); no person speaks in it, no lip-sync claimed.",
    "model": "claude-session-reviewer",
-   "approved_at": "2026-11-03",
+   "approved_at": "2026-11-04",
    "motion_engine": "cinematic-v2",
    "still": "genesis-10-11-long-s-pitch",
    "repo_path": "migration/production/bible/stills/genesis-10-11-long-s-pitch.jpg",
@@ -567,7 +567,7 @@
    ],
    "licence": "apache-2.0",
    "clip_seconds": 18,
-   "request_sha256": "a12aeddf1000ecfcf304ca2d995eadc5de5ead47562a348593a25929b84d2558"
+   "request_sha256": "737bd7f3407e2015300f3fc74f6fe7250b74dcbe5627b29dc7539bc5a3b81359"
   },
   "s-ramps": {
    "source": "still_motion",
