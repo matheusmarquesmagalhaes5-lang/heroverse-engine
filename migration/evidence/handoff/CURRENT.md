@@ -11,7 +11,7 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
   heaven at the end" and the brickyard instead of the scaffold, so b-tower KEEPS its approved clip (dd60b36b, our Kokoro line over Pavo's picture;
   plan entry restored exactly as approved, pavo_audio ours). b-brick unchanged (owner accepted its lag). k-restrain: 3 revisions, 3 generations,
   all failed (41795895378 garbled end; 41800469765 repeated words "so this time, so this time, God, God" and dropped the last sentence;
-  41804402265 FACE_NOT_FOUND). **Standing-rule cap reached: check-probe refuses k-restrain (PROBE_STANDING_CAP). k-restrain has NO approvable
+  41804402265 FACE_NOT_FOUND). **Standing-rule cap reached: check-probe refuses k-restrain (PROBE_SAME_PROMPT now, PROBE_STANDING_CAP for any new prompt: 3 of 3 spent). k-restrain has NO approvable
   clip, so the Babel long is NOT built, reviewed or published.** Second blocker for the build: the long's `episode_build.py preflight --voice`
   needs a local Kokoro venv; this cloud session has none and the owner's PC (Desktop Commander, C:\HeroVerse) has no Kokoro or repo checkout.
   Ways out, inside the rules: (a) k-restrain as Keeper narration over a still (Plan B, `voiceover:true`; the line is not KJV) if the owner's
