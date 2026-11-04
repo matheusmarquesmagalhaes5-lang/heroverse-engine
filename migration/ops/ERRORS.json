@@ -4815,6 +4815,32 @@
      "process"
     ]
    }
+  },
+  {
+   "id": "E297",
+   "date": "2026-11-04",
+   "class": [
+    "process"
+   ],
+   "prior": [
+    "E287",
+    "E288",
+    "E290",
+    "E291",
+    "E292",
+    "E293",
+    "E295",
+    "E296"
+   ],
+   "error": "Preflight of genesis-10-11-long (runs 41811213563, 41812250541) BLOCKED with COMPOSE SPEAKER_CLIP_SHORT b-name (5.00 s for 5.17 s): compose_prediction judged the Kokoro estimate of a line against the planned clip seconds even for a talking shot whose approved clip keeps Pavo's own audio (5.167 s, laid out at its whole length by native_spans). Root cause: the prediction ignored the approvals' pavo-audio route that lines_step honours.",
+   "fix": "episode_build.compose_prediction: for an approved route-pavo talking shot the predicted clip is at least the line's estimated seconds.",
+   "antidote": {
+    "file": "migration/production/bible/test_episode_build.py",
+    "contains": "def test_prediction_trusts_an_approved_pavo_audio_clip_for_its_line",
+    "covers": [
+     "process"
+    ]
+   }
   }
  ]
 }

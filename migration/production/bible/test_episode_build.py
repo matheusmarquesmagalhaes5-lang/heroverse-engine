@@ -311,6 +311,31 @@ class Prediction(unittest.TestCase):
         short[carried[close][0]] = 4.0
         self.assertEqual([p.split()[0] for p in eb.predict(EXAMPLE, short)[0]], ["TALK_LINE_RETIME_OVER"])
 
+    def test_prediction_trusts_an_approved_pavo_audio_clip_for_its_line(self):
+        # E297: a talking shot whose approved clip keeps Pavo's own track is laid out at the clip's length, so the
+        # Kokoro estimate of its line (here 3 s past the planned seconds) must not read as SPEAKER/KEEPER_CLIP_SHORT
+        import copy
+        import long_build
+        from unittest import mock
+        _, layout = eb.predict(EXAMPLE, DURATIONS)
+        sid = "k-insight"
+        shot = next(s for s in EXAMPLE["shots"] if s["id"] == sid)
+        planned = float(eb.shot_seconds(shot, EXAMPLE["shots"].index(shot), EXAMPLE, layout))
+        lay = copy.deepcopy(layout)
+        lay["keeper"][sid]["seconds"] = eb.plan_check.TALK_CLIP[1] + 3.0
+        seen = {}
+        def spy(plan, layout, clip_seconds):
+            seen.update(clip_seconds)
+            return []
+        plan = dict(EXAMPLE, episode=EXAMPLE.get("episode") or "x")
+        with mock.patch.object(eb, "is_long", return_value=True), mock.patch.object(long_build, "compose_problems", spy):
+            with mock.patch.object(eb, "load_approvals", return_value={}):
+                eb.compose_prediction(plan, lay)
+            self.assertAlmostEqual(seen[sid], eb.plan_check.TALK_CLIP[1])
+            with mock.patch.object(eb, "load_approvals", return_value={sid: {"speech": {"route": "pavo"}, "clip_seconds": planned}}):
+                eb.compose_prediction(plan, lay)
+        self.assertAlmostEqual(seen[sid], eb.plan_check.TALK_CLIP[1] + 3.0)
+
     def test_the_prediction_and_the_compose_share_one_establishing_share(self):
         # review of #422: compose_prediction had its own copy of compose_step's establishing share
         layout = eb.predict(EXAMPLE, DURATIONS)[1]

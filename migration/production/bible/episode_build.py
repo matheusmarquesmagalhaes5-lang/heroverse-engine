@@ -453,6 +453,14 @@ def compose_prediction(plan, layout, clip_seconds=None):
     if clip_seconds is None:
         clip_seconds = {s["id"]: float(shot_seconds(s, i, plan, layout)) for i, s in enumerate(plan["shots"])
                         if not is_window(s)}
+        # Owner 2026-11-03: a talking shot whose approved clip keeps Pavo's own audio is laid out at its clip's whole
+        # length (native_spans), so the Kokoro estimate of its line is no requirement on that clip: predict it at the
+        # line it will have (run 41812250541: b-name SPEAKER_CLIP_SHORT 5.00 s for 5.17 s on an approved 5.17 s clip).
+        own = {k for k, a in (load_approvals(plan) if plan.get("episode") else {}).items()
+               if (a.get("speech") or {}).get("route") == pavo_audio.PAVO}
+        for i, s in enumerate(plan["shots"]):
+            if s["id"] in own and s["id"] in clip_seconds and plan_check.talking(s) and not plan_check.voiceover(s):
+                clip_seconds[s["id"]] = max(clip_seconds[s["id"]], float(talk_record(layout, s)["seconds"]))
     if plan_check.reflection(plan):   # its clips are never composed here: reflection_shorts joins them with crossfades
         return []
     if is_long(plan):   # LONG_DESIGN slice 3: one cut a shot at the story QA's 4-7 s holds, windows on their source
