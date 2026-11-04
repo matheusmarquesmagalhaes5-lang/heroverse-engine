@@ -9,11 +9,11 @@
  "narration": [
   {
    "kind": "insight",
-   "text": "What if obeying God meant building a ship with no rain in sight? Here is Noah's whole story."
+   "text": "What if God told you to build a boat with no rain?"
   },
   {
    "kind": "insight",
-   "text": "Noah obeyed before one drop fell. What is God asking of you, that you cannot yet see?"
+   "text": "He obeyed before the rain came. What is God asking of you?"
   }
  ],
  "shots": [
@@ -24,12 +24,14 @@
     0
    ],
    "audio_route": "kokoro",
-   "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a grave, intent look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Hushed and urgent. No text, no logos.",
+   "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a grave, intent look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. He speaks slowly and clearly. Hushed and urgent. No text, no logos.",
    "pavo": {
     "emotion": "grave, intent",
-    "setting": "Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him.",
-    "wardrobe": "fire"
-   }
+    "setting": "Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. He speaks slowly and clearly.",
+    "wardrobe": "fire",
+    "gaze": "straight into the camera"
+   },
+   "pavo_audio": "pavo"
   },
   {
    "kind": "keeper",
@@ -38,12 +40,15 @@
     1
    ],
    "audio_route": "kokoro",
-   "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a gentle questioning look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and searching. No text, no logos.",
+   "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, centred in the frame holds his head level and looks straight into the camera and speaks the words of the audio clip, his lips moving in sync with the voice, a grave, intent look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. He speaks slowly and clearly. Warm and searching. No text, no logos.",
    "pavo": {
-    "emotion": "gentle questioning",
-    "setting": "Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him.",
-    "wardrobe": "fire"
-   }
+    "emotion": "grave, intent",
+    "setting": "Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. He speaks slowly and clearly.",
+    "wardrobe": "fire",
+    "gaze": "straight into the camera",
+    "mood": "Warm and searching"
+   },
+   "pavo_audio": "pavo"
   }
  ]
 }
