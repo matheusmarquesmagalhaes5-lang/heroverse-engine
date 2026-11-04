@@ -34,21 +34,23 @@ jobs:
           ep=$(python3 -I -c "import json,sys;print(json.load(open(sys.argv[1]))['episode'])" "$PLAN")
           [[ "$ep" =~ ^[a-z0-9]+(-[a-z0-9]+)*$ ]] || { echo "EPISODE_ID_REFUSED"; exit 1; }
           echo "EP=$ep" >> "$GITHUB_ENV"
-          echo "WORK=$GITHUB_WORKSPACE/.episode/preflight-$ep" >> "$GITHUB_ENV"
+          # the prepared source/models live apart from the preflight's own voice work dir (episode_preflight.WORK_ROOT/<ep>),
+          # which must start empty (VOICE_CACHE_UNATTESTED otherwise, run 41811213563)
+          echo "PREPARED=$RUNNER_TEMP/prepared" >> "$GITHUB_ENV"
       - name: Tools and the pinned voice runtime (as shot-probe.yml)
         run: |
           APT_UPDATE_TIMEOUT=300s APT_INSTALL_TIMEOUT=600s bash migration/ci/apt_install.sh ffmpeg espeak-ng fonts-dejavu-core
           python3 -m venv "$RUNNER_TEMP/voice"
           "$RUNNER_TEMP/voice/bin/pip" install --disable-pip-version-check -q 'kokoro-onnx==0.4.9' 'onnxruntime==1.20.1' 'numpy==2.2.6' 'espeakng-loader==0.2.4' 'soundfile==0.13.1'
-          mkdir -p "$WORK"
+          mkdir -p "$PREPARED"
       - name: Prepared work (pilot_render.py prepare) and the preflight with voice and references
         run: |
-          python3 -I -B migration/production/pilot_render.py prepare "$WORK" HeroVerse_Linux_Source_Ready_20261013_v2.zip
+          python3 -I -B migration/production/pilot_render.py prepare "$PREPARED" HeroVerse_Linux_Source_Ready_20261013_v2.zip
           ESPEAK_DATA_PATH=$("$RUNNER_TEMP/voice/bin/python" -I -c "import espeakng_loader as e;print(e.get_data_path())")
           test -d "$ESPEAK_DATA_PATH" || { echo "ESPEAK_DATA_MISSING"; exit 1; }
           export ESPEAK_DATA_PATH
           rc=0
-          python3 -I -B migration/production/bible/episode_build.py preflight "$PLAN" --voice "$RUNNER_TEMP/voice/bin/python" "$WORK" --refs --write > "$RUNNER_TEMP/preflight.json" || rc=$?
+          python3 -I -B migration/production/bible/episode_build.py preflight "$PLAN" --voice "$RUNNER_TEMP/voice/bin/python" "$PREPARED" --refs --write > "$RUNNER_TEMP/preflight.json" || rc=$?
           python3 -I -c "import json,sys;r=json.load(open(sys.argv[1]));print('PREFLIGHT', r.get('status'), json.dumps(r.get('blockers'))[:3000])" "$RUNNER_TEMP/preflight.json"
           echo "RC=$rc" >> "$GITHUB_ENV"
       - name: Report on claude/preflight-<episode>-<run> for the PR
