@@ -188,6 +188,15 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
   owner-busy guard (PRs #777); one drive_run quirk: pass `-File` with a comma list, never inside `-c` (an id list became one string and
   sent two empty prompts).
 
+- 2026-11-03/04 (M2 v2 Pavo hook and close, E292, owner order: Pavo's own audio, clip in full): the stored clips (probe 41629339290) pass sync on OUR audio
+  (shot-remux 41670811661) but Pavo's own track says wrong words (speech-check 41636192512). PR #783: Keeper plan on `pavo_prompt.build`, lines cut to 16/17
+  words, E292 allows ONE new generation per line when all stored ones are from an older template. Owner-authorised shot-probe 41738699321 (1 generation each,
+  no flags, SyncNet conf 7.2 and 8.2, face 1.0 and 0.97, Pavo track kept; record merged #797). speech-check 41742668024 (pinned ASR on Pavo's own audio):
+  hook heard "...Here is Noah's whole scape and whole story." and close "...What is God asking of you fell, that you cannot ask yet see?", both
+  VOICE_NOT_CONSISTENT: extra words inside the line, so NOT approved (no trim fixes a mid-line insertion) and no further generation is allowed (E292 spent
+  per line). Nothing built or published for v2: `compilations/arc-02-noah-complete-pavo-compilation.json` on main is the old ours/trim plan and is stale.
+  1zsZZgDCAG0 (pilot-018, voice-over hook and close) stays scheduled 2026-11-04T13:30Z, NOT held. Needs an owner decision: accept the words, our audio, or another generation.
+
 ## Next moments
 
 - M2 compilation "Complete Story of Noah (Genesis 5-9)" is due 2026-11-04.
