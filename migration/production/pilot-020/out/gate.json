@@ -1,0 +1,176 @@
+{
+ "version": "prepublish-gate-v1",
+ "pilot_id": "pilot-020",
+ "output_sha256": "0386d34a1501477d6ea487b3c3cf53caedb0a898d70e7b15feb90e36bad09937",
+ "decision": "UNKNOWN",
+ "eligible_for_automatic_publication": false,
+ "dimensions": {
+  "binding": "PASS",
+  "format": "PASS",
+  "technical": "PASS",
+  "audio": "PASS",
+  "rights": "PASS",
+  "structure": "PASS",
+  "defect_review": "UNKNOWN",
+  "full_file_scan": "PASS",
+  "preflight": "PASS"
+ },
+ "items": {
+  "binding": [
+   {
+    "source": "binding",
+    "item": "manifest",
+    "state": "PASS",
+    "detail": "0386d34a1501477d6ea487b3c3cf53caedb0a898d70e7b15feb90e36bad09937"
+   },
+   {
+    "source": "binding",
+    "item": "qa_for_this_file",
+    "state": "PASS",
+    "detail": "0386d34a1501477d6ea487b3c3cf53caedb0a898d70e7b15feb90e36bad09937"
+   },
+   {
+    "source": "binding",
+    "item": "qa_criteria_frozen",
+    "state": "PASS",
+    "detail": {
+     "version": "buzzy-long-qa-criteria-v1",
+     "recorded": "ce5c05e29cf697782efb59a4bdfadb2d09dc035a727ee24e505403706843831a",
+     "file": "ce5c05e29cf697782efb59a4bdfadb2d09dc035a727ee24e505403706843831a"
+    }
+   },
+   {
+    "source": "binding",
+    "item": "review_for_this_file",
+    "state": "PASS",
+    "detail": "0386d34a1501477d6ea487b3c3cf53caedb0a898d70e7b15feb90e36bad09937"
+   },
+   {
+    "source": "binding",
+    "item": "video_file_hash",
+    "state": "PASS",
+    "detail": "0386d34a1501477d6ea487b3c3cf53caedb0a898d70e7b15feb90e36bad09937"
+   }
+  ],
+  "format": [
+   {
+    "source": "format",
+    "item": "story_long",
+    "state": "PASS",
+    "detail": "bible-buzzy-long"
+   }
+  ],
+  "technical": [
+   {
+    "source": "qa",
+    "item": "full_decode_without_errors",
+    "state": "PASS"
+   },
+   {
+    "source": "qa",
+    "item": "video_format_1920x1080_30fps",
+    "state": "PASS"
+   },
+   {
+    "source": "qa",
+    "item": "length_8_to_12_minutes",
+    "state": "PASS"
+   }
+  ],
+  "audio": [
+   {
+    "source": "qa",
+    "item": "integrated_lufs_band",
+    "state": "PASS"
+   },
+   {
+    "source": "qa",
+    "item": "true_peak_ceiling",
+    "state": "PASS"
+   }
+  ],
+  "rights": [
+   {
+    "source": "qa",
+    "item": "buzzy_shot_in_episode",
+    "state": "PASS"
+   },
+   {
+    "source": "qa",
+    "item": "music_and_voice_owned",
+    "state": "PASS"
+   }
+  ],
+  "structure": [
+   {
+    "source": "qa",
+    "item": "build_report_for_this_file",
+    "state": "PASS"
+   },
+   {
+    "source": "qa",
+    "item": "caption_free_master_kept",
+    "state": "PASS"
+   },
+   {
+    "source": "qa",
+    "item": "sentence_timeline_kept",
+    "state": "PASS"
+   }
+  ],
+  "defect_review": [
+   {
+    "source": "review",
+    "item": "designated_reviewer_bound_to_file",
+    "state": "UNKNOWN",
+    "detail": "review AWAITING_REVIEW: REVIEW_NOT_OBJECT"
+   },
+   {
+    "source": "review",
+    "item": "publish_decision",
+    "state": "UNKNOWN",
+    "detail": "review AWAITING_REVIEW: REVIEW_NOT_OBJECT"
+   },
+   {
+    "source": "review",
+    "item": "no_unresolved_a_b_e",
+    "state": "UNKNOWN",
+    "detail": "review AWAITING_REVIEW: REVIEW_NOT_OBJECT"
+   }
+  ],
+  "full_file_scan": [
+   {
+    "source": "scan",
+    "item": "black_picture",
+    "state": "PASS",
+    "detail": 0.0
+   },
+   {
+    "source": "scan",
+    "item": "digital_silence",
+    "state": "PASS",
+    "detail": 0.0
+   }
+  ],
+  "preflight": [
+   {
+    "source": "preflight",
+    "item": "preflight",
+    "state": "PASS"
+   }
+  ]
+ },
+ "informative_not_deciding": {},
+ "market_evidence_not_deciding": {
+  "status": "UNKNOWN",
+  "detail": "no vidIQ market opinion for this pilot",
+  "not_claimed": "market evidence only: not technical quality, not a performance forecast, not a guarantee of views, revenue or monetization"
+ },
+ "method_notes": {
+  "track": "buzzy-long (E251/E259): defect gate, no score floor",
+  "not_claimed": [
+   "perceived quality by viewers",
+   "retention, CTR or revenue"
+  ]
+ }
+}

@@ -1,0 +1,9 @@
+{
+ "version": "long-review-v3-compilation",
+ "track": "buzzy-long",
+ "pilot_id": "pilot-020",
+ "output_sha256": "0386d34a1501477d6ea487b3c3cf53caedb0a898d70e7b15feb90e36bad09937",
+ "checked_at": "2026-11-04T16:20:33Z",
+ "status": "AWAITING_REVIEW",
+ "error": "REVIEW_NOT_OBJECT"
+}
