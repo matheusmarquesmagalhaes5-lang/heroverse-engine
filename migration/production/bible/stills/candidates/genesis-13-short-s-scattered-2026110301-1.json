@@ -1,0 +1,37 @@
+{
+ "id": "genesis-13-short-s-scattered-2026110301-1",
+ "still": "genesis-13-short-s-scattered",
+ "episode": "genesis-13-short",
+ "shot": "s-scattered",
+ "run": "2026110301",
+ "status": "DRAFT",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. One single black goat-hair tent glowing warm from inside on a dark plain at night, an old man sitting at its door beside a small fire, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Small and tender. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "sent_prompt": "Create an image, 9:16 vertical portrait, no text. Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. One single black goat-hair tent glowing warm from inside on a dark plain at night, an old man sitting at its door beside a small fire, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Small and tender. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "engine": "chatgpt-desktop",
+ "models": [
+  "chatgpt-images"
+ ],
+ "generated_by": "ChatGPT Windows app on the owner's PC (Create image), one request at a time",
+ "source": "chatgpt-desktop",
+ "download": {
+  "file": "genesis-13-short-s-scattered.png",
+  "sha256": "96906a899f2d1dfc452e202c3fb9724458ab876b53cfcee9b99b57fe4c7c8c65",
+  "size_bytes": 2459025,
+  "pixels": [
+   941,
+   1670
+  ]
+ },
+ "references": [],
+ "licence": {
+  "note": "OpenAI Terms of Use: the user owns the Output; made at the owner's request in his own session (README Licence and account risk)"
+ },
+ "upscaler": "System.Drawing HighQualityBicubic centre crop to 9:16 -> 1080x1920, JPEG quality 93",
+ "aspect_ratio": "9:16",
+ "size": [
+  1080,
+  1920
+ ],
+ "repo_path": "migration/production/bible/stills/candidates/genesis-13-short-s-scattered-2026110301-1.jpg",
+ "sha256": "d7ae435b151fecd5dae0ec0f168ff0eae7cf46baa2c6bd2948397c1d8c84743a"
+}

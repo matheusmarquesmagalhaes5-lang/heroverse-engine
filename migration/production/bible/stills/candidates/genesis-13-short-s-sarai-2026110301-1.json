@@ -1,0 +1,37 @@
+{
+ "id": "genesis-13-short-s-sarai-2026110301-1",
+ "still": "genesis-13-short-s-sarai",
+ "episode": "genesis-13-short",
+ "shot": "s-sarai",
+ "run": "2026110301",
+ "status": "DRAFT",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium wide shot. A woman in a long head-cloth riding a donkey beside an old man walking with a staff, a younger man leading sheep behind them, desert hills around, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Faithful and weary. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "sent_prompt": "Create an image, 9:16 vertical portrait, no text. Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium wide shot. A woman in a long head-cloth riding a donkey beside an old man walking with a staff, a younger man leading sheep behind them, desert hills around, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Faithful and weary. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "engine": "chatgpt-desktop",
+ "models": [
+  "chatgpt-images"
+ ],
+ "generated_by": "ChatGPT Windows app on the owner's PC (Create image), one request at a time",
+ "source": "chatgpt-desktop",
+ "download": {
+  "file": "genesis-13-short-s-sarai.png",
+  "sha256": "6e5f3a54cba955953879d62d218217083f78f1340fbe249a841c1246f20ef76e",
+  "size_bytes": 2678826,
+  "pixels": [
+   942,
+   1670
+  ]
+ },
+ "references": [],
+ "licence": {
+  "note": "OpenAI Terms of Use: the user owns the Output; made at the owner's request in his own session (README Licence and account risk)"
+ },
+ "upscaler": "System.Drawing HighQualityBicubic centre crop to 9:16 -> 1080x1920, JPEG quality 93",
+ "aspect_ratio": "9:16",
+ "size": [
+  1080,
+  1920
+ ],
+ "repo_path": "migration/production/bible/stills/candidates/genesis-13-short-s-sarai-2026110301-1.jpg",
+ "sha256": "d7b26b143e86bab47f808d090d0beb2d216df5426e26e3af4728e22ddbbc1c4b"
+}

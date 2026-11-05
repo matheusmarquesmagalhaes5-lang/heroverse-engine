@@ -2,6 +2,25 @@
  "id": "genesis-13-short-s-call",
  "episode": "genesis-13-short",
  "shot": "s-call",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. An old man standing alone outside a black goat-hair tent at night, looking up at a sky crowded with stars, his robe moving in the wind, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Vast and silent. Awe. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. An old man standing alone outside a black goat-hair tent at night, looking up at a sky crowded with stars, his robe moving in the wind, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Vast and silent. Awe. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-13-short-s-call.jpg",
+ "sha256": "73de1eb2753b42781b811e7800e2d86d9e6ac948e4ca5e6b45797e10299ce53b",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-13-short-s-call-2026110301-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-05",
+  "score": 9.5,
+  "note": "Full-image look (ChatGPT desktop): old man with a staff outside a dark tent at night under a sky crowded with stars, robe moving in the wind, seen from behind, centred; no text, nothing modern, God not shown with a face; frame review only.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "f48f5dc84e8feae8cc6a6aa006e35824aa6ac53ade643d1a4044365e0f8e25f8",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }
