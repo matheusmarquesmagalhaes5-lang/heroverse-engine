@@ -422,3 +422,19 @@ heavy agents; it prints AHEAD / ON_PACE / BEHIND, the target tokens per hour and
 
 The token budget (`SYSTEM.md` "Token budget") counts Claude Code only, from the local Claude transcripts. ChatGPT/Codex
 executor usage is a different account and is not counted here; the project share (97%, owner 2026-11-04) of the weekly cap governs Claude Code, and Codex keeps its own limits.
+
+## PC-only tools from any session (owner 2026-11-05)
+
+Project plugins and `.mcp.json` servers load in every session, on the PC and in cloud/phone sessions. Some tools exist
+only on the owner's PC: OmniRoute and Headroom (local binaries), claude-mem with its persistent memory, the Pinokio
+skills (`gepeto`, `pinokio`), local Chrome and the ChatGPT app. When a cloud or phone session needs one of them, do it
+on the PC through Desktop Commander (device "Matheus"); never ask the owner to do it by hand.
+
+- Direct command: `start_process` with a `.ps1` written by `write_file` (inline `$` is stripped by the remote shell).
+- PC Claude Code with all PC plugins and MCP servers:
+  `powershell -NoProfile -ExecutionPolicy Bypass -File C:\HeroVerse\pc-claude.ps1 -Task "<task>" -Tools "<allowed tools>" -Log <name>`.
+  It runs `claude -p` in the PC clone `C:\HeroVerse\heroverse-engine` (pulled first) and writes
+  `C:\HeroVerse\bridge\<name>.txt`; read it back with `read_file`. Default tools are read-only; widen `-Tools` only to
+  what the task needs. The PC run is the same account and the same rules: commits still go claude/* → PR → CI.
+- OmniRoute listens on 127.0.0.1:20128 with an API key required; restart it with `C:\HeroVerse\omni-run.ps1`.
+- Check the device is online first (`list_devices`); if it is offline, record the step as pending and continue.
