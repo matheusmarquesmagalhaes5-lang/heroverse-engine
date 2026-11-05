@@ -226,6 +226,13 @@ sheet (1 frame / 2 s), black / frozen / duplicate-frame and scene-change evidenc
 score) and artifact `local-review-frames`. The session reviewer downloads both, views the sheets, reads the transcript
 and writes `claude_review.json` / the record `review` from what it saw and heard. No secret, no PC, no Free Tier proof.
 
+`defect-scan.yml` (owner 2026-11-05) is the free replacement for `native-review.yml`'s Gemini `defect_scan`: inputs `plan`,
+`sha256`, `separation`. `production/bible/defect_scan.py` re-decodes every sentence the pinned small.en pass did not hear
+cleanly with small.en and medium.en (WARN only when every decode misses the same word), reads ebur128 short-term loudness
+jumps, measures voice over music per sentence on Demucs htdemucs stems and finds one-frame flashes, black and frozen frames.
+Artifact `defect-scan-evidence` (WARN / INFO with timestamps). Detector only: it never writes a review, score, approval or
+gate input, and lip-sync stays with `lipsync.yml`. Calibration: `evidence/reviewer-calibration/free-defect-scan-calibration.json`.
+
 **Audience retention and traffic sources (2026-11-04).** `goal-report.yml` runs `mining/audience_report.py` after the reach step
 (same bounded, never-failing shape, same `HERO_YT_AUTHORIZED_USER_JSON` and `yt-analytics.readonly` scope, Analytics API quota only).
 For the 10 newest longs and 30 newest Shorts it reads the retention curve (`elapsedVideoTimeRatio`), the traffic sources

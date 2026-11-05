@@ -1,0 +1,89 @@
+name: HeroVerse free defect scan (detector only; CPU on the runner; no provider, no secret, nothing published, never an approval)
+run-name: "defect-scan: plan=${{ inputs.plan }} sha256=${{ inputs.sha256 }}"
+# Owner 2026-11-05: a free replacement for native-review.yml's Gemini defect_scan. Pinned faster-whisper small.en + medium.en
+# (consensus on every sentence the full pass did not hear cleanly), ffmpeg ebur128 short-term loudness jumps, Demucs
+# htdemucs voice-over-music per sentence, every-frame flash detection plus black/freeze. The output is WARN / INFO
+# information for the reviewer (artifact defect-scan-evidence); it never enters claude_review, APPROVAL.json,
+# prepublish_gate.py or any gate. Calibration: migration/evidence/reviewer-calibration/free-defect-scan-calibration.json.
+on:
+  workflow_dispatch:
+    inputs:
+      plan:
+        description: Existing Bible plan, compilation plan, cuts spec or reflection spec (the scan does not replace or approve it)
+        required: true
+        default: migration/production/bible/plans/genesis-10-11-long.json
+      sha256:
+        description: SHA256 of the exact master (a release asset bible-*-sha256-<sha>.mp4)
+        required: true
+      separation:
+        description: Run the Demucs voice/music separation (the slowest stage)
+        type: boolean
+        required: false
+        default: true
+permissions:
+  contents: read
+concurrency:
+  group: heroverse-defect-scan-${{ inputs.plan }}
+  cancel-in-progress: false
+jobs:
+  scan:
+    if: github.repository == 'matheusmagah-cpu/heroverse-engine' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 150
+    permissions:
+      contents: read
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SHA: ${{ inputs.sha256 }}
+      PLAN: ${{ inputs.plan }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - name: Inputs (an existing plan, an exact hash)
+        run: |
+          [[ "$SHA" =~ ^[0-9a-f]{64}$ ]] || { echo "HASH_INVALID"; exit 1; }
+          [[ "$PLAN" =~ ^migration/production/bible/(plans|compilations|cuts|reflections)/[a-z0-9-]+\.json$ ]] || { echo "PLAN_INVALID"; exit 1; }
+          [ -f "$PLAN" ] || { echo "PLAN_MISSING"; exit 1; }
+      - name: Pinned tools (ffmpeg, faster-whisper 1.2.1, CPU torch, Demucs 4.0.1)
+        run: |
+          APT_UPDATE_TIMEOUT=300s APT_INSTALL_TIMEOUT=600s bash migration/ci/apt_install.sh ffmpeg
+          timeout 120s python3 -m venv "$RUNNER_TEMP/rv"
+          timeout 1500s "$RUNNER_TEMP/rv/bin/pip" install --disable-pip-version-check --timeout 60 -q faster-whisper==1.2.1 av==16.0.1 numpy==2.2.6 \
+            "torch==2.5.1+cpu" "torchaudio==2.5.1+cpu" demucs==4.0.1 --extra-index-url https://download.pytorch.org/whl/cpu
+      - name: The exact master from the release (sha256 verified)
+        run: |
+          d="$RUNNER_TEMP/dl"; mkdir -p "$d"
+          bash migration/ci/assets.sh download --repo "$GITHUB_REPOSITORY" --pattern "bible-*-sha256-$SHA.mp4" -D "$d" --clobber \
+            || bash migration/ci/assets.sh download --repo "$GITHUB_REPOSITORY" --pattern "*-sha256-$SHA.mp4" -D "$d" --clobber
+          f=$(ls "$d"/*.mp4 | head -1)
+          echo "$SHA  $f" | sha256sum -c -
+          mv "$f" "$RUNNER_TEMP/master.mp4"
+      - name: Pinned models (hash-verified before use)
+        run: |
+          s="$RUNNER_TEMP/models/small"; m="$RUNNER_TEMP/models/medium"; h="$RUNNER_TEMP/models/demucs"; mkdir -p "$s" "$m" "$h/hub/checkpoints"
+          for name in config.json tokenizer.json vocabulary.txt model.bin; do
+            curl -fsSL --retry 3 --max-time 900 -o "$s/$name" "https://huggingface.co/Systran/faster-whisper-small.en/resolve/d1d751a5f8271d482d14ca55d9e2deeebbae577f/$name"
+            curl -fsSL --retry 3 --max-time 900 -o "$m/$name" "https://huggingface.co/Systran/faster-whisper-medium.en/resolve/a29b04bd15381511a9af671baec01072039215e3/$name"
+          done
+          echo "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a  $s/model.bin" | sha256sum -c -
+          echo "11b220779aea4c6f3ce9d2549c8a95ea869ed84066864b999531ef53e594fe5b  $m/model.bin" | sha256sum -c -
+          curl -fsSL --retry 3 --max-time 900 -o "$h/hub/checkpoints/955717e8-8726e21a.th" "https://dl.fbaipublicfiles.com/demucs/hybrid_transformer/955717e8-8726e21a.th"
+          echo "8726e21a993978c7ba086d3872e7608d7d5bfca646ca4aca459ffda844faa8b4  $h/hub/checkpoints/955717e8-8726e21a.th" | sha256sum -c -
+      - name: Scan the whole master (WARN / INFO only)
+        env:
+          SEPARATION: ${{ inputs.separation }}
+        run: |
+          extra=(--demucs-dir "$RUNNER_TEMP/models/demucs"); [ "$SEPARATION" = "true" ] || extra=(--skip-demucs)
+          "$RUNNER_TEMP/rv/bin/python" -B migration/production/bible/defect_scan.py --master "$RUNNER_TEMP/master.mp4" --plan "$PLAN" \
+            --sha256 "$SHA" --small "$RUNNER_TEMP/models/small" --medium "$RUNNER_TEMP/models/medium" "${extra[@]}" \
+            --out "$RUNNER_TEMP/defect-scan/defect-scan.json"
+      - name: Preserve the findings (no media, no secrets)
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: defect-scan-evidence
+          path: ${{ runner.temp }}/defect-scan/defect-scan.json
+          retention-days: 90
+          if-no-files-found: ignore
+      - name: Remove the master from the runner
+        if: always()
+        run: rm -f -- "$RUNNER_TEMP/master.mp4" "$RUNNER_TEMP"/dl/*

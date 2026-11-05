@@ -58,6 +58,7 @@ def hand_copied_shot_ids(root=ROOT):
     return out
 # workflow_dispatch workflows the guard does not cover, each with its reason (a new one must be listed or guarded)
 EXEMPT = {
+    "defect-scan.yml": "owner 2026-11-05: the free detector-only defect scan (pinned CPU ASR consensus, ffmpeg loudness, Demucs voice/music, frame flashes) over a release master by sha256; no provider call, no secret, no generation, zero credits, nothing published, never an approval; one run per subject (heroverse-defect-scan-<plan>)",
     "local-review.yml": "E268: the default native review: a pinned CPU ASR and ffmpeg measures over a release master by sha256; no provider call, no secret, no generation, zero credits, nothing published; one run per subject (heroverse-subject-<plan>); approval stays with approve.yml",
     "speech-check.yml": "E281: the pinned ASR (medium.en), YAMNet, voice and lips measured on probed clips by sha256 (episode_build.speech_check_step) and the sidecars pushed to a branch; no provider call, no secret, no generation, zero credits, nothing approved or published; approve-shot recomputes the verdict",
     "pavo-audio-eval.yml": "E287: stored Pavo clips (by sha256) with our regenerated Kokoro audio laid over their picture, measured by lipsync_check on the runner; no provider call, no secret, no generation, zero credits, nothing approved or published",

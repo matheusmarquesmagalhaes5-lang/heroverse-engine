@@ -1,0 +1,32 @@
+{
+ "date": "2026-11-05",
+ "feature": "defect-scan.yml / production/bible/defect_scan.py (free-defect-scan-v1): detector only, WARN / INFO, never an approval",
+ "executor": "Claude (research subagent); measured on a 4-CPU / 15 GB Linux sandbox with the public release copy of the master; no human listening by this executor; not yet run on GitHub Actions",
+ "master": {"name": "Babel long (pilot-020, genesis-10-11-long)", "sha256": "0386d34a1501477d6ea487b3c3cf53caedb0a898d70e7b15feb90e36bad09937",
+            "source": "public release asset bible-genesis-10-11-long-sha256-0386d34a....mp4 (already public on YouTube)", "duration_s": 483.86,
+            "owner_verdict": "owner listened and approved; 00:55 'mighty', 02:17-02:22 b-brick line and 06:51 'babel' are known ASR false alarms"},
+ "result": {
+  "warn": ["01:10 garbled_word sentence 21: both small.en and medium.en heard 'a wretch and a cad' for 'Erech, and Accad' (a name pronunciation for the reviewer; not one of the known points)"],
+  "known_points": {"00:55 mighty": "not flagged", "02:17-02:22 b-brick": "not flagged", "06:51 babel": "INFO only (medium.en heard it in its window; Soundex match)"},
+  "info": "5 garbled_word INFO (ASR slips a window decode heard: 06:51, 06:52, 07:11, 07:30 Haran, 07:33) + the sync note",
+  "loudness": "no jump; largest short-term change 3.0 LU per s against the 8 LU threshold",
+  "clash": "125 sentences measured on separated stems: voice over music min 6.5 dB, median 8.1 dB; INFO below 5 dB, WARN below 3 dB: none",
+  "picture": "14,489 frames, no one-frame flash, no black, no freeze"
+ },
+ "runtime": {"total_s": 1130.6, "seconds_per_minute_of_video": 140.2, "peak_rss_gb": 4.2,
+             "stages_s": {"asr_full_pass_small": 230.9, "asr_window_rechecks": 105.1, "loudness": 6.3, "demucs_separation_and_clash": 611.7, "video_every_frame": 162.8},
+             "projection": "about 35 min for a 15 min master and 47 min for 20 min on a 4-vCPU runner (timeout 150 min); separation=false saves about 75 s per minute"},
+ "fixes_found_by_calibration": [
+  "Demucs with separate.py-style mean/std normalisation returned voice = music (0 dB on all 125 sentences); the raw mix separates (+6.5 to +18.3 dB), so the mix goes in unnormalised, 60 s per call",
+  "a 1 s window ('Babel.') decoded empty: windows are at least 4 s",
+  "proper names spelled differently by the ASR ('Beybell', 'heron') count as heard when Soundex matches",
+  "torch 2.6 refused the local Demucs file (weights_only); the hash-verified file is placed in torch.hub's cache instead"
+ ],
+ "licenses": {
+  "faster-whisper 1.2.1": "MIT (code)", "Systran/faster-whisper-small.en / medium.en": "MIT (converted OpenAI Whisper weights, MIT)",
+  "demucs 4.0.1 + htdemucs": "MIT (code; weights released in the same MIT repository, archived 2025-01-01). Training data included MUSDB18-HQ, itself research-licensed: the stems are a measurement here, never published content",
+  "ffmpeg": "LGPL/GPL build from Ubuntu, used as a tool"
+ },
+ "limits": "one approved master; no defective master yet, so recall is unmeasured; thresholds are provisional; lip-sync is not judged; a WARN is a question for the listening reviewer, never a refusal",
+ "next": "run defect-scan.yml on Actions on the same sha256 (runtime on the real runner), then on a master with a known defect (or a deliberately damaged copy) to measure recall before relying on it"
+}
