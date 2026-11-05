@@ -709,6 +709,8 @@ def approve_source(plan, shot_id, source, item, score, note, digests=None, lib=N
                                                           f"{pub.get('licence')}, via {pub.get('source_page')}")
         if borrowed:
             entry["still_from"] = item
+        if isinstance(rec.get("derived_from"), dict):   # owner 2026-11-05: a reframed same-story still is still its
+            entry["picture_sha256"] = rec["derived_from"].get("sha256")   # source picture (E139 repeat gap)
         if shot.get("still_of") is not None:
             bad = still_of_problems(plan)
             mine = [b for b in bad if shot_id in b.split()[1:3]]

@@ -678,6 +678,12 @@ def check(plan, chars=None, gate_values=None, criteria=None, arc_table=None):
     if any(isinstance(s, dict) and s.get("still_of") is not None for s in shots):
         import shot_sources
         problems += shot_sources.still_of_problems(plan, tl)
+    # owner 2026-11-05: a same-story still reframed for this long (the rule and its cap, as plan_check runs them)
+    problems += pc.reuse_plan_problems(plan)
+    for i, s in enumerate(shots):
+        rec = pc.still_record(s.get("first_frame")) if isinstance(s, dict) and s.get("first_frame") else None
+        if rec and "derived_from" in rec and rec.get("status") == "APPROVED":
+            problems += [f"{p.split(' ', 1)[0]} shot {i} {s['id']} ({p})" for p in pc.derived_still_problems(rec, plan)]
 
     gens = [s for s in shots if s.get("window_of") is None]
     talk = [i for i, s in enumerate(shots) if s.get("window_of") is None and pc.talking(s)]

@@ -217,6 +217,18 @@ offline). It reads the guard's own count and cap, skips APPROVED stills and prin
 (1 candidate when that fits more shots); `left_for_later` is the next run's list. It dispatches nothing and the
 dispatch guard still re-checks every run: a partial batch every day instead of a GUARD_CF_ALLOCATION_USED refusal.
 
+Same-story still reuse (owner 2026-11-05): `python3 migration/production/bible/still_reuse.py candidates PLAN` lists, per
+framed scene shot, APPROVED stills of other plans of the same story whose prompt names what the shot's still shows;
+`still_reuse.py derive PLAN SHOT SOURCE RUN [--x X] [--y Y]` writes the reframed candidate `<still>-<RUN>-1` (PIL crop at
+the plan's aspect, Lanczos to its side, `derived_from` + `crop` + sha256). Then look at the reframed image itself and
+`scene_stills.py approve STILL CANDIDATE --score S --note TEXT --reviewer MODEL --checked
+subject_centred_in_frame,quality_kept,no_god_face,matches_shot`, by PR; the source's approval is never copied.
+plan_check refuses with REUSE_* (other story, source not approved, chain, same plan, off-scene, crop invalid/off-centre,
+low resolution counted in the source's generated pixels, God with a face, no review). Originality cap (owner rule and
+YouTube YPP "reused content"): at most a third of a plan's stills reframed (REUSE_SHARE_TOO_HIGH), never under the line its
+source carried (REUSE_SAME_LINE), and the plan keeps its own Keeper and insight line (REUSE_NO_ORIGINAL_LAYER).
+A ChatGPT 16:9 still (1672x941 generated) is too small for a 9:16 crop (REUSE_LOW_RES): reuse pays only on bigger sources.
+
 `pavo-private-audio.yml` supports the existing private exact-audio and first-frame requests. It uses the current
 shared lease, quota, exact zero-credit quote, encrypted transfer and durable claim. A saved conversation ID is
 reconciled by GET, never resubmitted because a caller timed out. A claim without a definitive result is unresolved.

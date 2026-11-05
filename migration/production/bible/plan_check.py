@@ -1202,6 +1202,229 @@ def _image_size(path):
     return None
 
 
+# ---------- same-story still reuse (owner 2026-11-05) ----------
+# Owner, 2026-11-05: "Se não for abaixar a qualidade e ajudar a chegar na meta com precisão, pode fazer." An APPROVED
+# still of ANOTHER plan of the SAME story (same book and an overlapping chapter/verse range, or the same `story_id`)
+# may be reframed (16:9 <-> 9:16) into a NEW still record of this plan: `derived_from` {still, episode, sha256,
+# prompt_sha256}, `crop` {box [x, y, w, h], source_size}, its own output sha256, approved by the same
+# `scene_stills.py approve` after a real look at the reframed image (approved.review: REUSE_REVIEW_CHECKS and the
+# derivative's own sha256). The source's approval is never copied. still_reuse.py lists candidates and makes them.
+REUSE_PLANS_DIR = HERE / "plans"
+REUSE_SIDES = {"9:16": (1080, 1920), "16:9": (1920, 1080)}   # = scene_stills.SIDES (the plan's still side)
+# the normal still route's native pixels before its upscale (scene-stills.yml: FLUX's 1024 square cut to the plan's
+# aspect, then Real-ESRGAN): a reframed crop never starts from fewer source pixels than that route does
+REUSE_NATIVE_MIN = {"9:16": (576, 1024), "16:9": (1024, 576)}
+REUSE_REVIEW_CHECKS = ("subject_centred_in_frame", "quality_kept", "no_god_face", "matches_shot")
+REUSE_MATCH_MIN = 0.6        # share of this still's subject words that the source still's prompt also names
+REUSE_CENTRE_SHIFT_MAX = 0.25   # the crop's centre stays in the source's middle half (its prompt's subject is centred)
+_PASSAGE_REF = re.compile(r"(?:(?P<book>(?:[1-3] )?[A-Z][a-z]+) )?(?P<c1>\d+)(?::(?P<v1>\d+))?"
+                          r"(?:-(?P<c2>\d+)(?::(?P<v2>\d+))?)?")
+_REUSE_STOP = {"a", "an", "the", "and", "of", "to", "in", "on", "at", "his", "her", "its", "their", "with", "from",
+               "by", "is", "are", "was", "be", "it", "this", "that", "for", "as", "into", "over", "under", "no", "not",
+               "one", "all", "shot", "slow", "wide", "extreme", "medium", "close", "push", "pull", "back", "drift",
+               "pan", "tilt", "frame", "centred", "subject", "figures", "silhouette", "seen", "behind", "light"}
+
+
+def passage_ranges(passage):
+    """[(book, start, end)] of a plan's `passage` ("Genesis 10-11:9 (KJV...), with Genesis 11:26-28 and 12:2"), each
+    position chapter * 1000 + verse (a whole chapter runs to verse 999). The book carries to the refs after it."""
+    text = re.sub(r"\([^)]*\)", " ", str(passage or ""))
+    out, book = [], None
+    for m in _PASSAGE_REF.finditer(text):
+        book = m.group("book") or book
+        if not book:
+            continue
+        c1, v1, c2, v2 = (int(x) if x else None for x in m.group("c1", "v1", "c2", "v2"))
+        if v1 is not None and c2 is not None and v2 is None:     # 11:1-9: verses of one chapter
+            start, end = c1 * 1000 + v1, c1 * 1000 + c2
+        else:
+            start = c1 * 1000 + (v1 or 1)
+            end = (c2 or c1) * 1000 + (v2 if v2 is not None else (v1 if c2 is None and v1 is not None else 999))
+        out.append((book, start, end))
+    return out
+
+
+def same_story(plan, other):
+    """The same story: both name the same `story_id`, or the same book over an overlapping chapter/verse range."""
+    a, b = plan or {}, other or {}
+    if a.get("story_id") and a.get("story_id") == b.get("story_id"):
+        return True
+    return any(x[0] == y[0] and x[1] <= y[2] and y[1] <= x[2]
+               for x in passage_ranges(a.get("passage")) for y in passage_ranges(b.get("passage")))
+
+
+def _plan_text(plan):
+    per = (plan or {}).get("period") or {}
+    return " ".join(str(per.get(k) or "") for k in ("setting", "exclude")) if isinstance(per, dict) else str(per)
+
+
+def subject_words(prompt, plan=None):
+    """What a still shows, in words: its prompt without the style sentence, the plan's period and the stock phrases."""
+    text = str(prompt or "")
+    for part in _plan_text(plan).split(". "):
+        if part.strip():
+            text = text.replace(part.strip().rstrip("."), " ")
+    text = re.sub(r"^Painterly[^.]*\.", " ", text)
+    return {w for w in re.findall(r"[a-z]+", text.lower()) if len(w) > 2 and w not in _REUSE_STOP}
+
+
+def scene_match(prompt, plan, source_prompt, source_plan):
+    mine = subject_words(prompt, plan)
+    return len(mine & subject_words(source_prompt, source_plan)) / len(mine) if mine else 0.0
+
+
+def source_native_size(src, stills_dir=None):
+    """The pixels a still was generated at, when its approved candidate recorded them (download.pixels), else None."""
+    cand = (src or {}).get("candidate")
+    if not isinstance(cand, str) or not STILL_ID.fullmatch(cand):
+        return None
+    path = Path(stills_dir or STILLS_DIR) / "candidates" / f"{cand}.json"
+    try:
+        px = (json.loads(path.read_text()).get("download") or {}).get("pixels")
+    except (OSError, ValueError):
+        return None
+    ok = isinstance(px, list) and len(px) == 2 and all(isinstance(x, int) and x > 0 for x in px)
+    return px if ok else None
+
+
+def derived_still_problems(rec, plan, stills_dir=None, approved=True):
+    """The same-story reuse rule for a still record (or candidate) carrying `derived_from`. Codes:
+    REUSE_RECORD_INCOMPLETE, REUSE_SOURCE_NOT_APPROVED, REUSE_CHAIN, REUSE_SAME_PLAN, REUSE_OTHER_STORY,
+    REUSE_OFF_SCENE, REUSE_CROP_INVALID, REUSE_CROP_OFF_CENTRE, REUSE_LOW_RES, REUSE_GOD_FACE and, once approved,
+    REUSE_NO_REVIEW (no review of the reframed image itself, or an approval copied from the source)."""
+    rec = rec if isinstance(rec, dict) else {}
+    d = rec.get("derived_from")
+    crop = rec.get("crop") if isinstance(rec.get("crop"), dict) else {}
+    if not isinstance(d, dict) or not d.get("still") or not re.fullmatch(r"[0-9a-f]{64}", str(d.get("sha256") or "")) \
+            or not re.fullmatch(r"[0-9a-f]{64}", str(rec.get("sha256") or "")):
+        return ["REUSE_RECORD_INCOMPLETE (derived_from {still, sha256} and the derivative's own sha256)"]
+    src = still_record(d["still"], stills_dir)
+    if not src or src.get("status") != "APPROVED" or not reviewer_identity.valid(src.get("approved") or {}) \
+            or src.get("sha256") != d["sha256"]:
+        return [f"REUSE_SOURCE_NOT_APPROVED {d['still']} (an APPROVED still whose sha256 is derived_from.sha256)"]
+    path = (ROOT / str(src.get("repo_path") or "")).resolve()
+    if not src.get("repo_path") or ROOT.resolve() not in path.parents or not path.is_file() \
+            or hashlib.sha256(path.read_bytes()).hexdigest() != d["sha256"]:
+        return [f"REUSE_SOURCE_NOT_APPROVED {d['still']} (its image is not the approved bytes)"]
+    if src.get("derived_from"):
+        return [f"REUSE_CHAIN {d['still']} (reframe the original approved still, never a derivative)"]
+    if src.get("episode") == (plan or {}).get("episode"):
+        return [f"REUSE_SAME_PLAN {d['still']} (a still of this plan is shown again by still_of, not reframed)"]
+    sp = Path(REUSE_PLANS_DIR) / f"{src.get('episode')}.json"
+    src_plan = json.loads(sp.read_text()) if sp.is_file() else None
+    if src_plan is None or not same_story(plan, src_plan):
+        return [f"REUSE_OTHER_STORY {d['still']} ({src.get('episode')}: same book and overlapping verses, or the "
+                "same story_id)"]
+    out = []
+    match = scene_match(rec.get("prompt"), plan, src.get("prompt"), src_plan)
+    if match < REUSE_MATCH_MIN:
+        out.append(f"REUSE_OFF_SCENE {d['still']} (its prompt names {match:.0%} of what this still shows; "
+                   f">= {REUSE_MATCH_MIN:.0%})")
+    aspect = (plan or {}).get("aspect_ratio", "9:16")
+    box, dims = crop.get("box"), crop.get("source_size")
+    ints = lambda v, n: isinstance(v, list) and len(v) == n and all(  # noqa: E731
+        isinstance(x, int) and not isinstance(x, bool) and x >= 0 for x in v)
+    if aspect not in REUSE_SIDES or not ints(box, 4) or not ints(dims, 2) or list(dims) != list(src.get("size") or []) \
+            or box[2] <= 0 or box[3] <= 0 or box[0] + box[2] > dims[0] or box[1] + box[3] > dims[1]:
+        return out + [f"REUSE_CROP_INVALID {box} (a box [x, y, w, h] inside the source's {src.get('size')})"]
+    aw, ah = (int(v) for v in aspect.split(":"))
+    if abs(box[2] / box[3] - aw / ah) > 0.01:
+        out.append(f"REUSE_CROP_INVALID {box} is not {aspect}")
+    cx, cy = box[0] + box[2] / 2, box[1] + box[3] / 2
+    if abs(cx - dims[0] / 2) > REUSE_CENTRE_SHIFT_MAX * dims[0] or \
+            abs(cy - dims[1] / 2) > REUSE_CENTRE_SHIFT_MAX * dims[1] or not SAFE_AREA.search(src.get("prompt") or ""):
+        out.append(f"REUSE_CROP_OFF_CENTRE {box} (the source's prompt keeps its subject 'centred in the frame' and the "
+                   f"crop's centre stays within {REUSE_CENTRE_SHIFT_MAX:.0%} of the source's centre)")
+    need, side = REUSE_NATIVE_MIN[aspect], REUSE_SIDES[aspect]
+    # the source's own generated pixels: a still resized up at its finalize (a ChatGPT 1672x941 PNG to 1920x1080)
+    # holds no more detail than its download, so the crop is counted in the download's pixels
+    native = source_native_size(src, stills_dir)
+    nw, nh = (box[2] * native[0] / dims[0], box[3] * native[1] / dims[1]) if native else (box[2], box[3])
+    if nw < need[0] or nh < need[1] or list(rec.get("size") or []) != list(side):
+        out.append(f"REUSE_LOW_RES {box[2]}x{box[3]} ({nw:.0f}x{nh:.0f} generated pixels) -> {rec.get('size')} (a "
+                   f"crop of >= {need[0]}x{need[1]} generated pixels, the normal route's, delivered at "
+                   f"{side[0]}x{side[1]})")
+    for label, text in (("source", src.get("prompt")), ("this still", rec.get("prompt"))):
+        if god_problem(str(text or "")):
+            out.append(f"REUSE_GOD_FACE {label} ({god_problem(str(text))})")
+    if approved:
+        a = rec.get("approved") or {}
+        r = a.get("review") if isinstance(a.get("review"), dict) else {}
+        missing = [c for c in REUSE_REVIEW_CHECKS if c not in (r.get("checked") or [])]
+        if missing or r.get("reviewed_sha256") != rec.get("sha256") or not str(r.get("note") or "").strip():
+            out.append(f"REUSE_NO_REVIEW {rec.get('id')} (a review of the reframed image itself: {missing or 'its sha256'})")
+        elif a.get("note") == (src.get("approved") or {}).get("note") or a.get("date") is None:
+            out.append(f"REUSE_NO_REVIEW {rec.get('id')} (the source's approval is never copied)")
+    return out
+
+
+REUSE_SHARE_MAX = 1 / 3   # owner 2026-11-05 (originality; YouTube YPP "reused content"): at most a third of the stills
+
+
+def _line_key(text):
+    return " ".join(re.findall(r"[a-z0-9]+", str(text or "").lower()))
+
+
+def reuse_plan_problems(plan, stills_dir=None, pending=None):
+    """Owner 2026-11-05 ("sempre tem que promover coisas novas... a camada de autenticidade, originalidade e crítica
+    não pode faltar"; YouTube's YPP refuses reused content): over the plan's still-first shots, the reframed ones
+    (`derived_from`, plus PENDING {shot id: source still id} about to be made or approved) are at most REUSE_SHARE_MAX
+    of its stills (REUSE_SHARE_TOO_HIGH); none sits under a narration line its source shot carried
+    (REUSE_SAME_LINE); and a plan that reuses carries its own new layer: a Keeper shot and an `insight` line, with no
+    story or insight line copied from a source plan (REUSE_NO_ORIGINAL_LAYER)."""
+    shots = (plan or {}).get("shots") or []
+    framed = [(i, s) for i, s in enumerate(shots) if isinstance(s, dict) and s.get("first_frame")]
+    used = {}
+    for i, s in framed:
+        rec = still_record(s.get("first_frame"), stills_dir) or {}
+        src = (pending or {}).get(s.get("id")) or ((rec.get("derived_from") or {}).get("still")
+                                                     if isinstance(rec.get("derived_from"), dict) else None)
+        if src:
+            used[i] = src
+    if not used:
+        return []
+    out = []
+    cap = math.floor(len(framed) * REUSE_SHARE_MAX)
+    if len(used) > cap:
+        out.append(f"REUSE_SHARE_TOO_HIGH {len(used)} of {len(framed)} stills reframed (at most {cap}: a third, "
+                   "owner 2026-11-05 originality and YouTube's reused-content policy)")
+    try:
+        items, carried = sequence(plan)
+    except (KeyError, IndexError, TypeError):
+        items, carried = [], [[] for _ in shots]
+    own_story = set()
+    for x in (plan.get("narration") or []):
+        if isinstance(x, dict) and x.get("kind") in ("story", "insight"):
+            own_story.add(_line_key(x.get("text")))
+    copied = set()
+    for i, src_id in sorted(used.items()):
+        src = still_record(src_id, stills_dir) or {}
+        sp = Path(REUSE_PLANS_DIR) / f"{src.get('episode')}.json"
+        src_plan = json.loads(sp.read_text()) if sp.is_file() else None
+        if not src_plan:
+            continue
+        try:
+            s_items, s_carried = sequence(src_plan)
+        except (KeyError, IndexError, TypeError):
+            continue
+        k = next((j for j, s in enumerate(src_plan.get("shots") or []) if s.get("id") == src.get("shot")), None)
+        theirs = {_line_key(s_items[n]["text"]) for n in (s_carried[k] if k is not None else [])}
+        mine = {_line_key(items[n]["text"]) for n in carried[i]} if i < len(carried) else set()
+        same = sorted(t for t in mine & theirs if t)
+        if same:
+            out.append(f"REUSE_SAME_LINE shot {i} {shots[i].get('id')} ({src_id} sat under {same[0][:60]!r} in "
+                       f"{src.get('episode')}: a reused picture carries a different line)")
+        copied |= own_story & {_line_key(x.get("text")) for x in src_plan.get("narration") or []
+                               if isinstance(x, dict) and x.get("kind") in ("story", "insight")}
+    has_keeper = any(isinstance(s, dict) and s.get("kind") == "keeper" for s in shots)
+    has_insight = any(isinstance(x, dict) and x.get("kind") == "insight" and str(x.get("text") or "").strip()
+                      for x in plan.get("narration") or [])
+    if not has_keeper or not has_insight or copied:
+        out.append("REUSE_NO_ORIGINAL_LAYER (a plan that reuses stills keeps its own Keeper shot and insight line and "
+                   f"copies no story/insight line from its source{': ' + repr(sorted(copied)[0][:60]) if copied else ''})")
+    return out
+
+
 def frame_problems(i, shot, plan, stills_dir=None):
     """Image first (owner, 27/10): a scene shot's `first_frame` / `last_frame` name APPROVED scene stills whose image
     is the approved one, at the plan's aspect, and whose prompt passes the scene rules. Shared by plan_check (and the
@@ -1270,6 +1493,9 @@ def frame_problems(i, shot, plan, stills_dir=None):
         w, h = (int(x) for x in aspect.split(":"))
         if not size or abs(size[0] / size[1] - w / h) > 0.01:
             out.append(f"STILL_ASPECT_MISMATCH shot {i} {sid} ({f} {still}: {size} is not {aspect})")
+        if "derived_from" in rec:   # owner 2026-11-05: a same-story still reframed for this plan
+            out += [f"{p.split(' ', 1)[0]} shot {i} {sid} ({f} {still}: {p})"
+                    for p in derived_still_problems(rec, plan, stills_dir)]
     return out
 
 
@@ -2004,6 +2230,7 @@ def _check_shots(plan, chars, narration, shots, problems, pending):
     problems += plan_period_problems(plan, shots)
     problems += plan_writing_problems(shots)
     problems += plan_prop_problems(plan, shots)
+    problems += reuse_plan_problems(plan)   # owner 2026-11-05: same-story reuse cap, line and originality
     for i, s in enumerate(shots):
         problems += prompt_problems(i, s)
         problems += frame_problems(i, s, plan)
