@@ -116,9 +116,16 @@ jobs:
           cd "$RUNNER_TEMP/MuseTalk"
           s=$(date +%s)
           export OMP_NUM_THREADS=4 MKL_NUM_THREADS=4 PYTHONUNBUFFERED=1
-          "$RUNNER_TEMP/mt/bin/python" -m scripts.inference --inference_config "$W/task.yaml" --result_dir "$W/result" \
+          "$RUNNER_TEMP/mt/bin/pip" install --disable-pip-version-check -q py-spy==0.3.14
+          timeout 1500s "$RUNNER_TEMP/mt/bin/python" -m scripts.inference --inference_config "$W/task.yaml" --result_dir "$W/result" \
             --unet_model_path models/musetalkV15/unet.pth --unet_config models/musetalkV15/musetalk.json \
-            --whisper_dir models/whisper --vae_type sd-vae --version v15 --batch_size 4 2>&1 | tr "\r" "\n" | while IFS= read -r l; do echo "$(date +%T) $l"; done | tee "$W/musetalk.log" | grep -v "^$" | tail -n 80
+            --whisper_dir models/whisper --vae_type sd-vae --version v15 --batch_size 4 > "$W/musetalk.raw" 2>&1 &
+          pid=$!
+          ( for i in 1 2 3 4; do sleep 150; echo "== py-spy $(date +%T)"; "$RUNNER_TEMP/mt/bin/py-spy" dump --pid "$pid" 2>&1 | head -40; done ) > "$W/spy.log" 2>&1 &
+          wait "$pid" || echo "MUSETALK_EXIT $?"
+          kill %2 2>/dev/null || true
+          tr "\r" "\n" < "$W/musetalk.raw" | grep -v "^$" > "$W/musetalk.log" || true
+          tail -n 60 "$W/musetalk.log"; cat "$W/spy.log"
           e=$(date +%s)
           echo "INFER_SECONDS=$((e - s))" >> "$GITHUB_ENV"
           ls -la "$W/result" "$W/result/v15" || true
@@ -145,5 +152,6 @@ jobs:
           path: |
             ${{ runner.temp }}/out
             ${{ runner.temp }}/work/musetalk.log
+            ${{ runner.temp }}/work/spy.log
           if-no-files-found: ignore
           retention-days: 14
