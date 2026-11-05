@@ -735,17 +735,35 @@ def verify_model(model_dir):
         require(h.hexdigest() == want, 'ASR_MODEL_HASH_MISMATCH')
 
 
+ASR_ATTEMPTS = 3
+
+
+def run_asr(model, samples, attempts=ASR_ATTEMPTS):
+    """One full pass of the pinned model. faster-whisper 1.2.1 sometimes raises IndexError inside its word-timestamp
+    alignment (find_alignment) on this very master: runs 41951213420 and 41953276036 failed, 41952393844 passed, with
+    identical inputs. A failed pass is repeated with the same parameters (never a different model or setting) up to
+    `attempts` times; any other error, or the last IndexError, stays."""
+    for attempt in range(1, attempts + 1):
+        try:
+            segments, _ = model.transcribe(samples, language='en', beam_size=3, vad_filter=False, word_timestamps=True,
+                                           condition_on_previous_text=False)
+            rows = []
+            for s in segments:
+                rows.append({'start': round(s.start, 2), 'end': round(s.end, 2), 'text': s.text.strip(),
+                             'words': [{'start': round(w.start, 2), 'end': round(w.end, 2), 'word': w.word.strip()}
+                                       for w in (s.words or [])]})
+            return rows
+        except IndexError:
+            print(f'LOCAL_REVIEW_ASR_INDEXERROR_ATTEMPT_{attempt}_OF_{attempts}')
+            if attempt == attempts:
+                raise
+
+
 def transcribe(model_dir, samples):
     from faster_whisper import WhisperModel
     model = WhisperModel(str(model_dir), device='cpu', compute_type='int8', cpu_threads=os.cpu_count() or 2,
                          num_workers=1, local_files_only=True)
-    segments, _ = model.transcribe(samples, language='en', beam_size=3, vad_filter=False, word_timestamps=True,
-                                   condition_on_previous_text=False)
-    rows = []
-    for s in segments:
-        rows.append({'start': round(s.start, 2), 'end': round(s.end, 2), 'text': s.text.strip(),
-                     'words': [{'start': round(w.start, 2), 'end': round(w.end, 2), 'word': w.word.strip()} for w in (s.words or [])]})
-    return rows
+    return run_asr(model, samples)
 
 
 def analyze(i, master, model_dir, out_dir, run_id, asr=transcribe, utmos_dir=None, utmos_predict=None):

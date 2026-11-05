@@ -395,5 +395,48 @@ class FailureLocation(unittest.TestCase):
         self.assertNotIn('/', text)
 
 
+class AsrRetry(unittest.TestCase):
+    class Seg:
+        start, end, text, words = 0.0, 1.0, ' hi ', []
+
+    def model(self, fails):
+        outer = self
+
+        class M:
+            calls = 0
+
+            def transcribe(self, samples, **kw):
+                M.calls += 1
+                if M.calls <= fails:
+                    def gen():
+                        raise IndexError('list index out of range')
+                        yield
+                    return gen(), None
+                return iter([outer.Seg()]), None
+        return M()
+
+    def test_a_failed_alignment_pass_is_repeated(self):
+        m = self.model(2)
+        self.assertEqual(L.run_asr(m, [0.0])[0]['text'], 'hi')
+        self.assertEqual(type(m).calls, 3)
+
+    def test_the_last_index_error_stays(self):
+        m = self.model(3)
+        with self.assertRaises(IndexError):
+            L.run_asr(m, [0.0])
+        self.assertEqual(type(m).calls, 3)
+
+    def test_other_errors_are_not_retried(self):
+        class M:
+            calls = 0
+
+            def transcribe(self, samples, **kw):
+                M.calls += 1
+                raise ValueError('x')
+        with self.assertRaises(ValueError):
+            L.run_asr(M(), [0.0])
+        self.assertEqual(M.calls, 1)
+
+
 if __name__ == '__main__':
     unittest.main()
