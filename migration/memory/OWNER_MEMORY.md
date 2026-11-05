@@ -34,6 +34,10 @@ when short) and republish the private log when the conversation moves.
   Always build the best prompt and take the best result available, then use it; a slightly synthetic voice or
   imperfect lip movement is not a reason to hold or regenerate (2026-11-05).
 - God is never shown with a face. Exact KJV.
+- Always bring something NEW, and the authenticity / originality / critical layer (the Keeper's own insight, honest
+  questions, context) must be present in a LARGE share of every video, not as a token line (owner 2026-11-05).
+  It also protects YPP: YouTube rejects channels for "reused/repetitive content", so compilations, read-alongs and
+  reused stills must each add substantial new original narration or Keeper commentary, never just re-cut old media.
 - Same-story still reuse is allowed only without quality loss (2026-11-05: "Se não for abaixar a qualidade... pode
   fazer"): a NEW reframed record with its own review, at most 1/3 of a plan's stills, never under the same line, and
   always with new narration and Keeper insight ("sempre tem que promover coisas novas"; YPP reused content).
