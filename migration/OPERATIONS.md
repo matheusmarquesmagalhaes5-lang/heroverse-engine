@@ -51,6 +51,11 @@ gain-only -14 LUFS, faded joins; QA `compilation-qa-criteria-v1`) → the Gemini
 `inspection/claude_review.json` with `defects` and a `publish_decision` by `claude-session-reviewer`
 (`owner_quality_policy.compilation_problems`: no unresolved [a], [b] or [e]) → the same `approve.yml` →
 `prepublish_gate.py` → `publish.yml`. The 9.5 track of the story longs is unchanged.
+Compilation v2 (owner 2026-11-05, originality; E306): a plan with `"criteria": "compilation-qa-criteria-v2"` adds Keeper
+`interludes` (after N chapters) and a hook and close as `beats`: our pinned Kokoro line per beat over an approved 16:9 still
+(sha256) with a camera move for the whole beat, every quoted line checked by kjv_check (`compilation_long.py check PLAN`).
+QA v2 adds `original_keeper_share` (new Keeper runtime >= 15 % of the master) and a stricter `no_padding`; long chapters may
+name `subchapters` so the description has a timestamp every few minutes. v1 plans and criteria are unchanged.
 
 ## Long-first and Short cuts
 
