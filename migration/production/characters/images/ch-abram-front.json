@@ -1,0 +1,12 @@
+{
+ "id": "ch-abram-front",
+ "character": "abram",
+ "repo_path": "migration/production/characters/refs/ch-abram-front.jpg",
+ "sha256": "f2415002a3376b552265a52c53df82e2548bc049fe87048c885bbb3da36741a5",
+ "source": "ChatGPT desktop app (Create image, 16:9) in the chat 'HeroVerse — stills' (select_chat.ps1 OK before the send), owner's PC, 2026-11-05; png sha256 cd1314b0e049ff732926550f84078bbd626dc486b21de91af31c4b9e80032fc7, 1672x941, centre crop 1920x1080 JPEG; prompt = images.json ch-abram-front + ', the face centred in the frame'",
+ "frame": [
+  1920,
+  1080
+ ],
+ "review": "Claude 2026-11-05: actual image viewed: one tall lean old man, face large and centred, deep-bronzed sun-lined skin, high forehead, steady dark brown eyes under heavy grey brows, long full salt-and-pepper beard, long grey hair under a pale undyed linen head cloth bound with a plain dark brown cord, striped brown-and-cream wool cloak over a plain undyed linen tunic, worn wooden shepherd's staff in his right hand, mouth closed, eyes to camera, plain warm dark background; no text, no jewellery, no metal, no modern item. The top of the head cloth touches the frame edge (the face is whole). Clearly apart from the Keeper (brown hood, silver-white beard), Noah (bald crown, iron-grey beard, plain robe with rope), Enoch and the builder (young, tied-back black hair)."
+}
