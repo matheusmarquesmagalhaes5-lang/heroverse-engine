@@ -31,6 +31,10 @@ when short) and republish the private log when the conversation moves.
   Always build the best prompt and take the best result available, then use it; a slightly synthetic voice or
   imperfect lip movement is not a reason to hold or regenerate (2026-11-05).
 - God is never shown with a face. Exact KJV.
+- Production must be high quality from the start (owner, repeated 2026-11-05): best prompts, best sources and a careful
+  build, so videos pass review the first time instead of being rejected and redone.
+- Gemini as reviewer: the owner does not trust it (past problems); a free, good-quality alternative is being
+  researched (2026-11-05).
 - Stills: ChatGPT desktop app on his PC (one chat "HeroVerse — stills").
 - Buzzy: lowest-credit model, balance read before/after, ≤100 credits/day average; he also uses Buzzy himself.
 - He listens to a long when no agent can: send a 540p proxy with bit-identical audio and record him as listener.
