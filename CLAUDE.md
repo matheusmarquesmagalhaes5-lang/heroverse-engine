@@ -6,9 +6,10 @@ toward a verified public delivery. A plan, a successful job or an uploaded priva
 ## Read in this order
 
 1. `migration/SYSTEM.md` — the single current operating contract, including the separate Short and long routes.
-2. `migration/evidence/handoff/CURRENT.md` — the one current continuation point.
-3. `migration/OPERATIONS.md` — commands, workflows, shared control and actual automation limits.
-4. The relevant plan, source approvals, media evidence and publication ledger. Read
+2. `migration/memory/OWNER_MEMORY.md` — what the owner has already decided (read it; do not ask again).
+3. `migration/evidence/handoff/CURRENT.md` — the one current continuation point.
+4. `migration/OPERATIONS.md` — commands, workflows, shared control and actual automation limits.
+5. The relevant plan, source approvals, media evidence and publication ledger. Read
    `migration/production/bible/PROMPT_GUIDE.md` for construction and `migration/ops/CLAUDE_REVIEW.md` for review.
 
 Read only the evidence needed for the current delivery. Historical receipts, audits and error records establish
