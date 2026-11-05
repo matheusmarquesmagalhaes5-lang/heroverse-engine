@@ -23,6 +23,22 @@
         "--executable-path",
         "${PW_CHROME:-/opt/pw-browsers/chromium}"
       ]
+    },
+    "tubealfred": {
+      "type": "http",
+      "url": "https://mcp.tubealfred.com/"
+    },
+    "chrome-devtools": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@1.12.0",
+        "--headless",
+        "--isolated",
+        "--no-usage-statistics",
+        "--executable-path",
+        "${PW_CHROME:-/opt/pw-browsers/chromium}"
+      ]
     }
   }
 }
