@@ -2,6 +2,25 @@
  "id": "genesis-12-short-s-hands",
  "episode": "genesis-12-short",
  "shot": "s-hands",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. A line of workers passing fired bricks hand to hand beside a pot of steaming black pitch, a tall wall of brick rising behind them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Warm low firelight. Driven, with a hint of unease. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. A line of workers passing fired bricks hand to hand beside a pot of steaming black pitch, a tall wall of brick rising behind them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Warm low firelight. Driven, with a hint of unease. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-12-short-s-hands.jpg",
+ "sha256": "243205a67e1268fe0bcad579df4f38cce8e3134d0e56f9747fd294bd9b14c9ae",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-12-short-s-hands-42067935234-1",
+ "engine": "cloudflare-workers-ai:@cf/black-forest-labs/flux-1-schnell",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-05",
+  "score": 9.5,
+  "note": "Contact-sheet look: subject centred, period-correct Babel brickwork, no text, no God face; frame review only.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "b1ca3765b15feec72d0431b6fd179179afa8a2520d25b332959dd2938018101d",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

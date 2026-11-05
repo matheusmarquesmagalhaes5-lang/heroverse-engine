@@ -1,0 +1,37 @@
+{
+ "id": "genesis-12-short-s-hands-42067935234-1",
+ "still": "genesis-12-short-s-hands",
+ "episode": "genesis-12-short",
+ "shot": "s-hands",
+ "run": "42067935234",
+ "status": "DRAFT",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. A line of workers passing fired bricks hand to hand beside a pot of steaming black pitch, a tall wall of brick rising behind them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Warm low firelight. Driven, with a hint of unease. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "sent_prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. A line of workers passing fired bricks hand to hand beside a pot of steaming black pitch, a tall wall of brick rising behind them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Warm low firelight. Driven, with a hint of unease. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos., tall vertical composition, the whole subject inside the central third of the frame",
+ "engine": "cloudflare-workers-ai:@cf/black-forest-labs/flux-1-schnell",
+ "models": {
+  "@cf/black-forest-labs/flux-1-schnell": {
+   "license": "apache-2.0",
+   "revision": "workers-ai-managed",
+   "source": "https://huggingface.co/black-forest-labs/FLUX.1-schnell"
+  }
+ },
+ "generated_by": "HeroVerse pipeline (AI-generated image)",
+ "source": "cf-flux",
+ "conversation_id": null,
+ "quote": null,
+ "references": [],
+ "pavo": null,
+ "upscaler": {
+  "model": "Real-ESRGAN general x4v3 (output 4x of a 576 px input)",
+  "licence": "bsd-3-clause",
+  "weights_sha256": "8dc7edb9ac80ccdc30c3a5dca6616509367f05fbc184ad95b731f05bece96292",
+  "source": "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.5.0/realesr-general-x4v3.pth"
+ },
+ "aspect_ratio": "9:16",
+ "size": [
+  1080,
+  1920
+ ],
+ "repo_path": "migration/production/bible/stills/candidates/genesis-12-short-s-hands-42067935234-1.jpg",
+ "sha256": "243205a67e1268fe0bcad579df4f38cce8e3134d0e56f9747fd294bd9b14c9ae"
+}

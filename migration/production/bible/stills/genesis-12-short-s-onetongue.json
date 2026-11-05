@@ -2,6 +2,25 @@
  "id": "genesis-12-short-s-onetongue",
  "episode": "genesis-12-short",
  "shot": "s-onetongue",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. A crowded market at a river landing, men and women trading grain and cloth under reed awnings, a child laughing on a man's shoulders, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Warm morning light, dust in the air. Joyful. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. A crowded market at a river landing, men and women trading grain and cloth under reed awnings, a child laughing on a man's shoulders, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Warm morning light, dust in the air. Joyful. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-12-short-s-onetongue.jpg",
+ "sha256": "023071601a6f52894abf78bb0410fb61c700bc9a28d71badd989bc89dd3b9275",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-12-short-s-onetongue-42067935234-1",
+ "engine": "cloudflare-workers-ai:@cf/black-forest-labs/flux-1-schnell",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-05",
+  "score": 9.5,
+  "note": "Contact-sheet look: subject centred, period-correct Babel brickwork, no text, no God face; frame review only.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "d2074bbda16b49e77e4086ffcdaaffc21e18ebc93217a10b3dc46a3b9900512c",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

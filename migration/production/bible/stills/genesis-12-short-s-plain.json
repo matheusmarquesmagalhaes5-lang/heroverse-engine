@@ -2,6 +2,25 @@
  "id": "genesis-12-short-s-plain",
  "episode": "genesis-12-short",
  "shot": "s-plain",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. Workers knee-deep in wet grey clay pressing it into wooden moulds, rows of raw clay bricks drying in the sun behind them on a flat river plain, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Hard midday sun, wet clay glistening. Busy and determined. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. Workers knee-deep in wet grey clay pressing it into wooden moulds, rows of raw clay bricks drying in the sun behind them on a flat river plain, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Hard midday sun, wet clay glistening. Busy and determined. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-12-short-s-plain.jpg",
+ "sha256": "f0a3e8f287dce25f64541e5fc6e6a448d01983cc1b1c00bb7c6f0d57294c8059",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-12-short-s-plain-42067935234-1",
+ "engine": "cloudflare-workers-ai:@cf/black-forest-labs/flux-1-schnell",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-05",
+  "score": 9.5,
+  "note": "Contact-sheet look: subject centred, period-correct Babel brickwork, no text, no God face; frame review only.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "ffe3b6ef3c23ac667eceff428942e8af38664c1f528f7677d6a0dab75653c365",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }
