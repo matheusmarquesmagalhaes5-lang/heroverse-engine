@@ -49,10 +49,10 @@ MAX_DRIFT_START, MAX_DRIFT_END = 1.0, 1.5   # whisper's word times jitter by abo
 MIN_VOICE_OVER_MUSIC_DB = 4.0
 FREEZE_MIN = 3.0
 # Owner-approved research 2026-11-04 (TOOLS-MARKET item 2): per-sentence word error rate against the exact script and UTMOS22
-# naturalness, both CPU, both WARN ONLY. The thresholds are PROVISIONAL (not yet calibrated on accepted masters); they never
+# naturalness, both CPU, both WARN ONLY. The thresholds are PROVISIONAL (first calibration 2026-11-05: evidence/reviewer-calibration/local-review-wer-utmos-calibration.json); they never
 # enter `issues`, `machine_verdict` or any gate. Promoting one to a refusal needs a recorded calibration (OPERATIONS.md).
-WER_SENTENCE_WARN, WER_OVERALL_WARN, WER_MIN_WORDS = 0.30, 0.12, 4
-UTMOS_SENTENCE_WARN, UTMOS_MEAN_WARN = 2.0, 2.8     # MOS 1-5 on the full mix (music lowers it); see UTMOS['limits']
+WER_SENTENCE_WARN, WER_OVERALL_WARN, WER_MIN_WORDS = 0.30, 0.10, 4   # overall 0.12 -> 0.10 (calibration 2026-11-05)
+UTMOS_SENTENCE_WARN, UTMOS_MEAN_WARN = 2.3, 3.0     # MOS 1-5 on the full mix (music lowers it); see UTMOS['limits']
 UTMOS_MAX_CLIPS, UTMOS_CLIP_MIN, UTMOS_CLIP_MAX = 120, 1.5, 20.0
 UTMOS = {'repo': 'tarepan/SpeechMOS', 'tag': 'v1.2.0', 'commit': 'ed25eacbfa42b99156c36ebec67a733b5dbb9b79',
          'weights': 'utmos22_strong_step7459_v1.pt', 'weights_bytes': 411179119,

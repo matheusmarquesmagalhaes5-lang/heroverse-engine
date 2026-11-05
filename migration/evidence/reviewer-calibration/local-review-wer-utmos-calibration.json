@@ -1,0 +1,37 @@
+{
+ "date": "2026-11-05",
+ "pr": "#847 (WER/UTMOS), #861, #862 (E302)",
+ "executor": "Claude (actions runs below); no human listening by this executor",
+ "install": {
+  "torch": "torch==2.5.1+cpu / torchaudio==2.5.1+cpu installed in the review venv; step success, no secret",
+  "speechmos_commit": "ed25eacbfa42b99156c36ebec67a733b5dbb9b79",
+  "weights_sha256": "38aa51ab79e2a4e09a1449758a4b37e9cbb2e8235a49662a732d33a9ba1e9bff (checked OK on the runner)",
+  "utmos_status": "OK on every run with a script reference; 100-101 clips on the long, 20 on the Short"
+ },
+ "owner_listening": "Babel long (pilot-020, sha256 0386d34a1501477d6ea487b3c3cf53caedb0a898d70e7b15feb90e36bad09937): the owner listened and approved. The three ASR flags of local-review 41860696043 (00:55 'mighty', 02:17-02:22 b-brick builder line, 06:51 'babel') were therefore ASR misses, not defects.",
+ "runs": [
+  {"run": 41951213420, "master": "babel long", "result": "FAILED IndexError (faster-whisper find_alignment), no location printed"},
+  {"run": 41952393844, "master": "babel long", "result": "success, ASR heard the three known points correctly",
+   "wer_overall": 0.0165, "wer_errors": "21/1275", "utmos_mean": 3.421, "utmos_min": 2.625, "utmos_median": 3.45, "clips": 100,
+   "warns": ["07:30.06 sentence 115 WER 50% (the names 'Haran' heard 'heron')"],
+   "known_points": {"00:55 s16": "wer 0.0, 1 word", "02:17 s37": "wer 0.0, mos 3.135", "06:51 s105": "wer 0.0, 1 word"}},
+  {"run": 41953276036, "master": "babel long", "result": "FAILED IndexError at transcribe.py:find_alignment:1744 (location from #861); fixed by retry in #862"},
+  {"run": 41954680396, "master": "babel long", "result": "success, ASR reproduced the three known misses",
+   "wer_overall": 0.029, "wer_errors": "37/1275", "utmos_mean": 3.414, "utmos_min": 2.514, "utmos_median": 3.458, "clips": 101,
+   "warns": ["02:19.98 sentence 37 WER 88% (14 of 16 words missing: the b-brick builder line)", "07:30.08 sentence 115 WER 50% (Haran)"],
+   "known_points": {"00:55 s16": "wer 1.0 but 1 word, below the 4-word minimum: no WER warn (the [a] heard-coverage issue still lists it)",
+                    "02:17 s37": "WER warn fired (88%); the same sentence scored UTMOS 3.135 on the pass that heard it, so the voice is natural",
+                    "06:51 s105": "wer 1.0 but 1 word: no WER warn"}},
+  {"run": 41954725002, "master": "genesis-10-short (public)", "result": "success",
+   "wer_overall": 0.064, "wer_errors": "29/453", "utmos_mean": 3.57, "utmos_min": 3.103, "utmos_median": 3.59, "clips": 20,
+   "warns": ["00:06.12 sentence 0 WER 73% (18 extra words in the hook sentence)"]},
+  {"run": 41953262639, "master": "arc-02 noah compilation (public)", "result": "success but no script reference, so no WER/UTMOS (transcript-only compilations are outside this measure)"}
+ ],
+ "conclusion": {
+  "sentence_wer_warn": "0.30 on 4+ words unchanged: it caught the b-brick line (0.88) and the name sentence (0.50), not the 0.26 name sentence",
+  "overall_wer_warn": "0.12 -> 0.10: accepted masters read 0.0165, 0.029 and 0.064 (a Short whose hook adds 18 words); a margin above the highest",
+  "utmos_sentence_warn": "2.0 -> 2.3: the lowest clip of an approved voice is 2.51-2.63 over 100 clips, so 2.3 is below every approved clip",
+  "utmos_mean_warn": "2.8 -> 3.0: approved means are 3.41, 3.41 and 3.57",
+  "limits": "one approved long and one Short; the 1-word known points cannot be warned by WER by design; promote nothing to a gate without more accepted masters"
+ }
+}

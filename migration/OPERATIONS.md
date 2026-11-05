@@ -227,9 +227,13 @@ rate of each script sentence against the pinned ASR transcript (`measures.audio.
 spellings also counted) and, when the optional workflow step installed it, UTMOS22-strong naturalness on CPU
 (`measures.audio.utmos`: MOS per heard sentence, at most 120 clips; pinned SpeechMOS commit and weights sha256, no secret). Findings
 go to the public evidence key `warnings` as `MM:SS.ss [warn] ...`, never to `issues` or `machine_verdict`. Thresholds are
-PROVISIONAL and uncalibrated (sentence WER > 0.30 on 4+ words, overall WER > 0.12, sentence UTMOS < 2.0, mean < 2.8; UTMOS on a mix
-with music reads low). They stay WARNs until a run over the accepted masters is recorded in
-`evidence/reviewer-calibration/` and the numbers are changed by a PR that cites it. A failed UTMOS step does not fail the review
+PROVISIONAL, first calibrated 2026-11-05 on the owner-approved Babel long (two ASR passes) and the public genesis-10 Short
+(`evidence/reviewer-calibration/local-review-wer-utmos-calibration.json`): sentence WER > 0.30 on 4+ words, overall WER > 0.10,
+sentence UTMOS < 2.3, mean < 3.0 (UTMOS on a mix with music reads low). The ASR is not deterministic: the same Babel master gave
+no ASR flag in one pass and the three known false flags (00:55, 02:17-02:22, 06:51) in another, and faster-whisper 1.2.1 sometimes
+fails with IndexError in word alignment, so `run_asr` repeats a failed pass up to 3 times (E302). A WER warn on a name or on the known
+points is an ASR miss to be listened to, not a defect. They stay WARNs until a calibration over more accepted masters
+is recorded in `evidence/reviewer-calibration/` and a PR cites it. A failed UTMOS step does not fail the review
 (`utmos.status` is `NOT_RUN`). The session reviewer listens to every warned sentence; a warn is not a score.
 
 `native-review.yml` (Gemini, optional second opinion) uses the existing operator certificate and configured provider credential without exposing the
