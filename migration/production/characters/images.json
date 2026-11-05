@@ -170,6 +170,24 @@
    "character": "enoch",
    "prompt": "character reference, full figure standing, front view: a lean upright man of about sixty with Middle Eastern features, weathered olive skin, calm bright dark eyes with deep laugh lines, a long black beard streaked with grey, long black hair streaked with grey tied back at the neck, a plain undyed cream wool robe with a dark blue woven shawl over his shoulders, his long black beard streaked with grey and trimmed to a point at the chest, his greying black hair tied back, the dark blue shawl plain with a woven edge, no hood, no jewellery, no metal, plain softly lit warm dark background",
    "seed": 7901
+  },
+  {
+   "id": "ch-abram-front",
+   "character": "abram",
+   "prompt": "character reference portrait, front view, head and shoulders, a calm searching expression, looking at the camera: a tall lean man of about seventy-five with Middle Eastern features, deep-bronzed skin lined by sun and wind, a high forehead, steady dark brown eyes under heavy grey brows, a long full salt-and-pepper beard, long grey hair under a pale undyed linen head cloth bound with a plain dark brown cord, a long striped brown-and-cream wool cloak over a plain undyed linen tunic, a worn wooden shepherd's staff in one hand, his salt-and-pepper beard long and full, the pale linen head cloth falling to his shoulders, the striped cloak of brown and cream wool, no jewellery, no metal, plain softly lit warm dark background",
+   "seed": 8001
+  },
+  {
+   "id": "ch-abram-three-quarter",
+   "character": "abram",
+   "prompt": "character reference portrait, three-quarter view, head and shoulders: a tall lean man of about seventy-five with Middle Eastern features, deep-bronzed skin lined by sun and wind, a high forehead, steady dark brown eyes under heavy grey brows, a long full salt-and-pepper beard, long grey hair under a pale undyed linen head cloth bound with a plain dark brown cord, a long striped brown-and-cream wool cloak over a plain undyed linen tunic, a worn wooden shepherd's staff in one hand, his salt-and-pepper beard long and full, the pale linen head cloth falling to his shoulders, the striped cloak of brown and cream wool, no jewellery, no metal, plain softly lit warm dark background",
+   "seed": 8001
+  },
+  {
+   "id": "ch-abram-full",
+   "character": "abram",
+   "prompt": "character reference, full figure standing, front view: a tall lean man of about seventy-five with Middle Eastern features, deep-bronzed skin lined by sun and wind, a high forehead, steady dark brown eyes under heavy grey brows, a long full salt-and-pepper beard, long grey hair under a pale undyed linen head cloth bound with a plain dark brown cord, a long striped brown-and-cream wool cloak over a plain undyed linen tunic, a worn wooden shepherd's staff in one hand, his salt-and-pepper beard long and full, the pale linen head cloth falling to his shoulders, the striped cloak of brown and cream wool, no jewellery, no metal, plain softly lit warm dark background",
+   "seed": 8001
   }
  ]
 }
