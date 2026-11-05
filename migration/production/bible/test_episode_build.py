@@ -3052,7 +3052,7 @@ class SilentPavoClips(unittest.TestCase):
             self.assertEqual(eb.probe_ids(new, "k-a", "1", d, regen, lessons), (["k-a"], 1))   # a changed prompt: one more
             self.assertIn("PROBE_STANDING_LESSON", eb.standing_rule_verdict(new, "k-a", d, regen, lessons)[1])
             eb.pavo_prompt.append_lesson("2026-11-04", "rule", f"k-a silent revision {rev}: the passing Keeper framing "
-                                         "with an action in place of speech.", "E300", lessons)
+                                         "with an action in place of speech.", "E301", lessons)
             self.assertEqual(eb.standing_rule_verdict(new, "k-a", d, regen, lessons), (True, ""))
             store(d, "51", shot["prompt"], [])                           # a clean silent clip is used, never regenerated
             with self.assertRaises(SystemExit) as err:

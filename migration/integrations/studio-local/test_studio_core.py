@@ -179,9 +179,7 @@ class MappingTests(unittest.TestCase):
         # published after the queue was written made this assertion red on main)
         self.assertFalse({j["video_id"] for j in cut} & set(rm.ALREADY_DONE))
         for j in cut:
-            # a cut's target is the public long it was cut from: the flood long, and (since the Babel cuts were published
-            # 2026-11-04) the Babel long
-            self.assertIn(j["target_video_id"], ("1m-NUJhkdMY", "KwFjnZ20yGA"))
+            self.assertIn(j["target_video_id"], {"1m-NUJhkdMY", "KwFjnZ20yGA"})  # source longs: Noah, Babel
             self.assertTrue(j["reason"].endswith("cut of its source long"))
 
     def test_committed_queue_is_valid(self):

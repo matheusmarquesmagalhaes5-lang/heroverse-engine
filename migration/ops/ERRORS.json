@@ -4920,6 +4920,54 @@
    "id": "E300",
    "date": "2026-11-04",
    "class": [
+    "instrument"
+   ],
+   "prior": [
+    "E120",
+    "E131",
+    "E137",
+    "E139",
+    "E148",
+    "E152",
+    "E166",
+    "E169",
+    "E185",
+    "E186",
+    "E231",
+    "E233",
+    "E238",
+    "E253",
+    "E255",
+    "E262",
+    "E266",
+    "E267",
+    "E273",
+    "E275",
+    "E279",
+    "E280",
+    "E281",
+    "E282",
+    "E283",
+    "E284",
+    "E285",
+    "E286",
+    "E289",
+    "E299"
+   ],
+   "error": "PR checks failed on the Babel cuts PR: test_studio_core.test_real_repository_state hardcoded the Noah long (1m-NUJhkdMY) as the only source long of a cut, so the first cut of another long (Babel, KwFjnZ20yGA) turned main red. Root cause: a test of a data-driven mapper pinned one value instead of the rule 'a cut points to its source long'.",
+   "fix": "The test accepts the known source longs (Noah, Babel); the mapper itself is unchanged.",
+   "antidote": {
+    "file": "migration/integrations/studio-local/test_studio_core.py",
+    "contains": "source longs: Noah, Babel",
+    "covers": [
+     "instrument"
+    ]
+   }
+  },
+  {
+   "id": "E301",
+   "date": "2026-11-04",
+   "class": [
     "process"
    ],
    "prior": [

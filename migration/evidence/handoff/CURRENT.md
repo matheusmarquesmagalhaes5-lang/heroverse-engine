@@ -6,6 +6,7 @@ exact receipts stay out of it. Today's plan is `../../strategy/live-plan.json`; 
 `../../strategy/DECISIONS.md` ("2026-11-02 — Battle plan to YPP").
 
 ## Current delivery: flood-ends-long (Genesis 8-9, buzzy-long, plan `plans/flood-ends-long.json`)
+- 2026-11-04 ~23:10Z (scheduled continuation): Babel cuts SCHEDULED (publish-episode, private until slot): babel-confound-cut https://youtube.com/shorts/oCLyzfDe4fY 11-05 23:30Z (41929844219); babel-climb-cut https://youtube.com/shorts/sTMFtnTsVYI 11-06 05:30Z (41930658419); babel-scatter-cut https://youtube.com/shorts/cg5Prm599HE 11-06 13:30Z (41930524255). Reviews: frames + ASR, audio not heard by me (long's audio owner-listened). Related-video entries added. Next: 11-06 18:30Z and 23:30Z free (genesis-12-short stills after FLUX 00:00Z, or more Babel cuts), Keeper reflection (window 410-431), arcs.json for Babel, comments.
 - 2026-11-04 ~22:40Z (Claude, session ...J5ZDLkPxvjc): review record pilot-020 (#844): audio listened to by the OWNER ("Babel ok", ~21:45Z) on a 540p
   proxy whose audio stream is bit-identical to master 0386d34a (stream sha256 1f6edaca... checked), picture by Claude's frame review; no numeric score.
   approve.yml 41923233107 GATE=PASS (APPROVAL.json by the workflow). The pilot alias pilot-020-sha256-0386d34a... was missing from the release (first pilot
