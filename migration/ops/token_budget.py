@@ -25,7 +25,9 @@ ACTIVITIES = ("long", "shorts", "clocks", "reviews_prs", "reserve")
 ACTIVITY_OF = {"agent_long": "long", "agent_short": "shorts", "clock_daily": "clocks", "agent_mining": "clocks",
                "agent_review": "reviews_prs", "agent_plan_pr": "reviews_prs", "agent_other": "reviews_prs"}
 BRIEFS = [("agent_review", r"^(code review|review pr)"), ("clock_daily", r"daily loop|daily analysis|\bclock\b"),
-          ("agent_mining", r"\bmining\b|\bmine\b"), ("agent_short", r"\bshorts?\b"), ("agent_long", r"\blong\b"),
+          ("agent_mining", r"\bmining\b|\bmine\b"),
+          # 2026-11-05: tooling/calibration/research briefs often mention Shorts but are not Short production
+          ("agent_other", r"\b(calibrat\w*|tool(s|ing)?|research|install\w*|adopt\w*)\b"), ("agent_short", r"\bshorts?\b"), ("agent_long", r"\blong\b"),
           ("agent_plan_pr", r"\bplan\b")]
 
 

@@ -246,3 +246,10 @@ class Budget(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ClassifyToolingTest(unittest.TestCase):
+    def test_tooling_brief_is_not_short_production(self):
+        self.assertEqual(tb.classify("Calibrate and run new tools now: the Short->long funnel report"), "agent_other")
+        self.assertEqual(tb.ACTIVITY_OF["agent_other"], "reviews_prs")
+        self.assertEqual(tb.classify("Build the Shorts cut from the Babel long"), "agent_short")
