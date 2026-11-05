@@ -823,3 +823,10 @@ approves and no score is copied to other media.
   the face (profile and open-mouth notes are reviewer WARNs); shot-probe allows silent shots, one generation per line per
   prompt revision. PROMPT_GUIDE "Pavo silent-clip standard" is the spec; OPERATIONS has the note.
 
+
+## 2026-11-05 — Inteligência Viva
+- Moment M3 (48 h checkpoint). Triggers HIT, all on thin samples: views from Shorts = 0; CTR <2% (Noah-begins 1.79% on 280 impressions, Flood Ends 0% on 47); AVD <3 min (Noah-begins 176 s, 16 views). Actions: title-only repackage of X2LPFriRn3M and 1m-NUJhkdMY; funnel moved to end screen, playlist, first description line and pinned comment; next long gets the strongest beat in the first 30 s.
+- Goal: subs 354 (measured live; +44 in ~28 h, 6.6/day over 11 d), long hours 30.2 (own estimate). Gap 646 subs / 3,970 h. Needs 64.6 subs and 397 h/day for 11-15; 24.8 and 152.7 for 12-01. Hours bind; subs can reach 1,000 by ~11-21 only if the one-day pace holds (estimate). Weakest factor: long impressions (47-280 per Bible long, measured).
+- Findings: the Noah compilation is 18:03, not the planned 40-60 min, and the Babel long is 8:04 (floor 13:00): both logged, the 11-08 compilation must state its real length (>=30 min target). In-niche search: KJV hours winners are 1-5 h audio read-alongs (Blessfully 153K subs, Psalms 5.0 h 5.7M views); old, not our scale, one search, not added to the map.
+- Lessons (non-Pavo): publish.yml dispatched twice reconciled to one video (idempotent), but the long went public ~75 min before its slot, so set publish_at on the first dispatch; faster-whisper alignment IndexError is intermittent (E302, fixed by #861/#862); a compilation is not "done" at a shorter length than its plan. No new Pavo lesson.
+- vidIQ 10 credits (2,944 before, ledger updated).

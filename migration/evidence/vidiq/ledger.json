@@ -1450,6 +1450,30 @@
    "purpose": "balance 3,069 before this run and 2,944 after = 125 credits; the itemised calls above sum to 120: one of the two no-caption transcript errors was probably charged 5 (not separable). Day total with the 15 earlier today = 140 of the 150/day cap; 10 left",
    "saved_to": "-",
    "outcome": "reconciled"
+  },
+  {
+   "date": "2026-11-05",
+   "kind": "research",
+   "tool": "vidiq_get_videos_by_ids",
+   "credits": 5,
+   "purpose": "live views of Babel long, Flood Ends long, Noah compilation (M3 read)",
+   "saved_to": "strategy/live-plan.json"
+  },
+  {
+   "date": "2026-11-05",
+   "kind": "research",
+   "tool": "vidiq_youtube_search",
+   "credits": 5,
+   "purpose": "in-niche 'bible story full story KJV' (hours winners are 1-5 h audio read-alongs)",
+   "saved_to": "strategy/live-plan.json"
+  },
+  {
+   "date": "2026-11-05",
+   "kind": "account",
+   "tool": "vidiq_user_channels",
+   "credits": 0,
+   "purpose": "subs 354 live",
+   "saved_to": "strategy/live-plan.json"
   }
  ]
 }
