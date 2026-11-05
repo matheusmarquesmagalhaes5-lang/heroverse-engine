@@ -333,6 +333,30 @@ class OriginalKeeperV2Tests(unittest.TestCase):
         self.assertEqual(c["untimed_segments"], ["genesis-02-short"])  # no timed source report: listed, never invented
         self.assertEqual([x["start"] for x in c["sentences"]], sorted(x["start"] for x in c["sentences"]))
 
+    @unittest.skipUnless(FFMPEG, "ffmpeg")
+    def test_e308_the_owned_bed_fills_the_still_beats_between_the_keepers_lines(self):
+        plan = cl.load(GENESIS)
+        k = {"beats": [plan["hook"]["beats"][0], plan["close"]["beats"][1]]}
+        with tempfile.TemporaryDirectory() as t:
+            t = Path(t)
+            for i in cl.beat_ids("hook", k):
+                ff("-f", "lavfi", "-i", "sine=f=220:r=24000:d=3", t / f"{i}.wav")
+            cl.render_beats("hook", k, t, t / "dry.mp4")
+            gaps = lambda f: cl.run(["ffmpeg", "-nostdin", "-hide_banner", "-i", f, "-af", "silencedetect=noise=-45dB:d=0.8",
+                                     "-f", "null", "-"]).stderr.count("silence_start")
+            self.assertGreaterEqual(gaps(t / "dry.mp4"), 1)       # the dropout local-review flagged at every join
+            ff("-f", "lavfi", "-i", "sine=f=110:r=44100:d=60", "-af", "volume=12dB", t / "bed.flac")   # about -6 dBFS, a music level
+            cl.music_bed(t / "dry.mp4", t / "bed.flac", 5.0, t / "wet.mp4")
+            self.assertEqual(gaps(t / "wet.mp4"), 0)
+            self.assertAlmostEqual(cl.duration(t / "wet.mp4"), cl.duration(t / "dry.mp4"), delta=0.05)
+            (t / cl.MUSIC).write_bytes(b"not the owned music")
+            with self.assertRaises(SystemExit) as e:
+                cl.render_beats("hook", k, t, t / "x.mp4")
+            self.assertIn("MUSIC_SHA256_MISMATCH", str(e.exception))
+            with self.assertRaises(SystemExit) as e:   # a v2 build never runs without the bed
+                cl.build(GENESIS, t, t / "out", t / "no-voice-dir")
+            self.assertIn("MUSIC_MISSING", str(e.exception))
+
     def test_e306_v2_qa_rows(self):
         plan = cl.load(GENESIS)
         src = [{"short": cid, "sha256": "a" * 64, "seconds": 1.0} for cid in map(cl.chapter_id, plan["chapters"])]
