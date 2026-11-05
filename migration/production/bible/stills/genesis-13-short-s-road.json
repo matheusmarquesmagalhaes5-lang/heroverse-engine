@@ -2,6 +2,25 @@
  "id": "genesis-13-short-s-road",
  "episode": "genesis-13-short",
  "shot": "s-road",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. The caravan camped for the night in the open desert, a ring of tents and small fires under the Milky Way, donkeys resting, centred in the frame. Only adults, no children anywhere in the scene. The figures are in silhouette, seen from behind. The subject is centred in the frame. Peaceful. Far from home. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. The caravan camped for the night in the open desert, a ring of tents and small fires under the Milky Way, donkeys resting, centred in the frame. Only adults, no children anywhere in the scene. The figures are in silhouette, seen from behind. The subject is centred in the frame. Peaceful. Far from home. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-13-short-s-road.jpg",
+ "sha256": "56c7857af4bdcc65fb7edbe24ec653872c3e9dcda713dc28e8160e3fdedb600d",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-13-short-s-road-2026110302-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-05",
+  "score": 9.5,
+  "note": "Full-image look (ChatGPT desktop, revised prompt): the caravan camped in the open desert at night, a ring of goat-hair tents and small fires under the Milky Way, donkeys resting, adults only seen from behind, centred; no text, nothing modern; frame review only.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "c0df6262a1c6a54a81da5793df54a2908c1d43c16e4dd6d044b85a62fb6a08d9",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }
