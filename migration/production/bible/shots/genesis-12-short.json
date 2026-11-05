@@ -1,0 +1,362 @@
+{
+ "episode": "genesis-12-short",
+ "shots": {
+  "k-close": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Borrowed arc-01 Keeper still (approved 9.5, as in genesis-11-short), the closer crop; Kokoro voice-over.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-05",
+   "still_from": "arc-01-long-k-promise-3",
+   "still": "arc-01-long-k-promise-3",
+   "repo_path": "migration/production/bible/stills/arc-01-long-k-promise-3.jpg",
+   "clip_sha256": null,
+   "still_sha256": "d06d4d2eb4d0120dc4dfdab01b737d4d14a57dd52759e60e3284826973e5636f",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "Pavo generated (owner-owned)",
+   "clip_seconds": 12,
+   "request_sha256": "c8b80d480cacf24a351cc898807aec4e256e913c84bbc202ea551c3b27985f81"
+  },
+  "k-insight": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Borrowed arc-01 Keeper still (approved 9.5, as in genesis-11-short), 9:16 centre crop, face whole; Kokoro voice-over.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-05",
+   "still_from": "arc-01-long-k-promise-2",
+   "still": "arc-01-long-k-promise-2",
+   "repo_path": "migration/production/bible/stills/arc-01-long-k-promise-2.jpg",
+   "clip_sha256": null,
+   "still_sha256": "fd3ffd3708872b1b662c649649b917cfc95f9f2c49f6d047b3105c2d98542065",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "Pavo generated (owner-owned)",
+   "clip_seconds": 12,
+   "request_sha256": "48792c72bfa20c5d7338024a700621ec4b747738aed3523ee33214d1b2af72fd"
+  },
+  "k-question": {
+   "source": "pavo_reuse",
+   "score": 9.5,
+   "note": "genesis-08's approved Keeper voice-over clip (as in genesis-11-short), its picture only; our Kokoro line over it.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-05",
+   "clip_from": "genesis-08-short#k-question",
+   "asset": "shot-genesis-08-short-k-question-sha256-0977ad37cde590ab7cdc86c0193635a723f1dcf6652d6e7b21d1306e83ac4ead.mp4",
+   "clip_sha256": "0977ad37cde590ab7cdc86c0193635a723f1dcf6652d6e7b21d1306e83ac4ead",
+   "clip_seconds": 6,
+   "from_score": 9.5,
+   "request_sha256": "f17e82122d2e2cadcf2c1d8968c2e71fc0a0c4dccde2cf3d0550188a4337103a"
+  },
+  "s-babble": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-12-short-s-babble (full-image look, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-05",
+   "still": "genesis-12-short-s-babble",
+   "repo_path": "migration/production/bible/stills/genesis-12-short-s-babble.jpg",
+   "clip_sha256": null,
+   "still_sha256": "778cf6652d7380e12f00152d74c999ac70e8eef19661cfc5d025930fb8052c45",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 11,
+   "request_sha256": "3c9586a6697ee53a1b719d8ee64bb75fc6397b1af23ebb155590d46022f6ede6"
+  },
+  "s-babel": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-12-short-s-babel (full-image look, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-05",
+   "still": "genesis-12-short-s-babel",
+   "repo_path": "migration/production/bible/stills/genesis-12-short-s-babel.jpg",
+   "clip_sha256": null,
+   "still_sha256": "c5e3f80dba6efdf25ed79f8b2de8a27016eb3dbf6cc94a4a067cb7917c3c582b",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 11,
+   "request_sha256": "d8e50e6a264b3117ab766f8d076d52cd51874d814cb4c7f1cdf245a8bf9ad777"
+  },
+  "s-behold": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-12-short-s-behold (full-image look, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-05",
+   "still": "genesis-12-short-s-behold",
+   "repo_path": "migration/production/bible/stills/genesis-12-short-s-behold.jpg",
+   "clip_sha256": null,
+   "still_sha256": "8a8e1815348332ee1c45ebb2894beffffd75621856340a5dc6e5cb459c5a04b7",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 11,
+   "request_sha256": "b9b3c712180d162f3a52409474d810f251cbcaf7e83745578af6cf437dfa1ab4"
+  },
+  "s-confound": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-12-short-s-confound (full-image look, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-05",
+   "still": "genesis-12-short-s-confound",
+   "repo_path": "migration/production/bible/stills/genesis-12-short-s-confound.jpg",
+   "clip_sha256": null,
+   "still_sha256": "0293c2bb39a212a9e44bffd6c650377c9a7edc461c2816fca15decdaa03e249d",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 10,
+   "request_sha256": "5bd188afd621268d2a0a1d264da32a779727d4191921af17f2ea9ca74061e83b"
+  },
+  "s-down": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-12-short-s-down (full-image look, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-05",
+   "still": "genesis-12-short-s-down",
+   "repo_path": "migration/production/bible/stills/genesis-12-short-s-down.jpg",
+   "clip_sha256": null,
+   "still_sha256": "60977c0d1e5abbb5a887805d12e58078ff73ee2560749ce0a030d3f94cc59c34",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 9,
+   "request_sha256": "a08e21a0b0767b920a248479ec247a8d9de896e575ecffa1b585f810dd0031d2"
+  },
+  "s-foundation": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-12-short-s-foundation (full-image look, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-05",
+   "still": "genesis-12-short-s-foundation",
+   "repo_path": "migration/production/bible/stills/genesis-12-short-s-foundation.jpg",
+   "clip_sha256": null,
+   "still_sha256": "0650478c7a299d00d5f2205ce871fb6c9fa28f2a99f525982e6831f69ab609a7",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 12,
+   "request_sha256": "cd4bdfee8802c0ef42482d39e3ae5ab6e8f54d5c24b8360b3d275762531de957"
+  },
+  "s-gathered": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-12-short-s-gathered (full-image look, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-05",
+   "still": "genesis-12-short-s-gathered",
+   "repo_path": "migration/production/bible/stills/genesis-12-short-s-gathered.jpg",
+   "clip_sha256": null,
+   "still_sha256": "0da3980c83914d4a366fa9cf30834fa3140fe29b8730475b920b01e0e1ef1e69",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 12,
+   "request_sha256": "3a29d9764d1ebeed93958d25a1d1ea5c0679f121ae5820bdc65fa83285f12bc0"
+  },
+  "s-hands": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-12-short-s-hands (full-image look, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-05",
+   "still": "genesis-12-short-s-hands",
+   "repo_path": "migration/production/bible/stills/genesis-12-short-s-hands.jpg",
+   "clip_sha256": null,
+   "still_sha256": "243205a67e1268fe0bcad579df4f38cce8e3134d0e56f9747fd294bd9b14c9ae",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 12,
+   "request_sha256": "aa2ed8a4012e0c5bf452c3c35ae2c02e4002316ae5ddc0b744905439736b75f3"
+  },
+  "s-kiln": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-12-short-s-kiln (full-image look, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-05",
+   "still": "genesis-12-short-s-kiln",
+   "repo_path": "migration/production/bible/stills/genesis-12-short-s-kiln.jpg",
+   "clip_sha256": null,
+   "still_sha256": "7f213f2b05b29e2fdd9d25b8437c088e1d37f8071c94e1cc8d5196b47346597f",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 11,
+   "request_sha256": "7c271dd60064ae2ea7405ec83b038b48d8bc276f97e1ad2377b8e06d05be405a"
+  },
+  "s-mercy": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-12-short-s-mercy (full-image look, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-05",
+   "still": "genesis-12-short-s-mercy",
+   "repo_path": "migration/production/bible/stills/genesis-12-short-s-mercy.jpg",
+   "clip_sha256": null,
+   "still_sha256": "ec53906ce41255350a79dc43b37797b335a74035bab32d0f614ded1305d20f72",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 12,
+   "request_sha256": "9f3f1f8ebe1345c5ba268b37d4f20790c51f8279bddafc7566d7638631431f9a"
+  },
+  "s-nations": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-12-short-s-nations (full-image look, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-05",
+   "still": "genesis-12-short-s-nations",
+   "repo_path": "migration/production/bible/stills/genesis-12-short-s-nations.jpg",
+   "clip_sha256": null,
+   "still_sha256": "c6171b5431c2a92a8c24ee2ed9315eea00e4f2c03db8625db67fb4bc2d04c67c",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 10,
+   "request_sha256": "b565ba48d51513c1eda960c7f62f87512ebdcbfd7d049c1606dbff3bcfd65b0c"
+  },
+  "s-onetongue": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-12-short-s-onetongue (full-image look, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-05",
+   "still": "genesis-12-short-s-onetongue",
+   "repo_path": "migration/production/bible/stills/genesis-12-short-s-onetongue.jpg",
+   "clip_sha256": null,
+   "still_sha256": "023071601a6f52894abf78bb0410fb61c700bc9a28d71badd989bc89dd3b9275",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 8,
+   "request_sha256": "d582a9db311b59ebb8c64eea0238644b67b4073cb9b16d1a203f7c89789d0207"
+  },
+  "s-parting": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-12-short-s-parting (full-image look, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-05",
+   "still": "genesis-12-short-s-parting",
+   "repo_path": "migration/production/bible/stills/genesis-12-short-s-parting.jpg",
+   "clip_sha256": null,
+   "still_sha256": "f927354ba36d3561df761e786727cd9b52003803147802c734b2f2b443a75be2",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 10,
+   "request_sha256": "3bf5cc60e98dfa34fde682d003e05a9eb19e1cde01668abf1f6d61785621cc37"
+  },
+  "s-plain": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-12-short-s-plain (full-image look, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-05",
+   "still": "genesis-12-short-s-plain",
+   "repo_path": "migration/production/bible/stills/genesis-12-short-s-plain.jpg",
+   "clip_sha256": null,
+   "still_sha256": "f0a3e8f287dce25f64541e5fc6e6a448d01983cc1b1c00bb7c6f0d57294c8059",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 10,
+   "request_sha256": "86f68a0d64ab40f52eb897bc9ed57d2710f9fe2740494eef04cb61889afc9184"
+  },
+  "s-top": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-12-short-s-top (full-image look, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-05",
+   "still": "genesis-12-short-s-top",
+   "repo_path": "migration/production/bible/stills/genesis-12-short-s-top.jpg",
+   "clip_sha256": null,
+   "still_sha256": "68a03e9b2f9983910923e775867ffef6df58697e50cef31a4ab7b3836dedfb0d",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 12,
+   "request_sha256": "a3b2ccc6741fa899ac90b63c6d4f3dc570ea3cb7cc8fa0b82083d436de5447da"
+  },
+  "s-unfinished": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-12-short-s-unfinished (full-image look, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-05",
+   "still": "genesis-12-short-s-unfinished",
+   "repo_path": "migration/production/bible/stills/genesis-12-short-s-unfinished.jpg",
+   "clip_sha256": null,
+   "still_sha256": "fe145a01bff03c88b5fd3bc5034d67172297cf51b786a9aeb787f316717044d5",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 12,
+   "request_sha256": "01d672dac91912c3abcf8b712ecc315bea07b25157c9353b422896baaed8ea4c"
+  },
+  "s-voice": {
+   "source": "still_motion",
+   "score": 9.5,
+   "note": "Approved still genesis-12-short-s-voice (full-image look, 9.5) in cinematic camera motion; silent scene.",
+   "model": "claude-session-reviewer",
+   "approved_at": "2026-11-05",
+   "still": "genesis-12-short-s-voice",
+   "repo_path": "migration/production/bible/stills/genesis-12-short-s-voice.jpg",
+   "clip_sha256": null,
+   "still_sha256": "6a6b10e294b9cf3f9a6078a95a98c0de3e1581ed78dc06d442f59f24057fbcfa",
+   "frame": [
+    1080,
+    1920
+   ],
+   "licence": "apache-2.0",
+   "clip_seconds": 8,
+   "request_sha256": "30e64e30a7291890af6858efe63f5b5e2c756c13b1f3a1fd87518072eb6ff7c6"
+  }
+ }
+}
