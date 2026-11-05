@@ -1372,7 +1372,7 @@
    "kind": "read",
    "tool": "vidiq_outliers",
    "credits": 5,
-   "purpose": "cross-niche long emotional-narrative outliers (second Inteligência Viva run)",
+   "purpose": "cross-niche long emotional-narrative outliers (second Intelig\u00eancia Viva run)",
    "saved_to": "evidence/vidiq/20261102/cross-niche-outliers.json"
   },
   {
@@ -1474,6 +1474,51 @@
    "credits": 0,
    "purpose": "subs 354 live",
    "saved_to": "strategy/live-plan.json"
+  },
+  {
+   "date": "2026-11-05",
+   "kind": "research",
+   "tool": "vidiq_youtube_search",
+   "credits": 5,
+   "purpose": "H1 'KJV audio bible read along full story' long viewCount >=2026-05 (25 results)",
+   "saved_to": "evidence/vidiq/2026-11-05/h1-h2-pool.json",
+   "outcome": "completed"
+  },
+  {
+   "date": "2026-11-05",
+   "kind": "research",
+   "tool": "vidiq_youtube_search",
+   "credits": 5,
+   "purpose": "H2 'bible stories compilation hours genesis KJV scrolling text': EMPTY result (over-specific query; do not repeat this form)",
+   "saved_to": "evidence/vidiq/2026-11-05/h1-h2-pool.json",
+   "outcome": "completed"
+  },
+  {
+   "date": "2026-11-05",
+   "kind": "research",
+   "tool": "vidiq_youtube_search",
+   "credits": 5,
+   "purpose": "H1 'bible full movie KJV genesis' long viewCount >=2026-05 (20 results)",
+   "saved_to": "evidence/vidiq/2026-11-05/h1-h2-pool.json",
+   "outcome": "completed"
+  },
+  {
+   "date": "2026-11-05",
+   "kind": "research",
+   "tool": "vidiq_youtube_search",
+   "credits": 5,
+   "purpose": "H2 'stories of the bible compilation' long viewCount >=2026-06 (20 results)",
+   "saved_to": "evidence/vidiq/2026-11-05/h1-h2-pool.json",
+   "outcome": "completed"
+  },
+  {
+   "date": "2026-11-05",
+   "kind": "account",
+   "tool": "vidiq_balance",
+   "credits": 0,
+   "purpose": "balance 2,934 after the morning 10; 2,914 after the 4 searches (20); day total 30 of 150; user_channels free: subs 372 live",
+   "saved_to": "-",
+   "outcome": "reconciled"
   }
  ]
 }

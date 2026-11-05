@@ -1,0 +1,192 @@
+{
+ "date": "2026-11-05",
+ "label": "MEASURED vidiq_youtube_search (4 calls, 20 credits; 2 searches in-niche read-along/movie/compilation, long, viewCount, published>=2026-05-01)",
+ "pool_H1_H2_winners_ge_50K_views": [
+  {
+   "id": "d5EyMnG1zfk",
+   "channel": "PicVersion",
+   "subs": 12100,
+   "views": 656916,
+   "len": "4:40:01",
+   "published": "2026-09-10",
+   "what": "FULL MOVIE KJV, cinematic AI visuals, 50 chapter timestamps"
+  },
+  {
+   "id": "8jfIcu-gbH8",
+   "channel": "Rest In Faith",
+   "subs": 140000,
+   "views": 464191,
+   "len": "2:28:49",
+   "published": "2026-08-27",
+   "what": "sleep Bible reading"
+  },
+  {
+   "id": "o1oYYGsBP2g",
+   "channel": "Rest In Faith",
+   "subs": 140000,
+   "views": 167619,
+   "len": "1:29:16",
+   "published": "2026-07-16",
+   "what": "sleep Bible reading"
+  },
+  {
+   "id": "__qq-OMxFSw",
+   "channel": "Just-in Bible",
+   "subs": 48100,
+   "views": 76989,
+   "len": "5:11:55",
+   "published": "2026-08-18",
+   "what": "KJV read-along 4K audio text"
+  },
+  {
+   "id": "_ooQ-WSQdPY",
+   "channel": "Divine Rest",
+   "subs": 136000,
+   "views": 192722,
+   "len": "2:34:48",
+   "published": "2026-06-11",
+   "what": "sleep Bible reading"
+  },
+  {
+   "id": "n01NfF0fypQ",
+   "channel": "Deep Bible Stories",
+   "subs": 690000,
+   "views": 194391,
+   "len": "5:51:06",
+   "published": "2026-06-09",
+   "what": "Genesis verse-by-verse explained"
+  },
+  {
+   "id": "5n0usNzI3Cc",
+   "channel": "My First Bible",
+   "subs": 159000,
+   "views": 295513,
+   "len": "2:12:13",
+   "published": "2026-06-05",
+   "what": "animated collection, chapter list"
+  },
+  {
+   "id": "gO9WQ64HFlc",
+   "channel": "Bible In a Nutshell",
+   "subs": 455000,
+   "views": 132859,
+   "len": "2:33:53",
+   "published": "2026-06-13",
+   "what": "compilation 10 shorts + 5 movies, timestamps"
+  },
+  {
+   "id": "Ng3zbik01ac",
+   "channel": "Gary Wilkinson",
+   "subs": 10400,
+   "views": 437655,
+   "len": "1:31:51",
+   "published": "2026-08-11",
+   "what": "documentary 'Real History of the Bible'"
+  },
+  {
+   "id": "nfpMvVE8LGU",
+   "channel": "Unraveling the Scriptures",
+   "subs": 809000,
+   "views": 9089166,
+   "len": "1:44:24",
+   "published": "2026-10-03",
+   "what": "'Full Biblical Movie in 4K' AI film"
+  }
+ ],
+ "pool_weak_small_channel_longs": [
+  {
+   "id": "imJP14yqJ6k",
+   "channel": "Just-in Bible",
+   "subs": 48100,
+   "views": 12495,
+   "len": "3:28:31"
+  },
+  {
+   "id": "-3MdCIZkWAo",
+   "channel": "Hush & Holy",
+   "subs": 1200,
+   "views": 339,
+   "len": "4:54:19"
+  },
+  {
+   "id": "nBiAEtT1Wjg",
+   "channel": "Hush & Holy",
+   "subs": 1200,
+   "views": 363,
+   "len": "2:12:06"
+  },
+  {
+   "id": "DfU0X_eFAtA",
+   "channel": "Hush & Holy",
+   "subs": 1200,
+   "views": 133,
+   "len": "1:27:26"
+  },
+  {
+   "id": "b_-C0_FaqWE",
+   "channel": "The Bible Aloud",
+   "subs": 50,
+   "views": 254,
+   "len": "3:44:47"
+  },
+  {
+   "id": "qUtJTups5T0",
+   "channel": "KJV Audio Bible",
+   "subs": 8,
+   "views": 134,
+   "len": "3:48:44"
+  },
+  {
+   "id": "9iEJ_0dg22I",
+   "channel": "Rest in Holy Word",
+   "subs": 380,
+   "views": 141,
+   "len": "1:51:44"
+  },
+  {
+   "id": "kZnVYdnuFHk",
+   "channel": "Faith Rest",
+   "subs": 2680,
+   "views": 94,
+   "len": "1:51:43"
+  },
+  {
+   "id": "-ZTV8EyXSOY",
+   "channel": "The Remnant Camp",
+   "subs": 44,
+   "views": 86,
+   "len": "5:22:21"
+  },
+  {
+   "id": "eOjD-Eri6Vs",
+   "channel": "Mustard Seed Story",
+   "subs": 1370,
+   "views": 258,
+   "len": "11:55:00"
+  },
+  {
+   "id": "P-A2LhsnzOU",
+   "channel": "Business of our Father",
+   "subs": 1300,
+   "views": 223,
+   "len": "2:26:54"
+  },
+  {
+   "id": "kcuXwfj8Qcs",
+   "channel": "I Believe The Word",
+   "subs": 142,
+   "views": 710,
+   "len": "1:15:24"
+  }
+ ],
+ "counts": {
+  "winners": 10,
+  "winner_channels": 9,
+  "max_channel_share": "2/10 (Rest In Faith)",
+  "winners_from_channels_under_15K_subs": 2,
+  "weak": 12,
+  "weak_channels": 10,
+  "weak_channels_all_under_3K_subs_except_JustIn": true
+ },
+ "note": "Cumulative with 11-04 map. Read-alongs/sleep readings by channels under ~3K subs: 12 videos, 8-710 views (median ~190). Winners are 48K-809K-sub channels except PicVersion (12.1K) and G. Wilkinson (10.4K)."
+}
