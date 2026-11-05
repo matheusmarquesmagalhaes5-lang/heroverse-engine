@@ -115,6 +115,25 @@
    "tokens_estimate": 13745,
    "status": "503",
    "retry_of": "c0011"
+  },
+  {
+   "id": "c0013",
+   "model": "gemini-3.8-flash",
+   "purpose": "plan genesis-13-short attempt 1",
+   "at": "2026-11-05T19:13:42Z",
+   "pacific_day": "2026-11-05",
+   "tokens_estimate": 13745,
+   "status": "503"
+  },
+  {
+   "id": "c0014",
+   "model": "gemini-3.8-flash",
+   "purpose": "plan genesis-13-short attempt 1 retry",
+   "at": "2026-11-05T19:13:42Z",
+   "pacific_day": "2026-11-05",
+   "tokens_estimate": 13745,
+   "status": "503",
+   "retry_of": "c0013"
   }
  ],
  "stops": []
