@@ -23,6 +23,13 @@ when short) and republish the private log when the conversation moves.
   one of them a Keeper split-screen reflection; no repeated passages across Shorts of one long.
 - Pavo: silent acting clips only; all speech is our Kokoro audio over them (2026-11-04).
 - The Keeper (guardião) should speak with lip-sync of our audio, free and good quality (2026-11-05, in progress).
+- Visual source per segment (2026-11-05): the hook, the character-speech moments and the Keeper closing are all Pavo
+  video. Lip-sync of our audio goes on character lines when needed and always on the Keeper, at good quality.
+- Quality vs posting (2026-11-05): do the best possible, but never hold a near-perfect video only because it is not
+  perfect ("perfeição é só Deus"). The gates still decide; a subjective wish for more polish never blocks publishing.
+  He means it concretely: AI speech and lip-sync will never sound or move exactly like a human, and that is accepted.
+  Always build the best prompt and take the best result available, then use it; a slightly synthetic voice or
+  imperfect lip movement is not a reason to hold or regenerate (2026-11-05).
 - God is never shown with a face. Exact KJV.
 - Stills: ChatGPT desktop app on his PC (one chat "HeroVerse — stills").
 - Buzzy: lowest-credit model, balance read before/after, ≤100 credits/day average; he also uses Buzzy himself.
