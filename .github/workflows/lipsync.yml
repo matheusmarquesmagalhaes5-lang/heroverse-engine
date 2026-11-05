@@ -1,0 +1,142 @@
+name: HeroVerse Keeper lip-sync (a silent Pavo Keeper clip + OUR Kokoro line, MuseTalk 1.5 on CPU; nothing published)
+run-name: "lipsync: ${{ inputs.clip }} + ${{ inputs.audio }}"
+# Owner 2026-11-05: "No guardiao eu quero lixo sync pra ele falar.. verifique algo gratuito e de qualidade" (lip-sync).
+# Free route: MuseTalk 1.5 (code MIT, weights usable "for any purpose, even commercially"; keeper_lipsync.py docstring and
+# OPERATIONS "Keeper lip-sync (our audio)"), pinned commit, every weight pinned by sha256, on the free Actions CPU runner.
+# Input: a silent frontal Keeper clip (repo path or a release asset name, its sha256 required) and our 44.1 kHz mono
+# 16-bit Kokoro WAV (repo path, sha256 required). Output (artifact, 14 days): the clip with our line over the lip-synced picture,
+# the SyncNet offset/confidence through lipsync_check (thresholds unchanged), the silent source's baseline, clip_check,
+# frame sheets and the measured seconds. No secret, no Pavo call, no spending; a result is unreviewed media until Claude
+# watches and hears it.
+on:
+  workflow_dispatch:
+    inputs:
+      clip:
+        description: Silent frontal Keeper clip, repo path (migration/...) or a release asset name (shot-...mp4)
+        required: true
+      clip_sha256:
+        description: sha256 of that clip (64 hex)
+        required: true
+      audio:
+        description: Our Kokoro line, repo path of a 44.1 kHz mono 16-bit WAV (migration/...)
+        required: true
+      audio_sha256:
+        description: sha256 of that WAV (64 hex)
+        required: true
+      tail:
+        description: Seconds of picture kept after the line ends
+        required: false
+        default: "0.5"
+permissions:
+  contents: read
+concurrency:
+  group: heroverse-lipsync
+  cancel-in-progress: false
+jobs:
+  lipsync:
+    if: github.repository == 'matheusmagah-cpu/heroverse-engine' && github.event_name == 'workflow_dispatch' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/claude/'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 300
+    permissions:
+      contents: read
+    env:
+      CLIP: ${{ inputs.clip }}
+      CLIP_SHA: ${{ inputs.clip_sha256 }}
+      AUDIO: ${{ inputs.audio }}
+      AUDIO_SHA: ${{ inputs.audio_sha256 }}
+      TAIL: ${{ inputs.tail }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b
+        with:
+          python-version: "3.10"
+      - name: Inputs (shape, then sha256)
+        run: |
+          [[ "$CLIP_SHA" =~ ^[0-9a-f]{64}$ && "$AUDIO_SHA" =~ ^[0-9a-f]{64}$ ]] || { echo "LIPSYNC_SHA_REFUSED"; exit 1; }
+          [[ "$TAIL" =~ ^[0-9](\.[0-9]+)?$ ]] || { echo "LIPSYNC_TAIL_REFUSED"; exit 1; }
+          [[ "$AUDIO" =~ ^migration/[A-Za-z0-9_./-]+\.wav$ && "$AUDIO" != *..* ]] || { echo "LIPSYNC_AUDIO_PATH_REFUSED"; exit 1; }
+          W="$RUNNER_TEMP/work"; mkdir -p "$W" "$RUNNER_TEMP/out"
+          if [[ "$CLIP" =~ ^migration/[A-Za-z0-9_./-]+\.mp4$ && "$CLIP" != *..* ]]; then cp "$CLIP" "$W/clip.mp4"
+          elif [[ "$CLIP" =~ ^shot-[A-Za-z0-9._-]+\.mp4$ ]]; then bash migration/ci/assets.sh download --repo "$GITHUB_REPOSITORY" --pattern "$CLIP" -O "$W/clip.mp4" --clobber
+          else echo "LIPSYNC_CLIP_REFUSED"; exit 1; fi
+          cp "$AUDIO" "$W/line.wav"
+          echo "$CLIP_SHA  $W/clip.mp4" | sha256sum -c -
+          echo "$AUDIO_SHA  $W/line.wav" | sha256sum -c -
+          echo "W=$W" >> "$GITHUB_ENV"
+      - name: Tools; MediaPipe face model and SyncNet weights (same pins as shot-remux)
+        run: |
+          APT_UPDATE_TIMEOUT=300s APT_INSTALL_TIMEOUT=600s bash migration/ci/apt_install.sh ffmpeg libegl1 libgles2
+          /usr/bin/python3 -m venv "$RUNNER_TEMP/lip"
+          "$RUNNER_TEMP/lip/bin/pip" install --disable-pip-version-check -q 'mediapipe==0.10.35'
+          curl -fsSL --retry 3 -o "$RUNNER_TEMP/face_landmarker.task" https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task
+          sha=$(python3 -I -c "import re,sys;print(re.search(r'MODEL_SHA256 = \"([0-9a-f]{64})\"',open(sys.argv[1]).read()).group(1))" migration/production/bible/lipsync_check.py)
+          echo "$sha  $RUNNER_TEMP/face_landmarker.task" | sha256sum -c -
+          sha=$(python3 -I -c "import re,sys;print(re.search(r'SYNCNET_SHA256 = \"([0-9a-f]{64})\"',open(sys.argv[1]).read()).group(1))" migration/production/bible/syncnet.py)
+          bash migration/ci/pinned_asset.sh fetch "syncnet_v2-$sha.model" "$sha" "$RUNNER_TEMP/syncnet_v2.model" "$(python3 -I -c "import re,sys;print(re.search(r'SYNCNET_URL = \"(https://[^\"]+)\"',open(sys.argv[1]).read()).group(1))" migration/production/bible/syncnet.py)"
+      - name: Source gate (the silent clip is still-mouth and frontal) and the cut inputs
+        run: |
+          echo "T0=$(date +%s)" >> "$GITHUB_ENV"
+          "$RUNNER_TEMP/lip/bin/python" -I -B migration/production/bible/keeper_lipsync.py prepare "$W/clip.mp4" "$W/line.wav" "$RUNNER_TEMP/face_landmarker.task" "$W" --tail "$TAIL" | tee "$RUNNER_TEMP/out/prepare.json"
+      - name: MuseTalk at the pinned commit, CPU python environment (3.10, torch 2.0.1 cpu, mmcv 2.0.1 cpu wheels)
+        run: |
+          set -euo pipefail
+          date +%s > "$RUNNER_TEMP/env.start"
+          commit=$(python3 -I -c "import re,sys;print(re.search(r'MUSETALK_COMMIT = \"([0-9a-f]{40})\"',open(sys.argv[1]).read()).group(1))" migration/production/bible/keeper_lipsync.py)
+          repo=$(python3 -I -c "import re,sys;print(re.search(r'MUSETALK_REPO = \"(https://[^\"]+)\"',open(sys.argv[1]).read()).group(1))" migration/production/bible/keeper_lipsync.py)
+          mkdir "$RUNNER_TEMP/MuseTalk" && cd "$RUNNER_TEMP/MuseTalk"
+          git init -q && git remote add origin "$repo" && git fetch -q --depth 1 origin "$commit" && git checkout -q FETCH_HEAD
+          [ "$(git rev-parse HEAD)" = "$commit" ] || { echo "MUSETALK_COMMIT_MISMATCH"; exit 1; }
+          python -m venv "$RUNNER_TEMP/mt"
+          P="$RUNNER_TEMP/mt/bin/pip"
+          "$P" install --disable-pip-version-check -q 'pip<24.1' 'setuptools<70' wheel
+          "$P" install --disable-pip-version-check -q 'torch==2.0.1+cpu' 'torchvision==0.15.2+cpu' 'torchaudio==2.0.2+cpu' --extra-index-url https://download.pytorch.org/whl/cpu
+          "$P" install --disable-pip-version-check -q 'numpy==1.23.5' 'diffusers==0.30.2' 'accelerate==0.28.0' 'transformers==4.39.2' 'huggingface_hub==0.30.2' \
+            'opencv-python==4.9.0.80' 'soundfile==0.12.1' 'librosa==0.11.0' 'einops==0.8.1' 'omegaconf' 'ffmpeg-python' 'imageio[ffmpeg]' 'tqdm' 'scipy' 'openmim==0.3.9' 'mmengine==0.10.5'
+          "$P" install --disable-pip-version-check -q --no-build-isolation chumpy==0.70
+          "$P" install --disable-pip-version-check -q 'mmcv==2.0.1' -f https://download.openmmlab.com/mmcv/dist/cpu/torch2.0.0/index.html
+          "$P" install --disable-pip-version-check -q 'mmdet==3.1.0' 'mmpose==1.1.0'
+          "$P" install --disable-pip-version-check -q 'numpy==1.23.5'
+          "$RUNNER_TEMP/mt/bin/python" -c "import torch,mmcv,mmpose,mmdet,diffusers,transformers,librosa,cv2;print('env ok',torch.__version__,mmcv.__version__,mmpose.__version__)"
+          echo "ENV_SECONDS=$(( $(date +%s) - $(cat "$RUNNER_TEMP/env.start") ))" >> "$GITHUB_ENV"
+      - name: Pinned weights (sha256 checked)
+        run: python3 -I -B migration/production/bible/keeper_lipsync.py fetch "$RUNNER_TEMP/MuseTalk"
+      - name: MuseTalk 1.5 inference on CPU (timed)
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/MuseTalk"
+          s=$(date +%s)
+          export OMP_NUM_THREADS=4 MKL_NUM_THREADS=4 PYTHONUNBUFFERED=1
+          "$RUNNER_TEMP/mt/bin/python" -m scripts.inference --inference_config "$W/task.yaml" --result_dir "$W/result" \
+            --unet_model_path models/musetalkV15/unet.pth --unet_config models/musetalkV15/musetalk.json \
+            --whisper_dir models/whisper --vae_type sd-vae --version v15 --batch_size 4 2>&1 | tee "$W/musetalk.log" | tail -n 40
+          e=$(date +%s)
+          echo "INFER_SECONDS=$((e - s))" >> "$GITHUB_ENV"
+          ls -la "$W/result" "$W/result/v15" || true
+          test -f "$W/result/v15/lipsync.mp4" || { echo "MUSETALK_NO_OUTPUT"; tail -n 60 "$W/musetalk.log"; exit 1; }
+      - name: Our line over the lip-synced picture, the gates, frame sheets
+        run: |
+          set -o pipefail
+          secs=$(python3 -I -c "import json,sys;print(json.load(open(sys.argv[1]))['processed_seconds'])" "$W/prepare.json")
+          set +e
+          "$RUNNER_TEMP/lip/bin/python" -I -B "$GITHUB_WORKSPACE/migration/production/bible/keeper_lipsync.py" finish "$W" "$W/result/v15/lipsync.mp4" "$RUNNER_TEMP/face_landmarker.task" "$RUNNER_TEMP/syncnet_v2.model" "$RUNNER_TEMP/out" "$secs"
+          rc=$?
+          python3 -I - <<PY
+          import json,os
+          r={"env_seconds":int(os.environ.get("ENV_SECONDS",0)),"infer_seconds":int(os.environ.get("INFER_SECONDS",0)),
+             "total_seconds":int(__import__("time").time())-int(os.environ["T0"])}
+          json.dump(r,open(os.environ["RUNNER_TEMP"]+"/out/timing.json","w"),indent=1); print(r)
+          PY
+          cat "$RUNNER_TEMP/out/report.json" || true
+          exit $rc
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: keeper-lipsync-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/out
+            ${{ runner.temp }}/work/musetalk.log
+          if-no-files-found: ignore
+          retention-days: 14
