@@ -121,6 +121,15 @@ BLOCK = [
     # E96/E106: cf-images takes pilot-NNN or characters, never a path
     ("Bash", {"command": "gh workflow run cf-images.yml -f pilot=migration/production/characters -f engine=flux"}),
     ("Bash", {"command": "gh workflow run cf-images.yml -f engine=flux -f pilot='production/pilot-015'"}),
+    # Graphify: only the local AST map; every LLM backend, install or hook is blocked (cloud has AWS keys -> Bedrock)
+    ("Bash", {"command": "graphify extract . --code-only"}),
+    ("Bash", {"command": "cd x && graphify label ."}),
+    ("Bash", {"command": "graphify update . --backend bedrock"}),
+    ("Bash", {"command": "GRAPHIFY_BACKEND=claude graphify update ."}),
+    ("Bash", {"command": "graphify hook install"}),
+    ("Bash", {"command": "graphify install --platform claude"}),
+    ("Bash", {"command": "graphify add https://example.com/a.pdf"}),
+    ("Bash", {"command": "python3 -c 'from graphify.llm import extract_corpus_parallel'"}),
     ("mcp__github__actions_run_trigger", {"method": "run_workflow", "owner": "o", "repo": "r", "workflow_id": "cf-images.yml",
                                           "ref": "main", "inputs": {"pilot": "migration/production/characters"}}),
 ]
@@ -153,6 +162,10 @@ ALLOW = [
     ("Bash", {"command": "gh workflow run cf-images.yml -f pilot='pilot-015' -f engine=sdxl"}),
     ("Bash", {"command": 'gh workflow run cf-images.yml -f "pilot=characters" -f engine=flux'}),
     ("Bash", {"command": "gh workflow run publish-episode.yml -f episode=genesis-07-short"}),
+    ("Bash", {"command": "GRAPHIFY_BACKEND=none graphify update ."}),
+    ("Bash", {"command": "graphify affected token_budget.py --depth 2"}),
+    ("Bash", {"command": "graphify query 'who reads ERRORS.json' --budget 800"}),
+    ("Bash", {"command": "graphify update . --backend none"}),
     ("Bash", {"command": "gh run list --workflow episode.yml --limit 3"}),
     ("Bash", {"command": "gh workflow run cf-images.yml -f pilot=characters -f engine=flux -f only=ch-noah-front"}),
     ("Bash", {"command": "gh workflow run cf-images.yml -f pilot=pilot-015 -f engine=sdxl"}),
@@ -175,7 +188,8 @@ class HookifyRules(unittest.TestCase):
         names = {parse(p)["name"] for p in RULES if parse(p).get("action") == "block"}
         for n in ("block-approval-json-by-hand", "block-approval-json-by-shell", "block-frozen-qa-criteria",
                   "block-frozen-qa-criteria-by-shell", "block-shorts-fade-wipe", "require-episode-preflight",
-                  "require-episode-preflight-mcp", "block-cf-images-bad-pilot", "block-cf-images-bad-pilot-mcp"):
+                  "require-episode-preflight-mcp", "block-cf-images-bad-pilot", "block-cf-images-bad-pilot-mcp",
+                  "block-graphify-llm-and-installs"):
             self.assertIn(n, names)
 
     def test_forbidden_actions_are_blocked(self):
@@ -214,6 +228,16 @@ class PluginSetup(unittest.TestCase):
         for tool in VIDIQ_DENIED:
             for server in ("mcp__vidIQ__", "mcp__plugin_vidiq_vidiq__"):
                 self.assertIn(server + tool, perms["deny"])
+
+    def test_plugin_env_keeps_routines_safe(self):
+        import json
+        env = json.loads((ROOT / ".claude/settings.json").read_text())["env"]
+        # full: lite asks the owner to pick, ultra pushes back; no LLM backend for graphify; no claude-mem observer
+        self.assertEqual(env["PONYTAIL_DEFAULT_MODE"], "full")
+        self.assertEqual(env["PONYTAIL_MAP"], "0")
+        self.assertEqual(env["GRAPHIFY_BACKEND"], "none")
+        self.assertEqual(env["CLAUDE_MEM_WORKER_AUTOSTART"], "false")
+        self.assertIn("graphify-out/", (ROOT / ".gitignore").read_text().split())
 
 
 if __name__ == "__main__":

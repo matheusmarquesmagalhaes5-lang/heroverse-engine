@@ -1,0 +1,30 @@
+# Code-only Graphify map (OPERATIONS "Engineering workflow"): Python, workflows and shell only.
+# Data, media, evidence, receipts and vendored skills stay out, so nothing needs an LLM pass.
+.claude/
+docs/
+migration/evidence/
+migration/receipts/
+migration/requests/
+migration/channel/
+migration/diagnostics/
+migration/structures/
+*.json
+*.md
+*.html
+*.svg
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.mp4
+*.mp3
+*.wav
+*.css
+*.gz
+*.whl
+*.zip
+*.js
+*.mjs
+*.ts
+*.tsx
+*.ps1
