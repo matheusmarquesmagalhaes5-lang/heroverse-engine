@@ -1,5 +1,5 @@
 name: HeroVerse Keeper lip-sync (a silent Pavo Keeper clip + OUR Kokoro line, MuseTalk 1.5 on CPU; nothing published)
-run-name: "lipsync: ${{ inputs.clip }} + ${{ inputs.audio }}"
+run-name: "lipsync: ${{ inputs.plan || inputs.clip }} ${{ inputs.shot || inputs.audio }}"
 # Owner 2026-11-05: "No guardiao eu quero lixo sync pra ele falar.. verifique algo gratuito e de qualidade" (lip-sync).
 # Free route: MuseTalk 1.5 (code MIT, weights usable "for any purpose, even commercially"; keeper_lipsync.py docstring and
 # OPERATIONS "Keeper lip-sync (our audio)"), pinned commit, every weight pinned by sha256, on the free Actions CPU runner.
@@ -8,21 +8,37 @@ run-name: "lipsync: ${{ inputs.clip }} + ${{ inputs.audio }}"
 # the SyncNet offset/confidence through lipsync_check (thresholds unchanged), the silent source's baseline, clip_check,
 # frame sheets and the measured seconds. No secret, no Pavo call, no spending; a result is unreviewed media until Claude
 # watches and hears it.
+# Episode mode (E304, `plan` + `shot`): the clip is the shot's stored silent clip (clip_sha256: an uploaded, approvable
+# clip of that lip-sync shot in a committed probe record), the line is the WAV `episode_build.py lines` writes for the
+# shot (pinned Kokoro, as shot-remux), so the report carries the source clip's sha256 and the line's PCM proof; then
+# `lipsync-record` binds the result into a probe record and the record job (main only) uploads the clip to the release
+# under its content-hash name and pushes the record on claude/lipsync-<episode>-<run>. Nothing is approved here.
 on:
   workflow_dispatch:
     inputs:
       clip:
-        description: Silent frontal Keeper clip, repo path (migration/...) or a release asset name (shot-...mp4)
-        required: true
+        description: Silent frontal Keeper clip, repo path (migration/...) or a release asset name (shot-...mp4); empty in episode mode
+        required: false
+        default: ""
       clip_sha256:
-        description: sha256 of that clip (64 hex)
+        description: sha256 of that clip (64 hex); in episode mode the stored silent clip of the shot
         required: true
       audio:
-        description: Our Kokoro line, repo path of a 44.1 kHz mono 16-bit WAV (migration/...)
-        required: true
+        description: Our Kokoro line, repo path of a 44.1 kHz mono 16-bit WAV (migration/...); empty in episode mode
+        required: false
+        default: ""
       audio_sha256:
-        description: sha256 of that WAV (64 hex)
-        required: true
+        description: sha256 of that WAV (64 hex); empty in episode mode
+        required: false
+        default: ""
+      plan:
+        description: Episode mode, the plan path (migration/production/bible/plans/<episode>.json); empty for a probe
+        required: false
+        default: ""
+      shot:
+        description: Episode mode, the lip-sync shot id of that plan
+        required: false
+        default: ""
       tail:
         description: Seconds of picture kept after the line ends
         required: false
@@ -43,6 +59,8 @@ jobs:
     timeout-minutes: 300
     permissions:
       contents: read
+    outputs:
+      episode: ${{ steps.inputs.outputs.episode }}
     env:
       CLIP: ${{ inputs.clip }}
       CLIP_SHA: ${{ inputs.clip_sha256 }}
@@ -50,6 +68,8 @@ jobs:
       AUDIO_SHA: ${{ inputs.audio_sha256 }}
       TAIL: ${{ inputs.tail }}
       CAP: ${{ inputs.cap }}
+      PLAN: ${{ inputs.plan }}
+      SHOT: ${{ inputs.shot }}
       GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
@@ -58,23 +78,43 @@ jobs:
       - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b
         with:
           python-version: "3.10"
-      - name: Inputs (shape, then sha256)
+      - id: inputs
+        name: Inputs (shape, then sha256; episode mode, the plan, the shot and its stored silent clip)
         run: |
-          [[ "$CLIP_SHA" =~ ^[0-9a-f]{64}$ && "$AUDIO_SHA" =~ ^[0-9a-f]{64}$ ]] || { echo "LIPSYNC_SHA_REFUSED"; exit 1; }
+          [[ "$CLIP_SHA" =~ ^[0-9a-f]{64}$ ]] || { echo "LIPSYNC_SHA_REFUSED"; exit 1; }
           [[ "$CAP" =~ ^[0-9]+(\.[0-9]+)?$ ]] || { echo "LIPSYNC_CAP_REFUSED"; exit 1; }
           [[ "$TAIL" =~ ^[0-9](\.[0-9]+)?$ ]] || { echo "LIPSYNC_TAIL_REFUSED"; exit 1; }
-          [[ "$AUDIO" =~ ^migration/[A-Za-z0-9_./-]+\.wav$ && "$AUDIO" != *..* ]] || { echo "LIPSYNC_AUDIO_PATH_REFUSED"; exit 1; }
           W="$RUNNER_TEMP/work"; mkdir -p "$W" "$RUNNER_TEMP/out"
+          echo "W=$W" >> "$GITHUB_ENV"
+          if [ -n "$PLAN" ]; then
+            [[ "$PLAN" =~ ^migration/production/bible/plans/([a-z0-9]+(-[a-z0-9]+)*)\.json$ ]] || { echo "PLAN_PATH_REFUSED"; exit 1; }
+            ep="${BASH_REMATCH[1]}"
+            [[ "$SHOT" =~ ^[a-z0-9]+(-[a-z0-9]+)*$ ]] || { echo "LIPSYNC_SHOT_REFUSED"; exit 1; }
+            [ "$CAP" = 0 ] || { echo "LIPSYNC_CAP_REFUSED (a capped run is never a deliverable)"; exit 1; }
+            [ -z "$CLIP$AUDIO$AUDIO_SHA" ] || { echo "LIPSYNC_EPISODE_INPUTS_REFUSED (episode mode takes the stored clip by sha256 and the line from lines)"; exit 1; }
+            test -f "$PLAN" || { echo "PLAN_MISSING"; exit 1; }
+            python3 -I -c "import json,sys;sys.exit(0 if json.load(open(sys.argv[1])).get('episode')==sys.argv[2] else 'PLAN_EPISODE_MISMATCH')" "$PLAN" "$ep"
+            python3 -I -B migration/production/bible/plan_check.py "$PLAN" --strict
+            name=$(python3 -I -B migration/production/bible/episode_build.py lipsync-source "$PLAN" "$SHOT" "$CLIP_SHA")
+            bash migration/ci/assets.sh download --repo "$GITHUB_REPOSITORY" --pattern "$name" -O "$W/clip.mp4" --clobber
+            echo "$CLIP_SHA  $W/clip.mp4" | sha256sum -c -
+            echo "episode=$ep" >> "$GITHUB_OUTPUT"
+            echo "EP=$ep" >> "$GITHUB_ENV"
+            echo "WORK=$GITHUB_WORKSPACE/.episode/lipsync-$ep" >> "$GITHUB_ENV"
+            exit 0
+          fi
+          [[ -z "$SHOT" ]] || { echo "LIPSYNC_SHOT_WITHOUT_PLAN"; exit 1; }
+          [[ "$AUDIO_SHA" =~ ^[0-9a-f]{64}$ ]] || { echo "LIPSYNC_SHA_REFUSED"; exit 1; }
+          [[ "$AUDIO" =~ ^migration/[A-Za-z0-9_./-]+\.wav$ && "$AUDIO" != *..* ]] || { echo "LIPSYNC_AUDIO_PATH_REFUSED"; exit 1; }
           if [[ "$CLIP" =~ ^migration/[A-Za-z0-9_./-]+\.mp4$ && "$CLIP" != *..* ]]; then cp "$CLIP" "$W/clip.mp4"
           elif [[ "$CLIP" =~ ^shot-[A-Za-z0-9._-]+\.mp4$ ]]; then bash migration/ci/assets.sh download --repo "$GITHUB_REPOSITORY" --pattern "$CLIP" -O "$W/clip.mp4" --clobber
           else echo "LIPSYNC_CLIP_REFUSED"; exit 1; fi
           cp "$AUDIO" "$W/line.wav"
           echo "$CLIP_SHA  $W/clip.mp4" | sha256sum -c -
           echo "$AUDIO_SHA  $W/line.wav" | sha256sum -c -
-          echo "W=$W" >> "$GITHUB_ENV"
       - name: Tools; MediaPipe face model and SyncNet weights (same pins as shot-remux)
         run: |
-          APT_UPDATE_TIMEOUT=300s APT_INSTALL_TIMEOUT=600s bash migration/ci/apt_install.sh ffmpeg libegl1 libgles2
+          APT_UPDATE_TIMEOUT=300s APT_INSTALL_TIMEOUT=600s bash migration/ci/apt_install.sh ffmpeg libegl1 libgles2 espeak-ng fonts-dejavu-core
           /usr/bin/python3 -m venv "$RUNNER_TEMP/lip"
           "$RUNNER_TEMP/lip/bin/pip" install --disable-pip-version-check -q 'mediapipe==0.10.35'
           curl -fsSL --retry 3 -o "$RUNNER_TEMP/face_landmarker.task" https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task
@@ -82,6 +122,24 @@ jobs:
           echo "$sha  $RUNNER_TEMP/face_landmarker.task" | sha256sum -c -
           sha=$(python3 -I -c "import re,sys;print(re.search(r'SYNCNET_SHA256 = \"([0-9a-f]{64})\"',open(sys.argv[1]).read()).group(1))" migration/production/bible/syncnet.py)
           bash migration/ci/pinned_asset.sh fetch "syncnet_v2-$sha.model" "$sha" "$RUNNER_TEMP/syncnet_v2.model" "$(python3 -I -c "import re,sys;print(re.search(r'SYNCNET_URL = \"(https://[^\"]+)\"',open(sys.argv[1]).read()).group(1))" migration/production/bible/syncnet.py)"
+      - name: Episode mode, the voice track (pinned Kokoro, as shot-remux), the shot's line from `lines`, the references
+        if: env.PLAN != ''
+        run: |
+          set -euo pipefail
+          /usr/bin/python3 -m venv "$RUNNER_TEMP/voice"
+          "$RUNNER_TEMP/voice/bin/pip" install --disable-pip-version-check -q 'kokoro-onnx==0.4.9' 'onnxruntime==1.20.1' 'numpy==2.2.6' 'espeakng-loader==0.2.4' 'soundfile==0.13.1'
+          mkdir -p "$WORK"
+          python3 -I -B migration/production/bible/episode_build.py voice-script "$PLAN" "$WORK"
+          python3 -I -B migration/production/pilot_render.py prepare "$WORK" HeroVerse_Linux_Source_Ready_20261013_v2.zip
+          ESPEAK_DATA_PATH=$("$RUNNER_TEMP/voice/bin/python" -I -c "import espeakng_loader as e;print(e.get_data_path())")
+          test -d "$ESPEAK_DATA_PATH" || { echo "ESPEAK_DATA_MISSING"; exit 1; }
+          export ESPEAK_DATA_PATH
+          "$RUNNER_TEMP/voice/bin/python" -I -B migration/production/pilot_render.py voice "$WORK" "$WORK/voice-script.json"
+          python3 -I -B migration/production/bible/episode_build.py lines "$PLAN" "$WORK"
+          python3 -I -B migration/production/bible/episode_build.py refs "$PLAN" "$WORK"
+          line=$(python3 -I -B migration/production/bible/episode_build.py lipsync-line "$PLAN" "$WORK" "$SHOT")
+          cp "$line" "$W/line.wav"
+          sha256sum "$W/line.wav"
       - name: Source gate (the silent clip is still-mouth and frontal) and the cut inputs
         run: |
           set -euo pipefail
@@ -144,6 +202,18 @@ jobs:
           PY
           cat "$RUNNER_TEMP/out/report.json" || true
           exit $rc
+      - name: Episode mode, the result as a probe record (proof bound to the clip, its stored source and the line)
+        if: env.PLAN != ''
+        run: |
+          mkdir -p "$RUNNER_TEMP/rec"
+          python3 -I -B migration/production/bible/episode_build.py lipsync-record "$PLAN" "$WORK" "$RUNNER_TEMP/lip/bin/python" "$RUNNER_TEMP/face_landmarker.task" "$RUNNER_TEMP/rec" "$SHOT" "$RUNNER_TEMP/out/report.json" "$RUNNER_TEMP/out/keeper-lipsync.mp4" "$GITHUB_RUN_ID"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: env.PLAN != ''
+        with:
+          name: lipsync-record-${{ steps.inputs.outputs.episode }}-${{ github.run_id }}
+          path: ${{ runner.temp }}/rec
+          if-no-files-found: error
+          retention-days: 14
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
@@ -153,3 +223,45 @@ jobs:
             ${{ runner.temp }}/work/musetalk.log
           if-no-files-found: ignore
           retention-days: 14
+
+  record:
+    needs: lipsync
+    if: needs.lipsync.result == 'success' && needs.lipsync.outputs.episode != '' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: write   # release assets (assets.sh) and the evidence branch; no secret in this job
+    env:
+      GH_TOKEN: ${{ github.token }}
+      EP: ${{ needs.lipsync.outputs.episode }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: lipsync-record-${{ needs.lipsync.outputs.episode }}-${{ github.run_id }}
+          path: ${{ runner.temp }}/out
+      - name: Media timing instrument for the hash-bound record seal (E152)
+        run: bash migration/ci/apt_install.sh ffmpeg
+      - name: The lip-synced clip into the release under its content-hash name; sheet and record on claude/lipsync-<id>-<run>
+        run: |
+          [[ "$EP" =~ ^[a-z0-9]+(-[a-z0-9]+)*$ ]] || { echo "EPISODE_ID_REFUSED"; exit 1; }
+          out="$RUNNER_TEMP/out"
+          test -f "$out/probe.json" || { echo "::error::NO_PROBE_RECORD: the lipsync job left no record"; exit 1; }
+          d="migration/evidence/shots/$EP"; mkdir -p "$d"
+          python3 -I -B migration/production/bible/episode_build.py probe-assets "$out" "$EP" > "$RUNNER_TEMP/assets.txt"
+          while read -r name; do
+            [ -n "$name" ] || continue
+            bash migration/ci/assets.sh upload "$out/$name" --repo "$GITHUB_REPOSITORY" --clobber
+          done < "$RUNNER_TEMP/assets.txt"
+          python3 -I -B migration/production/bible/episode_build.py probe-assets "$out" "$EP" "$GITHUB_RUN_ID" "$d/$GITHUB_RUN_ID.json" >/dev/null
+          for f in "$out"/*.jpg; do
+            [ -f "$f" ] && cp "$f" "$d/$GITHUB_RUN_ID-$(basename "$f")"
+          done
+          branch="claude/lipsync-$EP-$GITHUB_RUN_ID"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -q -b "$branch"
+          git add "$d"
+          git commit -q -m "Lip-sync $EP (run $GITHUB_RUN_ID): lip-synced clip with our line, frame sheet and record for Claude's review"
+          git push -q origin "HEAD:refs/heads/$branch"
+          echo "BRANCH $branch"

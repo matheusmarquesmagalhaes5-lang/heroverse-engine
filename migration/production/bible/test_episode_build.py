@@ -3309,6 +3309,40 @@ class LipsyncedClips(unittest.TestCase):
         with self.assertRaisesRegex(SystemExit, "SHOT_CHECKS_FAILED k-a MOUTH_TALKING"):
             eb.approve_shot(path, "k-a", asset, "9.9", "reviewed", shots_dir=root / "approved", **kw)
 
+    def test_lipsync_yml_episode_mode_starts_only_from_a_stored_silent_clip_of_a_lipsync_shot(self):
+        path, root = self.record(self.rows()[:1])
+        self.assertEqual(eb.lipsync_source_asset(self.plan, "k-a", self.source, root),
+                         eb.shot_asset_name("ep-x", "k-a", self.source))
+        for shot, sha in (("k-a", "f" * 64), ("k-a", "nothex"), ("k-z", self.source)):
+            with self.assertRaisesRegex(SystemExit, "LIPSYNC_SOURCE_REFUSED"):
+                eb.lipsync_source_asset(self.plan, shot, sha, root)
+        flagged = dict(self.rows()[0], flags=["MOUTH_TALKING"])     # a silent clip that talks is no source
+        path, root = self.record([flagged])
+        with self.assertRaisesRegex(SystemExit, "LIPSYNC_SOURCE_REFUSED"):
+            eb.lipsync_source_asset(self.plan, "k-a", self.source, root)
+        plan = json.loads(json.dumps(self.plan))
+        plan["shots"][0].pop("lipsync")
+        with self.assertRaisesRegex(SystemExit, "LIPSYNC_SOURCE_REFUSED k-a"):
+            eb.lipsync_source_asset(plan, "k-a", self.source, root)
+        self.assertEqual(eb.lipsync_line_path(self.work, "k-a"), self.line)
+
+    def test_lipsync_yml_records_and_uploads_only_from_main_and_only_in_its_record_job(self):
+        import yaml
+        wf = yaml.safe_load((eb.REPO / ".github/workflows/lipsync.yml").read_text())
+        run, rec = wf["jobs"]["lipsync"], wf["jobs"]["record"]
+        self.assertEqual(wf["permissions"], {"contents": "read"})
+        self.assertEqual(run["permissions"], {"contents": "read"})
+        self.assertEqual(rec["permissions"], {"contents": "write"})
+        self.assertIn("github.ref == 'refs/heads/main'", rec["if"])
+        self.assertIn("needs.lipsync.result == 'success'", rec["if"])
+        steps = "\n".join(str(x.get("run", "")) for x in run["steps"])
+        for cmd in ("episode_build.py lipsync-source", "episode_build.py lines", "episode_build.py lipsync-line",
+                    "episode_build.py lipsync-record"):
+            self.assertIn(cmd, steps)
+        self.assertNotIn("assets.sh upload", steps)                  # the model job never writes the release
+        self.assertIn("probe-assets", "\n".join(str(x.get("run", "")) for x in rec["steps"]))
+        self.assertNotIn("secrets.", (eb.REPO / ".github/workflows/lipsync.yml").read_text())
+
     def test_lipsync_record_binds_the_report_to_a_stored_source_and_the_line(self):
         path, root = self.record(self.rows()[:1])
         report = self.work / "report.json"

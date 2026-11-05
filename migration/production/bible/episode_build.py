@@ -63,6 +63,9 @@ the episode record and dispatches publish-episode.yml.
                                                  E114, shot-probe.yml with adopt_run: clips a build run made and
                                                  Claude approved, as a probe record (request recomputed and equal to
                                                  the plan's now, the build's checks again); nothing generated
+  episode_build.py lipsync-source PLAN SHOT CLIP_SHA256 / lipsync-line PLAN WORK SHOT
+                                                 lipsync.yml episode mode: the stored silent clip's asset name, and
+                                                 the Kokoro line `lines` wrote for the shot
   episode_build.py lipsync-record PLAN WORK LIP_PYTHON FACE_MODEL OUT SHOT REPORT CLIP RUN_ID
                                                  owner 2026-11-05: a lipsync.yml result (report.json, the clip) of a
                                                  lip-sync shot as OUT/probe.json: proof bound to the clip, its stored
@@ -1606,6 +1609,27 @@ def lipsync_sources(episode, shot_id, shots_dir=None):
                     and re.fullmatch(r"[0-9a-f]{64}", str(c.get("clip_sha256") or "")):
                 out.setdefault(c["clip_sha256"], (f, entry))
     return out
+
+
+def lipsync_source_asset(plan, shot_id, clip_sha, shots_dir=None):
+    """lipsync.yml's episode mode: the release asset name of the stored silent clip a lip-sync starts from. Refused
+    (LIPSYNC_SOURCE_REFUSED) unless the shot is a lip-sync shot of this plan and the sha256 is an uploaded, approvable
+    clip of it in a committed probe record (lipsync_sources), so lipsync-record can bind the result to it."""
+    shot = next((s for s in plan["shots"] if s.get("id") == shot_id), None)
+    if shot is None or not lipsync_shot(shot):
+        raise SystemExit(f"LIPSYNC_SOURCE_REFUSED {shot_id} (not a silent shot with a valid `lipsync` in this plan)")
+    if not re.fullmatch(r"[0-9a-f]{64}", str(clip_sha)) or clip_sha not in lipsync_sources(plan["episode"], shot_id,
+                                                                                          shots_dir):
+        raise SystemExit(f"LIPSYNC_SOURCE_REFUSED {shot_id} (the sha256 is not an uploaded, approvable silent clip of "
+                         "this shot in a committed probe record)")
+    return shot_asset_name(plan["episode"], shot_id, clip_sha)
+
+
+def lipsync_line_path(work, shot_id):
+    """lipsync.yml's episode mode: the repository path of the Kokoro line `lines` wrote for a lip-sync shot."""
+    layout = load(Path(work) / "layout.json")
+    shot = {"id": shot_id}
+    return lipsync_line(layout, shot)
 
 
 def lipsync_clip_flags(lip_python, face_model, clip, proof, clip_sha, line, aspect=None, sources=None):
@@ -3374,6 +3398,10 @@ def main(argv):
     elif cmd == "remux-assets" and len(argv) == 3:   # shot-remux.yml: the stored clips' release asset names (env SHOTS)
         for sid, prefix in remux_items(os.environ.get("SHOTS", "")):
             print(shot_asset_name(plan["episode"], sid, remux_source(plan["episode"], sid, prefix)[1]))
+    elif cmd == "lipsync-source" and len(argv) == 5:   # lipsync.yml episode mode: PLAN SHOT CLIP_SHA256
+        print(lipsync_source_asset(plan, argv[3], argv[4]))
+    elif cmd == "lipsync-line" and len(argv) == 5:     # lipsync.yml episode mode: PLAN WORK SHOT (after `lines`)
+        print(lipsync_line_path(argv[3], argv[4]))
     elif cmd == "lipsync-record" and len(argv) == 12:   # PLAN WORK LIP FACE OUT SHOT REPORT CLIP RUN_ID
         record = lipsync_record_step(plan, argv[3], argv[4], argv[5], argv[6], argv[7], argv[8], argv[9], argv[10])
         record["plan_sha256"] = sha256(argv[2])

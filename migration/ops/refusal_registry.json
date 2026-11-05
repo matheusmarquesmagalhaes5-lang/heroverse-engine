@@ -2965,6 +2965,10 @@
   "LIPSYNC_SOURCE_NOT_STORED": {
    "class": "N",
    "why": "E304: lipsync-record refuses a result whose silent source is not an uploaded, approvable clip of the shot, before any approval; it stops no generation, voice or render"
+  },
+  "LIPSYNC_SOURCE_REFUSED": {
+   "class": "N",
+   "why": "E304: lipsync.yml's episode mode refuses a shot that is not a lip-sync shot of the plan or a clip that is not a stored, approvable silent clip of it, before any model run; it stops no generation, voice or render and approves nothing"
   }
  },
  "review": {
