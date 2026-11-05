@@ -1,0 +1,171 @@
+{
+ "plan": "migration/production/bible/plans/genesis-12-short.json",
+ "episode": "genesis-12-short",
+ "checked_at": "2026-11-05T22:02:54Z",
+ "plan_check": {
+  "problems": [],
+  "pending": [],
+  "estimate": {
+   "seconds": 171.3,
+   "keeper_share": 0.112,
+   "lesson_share": 0.117,
+   "establishing_share": 0.0,
+   "lines": 20,
+   "shots": 20,
+   "spoken_lines": 1,
+   "words": 451
+  }
+ },
+ "characters": [
+  {
+   "id": "keeper",
+   "status": "APPROVED",
+   "refs": [
+    "front"
+   ],
+   "talk_refs": [
+    "talk"
+   ],
+   "voice": "am_michael",
+   "image_records": [
+    "ch-keeper-front",
+    "ch-keeper-talk"
+   ]
+  }
+ ],
+ "cf_images": {
+  "recorded_today": 0,
+  "daily_allocation": 44,
+  "sheets_needed": {},
+  "fits_today": true
+ },
+ "voice": {
+  "ran": true,
+  "reused": false,
+  "checkpoint_sha256": "b36e91f3e03d1ac9c1093a7636d2c2a4057442352101ca0997c108080d2a92d6",
+  "problems": [
+   "LINES_REFUSED SHORT_LENGTH 164.353 s (170-179, measured)"
+  ],
+  "pace": {
+   "god": [
+    2.98
+   ],
+   "narration": [
+    2.91,
+    3.09,
+    3.12,
+    3.15,
+    2.36,
+    3.35,
+    2.8,
+    3.3,
+    2.98,
+    3.0,
+    2.99,
+    2.74,
+    2.61,
+    3.19,
+    2.59,
+    2.94,
+    2.98,
+    2.63,
+    2.14
+   ]
+  },
+  "measured": {
+   "total": 164.353,
+   "keeper_share": 0.123,
+   "lesson_share": 0.127,
+   "retimed": {}
+  }
+ },
+ "requests": {
+  "ran": false,
+  "problems": [],
+  "why": "needs --refs, a clean plan and a clean measured voice"
+ },
+ "setups": {
+  "shots": [
+   {
+    "kind": "god_voice_over",
+    "shot": "s-voice",
+    "probe": "none needed: generated right after the talking shots (risk_order), face check"
+   },
+   {
+    "kind": "still_mouth",
+    "speaker": "keeper",
+    "references": {
+     "ch-keeper-talk": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
+    },
+    "shot": "k-insight",
+    "check": "lipsync_check --still-mouth",
+    "probe": [
+     "migration/evidence/pavo/20261026/keeper-vo/calibration.json"
+    ],
+    "passed": "2 of 2",
+    "shot_chance": 0.938
+   },
+   {
+    "kind": "still_mouth",
+    "speaker": "keeper",
+    "references": {
+     "ch-keeper-talk": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
+    },
+    "shot": "k-question",
+    "check": "lipsync_check --still-mouth",
+    "probe": [
+     "migration/evidence/pavo/20261026/keeper-vo/calibration.json"
+    ],
+    "passed": "2 of 2",
+    "shot_chance": 0.938
+   },
+   {
+    "kind": "still_mouth",
+    "speaker": "keeper",
+    "references": {
+     "ch-keeper-talk": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
+    },
+    "shot": "k-close",
+    "check": "lipsync_check --still-mouth",
+    "probe": [
+     "migration/evidence/pavo/20261026/keeper-vo/calibration.json"
+    ],
+    "passed": "2 of 2",
+    "shot_chance": 0.938
+   }
+  ],
+  "probes_required": [],
+  "rate_low": [],
+  "talk_attempts": 2,
+  "min_shot_chance": 0.9,
+  "run_chance_all_talking_shots": 0.824
+ },
+ "shot_review": [
+  "REQUESTS_NOT_CHECKED"
+ ],
+ "binding": {
+  "plan": "a6bf9317225f20eddd2fd716ae78267ae043bf80f8273674572ceeb2c4498116",
+  "characters": "4fa2cce1dc2029a424336c09a7f2b0272aaa0681023b7010d55a44847ca4d047",
+  "image_records": {
+   "ch-keeper-front.json": "666eb65f6fc26529aa71af95bba873ac4bdb123c599b30d7e2fe7e1986399932",
+   "ch-keeper-talk.json": "c431a6013669385cb236c64158160cc6966337cdfb8ada711ed98f58b509b6cc"
+  },
+  "setups": "386110cf6909cea8ed1edcfe0f6476ea1b4ae528e6a3399e1861a7396d808a95",
+  "code": {
+   "episode_build.py": "bb5ec22c44d8d22de398adf8018e554512b0b4adffeac33dc6ab87d9d8e70b8d",
+   "plan_check.py": "79c25921f0980fb7513a0ae698ac5bb1545a9f37bc610a1b1762a19495b09e5c",
+   "voice_pace.py": "79873a74e40eba90eef2e38526ea2827e95de3ff64048d1666e69fb0aa04214f",
+   "lipsync_check.py": "5fa7aed2dbe007c556fd3e693ae31d0ef9c5bd11a4132773aa06eb78bf552983",
+   "syncnet.py": "0f6e65316b50850629e488e6167ad7159efc3b2480d27ced3166311e054633f7",
+   "episode_preflight.py": "0a3037f95dcf5ac1cfac307391a1cd96e6825e1a60b4d0d28181f6aea0d0f65c",
+   "clip_timing.py": "44626ba6ea7f807a62a99dcabcca3751d55c01ce452718efe1fc1b9e6db73509",
+   "reviewer_identity.py": "b813ceb46a450e21f7fd3fd08b38fe77094f1b3fafaec8db3251f56f954be24d",
+   "owner_quality_policy.py": "093de8b9883d18d6e6f8eb08989696d180bb890556cc89de34aecb5fdcedb3ca"
+  }
+ },
+ "blockers": [
+  "VOICE LINES_REFUSED SHORT_LENGTH 164.353 s (170-179, measured)",
+  "REQUESTS_NOT_CHECKED (run with --refs once the plan and the voice are clean)"
+ ],
+ "status": "BLOCKED"
+}
