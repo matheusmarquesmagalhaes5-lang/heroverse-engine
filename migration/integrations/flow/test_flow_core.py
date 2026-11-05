@@ -226,8 +226,10 @@ class Prompt(unittest.TestCase):
         self.assertIn("mouth stays closed", sent)
 
     def test_silence_matches_the_pavo_standard(self):
-        root = Path(__file__).resolve().parents[2]
-        text = (root / "production/bible/pavo_prompt.py").read_text(encoding="utf-8")
+        source = Path(__file__).resolve().parents[2] / "production/bible/pavo_prompt.py"
+        if not source.exists():
+            self.skipTest("outside the repository (the PC copy)")
+        text = source.read_text(encoding="utf-8")
         self.assertIn('SILENCE = "%s"' % core.SILENCE, text)
 
     def test_character_needs_a_reference(self):
