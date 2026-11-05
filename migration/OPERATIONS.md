@@ -211,6 +211,12 @@ Reuse approved matching material first. Existing source tools include `shot-prob
 `production/bible/shot_sources.py`, `production/footage/`, the image tools and ffmpeg. The authorized GPT-still route
 retains its real provenance; source/rights/identity/context checks still apply.
 
+Before dispatching `scene-stills.yml`, size the batch to today's remaining FLUX images with
+`python3 migration/ops/stills_fit.py PLAN [--exclude ids-the-ChatGPT-route-is-making]` (GH_TOKEN for the read; `--used N`
+offline). It reads the guard's own count and cap, skips APPROVED stills and prints the `shots`/`candidates` that fit
+(1 candidate when that fits more shots); `left_for_later` is the next run's list. It dispatches nothing and the
+dispatch guard still re-checks every run: a partial batch every day instead of a GUARD_CF_ALLOCATION_USED refusal.
+
 `pavo-private-audio.yml` supports the existing private exact-audio and first-frame requests. It uses the current
 shared lease, quota, exact zero-credit quote, encrypted transfer and durable claim. A saved conversation ID is
 reconciled by GET, never resubmitted because a caller timed out. A claim without a definitive result is unresolved.
