@@ -1,0 +1,209 @@
+{
+ "plan": "migration/production/bible/plans/genesis-12-short.json",
+ "episode": "genesis-12-short",
+ "checked_at": "2026-11-05T22:15:44Z",
+ "plan_check": {
+  "problems": [],
+  "pending": [],
+  "estimate": {
+   "seconds": 178.6,
+   "keeper_share": 0.108,
+   "lesson_share": 0.112,
+   "establishing_share": 0.0,
+   "lines": 20,
+   "shots": 20,
+   "spoken_lines": 1,
+   "words": 471
+  }
+ },
+ "characters": [
+  {
+   "id": "keeper",
+   "status": "APPROVED",
+   "refs": [
+    "front"
+   ],
+   "talk_refs": [
+    "talk"
+   ],
+   "voice": "am_michael",
+   "image_records": [
+    "ch-keeper-front",
+    "ch-keeper-talk"
+   ]
+  }
+ ],
+ "cf_images": {
+  "recorded_today": 0,
+  "daily_allocation": 44,
+  "sheets_needed": {},
+  "fits_today": true
+ },
+ "voice": {
+  "ran": true,
+  "reused": false,
+  "checkpoint_sha256": "16094c8f0f5e5f572cf77f6077ad48893fecfc0d56d2fd74efb906994be65f77",
+  "problems": [],
+  "pace": {
+   "god": [
+    2.98
+   ],
+   "narration": [
+    2.9,
+    3.09,
+    3.12,
+    3.15,
+    2.4,
+    3.35,
+    2.8,
+    3.3,
+    2.84,
+    3.0,
+    2.99,
+    2.74,
+    2.61,
+    3.19,
+    2.59,
+    2.94,
+    2.99,
+    2.63,
+    2.14
+   ]
+  },
+  "measured": {
+   "total": 172.201,
+   "keeper_share": 0.117,
+   "lesson_share": 0.121,
+   "retimed": {}
+  }
+ },
+ "requests": {
+  "ran": true,
+  "problems": [],
+  "digests": {
+   "s-voice": "35903b5e2c6672586e5ae583228854730eb6775fcf53a1f3def7d39ec21bf43e",
+   "s-nations": "6e20fa3514510c84d621b19e2ab136156aa79c44ea1e750d0a36a2588b8b2b71",
+   "s-onetongue": "cfd79c8d9ed21b82a6cec25da18ea0f9a68a65db4734e82fc27da504c7e0a153",
+   "s-plain": "981be6be701bbae20cb6677dea23d9c6d5e2f6c700de45e8bd90b2d09e4e9bfa",
+   "s-kiln": "52144e4ceac5c30202151c48f69e9687ff0e29d547bfb715eed9e5ae938012f8",
+   "s-hands": "a87f28dba9bc2a97b9a930ea10090df8fb54c037e1381eb7131f51748308efb6",
+   "s-gathered": "255ec58f5f8733a265e75f5b6f85e13e959a66035b888cb6bf24ab285c2c5959",
+   "s-foundation": "38f80a75cf94a2748c76eea7e664a766d90dfa7c61feb45a2b2699f405d8c5b2",
+   "s-down": "f48a0e78248debe0bcd7be6205d36767e991d28673b01d0b23fc75bb08e05f5c",
+   "s-top": "bbf1b05bb3d410d7f123bf4fd67ca7dc9b1b8605f1c4e449491dd7afca784e2b",
+   "s-behold": "4f417c109ce67a14d422da1ed84323eda0493c4536cf846f288858e3e3d100c6",
+   "s-mercy": "a546b8ca955a93b6439ddae1991a70b63cbeeae9550742523f8b7a29858b134b",
+   "s-confound": "bbffb63557adb2445e331de820d3d63ad371e14d88c3bd058e6e8e7fa374f9ce",
+   "s-babble": "a5b83b9578f17540d14722a6c4878b22b43f263e89d6baa4a5e67a3aa78d7869",
+   "s-parting": "b9b3301e5afa66f285b2c8296217061c35d9b18cdcc663e62ba5041a017f8988",
+   "s-unfinished": "3994e8c74cf9d7c807dab20d427d32fb7f4fad779ee23a313e6744b897990c51",
+   "s-babel": "c83622904272f01e0c435d0d83f54487d3e78b97dae27ddf98fb86ed44dc4e08",
+   "k-insight": "d6139213b1d6fe3a9d7059b65000d7155f2a3e532042a29bb222fee8836f587e",
+   "k-question": "9915d0105b03aee1fb2b3e1bafcd66bbc5bb82d434d570cc24430d2f3e06ff99",
+   "k-close": "fcd3f420eadf01dfbccbc5a6fc7758f45d036e077daf293f6eaf8bcf637723e3"
+  },
+  "needs": {
+   "s-voice": 8,
+   "s-nations": 10,
+   "s-onetongue": 8,
+   "s-plain": 10,
+   "s-kiln": 11,
+   "s-hands": 12,
+   "s-gathered": 12,
+   "s-foundation": 12,
+   "s-down": 9,
+   "s-top": 12,
+   "s-behold": 11,
+   "s-mercy": 12,
+   "s-confound": 10,
+   "s-babble": 11,
+   "s-parting": 10,
+   "s-unfinished": 12,
+   "s-babel": 11,
+   "k-insight": 10,
+   "k-question": 6,
+   "k-close": 8
+  }
+ },
+ "setups": {
+  "shots": [
+   {
+    "kind": "god_voice_over",
+    "shot": "s-voice",
+    "probe": "none needed: generated right after the talking shots (risk_order), face check"
+   },
+   {
+    "kind": "still_mouth",
+    "speaker": "keeper",
+    "references": {
+     "ch-keeper-talk": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
+    },
+    "shot": "k-insight",
+    "check": "lipsync_check --still-mouth",
+    "probe": [
+     "migration/evidence/pavo/20261026/keeper-vo/calibration.json"
+    ],
+    "passed": "2 of 2",
+    "shot_chance": 0.938
+   },
+   {
+    "kind": "still_mouth",
+    "speaker": "keeper",
+    "references": {
+     "ch-keeper-talk": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
+    },
+    "shot": "k-question",
+    "check": "lipsync_check --still-mouth",
+    "probe": [
+     "migration/evidence/pavo/20261026/keeper-vo/calibration.json"
+    ],
+    "passed": "2 of 2",
+    "shot_chance": 0.938
+   },
+   {
+    "kind": "still_mouth",
+    "speaker": "keeper",
+    "references": {
+     "ch-keeper-talk": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
+    },
+    "shot": "k-close",
+    "check": "lipsync_check --still-mouth",
+    "probe": [
+     "migration/evidence/pavo/20261026/keeper-vo/calibration.json"
+    ],
+    "passed": "2 of 2",
+    "shot_chance": 0.938
+   }
+  ],
+  "probes_required": [],
+  "rate_low": [],
+  "talk_attempts": 2,
+  "min_shot_chance": 0.9,
+  "run_chance_all_talking_shots": 0.824
+ },
+ "shot_review": [
+  "SHOT_NOT_REVIEWED s-voice s-nations s-onetongue s-plain s-kiln s-hands s-gathered s-foundation s-down s-top s-behold s-mercy s-confound s-babble s-parting s-unfinished s-babel k-insight k-question k-close (shot-probe.yml, Claude's frame review >= 9.5, episode_build.py approve-shot, by PR)"
+ ],
+ "binding": {
+  "plan": "456cef9fb2efa907e29b328e4a55a5fcada319c3221faef4098ce6d11bc656f0",
+  "characters": "4fa2cce1dc2029a424336c09a7f2b0272aaa0681023b7010d55a44847ca4d047",
+  "image_records": {
+   "ch-keeper-front.json": "666eb65f6fc26529aa71af95bba873ac4bdb123c599b30d7e2fe7e1986399932",
+   "ch-keeper-talk.json": "c431a6013669385cb236c64158160cc6966337cdfb8ada711ed98f58b509b6cc"
+  },
+  "setups": "386110cf6909cea8ed1edcfe0f6476ea1b4ae528e6a3399e1861a7396d808a95",
+  "code": {
+   "episode_build.py": "bb5ec22c44d8d22de398adf8018e554512b0b4adffeac33dc6ab87d9d8e70b8d",
+   "plan_check.py": "79c25921f0980fb7513a0ae698ac5bb1545a9f37bc610a1b1762a19495b09e5c",
+   "voice_pace.py": "881aa746bbb235db382845b2d00555b02f63677478c4eab87c1150c1addaad31",
+   "lipsync_check.py": "5fa7aed2dbe007c556fd3e693ae31d0ef9c5bd11a4132773aa06eb78bf552983",
+   "syncnet.py": "0f6e65316b50850629e488e6167ad7159efc3b2480d27ced3166311e054633f7",
+   "episode_preflight.py": "0a3037f95dcf5ac1cfac307391a1cd96e6825e1a60b4d0d28181f6aea0d0f65c",
+   "clip_timing.py": "44626ba6ea7f807a62a99dcabcca3751d55c01ce452718efe1fc1b9e6db73509",
+   "reviewer_identity.py": "b813ceb46a450e21f7fd3fd08b38fe77094f1b3fafaec8db3251f56f954be24d",
+   "owner_quality_policy.py": "093de8b9883d18d6e6f8eb08989696d180bb890556cc89de34aecb5fdcedb3ca"
+  }
+ },
+ "blockers": [],
+ "status": "PASS"
+}
