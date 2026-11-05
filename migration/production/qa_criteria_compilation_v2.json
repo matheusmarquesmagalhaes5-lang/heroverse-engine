@@ -1,0 +1,28 @@
+{
+ "version": "compilation-qa-criteria-v2",
+ "frozen_at_utc": "2026-11-05T19:30:00Z",
+ "basis": "Owner, 2026-11-05 (OWNER_MEMORY 'Always bring something NEW'; YPP refuses reused content): a compilation must add substantial new original material, not only re-cut public media. v2 = compilation-qa-criteria-v1 (unchanged and still frozen for its plans) plus Keeper interludes between the chapters, and a hook and close in the same form: beats of our Kokoro line, each over an APPROVED 16:9 still (sha256) with its own slow camera move, every quoted line checked word for word against the KJV of its reference before the build. Gated on defects like v1, not on the 9.5 score floor; story QA tracks are untouched.",
+ "technical": {
+  "full_decode_without_errors": true,
+  "video": "1920x1080, H.264, 30 fps, one audio stream (AAC 48 kHz stereo)",
+  "integrated_lufs": [-15.0, -13.0],
+  "true_peak_dbtp_max": -1.0,
+  "duration_is_sum_of_segments_seconds_tolerance": 1.0,
+  "no_padding": "every chapter at most its source cut (+0.2 s); every Keeper segment at most its spoken lines plus a 0.5 s still beat at each end of each line (+0.2 s)",
+  "original_keeper_share_min": 0.15
+ },
+ "rows": [
+  "full_decode_without_errors",
+  "video_format_1920x1080_30fps",
+  "duration_is_sum_of_segments",
+  "no_padding",
+  "integrated_lufs_band",
+  "true_peak_ceiling",
+  "sources_are_the_public_masters_by_sha",
+  "canonical_order",
+  "keeper_clips_zero_credit",
+  "music_and_voice_owned",
+  "original_keeper_share"
+ ],
+ "review": "defect finder: publish_decision publish by claude-session-reviewer, every issue classified a-f or info, no unresolved a, b or e; the reviewer watches the new Keeper segments and hears them"
+}

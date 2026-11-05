@@ -19,6 +19,13 @@ usage: compilation_long.py inputs PLAN            asset name and sha256 of each 
        compilation_long.py qa PLAN OUT_DIR              measure the master, write out/qa.json (criteria compilation-qa-criteria-v1)
        compilation_long.py materialize PLAN OUT_DIR     write the pilot's publication inputs (no review, no approval)
        compilation_long.py verify PILOT_DIR [VIDEO]
+       compilation_long.py check PLAN           the plan's problems (schema, sources, stills, KJV of every quoted line)
+
+compilation-qa-criteria-v2 (owner 2026-11-05: "sempre tem que promover coisas novas"; YPP refuses reused content): a plan
+that declares it may carry `interludes`, new Keeper segments between the chapters, and a hook and close in the same form:
+`beats`, each one our Kokoro line over an APPROVED 16:9 still (sha256) with its own slow camera move, every quoted line
+checked against the KJV of its `reference`. The measured share of that new Keeper runtime must reach ORIGINAL_SHARE_MIN.
+v1 plans and their renders are unchanged.
 """
 import hashlib
 import json
@@ -36,6 +43,14 @@ import pavo_audio  # noqa: E402  (owner 2026-11-03: a Keeper clip is used in ful
 PLAN_VERSION = "bible-compilation-plan-v1"
 MANIFEST_VERSION = "bible-compilation-manifest-v1"
 CRITERIA = "compilation-qa-criteria-v1"
+CRITERIA_V2 = "compilation-qa-criteria-v2"   # interludes and beat-form Keeper segments (owner 2026-11-05, originality)
+CRITERIA_FILES = {CRITERIA: "migration/production/qa_criteria_compilation_v1.json",
+                  CRITERIA_V2: "migration/production/qa_criteria_compilation_v2.json"}
+ORIGINAL_SHARE_MIN = 0.15       # v2: new Keeper runtime (hook + interludes + close) / whole master, measured
+BEATS_QUOTE = "0 credits (no generation: Kokoro voice-over on approved stills)"
+MOTIONS = ("in", "out", "left", "right")
+ZOOM = 0.06                     # a beat's camera move: 6 % over the whole beat (never a still hold after the move ends)
+BEATS_MAX = 12
 ARCHETYPE = "bible-compilation-long"
 SERIES = "compilation"          # not "bible": a compilation has no per-story approved character thumbnail
 W, H, FPS = 1920, 1080, 30
@@ -142,13 +157,32 @@ def plan_problems(plan, episodes=EPISODES, root=ROOT):
                 bad.append(f"{cid} is not a public Short with a master sha256")
         if not all(isinstance(c.get(k), str) and c[k].strip() for k in ("title", "reference")):
             bad.append(f"{cid} chapter needs title and reference")
+        subs = c.get("subchapters")   # v2: inner chapters of a long chapter, seconds from the chapter's own start
+        if subs is not None:
+            limit = float(c.get("end_s") or ep.get("seconds") or 0)
+            ats = [x.get("at") for x in subs] if isinstance(subs, list) and all(isinstance(x, dict) for x in subs) else None
+            if not (ats and all(type(a) in (int, float) for a in ats) and ats == sorted(ats) and ats[0] >= 10
+                    and ats[-1] <= limit - 10 and all(b - a >= 10 for a, b in zip(ats, ats[1:]))
+                    and all(isinstance(x.get("title"), str) and 0 < len(x["title"]) <= 80 for x in subs)):
+                bad.append(f"{cid} subchapters must be [{{at, title}}], 10 s apart, inside the chapter")
         end = c.get("end_s")   # E254: cut the Short's own series CTA ("the full story is in the long video", "part N tomorrow")
         if end is not None and not (type(end) in (int, float) and 10 <= end < float(ep.get("seconds") or 0)):
             bad.append(f"{cid} end_s must be a number from 10 s up to the Short's length")
     if parts != sorted(parts) or len(set(parts)) != len(parts) or any(b - a != 1 for a, b in zip(parts, parts[1:])):
         bad.append("shorts are not consecutive parts in canonical order")
+    criteria = plan.get("criteria", CRITERIA)
+    if criteria not in CRITERIA_FILES:
+        bad.append("unknown criteria " + str(criteria))
+    if criteria != CRITERIA_V2 and (plan.get("interludes") or any("beats" in (plan.get(k) or {}) for k in ("hook", "close"))):
+        bad.append(f"interludes and beat-form Keeper segments need {CRITERIA_V2}")
+    if criteria == CRITERIA_V2 and not all("beats" in (plan.get(k) or {}) for k in ("hook", "close")):
+        bad.append(f"{CRITERIA_V2} measures every Keeper segment by its beats: hook and close need beats")
+    bad += interlude_problems(plan, root)
     for key in ("hook", "close"):
         k = plan.get(key) or {}
+        if "beats" in k:
+            bad += beats_problems(key, k, root)
+            continue
         if "voiceover" in k:   # E281: the Keeper's Kokoro voice-over on an approved still (no Pavo clip for this segment)
             bad += voiceover_problems(key, k, root)
             continue
@@ -220,19 +254,102 @@ def voiceover_problems(key, k, root=ROOT):
     attempt = k.get("pavo_attempt")
     if not (isinstance(attempt, dict) and attempt.get("probe_run") and attempt.get("speech_check_run") and attempt.get("result")):
         out.append(f"{key} voice-over needs the record of the Pavo attempt that failed")
-    p = Path(root) / str(v.get("still", ""))
-    if not p.is_file() or sha256(p) != v.get("still_sha256"):
-        out.append(f"{key} still missing or changed")
-    else:
-        approved = Path(root) / "migration/production/bible/stills" / f"{v.get('approved_still')}.json"
-        if not approved.is_file() or load(approved).get("status") != "APPROVED" \
-                or load(approved).get("sha256") != v["still_sha256"]:
-            out.append(f"{key} still is not an approved still of that sha256")
+    return out + still_problems(key, v.get("still"), v.get("still_sha256"), v.get("approved_still"), root)
+
+
+def still_problems(label, path, digest, approved_id, root=ROOT):
+    """The file at `path` has `digest`, and the approved-still record `approved_id` approves exactly that digest."""
+    p = Path(root) / str(path or "")
+    if not path or not p.is_file() or sha256(p) != digest:
+        return [f"{label} still missing or changed"]
+    approved = Path(root) / "migration/production/bible/stills" / f"{approved_id}.json"
+    if not (isinstance(approved_id, str) and re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", approved_id)) or not approved.is_file() \
+            or load(approved).get("status") != "APPROVED" or load(approved).get("sha256") != digest:
+        return [f"{label} still is not an approved still of that sha256"]
+    return []
+
+
+def kjv_problem(reference, text):
+    import kjv_check   # noqa: E402  (the KJV word-for-word check every narrated quotation passes)
+    return kjv_check.problem(reference, text)
+
+
+def beats_problems(label, k, root=ROOT):
+    """A v2 Keeper segment (hook, interlude or close): our Kokoro lines, one per beat, each over an approved 16:9 still
+    with its own camera move; the pinned voice; nothing generated; the honest record of why it is not a lip-synced clip;
+    every beat with a `reference` quotes that reference word for word (kjv_check)."""
+    out = []
+    beats = k.get("beats")
+    if not (isinstance(beats, list) and 1 <= len(beats) <= BEATS_MAX):
+        return [f"{label} needs 1-{BEATS_MAX} beats"]
+    if k.get("quote") != BEATS_QUOTE:
+        out.append(f"{label} quote must be the no-generation zero-credit statement")
+    if k.get("voice") != {"voice_id": VOICE_ID, "speed": 1.0}:
+        out.append(f"{label} voice is not the pinned voice")
+    lip = k.get("lipsync")
+    if not (isinstance(lip, dict) and lip.get("used") is False and isinstance(lip.get("reason"), str) and lip["reason"].strip()):
+        out.append(f"{label} needs the lipsync record (used false and the reason)")
+    for j, b in enumerate(beats, 1):
+        where = f"{label} beat {j}"
+        if not isinstance(b, dict):
+            out.append(where + " is not a record")
+            continue
+        text = b.get("text")
+        if not (isinstance(text, str) and text.strip() and len(text) <= 900 and not any(c in text for c in "<>{}")):
+            out.append(where + " text must be 1-900 characters")
+        if b.get("motion") not in MOTIONS:
+            out.append(f"{where} motion must be one of {', '.join(MOTIONS)}")
+        still = b.get("still") if isinstance(b.get("still"), dict) else {}
+        out += still_problems(where, still.get("path"), still.get("sha256"), still.get("approved_still"), root)
+        ref = b.get("reference")
+        if ref is not None:
+            p = kjv_problem(ref, text) if isinstance(ref, str) and isinstance(text, str) else "reference must be text"
+            if p:
+                out.append(f"{where} {p}")
     return out
+
+
+def interlude_problems(plan, root=ROOT):
+    """v2 interludes: [{after, title, reference, beats...}], `after` = how many chapters precede it (0 = right after the
+    hook), strictly increasing, never after the last chapter (that is the close)."""
+    items = plan.get("interludes")
+    if items is None:
+        return []
+    n = len(plan.get("chapters") or [])
+    if not isinstance(items, list) or not items:
+        return ["interludes must be a non-empty list"]
+    out, last = [], -1
+    for i, it in enumerate(items, 1):
+        if not isinstance(it, dict):
+            out.append(f"interlude {i} is not a record")
+            continue
+        after = it.get("after")
+        if not (type(after) is int and last < after < n):
+            out.append(f"interlude {i} after must be a chapter count from 0 to {n - 1}, increasing")
+        else:
+            last = after
+        if not all(isinstance(it.get(f), str) and it[f].strip() and len(it[f]) <= 80 for f in ("title", "reference")):
+            out.append(f"interlude {i} needs title and reference")
+        out += beats_problems(f"interlude {i}", it, root)
+    return out
+
+
+def keeper_sections(plan):
+    """[(key, record)] of every Keeper segment in playing order's key form: hook, i1..iN, close."""
+    return ([("hook", plan["hook"])] + [(f"i{n}", it) for n, it in enumerate(plan.get("interludes") or [], 1)]
+            + [("close", plan["close"])])
+
+
+def beat_ids(key, k):
+    return [f"{key}-{j:02d}" for j in range(1, len(k["beats"]) + 1)]
 
 
 def keeper_record(k):
     """The manifest's record of a Keeper segment: the Pavo clip's job and hashes, or the voice-over's still and Pavo attempt."""
+    if "beats" in k:
+        return {"quote": k["quote"], "voice": k["voice"], "lipsync": k["lipsync"],
+                "beats": [{"still": b["still"]["approved_still"], "still_sha256": b["still"]["sha256"],
+                           "reference": b.get("reference")} for b in k["beats"]]}
     if "voiceover" in k:
         return {"quote": k["quote"], "voice_over": {f: k["voiceover"][f] for f in ("approved_still", "still_sha256", "voice_id", "speed")},
                 "pavo_attempt": k["pavo_attempt"]}
@@ -240,7 +357,8 @@ def keeper_record(k):
 
 
 def has_voiceover(plan):
-    return any("voiceover" in (plan.get(key) or {}) for key in ("hook", "close"))
+    return (any("voiceover" in (plan.get(key) or {}) or "beats" in (plan.get(key) or {}) for key in ("hook", "close"))
+            or bool(plan.get("interludes")))
 
 
 def voice_script(plan_path, work):
@@ -248,6 +366,9 @@ def voice_script(plan_path, work):
     plan = load(plan_path)
     refuse(plan_problems(plan))
     segs = [{"id": key, "text": plan[key]["text"], "pause_after": 0.0} for key in ("hook", "close") if "voiceover" in plan[key]]
+    for key, k in keeper_sections(plan):
+        if "beats" in k:
+            segs += [{"id": i, "text": b["text"], "pause_after": 0.0} for i, b in zip(beat_ids(key, k), k["beats"])]
     save(Path(work) / "voice-script.json", {"voice": {"voice_id": VOICE_ID, "speed": 1.0}, "segments": segs})
 
 
@@ -256,9 +377,11 @@ def voice_cut(plan_path, work, voice_dir):
     plan = load(plan_path)
     tl = load(Path(work) / "timeline.json")
     Path(voice_dir).mkdir(parents=True, exist_ok=True)
-    for key in ("hook", "close"):
-        if "voiceover" not in plan[key]:
-            continue
+    lines = [key for key in ("hook", "close") if "voiceover" in plan[key]]
+    for key, k in keeper_sections(plan):
+        if "beats" in k:
+            lines += beat_ids(key, k)
+    for key in lines:
         mine = [x for x in tl["sentences"] if x["segment"] == key]
         if not mine:
             raise SystemExit(f"VOICE_LINE_MISSING {key}")
@@ -414,8 +537,59 @@ def render_keeper_still(still, audio, out):
          *ENC, out])
 
 
+def motion_filter(motion, d):
+    """A slow camera move over the whole beat (never a still hold after it ends): push in, pull out, or a pan at a
+    fixed 1+ZOOM crop. Rendered from a 2x upscale so the move is sub-pixel smooth."""
+    n = max(int(d * FPS), 1)
+    z = {"in": f"1+{ZOOM}*on/{n}", "out": f"1+{ZOOM}-{ZOOM}*on/{n}"}.get(motion, f"1+{ZOOM}")
+    x = {"left": f"(iw-iw/zoom)*(1-on/{n})", "right": f"(iw-iw/zoom)*on/{n}"}.get(motion, "iw/2-(iw/zoom/2)")
+    return (f"scale=3840:2160:flags=lanczos,zoompan=z='{z}':x='{x}':y='ih/2-(ih/zoom/2)':d=1:s={W}x{H}:fps={FPS}")
+
+
+def render_beat(still, audio, out, motion, card=None):
+    """One v2 Keeper beat: the approved still with its camera move, a still beat (BEAT) at each end of our line, the
+    same audio chain and fades as every segment, and the section's card over its first beat (as over a chapter)."""
+    d = duration(audio) + 2 * BEAT
+    v, a = fades(d)
+    files = []
+    for n, t in enumerate(card or ()):
+        p = Path(f"{Path(out).with_suffix('')}.card{n}.txt")
+        p.write_text(t)
+        files.append(p)
+    graph = (f"[0:v]{motion_filter(motion, d)},setsar=1{card_overlay(card, files)},{v}[v];"
+             f"[1:a]aresample=48000,aformat=channel_layouts=stereo,{gain_filter(audio)},adelay={int(BEAT * 1000)}:all=1,"
+             f"apad=whole_dur={d:.3f},{a}[a]")
+    run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-loop", "1", "-framerate", str(FPS), "-t", f"{d:.3f}", "-i", still,
+         "-i", audio, "-filter_complex", graph, "-map", "[v]", "-map", "[a]", "-frames:v", str(int(d * FPS) + 1),
+         "-t", f"{d:.3f}", *ENC, out])
+    for p in files:
+        p.unlink()
+    return round(duration(audio), 3)
+
+
+def render_beats(key, k, voice_dir, out, card=None):
+    """A v2 Keeper segment: its beats rendered one by one and joined (same encoder settings, stream copy).
+    Returns the seconds of our spoken lines (the no_padding and original-share measures)."""
+    parts, spoken = [], 0.0
+    for j, (i, b) in enumerate(zip(beat_ids(key, k), k["beats"])):
+        wav = Path(voice_dir or "") / f"{i}.wav"
+        if not wav.is_file():
+            raise SystemExit(f"VOICE_LINE_MISSING {i} (compilation_long.py voice-cut first)")
+        part = Path(f"{Path(out).with_suffix('')}.{j:02d}.mp4")
+        spoken += render_beat(ROOT / b["still"]["path"], wav, part, b["motion"], card if j == 0 else None)
+        parts.append(part)
+    lst = Path(f"{Path(out).with_suffix('')}.txt")
+    lst.write_text("".join(f"file '{p.resolve()}'\n" for p in parts))
+    run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", lst, "-c", "copy", out])
+    for p in parts + [lst]:
+        p.unlink()
+    return round(spoken, 3), len(parts)
+
+
 def render_key(plan, key, voice_dir, out):
     k = plan[key]
+    if "beats" in k:
+        return render_beats(key, k, voice_dir, out)
     if "voiceover" in k:
         wav = Path(voice_dir or "") / f"{key}.wav"
         if not wav.is_file():
@@ -478,8 +652,22 @@ def build(plan_path, src_dir, out_dir, voice_dir=None):
 
     seg = out / "segments"
     seg.mkdir(exist_ok=True)
-    render_key(plan, "hook", voice_dir, seg / "00-hook.mp4")
-    add("hook", "hook", seg / "00-hook.mp4")
+    def keeper(kind, name, path, rendered):
+        extra = {"spoken_seconds": rendered[0], "beats": rendered[1]} if isinstance(rendered, tuple) else {}
+        add(kind, name, path, **extra)
+
+    keeper("hook", "hook", seg / "00-hook.mp4", render_key(plan, "hook", voice_dir, seg / "00-hook.mp4"))
+    between = {it["after"]: (n, it) for n, it in enumerate(plan.get("interludes") or [], 1)}
+
+    def interlude(after):
+        if after in between:
+            n, it = between[after]
+            path = seg / f"{after:02d}c-interlude.mp4"
+            card = ("THE KEEPER", it["title"], it["reference"] + " (KJV)")
+            keeper("interlude", f"i{n}", path, render_beats(f"i{n}", it, voice_dir, path, card))
+            rows[-1]["chapter"] = it["title"]
+
+    interlude(0)
     verified = []
     for k, (sid, asset, sha, ep) in enumerate(sources(plan), 1):
         master = src_dir / asset
@@ -492,8 +680,8 @@ def build(plan_path, src_dir, out_dir, voice_dir=None):
         (render_long if is_long(c) else render_short)(master, seg / f"{k:02d}b-short.mp4", c.get("end_s"), card)
         add(kind, sid, seg / f"{k:02d}b-short.mp4", source_sha256=sha, chapter=c["title"],
             **({"end_s": c["end_s"]} if c.get("end_s") else {}))
-    render_key(plan, "close", voice_dir, seg / "99-close.mp4")
-    add("close", "close", seg / "99-close.mp4")
+        interlude(k)
+    keeper("close", "close", seg / "99-close.mp4", render_key(plan, "close", voice_dir, seg / "99-close.mp4"))
     lst = out / "concat.txt"
     lst.write_text("".join(f"file '{p.resolve()}'\n" for p in segs))
     master = out / f"{plan['id']}.mp4"
@@ -531,6 +719,13 @@ def qa(plan_path, out_dir):
     dur = duration(master)
     expected = sum(r["seconds"] for r in tl["segments"])
     shorts = [r for r in tl["segments"] if r["kind"] in ("short", "long")]
+    criteria = plan.get("criteria", CRITERIA)
+    order = ["hook"] + ["interlude"] * any(it["after"] == 0 for it in plan.get("interludes") or [])
+    for n, c in enumerate(plan["chapters"], 1):
+        order += ["long" if is_long(c) else "short"] + ["interlude"] * any(it["after"] == n for it in plan.get("interludes") or [])
+    order += ["close"]
+    keeper = [r for r in tl["segments"] if r["kind"] in ("hook", "interlude", "close")]
+    share = round(sum(r["seconds"] for r in keeper) / dur, 4) if dur else 0.0
     checks = {
         "full_decode_without_errors": dec.returncode == 0 and not dec.stderr.strip(),
         "video_format_1920x1080_30fps": (probe["width"], probe["height"]) == (W, H) and abs(fps(probe["avg_frame_rate"]) - FPS) < FPS_TOLERANCE,
@@ -540,15 +735,26 @@ def qa(plan_path, out_dir):
         "true_peak_ceiling": peak <= TRUE_PEAK_MAX,
         "sources_are_the_public_masters_by_sha": [s["short"] for s in src] == [chapter_id(c) for c in plan["chapters"]]
         and all(len(s["sha256"]) == 64 for s in src) and [r["source_sha256"] for r in shorts] == [s["sha256"] for s in src],
-        "canonical_order": [r["kind"] for r in tl["segments"]] == ["hook"] + ["long" if is_long(c) else "short" for c in plan["chapters"]] + ["close"]
+        "canonical_order": [r["kind"] for r in tl["segments"]] == order
         and [r.get("chapter") for r in shorts] == [c["title"] for c in plan["chapters"]],   # E258: card over each Short
-        "keeper_clips_zero_credit": all(plan[key]["quote"] in ("0 credits (exact, fresh)", VOICEOVER_QUOTE) for key in ("hook", "close")),
+        "keeper_clips_zero_credit": all(k["quote"] in ("0 credits (exact, fresh)", VOICEOVER_QUOTE, BEATS_QUOTE)
+                                        for _, k in keeper_sections(plan)),
         "music_and_voice_owned": True,   # the Shorts' own recorded sources (Kokoro voice, owned music) and our Kokoro hook/close
     }
-    doc = {"version": "compilation-qa-v1", "criteria_version": CRITERIA,
-           "criteria_sha256": sha256(ROOT / "migration/production/qa_criteria_compilation_v1.json"),
+    if criteria == CRITERIA_V2:
+        # v2 no_padding: every segment is no longer than its own content (a chapter its source cut, a Keeper segment its
+        # spoken lines plus the still beat at each end of every line), and the whole is the sum of the segments
+        src_s = {s["short"]: s["seconds"] for s in src}
+        checks["no_padding"] = all(
+            (r["seconds"] <= min(float(src_s.get(r["name"]) or 0), float(r.get("end_s") or 1e9)) + 0.2) if r["kind"] in ("short", "long")
+            else (r.get("spoken_seconds") is not None and r["seconds"] <= r["spoken_seconds"] + r["beats"] * (2 * BEAT) + 0.2)
+            for r in tl["segments"])
+        checks["original_keeper_share"] = share >= ORIGINAL_SHARE_MIN
+    doc = {"version": "compilation-qa-v1", "criteria_version": criteria,
+           "criteria_sha256": sha256(ROOT / CRITERIA_FILES[criteria]),
            "output_sha256": sha, "status": "PASS" if all(checks.values()) else "FAIL", "checks": checks,
-           "measured": {"seconds": round(dur, 3), "lufs": lufs, "true_peak_dbfs": peak, "frame_rate": probe["avg_frame_rate"]}}
+           "measured": {"seconds": round(dur, 3), "lufs": lufs, "true_peak_dbfs": peak, "frame_rate": probe["avg_frame_rate"],
+                        "keeper_seconds": round(sum(r["seconds"] for r in keeper), 3), "keeper_share": share}}
     save(out / "qa.json", doc)
     print(json.dumps({"status": doc["status"], "checks": {k: v for k, v in checks.items() if not v}, **doc["measured"]}))
     return 0 if doc["status"] == "PASS" else 1
@@ -563,7 +769,15 @@ def description(plan, tl):
     story's chapter (which then starts at 0:00) and the close into the last story's, as the preflight's rule reads."""
     segs = tl["segments"]
     hook = next(r for r in segs if r["kind"] == "hook")
-    stories = [(r["start"], plan["chapters"][i]["title"]) for i, r in enumerate(x for x in segs if x["kind"] in ("short", "long"))]
+    titles = iter([c["title"] for c in plan["chapters"]])
+    subs = iter([c.get("subchapters") or [] for c in plan["chapters"]])
+    stories = []
+    for r in segs:   # v2: an interlude is a chapter of its own; a long chapter may name its own inner chapters
+        if r["kind"] in ("short", "long"):
+            stories.append((r["start"], next(titles)))
+            stories += [(r["start"] + s["at"], s["title"]) for s in next(subs)]
+        elif r["kind"] == "interlude" and r["seconds"] >= CHAPTER_MIN:
+            stories.append((r["start"], r["chapter"]))
     rows = [(0, plan["chapter_zero"])] + stories if hook["end"] - hook["start"] >= CHAPTER_MIN else [(0, stories[0][1])] + stories[1:]
     close = next(r for r in segs if r["kind"] == "close")
     if close["end"] - close["start"] >= CHAPTER_MIN:
@@ -576,14 +790,21 @@ def description(plan, tl):
 
 def script_segments(plan, root=ROOT):
     """The spoken text in order: the Keeper's hook, each Short's planned lines (where its plan exists), the close."""
-    segs = [{"kind": "hook", "text": plan["hook"]["text"]}]
-    for c in plan["chapters"]:
+    def said(k):
+        return " ".join(b["text"] for b in k["beats"]) if "beats" in k else k["text"]
+    between = {it["after"]: it for it in plan.get("interludes") or []}
+    segs = [{"kind": "hook", "text": said(plan["hook"])}]
+    if 0 in between:
+        segs.append({"kind": "interlude", "text": said(between[0])})
+    for n, c in enumerate(plan["chapters"], 1):
         p = Path(root) / "migration/production/bible/plans" / f"{chapter_id(c)}.json"
         lines = []
         if p.is_file() and not is_long(c):
             lines = [s["line"] for s in load(p).get("shots", []) if isinstance(s.get("line"), str) and s["line"].strip()]
         segs.append({"kind": "long" if is_long(c) else "short", "short": chapter_id(c), "text": " ".join(lines) or c["title"]})
-    segs.append({"kind": "close", "text": plan["close"]["text"]})
+        if n in between:
+            segs.append({"kind": "interlude", "text": said(between[n])})
+    segs.append({"kind": "close", "text": said(plan["close"])})
     return segs
 
 
@@ -602,15 +823,17 @@ def materialize(plan_path, out_dir, root=ROOT):
     (d / "out").mkdir(parents=True, exist_ok=True)
     (d / "inspection").mkdir(parents=True, exist_ok=True)
     dur = duration(out / f"{plan['id']}.mp4")
+    criteria = plan.get("criteria", CRITERIA)
+    text_of = lambda k: " ".join(b["text"] for b in k["beats"]) if "beats" in k else k["text"]
     script = {"version": "bible-compilation-script-v1", "pilot_id": plan["pilot"], "archetype": ARCHETYPE, "series": SERIES,
-              "episode": plan["id"], "working_title": plan["title"], "criteria_version": CRITERIA,
+              "episode": plan["id"], "working_title": plan["title"], "criteria_version": criteria,
               "shorts": [chapter_id(c) for c in plan["chapters"]],
-              "hook": {"text": plan["hook"]["text"]}, "close": {"text": plan["close"]["text"]},
+              "hook": {"text": text_of(plan["hook"])}, "close": {"text": text_of(plan["close"])},
               "segments": script_segments(plan, root)}   # E258: three_stage critique reads the whole spoken text
     manifest = {"version": MANIFEST_VERSION, "pilot_id": plan["pilot"], "compilation": plan["id"], "output_sha256": sha,
-                "output_seconds": round(dur, 3), "criteria_version": CRITERIA, "burned_captions": "kept from the Shorts",
+                "output_seconds": round(dur, 3), "criteria_version": criteria, "burned_captions": "kept from the Shorts",
                 "sources": load(out / "sources.json"), "segments": manifest_tl["segments"], "chapters": rows,
-                "keeper_clips": {k: keeper_record(plan[k]) for k in ("hook", "close")}}
+                "keeper_clips": {k: keeper_record(rec) for k, rec in keeper_sections(plan)}}
     package = {"version": "pilot-package-v1", "pilot_id": plan["pilot"], "series": SERIES, "episode": plan["id"],
                "title": plan["title"], "title_length": len(plan["title"]), "description": text, "tags": plan["tags"],
                "category_id": "29", "playlist": plan.get("playlist"), "default_language": "en", "made_for_kids": False,
@@ -678,6 +901,10 @@ def main(argv):
         return qa(argv[2], argv[3])
     elif cmd == "materialize" and len(argv) == 4:
         print(materialize(argv[2], argv[3]))
+    elif cmd == "check" and len(argv) == 3:
+        problems = plan_problems(load(argv[2]))
+        print("\n".join(problems) if problems else "PASS")
+        return 1 if problems else 0
     elif cmd == "verify" and len(argv) in (3, 4):
         print(json.dumps(verify(*argv[2:])))
     else:
