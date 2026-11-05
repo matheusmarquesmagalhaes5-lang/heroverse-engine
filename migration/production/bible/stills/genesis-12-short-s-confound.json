@@ -2,6 +2,25 @@
  "id": "genesis-12-short-s-confound",
  "episode": "genesis-12-short",
  "shot": "s-confound",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. A great wind sweeping across the plain, tearing the reeds flat and whirling dust around the foot of the tower under a sky of boiling clouds, a crowd of tiny workers bracing against it, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Violent grey light and swirling dust. Dread. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. A great wind sweeping across the plain, tearing the reeds flat and whirling dust around the foot of the tower under a sky of boiling clouds, a crowd of tiny workers bracing against it, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Violent grey light and swirling dust. Dread. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-12-short-s-confound.jpg",
+ "sha256": "0293c2bb39a212a9e44bffd6c650377c9a7edc461c2816fca15decdaa03e249d",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-12-short-s-confound-2026110301-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-05",
+  "score": 9.5,
+  "note": "Full-image look (ChatGPT desktop): storm wind and dust around the tower's foot, reeds flattened, workers bracing with faces hidden; period-correct, no text, no God face; frame review only.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "c1a39b54df46319dc78e1c97c2eac6890d21ad260aa71ec0ae8132fff333a1b7",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

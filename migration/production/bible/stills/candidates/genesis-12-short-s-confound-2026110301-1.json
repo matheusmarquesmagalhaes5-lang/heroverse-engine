@@ -1,0 +1,37 @@
+{
+ "id": "genesis-12-short-s-confound-2026110301-1",
+ "still": "genesis-12-short-s-confound",
+ "episode": "genesis-12-short",
+ "shot": "s-confound",
+ "run": "2026110301",
+ "status": "DRAFT",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. A great wind sweeping across the plain, tearing the reeds flat and whirling dust around the foot of the tower under a sky of boiling clouds, a crowd of tiny workers bracing against it, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Violent grey light and swirling dust. Dread. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "sent_prompt": "Create an image, 9:16 vertical portrait, no text. Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. A great wind sweeping across the plain, tearing the reeds flat and whirling dust around the foot of the tower under a sky of boiling clouds, a crowd of tiny workers bracing against it, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Violent grey light and swirling dust. Dread. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "engine": "chatgpt-desktop",
+ "models": [
+  "chatgpt-images"
+ ],
+ "generated_by": "ChatGPT Windows app on the owner's PC (Create image), one request at a time",
+ "source": "chatgpt-desktop",
+ "download": {
+  "file": "genesis-12-short-s-confound.png",
+  "sha256": "5cc47c13dabfbeaf31d376d3592816c3ce003ea49db5c6b850d22e4d72f11975",
+  "size_bytes": 2577677,
+  "pixels": [
+   941,
+   1672
+  ]
+ },
+ "references": [],
+ "licence": {
+  "note": "OpenAI Terms of Use: the user owns the Output; made at the owner's request in his own session (README Licence and account risk)"
+ },
+ "upscaler": "System.Drawing HighQualityBicubic centre crop to 9:16 -> 1080x1920, JPEG quality 93",
+ "aspect_ratio": "9:16",
+ "size": [
+  1080,
+  1920
+ ],
+ "repo_path": "migration/production/bible/stills/candidates/genesis-12-short-s-confound-2026110301-1.jpg",
+ "sha256": "0293c2bb39a212a9e44bffd6c650377c9a7edc461c2816fca15decdaa03e249d"
+}

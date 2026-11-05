@@ -2,6 +2,25 @@
  "id": "genesis-12-short-s-behold",
  "episode": "genesis-12-short",
  "shot": "s-behold",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. A circle of clouds opening above the tower, slow churning grey and gold, one great shaft of light pouring down over the plain, a crowd of tiny workers below with their faces turned up, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Majestic and grave. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. A circle of clouds opening above the tower, slow churning grey and gold, one great shaft of light pouring down over the plain, a crowd of tiny workers below with their faces turned up, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Majestic and grave. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-12-short-s-behold.jpg",
+ "sha256": "8a8e1815348332ee1c45ebb2894beffffd75621856340a5dc6e5cb459c5a04b7",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-12-short-s-behold-2026110301-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-05",
+  "score": 9.5,
+  "note": "Full-image look (ChatGPT desktop): shaft of light through a ring of clouds over the brick ziggurat, crowd seen from behind, kilns and reeds; period-correct, no text, God shown only as light, no face; frame review only.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "dcb96445bee47a7f58c5820869dadce82b3aaf04df7d07322b50205ea748bafd",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

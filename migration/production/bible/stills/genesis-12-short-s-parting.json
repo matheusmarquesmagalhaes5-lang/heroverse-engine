@@ -2,6 +2,25 @@
  "id": "genesis-12-short-s-parting",
  "episode": "genesis-12-short",
  "shot": "s-parting",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. A man, a woman and two children gathering bundles and turning away from the crowd toward a distant trail at dusk, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Low amber dusk light. Heartbreaking and quiet. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. A man, a woman and two children gathering bundles and turning away from the crowd toward a distant trail at dusk, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Low amber dusk light. Heartbreaking and quiet. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-12-short-s-parting.jpg",
+ "sha256": "f927354ba36d3561df761e786727cd9b52003803147802c734b2f2b443a75be2",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-12-short-s-parting-2026110301-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-05",
+  "score": 9.5,
+  "note": "Full-image look (ChatGPT desktop): a family from behind with bundles on a dusk trail leaving the tower and the crowd, sunset; period-correct, no text, no God face; frame review only.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "c7b7afc1f02c8f9387dfb34ceadbb88c62c493911283d202625f4626d7dddbcd",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

@@ -1,0 +1,37 @@
+{
+ "id": "genesis-12-short-s-unfinished-2026110301-1",
+ "still": "genesis-12-short-s-unfinished",
+ "episode": "genesis-12-short",
+ "shot": "s-unfinished",
+ "run": "2026110301",
+ "status": "DRAFT",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. The unfinished tower alone on the empty plain at dawn with open scaffolds, a few dropped bricks and cold ashes, long mist across the ground, one lone figure in the distance walking away, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Cold pale dawn. Desolate and still. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "sent_prompt": "Create an image, 9:16 vertical portrait, no text. Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. The unfinished tower alone on the empty plain at dawn with open scaffolds, a few dropped bricks and cold ashes, long mist across the ground, one lone figure in the distance walking away, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Cold pale dawn. Desolate and still. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "engine": "chatgpt-desktop",
+ "models": [
+  "chatgpt-images"
+ ],
+ "generated_by": "ChatGPT Windows app on the owner's PC (Create image), one request at a time",
+ "source": "chatgpt-desktop",
+ "download": {
+  "file": "genesis-12-short-s-unfinished.png",
+  "sha256": "b28dcfd8250344583a5ba1a680daed8938efcc3d682d87cd30b99425937137d8",
+  "size_bytes": 2260274,
+  "pixels": [
+   941,
+   1671
+  ]
+ },
+ "references": [],
+ "licence": {
+  "note": "OpenAI Terms of Use: the user owns the Output; made at the owner's request in his own session (README Licence and account risk)"
+ },
+ "upscaler": "System.Drawing HighQualityBicubic centre crop to 9:16 -> 1080x1920, JPEG quality 93",
+ "aspect_ratio": "9:16",
+ "size": [
+  1080,
+  1920
+ ],
+ "repo_path": "migration/production/bible/stills/candidates/genesis-12-short-s-unfinished-2026110301-1.jpg",
+ "sha256": "fe145a01bff03c88b5fd3bc5034d67172297cf51b786a9aeb787f316717044d5"
+}
