@@ -693,13 +693,14 @@ def silent_problems(i, shot):
 
 def lipsync_problems(i, shot):
     """Keeper lip-sync with our audio (owner 2026-11-05, PROMPT_GUIDE "Keeper lip-sync (our audio)"): `"lipsync":
-    "musetalk-1.5"` on a silent, frontal KEEPER shot. The lip-synced clip is made from Pavo's silent clip after the
+    "musetalk-1.5"` on a silent, frontal Keeper shot (always) or a silent character shot with a spoken `line` (owner
+    2026-11-05: when needed). The lip-synced clip is made from Pavo's silent clip after the
     probe (lipsync.yml), then passes the unchanged SyncNet, face and clip gates; no other shot is lip-synced."""
     import keeper_lipsync
     sid, lip = shot.get("id"), shot.get("lipsync")
-    if shot.get("kind") != "keeper":
-        return [f"LIPSYNC_KEEPER_ONLY shot {i} {sid} (only the Keeper's silent clip is lip-synced; a character's line stays "
-                "our audio over a silent clip)"]
+    if shot.get("kind") != "keeper" and not (isinstance(shot.get("line"), str) and shot.get("speaker") not in (None, ch.GOD)):
+        return [f"LIPSYNC_SPEAKER_ONLY shot {i} {sid} (lip-sync is for the Keeper (always) and a character's spoken line "
+                "(when needed); God is never shown, a scene with no line has no mouth to sync)"]
     if lip not in keeper_lipsync.MODELS:
         return [f"LIPSYNC_MODEL shot {i} {sid} (`lipsync` is one of {list(keeper_lipsync.MODELS)}, not {lip!r})"]
     if (shot.get("pavo") or {}).get("view", "frontal") != "frontal":

@@ -360,6 +360,37 @@ per line per prompt revision (`PROBE_SAME_PROMPT`; a second only for a visual de
 probe round, at the exact zero-credit quote. Probe records keep the template version (`request.silent`), so a silent clip is
 not "older" than the talking template. `PROBE_PAVO_AUDIO_OURS` never refuses a silent shot.
 
+## Keeper lip-sync (our audio)
+
+Owner, 2026-11-05: "No guardião eu quero lixo sync pra ele falar.. verifique algo gratuito e de qualidade" (lip-sync). Scope
+(owner, same day): the hook, the character-speech moments and the Keeper closing are all Pavo video; lip-sync of our Kokoro
+audio onto Pavo is for the Keeper ALWAYS and for a character's line WHEN NEEDED. Quality must be good, but the bar is "good
+enough to publish", not perfect (owner: AI speech and lip-sync never look exactly human; use the best free model's result, a slightly imperfect mouth is no reason to reject or regenerate). The gates rule out only clearly broken output: wrong mouth or lag the viewer notices and a frozen face (the existing SyncNet window and floor, confidence 2.7, not raised), a missing face, visible artifacts (`clip_check`). The Keeper
+SPEAKS on camera and every word is ours: the Keeper shot is a Pavo SILENT frontal clip (the standard above, `view`
+"frontal", mouth closed) plus a lip-sync of our Kokoro line onto it. Pavo never hears the line, so it cannot garble it.
+Research and numbers: `evidence/research/KEEPER-LIPSYNC-2026-11-05.md`.
+
+- **Plan field.** `"lipsync": "musetalk-1.5"` on a silent Keeper shot (`pavo_mode` "silent", `pavo.view` frontal). `plan_check`
+  refuses `LIPSYNC_MODEL` (any other model: Wav2Lip is non-commercial, LatentSync is the GPU route), `LIPSYNC_VIEW` (not
+  frontal), `LIPSYNC_SPEAKER_ONLY` (God is never shown; a scene with no spoken line has no mouth) and `LIPSYNC_NEEDS_SILENT`. A
+  lip-synced character line may face the camera (`PAVO_SILENT_FRONTAL` does not apply to it); a character line without
+  `lipsync` keeps that refusal.
+- **Make it.** The silent clip is probed and approved as always (`shot-probe.yml`, still-mouth evidence). Then `lipsync.yml`
+  (dispatch; the clip by sha256 and our 44.1 kHz mono WAV by sha256) runs MuseTalk 1.5 at the pinned commit on the free Actions
+  CPU: 2-4.7 minutes of runner per second of picture (runner speed varies 2x), so keep the clip to 8 s or less (16-37 min, far inside the 6 h job). Output: `keeper-lipsync.mp4` (our
+  line bit-exact as the only audio), `report.json`, frame sheets.
+- **Gates (unchanged thresholds, `keeper_lipsync.py` repeats none of them).** The silent source passes `--still-mouth`
+  (`LIPSYNC_SOURCE_MOUTH_TALKING`, `LIPSYNC_SOURCE_FACE_NOT_FOUND`); the result passes `lipsync_check` (SyncNet offset in
+  -3..0 and confidence >= 2.7, face in >= 80 % of frames, audio = our line), `clip_check`, `pavo_audio.assert_ours`, and the
+  picture outlasts the spoken line (`LIPSYNC_LINE_CUT`). The same silent clip with the line over it is measured as the
+  control. A flag stops the shot; nothing is relabeled.
+- **What the measures do not say.** First tests: offset 0, confidence 3.1 (Pavo-native lips read 6.8-8.6): it passes with a
+  thin margin and the lower face is a soft 256 px patch. Only a reviewer who watches and hears the clip decides whether it
+  holds 9.5 in context (mouth shape through the beard, softness, teeth, the join at the edit); the SyncNet pass is a floor.
+- **Not wired yet.** `episode_build` still treats a silent Keeper clip as a voice-over (`MOUTH_TALKING` is a hard flag on it):
+  the lip-synced clip enters through its own review and an `approve-shot` that records the SyncNet gate in place of the
+  still-mouth gate; that change is the next step if the owner accepts the look.
+
 ## Keeper voice-over: authorized Plan B
 
 A Keeper shot may explicitly carry `voiceover:true`. It shows him silent, with his lips closed, while the accepted

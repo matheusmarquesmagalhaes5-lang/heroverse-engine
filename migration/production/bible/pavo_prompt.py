@@ -195,7 +195,8 @@ def silent_field_problems(shot, chars, plan=None):
     view = f.get("view", "frontal")
     if view not in VIEWS:
         out.append(f"PAVO_FIELDS_INVALID {sid} (`view` is one of {', '.join(VIEWS)})")
-    elif who != ch.NARRATOR and shot.get("kind") != "keeper" and isinstance(shot.get("line"), str):
+    elif who != ch.NARRATOR and shot.get("kind") != "keeper" and isinstance(shot.get("line"), str) \
+            and not shot.get("lipsync"):   # owner 2026-11-05: a lip-synced character line may face the camera
         if view == "frontal" or (isinstance(action, str) and FRONTAL_GAZE.search(action)):
             out.append(f"PAVO_SILENT_FRONTAL {sid} ({who}'s line is voiced over this clip: he is shown working, looking "
                        "away or in profile, never a frontal face visibly mouthing it; `view` three-quarter or profile)")

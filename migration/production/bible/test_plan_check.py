@@ -1687,7 +1687,12 @@ class KeeperLipsyncField(unittest.TestCase):
         self.assertEqual(codes(bad), ["LIPSYNC_VIEW"])
         hook = copy.deepcopy(plan["shots"][0])
         hook["lipsync"] = "musetalk-1.5"
-        self.assertIn("LIPSYNC_KEEPER_ONLY", codes(hook))
+        self.assertEqual(codes(hook), ["LIPSYNC_VIEW"])               # profile hides the mouth from the model
+        hook["pavo"]["view"] = "frontal"
+        self.assertEqual([c for c in codes(hook) if c.startswith("LIPSYNC")], [])   # a character's line may face the camera
+        scene = copy.deepcopy(hook)
+        scene.pop("line"); scene["lipsync"] = "musetalk-1.5"
+        self.assertIn("LIPSYNC_SPEAKER_ONLY", codes(scene))
         talking = json.loads((HERE / "plans/genesis-10-short.json").read_text())["shots"][-1]
         talking["lipsync"] = "musetalk-1.5"
         self.assertIn("LIPSYNC_NEEDS_SILENT", codes(talking))

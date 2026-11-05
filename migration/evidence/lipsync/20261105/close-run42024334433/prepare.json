@@ -1,0 +1,1 @@
+{"model": "musetalk-1.5", "line_seconds": 6.55, "clip_seconds": 8.0, "processed_seconds": 7.05, "source_still_mouth": {"clip": "/home/runner/work/_temp/work/clip.mp4", "opening_range": 0.041, "opening_motion": 0.0005, "window_motion": 0.00257, "closed_opening": 0.00269, "face_frames": 1.0, "frames": 192, "flags": []}, "flags": []}

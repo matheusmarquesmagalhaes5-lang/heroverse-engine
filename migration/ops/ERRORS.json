@@ -5040,6 +5040,42 @@
      "instrument"
     ]
    }
+  },
+  {
+   "id": "E303",
+   "date": "2026-11-05",
+   "class": [
+    "fragile-input"
+   ],
+   "prior": [
+    "E101",
+    "E125",
+    "E143",
+    "E148",
+    "E188",
+    "E205",
+    "E208",
+    "E219",
+    "E220",
+    "E221",
+    "E222",
+    "E224",
+    "E225",
+    "E226",
+    "E229",
+    "E230",
+    "E241",
+    "E265"
+   ],
+   "error": "The first full Keeper lip-sync run (lipsync.yml 42021610867, 7.05 s line) failed AUDIO_NOT_OURS on our own audio: the proof was taken on the padded line (7.050 s) while MuseTalk returned 169 frames (7.042 s), so fewer samples decoded than the proof expected. Root cause: the code assumed the model returns exactly the requested duration. Same first runs: the model's per-frame landmark pass cost 3.2 s/frame on the CPU runner (a 7 s line ran past 37 min before it was cancelled) because a static Keeper clip does not need a face box per frame.",
+   "fix": "keeper_lipsync.finish cuts our line at the model's last frame (the proof is on that exact audio) and flags LIPSYNC_LINE_CUT when the picture ends before the spoken line; face boxes are measured every 8th frame and interpolated (sample_indices, interpolate), 7 s line 911 s instead of over 37 min.",
+   "antidote": {
+    "file": "migration/production/bible/test_keeper_lipsync.py",
+    "contains": "def test_a_picture_shorter_than_the_spoken_line_is_a_flag",
+    "covers": [
+     "fragile-input"
+    ]
+   }
   }
  ]
 }

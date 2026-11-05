@@ -1,0 +1,68 @@
+{
+ "model": "musetalk-1.5",
+ "commit": "0a89dec45a0192b824e3cf4daf96c239440c5ed8",
+ "final": "keeper-lipsync.mp4",
+ "final_sha256": "081938f5203bb610e5bdc223c9428343607e70e037f68a1ea841c548f1bf9901",
+ "lipsync": {
+  "clip": "/home/runner/work/_temp/out/keeper-lipsync.mp4",
+  "line": "/home/runner/work/_temp/work/line-final.wav",
+  "audio": {
+   "corr": 1.0,
+   "lag_ms": 0
+  },
+  "mouth": {
+   "corr": 0.489,
+   "lag_ms": 0,
+   "speak_to_pause": 2.56,
+   "face_frames": 1.0,
+   "sync": {
+    "offset": 0,
+    "conf": 3.302,
+    "min_dist": 10.534,
+    "windows": 121
+   }
+  },
+  "flags": []
+ },
+ "silent_source_with_line": {
+  "mouth": {
+   "corr": 0.274,
+   "lag_ms": -240,
+   "speak_to_pause": 1.62,
+   "face_frames": 0.98,
+   "sync": {
+    "offset": -15,
+    "conf": 0.946,
+    "min_dist": 13.479,
+    "windows": 122
+   }
+  },
+  "flags": [
+   "MOUTH_NOT_IN_SYNC"
+  ]
+ },
+ "clip_check": {
+  "width": 720,
+  "height": 1280,
+  "fps": 24.0,
+  "seconds": 5.041995,
+  "clip": "/home/runner/work/_temp/out/keeper-lipsync.mp4",
+  "head_min_luma": 46.3,
+  "tail_min_luma": 49.3,
+  "bars": {
+   "top": 0.0,
+   "bottom": 0.0,
+   "left": 0.0,
+   "right": 0.0
+  },
+  "turn": {
+   "cols": 14.0,
+   "rows": 17.8,
+   "ratio": 0.79
+  },
+  "flags": []
+ },
+ "audio_ours": true,
+ "picture_seconds": 5.042,
+ "flags": []
+}
