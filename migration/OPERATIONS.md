@@ -463,3 +463,22 @@ on the PC through Desktop Commander (device "Matheus"); never ask the owner to d
   what the task needs. The PC run is the same account and the same rules: commits still go claude/* → PR → CI.
 - OmniRoute listens on 127.0.0.1:20128 with an API key required; restart it with `C:\HeroVerse\omni-run.ps1`.
 - Check the device is online first (`list_devices`); if it is offline, record the step as pending and continue.
+
+## Google Flow, unofficial (owner 2026-11-05)
+
+Owner, 2026-11-05: "quero tudo no automatico.. faça um MCP não oficial.. use meu computador e faça." He accepted the
+account risk (Google's terms forbid automation; a suspension reaches the YouTube account too). Spec and guards:
+`integrations/flow/README.md`.
+
+- Runner `C:\HeroVerse\flow-runner` on the PC (own Chrome profile, Playwright); MCP `heroverse-flow` in the PC's Claude
+  Code user config: `flow_status`, `flow_quote`, `flow_generate`, `flow_job`, `flow_download`. Cloud sessions run the
+  same `runner.py` commands through Desktop Commander and read the `RESULT` line.
+- Free daily credits only (50/day; Veo 3.1 Lite 8 s 720p = 10), at most 4 generations a day, a fresh UI quote before
+  each, never a retry of an uncertain submission (reconcile with `job`), a 24 h stop on any CAPTCHA, unusual activity,
+  come-back-tomorrow, login or 2FA page. Never buy, upgrade or start a trial.
+- Prompts: silent acting, "centred in the frame", God never with a face, characters from our approved stills or
+  sheets as ingredients. The clip's audio is stripped; it enters a plan only through approve-shot after a real look.
+- Ledger: `C:\HeroVerse\flow\ledger.json`; its sanitized copy (`runner.py export`) goes to
+  `evidence/flow/ledger.json` by PR.
+- Pending: the owner's one-time sign-in in the runner's profile (`runner.py login`), then `probe` and the first real
+  clip. Until then `status` answers NOT_LOGGED_IN and nothing is generated.
