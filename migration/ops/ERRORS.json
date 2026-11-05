@@ -5105,6 +5105,38 @@
      "process"
     ]
    }
+  },
+  {
+   "id": "E305",
+   "date": "2026-11-05",
+   "class": [
+    "silent"
+   ],
+   "prior": [
+    "E107",
+    "E121",
+    "E124",
+    "E128",
+    "E129",
+    "E140",
+    "E142",
+    "E165",
+    "E205",
+    "E219",
+    "E235",
+    "E237",
+    "E248",
+    "E260"
+   ],
+   "error": "ChatGPT desktop route (owner 2026-11-05): a still prompt (genesis-12-short-s-voice, log 09:21-09:35) was generated in the WRONG chat of the owner's ChatGPT app. send2.ps1 clicked the composer at fixed coordinates, pasted the prompt and pressed Enter, then reported SENT; one2.ps1/drive.ps1 only noticed the missing image later (RETRY, FAIL). Root cause: the send acted on whatever conversation was open and never identified the target chat, and ui.ps1's focus check proves only that the ChatGPT window is in front, not which conversation it shows.",
+   "fix": "desktop-app/select_chat.ps1 (deployed to C:\\HeroVerse): OWNER_ACTIVE (exit 3) when GetLastInputInfo shows input in the last 120 s that this route did not make (lastact.txt); otherwise a UIA Invoke on the sidebar button named exactly 'HeroVerse - stills' (hyphen, en dash or em dash), or the app's own Ctrl+K palette row named exactly for it; never Enter, never a new chat. It answers OK only when the page document is named for the chat, the sidebar row is selected or the header shows the name, and the conversation outside every input box holds the project's prompt marker; else WRONG_CHAT (exit 4). send2.ps1 puts the prompt on the clipboard only after OK and verifies again before Enter; one2.ps1 phase 1 verifies before any download click; drive.ps1 stops the run on WRONG_CHAT/OWNER_ACTIVE instead of retrying. Tested on the PC with the owner idle: wrong chat -> WRONG_CHAT; sidebar and palette routes -> OK; a simulated owner input -> OWNER_ACTIVE; no prompt sent.",
+   "antidote": {
+    "file": "migration/integrations/chatgpt-local/test_chatgpt_core.py",
+    "contains": "def test_send2_runs_the_guard_before_the_clipboard_and_again_before_enter",
+    "covers": [
+     "silent"
+    ]
+   }
   }
  ]
 }

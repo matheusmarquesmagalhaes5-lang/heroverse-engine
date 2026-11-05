@@ -1,19 +1,29 @@
 param([string]$still, [int]$phase = 0, [string]$aspect = '16:9', [string]$branch = 'claude/stoic-edison-gii4wc', [string]$run = '')
 # phase 0 = send prompt in the single chat; phase 1 = download + save + upload candidate
+# E305: both phases act only in the verified chat "HeroVerse - stills" (select_chat.ps1). WRONG_CHAT or OWNER_ACTIVE
+# ends this script with that word and its exit code; drive.ps1 stops the run on it (no blind retry).
 $ui = 'C:\HeroVerse\ui.ps1'
 $png = "C:\HeroVerse\gpt-images\$still.png"
 Add-Type -Namespace W -Name U -MemberDefinition '[System.Runtime.InteropServices.DllImport("user32.dll")] public static extern System.IntPtr GetForegroundWindow(); [System.Runtime.InteropServices.DllImport("user32.dll", CharSet=System.Runtime.InteropServices.CharSet.Unicode)] public static extern int GetWindowText(System.IntPtr h, System.Text.StringBuilder s, int n);'
 if ($phase -eq 0) {
   if (Test-Path $png) { Remove-Item $png }
-  & C:\HeroVerse\send2.ps1 -still $still -cy 675 -aspect $aspect -branch $branch -run $run
+  $o = & C:\HeroVerse\send2.ps1 -still $still -cy 675 -aspect $aspect -branch $branch -run $run
+  $code = $LASTEXITCODE
+  $o
+  if ($code) { exit $code }
 } else {
+  $g = & C:\HeroVerse\select_chat.ps1 -verifyOnly
+  $code = $LASTEXITCODE; $last = "$($g | Select-Object -Last 1)"
+  if ($code -ne 0 -or $last -ne 'OK') { "$last $still (no download)"; exit $(if ($code) { $code } else { 4 }) }
+  & $ui -act type -text "{ESC}" -wait 1 | Out-Null
+  & $ui -act click -x 827 -y 610 -wait 2 | Out-Null
   & $ui -act scroll -x 700 -y 400 -wait 1 | Out-Null
   & $ui -act click -x 697 -y 398 -wait 3 | Out-Null
   & $ui -act click -x 859 -y 23 -wait 3 | Out-Null
   $ok = $false
   for ($i = 0; $i -lt 14; $i++) { $sb = New-Object System.Text.StringBuilder 256; [void][W.U]::GetWindowText([W.U]::GetForegroundWindow(), $sb, 256); if ($sb.ToString() -eq 'Salvar como') { $ok = $true; break }; Start-Sleep 2 }
   if (-not $ok) { & $ui -act type -text "{ESC}" -wait 1 | Out-Null; "NODIALOG $still"; exit 7 }
-  & $ui -act type -text "$png~" -wait 4 | Out-Null $ui -act type -text "$png~" -wait 4 -nofocus | Out-Null
+  & $ui -act type -text "$png~" -wait 4 -nofocus | Out-Null
   & $ui -act type -text "{ESC}" -wait 2 | Out-Null
   & C:\HeroVerse\save.ps1 -still $still -sy 0 -aspect $aspect -branch $branch -run $run
 }
