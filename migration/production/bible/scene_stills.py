@@ -34,8 +34,10 @@ usage:
   scene_stills.py finalize IMG_DIR RUN                          candidates (JPEG 1080x1920 + record) into stills/candidates
                                                                 (FLUX PNGs, or Pavo Agnes Image JPEGs with `source`)
   scene_stills.py sheet RUN OUT_JPG                             contact sheet of that run's candidates
-  scene_stills.py approve STILL_ID CANDIDATE_ID --score S --note TEXT --reviewer MODEL
-                                                                after the named session's review (>= 9.5), by PR
+  scene_stills.py approve STILL_ID CANDIDATE_ID --score S --note TEXT --reviewer MODEL [--checked C1,C2,...]
+                                                                after the named session's review (>= 9.5), by PR;
+                                                                --checked (plan_check.REUSE_REVIEW_CHECKS) for a
+                                                                reframed same-story candidate (still_reuse.py)
 """
 from datetime import datetime, timezone
 import hashlib
@@ -272,10 +274,13 @@ def sheet(run, out_jpg, stills_dir=None):
     return [p.stem for p in files]
 
 
-def approve(still, candidate, score, note, stills_dir=None, today=None, *, reviewer=None):
+def approve(still, candidate, score, note, stills_dir=None, today=None, *, reviewer=None, checked=None):
     """The named session's review approved CANDIDATE as STILL (overall >= 9.5): its image becomes bible/stills/<still>.jpg and
     the record APPROVED with the sha256 computed here. Refused when the candidate's image is not the one recorded, was
-    made from another prompt, belongs to another still, or its prompt fails the scene rules."""
+    made from another prompt, belongs to another still, or its prompt fails the scene rules. A reframed same-story
+    candidate (still_reuse.py, `derived_from`) passes plan_check.derived_still_problems and needs CHECKED, every one
+    of plan_check.REUSE_REVIEW_CHECKS seen on the reframed image itself (REUSE_NO_REVIEW); its source's approval is
+    never copied: the review here is bound to the derivative's own sha256."""
     stills_dir = Path(stills_dir or STILLS)
     rec = plan_check.still_record(still, stills_dir)
     if rec is None:
@@ -311,6 +316,16 @@ def approve(still, candidate, score, note, stills_dir=None, today=None, *, revie
                                                plan=plan or None)
     if unref:
         raise SystemExit(f"STILL_PROP_UNREFERENCED {candidate}: " + "; ".join(unref) + " (E122)")
+    derived = "derived_from" in meta
+    if derived:   # owner 2026-11-05: a same-story still reframed for this plan, under the same approval
+        pseudo = dict(rec, **{k: meta.get(k) for k in ("derived_from", "crop", "size", "sha256")}, id=still)
+        bad = plan_check.derived_still_problems(pseudo, plan, stills_dir, approved=False)
+        bad += plan_check.reuse_plan_problems(plan, stills_dir, pending={rec.get("shot"): meta["derived_from"].get("still")})
+        missing = [c for c in plan_check.REUSE_REVIEW_CHECKS if c not in (checked or [])]
+        if missing:
+            bad.append(f"REUSE_NO_REVIEW {candidate} (look at the reframed image and confirm {missing})")
+        if bad:
+            raise SystemExit("; ".join(bad))
     model = reviewer_identity.require(reviewer)
     dst = stills_dir / f"{still}.jpg"
     shutil.copyfile(src, dst)
@@ -321,6 +336,13 @@ def approve(still, candidate, score, note, stills_dir=None, today=None, *, revie
                              "note": note.strip(), "by": model, "model": model,
                              "prompt_sha256": hashlib.sha256(rec["prompt"].encode()).hexdigest(),
                              "references_sha256": plan_check.reference_digest(meta.get("references") or [])}})
+    if derived:
+        rec.update({k: meta.get(k) for k in ("derived_from", "crop", "upscaler")})
+        rec["approved"]["review"] = {"checked": list(plan_check.REUSE_REVIEW_CHECKS), "reviewed_sha256": rec["sha256"],
+                                     "note": note.strip()}
+    else:
+        rec.pop("derived_from", None)
+        rec.pop("crop", None)
     save(stills_dir / f"{still}.json", rec)
     return rec
 
@@ -341,8 +363,10 @@ def main(argv):
         print(json.dumps({"candidates": finalize(args[0], args[1])}))
     elif cmd == "sheet" and len(args) == 2:
         print(json.dumps({"sheet": args[1], "candidates": sheet(args[0], args[1])}))
-    elif cmd == "approve" and len(args) == 8 and args[2] == "--score" and args[4] == "--note" and args[6] == "--reviewer":
-        rec = approve(args[0], args[1], float(args[3]), args[5], reviewer=args[7])
+    elif cmd == "approve" and len(args) in (8, 10) and args[2] == "--score" and args[4] == "--note" \
+            and args[6] == "--reviewer" and (len(args) == 8 or args[8] == "--checked"):
+        rec = approve(args[0], args[1], float(args[3]), args[5], reviewer=args[7],
+                      checked=[c for c in args[9].split(",") if c] if len(args) == 10 else None)
         print(json.dumps({"still": rec["id"], "status": rec["status"], "sha256": rec["sha256"]}))
     else:
         raise SystemExit(__doc__)
