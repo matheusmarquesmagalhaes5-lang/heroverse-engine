@@ -301,13 +301,37 @@ class OriginalKeeperV2Tests(unittest.TestCase):
             for i in cl.beat_ids("hook", k):
                 ff("-f", "lavfi", "-i", "sine=f=220:r=24000:d=6", t / f"{i}.wav")
             out = t / "hook.mp4"
-            spoken, beats = cl.render_beats("hook", k, t, out, ("THE KEEPER", "In the Beginning", "Genesis 1 (KJV)"))
+            spoken, beats, starts = cl.render_beats("hook", k, t, out, ("THE KEEPER", "In the Beginning", "Genesis 1 (KJV)"))
             self.assertEqual(beats, 2)
+            self.assertEqual(starts["hook-01"], cl.BEAT)
+            self.assertAlmostEqual(starts["hook-02"], 6.0 + 3 * cl.BEAT, delta=0.1)
             self.assertAlmostEqual(spoken, 12.0, delta=0.1)
             self.assertAlmostEqual(cl.duration(out), spoken + 2 * 2 * cl.BEAT, delta=0.25)
             log = cl.run(["ffmpeg", "-nostdin", "-hide_banner", "-i", out, "-vf", "scale=320:180,freezedetect=n=0.001:d=2",
                           "-f", "null", "-"]).stderr
             self.assertNotIn("freeze_start", log)   # the camera move lasts the whole beat (no still hold after it ends)
+
+    def test_e307_the_build_writes_the_masters_timed_script_for_local_review_and_defect_scan(self):
+        plan = cl.load(GENESIS)
+        flood = plan["chapters"][8]["long"]["sha256"]
+        tl = [{"kind": "hook", "name": "hook", "start": 0.0, "seconds": 13.0, "spoken_seconds": 11.0, "beats": 2,
+               "line_starts": {"hook-01": 0.5, "hook-02": 7.0}},
+              {"kind": "short", "name": "genesis-02-short", "start": 13.0, "seconds": 48.3, "source_sha256": "b" * 64},
+              {"kind": "long", "name": "flood-ends-long", "start": 61.3, "seconds": 493.74, "source_sha256": flood}]
+        with tempfile.TemporaryDirectory() as d:
+            cl.save(Path(d) / "sentences.json", {"hook-01": [{"text": "Eleven chapters.", "start": 0.0, "end": 1.2},
+                                                             {"text": "A perfect world.", "start": 1.65, "end": 3.0}],
+                                                 "hook-02": [{"text": "I am the Keeper.", "start": 0.0, "end": 1.5}]})
+            rep = cl.timed_reference(plan, tl, SHA, d)
+        c = rep["composed"]
+        self.assertEqual(c["output_sha256"], SHA)
+        self.assertEqual([(x["text"], x["start"]) for x in c["sentences"][:3]],
+                         [("Eleven chapters.", 0.5), ("A perfect world.", 2.15), ("I am the Keeper.", 7.0)])
+        flood_rows = [x for x in c["sentences"] if x["segment"] == "flood-ends-long"]
+        self.assertGreater(len(flood_rows), 100)                       # from the long's own build report, shifted
+        self.assertTrue(all(61.3 <= x["start"] < x["end"] <= 61.3 + 493.74 for x in flood_rows))
+        self.assertEqual(c["untimed_segments"], ["genesis-02-short"])  # no timed source report: listed, never invented
+        self.assertEqual([x["start"] for x in c["sentences"]], sorted(x["start"] for x in c["sentences"]))
 
     def test_e306_v2_qa_rows(self):
         plan = cl.load(GENESIS)
