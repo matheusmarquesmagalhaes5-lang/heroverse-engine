@@ -108,5 +108,64 @@ class Gates(unittest.TestCase):
         self.assertEqual(k.FACE_FRAMES_MIN, lc.FACE_FRAMES_MIN)
 
 
+def report(**over):
+    """A `finish` report as lipsync.yml writes it, with the source clip and the Kokoro line proof (2026-11-05 measures)."""
+    r = {"model": "musetalk-1.5", "commit": k.MUSETALK_COMMIT, "final": "keeper-lipsync.mp4", "final_sha256": "c" * 64,
+         "source_clip_sha256": "a" * 64, "line": {"route": "ours", "sha256": "b" * 64, "samples": 288855, "seconds": 6.55},
+         "lipsync": {"audio": {"corr": 1.0, "lag_ms": 0}, "mouth": {"face_frames": 1.0, "sync": {"offset": 0, "conf": 3.128}},
+                     "flags": []},
+         "clip_check": {"flags": []}, "audio_ours": True, "flags": []}
+    r.update(over)
+    return r
+
+
+class Proof(unittest.TestCase):
+    """Owner 2026-11-05: AI lip-sync need not be human-perfect; "good enough to publish" is the existing gate: SyncNet
+    confidence >= 2.7 in the calibrated offset, the face in >= 80 % of the frames, our Kokoro audio bit-exact. Clearly
+    broken output still fails, and a proof qualifies only the clip, the line and the silent source it names."""
+    LINE = {"route": "ours", "sha256": "b" * 64, "samples": 288855, "seconds": 6.55}
+
+    def problems(self, rep=None, clip="c" * 64, line=LINE, sources=("a" * 64,)):
+        return k.proof_problems(k.proof_of(rep or report(), "42024334433"), clip, line, sources)
+
+    def test_a_lip_sync_that_passes_the_existing_gates_qualifies_its_own_clip(self):
+        self.assertEqual(self.problems(), [])
+        proof = k.proof_of(report(), "42024334433")
+        self.assertEqual((proof["clip_sha256"], proof["source_clip_sha256"], proof["run_id"]),
+                         ("c" * 64, "a" * 64, "42024334433"))
+        self.assertEqual(proof["sync"]["conf"], 3.128)
+
+    def test_a_thin_margin_is_good_enough_but_under_the_floor_is_not(self):
+        mouth = lambda conf, offset=0, face=1.0: {"mouth": {"face_frames": face, "sync": {"offset": offset, "conf": conf}},
+                                                  "flags": []}
+        self.assertEqual(self.problems(report(lipsync=mouth(2.7))), [])              # the floor itself passes
+        self.assertTrue(self.problems(report(lipsync=mouth(2.69))))                  # under it: refused
+        self.assertTrue(self.problems(report(lipsync=mouth(3.1, offset=-13))))       # out of sync
+        self.assertTrue(self.problems(report(lipsync=mouth(3.1, face=0.79))))        # face lost
+        self.assertTrue(self.problems(report(lipsync={"mouth": {"face_frames": 1.0, "sync": None}, "flags": []})))
+
+    def test_clearly_broken_output_and_foreign_audio_still_fail(self):
+        self.assertTrue(self.problems(report(flags=["LIPSYNC_LINE_CUT"])))
+        self.assertTrue(self.problems(report(clip_check={"flags": ["BLACK_START"]})))
+        self.assertTrue(self.problems(report(audio_ours=False)))
+        self.assertTrue(self.problems(report(model="wav2lip")))
+
+    def test_the_proof_is_bound_to_its_clip_line_and_silent_source(self):
+        self.assertIn("the proof is for another clip (clip sha256)", self.problems(clip="d" * 64))
+        other = dict(self.LINE, sha256="e" * 64)
+        self.assertTrue(any("not the Kokoro line" in p for p in self.problems(line=other)))
+        self.assertTrue(any("silent source" in p for p in self.problems(sources=("f" * 64,))))
+        self.assertTrue(self.problems(report(source_clip_sha256="c" * 64)))         # its own output is no source
+        self.assertTrue(self.problems(report(line=None)))
+
+    def test_the_first_probe_reports_carry_no_source_or_line_proof_and_cannot_be_used(self):
+        import json
+        old = json.loads((ROOT / "migration/evidence/lipsync/20261105/close-run42024334433/report.json").read_text())
+        found = k.proof_problems(k.proof_of(old), old["final_sha256"])
+        self.assertTrue(any("source" in p for p in found) and any("Kokoro line" in p for p in found), found)
+        self.assertEqual(k.proof_problems(k.proof_of(dict(old, source_clip_sha256="a" * 64, line=self.LINE)),
+                                          old["final_sha256"]), [])               # its measures themselves pass
+
+
 if __name__ == "__main__":
     unittest.main()

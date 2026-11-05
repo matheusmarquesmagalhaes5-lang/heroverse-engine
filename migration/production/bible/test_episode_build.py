@@ -3109,5 +3109,227 @@ class SilentPavoClips(unittest.TestCase):
         self.assertIn("KEEPER_CLIP_SHORT k-close", str(err.exception))
 
 
+def write_line(path, samples=26460):
+    """A mono 44.1 kHz 16-bit WAV (the format lines_step writes and pavo_audio.proof_of reads)."""
+    with wave.open(str(path), "wb") as w:
+        w.setnchannels(1)
+        w.setsampwidth(2)
+        w.setframerate(44100)
+        w.writeframes(b"".join(struct.pack("<h", (i * 37) % 2000 - 1000) for i in range(samples)))
+    return path
+
+
+class LipsyncedClips(unittest.TestCase):
+    """Owner 2026-11-05: the Keeper (always) and a character's line (when the plan asks) speak our Kokoro line by a
+    lip-sync of a silent Pavo clip. A lip-synced clip moves its mouth, so the silent check would refuse it
+    (MOUTH_TALKING): it is used only with its lip-sync proof (this clip, its stored silent source, our line by PCM
+    sha256, SyncNet and the face, gates unchanged), and every clip without one keeps the MOUTH_TALKING refusal."""
+
+    def setUp(self):
+        self.silent = SilentPavoClips()
+        self.plan = self.silent.plan(lipsync="musetalk-1.5")
+        self.shot = self.plan["shots"][0]
+        self.work = Path(tempfile.mkdtemp(dir=eb.REPO, prefix=".test-lipsync-"))
+        self.layout = layout_for(self.plan, [6.0])
+        self.line = write_line(self.work / "k-a.lipsync.wav")
+        self.layout["keeper"]["k-a"]["lipsync_wav"] = eb.rel(self.line)
+        (self.work / "layout.json").write_text(json.dumps(self.layout))
+        refs = {"keeper": ["k.jpg"], "keeper:talk": ["kt.jpg"]}
+        (self.work / "refs.json").write_text(json.dumps(refs))
+        self.request = eb.request_identity(self.shot, 0, self.plan, self.layout, refs)[0]
+        self.clip = self.work / "lip.mp4"
+        self.clip.write_bytes(b"lip-synced clip")
+        self.sha = eb.sha256(self.clip)
+        self.source = "a" * 64
+
+    def tearDown(self):
+        shutil.rmtree(self.work, ignore_errors=True)
+
+    def proof(self, **over):
+        import keeper_lipsync
+        report = {"model": "musetalk-1.5", "commit": keeper_lipsync.MUSETALK_COMMIT, "final_sha256": self.sha,
+                  "source_clip_sha256": self.source, "line": eb.pavo_audio.proof_of(self.line),
+                  "lipsync": {"mouth": {"face_frames": 1.0, "sync": {"offset": 0, "conf": 3.13}}, "flags": []},
+                  "clip_check": {"flags": []}, "audio_ours": True, "flags": []}
+        report.update(over)
+        return keeper_lipsync.proof_of(report, "42024334433")
+
+    def stubs(self, silent_flags=("MOUTH_TALKING",), lip_flags=()):
+        """clip_check, the silent check (a moving mouth reads MOUTH_TALKING), lipsync_check and the audio digest."""
+        self.lip_seen = []
+        return [patch.object(eb, "clip_flags", lambda path, aspect=None: []),
+                patch.object(eb, "still_mouth_flags", lambda py, model, clip: (
+                    list(silent_flags), {"still_mouth": {"opening_range": 0.05}})),
+                patch.object(eb, "lipsync_flags", lambda py, model, clip, wav: (
+                    self.lip_seen.append(Path(clip).name) or list(lip_flags),
+                    {"audio": {"corr": 1.0}, "mouth": {"face_frames": 1.0, "sync": {"offset": 0, "conf": 3.13}}})),
+                patch.object(eb, "own_track", lambda clip: Path(clip)),
+                patch.object(eb.pavo_audio, "verify", lambda clip, proof: proof)]
+
+    def run_with(self, stubs, fn, *a, **kw):
+        for s in stubs:
+            s.start()
+        try:
+            return fn(*a, **kw)
+        finally:
+            for s in stubs:
+                s.stop()
+
+    def approval(self, **over):
+        a = {"asset": eb.shot_asset_name("ep-x", "k-a", self.sha), "clip_sha256": self.sha, "request_sha256": self.request,
+             "score": 9.6, "clip_seconds": 6.5}
+        a.update(over)
+        return a
+
+    def build(self, approvals, plan=None):
+        return eb.generate_step(plan or self.plan, self.work, "py", "model", approvals=approvals,
+                                fetch=lambda name, dst: Path(dst).write_bytes(b"lip-synced clip"))
+
+    def test_without_a_verified_report_the_lip_synced_clip_is_refused_as_mouth_talking(self):
+        with self.assertRaisesRegex(SystemExit, "SHOT_APPROVED_CLIP_FAILED k-a MOUTH_TALKING"):
+            self.run_with(self.stubs(), self.build, {"k-a": self.approval(clip_seconds=8)})
+        self.assertEqual(self.lip_seen, [])
+
+    def test_with_its_proof_the_build_checks_it_by_syncnet_and_uses_it(self):
+        report = self.run_with(self.stubs(), self.build, {"k-a": self.approval(lipsync=self.proof())})
+        entry = report["shots"]["k-a"]
+        self.assertEqual(entry["checks"]["flags"], [])
+        self.assertEqual(self.lip_seen, ["k-a.mp4"])                    # measured again, its own track
+        self.assertEqual(entry["lipsync"]["problems"], [])
+        self.assertEqual(entry["approved"]["lipsync"]["source_clip_sha256"], self.source)
+
+    def test_a_proof_for_another_line_or_a_failing_measure_stops_the_build(self):
+        other = dict(eb.pavo_audio.proof_of(self.line), sha256="e" * 64)
+        with self.assertRaisesRegex(SystemExit, "SHOT_APPROVED_CLIP_FAILED k-a LIPSYNC_REPORT_INVALID"):
+            self.run_with(self.stubs(), self.build, {"k-a": self.approval(lipsync=self.proof(line=other))})
+        low = {"mouth": {"face_frames": 1.0, "sync": {"offset": 0, "conf": 2.5}}, "flags": []}
+        with self.assertRaisesRegex(SystemExit, "LIPSYNC_REPORT_INVALID"):
+            self.run_with(self.stubs(), self.build, {"k-a": self.approval(lipsync=self.proof(lipsync=low))})
+        # a soft lips flag is never waved through on a lip-synced clip, even if the approval lists it
+        with self.assertRaisesRegex(SystemExit, "SHOT_APPROVED_CLIP_FAILED k-a MOUTH_NOT_IN_SYNC"):
+            self.run_with(self.stubs(lip_flags=["MOUTH_NOT_IN_SYNC"]), self.build,
+                          {"k-a": self.approval(lipsync=self.proof(), accepted_flags=["MOUTH_NOT_IN_SYNC"])})
+
+    def test_a_lip_synced_approval_on_a_shot_the_plan_does_not_lip_sync_is_refused(self):
+        plan = json.loads(json.dumps(self.plan))
+        plan["shots"][0].pop("lipsync")
+        with self.assertRaisesRegex(SystemExit, "LIPSYNC_NOT_PLANNED k-a"):
+            self.run_with(self.stubs(), self.build, {"k-a": self.approval(lipsync=self.proof(), clip_seconds=8)}, plan)
+
+    def test_the_clip_needs_its_line_and_the_compose_lays_its_lips_on_the_first_word(self):
+        approvals = {"k-a": self.approval(lipsync=self.proof())}
+        self.assertEqual(eb.clip_needs(self.plan, self.layout, 0.0, approvals), {"k-a": 6.0})
+        self.assertEqual(eb.lipsynced(self.plan, approvals), {"k-a"})
+        self.assertEqual(eb.lipsynced(self.plan, {"k-a": self.approval()}), set())
+        clips, seconds = {"k-a": "k-a.mp4"}, {"k-a": 6.5}
+        shots = eb.compose_shots(self.plan, self.layout, clips, seconds, {"k-a"})
+        self.assertEqual(short_engine.check_shots(shots, self.layout["total"]), [])
+        (cut,) = shots
+        self.assertEqual((cut["kind"], cut["speed"], cut["src_start"]), ("keeper", 1.0, 0.0))
+        self.assertEqual(cut["talk"], {"start": 0.0, "end": 6.0})
+        self.assertAlmostEqual(cut["hold"], self.layout["total"] - 6.5 + eb.HOLD_MARGIN, places=3)
+        self.assertEqual(eb.compose_shots(self.plan, self.layout, clips, {"k-a": 7.2})[0]["kind"], "keeper-vo")
+        with self.assertRaisesRegex(SystemExit, "KEEPER_CLIP_SHORT k-a"):     # never slowed: the lips would drift
+            eb.compose_shots(self.plan, self.layout, clips, {"k-a": 5.5}, {"k-a"})
+
+    def test_compose_keeps_every_lip_synced_keeper_on_his_line_between_scenes(self):
+        plan = json.loads(json.dumps(VO_EXAMPLE))
+        for n, s in enumerate(x for x in plan["shots"] if x["kind"] == "keeper"):
+            s.pop("voiceover")
+            s.update(pavo_mode="silent", pavo_audio="none", lipsync="musetalk-1.5", pavo={
+                "action": "watches the fire, then slowly nods", "wardrobe": "fire", "setting": SilentPavoClips.SETTING,
+                "mood": "Tender and grave"})
+        layout = layout_for(plan, DURATIONS)
+        clips = {s["id"]: f"{s['id']}.mp4" for s in plan["shots"]}
+        seconds = {s["id"]: (s.get("seconds") or 12) + 0.59 for s in plan["shots"]}
+        for sid, rec in layout["keeper"].items():
+            seconds[sid] = rec["seconds"] + 0.5                       # the line plus lipsync.yml's tail
+        synced = set(layout["keeper"])
+        shots = eb.compose_shots(plan, layout, clips, seconds, synced)
+        self.assertEqual(short_engine.check_shots(shots, layout["total"]), [])
+        for c in (c for c in shots if c["shot"] in synced):
+            rec = layout["keeper"][c["shot"]]
+            self.assertEqual((c["start"], c["talk"]["end"], c["speed"]), (rec["start"], rec["end"], 1.0))
+
+    def test_lines_writes_the_exact_line_the_proof_binds(self):
+        params = (1, 2, 24000, 0, "NONE", "not compressed")
+        track = b"".join(struct.pack("<h", (i * 11) % 3000 - 1500) for i in range(24000 * 2))
+        rec = {"start": 0.5, "end": 1.5}
+        wav = eb.REPO / eb.lipsync_wav(self.work, "keeper", "k-a", rec, params, track, 24000, 2)
+        with wave.open(str(wav), "rb") as w:
+            self.assertEqual((w.getframerate(), w.getnchannels(), w.getsampwidth()), (44100, 1, 2))
+        self.assertEqual(eb.pavo_audio.proof_of(wav)["samples"], 44100)
+
+    def record(self, rows, entry_extra=None):
+        records = eb.REPO / "migration" / "evidence" / "shots"
+        records.mkdir(parents=True, exist_ok=True)
+        root = Path(tempfile.mkdtemp(dir=records, prefix=".test-lipsync-"))
+        self.addCleanup(shutil.rmtree, root, True)
+        path = root / "probe.json"
+        path.write_text(json.dumps({"episode": "ep-x", "run_id": "42100000001", "shots": {"k-a": dict(
+            {"kind": "keeper", "request_sha256": self.request, "clip_seconds": 7, "clips": rows}, **(entry_extra or {}))}}))
+        return path, root
+
+    def media(self, sha):
+        return {"version": "clip-media-v1", "clip_sha256": sha, "video_seconds": 6.5, "audio_seconds": 6.5}
+
+    def rows(self, **over):
+        silent = {"round": 1, "asset": "shot-ep-x-k-a-sha256-" + self.source + ".mp4", "clip_sha256": self.source,
+                  "flags": [], "uploaded": True, "media": self.media(self.source)}
+        lip = {"round": "lipsync", "lipsync_of": self.source, "asset": eb.shot_asset_name("ep-x", "k-a", self.sha),
+               "clip_sha256": self.sha, "flags": [], "lipsync": self.proof(), "uploaded": True, "media": self.media(self.sha)}
+        lip.update(over)
+        return [silent, lip]
+
+    def test_approve_shot_approves_a_lip_synced_clip_only_with_its_proof(self):
+        kw = dict(reviewer="claude-session-reviewer")
+        asset = eb.shot_asset_name("ep-x", "k-a", self.sha)
+        path, root = self.record(self.rows())
+        out = root / "approved"
+        got = eb.approve_shot(path, "k-a", asset, "9.5", "watched and heard: lips follow the line", shots_dir=out, **kw)
+        self.assertEqual(got["lipsync"]["source_clip_sha256"], self.source)
+        bad = {"mouth": {"face_frames": 1.0, "sync": {"offset": 0, "conf": 2.6}}, "flags": []}
+        for over, why in (({"lipsync": self.proof(lipsync=bad)}, "SyncNet"),
+                          ({"lipsync": self.proof(source_clip_sha256="f" * 64), "lipsync_of": "f" * 64}, "silent source"),
+                          ({"lipsync": None}, "no lip-sync proof"),
+                          ({"flags": ["MOUTH_NOT_IN_SYNC"]}, "flags"),
+                          ({"lipsync": self.proof(final_sha256="d" * 64)}, "another clip")):
+            path, root = self.record(self.rows(**over))
+            with self.assertRaisesRegex(SystemExit, f"LIPSYNC_REPORT_INVALID k-a .*{why}"):
+                eb.approve_shot(path, "k-a", asset, "9.6", "reviewed", shots_dir=root / "approved", **kw)
+        # the silent clip that talks (MOUTH_TALKING, no proof) stays a hard refusal
+        silent = {"round": 1, "asset": asset, "clip_sha256": self.sha, "flags": ["MOUTH_TALKING"], "uploaded": True,
+                  "media": self.media(self.sha)}
+        path, root = self.record([silent])
+        with self.assertRaisesRegex(SystemExit, "SHOT_CHECKS_FAILED k-a MOUTH_TALKING"):
+            eb.approve_shot(path, "k-a", asset, "9.9", "reviewed", shots_dir=root / "approved", **kw)
+
+    def test_lipsync_record_binds_the_report_to_a_stored_source_and_the_line(self):
+        path, root = self.record(self.rows()[:1])
+        report = self.work / "report.json"
+        import keeper_lipsync
+        raw = {"model": "musetalk-1.5", "commit": keeper_lipsync.MUSETALK_COMMIT, "final_sha256": self.sha,
+               "source_clip_sha256": self.source, "line": eb.pavo_audio.proof_of(self.line),
+               "lipsync": {"mouth": {"face_frames": 1.0, "sync": {"offset": 0, "conf": 3.13}}, "flags": []},
+               "clip_check": {"flags": []}, "audio_ours": True, "flags": []}
+        report.write_text(json.dumps(raw))
+        out = self.work / "out"
+        step = lambda **kw: eb.lipsync_record_step(self.plan, self.work, "py", "model", out, "k-a", report, self.clip,
+                                                   "42024334433", shots_dir=root, sheet=lambda v, s: None, **kw)
+        record = self.run_with(self.stubs(), step)
+        (row,) = record["shots"]["k-a"]["clips"]
+        self.assertEqual((row["round"], row["lipsync_of"], row["flags"]), ("lipsync", self.source, []))
+        self.assertEqual(record["shots"]["k-a"]["request_sha256"], self.request)
+        self.assertTrue((out / row["asset"]).is_file())
+        report.write_text(json.dumps(dict(raw, source_clip_sha256="f" * 64)))
+        with self.assertRaisesRegex(SystemExit, "LIPSYNC_SOURCE_NOT_STORED k-a"):
+            self.run_with(self.stubs(), step)
+        plan = json.loads(json.dumps(self.plan))
+        plan["shots"][0].pop("lipsync")
+        with self.assertRaisesRegex(SystemExit, "LIPSYNC_NOT_PLANNED k-a"):
+            eb.lipsync_record_step(plan, self.work, "py", "model", out, "k-a", report, self.clip, "42024334433",
+                                   shots_dir=root)
+
+
 if __name__ == "__main__":
     unittest.main()
