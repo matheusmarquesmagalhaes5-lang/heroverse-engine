@@ -13,6 +13,10 @@ This module is the glue around the model and is what the tests cover (no torch h
   prepare CLIP WAV FACE_MODEL WORK [--tail S] [--cap S]
                                   source gate (the silent clip's own still-mouth + face), the clip cut to the line plus
                                   a tail, the MuseTalk task file; prints one JSON line
+  coords WORK MUSETALK_DIR [STEP]
+                                  run with the MuseTalk environment: the face box on every STEP-th frame (default 8), linear
+                                  in between, saved where the model looks for it (work/source-cut.pkl). The model's own
+                                  per-frame landmarks cost 3.2 s a frame on the CPU runner; a Keeper clip is a static camera
   finish WORK LIPSYNC_VIDEO FACE_MODEL SYNCNET OUT_DIR SECONDS
                                   our line over the lip-synced picture (pavo_audio.mux_ours, bit-exact PCM), the strict
                                   gates on that clip and on the silent source (baseline), frame sheets; exit 1 on a flag
@@ -33,6 +37,7 @@ MODEL = "musetalk-1.5"
 MODELS = (MODEL,)
 MUSETALK_REPO = "https://github.com/TMElyralab/MuseTalk"
 MUSETALK_COMMIT = "0a89dec45a0192b824e3cf4daf96c239440c5ed8"
+COORD_STEP = 8                 # frames between the face boxes that are really measured
 TAIL_S = 0.5                    # picture kept after the last word (the mouth closes again), seconds
 FACE_FRAMES_MIN = 0.8           # lipsync_check.FACE_FRAMES_MIN, repeated for the module's own flag
 HF = "https://huggingface.co"
@@ -131,6 +136,54 @@ def result_flags(check, clip, audio_ok):
     return flags
 
 
+def sample_indices(n, step=COORD_STEP):
+    """Frames whose face box is measured: every `step`-th, and always the last."""
+    idx = list(range(0, n, step))
+    if n and idx[-1] != n - 1:
+        idx.append(n - 1)
+    return idx
+
+
+def interpolate(idx, boxes, n):
+    """A face box for each of n frames from boxes measured at idx (None = no face there; those are skipped). Integers,
+    linear between measured frames, held before the first and after the last. No measured box at all is an error."""
+    known = [(i, b) for i, b in zip(idx, boxes) if b is not None and tuple(b) != (0.0, 0.0, 0.0, 0.0)]
+    if not known:
+        raise SystemExit("LIPSYNC_NO_FACE_BOX")
+    out = []
+    for f in range(n):
+        if f <= known[0][0]:
+            out.append(tuple(int(v) for v in known[0][1]))
+        elif f >= known[-1][0]:
+            out.append(tuple(int(v) for v in known[-1][1]))
+        else:
+            j = max(m for m, (i, _) in enumerate(known) if i <= f)
+            (i0, b0), (i1, b1) = known[j], known[j + 1]
+            w = (f - i0) / (i1 - i0)
+            out.append(tuple(int(round(a + (b - a) * w)) for a, b in zip(b0, b1)))
+    return out
+
+
+def coords(work, musetalk_dir, step=COORD_STEP):
+    """MuseTalk environment only (imports its preprocessing, which needs mmpose)."""
+    import pickle
+    import tempfile
+    work = Path(work)
+    os.chdir(musetalk_dir)
+    sys.path.insert(0, str(musetalk_dir))
+    from musetalk.utils.preprocessing import get_landmark_and_bbox
+    with tempfile.TemporaryDirectory() as tmp:
+        run("ffmpeg", "-nostdin", "-v", "error", "-i", work / "source-cut.mp4", "-start_number", "0", f"{tmp}/%08d.png")
+        frames = sorted(Path(tmp).glob("*.png"))
+        idx = sample_indices(len(frames), step)
+        boxes, _ = get_landmark_and_bbox([str(frames[i]) for i in idx], 0)
+    full = interpolate(idx, boxes, len(frames))
+    with open(work / "source-cut.pkl", "wb") as f:
+        pickle.dump(full, f)
+    print(json.dumps({"frames": len(frames), "measured": len(idx), "first": full[0], "last": full[-1]}))
+    return 0
+
+
 def run(*cmd, **kw):
     return subprocess.run(list(map(str, cmd)), check=True, **kw)
 
@@ -209,6 +262,8 @@ def main(argv):
         if set(opts) - {"--tail", "--cap"}:
             raise SystemExit(__doc__)
         return prepare(*argv[1:5], tail=float(opts.get("--tail", TAIL_S)), cap=float(opts["--cap"]) if "--cap" in opts else None)
+    if argv[:1] == ["coords"] and len(argv) in (3, 4):
+        return coords(argv[1], argv[2], int(argv[3]) if len(argv) == 4 else COORD_STEP)
     if argv[:1] == ["finish"] and len(argv) == 7:
         return finish(argv[1], argv[2], argv[3], argv[4], argv[5], float(argv[6]))
     raise SystemExit(__doc__)
