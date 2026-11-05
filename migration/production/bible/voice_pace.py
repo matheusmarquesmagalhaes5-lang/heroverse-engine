@@ -14,6 +14,8 @@ lines.
   same run gave Adam 3.798 and Eve 3.560, the noah-scoffer run's 3.798 and 3.566).
 - builder bm_lewis 3.383 (lines 3.07-3.89): eight lines (evidence/voice/20261103/builder-voice.json, voice-pace.yml run
   41673996439 in CI, calibrated on Cain: 3.340 recorded, 3.340 measured).
+- abram am_echo 3.238 (lines 2.06-3.84): his 17 KJV lines of the two Abram longs (evidence/voice/20261105/abram-voice.json,
+  voice-pace.yml run 42116989065 in CI, calibrated on Cain: 3.340 recorded, 3.342 measured).
 - God in a Short (SHORT_PACE) 3.072: his 9 lines voiced in the genesis-07 to 10 Shorts (kokoro-pace.json short_god);
   the long keeps the arc-1 2.811.
 
@@ -29,7 +31,8 @@ A pace belongs to its voice (MEASURED_WITH; a test keeps it equal to characters.
 measure it again. A talking speaker with no pace here is refused at plan time (VOICE_PACE_UNMEASURED)."""
 
 VOICE_PACE = {"keeper": 2.874, "god": 2.811, "adam": 3.975, "eve": 3.732, "noah": 2.970, "scoffer": 3.579,
-              "serpent": 2.728, "cain": 3.340, "builder": 3.383}
+              "serpent": 2.728, "cain": 3.340, "builder": 3.383,
+              "abram": 3.238}
 SHORT_PACE = {"god": 3.072}          # a Short-measured pace where it differs from the long's
 #               min(slowest run x SLOW_RATIO, slowest line)
 VOICE_SLOWEST = {"god": 2.128,      # min(2.776 x 0.818 = 2.271, arc-1 line 2.128)
@@ -39,7 +42,9 @@ VOICE_SLOWEST = {"god": 2.128,      # min(2.776 x 0.818 = 2.271, arc-1 line 2.12
                  "scoffer": 2.802,  # min(3.425 x 0.818, line 2.835)
                  "serpent": 2.230,  # min(2.728 x 0.818 = 2.232, line 2.230)
                  "cain": 2.732,
-                 "builder": 2.767}  # min(3.383 x 0.818 = 2.767, line 3.074)     # min(3.340 x 0.818 = 2.733, line 2.759)
+                 "builder": 2.767,  # min(3.383 x 0.818 = 2.767, line 3.074)     # min(3.340 x 0.818 = 2.733, line 2.759)
+                 "abram": 2.064}    # min(3.238 x 0.818 = 2.649, line 2.064)
 MEASURED_WITH = {"keeper": ("am_michael", 1.0), "god": ("am_onyx", 0.9), "adam": ("am_fenrir", 1.0),
                  "eve": ("af_heart", 1.0), "noah": ("bm_george", 1.0), "scoffer": ("am_puck", 1.0),
-                 "serpent": ("bm_fable", 1.0), "cain": ("am_eric", 1.0), "builder": ("bm_lewis", 1.0)}
+                 "serpent": ("bm_fable", 1.0), "cain": ("am_eric", 1.0), "builder": ("bm_lewis", 1.0),
+                 "abram": ("am_echo", 1.0)}

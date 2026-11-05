@@ -1,0 +1,125 @@
+{
+ "version": "voice-pace-measure-v1",
+ "how": "voice_pace_measure.py in voice-pace.yml: kokoro-onnx 0.4.9 with the hash-pinned Kokoro v1.0 assets, sentence by sentence at speed 1.0, a 0.18 s gap, words over seconds of a line from its first sentence's start to its last sentence's end (the method of cain-voice.json).",
+ "calibration": {
+  "voice": "am_eric (Cain's 8 lines of cain-voice.json)",
+  "recorded": 3.34,
+  "measured": 3.342,
+  "relative_drift": 0.0006
+ },
+ "pace_by_voice_words_per_s": {
+  "abram": {
+   "voice_id": "am_echo",
+   "speed": 1.0,
+   "lines": 17,
+   "pace": 3.238,
+   "line_min": 2.064,
+   "line_max": 3.839,
+   "each": [
+    {
+     "line": "Say, I pray thee, thou art my sister:",
+     "words": 8,
+     "seconds": 2.731,
+     "pace": 2.93
+    },
+    {
+     "line": "that it may be well with me for thy sake; and my soul shall live because of thee.",
+     "words": 18,
+     "seconds": 5.492,
+     "pace": 3.277
+    },
+    {
+     "line": "Behold now, I know that thou art a fair woman to look upon:",
+     "words": 13,
+     "seconds": 3.968,
+     "pace": 3.276
+    },
+    {
+     "line": "Therefore it shall come to pass, when the Egyptians shall see thee, that they shall say, This is his wife:",
+     "words": 20,
+     "seconds": 5.803,
+     "pace": 3.447
+    },
+    {
+     "line": "and they will kill me, but they will save thee alive.",
+     "words": 11,
+     "seconds": 3.093,
+     "pace": 3.556
+    },
+    {
+     "line": "Let there be no strife, I pray thee, between me and thee, and between my herdmen and thy herdmen; for we be brethren.",
+     "words": 23,
+     "seconds": 7.412,
+     "pace": 3.103
+    },
+    {
+     "line": "Is not the whole land before thee? separate thyself, I pray thee, from me:",
+     "words": 14,
+     "seconds": 5.449,
+     "pace": 2.569
+    },
+    {
+     "line": "if thou wilt take the left hand, then I will go to the right;",
+     "words": 14,
+     "seconds": 3.712,
+     "pace": 3.772
+    },
+    {
+     "line": "or if thou depart to the right hand, then I will go to the left.",
+     "words": 15,
+     "seconds": 3.968,
+     "pace": 3.78
+    },
+    {
+     "line": "Lord God, what wilt thou give me, seeing I go childless, and the steward of my house is this Eliezer of Damascus?",
+     "words": 22,
+     "seconds": 6.912,
+     "pace": 3.183
+    },
+    {
+     "line": "I have lift up mine hand unto the Lord, the most high God, the possessor of heaven and earth,",
+     "words": 19,
+     "seconds": 5.483,
+     "pace": 3.465
+    },
+    {
+     "line": "That I will not take from a thread even to a shoelatchet,",
+     "words": 12,
+     "seconds": 3.563,
+     "pace": 3.368
+    },
+    {
+     "line": "and that I will not take any thing that is thine, lest thou shouldest say, I have made Abram rich:",
+     "words": 20,
+     "seconds": 5.589,
+     "pace": 3.578
+    },
+    {
+     "line": "Save only that which the young men have eaten, and the portion of the men which went with me,",
+     "words": 19,
+     "seconds": 4.949,
+     "pace": 3.839
+    },
+    {
+     "line": "Aner, Eshcol, and Mamre; let them take their portion.",
+     "words": 9,
+     "seconds": 4.361,
+     "pace": 2.064
+    },
+    {
+     "line": "Behold, to me thou hast given no seed: and, lo, one born in my house is mine heir.",
+     "words": 18,
+     "seconds": 6.217,
+     "pace": 2.895
+    },
+    {
+     "line": "Lord God, whereby shall I know that I shall inherit it?",
+     "words": 11,
+     "seconds": 3.435,
+     "pace": 3.203
+    }
+   ]
+  }
+ },
+ "status": "MEASURED"
+}
