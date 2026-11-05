@@ -34,6 +34,10 @@ when short) and republish the private log when the conversation moves.
   Always build the best prompt and take the best result available, then use it; a slightly synthetic voice or
   imperfect lip movement is not a reason to hold or regenerate (2026-11-05).
 - God is never shown with a face. Exact KJV.
+- Always bring something NEW, and the authenticity / originality / critical layer (the Keeper's own insight, honest
+  questions, context) must be present in a LARGE share of every video, not as a token line (owner 2026-11-05).
+  It also protects YPP: YouTube rejects channels for "reused/repetitive content", so compilations, read-alongs and
+  reused stills must each add substantial new original narration or Keeper commentary, never just re-cut old media.
 - Production must be high quality from the start (owner, repeated 2026-11-05): best prompts, best sources and a careful
   build, so videos pass review the first time instead of being rejected and redone.
 - Gemini as reviewer: the owner does not trust it (past problems); a free, good-quality alternative is being
