@@ -5238,6 +5238,58 @@
      "instrument"
     ]
    }
+  },
+  {
+   "id": "E308",
+   "date": "2026-11-05",
+   "class": [
+    "instrument"
+   ],
+   "prior": [
+    "E120",
+    "E131",
+    "E137",
+    "E139",
+    "E148",
+    "E152",
+    "E166",
+    "E169",
+    "E185",
+    "E186",
+    "E231",
+    "E233",
+    "E238",
+    "E253",
+    "E255",
+    "E262",
+    "E266",
+    "E267",
+    "E273",
+    "E275",
+    "E279",
+    "E280",
+    "E281",
+    "E282",
+    "E283",
+    "E284",
+    "E285",
+    "E286",
+    "E289",
+    "E299",
+    "E300",
+    "E302",
+    "E306",
+    "E307"
+   ],
+   "error": "local-review run 42108321262 on the first Genesis Part 1 master (c6fb23ae...) flagged 23 [c] dropouts of 0.8-1.6 s: every join between the Keeper's beats (a 0.5 s still beat after one line, a 0.5 s still beat before the next, the fades and Kokoro's own pauses) was pure digital quiet, because a v2 Keeper segment carried only the voice while every story chapter carries a music bed.",
+   "fix": "compilation_long.render_beats lays the owned music (release asset original-rest-music.lossless.flac, episode.yml's sha256 pin, checked) under each whole v2 Keeper segment, measured slice by slice to -30 LUFS and ducked by the voice (short_engine's sidechain), the segment's length and fades unchanged; a v2 build refuses to run without it (MUSIC_MISSING), and compilation-build.yml downloads and verifies it. The first master was superseded before review; v1 renders are unchanged.",
+   "antidote": {
+    "file": "migration/production/bible/test_compilation_long.py",
+    "contains": "def test_e308_the_owned_bed_fills_the_still_beats_between_the_keepers_lines",
+    "covers": [
+     "instrument"
+    ]
+   }
   }
  ]
 }

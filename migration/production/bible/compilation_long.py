@@ -51,6 +51,9 @@ BEATS_QUOTE = "0 credits (no generation: Kokoro voice-over on approved stills)"
 MOTIONS = ("in", "out", "left", "right")
 ZOOM = 0.06                     # a beat's camera move: 6 % over the whole beat (never a still hold after the move ends)
 BEATS_MAX = 12
+MUSIC = "music.flac"            # E308: the owned bed (release asset original-rest-music.lossless.flac) next to the voice lines
+MUSIC_SHA256 = "1a90714dce83ce5919230a420f56cd17d81d82437303b360244d0fe0f22bbd0c"   # episode.yml's pin
+BED_LUFS = -30.0                # the bed's own loudness before ducking: 16 LU under the Keeper's -14 LUFS voice
 ARCHETYPE = "bible-compilation-long"
 SERIES = "compilation"          # not "bible": a compilation has no per-story approved character thumbnail
 W, H, FPS = 1920, 1080, 30
@@ -570,6 +573,24 @@ def render_beat(still, audio, out, motion, card=None):
     return round(duration(audio), 3)
 
 
+def music_bed(segment, music, offset, out):
+    """E308: the owned music under a whole v2 Keeper segment, ducked by the voice (short_engine's mix), so the still beats
+    between his lines are never dead air; the picture is copied, the segment keeps its fades and length."""
+    d = duration(segment)
+    _, a = fades(d)
+    piece = Path(f"{Path(out).with_suffix('')}.bed.wav")   # the slice it plays, measured so the bed has one level everywhere
+    run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-stream_loop", "-1", "-i", music, "-ss", f"{offset:.3f}", "-t", f"{d:.3f}",
+         "-ac", "2", "-ar", "48000", piece])
+    gain = BED_LUFS - loudness(piece)[0]
+    piece.unlink()
+    graph = (f"[0:a]asplit=2[v][vk];[1:a]aresample=48000,aformat=channel_layouts=stereo,atrim=start={offset:.3f}:duration={d:.3f},"
+             f"asetpts=PTS-STARTPTS,volume={gain:.2f}dB[m];[m][vk]sidechaincompress=threshold=0.03:ratio=6:attack=20:release=400[md];"
+             f"[v][md]amix=inputs=2:duration=first:normalize=0,{a},alimiter=limit=0.8:level=false[a]")
+    run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", segment, "-stream_loop", "-1", "-i", music, "-filter_complex", graph,
+         "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2",
+         "-t", f"{d:.3f}", "-movflags", "+faststart", out])
+
+
 def render_beats(key, k, voice_dir, out, card=None):
     """A v2 Keeper segment: its beats rendered one by one and joined (same encoder settings, stream copy).
     Returns the seconds of our spoken lines (the no_padding and original-share measures)."""
@@ -585,9 +606,17 @@ def render_beats(key, k, voice_dir, out, card=None):
         parts.append(part)
     lst = Path(f"{Path(out).with_suffix('')}.txt")
     lst.write_text("".join(f"file '{p.resolve()}'\n" for p in parts))
-    run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", lst, "-c", "copy", out])
+    music = Path(voice_dir or "") / MUSIC
+    joined = Path(f"{Path(out).with_suffix('')}.voice.mp4") if music.is_file() else Path(out)
+    run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", lst, "-c", "copy", joined])
     for p in parts + [lst]:
         p.unlink()
+    if music.is_file():
+        if sha256(music) != MUSIC_SHA256:
+            raise SystemExit("MUSIC_SHA256_MISMATCH")
+        offset = (sum(map(ord, key)) * 37.0) % 180.0   # each Keeper segment starts the bed at its own place
+        music_bed(joined, music, offset, out)
+        joined.unlink()
     return round(spoken, 3), len(parts), starts
 
 
@@ -657,6 +686,8 @@ def build(plan_path, src_dir, out_dir, voice_dir=None):
 
     seg = out / "segments"
     seg.mkdir(exist_ok=True)
+    if plan.get("criteria") == CRITERIA_V2 and not (Path(voice_dir or "") / MUSIC).is_file():
+        raise SystemExit(f"MUSIC_MISSING {MUSIC} (E308: the owned bed under the Keeper segments)")
     def keeper(kind, name, path, rendered):
         extra = {"spoken_seconds": rendered[0], "beats": rendered[1], "line_starts": rendered[2]} if isinstance(rendered, tuple) else {}
         add(kind, name, path, **extra)

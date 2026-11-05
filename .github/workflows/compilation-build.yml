@@ -58,6 +58,9 @@ jobs:
           export ESPEAK_DATA_PATH
           "$RUNNER_TEMP/voice/bin/python" -I -B migration/production/pilot_render.py voice "$work" "$work/voice-script.json"
           python3 -I -B migration/production/bible/compilation_long.py voice-cut "$PLAN" "$work" "$RUNNER_TEMP/voice-lines"
+          # E308: the owned music bed under v2 Keeper segments (episode.yml's asset and pin)
+          bash migration/ci/assets.sh download --repo "$GITHUB_REPOSITORY" --pattern original-rest-music.lossless.flac -O "$RUNNER_TEMP/voice-lines/music.flac" --clobber
+          echo "1a90714dce83ce5919230a420f56cd17d81d82437303b360244d0fe0f22bbd0c  $RUNNER_TEMP/voice-lines/music.flac" | sha256sum -c -
           sha256sum "$RUNNER_TEMP"/voice-lines/*.wav
       - name: Build, measure (compilation-qa-criteria-v1) and materialize the pilot's publication inputs
         run: |
