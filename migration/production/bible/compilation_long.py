@@ -381,6 +381,7 @@ def voice_cut(plan_path, work, voice_dir):
     for key, k in keeper_sections(plan):
         if "beats" in k:
             lines += beat_ids(key, k)
+    offsets = {}
     for key in lines:
         mine = [x for x in tl["sentences"] if x["segment"] == key]
         if not mine:
@@ -388,6 +389,8 @@ def voice_cut(plan_path, work, voice_dir):
         a, b = mine[0]["start"], mine[-1]["end"]
         run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-ss", f"{a:.3f}", "-t", f"{b - a:.3f}", "-i", Path(work) / "voice.wav",
              "-c:a", "pcm_s16le", Path(voice_dir) / f"{key}.wav"])
+        offsets[key] = [{"text": x["text"], "start": round(x["start"] - a, 3), "end": round(x["end"] - a, 3)} for x in mine]
+    save(Path(voice_dir) / "sentences.json", offsets)   # E307: each line's sentences, seconds from the cut's start
 
 
 def sources(plan, episodes=EPISODES):
@@ -570,20 +573,22 @@ def render_beat(still, audio, out, motion, card=None):
 def render_beats(key, k, voice_dir, out, card=None):
     """A v2 Keeper segment: its beats rendered one by one and joined (same encoder settings, stream copy).
     Returns the seconds of our spoken lines (the no_padding and original-share measures)."""
-    parts, spoken = [], 0.0
+    parts, spoken, starts, t = [], 0.0, {}, 0.0
     for j, (i, b) in enumerate(zip(beat_ids(key, k), k["beats"])):
         wav = Path(voice_dir or "") / f"{i}.wav"
         if not wav.is_file():
             raise SystemExit(f"VOICE_LINE_MISSING {i} (compilation_long.py voice-cut first)")
         part = Path(f"{Path(out).with_suffix('')}.{j:02d}.mp4")
         spoken += render_beat(ROOT / b["still"]["path"], wav, part, b["motion"], card if j == 0 else None)
+        starts[i] = round(t + BEAT, 3)   # E307: where this beat's line starts inside the segment
+        t += duration(part)
         parts.append(part)
     lst = Path(f"{Path(out).with_suffix('')}.txt")
     lst.write_text("".join(f"file '{p.resolve()}'\n" for p in parts))
     run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", lst, "-c", "copy", out])
     for p in parts + [lst]:
         p.unlink()
-    return round(spoken, 3), len(parts)
+    return round(spoken, 3), len(parts), starts
 
 
 def render_key(plan, key, voice_dir, out):
@@ -653,7 +658,7 @@ def build(plan_path, src_dir, out_dir, voice_dir=None):
     seg = out / "segments"
     seg.mkdir(exist_ok=True)
     def keeper(kind, name, path, rendered):
-        extra = {"spoken_seconds": rendered[0], "beats": rendered[1]} if isinstance(rendered, tuple) else {}
+        extra = {"spoken_seconds": rendered[0], "beats": rendered[1], "line_starts": rendered[2]} if isinstance(rendered, tuple) else {}
         add(kind, name, path, **extra)
 
     keeper("hook", "hook", seg / "00-hook.mp4", render_key(plan, "hook", voice_dir, seg / "00-hook.mp4"))
@@ -700,10 +705,54 @@ def build(plan_path, src_dir, out_dir, voice_dir=None):
         thumbnail(src_dir / thumb_src["asset"], plan["thumbnail"], out / "thumbnail.jpg")
     sha = sha256(master)
     save(out / "timeline.json", {"output_sha256": sha, "segments": timeline})
+    save(out / "report.json", timed_reference(plan, timeline, sha, voice_dir))
     save(out / "sources.json", verified)
     run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", master, "-vf",
          f"fps=20/{duration(master):.3f},scale=480:270,tile=5x4", "-frames:v", "1", "-q:v", "3", out / "sheet.jpg"])
     print(json.dumps({"output_sha256": sha, "byte_size": master.stat().st_size, "seconds": round(duration(master), 3)}))
+
+
+def source_sentences(source_sha256, root=ROOT):
+    """The timed sentences of a source master from its own build report (composed.sentences), or None."""
+    for f in sorted((Path(root) / "migration/evidence/episodes").glob("*/report-*.json")):
+        try:
+            c = load(f).get("composed") or {}
+        except ValueError:
+            continue
+        if c.get("output_sha256") == source_sha256 and isinstance(c.get("sentences"), list) and c["sentences"]:
+            return c["sentences"]
+    return None
+
+
+def timed_reference(plan, timeline, sha, voice_dir=None, root=ROOT):
+    """E307: the master's own timed script, the shape local_review.reference_for and defect_scan read (composed.sentences
+    of a report bound to output_sha256): every Keeper beat's sentences at their place (the line's start inside its
+    segment + the sentence's offset in the cut line), and each chapter's sentences from its source's build report,
+    shifted to the chapter's start and cut at its end_s. A chapter with no timed source report is listed as untimed."""
+    offsets = load(Path(voice_dir) / "sentences.json") if voice_dir and (Path(voice_dir) / "sentences.json").is_file() else {}
+    sentences, untimed = [], []
+    for r in timeline:
+        if r.get("line_starts"):
+            for i, at in r["line_starts"].items():
+                for x in offsets.get(i, []):
+                    sentences.append({"segment": i, "text": x["text"], "start": round(r["start"] + at + x["start"], 3),
+                                      "end": round(r["start"] + at + x["end"], 3), "speaker": "keeper"})
+                if i not in offsets:
+                    untimed.append(i)
+        elif r["kind"] in ("short", "long"):
+            src = source_sentences(r["source_sha256"], root)
+            if not src:
+                untimed.append(r["name"])
+                continue
+            for x in src:
+                if x.get("start") is None or x.get("end") is None or x["end"] > r["seconds"] - FADE:
+                    continue
+                sentences.append({"segment": r["name"], "text": x["text"], "start": round(r["start"] + x["start"], 3),
+                                  "end": round(r["start"] + x["end"], 3), "speaker": x.get("speaker")})
+        elif r["kind"] in ("hook", "close"):
+            untimed.append(r["name"])
+    return {"version": "compilation-report-v1", "source": "compilation_long.py build",
+            "composed": {"output_sha256": sha, "sentences": sentences, "untimed_segments": untimed}}
 
 
 def qa(plan_path, out_dir):

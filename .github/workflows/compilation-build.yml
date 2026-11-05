@@ -75,6 +75,7 @@ jobs:
             ${{ runner.temp }}/out/qa.json
             ${{ runner.temp }}/out/timeline.json
             ${{ runner.temp }}/out/sources.json
+            ${{ runner.temp }}/out/report.json
           retention-days: 14
       - name: The master and its pilot alias into the release by the file's sha256; inputs and evidence on claude/long-<id>-<run>
         run: |
@@ -90,6 +91,7 @@ jobs:
           cp "$RUNNER_TEMP/out/sheet.jpg" "$d/sheet-$GITHUB_RUN_ID.jpg"
           cp "$RUNNER_TEMP/out/timeline.json" "$d/timeline-$GITHUB_RUN_ID.json"
           cp "$RUNNER_TEMP/out/sources.json" "$d/sources-$GITHUB_RUN_ID.json"
+          cp "$RUNNER_TEMP/out/report.json" "$d/report-$GITHUB_RUN_ID.json"   # E307: the master's timed script (local-review, defect-scan)
           cp "$RUNNER_TEMP/out/thumbnail.jpg" "$d/thumbnail-$GITHUB_RUN_ID.jpg"
           python3 -I -c "import json,sys;r=json.load(open(sys.argv[1]));r.update(release_asset=sys.argv[2],run_id=sys.argv[3]);open(sys.argv[4],'w').write(json.dumps(r,indent=1)+'\n')" \
             "$RUNNER_TEMP/build.json" "bible-$ep-sha256-$sha.mp4" "$GITHUB_RUN_ID" "$d/build-$GITHUB_RUN_ID.json"

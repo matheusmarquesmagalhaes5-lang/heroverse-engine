@@ -5187,6 +5187,57 @@
      "instrument"
     ]
    }
+  },
+  {
+   "id": "E307",
+   "date": "2026-11-05",
+   "class": [
+    "instrument"
+   ],
+   "prior": [
+    "E120",
+    "E131",
+    "E137",
+    "E139",
+    "E148",
+    "E152",
+    "E166",
+    "E169",
+    "E185",
+    "E186",
+    "E231",
+    "E233",
+    "E238",
+    "E253",
+    "E255",
+    "E262",
+    "E266",
+    "E267",
+    "E273",
+    "E275",
+    "E279",
+    "E280",
+    "E281",
+    "E282",
+    "E283",
+    "E284",
+    "E285",
+    "E286",
+    "E289",
+    "E299",
+    "E300",
+    "E302",
+    "E306"
+   ],
+   "error": "defect-scan.yml run 42108324536 on the Genesis Part 1 compilation master c6fb23ae... stopped at NO_SCRIPT_REFERENCE: defect_scan (and local_review's script comparison) read the master's timed script from a build report (composed.sentences bound to output_sha256), which episode builds write but compilation-build never did, so no compilation could be scanned against its words.",
+   "fix": "compilation_long.py build writes out/report.json (compilation-report-v1): every Keeper beat's sentences at their real place (voice-cut records each line's sentence offsets; render_beats records where each line starts), and each chapter's sentences from its source master's own build report, shifted to the chapter and cut at its end; a chapter with no timed source report is listed in untimed_segments, never invented. compilation-build.yml commits it as evidence/episodes/<id>/report-<run>.json, where local-review and defect-scan already look. No gate or detector changed.",
+   "antidote": {
+    "file": "migration/production/bible/test_compilation_long.py",
+    "contains": "def test_e307_the_build_writes_the_masters_timed_script_for_local_review_and_defect_scan",
+    "covers": [
+     "instrument"
+    ]
+   }
   }
  ]
 }
