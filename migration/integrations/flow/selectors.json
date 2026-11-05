@@ -1,0 +1,22 @@
+{
+ "_note": "Google Flow page elements, by role and visible text (English UI). Not yet calibrated on the live logged-in page: run `runner.py probe` after the owner's first login and fix this file by PR. Never add a selector for a purchase, trial or upgrade button.",
+ "flow_url": "https://labs.google/fx/tools/flow",
+ "new_project": ["button:has-text('New project')", "a:has-text('New project')", "[aria-label*='New project' i]"],
+ "account_button": ["button[aria-label*='Google Account' i]", "button[aria-label*='account' i]", "button:has(img[alt*='profile' i])", "button:has(img[alt*='avatar' i])"],
+ "credits_text": ["text=/\\d+\\s*(AI\\s+)?credits?/i"],
+ "prompt_box": ["textarea", "div[contenteditable='true'][role='textbox']", "[role='textbox']"],
+ "settings_button": ["button[aria-label*='Settings' i]", "button:has-text('tune')", "button[aria-label*='Options' i]"],
+ "model_menu": ["button:has-text('Veo')", "button:has-text('Model')", "[role='combobox']:has-text('Veo')", "[role='combobox']:has-text('Omni')"],
+ "option": ["[role='option']", "[role='menuitem']", "[role='menuitemradio']", "li"],
+ "outputs_menu": ["button:has-text('Outputs per prompt')", "[role='combobox']:has-text('Outputs')", "button:has-text('Outputs')"],
+ "aspect_menu": ["button:has-text('Aspect')", "[role='combobox']:has-text('Aspect')", "button:has-text('Landscape')", "button:has-text('Portrait')"],
+ "mode_menu": ["button:has-text('Text to Video')", "button:has-text('Ingredients to Video')", "button:has-text('Frames to Video')", "[role='combobox']:has-text('to Video')"],
+ "mode_labels": {"text": "Text to Video", "ingredients": "Ingredients to Video", "frames": "Frames to Video"},
+ "aspect_labels": {"16:9": ["16:9", "Landscape"], "9:16": ["9:16", "Portrait"]},
+ "file_input": ["input[type='file']"],
+ "generate": ["button[aria-label*='Create' i]", "button[aria-label*='Generate' i]", "button:has-text('arrow_forward')", "button:has-text('Generate')"],
+ "video": ["video"],
+ "progress": ["text=/\\b\\d{1,3}%/", "[role='progressbar']"],
+ "failed_text": ["failed to generate", "couldn't generate", "could not generate", "generation failed", "something went wrong", "might violate", "violates our"],
+ "welcome_text": ["terms of service", "i agree", "get started", "welcome to flow"]
+}
