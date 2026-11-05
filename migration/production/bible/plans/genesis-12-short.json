@@ -59,7 +59,7 @@
   },
   {
    "kind": "story",
-   "text": "Fire, clay and black tar. Thousands of hands, one voice, one purpose. And then the purpose turned."
+   "text": "Fire, clay and black tar. Thousands of hands, one voice, one purpose. Day after day the walls climbed higher over the plain. And then the purpose turned."
   },
   {
    "kind": "scripture",
@@ -77,7 +77,7 @@
   },
   {
    "kind": "story",
-   "text": "Came down. A tower meant to reach heaven, and God had to come down just to see it."
+   "text": "Came down. A tower meant to reach heaven, and God had to come down just to see it. From where He sits, their greatest work was very small."
   },
   {
    "kind": "scripture",
@@ -190,7 +190,7 @@
    "lines": [
     4
    ],
-   "seconds": 9,
+   "seconds": 12,
    "characters": [],
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium shot, slow push-in. A line of workers passing fired bricks hand to hand beside a pot of steaming black pitch, a tall wall of brick rising behind them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Warm low firelight. Driven, with a hint of unease. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
    "first_frame": "genesis-12-short-s-hands",
@@ -238,7 +238,7 @@
    "lines": [
     8
    ],
-   "seconds": 9,
+   "seconds": 12,
    "characters": [],
    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Wide shot, slow tilt up. The unfinished top terrace of the tall brick tower against huge dark storm clouds gathering above it, a few tiny workers frozen at its edge looking up, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Heavy grey light, wind. Humbled. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
    "first_frame": "genesis-12-short-s-top",
