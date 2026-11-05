@@ -128,16 +128,16 @@
    "at": "2026-11-05T07:16:08.727867+00:00"
   },
   "bible:flood-ends-leaf-cut:b1ab37e9f698ae5d42e7e60bcfae5b0508457e1b8535fa3580e8fe76c257a448": {
-   "status": "FAILED",
-   "fail_reason": "Invalid post: Video could not be read from its URL.",
+   "status": "QUEUED",
+   "buffer_post_id": "6aeca509371bed9cfa70ea66",
+   "buffer_status": "sending",
    "youtube_video_id": "IDL92dFIK2Y",
-   "at": "2026-11-05T14:20:05.668496+00:00",
-   "failures": 1
+   "at": "2026-11-05T15:47:18.589197+00:00"
   },
   "bible:flood-ends-remembered-cut:0518460174ca6976bc7d5f76b3d0f4ce7a4f45af4ae609b03e3794551f329813": {
-   "status": "QUEUED",
+   "status": "SENT",
    "buffer_post_id": "6aec9e71a7861b50b12e3291",
-   "buffer_status": "sending",
+   "buffer_status": "sent",
    "youtube_video_id": "dnrv9m2ZDhE",
    "at": "2026-11-05T15:19:09.495201+00:00"
   }
