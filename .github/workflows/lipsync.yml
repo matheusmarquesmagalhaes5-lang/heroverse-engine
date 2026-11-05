@@ -78,6 +78,7 @@ jobs:
           bash migration/ci/pinned_asset.sh fetch "syncnet_v2-$sha.model" "$sha" "$RUNNER_TEMP/syncnet_v2.model" "$(python3 -I -c "import re,sys;print(re.search(r'SYNCNET_URL = \"(https://[^\"]+)\"',open(sys.argv[1]).read()).group(1))" migration/production/bible/syncnet.py)"
       - name: Source gate (the silent clip is still-mouth and frontal) and the cut inputs
         run: |
+          set -euo pipefail
           echo "T0=$(date +%s)" >> "$GITHUB_ENV"
           "$RUNNER_TEMP/lip/bin/python" -I -B migration/production/bible/keeper_lipsync.py prepare "$W/clip.mp4" "$W/line.wav" "$RUNNER_TEMP/face_landmarker.task" "$W" --tail "$TAIL" | tee "$RUNNER_TEMP/out/prepare.json"
       - name: MuseTalk at the pinned commit, CPU python environment (3.10, torch 2.0.1 cpu, mmcv 2.0.1 cpu wheels)
