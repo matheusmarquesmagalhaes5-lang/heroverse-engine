@@ -126,6 +126,13 @@
    "buffer_status": "sent",
    "youtube_video_id": "JlKX5Tw3kjM",
    "at": "2026-11-05T07:16:08.727867+00:00"
+  },
+  "bible:flood-ends-leaf-cut:b1ab37e9f698ae5d42e7e60bcfae5b0508457e1b8535fa3580e8fe76c257a448": {
+   "status": "FAILED",
+   "fail_reason": "Invalid post: Video could not be read from its URL.",
+   "youtube_video_id": "IDL92dFIK2Y",
+   "at": "2026-11-05T14:20:05.668496+00:00",
+   "failures": 1
   }
  },
  "buffer_channel_id": "6ade2e0f2f1f5ed648cab8f0"
