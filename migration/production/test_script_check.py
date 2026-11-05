@@ -424,11 +424,15 @@ class StoryStructure(unittest.TestCase):
         self.assertEqual(g["cold_open_s"], beats["cold_open"]["at_s"][1])
         self.assertEqual(g["climax_at"], beats["climax"]["at"])
 
-    def test_length_outside_14_18_fails(self):
-        short = self.segs(lambda x: dict(x, text="word " * 150) if x["id"].startswith("chapter-") else x)
-        self.assertTrue(any(p.startswith("STORY_LENGTH") for p in sc.structure_problems(structured_story(segments=short))))
-        long_ = self.segs(lambda x: dict(x, text="word " * 420) if x["id"].startswith("chapter-") else x)
-        self.assertTrue(any(p.startswith("STORY_LENGTH") for p in sc.structure_problems(structured_story(segments=long_))))
+    def test_a_long_has_no_length_minimum_or_maximum(self):
+        # owner 2026-11-05 ("Nem mínimo, nem limite"): the old 14-18 min band refuses neither of these any more
+        for n in (150, 420, 900):
+            segs = self.segs(lambda x: dict(x, text="word " * n) if x["id"].startswith("chapter-") else x)
+            self.assertFalse(any(p.startswith("STORY_LENGTH") for p in sc.structure_problems(structured_story(segments=segs))))
+        # only YouTube's own upload limit stays
+        self.assertTrue(sc.long_length_ok(900) and sc.long_length_ok(1500) and sc.long_length_ok(12 * 3600))
+        self.assertFalse(sc.long_length_ok(12 * 3600 + 1) or sc.long_length_ok(0))
+        self.assertFalse(sc.long_length_ok(540, 601))   # a frozen story QA's own floor is kept
 
     def test_cold_open_without_a_spoken_conflict_fails(self):
         for change in (lambda x: {k: v for k, v in x.items() if k != "conflict"},
@@ -495,7 +499,7 @@ class StoryStructure(unittest.TestCase):
             s.update(story_script(footage=[]))
         with tempfile.TemporaryDirectory() as t:
             problems = sc.check(make(t, to_story))[0]
-        for row in ("STORY_LENGTH", "STORY_COLD_OPEN_CONFLICT", "STORY_KEEPER_MISSING", "STORY_REHOOKS",
+        for row in ("STORY_COLD_OPEN_CONFLICT", "STORY_KEEPER_MISSING", "STORY_REHOOKS",
                     "STORY_CLIMAX_COUNT", "STORY_BURNED_CAPTIONS"):
             self.assertTrue(any(p.startswith(row) for p in problems), (row, problems))
         self.assertFalse([p for p in problems if p.startswith("LENGTH ")], problems)   # one length rule per format

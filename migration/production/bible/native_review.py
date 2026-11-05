@@ -117,7 +117,7 @@ def inputs():
     cuts = re.fullmatch(r'migration/production/bible/(cuts|reflections)/[a-z0-9-]+\.json', i['plan'])   # E259: a Short cut; the Keeper reflection Short
     require(compilation or cuts or re.fullmatch(r'migration/production/bible/plans/[a-z0-9-]+\.json', i['plan']),
             'PLAN_INVALID')
-    compilation = compilation or track_for(i['plan']) == 'buzzy-long'   # E259: a 8-12 min 16:9 long
+    compilation = compilation or track_for(i['plan']) == 'buzzy-long'   # E259: a 16:9 long (any length, owner 2026-11-05)
     require(re.fullmatch(r'[0-9a-f]{64}', i['sha256']), 'HASH_INVALID')
     require(i['owner_review_authorized'] == 'true', 'OWNER_DESIGNATION_REQUIRED')
     require(str(i['byte_size']).isdigit() and 0 < int(i['byte_size'])

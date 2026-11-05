@@ -34,7 +34,7 @@ chapter's title is that Short's title.
 | keeper_close <= 30 s | The Keeper is last, with a comment question and the next story | KEEPER_CLOSE_LENGTH, KEEPER_MUST_CLOSE, CLOSE_NO_QUESTION, CLOSE_NO_NEXT | gate.keeper_close_max_s |
 | Keeper <= 25 % | Keeper shots appear only in the three Keeper beats | KEEPER_SHARE, KEEPER_OUT_OF_BEAT | gate.keeper_share_max |
 | slow stretches and establishing share | The structure bounds voice/visual runs; the selected profile supplies its actual establishing-share limit | SLOW_STRETCH, ESTABLISHING_SHARE | gate.slow_stretch_max_s; selected grammar.establishing_share_max |
-| one complete story, 14-18 min | The estimate: each line at its voice's measured Kokoro pace (VOICE_PACE), 0.6 s between lines (LONG_LINE_GAP) | LONG_LENGTH | gate.length_min |
+| one complete story, any length (owner 2026-11-05: no minimum or maximum; never padded) | The estimate: each line at its voice's measured Kokoro pace (VOICE_PACE), 0.6 s between lines (LONG_LINE_GAP), refused only under the frozen story QA's `duration_seconds_min` or over YouTube's 12 h | LONG_LENGTH | frozen QA technical.duration_seconds_min |
 | no burned captions | `burned_captions: false`, with the .srt track (QA v2/v3) | BURNED_CAPTIONS | gate.burned_captions |
 | 16:9 | `aspect_ratio: "16:9"`, inspected on the actual source and final crop | ASPECT_RATIO | gate.aspect_ratio |
 

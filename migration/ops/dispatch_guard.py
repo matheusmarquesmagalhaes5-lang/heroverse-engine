@@ -265,7 +265,7 @@ def native_review(i):
     else:
         plan = _plan(i)
         need(plan.get("version") == "bible-plan-v2", "plan", i.get("plan"), "a Bible Short plan")
-        limit = 600_000_000 if plan.get("track") == "buzzy-long" else 150_000_000   # E259: the 8-12 min long
+        limit = 600_000_000 if plan.get("track") == "buzzy-long" else 150_000_000   # E259: the long-first long (any length, owner 2026-11-05)
     need(re.fullmatch(r"[0-9a-f]{64}", i.get("sha256", "")), "sha256", i.get("sha256"), "exact master SHA256")
     need(i.get("owner_review_authorized") in (True, "true"), "owner_review_authorized", "[boolean]", "explicit designation")
     need(str(i.get("byte_size", "")).isdigit() and 0 < int(i["byte_size"]) <= limit, "byte_size", i.get("byte_size"), "bounded exact bytes")

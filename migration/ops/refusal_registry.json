@@ -383,7 +383,7 @@
   "DURATION_UNDER_QA": {
    "class": "A",
    "early": "migration/production/bible/episode_build.py::LONG_LENGTH",
-   "note": "review of #470: story QA v3 duration_seconds_min 601 s; the long's gate (14-18 min) is measured on the voice by the preflight's lines step (LONG_LENGTH), and the assembly checks the floor again before the render and on the file"
+   "note": "review of #470: story QA v3 duration_seconds_min 601 s; that floor is measured on the voice by the preflight's lines step (LONG_LENGTH), and the assembly checks the floor again before the render and on the file"
   },
   "ENGINE_INVALID": {
    "class": "A",
@@ -986,7 +986,7 @@
   },
   "LONG_LENGTH": {
    "class": "C",
-   "probe": "episode_preflight --voice on the long (E127): the pinned Kokoro voiced locally and episode_build lines laid out at LONG_LINE_GAP against the structure's gate (0 Actions, 0 credits); the same rule is predicted on the estimate by long_plan_check (LONG_LENGTH)"
+   "probe": "episode_preflight --voice on the long (E127): the pinned Kokoro voiced locally and episode_build lines laid out at LONG_LINE_GAP against the frozen story QA's duration_seconds_min and YouTube's 12 h limit (owner 2026-11-05: no band of its own) (0 Actions, 0 credits); the same rule is predicted on the estimate by long_plan_check (LONG_LENGTH)"
   },
   "LONG_NOT_PUBLIC": {
    "class": "D",
@@ -2788,10 +2788,6 @@
    "class": "A",
    "early": "migration/production/bible/episode_preflight.py::plan_check.publish_episode.problems(episode, video)",
    "note": "E259: Short cut of a long-first long; check-record (episode_build.py -> publish_episode.problems) refuses it before publish-episode.yml is dispatched, the same function runs again at upload; short_cuts.py check refuses the range before any render"
-  },
-  "LONG_FIRST_LENGTH": {
-   "class": "C",
-   "probe": "episode_preflight --voice: the pinned Kokoro voiced locally and episode_build lines run on it (0 Actions, 0 credits); the same rule is predicted on the estimate by plan_check (episode_build.predict); E259 long-first band 480-720 s"
   },
   "FRAME_REFUSED": {
    "class": "I",

@@ -189,7 +189,8 @@ def story_structure_rows(d, script, manifest, timeline, qa, package, schedule):
         chapter_ends.append(bool(segments) and segments[-1].get("rehook") is True)
     rows.append(row("story_inputs_bound", script.get("archetype") == "bible-story-long",
                     binding["source_plan"], "structure"))
-    rows.append(row("story_measured_length", g["length_min"][0] <= total / 60 <= g["length_min"][1], total, "structure"))
+    # owner 2026-11-05: a long has no length minimum or maximum (script_check.long_length_ok: YouTube's limit only)
+    rows.append(row("story_measured_length", 0 < total <= 12 * 3600, total, "structure"))
     rows.append(row("story_cold_open_conflict", checks.get("first_shot_cold_open"),
                     {"first_word": (qa.get("measurements") or {}).get("first_word_seconds")}, "structure"))
     rows.append(row("story_keeper_present_and_limited", bool(keeper) and share <= g["keeper_share_max"]

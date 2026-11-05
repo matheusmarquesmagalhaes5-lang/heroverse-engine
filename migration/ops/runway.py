@@ -6,7 +6,7 @@ An overdue arc remains visible until its upload is recorded. A production tree w
 LONG_EVERY/FIRST_STORY_LONG cadence. Only a Bible-story long counts (script archetype bible-story-long,
 render_queue.story_pilot); a prayer pilot never fills a slot, and its retired slots (00:00 and 10:00 every day) are not
 slots any more. A story script counts as written only when it follows its registered structure
-(structures/bible-story-long.json via the full script_check, structure_problems included: 14-18 min, the conflict spoken in the cold open,
+(structures/bible-story-long.json via the full script_check, structure_problems included: any length (owner 2026-11-05), the conflict spoken in the cold open,
 >= 6 re-hooks, the climax at 0.6-0.85, the Keeper <= 25 % and never in the cold open, no burned captions).
 
 For every named arc due by the next DAYS days, report its recorded stage and alert when a stage is late:

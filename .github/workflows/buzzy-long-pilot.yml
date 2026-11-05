@@ -2,7 +2,7 @@ name: HeroVerse long-first pilot (the built 16:9 long -> QA and publication inpu
 run-name: "buzzy-long-pilot: plan=${{ inputs.plan }} report=${{ inputs.report }}"
 # E259 (owner, 2026-11-01): a long-first long (plan track buzzy-long) is built by episode.yml; its record job puts the
 # master and the caption-free master in the release and the report on claude/episode-<id>-<run>. Once that report is on
-# main, this downloads the master by the report's sha256, measures it (buzzy-long-qa-criteria-v1), writes the pilot's
+# main, this downloads the master by the report's sha256, measures it (buzzy-long-qa-criteria-v2), writes the pilot's
 # publication inputs and puts the master under its pilot alias. No provider call, no secret, no review, no approval:
 # approve.yml -> prepublish_gate.py -> publish.yml stay the only route, on the defect-gated buzzy-long track.
 on:
@@ -55,7 +55,7 @@ jobs:
           [[ "$asset" =~ ^bible-[a-z0-9-]+-sha256-[0-9a-f]{64}\.mp4$ ]] || { echo "ASSET_REFUSED"; exit 1; }
           bash migration/ci/assets.sh download --repo "$GITHUB_REPOSITORY" --pattern "$asset" -O "$RUNNER_TEMP/master.mp4" --clobber
           echo "$sha  $RUNNER_TEMP/master.mp4" | sha256sum -c -
-      - name: Measure (buzzy-long-qa-criteria-v1) and materialize the pilot's publication inputs
+      - name: Measure (buzzy-long-qa-criteria-v2) and materialize the pilot's publication inputs
         run: |
           python3 -I -B migration/production/bible/buzzy_long.py qa "$PLAN" "$REPORT" "$RUNNER_TEMP/master.mp4" "$RUNNER_TEMP/out" || true
           python3 -I -B migration/production/bible/buzzy_long.py materialize "$PLAN" "$REPORT" "$RUNNER_TEMP/master.mp4" "$RUNNER_TEMP/out"

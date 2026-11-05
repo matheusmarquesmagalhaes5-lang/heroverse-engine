@@ -97,7 +97,7 @@ def main(pilot_dir):
             compilation_long.verify(d)
         except (OSError, ValueError, KeyError, TypeError, SystemExit):
             problems.append('COMPILATION_HANDOFF_INVALID')
-    elif isinstance(docs[0], dict) and docs[0].get('criteria_version') == canonical_gate.BUZZY_LONG:   # E259
+    elif isinstance(docs[0], dict) and docs[0].get('criteria_version') in canonical_gate.BUZZY_LONG_VERSIONS:   # E259
         sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'production/bible'))
         import buzzy_long
         try:

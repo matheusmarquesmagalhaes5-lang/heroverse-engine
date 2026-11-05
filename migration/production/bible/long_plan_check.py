@@ -19,8 +19,8 @@ Every number comes from one place: the structure's `script.gate` (structures/bib
 script_check.structure_problems reads for the long's script) and the frozen story QA the long is measured against
 (qa_criteria_story_v3.json, sha256 pinned here). Rules, each mapped to its source:
 - the estimate: each line at its voice's measured Kokoro pace (VOICE_PACE), LONG_LINE_GAP 0.6 s between lines.
-- gate.aspect_ratio 16:9 (ASPECT_RATIO); gate.burned_captions false (BURNED_CAPTIONS); gate.length_min 14-18 min
-  on the estimate (LONG_LENGTH); one chapter per Short of the arc, in arcs.json order (else ARC_SHORTS, an owner row).
+- gate.aspect_ratio 16:9 (ASPECT_RATIO); gate.burned_captions false (BURNED_CAPTIONS); no length band of its own
+  (owner 2026-11-05: only the frozen story QA's duration_seconds_min and YouTube's 12 h upload limit, LONG_LENGTH); one chapter per Short of the arc, in arcs.json order (else ARC_SHORTS, an owner row).
 - cold open (gate.cold_open_s 30, keeper_in_cold_open false): the first shot is a scene whose spoken line starts at
   0 s (OPEN_NOT_SPOKEN), a character or God speaks the conflict inside 30 s (`conflict: true`, COLD_OPEN_CONFLICT),
   no Keeper shot starts inside it (KEEPER_IN_COLD_OPEN), its words end by 30 s whatever follows (COLD_OPEN_LENGTH)
@@ -616,9 +616,10 @@ def check(plan, chars=None, gate_values=None, criteria=None, arc_table=None):
     presence = sum(est) / total
     if presence < sp["speech_presence_min"]:
         problems.append(f"SPEECH_PRESENCE_EST {presence:.3f} < {sp['speech_presence_min']} (story QA)")
-    lo_m, hi_m = g["length_min"]
-    if not lo_m <= total / 60 <= hi_m:
-        problems.append(f"LONG_LENGTH {total / 60:.1f} min outside {lo_m}-{hi_m} (bible-story-long gate)")
+    floor = (q.get("technical") or {}).get("duration_seconds_min")   # the frozen story QA's own floor (601 s)
+    if not script_check.long_length_ok(total, floor):   # owner 2026-11-05: no other length minimum or maximum
+        problems.append(f"LONG_LENGTH {total / 60:.1f} min (frozen story QA floor {floor} s; at most YouTube's "
+                        f"{script_check.YOUTUBE_MAX_SECONDS // 3600} h)")
 
     # the frozen QA's acted-long rows: v3 checks them; an older version's are the owner's (pending), never decided here
     gr = q["grammar"]

@@ -59,7 +59,10 @@ FROZEN_CRITERIA_SHA256 = {"pilot-qa-criteria-v2": "49fedd2e5ebf525e38dab1e513512
                           # share of new Keeper runtime; v1 stays frozen and unchanged
                           "compilation-qa-criteria-v2": "2ecd320b5223084d1bcea39e0027dddd7b7596f535446a2c68464417d8302103",
                           # owner, 2026-11-01 (E259): the long-first 16:9 story long (plan track buzzy-long), defect-gated
-                          "buzzy-long-qa-criteria-v1": "ce5c05e29cf697782efb59a4bdfadb2d09dc035a727ee24e505403706843831a"}
+                          "buzzy-long-qa-criteria-v1": "ce5c05e29cf697782efb59a4bdfadb2d09dc035a727ee24e505403706843831a",
+                          # owner, 2026-11-05 ("longo não tem limite de tempo"): v1 without its 8-12 min length row;
+                          # v1 stays frozen and unchanged for the pilots measured by it
+                          "buzzy-long-qa-criteria-v2": "d7315624627260e9b0818cc27e26160e0e6c8c1a5d2bfeca51f2c40e1b81a0dc"}
 CRITERIA_V3 = Path(__file__).resolve().parents[1] / "production" / "qa_criteria_v3.json"
 CRITERIA_FILES = {"pilot-qa-criteria-v3": CRITERIA_V3,
                   "pilot-qa-criteria-v4": Path(__file__).resolve().parents[1] / "production" / "qa_criteria_v4.json",
@@ -74,13 +77,17 @@ CRITERIA_FILES = {"pilot-qa-criteria-v3": CRITERIA_V3,
                   "compilation-qa-criteria-v2": Path(__file__).resolve().parents[1] / "production"
                   / "qa_criteria_compilation_v2.json",
                   "buzzy-long-qa-criteria-v1": Path(__file__).resolve().parents[1] / "production"
-                  / "qa_criteria_buzzy_long_v1.json"}
+                  / "qa_criteria_buzzy_long_v1.json",
+                  "buzzy-long-qa-criteria-v2": Path(__file__).resolve().parents[1] / "production"
+                  / "qa_criteria_buzzy_long_v2.json"}
 COMPILATION = "compilation-qa-criteria-v1"   # E251: its own track; none of the STANDARD/story rows apply to it
 COMPILATION_V2 = "compilation-qa-criteria-v2"   # E306: + Keeper interludes and the original-share row
 COMPILATION_ARCHETYPE = "bible-compilation-long"
-BUZZY_LONG = "buzzy-long-qa-criteria-v1"     # E259: the long-first story long, its own defect-gated track
+BUZZY_LONG_V1 = "buzzy-long-qa-criteria-v1"  # E259: the long-first story long, its own defect-gated track (8-12 min)
+BUZZY_LONG = "buzzy-long-qa-criteria-v2"     # owner 2026-11-05: the same track with no length minimum or maximum
+BUZZY_LONG_VERSIONS = (BUZZY_LONG_V1, BUZZY_LONG)
 BUZZY_LONG_ARCHETYPE = "bible-buzzy-long"
-STANDARD_VERSIONS = tuple(v for v in CRITERIA_FILES if v not in (COMPILATION, COMPILATION_V2, BUZZY_LONG))  # STANDARD.md renders
+STANDARD_VERSIONS = tuple(v for v in CRITERIA_FILES if v not in (COMPILATION, COMPILATION_V2, *BUZZY_LONG_VERSIONS))  # STANDARD.md renders
 PASS_ITEM, PASS_OVERALL = 7, 8  # long_review.py rubric
 # E251: the compilation's dimensions (qa checks of compilation_long.qa; the review is the defect gate below)
 COMPILATION_DIMENSIONS = {
@@ -90,18 +97,22 @@ COMPILATION_DIMENSIONS = {
     "structure": ["canonical_order"]}
 COMPILATION_DIMENSIONS_V2 = {**COMPILATION_DIMENSIONS, "originality": ["original_keeper_share"]}
 COMPILATION_REVIEW_ITEMS = ("designated_reviewer_bound_to_file", "publish_decision", "no_unresolved_a_b_e")
-# E259: the long-first long's dimensions (qa checks of buzzy_long.qa); its review is the same defect gate
+# E259: the long-first long's dimensions (qa checks of buzzy_long.qa); its review is the same defect gate. v2 (owner
+# 2026-11-05): v1's rows without the length row; a long is as long as its story, never padded
 BUZZY_LONG_DIMENSIONS = {
-    "technical": ["full_decode_without_errors", "video_format_1920x1080_30fps", "length_8_to_12_minutes"],
+    "technical": ["full_decode_without_errors", "video_format_1920x1080_30fps"],
     "audio": ["integrated_lufs_band", "true_peak_ceiling"],
     "rights": ["buzzy_shot_in_episode", "music_and_voice_owned"],
     "structure": ["build_report_for_this_file", "caption_free_master_kept", "sentence_timeline_kept"]}
+BUZZY_LONG_V1_DIMENSIONS = {**BUZZY_LONG_DIMENSIONS,
+                            "technical": BUZZY_LONG_DIMENSIONS["technical"] + ["length_8_to_12_minutes"]}
 # criteria version -> (script archetype, qa dimensions, out/review.json track): the defect-gated long tracks. Every
 # other version keeps the 9.5 floor and its own rows.
 DEFECT_TRACKS = {COMPILATION: (COMPILATION_ARCHETYPE, COMPILATION_DIMENSIONS, "compilation"),
                  COMPILATION_V2: (COMPILATION_ARCHETYPE, COMPILATION_DIMENSIONS_V2, "compilation"),
+                 BUZZY_LONG_V1: (BUZZY_LONG_ARCHETYPE, BUZZY_LONG_V1_DIMENSIONS, "buzzy-long"),
                  BUZZY_LONG: (BUZZY_LONG_ARCHETYPE, BUZZY_LONG_DIMENSIONS, "buzzy-long")}
-DEFECT_REVIEW_TRACKS = tuple(t for _, _, t in DEFECT_TRACKS.values())
+DEFECT_REVIEW_TRACKS = tuple(dict.fromkeys(t for _, _, t in DEFECT_TRACKS.values()))
 # the watched review decides only when the designated model answered. Fallback free models score the same file
 # very differently (pilot-003: gemini-3.8-flash audio 9 / picture 8.5 / policy 10; gemini-3.6-flash on a near-identical
 # render 6.8 / 6.7 / 7.0; flash-lite gave 8-10 to four of five pilot-002 Shorts): their answer is UNKNOWN, retried

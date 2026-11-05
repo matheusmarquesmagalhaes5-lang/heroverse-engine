@@ -22,8 +22,9 @@ when short) and republish the private log when the conversation moves.
 - Use ~100% of the weekly Claude usage exactly at the reset (Saturday 19:00 UTC); route work by model (OPERATIONS).
 
 ## Production
-- 1 long a day (13–20 min, "Full Story"/question title, face + name thumbnail) and 4 Shorts a day cut from it,
+- 1 long a day ("Full Story"/question title, face + name thumbnail) and 4 Shorts a day cut from it,
   one of them a Keeper split-screen reflection; no repeated passages across Shorts of one long.
+- longs: no minimum or maximum length (owner 2026-11-05); length follows the story.
 - Pavo: silent acting clips only; all speech is our Kokoro audio over them (2026-11-04).
 - The Keeper (guardião) should speak with lip-sync of our audio, free and good quality (2026-11-05, in progress).
 - Visual source per segment (2026-11-05): the hook, the character-speech moments and the Keeper closing are all Pavo

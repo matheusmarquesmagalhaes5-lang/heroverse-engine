@@ -855,3 +855,17 @@ approves and no score is copied to other media.
 - Owner, 2026-11-05, verbatim, after being told the risks: "quero tudo no automatico.. faça um MCP não oficial.. use meu computador e faça."
 - Risks he accepted: Google's terms forbid automated use and the penalty can reach suspension of his Google account, the same account as YouTube; a Flow account was publicly reported blocked after an automated agent used it; commercial use on the free plan is a grey area.
 - Decision: `integrations/flow/` runner + MCP `heroverse-flow` on his PC, in its own Chrome profile (his everyday Chrome untouched), signed in once by the owner. Free daily credits only, at most 4 generations a day, a fresh UI quote before each, no retry of an uncertain submission, 24 h stop on any challenge/limit/login/2FA page, no evasion of any kind. Prompts follow the silent-clip standard; clips enter production only through approve-shot.
+
+## 2026-11-05 — Longs have no length limit (owner order)
+- Owner, 2026-11-05, verbatim: "Não, longo não tem limite de tempo não. Nem mínimo, nem limite."
+- Decision: longs have no minimum and no maximum length; the length follows the story. A long is as long as its story
+  needs and is never padded: the hold, pace, speech-presence, KJV, emotion and structure checks are unchanged.
+- Long-first (buzzy-long): new frozen criteria `buzzy-long-qa-criteria-v2` (`qa_criteria_buzzy_long_v2.json`) is v1 with
+  only the length row (`length_8_to_12_minutes`, 480-720 s) removed; every other row is identical. New builds are
+  measured by v2 (`buzzy_long.py`, `prepublish_gate.py`); v1 stays frozen and byte-identical for pilot-017/020.
+  `episode_build` no longer refuses a long-first long by length (LONG_FIRST_LENGTH retired).
+- Story long (bible-long-plan-v1): the structure's mined 14-18 min band is data only (long_plan_check, episode_build,
+  script_check, three_stage, long_review). The frozen story QA files (v1-v5, 601 s floor) are not edited; their own
+  floor still applies to a long measured by them. The only other bound is YouTube's 12 h upload limit.
+- Shorts keep their bands unchanged. This supersedes the length lines of "Long length and cadence" (13-20 min, floor
+  13:00) and of "Long-first" (about 8-12 minutes).
