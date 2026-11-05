@@ -39,7 +39,7 @@ import flow_core as core  # noqa: E402
 DATA = Path(os.environ.get("FLOW_DATA", r"C:\HeroVerse\flow"))
 LEDGER = DATA / "ledger.json"
 PROFILE = Path(os.environ.get("FLOW_PROFILE") or HERE / "profile")
-LOG = HERE / "logs" / "runner.log"
+LOG = DATA / "logs" / "runner.log"
 LOCK = HERE / "runner.lock"
 SEL = json.loads((HERE / "selectors.json").read_text(encoding="utf-8"))
 SESSION_COOKIES = {"SID", "__Secure-1PSID", "__Secure-3PSID"}      # names only
@@ -57,7 +57,7 @@ class Stop(Exception):
 
 
 def log(msg):
-    LOG.parent.mkdir(exist_ok=True)
+    LOG.parent.mkdir(parents=True, exist_ok=True)
     line = f"{core.iso(core.now_utc())} {msg}"
     with LOG.open("a", encoding="utf-8") as f:
         f.write(line + "\n")
