@@ -1,0 +1,16 @@
+{
+ "date": "2026-11-05",
+ "executor": "Claude Code (cloud session) through Desktop Commander on the owner's PC \"Matheus\"",
+ "runner_commit": "105d5266",
+ "steps": [
+  {"step": "install", "result": "C:\\HeroVerse\\flow-runner, venv Python 3.13.17, playwright 1.64.1, mcp 2.3.0; MCP heroverse-flow added to the PC's Claude Code user config"},
+  {"step": "tests on the PC", "result": "test_flow_core + test_stdio: 29 ran, OK (1 repository-only parity test skipped)"},
+  {"step": "flow_status", "result": "NOT_LOGGED_IN: the runner's own Chrome profile has never been signed in", "credits_left": null},
+  {"step": "flow_quote", "result": "not run: needs the signed-in profile"},
+  {"step": "flow_generate", "result": "not run: needs a quote and free credits read from the signed-in UI"}
+ ],
+ "credits_spent": 0,
+ "stopped_because": "The dedicated automation profile needs the owner's one-time Google sign-in (and his acceptance of Flow's welcome screen). Scripts never type credentials.",
+ "owner_action": "C:\\HeroVerse\\flow-runner\\.venv\\Scripts\\python.exe C:\\HeroVerse\\flow-runner\\runner.py login",
+ "next": "runner.py probe (calibrate selectors.json), then status -> quote -> one veo-3.1-lite 8 s 720p silent Keeper clip (<=10 credits) -> job -> download -> audio/mouth check -> export ledger"
+}

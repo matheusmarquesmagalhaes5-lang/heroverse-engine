@@ -54,3 +54,4 @@ when short) and republish the private log when the conversation moves.
 ## Accounts and spending
 - No new spending. Ads and the digital product on hold. Buffer free mirror only for public Shorts.
 - Gemini free tier may see unpublished masters (accepted 2026-11-04).
+- Google Flow unofficial route accepted by owner 2026-11-05 with the account risk; free credits only.
