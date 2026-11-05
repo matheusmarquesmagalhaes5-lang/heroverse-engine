@@ -181,6 +181,23 @@
    "role": "an original anonymous brick-maker of the plain of Shinar who speaks the builders' KJV words (Genesis 11:3-4); never a named biblical person",
    "note": "Black hair tied back, a thin moustache with a stubbled chin and a lean build keep him apart from Cain (cropped curls, close beard, heavy build), Noah (bare grey head, long beard) and the Keeper (hood, silver beard). Period dress of Shinar: plain undyed linen, no metal, no jewellery. Voice bm_lewis, pace measured by voice-pace.yml.",
    "reviewed": "2026-11-03: front (ChatGPT desktop route, one image, first generation) kept as the one face of the builder: see images/ch-builder-front.json for what was viewed. Single reference; the Pavo shots take it as Image 1."
+  },
+  "abram": {
+   "name": "Abram",
+   "first_story": "Genesis 12 (abraham-call-long)",
+   "status": "DRAFT",
+   "seed": 8001,
+   "look": "a tall lean man of about seventy-five with Middle Eastern features, deep-bronzed skin lined by sun and wind, a high forehead, steady dark brown eyes under heavy grey brows, a long full salt-and-pepper beard, long grey hair under a pale undyed linen head cloth bound with a plain dark brown cord",
+   "wardrobe": {
+    "journey": "a long striped brown-and-cream wool cloak over a plain undyed linen tunic, a worn wooden shepherd's staff in one hand",
+    "camp": "a plain undyed linen tunic with a woven brown belt, the striped brown-and-cream wool cloak loose on his shoulders"
+   },
+   "refs": [],
+   "voice": "am_echo",
+   "pronoun": "his",
+   "role": "Abram (Genesis 11:26-17:5; Abraham from Genesis 17:5), the man God called out of Haran; he speaks only his KJV words (Genesis 12:11-13, 13:8-9, 14:22-24, 15:2-3) in silent Pavo clips with our Kokoro line over them",
+   "note": "A pale linen head cloth bound with a dark cord, a salt-and-pepper beard and a striped brown-and-cream cloak keep him apart from the Keeper (brown hood, silver-white beard), Noah (bald crown, dark iron-grey beard, plain brown robe with a rope), Enoch (black hair, cream robe, blue shawl) and the builder (young, tied-back black hair). Voice am_echo (unused by any other speaker); its Kokoro pace is measured by voice-pace.yml before his first line.",
+   "reviewed": "DRAFT (2026-11-05): reference prompts written for abraham-call-long (images.json ch-abram-*); one front reference by the ChatGPT desktop route (chat 'HeroVerse - stills') or cf-images.yml, then Claude's review of the actual image sets APPROVED with the kept refs, by PR."
   }
  },
  "god": {
