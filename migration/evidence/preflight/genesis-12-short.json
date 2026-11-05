@@ -1,7 +1,7 @@
 {
  "plan": "migration/production/bible/plans/genesis-12-short.json",
  "episode": "genesis-12-short",
- "checked_at": "2026-11-05T22:15:44Z",
+ "checked_at": "2026-11-05T22:27:08Z",
  "plan_check": {
   "problems": [],
   "pending": [],
@@ -42,7 +42,7 @@
  "voice": {
   "ran": true,
   "reused": false,
-  "checkpoint_sha256": "16094c8f0f5e5f572cf77f6077ad48893fecfc0d56d2fd74efb906994be65f77",
+  "checkpoint_sha256": "80359e59fbad182201c709bd3ae83fa5bd1c09890bea91e35251d73a1efa5a0e",
   "problems": [],
   "pace": {
    "god": [
@@ -50,11 +50,11 @@
    ],
    "narration": [
     2.9,
-    3.09,
+    3.11,
     3.12,
     3.15,
     2.4,
-    3.35,
+    3.34,
     2.8,
     3.3,
     2.84,
@@ -65,15 +65,15 @@
     3.19,
     2.59,
     2.94,
-    2.99,
-    2.63,
+    2.98,
+    2.62,
     2.14
    ]
   },
   "measured": {
-   "total": 172.201,
+   "total": 172.286,
    "keeper_share": 0.117,
-   "lesson_share": 0.121,
+   "lesson_share": 0.122,
    "retimed": {}
   }
  },
@@ -133,18 +133,9 @@
     "probe": "none needed: generated right after the talking shots (risk_order), face check"
    },
    {
-    "kind": "still_mouth",
-    "speaker": "keeper",
-    "references": {
-     "ch-keeper-talk": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
-    },
+    "kind": "plan_b_still",
     "shot": "k-insight",
-    "check": "lipsync_check --still-mouth",
-    "probe": [
-     "migration/evidence/pavo/20261026/keeper-vo/calibration.json"
-    ],
-    "passed": "2 of 2",
-    "shot_chance": 0.938
+    "probe": "none needed: the Kokoro voice over its approved still in motion (owner exception, arc-01 long); no lips are shown speaking"
    },
    {
     "kind": "still_mouth",
@@ -161,29 +152,18 @@
     "shot_chance": 0.938
    },
    {
-    "kind": "still_mouth",
-    "speaker": "keeper",
-    "references": {
-     "ch-keeper-talk": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
-    },
+    "kind": "plan_b_still",
     "shot": "k-close",
-    "check": "lipsync_check --still-mouth",
-    "probe": [
-     "migration/evidence/pavo/20261026/keeper-vo/calibration.json"
-    ],
-    "passed": "2 of 2",
-    "shot_chance": 0.938
+    "probe": "none needed: the Kokoro voice over its approved still in motion (owner exception, arc-01 long); no lips are shown speaking"
    }
   ],
   "probes_required": [],
   "rate_low": [],
   "talk_attempts": 2,
   "min_shot_chance": 0.9,
-  "run_chance_all_talking_shots": 0.824
+  "run_chance_all_talking_shots": 0.938
  },
- "shot_review": [
-  "SHOT_NOT_REVIEWED s-voice s-nations s-onetongue s-plain s-kiln s-hands s-gathered s-foundation s-down s-top s-behold s-mercy s-confound s-babble s-parting s-unfinished s-babel k-insight k-question k-close (shot-probe.yml, Claude's frame review >= 9.5, episode_build.py approve-shot, by PR)"
- ],
+ "shot_review": [],
  "binding": {
   "plan": "456cef9fb2efa907e29b328e4a55a5fcada319c3221faef4098ce6d11bc656f0",
   "characters": "4fa2cce1dc2029a424336c09a7f2b0272aaa0681023b7010d55a44847ca4d047",
@@ -191,7 +171,7 @@
    "ch-keeper-front.json": "666eb65f6fc26529aa71af95bba873ac4bdb123c599b30d7e2fe7e1986399932",
    "ch-keeper-talk.json": "c431a6013669385cb236c64158160cc6966337cdfb8ada711ed98f58b509b6cc"
   },
-  "setups": "386110cf6909cea8ed1edcfe0f6476ea1b4ae528e6a3399e1861a7396d808a95",
+  "setups": "0caff8f5bd70483f889bf2219fa29949d17504192dee6aef96f0bc8dcbba1b4a",
   "code": {
    "episode_build.py": "bb5ec22c44d8d22de398adf8018e554512b0b4adffeac33dc6ab87d9d8e70b8d",
    "plan_check.py": "79c25921f0980fb7513a0ae698ac5bb1545a9f37bc610a1b1762a19495b09e5c",
