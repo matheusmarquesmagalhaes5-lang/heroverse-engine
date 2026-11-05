@@ -1,0 +1,37 @@
+{
+ "id": "genesis-13-short-s-packing-2026110301-1",
+ "still": "genesis-13-short-s-packing",
+ "episode": "genesis-13-short",
+ "shot": "s-packing",
+ "run": "2026110301",
+ "status": "DRAFT",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. An old man rolling up a goat-hair tent and tying bundles onto a donkey in the early light, sheep waiting nearby, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Calm and decided. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "sent_prompt": "Create an image, 9:16 vertical portrait, no text. Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Medium shot. An old man rolling up a goat-hair tent and tying bundles onto a donkey in the early light, sheep waiting nearby, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Calm and decided. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "engine": "chatgpt-desktop",
+ "models": [
+  "chatgpt-images"
+ ],
+ "generated_by": "ChatGPT Windows app on the owner's PC (Create image), one request at a time",
+ "source": "chatgpt-desktop",
+ "download": {
+  "file": "genesis-13-short-s-packing.png",
+  "sha256": "70ab0f96aa10f6ea0d73dc9854769cfff458be95b9d1f3bc863ab28e02d3bd41",
+  "size_bytes": 2884519,
+  "pixels": [
+   941,
+   1672
+  ]
+ },
+ "references": [],
+ "licence": {
+  "note": "OpenAI Terms of Use: the user owns the Output; made at the owner's request in his own session (README Licence and account risk)"
+ },
+ "upscaler": "System.Drawing HighQualityBicubic centre crop to 9:16 -> 1080x1920, JPEG quality 93",
+ "aspect_ratio": "9:16",
+ "size": [
+  1080,
+  1920
+ ],
+ "repo_path": "migration/production/bible/stills/candidates/genesis-13-short-s-packing-2026110301-1.jpg",
+ "sha256": "af309f3adefdf4e5e5c8cf8f3ec76919c8e16e2e99eab4ade0e2c1fb2108feeb"
+}

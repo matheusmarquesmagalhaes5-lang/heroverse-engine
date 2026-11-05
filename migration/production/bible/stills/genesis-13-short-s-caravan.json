@@ -2,6 +2,25 @@
  "id": "genesis-13-short-s-caravan",
  "episode": "genesis-13-short",
  "shot": "s-caravan",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. A long caravan of people, donkeys, sheep and goats winding across the desert under a high sun, dust rising behind them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Long and patient. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. A long caravan of people, donkeys, sheep and goats winding across the desert under a high sun, dust rising behind them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Long and patient. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-13-short-s-caravan.jpg",
+ "sha256": "45881210a16cd536af18774f2e71aa298030211e50adf7c7e64de1902b443270",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-13-short-s-caravan-2026110301-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-05",
+  "score": 9.5,
+  "note": "Full-image look (ChatGPT desktop): long caravan of people, donkeys, sheep and goats winding across dry hills with dust rising (sun lower than the asked high sun); no text, nothing modern, God not shown with a face; frame review only.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "a892b8c26715f3da38e67f0275c79904e450db73ae285b8d3c1ba9f02ee4a9e9",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

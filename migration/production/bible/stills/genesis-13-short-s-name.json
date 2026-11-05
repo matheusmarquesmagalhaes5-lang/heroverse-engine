@@ -2,6 +2,25 @@
  "id": "genesis-13-short-s-name",
  "episode": "genesis-13-short",
  "shot": "s-name",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. Far away on the flat horizon the abandoned brick tower of Babel with empty scaffolds, a lone traveller with a staff in the foreground looking toward it, sunset, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Thoughtful and solemn. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. Far away on the flat horizon the abandoned brick tower of Babel with empty scaffolds, a lone traveller with a staff in the foreground looking toward it, sunset, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Thoughtful and solemn. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-13-short-s-name.jpg",
+ "sha256": "242a2c32abb9379dd8fde4c13e75ee64992afd4843376163f2c0eae1c6a9167c",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-13-short-s-name-2026110301-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-05",
+  "score": 9.5,
+  "note": "Full-image look (ChatGPT desktop): abandoned brick tower with empty scaffolds far on the horizon at sunset, a lone traveller with a staff in the foreground looking toward it, seen from behind, centred; no text, nothing modern, God not shown with a face; frame review only.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "2c1f2c549b77bb951b32c8a09ebc6c20e129a7029b0d51607a4915e65bb18ab4",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

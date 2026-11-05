@@ -2,6 +2,25 @@
  "id": "genesis-13-short-s-families",
  "episode": "genesis-13-short",
  "shot": "s-families",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. Many small camps of tents scattered across a vast plain to the horizon, thin trails of smoke from their fires, a few tiny families walking between them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Wide and lonely. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. Many small camps of tents scattered across a vast plain to the horizon, thin trails of smoke from their fires, a few tiny families walking between them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Wide and lonely. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-13-short-s-families.jpg",
+ "sha256": "ff4dfcfe77c35805f8a7389161507613a88cb9e9d21ec8ff470bfca4bd2f0f07",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-13-short-s-families-2026110301-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-05",
+  "score": 9.5,
+  "note": "Full-image look (ChatGPT desktop): many small tent camps scattered across a vast plain with thin smoke trails and a few tiny families walking between them; no text, nothing modern, God not shown with a face; frame review only.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "876a57b155f3cbfd69a8d1c0eda290838ddc8d45b2f3cee3ac5085d388188675",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }
