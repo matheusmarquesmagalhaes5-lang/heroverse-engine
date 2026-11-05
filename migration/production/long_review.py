@@ -75,12 +75,13 @@ def own_measures(script, timeline, seconds):
 
 
 def hard_bands(script):
-    """Keep legacy prayer bands frozen; the acted long uses its already-registered story length target."""
+    """Keep legacy prayer bands frozen; the acted long has no length minimum or maximum (owner 2026-11-05), only
+    YouTube's upload limit."""
     if script.get("archetype") == "bible-story-long" and script.get("criteria_version") in (
             "story-qa-criteria-v3", "story-qa-criteria-v4", "story-qa-criteria-v4-owner-exception-arc01",
             "story-qa-criteria-v5"):
         import script_check
-        return {"minutes": tuple(script_check.story_gate()["length_min"])}
+        return {"minutes": script_check.LONG_MINUTES}   # owner 2026-11-05: no length minimum or maximum
     return HARD
 
 

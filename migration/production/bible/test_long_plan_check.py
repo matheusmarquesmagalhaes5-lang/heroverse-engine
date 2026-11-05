@@ -464,8 +464,8 @@ class StoryQaV4(unittest.TestCase):
         import script_check
         self.assertEqual(lc.gate(), script_check.story_gate())
         p = plan()
-        g = dict(lc.gate(), length_min=[20, 30])
-        self.assertIn("LONG_LENGTH", codes(check(p, gate_values=g)))
+        g = dict(lc.gate(), length_min=[20, 30])   # owner 2026-11-05: the mined band is data, never a refusal
+        self.assertNotIn("LONG_LENGTH", codes(check(p, gate_values=g)))
 
     def test_the_gate_and_the_beat_map_agree(self):
         s = json.loads(lc.STRUCTURE.read_text())["script"]

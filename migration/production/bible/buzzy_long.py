@@ -2,12 +2,12 @@
 """The long-first story long (owner, 2026-11-01; DECISIONS.md "Long-first, Shorts cut from the long", E259).
 
 The story is made once, as a 16:9 long: a bible-plan-v2 plan with "track": "buzzy-long" and "aspect_ratio": "16:9"
-(plan_check; 8-12 min, episode_build plan_layout) is built by the existing episode route (episode.yml) at 1920x1080.
+(plan_check; any length, owner 2026-11-05) is built by the existing episode route (episode.yml) at 1920x1080.
 That build keeps what the cuts need, bound to the master by sha256 in the run's report
 (migration/evidence/episodes/<id>/report-<run>.json): the caption-free master (release asset
 bible-<id>-clean-sha256-<sha>.mp4) and the sentence and shot timeline. The published long keeps its burned captions.
 Here the long becomes a pilot that approve.yml -> prepublish_gate.py -> publish.yml publish on its own defect-gated
-track (criteria buzzy-long-qa-criteria-v1; the compilation's code path, owner_quality_policy.compilation_problems).
+track (criteria buzzy-long-qa-criteria-v2, v1 without its length row; the compilation's code path, owner_quality_policy.compilation_problems).
 Nothing is generated or published here, and no review or approval is written.
 
 usage: buzzy_long.py qa PLAN REPORT VIDEO OUT_DIR           measure the master, write OUT_DIR/qa.json
@@ -29,13 +29,14 @@ import compilation_long as cl  # noqa: E402  (one set of ffmpeg helpers, loudnes
 TRACK = "buzzy-long"
 ASPECT = "16:9"
 FRAME = (1920, 1080)
-CRITERIA = "buzzy-long-qa-criteria-v1"
-CRITERIA_FILE = ROOT / "migration/production/qa_criteria_buzzy_long_v1.json"
+CRITERIA = "buzzy-long-qa-criteria-v2"   # v1 (8-12 min) stays frozen for the pilots measured by it
+CRITERIA_FILE = ROOT / "migration/production/qa_criteria_buzzy_long_v2.json"
 ARCHETYPE = "bible-buzzy-long"
 SERIES = "buzzy-long"
 MANIFEST_VERSION = "bible-buzzy-long-manifest-v1"
 HANDOFF_VERSION = "buzzy-long-handoff-v1"
-LENGTH_S = (480.0, 720.0)        # about 8-12 minutes (owner: one story or one arc)
+# Owner, 2026-11-05 ("Não, longo não tem limite de tempo não. Nem mínimo, nem limite."): a long-first long has no
+# length minimum or maximum; the story sets it. Padding stays refused by the plan's hold, pace and speech checks.
 CHAPTER_MIN_S = 10
 
 
@@ -127,7 +128,6 @@ def qa(plan_path, report_path, video, out_dir):
         "full_decode_without_errors": dec.returncode == 0 and not dec.stderr.strip(),
         "video_format_1920x1080_30fps": (probe["width"], probe["height"]) == FRAME
         and abs(cl.fps(probe["avg_frame_rate"]) - cl.FPS) < cl.FPS_TOLERANCE,
-        "length_8_to_12_minutes": LENGTH_S[0] <= dur <= LENGTH_S[1],
         "integrated_lufs_band": cl.LUFS_BAND[0] <= lufs <= cl.LUFS_BAND[1],
         "true_peak_ceiling": peak <= cl.TRUE_PEAK_MAX,
         "build_report_for_this_file": not [p for p in rep if p in ("report of another episode", "report not for this file",

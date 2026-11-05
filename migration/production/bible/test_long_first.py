@@ -149,8 +149,9 @@ class PlanTrack(unittest.TestCase):
         self.assertIn(",0,0,0,,one two\n", head)
         # the long gates: the 9.5 floor still refuses on every story long, the defect tracks are only these two
         self.assertNotIn(pg.BUZZY_LONG, pg.STANDARD_VERSIONS)
+        self.assertNotIn(pg.BUZZY_LONG_V1, pg.STANDARD_VERSIONS)
         self.assertIn(pg.STORY_V5, pg.STANDARD_VERSIONS)
-        self.assertEqual(set(pg.DEFECT_TRACKS), {pg.COMPILATION, pg.BUZZY_LONG})
+        self.assertEqual(set(pg.DEFECT_TRACKS), {pg.COMPILATION, pg.BUZZY_LONG_V1, pg.BUZZY_LONG})
         self.assertTrue(oq.check({"status": "PASS", "model": "claude-session-reviewer", "overall": 9.4,
                                   "output_sha256": SHA}, SHA, oq.LONG_REVIEWERS))
         # the Short publisher: the default track keeps 9.5, the buzzy track its own Buzzy shot and decision
@@ -164,7 +165,9 @@ class PlanTrack(unittest.TestCase):
             plain.write_text(json.dumps({k: v for k, v in short.items() if k != "track"}))
             self.assertEqual(nr.floor_for(plain), 9.5)
 
-    def test_long_first_length_replaces_the_short_band(self):
+    def test_a_long_first_long_has_no_length_minimum_or_maximum(self):
+        # owner 2026-11-05 ("Não, longo não tem limite de tempo não. Nem mínimo, nem limite."): the old 480-720 s
+        # band is gone; the Short keeps its own band
         n = len(pc.sequence(long_plan())[0])
 
         def layout(total):   # every line laid end to end over `total` seconds
@@ -173,12 +176,21 @@ class PlanTrack(unittest.TestCase):
 
         def codes(plan, total):
             return [p.split()[0] for p in eb.plan_layout(plan, layout(total))["problems"]]
-        self.assertIn("LONG_FIRST_LENGTH", codes(long_plan(), 175.0))
-        self.assertNotIn("LONG_FIRST_LENGTH", codes(long_plan(), 600.0))
-        self.assertNotIn("SHORT_LENGTH", codes(long_plan(), 175.0))
+        for total in (175.0, 600.0, 900.0, 1500.0):
+            got = codes(long_plan(), total)
+            self.assertFalse([c for c in got if "LENGTH" in c], (total, got))
         short = json.loads(SHORT_PLAN.read_text())
         self.assertIn("SHORT_LENGTH", codes(short, 600.0))
-        self.assertNotIn("LONG_FIRST_LENGTH", codes(short, 600.0))
+        self.assertIn("SHORT_LENGTH", codes(short, 900.0))
+        self.assertEqual(pe.short_length(9), (170.0, 179.0))   # the Short's band is unchanged
+
+    def test_padding_is_still_refused_on_a_long_first_long(self):
+        # no length limit is not a licence to pad: a still held past its band is refused as before
+        plan = long_plan()
+        lo, hi = pc.LONG_FIRST_STILL_SECONDS
+        i, shot = next((i, s) for i, s in enumerate(plan["shots"]) if s["kind"] == "scene" and not pc.talking(s))
+        self.assertEqual(pc.scene_seconds_problems(i, dict(shot, seconds=hi), plan), [])
+        self.assertTrue(pc.scene_seconds_problems(i, dict(shot, seconds=hi + 1), plan))
 
 
 @unittest.skipUnless(FFMPEG, "ffmpeg")
@@ -278,8 +290,25 @@ class LongGate(unittest.TestCase):
     def test_frozen_criteria_hash(self):
         self.assertEqual(pg.sha256_file(pg.CRITERIA_FILES[pg.BUZZY_LONG]), pg.FROZEN_CRITERIA_SHA256[pg.BUZZY_LONG])
         self.assertEqual(bl.CRITERIA, pg.BUZZY_LONG)
+        self.assertEqual(bl.CRITERIA_FILE, pg.CRITERIA_FILES[pg.BUZZY_LONG])
         rows = json.loads(bl.CRITERIA_FILE.read_text())["rows"]
         self.assertEqual(sorted(rows), sorted(sum(pg.BUZZY_LONG_DIMENSIONS.values(), [])))
+
+    def test_v1_stays_byte_identical_and_v2_only_drops_the_length(self):
+        # the v1 file is frozen: its bytes are the ones pinned on 2026-11-01 (E259)
+        v1_path = pg.CRITERIA_FILES[pg.BUZZY_LONG_V1]
+        self.assertEqual(pg.sha256_file(v1_path), "ce5c05e29cf697782efb59a4bdfadb2d09dc035a727ee24e505403706843831a")
+        self.assertEqual(pg.FROZEN_CRITERIA_SHA256[pg.BUZZY_LONG_V1], pg.sha256_file(v1_path))
+        v1, v2 = json.loads(v1_path.read_text()), json.loads(bl.CRITERIA_FILE.read_text())
+        self.assertEqual(sorted(v1["rows"]), sorted(sum(pg.BUZZY_LONG_V1_DIMENSIONS.values(), [])))
+        # owner 2026-11-05: v2 is v1 with only the length row removed; every other criterion is identical
+        self.assertEqual(v2["rows"], [r for r in v1["rows"] if r != "length_8_to_12_minutes"])
+        self.assertEqual({k: v for k, v in v2["technical"].items() if k != "length"},
+                         {k: v for k, v in v1["technical"].items() if k != "length_seconds"})
+        self.assertNotIn("length_seconds", v2["technical"])
+        self.assertEqual(v2["review"], v1["review"])
+        self.assertEqual(pg.DEFECT_TRACKS[pg.BUZZY_LONG_V1][2], pg.DEFECT_TRACKS[pg.BUZZY_LONG][2])
+        self.assertNotIn("length_8_to_12_minutes", sum(pg.BUZZY_LONG_DIMENSIONS.values(), []))
 
     @unittest.skipUnless(FFMPEG, "ffmpeg")
     def test_materialize_and_verify(self):

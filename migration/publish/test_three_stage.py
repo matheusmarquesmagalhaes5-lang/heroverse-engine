@@ -57,8 +57,9 @@ class Structure(unittest.TestCase):
                 self.assertEqual(rows['story_inputs_bound'], 'PASS')
                 self.assertEqual(rows['package_chapters'], 'PASS')
                 self.assertEqual(rows['package_arc_schedule'], 'PASS')
-                # A 60-second test fixture is not a qualifying long, and the story checks correctly reject it.
-                self.assertEqual(rows['story_measured_length'], 'FAIL')
+                # owner 2026-11-05: a long has no length minimum or maximum, so even a 60-second fixture's length
+                # passes; the frozen story QA's duration row still decides at the gate.
+                self.assertEqual(rows['story_measured_length'], 'PASS')
                 self.assertEqual(rows['story_rehooks'], 'FAIL')
                 for name in ('driver_viewer_hook_5s', 'hygiene_spoken_amen_cta', 'hygiene_recurring_refrain',
                              'hygiene_gratitude_block'):

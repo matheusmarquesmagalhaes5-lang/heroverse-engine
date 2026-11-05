@@ -50,7 +50,7 @@ class Review(unittest.TestCase):
                   'segments': [{'id': 'n00', 'reference': 'Genesis 1:1 (KJV)'}, {'id': 'n01'}]}
         measured = lr.own_measures(script, {'sentences': [{'segment': 'n00'}, {'segment': 'n01'}]}, 900)
         self.assertEqual(measured['scripture_per_10_min'], 0.67)
-        self.assertEqual(lr.hard_bands(script), {'minutes': (14, 18)})
+        self.assertEqual(lr.hard_bands(script), {'minutes': (0.0, 720.0)})   # owner 2026-11-05: YouTube's 12 h only
         self.assertEqual(lr.hard_bands({'archetype': 'prayer'}), lr.HARD)
 
     def test_pilot_003_own_rows(self):

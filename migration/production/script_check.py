@@ -232,6 +232,20 @@ STRUCTURE = Path(__file__).resolve().parents[1] / "structures" / "bible-story-lo
 CHARACTERS = Path(__file__).resolve().parent / "characters" / "characters.json"
 
 
+# Owner, 2026-11-05 ("Não, longo não tem limite de tempo não. Nem mínimo, nem limite."): a long has no length minimum
+# or maximum; the structure's mined length_min stays as data and is never a refusal. What is left is YouTube's own
+# upload limit (12 hours for a verified channel) and, for a story long measured by a frozen story QA (v1-v5), that
+# file's own duration_seconds_min (frozen, never edited here). Padding stays refused by the hold, pace and speech rows.
+YOUTUBE_MAX_SECONDS = 12 * 3600
+LONG_MINUTES = (0.0, YOUTUBE_MAX_SECONDS / 60)
+
+
+def long_length_ok(seconds, frozen_min=0):
+    """A long of any length the story needs: more than nothing, inside YouTube's upload limit and not under the
+    floor of the frozen QA it is measured by (frozen_min, 0 when that QA has none)."""
+    return 0 < seconds <= YOUTUBE_MAX_SECONDS and seconds >= (frozen_min or 0)
+
+
 @functools.lru_cache(maxsize=None)
 def story_gate():
     """The registered structure's machine-readable targets (structures/bible-story-long.json script.gate), read once
@@ -262,7 +276,7 @@ def timeline(script):
 
 def structure_problems(script, gate=None, starts=None, total=None):
     """Owner, 2026-10-26: the Bible-story long stands on its own and follows its registered structure
-    (structures/bible-story-long.json): 14-18 min, the conflict spoken by a character in the cold open, at least 6
+    (structures/bible-story-long.json): any length (owner 2026-11-05: no minimum or maximum), the conflict spoken by a character in the cold open, at least 6
     re-hooks, one climax at 0.6-0.85 of the runtime, the Keeper in every long but never in the cold open and at most
     25 % of it, and no captions burned into the picture. Prayer longs are stopped; this is the only long format."""
     g = gate or story_gate()
@@ -273,9 +287,8 @@ def structure_problems(script, gate=None, starts=None, total=None):
     ends = {i: b for (_, i), (b, _) in zip(order, order[1:] + [(total, None)])}
     dur = {i: ends[i] - starts[i] for i in ends}
     problems = []
-    lo, hi = g["length_min"]
-    if not lo <= total / 60 <= hi:
-        problems.append(f"STORY_LENGTH {total / 60:.1f} min outside {lo}-{hi} (bible-story-long)")
+    if not long_length_ok(total):   # owner 2026-11-05: no length minimum or maximum, only YouTube's upload limit
+        problems.append(f"STORY_LENGTH {total / 60:.1f} min (more than 0, at most YouTube's {YOUTUBE_MAX_SECONDS // 3600} h)")
     cold = g["cold_open_s"]
     conflict = [x for x in segs if x.get("conflict") and starts.get(x.get("id"), 1e9) < cold]
     speakers = conflict_speakers()

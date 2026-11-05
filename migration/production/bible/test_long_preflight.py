@@ -168,7 +168,9 @@ class ApprovedShots(Scratch):
         self.assertEqual(problems, [])
         self.assertAlmostEqual(layout["lines"][1]["start"] - layout["lines"][0]["end"], lpc.LONG_LINE_GAP, places=3)
         self.assertIsNone(layout["lesson_share"])
-        problems, _ = self.predict_fixture([d * 1.3 for d in durations])   # ~18.9 min: over the gate
+        problems, _ = self.predict_fixture([d * 1.3 for d in durations])   # ~18.9 min: no maximum (owner 2026-11-05)
+        self.assertFalse(any(p.startswith("LONG_LENGTH") for p in problems), problems)
+        problems, _ = self.predict_fixture([d * 0.5 for d in durations])   # under the frozen story QA's 601 s
         self.assertTrue(any(p.startswith("LONG_LENGTH") for p in problems), problems)
 
     def test_every_generated_shot_has_a_16x9_request_digest_and_windows_have_none(self):

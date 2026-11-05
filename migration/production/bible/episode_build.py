@@ -424,9 +424,10 @@ def plan_layout(plan, layout, voice_seconds=None, problems=()):
         g = long_plan_check.gate()
         if share > g["keeper_share_max"] + 1e-9:
             problems.append(f"KEEPER_SHARE {share:.3f} > {g['keeper_share_max']} (measured)")
-        low, high = g["length_min"]
-        if not low * 60 <= total <= high * 60:
-            problems.append(f"LONG_LENGTH {total / 60:.2f} min ({low}-{high}, measured)")
+        floor = ((long_plan_check.qa_for(plan) or {}).get("technical") or {}).get("duration_seconds_min")
+        if not long_plan_check.script_check.long_length_ok(total, floor):   # owner 2026-11-05: no band of its own
+            problems.append(f"LONG_LENGTH {total / 60:.2f} min (frozen story QA floor {floor} s; at most YouTube's "
+                            f"{long_plan_check.script_check.YOUTUBE_MAX_SECONDS // 3600} h, measured)")
         return {"lines": [{"start": a, "end": b} for a, b in layout], "voice_seconds": voice_seconds, "total": total,
                 "keeper": keeper, "speakers": speakers, "voice_over": voice_over, "keeper_share": round(share, 3),
                 "lesson_share": None, "retimed": {}, "problems": problems}
@@ -438,12 +439,8 @@ def plan_layout(plan, layout, voice_seconds=None, problems=()):
     lesson_share = lesson_seconds / total
     if lesson_share > plan_check.LESSON_SHARE_MAX:
         problems.append(f"LESSON_SHARE {lesson_share:.3f} > {plan_check.LESSON_SHARE_MAX} (measured)")
-    if plan_check.long_first(plan):   # E259: the long-first long is about 8-12 min; its Shorts are cuts of it
-        import buzzy_long
-        low, high = buzzy_long.LENGTH_S
-        if not low <= total <= high:
-            problems.append(f"LONG_FIRST_LENGTH {total} s ({low:.0f}-{high:.0f}, measured)")
-    else:
+    # E259: a long-first long's Shorts are cuts of it; owner 2026-11-05: a long has no length minimum or maximum
+    if not plan_check.long_first(plan):
         low, high = plan_check.publish_episode.short_length(plan.get("part", 0))
         if not low <= total <= high:
             problems.append(f"SHORT_LENGTH {total} s ({low:.0f}-{high:.0f}, measured)")
