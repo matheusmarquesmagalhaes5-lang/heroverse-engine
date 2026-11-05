@@ -1,0 +1,33 @@
+# Owner memory (hot cache)
+
+Read this at the start of every session, after CLAUDE.md. It keeps what the owner has told the coordinator so
+nothing has to be asked twice. The full message log (every owner message since 2026-10-27, in order) is the
+owner's PRIVATE page https://claude.ai/artifact/HGKMUNNNrsHxLmWddRp6qG (read it with the Artifact tool, action
+"read"); this repository is public, so the log never goes here. Add each new owner rule here (one line, dated, quoted
+when short) and republish the private log when the conversation moves.
+
+## Goal and deadline
+- YPP: 1,000 subscribers + 4,000 public long watch hours. Target 2026-11-15, absolute max 2026-12-01. Never change it.
+- "Tudo tem jeito": map the viral structure (migration/structures/viral-structure-2026-11-04.md) and drive everything from it.
+
+## How the owner wants to be worked with
+- Reply in short Portuguese. The rules are fixed: do not ask him for decisions they already cover (2026-11-04).
+- When something only exists on his PC, use Desktop Commander and do it (2026-11-04); never type passwords or solve CAPTCHA.
+- Full automation that never stops; no rework; never lower quality; learn every day (pavo_lessons, DECISIONS).
+- Install free tools he points to and keep them installed even if unused now ("deixa instalada", 2026-11-05);
+  explain risks, never install paid or unsafe ones silently.
+- Use ~100% of the weekly Claude usage exactly at the reset (Saturday 19:00 UTC); route work by model (OPERATIONS).
+
+## Production
+- 1 long a day (13–20 min, "Full Story"/question title, face + name thumbnail) and 4 Shorts a day cut from it,
+  one of them a Keeper split-screen reflection; no repeated passages across Shorts of one long.
+- Pavo: silent acting clips only; all speech is our Kokoro audio over them (2026-11-04).
+- The Keeper (guardião) should speak with lip-sync of our audio, free and good quality (2026-11-05, in progress).
+- God is never shown with a face. Exact KJV.
+- Stills: ChatGPT desktop app on his PC (one chat "HeroVerse — stills").
+- Buzzy: lowest-credit model, balance read before/after, ≤100 credits/day average; he also uses Buzzy himself.
+- He listens to a long when no agent can: send a 540p proxy with bit-identical audio and record him as listener.
+
+## Accounts and spending
+- No new spending. Ads and the digital product on hold. Buffer free mirror only for public Shorts.
+- Gemini free tier may see unpublished masters (accepted 2026-11-04).
