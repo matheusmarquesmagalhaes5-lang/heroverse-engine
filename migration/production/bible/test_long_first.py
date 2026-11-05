@@ -147,10 +147,12 @@ class PlanTrack(unittest.TestCase):
         self.assertIn("PlayResX: 1080\nPlayResY: 1920", head)
         self.assertIn("Style: Cap,DejaVu Sans,132,", head)
         self.assertIn(",0,0,0,,one two\n", head)
-        # the long gates: the 9.5 floor still refuses on every story long, the defect tracks are only these two
+        # the long gates: the 9.5 floor still refuses on every story long, the defect tracks are only these
+        # (E306: compilation v2 is the same compilation track with the original-share row added)
         self.assertNotIn(pg.BUZZY_LONG, pg.STANDARD_VERSIONS)
         self.assertIn(pg.STORY_V5, pg.STANDARD_VERSIONS)
-        self.assertEqual(set(pg.DEFECT_TRACKS), {pg.COMPILATION, pg.BUZZY_LONG})
+        self.assertEqual(set(pg.DEFECT_TRACKS), {pg.COMPILATION, pg.COMPILATION_V2, pg.BUZZY_LONG})
+        self.assertEqual(pg.DEFECT_TRACKS[pg.COMPILATION_V2][2], pg.DEFECT_TRACKS[pg.COMPILATION][2])
         self.assertTrue(oq.check({"status": "PASS", "model": "claude-session-reviewer", "overall": 9.4,
                                   "output_sha256": SHA}, SHA, oq.LONG_REVIEWERS))
         # the Short publisher: the default track keeps 9.5, the buzzy track its own Buzzy shot and decision

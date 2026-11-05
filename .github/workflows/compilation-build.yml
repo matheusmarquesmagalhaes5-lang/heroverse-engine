@@ -5,7 +5,7 @@ run-name: "compilation-build: plan=${{ inputs.plan }}"
 # with their exact zero-credit record), loudness by gain only, every join faded. No Pavo or Buzzy call, no secret.
 # The record job puts the master and its pilot alias in the release under the file's sha256 and the pilot's
 # publication inputs on claude/long-<id>-<run>. approve.yml is still the only approval writer; the review is the
-# defect gate (compilation-qa-criteria-v1).
+# defect gate (compilation-qa-criteria-v1, or v2 for a plan with new Keeper interludes, E306).
 on:
   workflow_dispatch:
     inputs:

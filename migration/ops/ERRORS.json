@@ -5137,6 +5137,56 @@
      "silent"
     ]
    }
+  },
+  {
+   "id": "E306",
+   "date": "2026-11-05",
+   "class": [
+    "instrument"
+   ],
+   "prior": [
+    "E120",
+    "E131",
+    "E137",
+    "E139",
+    "E148",
+    "E152",
+    "E166",
+    "E169",
+    "E185",
+    "E186",
+    "E231",
+    "E233",
+    "E238",
+    "E253",
+    "E255",
+    "E262",
+    "E266",
+    "E267",
+    "E273",
+    "E275",
+    "E279",
+    "E280",
+    "E281",
+    "E282",
+    "E283",
+    "E284",
+    "E285",
+    "E286",
+    "E289",
+    "E299",
+    "E300",
+    "E302"
+   ],
+   "error": "Genesis Part 1 compilation (live-plan next_compilations priority 1): the owner requires new original material in a LARGE share of every video and YPP refuses reused content, but the compilation track (E251) could only join public masters between a short Keeper hook and close. Keeper commentary between the stories had no segment type, a long voice-over would hold one still (its push-in ended after ~6 s and froze), its quotations were never checked against the KJV, and v1's no_padding row (sources + 30 s + cards) refuses any real amount of new Keeper runtime, so the only buildable compilation was mostly re-cut media.",
+   "fix": "compilation-qa-criteria-v2 (new frozen file; v1 unchanged and still used by its plans): plan `criteria` v2 may carry `interludes` (after N chapters) and a hook and close as `beats`: each beat our pinned Kokoro line over an APPROVED 16:9 still by sha256 with a camera move that lasts the whole beat, the interlude's card over its first beat, the honest lipsync record, and every beat with a `reference` checked by kjv_check before the build (`compilation_long.py check`). v2 no_padding is stricter (each segment at most its own content) and a new row, original_keeper_share >= 0.15, measures the new Keeper runtime; prepublish_gate registers v2 as a compilation defect track with an originality dimension. Long chapters may name inner chapters (subchapters) so the description has a timestamp every few minutes. No gate loosened, no review or approval written.",
+   "antidote": {
+    "file": "migration/production/bible/test_compilation_long.py",
+    "contains": "def test_e306_refusals",
+    "covers": [
+     "instrument"
+    ]
+   }
   }
  ]
 }
