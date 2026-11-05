@@ -2,6 +2,25 @@
  "id": "genesis-12-short-s-mercy",
  "episode": "genesis-12-short",
  "shot": "s-mercy",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. The great brick tower at dusk with the first soft rain starting to fall on the crowd below, torches flickering, a lone worker setting down a brick, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Quiet and heavy. Still. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. The great brick tower at dusk with the first soft rain starting to fall on the crowd below, torches flickering, a lone worker setting down a brick, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Quiet and heavy. Still. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-12-short-s-mercy.jpg",
+ "sha256": "ec53906ce41255350a79dc43b37797b335a74035bab32d0f614ded1305d20f72",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-12-short-s-mercy-2026110301-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-05",
+  "score": 9.5,
+  "note": "Full-image look (ChatGPT desktop): rain beginning over the scaffolded tower at dusk, torch-lit crowd, a lone kneeling worker setting down a brick, centred; period-correct, no text, no God face; frame review only.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "b97d8ab783cb1186735aafd8cbb84d54eaa9e1c32527cb057bbea4878479ef67",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

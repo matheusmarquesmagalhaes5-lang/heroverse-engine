@@ -2,6 +2,25 @@
  "id": "genesis-12-short-s-foundation",
  "episode": "genesis-12-short",
  "shot": "s-foundation",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. A vast square foundation of fired brick on the empty plain with thousands of tiny workers laying the first courses, a few torches burning at its corners, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Cold blue dusk with orange torches. Proud and cold. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. A vast square foundation of fired brick on the empty plain with thousands of tiny workers laying the first courses, a few torches burning at its corners, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Cold blue dusk with orange torches. Proud and cold. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-12-short-s-foundation.jpg",
+ "sha256": "0650478c7a299d00d5f2205ce871fb6c9fa28f2a99f525982e6831f69ab609a7",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-12-short-s-foundation-2026110301-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-05",
+  "score": 9.5,
+  "note": "Full-image look (ChatGPT desktop): dusk plain, the first brick courses of the square base with many small workers and corner torches, onlookers from behind, pitch jar; period-correct, no text, no God face; frame review only.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "fb2f9aa2585584cfce79ce05f5fae6dae6e0fba071e78f902f8d4eadcc801c53",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }

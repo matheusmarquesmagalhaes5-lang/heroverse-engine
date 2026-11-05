@@ -1,0 +1,37 @@
+{
+ "id": "genesis-12-short-s-mercy-2026110301-1",
+ "still": "genesis-12-short-s-mercy",
+ "episode": "genesis-12-short",
+ "shot": "s-mercy",
+ "run": "2026110301",
+ "status": "DRAFT",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. The great brick tower at dusk with the first soft rain starting to fall on the crowd below, torches flickering, a lone worker setting down a brick, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Quiet and heavy. Still. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "sent_prompt": "Create an image, 9:16 vertical portrait, no text. Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. The great brick tower at dusk with the first soft rain starting to fall on the crowd below, torches flickering, a lone worker setting down a brick, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Quiet and heavy. Still. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "engine": "chatgpt-desktop",
+ "models": [
+  "chatgpt-images"
+ ],
+ "generated_by": "ChatGPT Windows app on the owner's PC (Create image), one request at a time",
+ "source": "chatgpt-desktop",
+ "download": {
+  "file": "genesis-12-short-s-mercy.png",
+  "sha256": "fb8ff39f3d3d2b49d38cf44c30e2ad1339d2077b007034b634dc0c8570767932",
+  "size_bytes": 2445186,
+  "pixels": [
+   941,
+   1672
+  ]
+ },
+ "references": [],
+ "licence": {
+  "note": "OpenAI Terms of Use: the user owns the Output; made at the owner's request in his own session (README Licence and account risk)"
+ },
+ "upscaler": "System.Drawing HighQualityBicubic centre crop to 9:16 -> 1080x1920, JPEG quality 93",
+ "aspect_ratio": "9:16",
+ "size": [
+  1080,
+  1920
+ ],
+ "repo_path": "migration/production/bible/stills/candidates/genesis-12-short-s-mercy-2026110301-1.jpg",
+ "sha256": "ec53906ce41255350a79dc43b37797b335a74035bab32d0f614ded1305d20f72"
+}

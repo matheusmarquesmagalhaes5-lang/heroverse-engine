@@ -2,6 +2,25 @@
  "id": "genesis-12-short-s-unfinished",
  "episode": "genesis-12-short",
  "shot": "s-unfinished",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. The unfinished tower alone on the empty plain at dawn with open scaffolds, a few dropped bricks and cold ashes, long mist across the ground, one lone figure in the distance walking away, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Cold pale dawn. Desolate and still. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. The unfinished tower alone on the empty plain at dawn with open scaffolds, a few dropped bricks and cold ashes, long mist across the ground, one lone figure in the distance walking away, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Cold pale dawn. Desolate and still. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-12-short-s-unfinished.jpg",
+ "sha256": "fe145a01bff03c88b5fd3bc5034d67172297cf51b786a9aeb787f316717044d5",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-12-short-s-unfinished-2026110301-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-05",
+  "score": 9.5,
+  "note": "Full-image look (ChatGPT desktop): the scaffolded tower abandoned at dawn in mist, dropped bricks and cold ashes in front, one lone figure walking away in the distance; period-correct, no text, no God face; frame review only.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "3a7af3eb179feacc2479e776513f268d5f8b35af939c658716917ea47bca1003",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }
