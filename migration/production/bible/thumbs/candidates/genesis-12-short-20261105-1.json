@@ -1,0 +1,89 @@
+{
+ "id": "genesis-12-short-20261105-1",
+ "episode": "genesis-12-short",
+ "run": "20261105",
+ "status": "DRAFT",
+ "format": "short",
+ "size": [
+  1080,
+  1920
+ ],
+ "spec_sha256": "84786ac6fc61c519722da6c02f762d320fcfed3383fa3d29f1f40f18fb89232c",
+ "prompt": "Extreme close-up portrait, his face filling the frame from brow to chin, nothing else in the picture: a lean wiry man of about thirty-five with Middle Eastern features, sun-darkened tan skin, a long narrow face, deep-set dark eyes with crow's feet, straight black hair tied back at the nape with a strip of cloth, a thin black moustache and a stubbled chin, sinewy forearms, a plain sleeveless undyed linen tunic belted with a twisted cord, his forearms and tunic spattered with wet grey-brown clay, a grave, resolute look straight into the camera, his mouth closed. Behind his head there is only a softly blurred brickyard at dawn with a faint orange kiln glow. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. Warm amber dawn light on his face, photorealistic cinematic film still, sharp focus on the eyes, film grain, no text, no logos.",
+ "text": "WHY GOD STOPPED BABEL",
+ "text_by": "thumbs.py overlay (DejaVu Sans Bold), never the image model",
+ "source": "approved reference ch-builder-front (reused, no new generation)",
+ "model": "existing approved reference (ChatGPT desktop route)",
+ "ratio": "16:9",
+ "resolution": "1920x1080",
+ "conversation_id": null,
+ "quote": null,
+ "references": [],
+ "references_live": null,
+ "source_size": [
+  1920,
+  1080
+ ],
+ "source_sha256": "2e569bc474691e2113df210a7afa1075f6a1bb1a7fb9d955d15b4a260851562f",
+ "crop": {
+  "box": [
+   656,
+   0,
+   608,
+   1080
+  ],
+  "source_size": [
+   1920,
+   1080
+  ],
+  "source_sha256": "2e569bc474691e2113df210a7afa1075f6a1bb1a7fb9d955d15b4a260851562f",
+  "cropped_sha256": "3214e7f5ab0e21a84ffffc94f8b46ba3848cff0ff983a370765813e00b7738a5",
+  "upscale": 1.778,
+  "resize": "crop [656, 0, 608, 1080], Lanczos to 1080x1920"
+ },
+ "grade": {
+  "factors": {
+   "saturation": 1.15,
+   "contrast": 1.05
+  },
+  "order": [
+   "saturation",
+   "contrast"
+  ],
+  "bounds": {
+   "saturation": [
+    1.0,
+    1.6
+   ],
+   "contrast": [
+    1.0,
+    1.2
+   ]
+  },
+  "by": "thumbs.py apply_grade (PIL ImageEnhance), after crop/resize, before the text",
+  "pre_grade_path": "migration/production/bible/thumbs/candidates/genesis-12-short-20261105-1-ungraded.jpg",
+  "pre_grade_sha256": "3214e7f5ab0e21a84ffffc94f8b46ba3848cff0ff983a370765813e00b7738a5",
+  "graded_sha256": "6075189c5c00a5650561078bc68e162eb2bd223a8ae2b61e8b5740f10fdc440c"
+ },
+ "base_path": "migration/production/bible/thumbs/candidates/genesis-12-short-20261105-1-base.jpg",
+ "base_sha256": "6075189c5c00a5650561078bc68e162eb2bd223a8ae2b61e8b5740f10fdc440c",
+ "repo_path": "migration/production/bible/thumbs/candidates/genesis-12-short-20261105-1.jpg",
+ "sha256": "814dbe1b9663ee7b58e35c98993ac78a30833596d291bb243bf40dec0ac4dede",
+ "r16": {
+  "status": "PASS",
+  "fails": [],
+  "metrics": {
+   "brightness": 0.234,
+   "contrast": 0.171,
+   "saturation": 0.75,
+   "colourfulness": 0.218,
+   "edge_density": 0.122,
+   "warm_share": 0.615,
+   "blue_share": 0.0,
+   "dark_share": 0.384,
+   "bright_share": 0.018,
+   "yellow_text_like": 0.0
+  }
+ },
+ "generated_by": "HeroVerse pipeline (AI-generated image)"
+}
