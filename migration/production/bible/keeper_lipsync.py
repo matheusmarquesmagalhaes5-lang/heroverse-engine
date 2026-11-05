@@ -184,6 +184,12 @@ def coords(work, musetalk_dir, step=COORD_STEP):
     return 0
 
 
+def line_cut_flags(spoken_s, picture_s, tol=0.02):
+    """The picture must outlast the spoken line (the tail is silence); a model that returns fewer frames than the line
+    needs would cut a word."""
+    return ["LIPSYNC_LINE_CUT"] if spoken_s > picture_s + tol else []
+
+
 def run(*cmd, **kw):
     return subprocess.run(list(map(str, cmd)), check=True, **kw)
 
@@ -222,7 +228,12 @@ def finish(work, lip_video, face_model, syncnet, out_dir, seconds):
     import pavo_audio
     work, out_dir = Path(work), Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
-    line = work / "line-padded.wav"
+    # the model's picture can end a frame short of the padded line (169 frames of 7.05 s): our line is cut at the picture's
+    # end, which is only silence (tail) - a cut into the spoken line is a flag
+    spoken = json.loads((work / "prepare.json").read_text())["line_seconds"]
+    picture = video_seconds(lip_video)
+    line = work / "line-final.wav"
+    run("ffmpeg", "-nostdin", "-v", "error", "-y", "-i", work / "line-padded.wav", "-t", f"{picture:.3f}", "-c:a", "pcm_s16le", line)
     final = out_dir / "keeper-lipsync.mp4"
     # the model's picture (re-encoded by the model's own ffmpeg step) with OUR line, bit-exact PCM, as the only audio
     pavo_audio.mux_ours(lip_video, line, final)
@@ -233,18 +244,18 @@ def finish(work, lip_video, face_model, syncnet, out_dir, seconds):
         audio_ok = False
     check = lipsync_check.check(str(final), str(line), str(face_model), str(syncnet))
     clip = clip_check.check(str(final))
-    flags = result_flags(check, clip, audio_ok)
+    flags = result_flags(check, clip, audio_ok) + line_cut_flags(spoken, picture)
     # the silent source with the same line laid over it: the baseline the lip-sync has to beat (not a gate)
     src_with_line = out_dir / "baseline-silent-with-line.mp4"
-    pavo_audio.mux_ours(work / "source-cut.mp4", line, src_with_line)
-    base = lipsync_check.check(str(src_with_line), str(line), str(face_model), str(syncnet))
+    pavo_audio.mux_ours(work / "source-cut.mp4", work / "line-padded.wav", src_with_line)
+    base = lipsync_check.check(str(src_with_line), str(work / "line-padded.wav"), str(face_model), str(syncnet))
     sheet(final, out_dir / "sheet-lipsync.jpg", seconds)
     sheet(src_with_line, out_dir / "sheet-silent-source.jpg", seconds)
     run("ffmpeg", "-nostdin", "-v", "error", "-y", "-i", out_dir / "sheet-silent-source.jpg", "-i", out_dir / "sheet-lipsync.jpg",
         "-filter_complex", "vstack", "-q:v", "3", out_dir / "sheet-compare.jpg")
     report = {"model": MODEL, "commit": MUSETALK_COMMIT, "final": final.name, "final_sha256": sha256_of(final),
               "lipsync": check, "silent_source_with_line": {k: base[k] for k in ("mouth", "flags")},
-              "clip_check": clip, "audio_ours": audio_ok, "flags": flags}
+              "clip_check": clip, "audio_ours": audio_ok, "picture_seconds": round(picture, 3), "flags": flags}
     (out_dir / "report.json").write_text(json.dumps(report, indent=1))
     print(json.dumps({k: report[k] for k in ("model", "final_sha256", "flags")}), json.dumps(check["mouth"]))
     return 1 if flags else 0

@@ -97,6 +97,11 @@ class Gates(unittest.TestCase):
         with self.assertRaises(SystemExit):
             k.interpolate([0, 4], [None, (0.0, 0.0, 0.0, 0.0)], 5)
 
+    def test_a_picture_shorter_than_the_spoken_line_is_a_flag_but_a_silent_tail_is_not(self):
+        self.assertEqual(k.line_cut_flags(6.55, 7.04), [])
+        self.assertEqual(k.line_cut_flags(7.05, 7.04), [])            # within a frame's rounding
+        self.assertEqual(k.line_cut_flags(7.2, 7.04), ["LIPSYNC_LINE_CUT"])
+
     def test_the_thresholds_are_the_unchanged_syncnet_gate(self):
         import lipsync_check as lc
         self.assertEqual((lc.SYNC_OFFSET_CENTRE, lc.SYNC_OFFSET_TOL, lc.SYNC_CONF_MIN), (-1.5, 1.5, 2.7))

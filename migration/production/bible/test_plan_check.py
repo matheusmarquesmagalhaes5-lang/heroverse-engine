@@ -1669,6 +1669,30 @@ class PavoSilentCoverage(unittest.TestCase):
         self.assertIn("SCENE_SECONDS", [x.split()[0] for x in pc.check(long)["problems"]])
 
 
+class KeeperLipsyncField(unittest.TestCase):
+    """Owner 2026-11-05: the Keeper speaks on camera. `lipsync` is valid only on a silent, frontal Keeper shot."""
+
+    def test_the_field_is_accepted_on_a_silent_frontal_keeper_and_refused_elsewhere(self):
+        plan = silent_bridge()
+        keeper = plan["shots"][-1]
+        keeper["lipsync"] = "musetalk-1.5"
+        self.assertEqual(pc.prompt_problems(len(plan["shots"]) - 1, keeper), [])
+        self.assertEqual(pc.check(plan)["problems"], [])
+        codes = lambda s: [x.split()[0] for x in pc.prompt_problems(0, s)]
+        bad = copy.deepcopy(keeper)
+        bad["lipsync"] = "wav2lip"
+        self.assertEqual(codes(bad), ["LIPSYNC_MODEL"])
+        bad = copy.deepcopy(keeper)
+        bad["pavo"]["view"] = "profile"
+        self.assertEqual(codes(bad), ["LIPSYNC_VIEW"])
+        hook = copy.deepcopy(plan["shots"][0])
+        hook["lipsync"] = "musetalk-1.5"
+        self.assertIn("LIPSYNC_KEEPER_ONLY", codes(hook))
+        talking = json.loads((HERE / "plans/genesis-10-short.json").read_text())["shots"][-1]
+        talking["lipsync"] = "musetalk-1.5"
+        self.assertIn("LIPSYNC_NEEDS_SILENT", codes(talking))
+
+
 class PavoCoverage(unittest.TestCase):
     def found(self, plan, root=None):
         return [x.split()[0] for x in pc.pavo_coverage_problems(plan, root=root)]
