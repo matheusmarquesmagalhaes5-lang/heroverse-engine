@@ -4991,6 +4991,25 @@
      "process"
     ]
    }
+  },
+  {
+   "id": "E302",
+   "date": "2026-11-05",
+   "class": [
+    "instrument"
+   ],
+   "prior": [
+    "E268"
+   ],
+   "error": "The first real run of local-review.yml after PR #847 (41951213420, Babel long) and a rerun (41953276036) failed LOCAL_REVIEW_ANALYZE_FAILED_IndexError while 41952393844 passed on the same master: faster-whisper 1.2.1 raises IndexError inside its word-timestamp alignment (transcribe.py find_alignment) intermittently, and the handler printed only the exception class, so the first failure had no location. Root cause: the single ASR pass was treated as deterministic, and the failure handler hid where an unexpected error came from.",
+   "fix": "main() also prints LOCAL_REVIEW_FAILED_AT with file:function:line of the innermost frames (never a message or a path, #861); run_asr repeats a failed full pass with the same parameters up to 3 times on IndexError only, printing LOCAL_REVIEW_ASR_INDEXERROR_ATTEMPT_n_OF_3; any other error, or the third IndexError, still fails the review.",
+   "antidote": {
+    "file": "migration/production/bible/test_local_review.py",
+    "contains": "def test_a_failed_alignment_pass_is_repeated",
+    "covers": [
+     "instrument"
+    ]
+   }
   }
  ]
 }
