@@ -10,7 +10,7 @@ non-commercial: rejected. See OPERATIONS "Keeper lip-sync (our audio)".
 
 This module is the glue around the model and is what the tests cover (no torch here):
   fetch DIR                       the pinned weights, every file by sha256 (fail closed)
-  prepare CLIP WAV FACE_MODEL WORK [--tail S]
+  prepare CLIP WAV FACE_MODEL WORK [--tail S] [--cap S]
                                   source gate (the silent clip's own still-mouth + face), the clip cut to the line plus
                                   a tail, the MuseTalk task file; prints one JSON line
   finish WORK LIPSYNC_VIDEO FACE_MODEL SYNCNET OUT_DIR SECONDS
@@ -135,13 +135,15 @@ def run(*cmd, **kw):
     return subprocess.run(list(map(str, cmd)), check=True, **kw)
 
 
-def prepare(clip, wav, face_model, work, tail=TAIL_S):
+def prepare(clip, wav, face_model, work, tail=TAIL_S, cap=None):
     import lipsync_check
     work = Path(work)
     work.mkdir(parents=True, exist_ok=True)
     still = lipsync_check.still_mouth(str(clip), str(face_model))
     line_s, clip_s = wav_seconds(wav), video_seconds(clip)
     seconds = span_s(line_s, clip_s, tail)
+    if cap:
+        seconds = min(seconds, cap)   # a timing probe only: the line is cut, so the result is never a deliverable
     src = work / "source-cut.mp4"
     run("ffmpeg", "-nostdin", "-v", "error", "-y", "-i", clip, "-t", f"{seconds:.3f}", "-an", "-c:v", "libx264", "-crf", "12",
         "-pix_fmt", "yuv420p", src)
@@ -202,9 +204,11 @@ def main(argv):
     if argv[:1] == ["fetch"] and len(argv) == 2:
         print(json.dumps(fetch(argv[1])))
         return 0
-    if argv[:1] == ["prepare"] and len(argv) in (5, 7):
-        tail = float(argv[6]) if len(argv) == 7 and argv[5] == "--tail" else TAIL_S
-        return prepare(*argv[1:5], tail=tail)
+    if argv[:1] == ["prepare"] and len(argv) in (5, 7, 9):
+        opts = dict(zip(argv[5::2], argv[6::2]))
+        if set(opts) - {"--tail", "--cap"}:
+            raise SystemExit(__doc__)
+        return prepare(*argv[1:5], tail=float(opts.get("--tail", TAIL_S)), cap=float(opts["--cap"]) if "--cap" in opts else None)
     if argv[:1] == ["finish"] and len(argv) == 7:
         return finish(argv[1], argv[2], argv[3], argv[4], argv[5], float(argv[6]))
     raise SystemExit(__doc__)
