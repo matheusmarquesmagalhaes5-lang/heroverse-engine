@@ -27,6 +27,10 @@ on:
         description: Seconds of picture kept after the line ends
         required: false
         default: "0.5"
+      cap:
+        description: Timing probe only, seconds of picture to process (0 = the whole line); a capped run is never a deliverable
+        required: false
+        default: "0"
 permissions:
   contents: read
 concurrency:
@@ -45,6 +49,7 @@ jobs:
       AUDIO: ${{ inputs.audio }}
       AUDIO_SHA: ${{ inputs.audio_sha256 }}
       TAIL: ${{ inputs.tail }}
+      CAP: ${{ inputs.cap }}
       GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
@@ -56,6 +61,7 @@ jobs:
       - name: Inputs (shape, then sha256)
         run: |
           [[ "$CLIP_SHA" =~ ^[0-9a-f]{64}$ && "$AUDIO_SHA" =~ ^[0-9a-f]{64}$ ]] || { echo "LIPSYNC_SHA_REFUSED"; exit 1; }
+          [[ "$CAP" =~ ^[0-9]+(\.[0-9]+)?$ ]] || { echo "LIPSYNC_CAP_REFUSED"; exit 1; }
           [[ "$TAIL" =~ ^[0-9](\.[0-9]+)?$ ]] || { echo "LIPSYNC_TAIL_REFUSED"; exit 1; }
           [[ "$AUDIO" =~ ^migration/[A-Za-z0-9_./-]+\.wav$ && "$AUDIO" != *..* ]] || { echo "LIPSYNC_AUDIO_PATH_REFUSED"; exit 1; }
           W="$RUNNER_TEMP/work"; mkdir -p "$W" "$RUNNER_TEMP/out"
@@ -80,7 +86,7 @@ jobs:
         run: |
           set -euo pipefail
           echo "T0=$(date +%s)" >> "$GITHUB_ENV"
-          "$RUNNER_TEMP/lip/bin/python" -I -B migration/production/bible/keeper_lipsync.py prepare "$W/clip.mp4" "$W/line.wav" "$RUNNER_TEMP/face_landmarker.task" "$W" --tail "$TAIL" | tee "$RUNNER_TEMP/out/prepare.json"
+          "$RUNNER_TEMP/lip/bin/python" -I -B migration/production/bible/keeper_lipsync.py prepare "$W/clip.mp4" "$W/line.wav" "$RUNNER_TEMP/face_landmarker.task" "$W" --tail "$TAIL" $([ "$CAP" != 0 ] && echo --cap "$CAP") | tee "$RUNNER_TEMP/out/prepare.json"
       - name: MuseTalk at the pinned commit, CPU python environment (3.10, torch 2.0.1 cpu, mmcv 2.0.1 cpu wheels)
         run: |
           set -euo pipefail
@@ -110,9 +116,15 @@ jobs:
           cd "$RUNNER_TEMP/MuseTalk"
           s=$(date +%s)
           export OMP_NUM_THREADS=4 MKL_NUM_THREADS=4 PYTHONUNBUFFERED=1
-          "$RUNNER_TEMP/mt/bin/python" -m scripts.inference --inference_config "$W/task.yaml" --result_dir "$W/result" \
+          "$RUNNER_TEMP/mt/bin/python" -I -B "$GITHUB_WORKSPACE/migration/production/bible/keeper_lipsync.py" coords "$W" "$RUNNER_TEMP/MuseTalk" | tee "$RUNNER_TEMP/out/coords.json"
+          echo "COORD_SECONDS=$(( $(date +%s) - s ))" >> "$GITHUB_ENV"
+          timeout 3000s "$RUNNER_TEMP/mt/bin/python" -m scripts.inference --inference_config "$W/task.yaml" --result_dir "$W/result" \
             --unet_model_path models/musetalkV15/unet.pth --unet_config models/musetalkV15/musetalk.json \
-            --whisper_dir models/whisper --vae_type sd-vae --version v15 --batch_size 4 2>&1 | tee "$W/musetalk.log" | tail -n 40
+            --whisper_dir models/whisper --vae_type sd-vae --version v15 --batch_size 4 --use_saved_coord --saved_coord > "$W/musetalk.raw" 2>&1 &
+          pid=$!
+          wait "$pid" || echo "MUSETALK_EXIT $?"
+          tr "\r" "\n" < "$W/musetalk.raw" | grep -v "^$" > "$W/musetalk.log" || true
+          tail -n 60 "$W/musetalk.log"
           e=$(date +%s)
           echo "INFER_SECONDS=$((e - s))" >> "$GITHUB_ENV"
           ls -la "$W/result" "$W/result/v15" || true
@@ -126,7 +138,7 @@ jobs:
           rc=$?
           python3 -I - <<PY
           import json,os
-          r={"env_seconds":int(os.environ.get("ENV_SECONDS",0)),"infer_seconds":int(os.environ.get("INFER_SECONDS",0)),
+          r={"env_seconds":int(os.environ.get("ENV_SECONDS",0)),"infer_seconds":int(os.environ.get("INFER_SECONDS",0)),"coord_seconds":int(os.environ.get("COORD_SECONDS",0)),
              "total_seconds":int(__import__("time").time())-int(os.environ["T0"])}
           json.dump(r,open(os.environ["RUNNER_TEMP"]+"/out/timing.json","w"),indent=1); print(r)
           PY

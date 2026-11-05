@@ -659,6 +659,9 @@ def prompt_problems(i, shot):
         out.append(f"{god} shot {i} {shot['id']}")
     if silent(shot):
         out += silent_problems(i, shot)
+    elif shot.get("lipsync") is not None:
+        out.append(f"LIPSYNC_NEEDS_SILENT shot {i} {shot.get('id')} (`lipsync` lays our line on a SILENT Pavo Keeper clip: "
+                   "pavo_mode \"silent\")")
     return out
 
 
@@ -680,10 +683,29 @@ def silent_problems(i, shot):
                    "never a plain still, a first/last frame or a window)")
     if shot.get("speaker") == ch.GOD:
         out.append(f"PAVO_SILENT_GOD shot {i} {sid} (God is never shown: His voice is a voice-over, not a silent clip)")
+    if shot.get("lipsync") is not None:
+        out += lipsync_problems(i, shot)
     if shot.get("kind") != "keeper" and type(shot.get("seconds")) is int and shot["seconds"] > SCENE_SECONDS[1]:
         out.append(f"PAVO_SILENT_SECONDS shot {i} {sid} (a silent Pavo clip is {SCENE_SECONDS[0]}-{SCENE_SECONDS[1]} s: "
                    "beyond that it would be a still)")
     return out
+
+
+def lipsync_problems(i, shot):
+    """Keeper lip-sync with our audio (owner 2026-11-05, PROMPT_GUIDE "Keeper lip-sync (our audio)"): `"lipsync":
+    "musetalk-1.5"` on a silent, frontal Keeper shot (always) or a silent character shot with a spoken `line` (owner
+    2026-11-05: when needed). The lip-synced clip is made from Pavo's silent clip after the
+    probe (lipsync.yml), then passes the unchanged SyncNet, face and clip gates; no other shot is lip-synced."""
+    import keeper_lipsync
+    sid, lip = shot.get("id"), shot.get("lipsync")
+    if shot.get("kind") != "keeper" and not (isinstance(shot.get("line"), str) and shot.get("speaker") not in (None, ch.GOD)):
+        return [f"LIPSYNC_SPEAKER_ONLY shot {i} {sid} (lip-sync is for the Keeper (always) and a character's spoken line "
+                "(when needed); God is never shown, a scene with no line has no mouth to sync)"]
+    if lip not in keeper_lipsync.MODELS:
+        return [f"LIPSYNC_MODEL shot {i} {sid} (`lipsync` is one of {list(keeper_lipsync.MODELS)}, not {lip!r})"]
+    if (shot.get("pavo") or {}).get("view", "frontal") != "frontal":
+        return [f"LIPSYNC_VIEW shot {i} {sid} (the lip-sync model reads a frontal face: pavo.view \"frontal\")"]
+    return []
 
 
 def _given_period(given):

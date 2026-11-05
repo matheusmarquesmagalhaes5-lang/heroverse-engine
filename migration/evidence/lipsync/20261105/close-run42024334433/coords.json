@@ -1,0 +1,7 @@
+Loads checkpoint by local backend from path: ./models/dwpose/dw-ll_ucoco_384.pth
+reading images...
+get key_landmark and face bounding boxes with the default value
+********************************************bbox_shift parameter adjustment**********************************************************
+Total frame:「23」 Manually adjust range : [ -16~16 ] , the current value: 0
+*************************************************************************************************************************************
+{"frames": 170, "measured": 23, "first": [287, 196, 485, 492], "last": [285, 187, 482, 475]}

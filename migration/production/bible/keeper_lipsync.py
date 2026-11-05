@@ -10,9 +10,13 @@ non-commercial: rejected. See OPERATIONS "Keeper lip-sync (our audio)".
 
 This module is the glue around the model and is what the tests cover (no torch here):
   fetch DIR                       the pinned weights, every file by sha256 (fail closed)
-  prepare CLIP WAV FACE_MODEL WORK [--tail S]
+  prepare CLIP WAV FACE_MODEL WORK [--tail S] [--cap S]
                                   source gate (the silent clip's own still-mouth + face), the clip cut to the line plus
                                   a tail, the MuseTalk task file; prints one JSON line
+  coords WORK MUSETALK_DIR [STEP]
+                                  run with the MuseTalk environment: the face box on every STEP-th frame (default 8), linear
+                                  in between, saved where the model looks for it (work/source-cut.pkl). The model's own
+                                  per-frame landmarks cost 3.2 s a frame on the CPU runner; a Keeper clip is a static camera
   finish WORK LIPSYNC_VIDEO FACE_MODEL SYNCNET OUT_DIR SECONDS
                                   our line over the lip-synced picture (pavo_audio.mux_ours, bit-exact PCM), the strict
                                   gates on that clip and on the silent source (baseline), frame sheets; exit 1 on a flag
@@ -33,6 +37,7 @@ MODEL = "musetalk-1.5"
 MODELS = (MODEL,)
 MUSETALK_REPO = "https://github.com/TMElyralab/MuseTalk"
 MUSETALK_COMMIT = "0a89dec45a0192b824e3cf4daf96c239440c5ed8"
+COORD_STEP = 8                 # frames between the face boxes that are really measured
 TAIL_S = 0.5                    # picture kept after the last word (the mouth closes again), seconds
 FACE_FRAMES_MIN = 0.8           # lipsync_check.FACE_FRAMES_MIN, repeated for the module's own flag
 HF = "https://huggingface.co"
@@ -131,17 +136,73 @@ def result_flags(check, clip, audio_ok):
     return flags
 
 
+def sample_indices(n, step=COORD_STEP):
+    """Frames whose face box is measured: every `step`-th, and always the last."""
+    idx = list(range(0, n, step))
+    if n and idx[-1] != n - 1:
+        idx.append(n - 1)
+    return idx
+
+
+def interpolate(idx, boxes, n):
+    """A face box for each of n frames from boxes measured at idx (None = no face there; those are skipped). Integers,
+    linear between measured frames, held before the first and after the last. No measured box at all is an error."""
+    known = [(i, b) for i, b in zip(idx, boxes) if b is not None and tuple(b) != (0.0, 0.0, 0.0, 0.0)]
+    if not known:
+        raise SystemExit("LIPSYNC_NO_FACE_BOX")
+    out = []
+    for f in range(n):
+        if f <= known[0][0]:
+            out.append(tuple(int(v) for v in known[0][1]))
+        elif f >= known[-1][0]:
+            out.append(tuple(int(v) for v in known[-1][1]))
+        else:
+            j = max(m for m, (i, _) in enumerate(known) if i <= f)
+            (i0, b0), (i1, b1) = known[j], known[j + 1]
+            w = (f - i0) / (i1 - i0)
+            out.append(tuple(int(round(a + (b - a) * w)) for a, b in zip(b0, b1)))
+    return out
+
+
+def coords(work, musetalk_dir, step=COORD_STEP):
+    """MuseTalk environment only (imports its preprocessing, which needs mmpose)."""
+    import pickle
+    import tempfile
+    work = Path(work)
+    os.chdir(musetalk_dir)
+    sys.path.insert(0, str(musetalk_dir))
+    from musetalk.utils.preprocessing import get_landmark_and_bbox
+    with tempfile.TemporaryDirectory() as tmp:
+        run("ffmpeg", "-nostdin", "-v", "error", "-i", work / "source-cut.mp4", "-start_number", "0", f"{tmp}/%08d.png")
+        frames = sorted(Path(tmp).glob("*.png"))
+        idx = sample_indices(len(frames), step)
+        boxes, _ = get_landmark_and_bbox([str(frames[i]) for i in idx], 0)
+    full = interpolate(idx, boxes, len(frames))
+    with open(work / "source-cut.pkl", "wb") as f:
+        pickle.dump(full, f)
+    print(json.dumps({"frames": len(frames), "measured": len(idx), "first": full[0], "last": full[-1]}))
+    return 0
+
+
+def line_cut_flags(spoken_s, picture_s, tol=0.02):
+    """The picture must outlast the spoken line (the tail is silence); a model that returns fewer frames than the line
+    needs would cut a word."""
+    return ["LIPSYNC_LINE_CUT"] if spoken_s > picture_s + tol else []
+
+
 def run(*cmd, **kw):
     return subprocess.run(list(map(str, cmd)), check=True, **kw)
 
 
-def prepare(clip, wav, face_model, work, tail=TAIL_S):
+def prepare(clip, wav, face_model, work, tail=TAIL_S, cap=None):
     import lipsync_check
     work = Path(work)
     work.mkdir(parents=True, exist_ok=True)
     still = lipsync_check.still_mouth(str(clip), str(face_model))
     line_s, clip_s = wav_seconds(wav), video_seconds(clip)
     seconds = span_s(line_s, clip_s, tail)
+    if cap:
+        seconds = min(seconds, cap)   # a timing probe only: the line is cut, so the result is never a deliverable
     src = work / "source-cut.mp4"
     run("ffmpeg", "-nostdin", "-v", "error", "-y", "-i", clip, "-t", f"{seconds:.3f}", "-an", "-c:v", "libx264", "-crf", "12",
         "-pix_fmt", "yuv420p", src)
@@ -167,7 +228,12 @@ def finish(work, lip_video, face_model, syncnet, out_dir, seconds):
     import pavo_audio
     work, out_dir = Path(work), Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
-    line = work / "line-padded.wav"
+    # the model's picture can end a frame short of the padded line (169 frames of 7.05 s): our line is cut at the picture's
+    # end, which is only silence (tail) - a cut into the spoken line is a flag
+    spoken = json.loads((work / "prepare.json").read_text())["line_seconds"]
+    picture = video_seconds(lip_video)
+    line = work / "line-final.wav"
+    run("ffmpeg", "-nostdin", "-v", "error", "-y", "-i", work / "line-padded.wav", "-t", f"{picture:.3f}", "-c:a", "pcm_s16le", line)
     final = out_dir / "keeper-lipsync.mp4"
     # the model's picture (re-encoded by the model's own ffmpeg step) with OUR line, bit-exact PCM, as the only audio
     pavo_audio.mux_ours(lip_video, line, final)
@@ -178,18 +244,18 @@ def finish(work, lip_video, face_model, syncnet, out_dir, seconds):
         audio_ok = False
     check = lipsync_check.check(str(final), str(line), str(face_model), str(syncnet))
     clip = clip_check.check(str(final))
-    flags = result_flags(check, clip, audio_ok)
+    flags = result_flags(check, clip, audio_ok) + line_cut_flags(spoken, picture)
     # the silent source with the same line laid over it: the baseline the lip-sync has to beat (not a gate)
     src_with_line = out_dir / "baseline-silent-with-line.mp4"
-    pavo_audio.mux_ours(work / "source-cut.mp4", line, src_with_line)
-    base = lipsync_check.check(str(src_with_line), str(line), str(face_model), str(syncnet))
+    pavo_audio.mux_ours(work / "source-cut.mp4", work / "line-padded.wav", src_with_line)
+    base = lipsync_check.check(str(src_with_line), str(work / "line-padded.wav"), str(face_model), str(syncnet))
     sheet(final, out_dir / "sheet-lipsync.jpg", seconds)
     sheet(src_with_line, out_dir / "sheet-silent-source.jpg", seconds)
     run("ffmpeg", "-nostdin", "-v", "error", "-y", "-i", out_dir / "sheet-silent-source.jpg", "-i", out_dir / "sheet-lipsync.jpg",
         "-filter_complex", "vstack", "-q:v", "3", out_dir / "sheet-compare.jpg")
     report = {"model": MODEL, "commit": MUSETALK_COMMIT, "final": final.name, "final_sha256": sha256_of(final),
               "lipsync": check, "silent_source_with_line": {k: base[k] for k in ("mouth", "flags")},
-              "clip_check": clip, "audio_ours": audio_ok, "flags": flags}
+              "clip_check": clip, "audio_ours": audio_ok, "picture_seconds": round(picture, 3), "flags": flags}
     (out_dir / "report.json").write_text(json.dumps(report, indent=1))
     print(json.dumps({k: report[k] for k in ("model", "final_sha256", "flags")}), json.dumps(check["mouth"]))
     return 1 if flags else 0
@@ -202,9 +268,13 @@ def main(argv):
     if argv[:1] == ["fetch"] and len(argv) == 2:
         print(json.dumps(fetch(argv[1])))
         return 0
-    if argv[:1] == ["prepare"] and len(argv) in (5, 7):
-        tail = float(argv[6]) if len(argv) == 7 and argv[5] == "--tail" else TAIL_S
-        return prepare(*argv[1:5], tail=tail)
+    if argv[:1] == ["prepare"] and len(argv) in (5, 7, 9):
+        opts = dict(zip(argv[5::2], argv[6::2]))
+        if set(opts) - {"--tail", "--cap"}:
+            raise SystemExit(__doc__)
+        return prepare(*argv[1:5], tail=float(opts.get("--tail", TAIL_S)), cap=float(opts["--cap"]) if "--cap" in opts else None)
+    if argv[:1] == ["coords"] and len(argv) in (3, 4):
+        return coords(argv[1], argv[2], int(argv[3]) if len(argv) == 4 else COORD_STEP)
     if argv[:1] == ["finish"] and len(argv) == 7:
         return finish(argv[1], argv[2], argv[3], argv[4], argv[5], float(argv[6]))
     raise SystemExit(__doc__)

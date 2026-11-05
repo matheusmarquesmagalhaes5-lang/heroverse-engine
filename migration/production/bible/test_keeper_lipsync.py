@@ -82,6 +82,26 @@ class Gates(unittest.TestCase):
         self.assertEqual(k.result_flags(ok, ok, False), ["AUDIO_NOT_OURS"])
         self.assertEqual(k.result_flags({"flags": ["AUDIO_NOT_OUR_LINE"]}, ok, True), ["AUDIO_NOT_OUR_LINE"])   # never dropped
 
+    def test_face_boxes_are_measured_sparsely_and_interpolated_per_frame(self):
+        self.assertEqual(k.sample_indices(20, 8), [0, 8, 16, 19])
+        self.assertEqual(k.sample_indices(17, 8), [0, 8, 16])
+        self.assertEqual(k.sample_indices(1, 8), [0])
+        out = k.interpolate([0, 4, 8], [(10, 10, 110, 110), (20, 20, 120, 120), (20, 20, 120, 120)], 10)
+        self.assertEqual(len(out), 10)
+        self.assertEqual(out[0], (10, 10, 110, 110))
+        self.assertEqual(out[2], (15, 15, 115, 115))
+        self.assertEqual(out[9], (20, 20, 120, 120))                     # held after the last measured frame
+        # a frame with no face is skipped, never a zero box
+        out = k.interpolate([0, 4, 8], [(0, 0, 100, 100), None, (8, 8, 108, 108)], 9)
+        self.assertEqual(out[4], (4, 4, 104, 104))
+        with self.assertRaises(SystemExit):
+            k.interpolate([0, 4], [None, (0.0, 0.0, 0.0, 0.0)], 5)
+
+    def test_a_picture_shorter_than_the_spoken_line_is_a_flag_but_a_silent_tail_is_not(self):
+        self.assertEqual(k.line_cut_flags(6.55, 7.04), [])
+        self.assertEqual(k.line_cut_flags(7.05, 7.04), [])            # within a frame's rounding
+        self.assertEqual(k.line_cut_flags(7.2, 7.04), ["LIPSYNC_LINE_CUT"])
+
     def test_the_thresholds_are_the_unchanged_syncnet_gate(self):
         import lipsync_check as lc
         self.assertEqual((lc.SYNC_OFFSET_CENTRE, lc.SYNC_OFFSET_TOL, lc.SYNC_CONF_MIN), (-1.5, 1.5, 2.7))

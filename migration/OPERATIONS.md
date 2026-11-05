@@ -137,6 +137,19 @@ per line per prompt revision. Reviewers still watch and listen to the real clip:
 (`WARN_MOUTH_NOT_CLOSED`, `WARN_FACE_NOT_FOUND_PROFILE`) are for them. The talking `pavo_audio` routes below remain for
 approvals recorded under them.
 
+Keeper lip-sync (our audio) (owner 2026-11-05: "No guardião eu quero lixo sync pra ele falar.. verifique algo gratuito e de qualidade";
+PROMPT_GUIDE "Keeper lip-sync (our audio)"; research `evidence/research/KEEPER-LIPSYNC-2026-11-05.md`). The Keeper's spoken shot is a
+Pavo silent frontal clip with our Kokoro line lip-synced onto it by MuseTalk 1.5 (MIT code, weights usable commercially; LatentSync
+needs a GPU and a research-only face detector, Wav2Lip is non-commercial). `lipsync.yml` (dispatch on main or `claude/*`; inputs
+`clip`+`clip_sha256`, `audio`+`audio_sha256`, `tail`, `cap` for timing probes only): pinned commit, every weight by sha256
+(`keeper_lipsync.PINS`), Python 3.10 CPU venv, face boxes every 8th frame, then our line bit-exact over the lip-synced picture and
+the unchanged `lipsync_check`/`clip_check`/`assert_ours` gates plus the silent control and frame sheets, artifact for 14 days.
+Free CPU: 2-4.7 minutes of runner per second of picture, runner speed varies 2x (7 s line: 15.7-17.8 min job; 5 s line: 26 min); The owner's PC (NVIDIA MX330, 2 GB VRAM, 8 GB RAM) cannot run MuseTalk or LatentSync, so the route is cloud and free: Actions CPU now,
+and if it is ever too slow Kaggle/Colab/ZeroGPU with an owner-created token as a GitHub secret) are documented in the research note, not needed. No provider
+call, no secret, zero spend; output is unreviewed media until Claude watches and hears it. Plan field `lipsync: "musetalk-1.5"`
+(`plan_check.lipsync_problems`) on a silent frontal Keeper shot (always) or a character shot with a spoken line (when needed); bar =
+"good enough to publish": the unchanged SyncNet floor, a reviewer who watches and hears it decides.
+
 Pavo's audio is Pavo's, in full (owner 2026-11-03: "Quero com o audio do pavo tambem.. quero o video do pavo na integra. A
 narracao feita vai ser pras imagens.. aproveitar tudo que o pavo pode oferecer dentro das capacidades"). This reverses E287's
 default: `pavo_audio` is a per-shot setting whose DEFAULT is `"pavo"` on every track (long compose, reflection, compilation,
