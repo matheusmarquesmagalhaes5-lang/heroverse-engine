@@ -1,0 +1,10 @@
+{
+ "date": "2026-11-05",
+ "status": "BLOCKED_FREE_TIER_PROOF",
+ "feature": "native-review.yml defect_scan=true (PR #845)",
+ "known_points": ["00:55 'mighty'", "02:17-02:22 b-brick builder line", "06:51 'babel'"],
+ "owner_verdict": "the owner listened to the Babel long and approved it, so the three known points are ASR flags, not defects; a Gemini defect list should be read against that",
+ "blocker": "native_review.free_key() requires free_tier_evidence JSON {tier: Free, billing_account_linked: false, model: gemini-3.8-flash, source: verified-ai-studio-readback, verified_at_unix <= 1 h old, api_key_sha256 = sha256 of the configured GEMINI_API_KEY}. No workflow produces it: the tier and billing state are an AI Studio readback made by an executor logged in to the owner's Google account (past requests, e.g. migration/requests/done/41197672387-*, carried one from the ChatGPT/PC route), and the key hash needs the key. A workflow cannot read AI Studio, and a hand-written proof would be a fabricated proof. The Desktop Commander device (Matheus) was OFFLINE at 01:25Z.",
+ "owner_action": "On the PC with AI Studio open on the project of the HERO_GEMINI_API_KEY: confirm Plan = Free tier with no billing account linked, then have the ChatGPT/PC executor dispatch native-review.yml with defect_scan=true, plan migration/production/bible/plans/genesis-10-11-long.json, sha256 0386d34a1501477d6ea487b3c3cf53caedb0a898d70e7b15feb90e36bad09937, the exact byte_size, the operator receipt_certificate, owner_review_authorized=true and a free_tier_evidence made within the hour. The master is 306127245 bytes; per-segment dispatch only if the duplicate guard or the quota requires it.",
+ "result": null
+}
