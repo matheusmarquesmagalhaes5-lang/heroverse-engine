@@ -2,6 +2,7 @@ param([string]$act, [int]$x=0, [int]$y=0, [string]$text="", [string]$out="C:\Her
 # Robust focus (coordinator 2026-11-03): before every click, keystroke or scroll the ChatGPT window is found, restored if
 # minimized, brought to the foreground (AttachThreadInput + SetForegroundWindow + BringWindowToTop + SetFocus) and verified with
 # GetForegroundWindow, up to 3 tries. If it cannot be the foreground, NOTHING is clicked or typed (exit 9, "FOCUS_FAILED").
+# lastact.txt holds the tick of this route's last action, so select_chat.ps1 can tell the owner's input from ours (E305).
 Add-Type -AssemblyName System.Windows.Forms,System.Drawing
 Add-Type -TypeDefinition @'
 using System;using System.Runtime.InteropServices;using System.Text;
@@ -25,7 +26,18 @@ function Get-HVWindow {
   return [IntPtr]::Zero
 }
 function Test-HVFocus { $h = Get-HVWindow; return ($h -ne [IntPtr]::Zero -and [HVUI]::GetForegroundWindow() -eq $h) }
+Add-Type -TypeDefinition 'using System;using System.Runtime.InteropServices;public class HVIdle{[StructLayout(LayoutKind.Sequential)]public struct L{public uint s;public uint t;}[DllImport("user32.dll")]public static extern bool GetLastInputInfo(ref L p);}'
+# someone else is using the PC: the last system input is newer than the last action of this script, and less than 20 s old
+function Test-HVOwnerBusy {
+  $l = New-Object HVIdle+L; $l.s = 8; [HVIdle]::GetLastInputInfo([ref]$l) | Out-Null
+  $now = [Environment]::TickCount; $mine = 0
+  if (Test-Path 'C:\HeroVerse\lastact.txt') { $mine = [int64](Get-Content 'C:\HeroVerse\lastact.txt' -ErrorAction SilentlyContinue) }
+  $lastInput = [int64]$l.t
+  if ($lastInput -le $mine + 1500) { return $false }
+  return (($now - $lastInput) -lt 20000)
+}
 function Set-HVFocus {
+  if (-not (Test-HVFocus) -and (Test-HVOwnerBusy)) { return $false }
   for ($try = 0; $try -lt 3; $try++) {
     $h = Get-HVWindow
     if ($h -eq [IntPtr]::Zero) { Start-Process 'shell:AppsFolder\OpenAI.Codex_2p2nqsd0c76g0!App'; Start-Sleep 4; continue }
@@ -49,5 +61,7 @@ if (-not $nofocus -and $act -in @('click', 'type', 'scroll')) {
 if ($act -eq "click") { [HVUI]::SetCursorPos($x,$y) | Out-Null; Start-Sleep -m 350; if (-not $nofocus -and -not (Test-HVFocus)) { "FOCUS_LOST"; exit 9 }; [HVUI]::mouse_event(2,0,0,0,0); Start-Sleep -m 80; [HVUI]::mouse_event(4,0,0,0,0) }
 if ($act -eq "type") { if (-not $nofocus -and -not (Test-HVFocus)) { "FOCUS_LOST"; exit 9 }; [System.Windows.Forms.SendKeys]::SendWait($text) }
 if ($act -eq "scroll") { [HVUI]::SetCursorPos($x,$y) | Out-Null; for($i=0;$i -lt 4;$i++){ if (-not $nofocus -and -not (Test-HVFocus)) { "FOCUS_LOST"; exit 9 }; [HVUI]::mouse_event(0x800,0,0,-120,0);Start-Sleep -m 200} }
+Set-Content 'C:\HeroVerse\lastact.txt' ([Environment]::TickCount)
 Start-Sleep $wait
+Set-Content 'C:\HeroVerse\lastact.txt' ([Environment]::TickCount)
 $b=[System.Windows.Forms.Screen]::PrimaryScreen.Bounds; $bmp=New-Object System.Drawing.Bitmap $b.Width,$b.Height; $g=[System.Drawing.Graphics]::FromImage($bmp); $g.CopyFromScreen($b.Location,[System.Drawing.Point]::Empty,$b.Size); $bmp.Save($out); "ok"
