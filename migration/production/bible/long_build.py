@@ -113,10 +113,11 @@ def cold_open_layout(plan, layout):
 
 # ---------- the cut ----------
 
-def compose_long_shots(plan, layout, clips, clip_seconds):
+def compose_long_shots(plan, layout, clips, clip_seconds, lipsynced=()):
     """short_engine shots tiling [0, total]: one cut a shot. clips and clip_seconds are keyed by generated shot id (a
     window's cut plays its source's clip). Each cut carries `shot`, `source` and `kind` (scene, window, keeper,
-    speaker)."""
+    speaker). A lip-synced clip (owner 2026-11-05, `lipsynced`: its approval carries a lip-sync proof) is cut like a
+    talking clip, from its first word at normal speed, alone in its run."""
     shots, total, lines = plan["shots"], layout["total"], layout["lines"]
     _, carried = pc.sequence(plan)
     runs = pc.groups(shots, carried)
@@ -127,7 +128,9 @@ def compose_long_shots(plan, layout, clips, clip_seconds):
         s = shots[a]
         # E130: a voice-over Keeper (plan B) is cut like a scene run: his silent clip covers his line from its first
         # word to the next run (slowed with its parts at most MAX_SLOW), his words play from the voice track
-        if pc.talking(s):
+        if s["id"] in lipsynced and a != b:
+            raise SystemExit(f"LIPSYNC_NOT_ON_HIS_LINE {s['id']} (a lip-synced clip is the only shot of its run)")
+        if pc.talking(s) or s["id"] in lipsynced:
             kind = "keeper" if s["kind"] == "keeper" else "speaker"
             start, stop = lines[ln[0]]["start"], lines[ln[-1]]["end"]
             if abs(start - cursor) > 1e-3:
@@ -632,7 +635,8 @@ def assemble_step(plan, work, up, music, out_dir, frame=FRAME, approvals=None, r
     voice, seconds, onsets = eb.native_voice(plan, work, layout,
                                              {s["id"]: str(work / "clips" / f"{s['id']}.mp4") for s in generated(plan)},
                                              seconds, approvals)
-    cuts = eb.shift_onsets(compose_long_shots(plan, layout, {k: str(f) for k, (f, _) in ups.items()}, seconds), onsets)
+    cuts = eb.shift_onsets(compose_long_shots(plan, layout, {k: str(f) for k, (f, _) in ups.items()}, seconds,
+                                              eb.lipsynced(plan, approvals)), onsets)
     cplan = {"voice": voice, "timeline": str(work / "compose-timeline.json"),
              "music": str(music), "music_offset": float(plan.get("music_offset", 600.0)), "tail": eb.TAIL,
              "frame": list(frame), "shots": cuts, "native_onsets": onsets}

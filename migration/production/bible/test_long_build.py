@@ -83,6 +83,20 @@ class Cut(unittest.TestCase):
             lb.compose_long_shots(plan, tiny_layout(), {k: f"{k}.mp4" for k in CLIPS}, short)
         self.assertIn("FOOTAGE_SHORT k-1", str(err.exception))
 
+    def test_a_lip_synced_keeper_is_cut_like_a_talking_clip_never_slowed(self):
+        # owner 2026-11-05: the Keeper speaks our line by a lip-sync of his silent clip; its lips start on his first
+        # word, so it plays at normal speed from 0 s with its last frame held (a slowed clip would drift off the words)
+        plan = tiny_plan()
+        plan["shots"][2]["voiceover"] = True
+        cuts = lb.compose_long_shots(plan, tiny_layout(), {k: f"{k}.mp4" for k in CLIPS}, CLIPS, {"k-1"})
+        k = cuts[2]
+        self.assertEqual((k["kind"], k["start"], k["end"], k["src_start"], k["speed"]), ("keeper", 8.0, 12.6, 0.0, 1.0))
+        self.assertEqual(k["talk"], {"start": 8.0, "end": 12.0})
+        with self.assertRaises(SystemExit) as err:
+            lb.compose_long_shots(plan, tiny_layout(), {k: f"{k}.mp4" for k in CLIPS}, dict(CLIPS, **{"k-1": 3.5}),
+                                  {"k-1"})
+        self.assertIn("KEEPER_CLIP_SHORT k-1", str(err.exception))
+
     def test_one_cut_a_shot_and_a_window_shows_the_next_part_of_its_source_clip(self):
         plan = tiny_plan()
         cuts = lb.compose_long_shots(plan, tiny_layout(), {k: f"{k}.mp4" for k in CLIPS}, CLIPS)

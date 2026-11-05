@@ -5076,6 +5076,35 @@
      "fragile-input"
     ]
    }
+  },
+  {
+   "id": "E304",
+   "date": "2026-11-05",
+   "class": [
+    "process"
+   ],
+   "prior": [
+    "E287",
+    "E288",
+    "E290",
+    "E291",
+    "E292",
+    "E293",
+    "E295",
+    "E296",
+    "E297",
+    "E298",
+    "E301"
+   ],
+   "error": "The Keeper lip-sync route (#867, #872: lipsync.yml, plan field `lipsync`, keeper_lipsync.py) produced a measured lip-synced clip, but episode_build and approve-shot still judged a silent Keeper shot only as a voice-over: the build's silent check would refuse the lip-synced clip as MOUTH_TALKING, approve-shot had no way to know it, and the compose would slow it (keeper-vo) so the lips drift off the words. Root cause: a new media route was added at the producing stage without wiring the consuming stages (approval, build check, compose) or a binding record; the lipsync report also lacked the source clip and Kokoro line hashes needed to bind it.",
+   "fix": "keeper_lipsync.prepare/finish record the silent source clip sha256 and our Kokoro line's PCM proof; proof_of/proof_problems check a proof against its clip, the line the layout lays now, the stored approvable silent sources and the unchanged gates (SyncNet offset within tolerance, confidence >= 2.7, face >= 80 %, audio bit-exact, no flag). episode_build: lines writes the lip-sync line WAV, lipsync-record turns a lipsync.yml result into a probe record, approve-shot approves a lip-synced row only with a valid proof and no flag (soft lips flags included), generate checks an approval carrying a proof by its proof + lipsync_check on its own track (else the silent check and MOUTH_TALKING as before), clip_needs is the line, and compose (Short and long) lays it like a talking clip at normal speed from the first word.",
+   "antidote": {
+    "file": "migration/production/bible/test_episode_build.py",
+    "contains": "def test_without_a_verified_report_the_lip_synced_clip_is_refused_as_mouth_talking",
+    "covers": [
+     "process"
+    ]
+   }
   }
  ]
 }

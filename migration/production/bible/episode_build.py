@@ -63,6 +63,10 @@ the episode record and dispatches publish-episode.yml.
                                                  E114, shot-probe.yml with adopt_run: clips a build run made and
                                                  Claude approved, as a probe record (request recomputed and equal to
                                                  the plan's now, the build's checks again); nothing generated
+  episode_build.py lipsync-record PLAN WORK LIP_PYTHON FACE_MODEL OUT SHOT REPORT CLIP RUN_ID
+                                                 owner 2026-11-05: a lipsync.yml result (report.json, the clip) of a
+                                                 lip-sync shot as OUT/probe.json: proof bound to the clip, its stored
+                                                 silent source and the Kokoro line `lines` lays now, measured again
   episode_build.py approve-shot RECORD SHOT ASSET SCORE NOTE --reviewer MODEL [--trim-out SECONDS]
                                                  E114: the named session's frame review (SCORE >= 9.5) approves a clip
                                                  into shots/<episode>.json (by PR); the build ships that clip
@@ -463,9 +467,12 @@ def compose_prediction(plan, layout, clip_seconds=None):
                 clip_seconds[s["id"]] = max(clip_seconds[s["id"]], float(talk_record(layout, s)["seconds"]))
     if plan_check.reflection(plan):   # its clips are never composed here: reflection_shorts joins them with crossfades
         return []
+    alone = lipsync_run_problems(plan)
     if is_long(plan):   # LONG_DESIGN slice 3: one cut a shot at the story QA's 4-7 s holds, windows on their source
         import long_build
-        return long_build.compose_problems(plan, layout, clip_seconds)
+        return alone + long_build.compose_problems(plan, layout, clip_seconds)
+    if alone:
+        return alone
     try:
         shots = compose_shots(plan, layout, {s["id"]: s["id"] for s in plan["shots"]}, clip_seconds)
     except SystemExit as exc:
@@ -481,6 +488,15 @@ def compose_prediction(plan, layout, clip_seconds=None):
     if share > plan_check.ESTABLISHING_SHARE_MAX:
         problems.append(f"ESTABLISHING_SHARE {share:.3f} (composed)")
     return problems
+
+
+def lipsync_run_problems(plan):
+    """The compose lays a lip-synced clip alone in its run, from its line's first word (compose_shots,
+    long_build.compose_long_shots: LIPSYNC_NOT_ON_HIS_LINE): predicted here for every lip-sync shot of the plan."""
+    _, carried = plan_check.sequence(plan)
+    return [f"LIPSYNC_NOT_ON_HIS_LINE {plan['shots'][a]['id']} (a lip-synced clip is the only shot of its run)"
+            for a, b, _ in plan_check.groups(plan["shots"], carried)
+            if b != a and any(lipsync_shot(plan["shots"][k]) for k in range(a, b + 1))]
 
 
 def establishing_share(plan, shots, total):
@@ -735,6 +751,8 @@ def lines_step(plan, work, _requests=False):
     for folder, records in (("keeper", result["keeper"]), ("speakers", result["speakers"])):
         for sid, record in records.items():   # each talking clip's input audio, cut from the rebuilt track
             if record.get("voiceover"):        # plan B: a silent Keeper clip takes no input audio
+                if lipsync_shot(by_id.get(sid) or {}):
+                    record["lipsync_wav"] = lipsync_wav(work, folder, sid, record, params, track, rate, width)
                 continue
             native = work / folder / f"{sid}-native.wav"
             a, b = int(round(record["start"] * rate)) * width, int(round(record["end"] * rate)) * width
@@ -746,6 +764,9 @@ def lines_step(plan, work, _requests=False):
                 pad = pavo_prompt.tail_pad(record["seconds"], talk_need(record["seconds"]))
                 record["tail_pad_s"] = pad_wav(out, pad)
             record["wav"] = rel(out)
+    for sid, record in result["voice_over"].items():   # a silent speaker's line lip-synced when the plan asks
+        if lipsync_shot(by_id.get(sid) or {}):
+            record["lipsync_wav"] = lipsync_wav(work, "speakers", sid, record, params, track, rate, width)
     result["retimed"] = retimes
     if frozen:
         result["pavo_requests"] = frozen
@@ -757,6 +778,17 @@ def lines_step(plan, work, _requests=False):
     if problems:
         raise SystemExit("LINES_REFUSED " + "; ".join(problems))
     return result
+
+
+def lipsync_wav(work, folder, sid, record, params, track, rate, width):
+    """A lip-sync shot's exact Kokoro line, cut from the rebuilt track (mono 44.1 kHz 16-bit, no pad): the WAV lipsync.yml
+    is given and the one its proof is checked against (pavo_audio.proof_of)."""
+    native = Path(work) / folder / f"{sid}-lipsync-native.wav"
+    a, b = int(round(record["start"] * rate)) * width, int(round(record["end"] * rate)) * width
+    write_wav(native, params, track[a:b])
+    out = Path(work) / folder / f"{sid}.lipsync.wav"
+    run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", native, "-ac", "1", "-ar", "44100", "-c:a", "pcm_s16le", out])
+    return rel(out)
 
 
 def pad_wav(path, seconds):
@@ -903,7 +935,10 @@ def clip_needs(plan, layout, slack=0.0, approvals=None):
     """E118: source coverage this layout needs. E152: a native approval needs its actual speech endpoint, not
     the integer duration once requested from Pavo. Other shots keep shot_seconds and MEASURE_TOLERANCE."""
     spans = native_spans(plan, approvals)
-    return {s["id"]: spans[s["id"]][2] if s["id"] in spans else shot_seconds(s, i, plan, layout, slack)
+    synced = lipsynced(plan, approvals) if layout else set()
+    return {s["id"]: spans[s["id"]][2] if s["id"] in spans else
+            round(line_record(layout, s)["seconds"] - slack, 3) if s["id"] in synced else
+            shot_seconds(s, i, plan, layout, slack)
             for i, s in enumerate(plan["shots"]) if not is_window(s)}
 
 
@@ -1252,6 +1287,11 @@ def review_problems(plan, digests, approvals=None, needs=None):
     if changed:
         out.append("SHOT_REQUEST_CHANGED " + " ".join(changed) + " (the plan's request is no longer the one the "
                    "approved clip was made from: probe and approve again)")
+    unplanned = [i for i in ids if i in approvals and approvals[i].get("lipsync") is not None
+                 and not lipsync_shot(plan["shots"][index[i]])]
+    if unplanned:   # owner 2026-11-05: a lip-synced clip ships only on a shot whose plan asks for the lip-sync
+        out.append("LIPSYNC_NOT_PLANNED " + " ".join(unplanned) + " (the approval is a lip-synced clip; the plan shot "
+                   "has no valid `lipsync`)")
     unknown = [i for i in ids if i in approvals and not reviewer_identity.valid(approvals[i])]
     if unknown:
         out.append("SHOT_REVIEWER_REFUSED " + " ".join(unknown) + " (unknown explicit reviewer identity)")
@@ -1508,6 +1548,129 @@ def silent_mouth_flags(lip_python, face_model, clip, shot=None):
         warnings.append("WARN_FACE_NOT_FOUND_PROFILE")
     measures["still_mouth"]["silent_warnings"] = warnings
     return kept, measures
+
+
+# ---------- lip-sync of our audio on a silent Pavo clip (owner 2026-11-05; keeper_lipsync.py, lipsync.yml) ----------
+# A plan shot with a valid `lipsync` (plan_check.lipsync_problems: the Keeper always, a character's line when asked) may
+# ship the lip-synced clip instead of its silent Pavo clip. That clip moves its mouth, so the silent check would flag
+# MOUTH_TALKING: it is judged instead by its lip-sync proof (keeper_lipsync.proof_problems: this clip, its stored silent
+# source, our Kokoro line by PCM sha256, SyncNet offset/confidence and the face) and measured again with lipsync_check
+# against its own track, thresholds unchanged. Any flag on it is a refusal (a soft lips flag is not waved through: the
+# owner's bar is the gate itself). A clip without such a proof keeps every silent check, MOUTH_TALKING included.
+LIPSYNC_ROUND = "lipsync"
+
+
+def lipsync_shot(shot):
+    """A silent shot whose plan asks for a lip-sync of our line, with a valid `lipsync` field."""
+    return plan_check.silent(shot) and shot.get("lipsync") is not None and not plan_check.lipsync_problems(0, shot)
+
+
+def lipsynced(plan, approvals=None):
+    """{shot ids} whose approved clip is a lip-synced one (its approval carries a lip-sync proof) on a lip-sync shot:
+    the compose lays them like a talking clip (from the first word, normal speed, last frame held)."""
+    if approvals is None:
+        approvals = load_approvals(plan) if plan.get("episode") else {}
+    return {s["id"] for s in plan["shots"] if lipsync_shot(s) and (approvals.get(s["id"]) or {}).get("lipsync")}
+
+
+def line_record(layout, shot):
+    """The layout record of a shot's line (the Keeper's, a talking speaker's or a silent speaker's)."""
+    for key in ("keeper", "speakers", "voice_over"):
+        rec = (layout.get(key) or {}).get(shot["id"])
+        if rec:
+            return rec
+    raise SystemExit(f"LIPSYNC_LINE_MISSING {shot['id']} (no line of this shot in the layout)")
+
+
+def lipsync_line(layout, shot):
+    """Our Kokoro line of a lip-sync shot as lines_step wrote it (mono 44.1 kHz 16-bit): the audio its proof binds."""
+    wav = line_record(layout, shot).get("lipsync_wav")
+    if not wav or not (REPO / wav).is_file():
+        raise SystemExit(f"LIPSYNC_LINE_MISSING {shot['id']} (episode_build.py lines writes the line's WAV first)")
+    return REPO / wav
+
+
+def lipsync_sources(episode, shot_id, shots_dir=None):
+    """{silent clip sha256: (record file, entry)} of the stored clips of this shot a lip-sync may start from: uploaded
+    and with no hard flag (an approvable silent clip, never a lip-synced one)."""
+    root = Path(shots_dir) if shots_dir else REPO / "migration" / "evidence" / "shots" / str(episode)
+    out = {}
+    for f in sorted(root.glob("*.json")):
+        try:
+            entry = (load(f).get("shots") or {}).get(shot_id) or {}
+        except (OSError, ValueError, AttributeError):
+            continue
+        for c in entry.get("clips") or []:
+            if isinstance(c, dict) and c.get("uploaded") is True and c.get("round") != LIPSYNC_ROUND \
+                    and not c.get("lipsync") and not flag_split(c.get("flags"))["hard"] \
+                    and re.fullmatch(r"[0-9a-f]{64}", str(c.get("clip_sha256") or "")):
+                out.setdefault(c["clip_sha256"], (f, entry))
+    return out
+
+
+def lipsync_clip_flags(lip_python, face_model, clip, proof, clip_sha, line, aspect=None, sources=None):
+    """The lip-synced clip's checks: its proof against this clip and our line (LIPSYNC_REPORT_INVALID), its audio our
+    line bit for bit (AUDIO_NOT_OURS), clip_check, and lipsync_check on its own track (SyncNet, face, thresholds
+    unchanged). Returns (flags, measures, problems)."""
+    import keeper_lipsync
+    problems = keeper_lipsync.proof_problems(proof, clip_sha, pavo_audio.proof_of(line), sources)
+    flags = ["LIPSYNC_REPORT_INVALID"] if problems else []
+    try:
+        pavo_audio.verify(clip, (proof or {}).get("line"))
+    except SystemExit:
+        flags.append("AUDIO_NOT_OURS")
+    flags += clip_flags(clip, aspect)
+    more, measures = lipsync_flags(lip_python, face_model, clip, own_track(clip))
+    return flags + more, measures, problems
+
+
+def lipsync_record_step(plan, work, lip_python, face_model, out, shot_id, report_path, clip, run_id, shots_dir=None,
+                        sheet=None):
+    """A lipsync.yml result (its report.json and keeper-lipsync.mp4) as a probe record, like a remux: the shot must be a
+    lip-sync shot, its silent source a stored approvable clip of the shot made from the request the plan sends now
+    (SHOT_REQUEST_CHANGED), the proof valid for this clip and the Kokoro line `lines` lays now, then the clip measured
+    again (lipsync_clip_flags). OUT/probe.json takes the clip under its content-hash asset name; the record job uploads
+    it (probe-assets) and approve-shot approves it on a real review. A clip with any flag is recorded, not approvable."""
+    import keeper_lipsync
+    work, out = Path(work), Path(out)
+    index = {s["id"]: i for i, s in enumerate(plan["shots"])}
+    if shot_id not in index or not lipsync_shot(plan["shots"][index[shot_id]]):
+        raise SystemExit(f"LIPSYNC_NOT_PLANNED {shot_id} (a silent shot with a valid `lipsync` field)")
+    if not re.fullmatch(r"[0-9]{6,20}", str(run_id)):
+        raise SystemExit("LIPSYNC_RUN_REFUSED (the lipsync.yml run id)")
+    shot, i = plan["shots"][index[shot_id]], index[shot_id]
+    layout, refs = load(work / "layout.json"), load(work / "refs.json")
+    proof = keeper_lipsync.proof_of(load(report_path), run_id)
+    sources = lipsync_sources(plan["episode"], shot_id, shots_dir)
+    if proof.get("source_clip_sha256") not in sources:
+        raise SystemExit(f"LIPSYNC_SOURCE_NOT_STORED {shot_id} (the silent clip it was made from is not an uploaded, "
+                         "approvable clip of this shot in a committed probe record)")
+    record_file, entry = sources[proof["source_clip_sha256"]]
+    now, canonical = request_identity(shot, i, plan, layout, refs)
+    if now != entry.get("request_sha256"):
+        raise SystemExit(f"SHOT_REQUEST_CHANGED {shot_id} (the silent source was made from another request than the "
+                         "plan sends now)")
+    clip_sha = sha256(clip)
+    flags, measures, problems = lipsync_clip_flags(lip_python, face_model, clip, proof, clip_sha,
+                                                   lipsync_line(layout, shot), plan.get("aspect_ratio", "9:16"),
+                                                   set(sources))
+    out.mkdir(parents=True, exist_ok=True)
+    asset = shot_asset_name(plan["episode"], shot_id, clip_sha)
+    shutil.copyfile(clip, out / asset)
+    label = f"{shot_id}-lipsync.jpg"
+    (sheet or sheet_step)(out / asset, out / label)
+    row = {"round": LIPSYNC_ROUND, "lipsync_of": proof["source_clip_sha256"], "source_record": rel(record_file),
+           "asset": asset, "clip_sha256": clip_sha, "flags": flags, "measures": {"lipsync": measures}, "lipsync": proof,
+           "sheet": label, "generations": []}
+    if problems:
+        row["lipsync_problems"] = problems
+    row.update(flag_split_fields(flags))
+    record = {"episode": plan["episode"], "plan_sha256": None, "attempts": 0, "lipsync": True,
+              "shots": {shot_id: {"kind": shot["kind"], "request_sha256": now, "request": canonical, "clips": [row],
+                                  "clip_seconds": entry.get("clip_seconds"), "kjv_quote": kjv_quote(plan, shot_id)}}}
+    save(out / "probe.json", record)
+    print(json.dumps({"shot": shot_id, "lipsync": asset, "of": proof["source_clip_sha256"][:12], "flags": flags}))
+    return record
 
 
 WIDE = re.compile(r"(?i)\b(?:extreme )?wide shot\b|\baerial\b")
@@ -2000,6 +2163,14 @@ def generate_step(plan, work, lip_python, face_model, approvals=None, fetch=fetc
                     still_profile_is_own(REPO / str(approved.get("repo_path") or ""), plan.get("aspect_ratio", "9:16")):
                 flags = [f for f in flags if f != "ROTATED_PICTURE"]   # E299: the approved still's own light, not a turn
                 entry["rotation_profile"] = "the approved still itself reads ROTATED_PICTURE (E299): its own composition"
+        elif approved.get("lipsync") is not None:   # owner 2026-11-05: the lip-synced clip, by its proof
+            if not lipsync_shot(shot):
+                raise SystemExit(f"LIPSYNC_NOT_PLANNED {shot['id']} (the approval is a lip-synced clip; the plan shot "
+                                 "has no valid `lipsync`)")
+            flags, measures, problems = lipsync_clip_flags(lip_python, face_model, final, approved["lipsync"],
+                                                           approved["clip_sha256"], lipsync_line(layout, shot),
+                                                           plan.get("aspect_ratio", "9:16"))
+            entry["lipsync"] = dict(approved["lipsync"], problems=problems)
         else:
             flags, measures = check(final)
             ok = accepted_flags(approved, approved["clip_sha256"])   # E266: soft measures the approval recorded, this clip only
@@ -2013,7 +2184,7 @@ def generate_step(plan, work, lip_python, face_model, approvals=None, fetch=fetc
                                "footage", "still", "still_sha256", "repo_path", "frame", "motion", "motion_engine", "still_from",
                                "clip_from", "clip_seconds", "crop_to", "url", "inventory", "licence", "credit", "speech",
                                "attribution", "picture_sha256", "task_id", "buzzy_model", "buzzy_resolution", "accepted_flags",
-                               "words", "trim_out_s")
+                               "words", "trim_out_s", "lipsync")
                              if k in approved}
         entry["checks"] = {"flags": flags, "measures": measures}
         report["shots"][shot["id"]] = entry
@@ -2739,6 +2910,17 @@ def approve_shot(record_path, shot_id, asset, score, note, shots_dir=None, today
     if split["hard"]:   # E266: wrong line, no face, a broken render, a policy problem: never approvable
         raise SystemExit(f"SHOT_CHECKS_FAILED {shot_id} {','.join(split['hard'])} (a hard defect: the build would "
                          "refuse this clip)")
+    lip = clip.get("lipsync")
+    if lip is not None or clip.get("round") == LIPSYNC_ROUND:   # owner 2026-11-05: a lip-synced clip, by its proof
+        import keeper_lipsync
+        problems = keeper_lipsync.proof_problems(   # its silent source: a stored clip of this shot beside the record
+            lip, clip.get("clip_sha256"), sources=set(lipsync_sources(record["episode"], shot_id, record_path.parent)))
+        if clip.get("lipsync_of") != (lip or {}).get("source_clip_sha256"):
+            problems.append("the record's source clip differs from the proof's")
+        if clip.get("flags"):   # SyncNet, the face, the clip: any flag on a lip-synced clip is a refusal
+            problems.append(f"flags {clip['flags']}")
+        if problems:
+            raise SystemExit(f"LIPSYNC_REPORT_INVALID {shot_id} {asset} ({'; '.join(problems)})")
     words_proof = None   # a soft measure stays visible: the review decides, the approval records what it accepted
     revoked = revocation_problems(record["episode"], {shot_id: {"clip_sha256": clip.get("clip_sha256")}},
                                   shots_dir=shots_dir)
@@ -2842,6 +3024,8 @@ def approve_shot(record_path, shot_id, asset, score, note, shots_dir=None, today
         data["shots"][shot_id]["speech"] = speech
     if clip.get("audio"):   # E287: the words authority is the request; the proof binds this clip's audio to it
         data["shots"][shot_id]["audio"] = clip["audio"]
+    if lip is not None:   # the proof the build checks again against the line it lays (generate)
+        data["shots"][shot_id]["lipsync"] = lip
     if notes:   # owner 2026-11-03: the ASR text and any WARN_KJV_WORDS, for the reviewer (never a refusal)
         data["shots"][shot_id]["review_notes"] = notes
     if trim_out_s is not None:
@@ -2892,20 +3076,27 @@ def cuts(clip, start, end, clip_len):
     return out
 
 
-def compose_shots(plan, layout, clips, clip_seconds):
+def compose_shots(plan, layout, clips, clip_seconds, lipsynced=()):
     """short_engine shots tiling [0, total]. A talking shot (the Keeper, a character speaking) spans exactly its
     line's audio (from its first word to its last), from the start of its clip at normal speed, so the lips meet the
     voice (`talk`: the line's span, checked again by short_engine); it covers the silent gap only when the next shot
     talks too, and the closing one covers the tail; beyond its clip (~0.45 s past the speech, E95) its last frame is
     held (`hold`, <= TALK_HOLD_MAX). Scene runs (God's voice-over shots among them) fill the time between, cut every
-    2-4 s."""
+    2-4 s. A lip-synced clip (`lipsynced`: its approval carries a lip-sync proof) is laid like a talking clip: its
+    lips start on the line's first word at normal speed; it is the only shot of its run."""
     shots, total, lines = plan["shots"], layout["total"], layout["lines"]
     _, carried = plan_check.sequence(plan)
     runs = plan_check.groups(shots, carried)
     out, cursor = [], 0.0
+
+    def talks(s):
+        return plan_check.talking(s) or s["id"] in lipsynced
+
     for r, (a, b, ln) in enumerate(runs):
         last = r == len(runs) - 1
-        if plan_check.voiceover(shots[a]):
+        if shots[a]["id"] in lipsynced and a != b:
+            raise SystemExit(f"LIPSYNC_NOT_ON_HIS_LINE {shots[a]['id']} (a lip-synced clip is the only shot of its run)")
+        if plan_check.voiceover(shots[a]) and shots[a]["id"] not in lipsynced:
             # plan B: one unbroken clip of the silent Keeper over his line, from where the shot before ended (his
             # first word, or the gap after a talking shot) to the next line (or the end), from its 0 s; his line is
             # narration in the voice track (captions from the timeline). A clip shorter than that is slowed at most
@@ -2926,7 +3117,7 @@ def compose_shots(plan, layout, clips, clip_seconds):
                         "speed": round(factor, 4) if factor > 1.0 else 1.0, "shot": s["id"], "kind": "keeper-vo"})
             cursor = end
             continue
-        if plan_check.talking(shots[a]):
+        if talks(shots[a]):
             s = shots[a]
             kind = "keeper" if s["kind"] == "keeper" else "speaker"
             start, end = lines[ln[0]]["start"], lines[ln[-1]]["end"]
@@ -2935,8 +3126,10 @@ def compose_shots(plan, layout, clips, clip_seconds):
                 raise SystemExit(f"{kind.upper()}_NOT_ON_HIS_LINE {s['id']}")
             if last:
                 end = total
-            elif plan_check.talking(shots[runs[r + 1][0]]):
-                end = lines[runs[r + 1][2][0]]["start"]   # covers the silent gap before the next talking line
+            elif talks(shots[runs[r + 1][0]]) or (s["id"] in lipsynced and plan_check.voiceover(shots[runs[r + 1][0]])):
+                # covers the silent gap before the next talking line (a voice-over Keeper after a lip-synced clip
+                # starts on his first word: vo_cover reads the lip-synced shot as silent)
+                end = lines[runs[r + 1][2][0]]["start"]
             # E95: the clip is only ~0.45 s longer than the speech; the gap or the closing tail beyond it is its last
             # frame held (at most TALK_HOLD_MAX; the closing fade-out covers the tail)
             hold = max(0.0, (end - start) - clip_seconds[s["id"]])
@@ -3012,7 +3205,7 @@ def compose_step(plan, work, music, out):
     clips = {s["id"]: str(work / "clips" / f"{s['id']}.mp4") for s in plan["shots"]}
     seconds = {k: short_engine.duration(v) for k, v in clips.items()}
     voice, seconds, onsets = native_voice(plan, work, layout, clips, seconds)
-    shots = shift_onsets(compose_shots(plan, layout, clips, seconds), onsets)
+    shots = shift_onsets(compose_shots(plan, layout, clips, seconds, lipsynced(plan)), onsets)
     compose_plan = {"voice": voice, "timeline": str(work / "compose-timeline.json"),
                     "music": str(music), "music_offset": float(plan.get("music_offset", 600.0)), "tail": TAIL,
                     "shots": shots, "native_onsets": onsets}
@@ -3181,6 +3374,10 @@ def main(argv):
     elif cmd == "remux-assets" and len(argv) == 3:   # shot-remux.yml: the stored clips' release asset names (env SHOTS)
         for sid, prefix in remux_items(os.environ.get("SHOTS", "")):
             print(shot_asset_name(plan["episode"], sid, remux_source(plan["episode"], sid, prefix)[1]))
+    elif cmd == "lipsync-record" and len(argv) == 12:   # PLAN WORK LIP FACE OUT SHOT REPORT CLIP RUN_ID
+        record = lipsync_record_step(plan, argv[3], argv[4], argv[5], argv[6], argv[7], argv[8], argv[9], argv[10])
+        record["plan_sha256"] = sha256(argv[2])
+        save(Path(argv[6]) / "probe.json", record)   # a flagged clip is recorded with its flags, never approvable
     elif cmd == "remux" and len(argv) == 8:       # E288: PLAN WORK LIP FACE OUT SRC_DIR (env SHOTS)
         record = remux_step(plan, argv[3], argv[4], argv[5], argv[6], remux_items(os.environ.get("SHOTS", "")), argv[7])
         record["plan_sha256"] = sha256(argv[2])

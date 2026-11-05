@@ -2932,6 +2932,39 @@
   "WARN_FACE_NOT_FOUND_PROFILE": {
    "class": "N",
    "why": "E301: a reviewer note in a silent clip's measures (silent_warnings), not a refusal: the landmarker reads frontal faces, so a profile view's missing face is judged by the reviewer's real look"
+  },
+  "LIPSYNC_NOT_ON_HIS_LINE": {
+   "class": "A",
+   "early": "migration/production/bible/plan_check.py::episode_build.predict(plan, est)",
+   "note": "owner 2026-11-05 (E304): a lip-synced clip alone in its run, predicted by compose_prediction (lipsync_run_problems) at plan time"
+  },
+  "LIPSYNC_NOT_PLANNED": {
+   "class": "A",
+   "early": [
+    "migration/production/bible/episode_preflight.py::eb.review_problems(",
+    ".github/workflows/episode.yml::episode_build.py verify-preflight"
+   ],
+   "note": "E304: an approval carrying a lip-sync proof on a shot whose plan has no valid `lipsync` (review_problems); lipsync-record refuses the same before any record"
+  },
+  "LIPSYNC_REPORT_INVALID": {
+   "class": "C",
+   "probe": "E304: lipsync.yml's finish measures the clip (SyncNet, face, audio) and records the source clip and Kokoro line proof; lipsync-record binds that proof to the line `lines` lays and approve-shot checks it before any approval; the build re-checks only against a changed voice"
+  },
+  "AUDIO_NOT_OURS": {
+   "class": "C",
+   "probe": "E304: lipsync.yml's finish asserts the clip's first samples are our Kokoro line (audio_ours); lipsync-record verifies the same before approval"
+  },
+  "LIPSYNC_LINE_MISSING": {
+   "class": "I",
+   "guard": "migration/production/bible/test_episode_build.py::def test_lines_writes_the_exact_line_the_proof_binds"
+  },
+  "LIPSYNC_RUN_REFUSED": {
+   "class": "N",
+   "why": "E304: lipsync-record (a lipsync.yml result into a probe record) refuses a wrong run id before any approval; it stops no generation, voice or render"
+  },
+  "LIPSYNC_SOURCE_NOT_STORED": {
+   "class": "N",
+   "why": "E304: lipsync-record refuses a result whose silent source is not an uploaded, approvable clip of the shot, before any approval; it stops no generation, voice or render"
   }
  },
  "review": {

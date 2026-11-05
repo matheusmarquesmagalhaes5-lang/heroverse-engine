@@ -21,10 +21,16 @@ This module is the glue around the model and is what the tests cover (no torch h
                                   our line over the lip-synced picture (pavo_audio.mux_ours, bit-exact PCM), the strict
                                   gates on that clip and on the silent source (baseline), frame sheets; exit 1 on a flag
   pins                            print the pin table as JSON
+
+The report `finish` writes carries what the episode needs to use the clip (episode_build lipsync-record, approve-shot,
+generate): the lip-synced clip's sha256, the silent source clip's sha256, our Kokoro line's PCM proof (pavo_audio.proof_of:
+sha256 of the samples and their count) and the SyncNet offset/confidence. `proof_of` cuts it to the proof an approval keeps
+and `proof_problems` checks one against a clip, a line and the stored sources; the gates are lipsync_check's, unchanged.
 """
 import hashlib
 import json
 import os
+import re
 import subprocess
 import sys
 import urllib.request
@@ -209,7 +215,9 @@ def prepare(clip, wav, face_model, work, tail=TAIL_S, cap=None):
     line = work / "line-padded.wav"
     run("ffmpeg", "-nostdin", "-v", "error", "-y", "-i", wav, "-af", "apad", "-t", f"{seconds:.3f}", "-c:a", "pcm_s16le", line)
     (work / "task.yaml").write_text(f'task_0:\n video_path: "{src}"\n audio_path: "{line}"\n result_name: "lipsync.mp4"\n')
+    import pavo_audio
     info = {"model": MODEL, "line_seconds": round(line_s, 3), "clip_seconds": round(clip_s, 3), "processed_seconds": seconds,
+            "source_clip_sha256": sha256_of(clip), "line": pavo_audio.proof_of(wav),
             "source_still_mouth": still, "flags": source_flags(still)}
     (work / "prepare.json").write_text(json.dumps(info, indent=1))
     print(json.dumps(info))
@@ -230,7 +238,8 @@ def finish(work, lip_video, face_model, syncnet, out_dir, seconds):
     out_dir.mkdir(parents=True, exist_ok=True)
     # the model's picture can end a frame short of the padded line (169 frames of 7.05 s): our line is cut at the picture's
     # end, which is only silence (tail) - a cut into the spoken line is a flag
-    spoken = json.loads((work / "prepare.json").read_text())["line_seconds"]
+    prepared = json.loads((work / "prepare.json").read_text())
+    spoken = prepared["line_seconds"]
     picture = video_seconds(lip_video)
     line = work / "line-final.wav"
     run("ffmpeg", "-nostdin", "-v", "error", "-y", "-i", work / "line-padded.wav", "-t", f"{picture:.3f}", "-c:a", "pcm_s16le", line)
@@ -240,7 +249,8 @@ def finish(work, lip_video, face_model, syncnet, out_dir, seconds):
     audio_ok = True
     try:
         pavo_audio.assert_ours(final, line)
-    except SystemExit:
+        pavo_audio.verify(final, prepared["line"])   # the first samples are our Kokoro line itself, bit for bit
+    except (SystemExit, KeyError):
         audio_ok = False
     check = lipsync_check.check(str(final), str(line), str(face_model), str(syncnet))
     clip = clip_check.check(str(final))
@@ -254,11 +264,72 @@ def finish(work, lip_video, face_model, syncnet, out_dir, seconds):
     run("ffmpeg", "-nostdin", "-v", "error", "-y", "-i", out_dir / "sheet-silent-source.jpg", "-i", out_dir / "sheet-lipsync.jpg",
         "-filter_complex", "vstack", "-q:v", "3", out_dir / "sheet-compare.jpg")
     report = {"model": MODEL, "commit": MUSETALK_COMMIT, "final": final.name, "final_sha256": sha256_of(final),
-              "lipsync": check, "silent_source_with_line": {k: base[k] for k in ("mouth", "flags")},
+              "source_clip_sha256": prepared.get("source_clip_sha256"), "line": prepared.get("line"), "lipsync": check, "silent_source_with_line": {k: base[k] for k in ("mouth", "flags")},
               "clip_check": clip, "audio_ours": audio_ok, "picture_seconds": round(picture, 3), "flags": flags}
     (out_dir / "report.json").write_text(json.dumps(report, indent=1))
     print(json.dumps({k: report[k] for k in ("model", "final_sha256", "flags")}), json.dumps(check["mouth"]))
     return 1 if flags else 0
+
+
+HEX64 = re.compile(r"[0-9a-f]{64}")
+
+
+def proof_of(report, run_id=None):
+    """The lip-sync proof an episode keeps, from a `finish` report: model and commit, the lip-synced clip, its silent
+    source clip, our Kokoro line's PCM proof, the SyncNet measure and the face share it passed with, its flags."""
+    if not isinstance(report, dict):
+        raise SystemExit("LIPSYNC_REPORT_INVALID (not a lip-sync report)")
+    mouth = ((report.get("lipsync") or {}).get("mouth") or {})
+    proof = {"model": report.get("model"), "commit": report.get("commit"), "clip_sha256": report.get("final_sha256"),
+             "source_clip_sha256": report.get("source_clip_sha256"), "line": report.get("line"),
+             "sync": mouth.get("sync"), "face_frames": mouth.get("face_frames"), "audio_ours": report.get("audio_ours"),
+             "clip_flags": list((report.get("clip_check") or {}).get("flags") or []),
+             "flags": list(report.get("flags") or []) + list((report.get("lipsync") or {}).get("flags") or [])}
+    if run_id is not None:
+        proof["run_id"] = str(run_id)
+    return proof
+
+
+def proof_problems(proof, clip_sha256, line=None, sources=None):
+    """Why a lip-sync proof does not qualify THIS clip ([] when it does). Owner 2026-11-05: lip-sync need not be human-
+    perfect, but it must pass the existing gates: SyncNet in sync (lipsync_check.sync_verdict: offset within the
+    calibrated tolerance, confidence >= SYNC_CONF_MIN 2.7), the face in >= FACE_FRAMES_MIN of the frames, no clip flag,
+    our audio bit-exact. `line` (pavo_audio.proof_of of the line the episode lays now) binds the Kokoro audio; `sources`
+    (sha256s of stored, approvable silent clips of the shot) binds the Pavo source."""
+    import lipsync_check
+    if not isinstance(proof, dict):
+        return ["no lip-sync proof"]
+    out = []
+    if proof.get("model") not in MODELS:
+        out.append(f"model {proof.get('model')!r} is not one of {list(MODELS)}")
+    if not re.fullmatch(r"[0-9a-f]{40}", str(proof.get("commit") or "")):
+        out.append("no pinned model commit")
+    if not HEX64.fullmatch(str(clip_sha256 or "")) or proof.get("clip_sha256") != clip_sha256:
+        out.append("the proof is for another clip (clip sha256)")
+    src = str(proof.get("source_clip_sha256") or "")
+    if not HEX64.fullmatch(src) or src == clip_sha256:
+        out.append("no silent source clip sha256")
+    elif sources is not None and src not in set(sources):
+        out.append("the silent source clip is not a stored, approvable clip of this shot")
+    got = proof.get("line")
+    if not isinstance(got, dict) or got.get("route") != "ours" or not HEX64.fullmatch(str(got.get("sha256") or "")) \
+            or type(got.get("samples")) is not int or got["samples"] <= 0:
+        out.append("no Kokoro line proof (sha256 of the PCM samples and their count)")
+    elif line is not None and (got.get("sha256"), got.get("samples")) != (line.get("sha256"), line.get("samples")):
+        out.append("the lip-synced audio is not the Kokoro line this layout lays (PCM sha256 differs)")
+    if proof.get("audio_ours") is not True:
+        out.append("the clip's audio was not proven to be our line")
+    sync = proof.get("sync")
+    if not isinstance(sync, dict) or not all(isinstance(sync.get(k), (int, float)) for k in ("offset", "conf")) \
+            or lipsync_check.sync_verdict(sync):
+        out.append(f"SyncNet not in sync (offset {lipsync_check.SYNC_OFFSET_CENTRE}+-{lipsync_check.SYNC_OFFSET_TOL}, "
+                   f"confidence >= {lipsync_check.SYNC_CONF_MIN}): {sync!r}")
+    face = proof.get("face_frames")
+    if not isinstance(face, (int, float)) or face < lipsync_check.FACE_FRAMES_MIN:
+        out.append(f"face in {face!r} of the frames (>= {lipsync_check.FACE_FRAMES_MIN})")
+    if proof.get("flags") or proof.get("clip_flags"):
+        out.append(f"flags {sorted(set(proof.get('flags') or []) | set(proof.get('clip_flags') or []))}")
+    return out
 
 
 def main(argv):
