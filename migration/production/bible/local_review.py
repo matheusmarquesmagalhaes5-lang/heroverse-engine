@@ -23,6 +23,7 @@ from pathlib import Path
 import re
 import subprocess
 import sys
+import traceback
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import native_review as nr  # noqa: E402  (stdlib only; the Gemini provider stays, no longer required)
@@ -839,6 +840,9 @@ def main(argv):
         raise Refusal('PHASE_INVALID')
     except Exception as e:   # never echo paths of private media; the code is enough
         print(str(e) if isinstance(e, nr.Refusal) else 'LOCAL_REVIEW_' + phase.upper() + '_FAILED_' + type(e).__name__)
+        if not isinstance(e, nr.Refusal):   # where, never a path or a message: the file name, function and line of the innermost frame
+            tb = traceback.extract_tb(e.__traceback__)
+            print('LOCAL_REVIEW_FAILED_AT ' + ' <- '.join(f'{Path(f.filename).name}:{f.name}:{f.lineno}' for f in reversed(tb[-4:])))
         return 1
 
 

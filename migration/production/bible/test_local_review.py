@@ -375,5 +375,25 @@ class WholeWithMeasures(unittest.TestCase):
             self.assertIn('WER', L.summary(p))
 
 
+class FailureLocation(unittest.TestCase):
+    def test_unexpected_failure_names_the_frame_not_the_path(self):
+        import io, os, contextlib
+        def boom(*a, **k):
+            return [][0]
+        old = L.inputs
+        L.inputs = boom
+        try:
+            out = io.StringIO()
+            with contextlib.redirect_stdout(out):
+                rc = L.main(['x', 'analyze'])
+        finally:
+            L.inputs = old
+        self.assertEqual(rc, 1)
+        text = out.getvalue()
+        self.assertIn('LOCAL_REVIEW_ANALYZE_FAILED_IndexError', text)
+        self.assertRegex(text, r'LOCAL_REVIEW_FAILED_AT boom:\d+|LOCAL_REVIEW_FAILED_AT test_local_review\.py:boom:\d+')
+        self.assertNotIn('/', text)
+
+
 if __name__ == '__main__':
     unittest.main()
