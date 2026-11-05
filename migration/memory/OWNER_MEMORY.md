@@ -16,6 +16,9 @@ when short) and republish the private log when the conversation moves.
 - Full automation that never stops; no rework; never lower quality; learn every day (pavo_lessons, DECISIONS).
 - Install free tools he points to and keep them installed even if unused now ("deixa instalada", 2026-11-05);
   explain risks, never install paid or unsafe ones silently.
+- Tools he installs are meant to be USED, in every Claude Code session (PC and phone/cloud), complete with their
+  hooks where safe. If a plugin's organization is better than ours, adopt it, as long as the project stays locked
+  (gates, checks, ERRORS process) (2026-11-05).
 - Use ~100% of the weekly Claude usage exactly at the reset (Saturday 19:00 UTC); route work by model (OPERATIONS).
 
 ## Production
