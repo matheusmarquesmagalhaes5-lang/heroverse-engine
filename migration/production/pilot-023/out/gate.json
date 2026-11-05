@@ -1,0 +1,184 @@
+{
+ "version": "prepublish-gate-v1",
+ "pilot_id": "pilot-023",
+ "output_sha256": "c6fb23ae9372fb97676e7c698a7b3fa06e18aaa3d61422751881d61727f9d036",
+ "decision": "UNKNOWN",
+ "eligible_for_automatic_publication": false,
+ "dimensions": {
+  "binding": "PASS",
+  "format": "PASS",
+  "technical": "PASS",
+  "audio": "PASS",
+  "rights": "PASS",
+  "structure": "PASS",
+  "originality": "PASS",
+  "defect_review": "UNKNOWN",
+  "full_file_scan": "PASS",
+  "preflight": "PASS"
+ },
+ "items": {
+  "binding": [
+   {
+    "source": "binding",
+    "item": "manifest",
+    "state": "PASS",
+    "detail": "c6fb23ae9372fb97676e7c698a7b3fa06e18aaa3d61422751881d61727f9d036"
+   },
+   {
+    "source": "binding",
+    "item": "qa_for_this_file",
+    "state": "PASS",
+    "detail": "c6fb23ae9372fb97676e7c698a7b3fa06e18aaa3d61422751881d61727f9d036"
+   },
+   {
+    "source": "binding",
+    "item": "qa_criteria_frozen",
+    "state": "PASS",
+    "detail": {
+     "version": "compilation-qa-criteria-v2",
+     "recorded": "2ecd320b5223084d1bcea39e0027dddd7b7596f535446a2c68464417d8302103",
+     "file": "2ecd320b5223084d1bcea39e0027dddd7b7596f535446a2c68464417d8302103"
+    }
+   },
+   {
+    "source": "binding",
+    "item": "review_for_this_file",
+    "state": "PASS",
+    "detail": "c6fb23ae9372fb97676e7c698a7b3fa06e18aaa3d61422751881d61727f9d036"
+   },
+   {
+    "source": "binding",
+    "item": "video_file_hash",
+    "state": "PASS",
+    "detail": "c6fb23ae9372fb97676e7c698a7b3fa06e18aaa3d61422751881d61727f9d036"
+   }
+  ],
+  "format": [
+   {
+    "source": "format",
+    "item": "story_long",
+    "state": "PASS",
+    "detail": "bible-compilation-long"
+   }
+  ],
+  "technical": [
+   {
+    "source": "qa",
+    "item": "full_decode_without_errors",
+    "state": "PASS"
+   },
+   {
+    "source": "qa",
+    "item": "video_format_1920x1080_30fps",
+    "state": "PASS"
+   },
+   {
+    "source": "qa",
+    "item": "duration_is_sum_of_segments",
+    "state": "PASS"
+   },
+   {
+    "source": "qa",
+    "item": "no_padding",
+    "state": "PASS"
+   }
+  ],
+  "audio": [
+   {
+    "source": "qa",
+    "item": "integrated_lufs_band",
+    "state": "PASS"
+   },
+   {
+    "source": "qa",
+    "item": "true_peak_ceiling",
+    "state": "PASS"
+   }
+  ],
+  "rights": [
+   {
+    "source": "qa",
+    "item": "sources_are_the_public_masters_by_sha",
+    "state": "PASS"
+   },
+   {
+    "source": "qa",
+    "item": "keeper_clips_zero_credit",
+    "state": "PASS"
+   },
+   {
+    "source": "qa",
+    "item": "music_and_voice_owned",
+    "state": "PASS"
+   }
+  ],
+  "structure": [
+   {
+    "source": "qa",
+    "item": "canonical_order",
+    "state": "PASS"
+   }
+  ],
+  "originality": [
+   {
+    "source": "qa",
+    "item": "original_keeper_share",
+    "state": "PASS"
+   }
+  ],
+  "defect_review": [
+   {
+    "source": "review",
+    "item": "designated_reviewer_bound_to_file",
+    "state": "UNKNOWN",
+    "detail": "review AWAITING_REVIEW: REVIEW_NOT_OBJECT"
+   },
+   {
+    "source": "review",
+    "item": "publish_decision",
+    "state": "UNKNOWN",
+    "detail": "review AWAITING_REVIEW: REVIEW_NOT_OBJECT"
+   },
+   {
+    "source": "review",
+    "item": "no_unresolved_a_b_e",
+    "state": "UNKNOWN",
+    "detail": "review AWAITING_REVIEW: REVIEW_NOT_OBJECT"
+   }
+  ],
+  "full_file_scan": [
+   {
+    "source": "scan",
+    "item": "black_picture",
+    "state": "PASS",
+    "detail": 0.15
+   },
+   {
+    "source": "scan",
+    "item": "digital_silence",
+    "state": "PASS",
+    "detail": 1.25
+   }
+  ],
+  "preflight": [
+   {
+    "source": "preflight",
+    "item": "preflight",
+    "state": "PASS"
+   }
+  ]
+ },
+ "informative_not_deciding": {},
+ "market_evidence_not_deciding": {
+  "status": "UNKNOWN",
+  "detail": "no vidIQ market opinion for this pilot",
+  "not_claimed": "market evidence only: not technical quality, not a performance forecast, not a guarantee of views, revenue or monetization"
+ },
+ "method_notes": {
+  "track": "compilation (E251/E259): defect gate, no score floor",
+  "not_claimed": [
+   "perceived quality by viewers",
+   "retention, CTR or revenue"
+  ]
+ }
+}

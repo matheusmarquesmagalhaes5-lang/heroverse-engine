@@ -1,0 +1,9 @@
+{
+ "version": "long-review-v3-compilation",
+ "track": "compilation",
+ "pilot_id": "pilot-023",
+ "output_sha256": "c6fb23ae9372fb97676e7c698a7b3fa06e18aaa3d61422751881d61727f9d036",
+ "checked_at": "2026-11-05T21:17:39Z",
+ "status": "AWAITING_REVIEW",
+ "error": "REVIEW_NOT_OBJECT"
+}
