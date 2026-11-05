@@ -12,7 +12,7 @@ import urllib.request
 RAW = "https://raw.githubusercontent.com/matheusmagah-cpu/heroverse-engine/{ref}/{path}"
 HERE = Path(__file__).resolve().parent
 SRC = "migration/integrations/flow/"
-NAMES = ("runner.py", "flow_core.py", "mcp_server.py", "selectors.json", "deploy.py", "test_flow_core.py", "README.md")
+NAMES = ("runner.py", "flow_core.py", "mcp_server.py", "selectors.json", "deploy.py", "test_flow_core.py", "test_stdio.py", "README.md")
 
 
 def main(ref):

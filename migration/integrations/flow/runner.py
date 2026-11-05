@@ -38,7 +38,7 @@ import flow_core as core  # noqa: E402
 
 DATA = Path(os.environ.get("FLOW_DATA", r"C:\HeroVerse\flow"))
 LEDGER = DATA / "ledger.json"
-PROFILE = HERE / "profile"
+PROFILE = Path(os.environ.get("FLOW_PROFILE") or HERE / "profile")
 LOG = HERE / "logs" / "runner.log"
 LOCK = HERE / "runner.lock"
 SEL = json.loads((HERE / "selectors.json").read_text(encoding="utf-8"))
@@ -353,6 +353,11 @@ def cmd_status(a):
     done, spent = core.today_usage(data, now)
     base = {"cooldown_until": data.get("cooldown_until"), "generations_today": done, "credits_spent_today": spent,
             "daily_cap": core.daily_cap(), "open_jobs": core.open_jobs(data)}
+
+    if not any((PROFILE / d / "Network" / "Cookies").exists() for d in ("Default",)):
+        # a profile nobody has signed in to: answer without opening a window
+        return result("NOT_LOGGED_IN", logged_in=False, reason="NOT_LOGGED_IN (the owner signs in once: runner.py login)",
+                      **base)
 
     def run(ctx, page):
         if not has_session(ctx):
