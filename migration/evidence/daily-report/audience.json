@@ -1,11 +1,11 @@
 {
- "at": "2026-11-05T01:49:26.313833+00:00",
- "calls": 76,
+ "at": "2026-11-05T08:16:28.292167+00:00",
+ "calls": 80,
  "days": 90,
  "funnel": {
   "from_our_shorts_related": 0,
   "from_shorts_feed": 0,
-  "long_views": 2,
+  "long_views": 18,
   "longs": [
    {
     "from_our_shorts_related": 0,
@@ -14,6 +14,14 @@
     "title": "The Flood Ends: The Raven, the Dove and the Rainbow (Genesis 8-9, KJV)",
     "video": "1m-NUJhkdMY",
     "views": 2
+   },
+   {
+    "from_our_shorts_related": 0,
+    "from_shorts_feed": 0,
+    "share": 0.0,
+    "title": "Noah's Ark and the Flood Begins: Genesis 5-7 Bible Story (KJV)",
+    "video": "X2LPFriRn3M",
+    "views": 16
    }
   ],
   "note": "SHORTS source and RELATED_VIDEO referrers that are our Shorts can overlap; read them as bounds, not a sum",
@@ -1289,6 +1297,92 @@
     "views": 534
    },
    "title": "Why Did God Regret Making Man? 💔 | God Sees the Earth Corrupt, Bible Story (KJV)"
+  },
+  "X2LPFriRn3M": {
+   "kind": "long",
+   "published": "2026-11-01",
+   "related": {
+    "from_our_shorts": 0,
+    "top": [
+     {
+      "our_short": false,
+      "video": "Tkr18_Xd110",
+      "views": 1
+     },
+     {
+      "our_short": false,
+      "video": "tf-gsA40stg",
+      "views": 1
+     }
+    ],
+    "views": 2
+   },
+   "retention": null,
+   "search_terms": [],
+   "sources": {
+    "grouped": {
+     "browse": {
+      "share": 0.812,
+      "views": 13
+     },
+     "channel_pages": {
+      "share": 0.062,
+      "views": 1
+     },
+     "end_screen_notification": {
+      "share": 0.0,
+      "views": 0
+     },
+     "external": {
+      "share": 0.0,
+      "views": 0
+     },
+     "other": {
+      "share": 0.0,
+      "views": 0
+     },
+     "playlist": {
+      "share": 0.0,
+      "views": 0
+     },
+     "related": {
+      "share": 0.125,
+      "views": 2
+     },
+     "search": {
+      "share": 0.0,
+      "views": 0
+     },
+     "shorts_feed": {
+      "share": 0.0,
+      "views": 0
+     }
+    },
+    "raw": {
+     "NO_LINK_OTHER": {
+      "avg_view_s": 0.0,
+      "minutes": 0.0,
+      "views": 0
+     },
+     "RELATED_VIDEO": {
+      "avg_view_s": 23.0,
+      "minutes": 0.0,
+      "views": 2
+     },
+     "SUBSCRIBER": {
+      "avg_view_s": 207.0,
+      "minutes": 10.0,
+      "views": 13
+     },
+     "YT_CHANNEL": {
+      "avg_view_s": 83.0,
+      "minutes": 1.0,
+      "views": 1
+     }
+    },
+    "views": 16
+   },
+   "title": "Noah's Ark and the Flood Begins: Genesis 5-7 Bible Story (KJV)"
   },
   "_sUdOLxWy5c": {
    "kind": "short",

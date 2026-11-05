@@ -1,15 +1,15 @@
-# HeroVerse daily report — 2026-11-05 01:49 UTC (day 19 of 14, max 30)
+# HeroVerse daily report — 2026-11-05 08:16 UTC (day 19 of 14, max 30)
 
 ## YPP progress
 Sources: [official] YouTube Data API count; [own] our calculation from YouTube Analytics rows (an estimate of
 the YPP counter, which only YouTube Studio shows and which can differ); [plan] our arithmetic toward day 14.
 
-- Subscribers [official]: **345 / 1,000** — [plan] 655.0/day to reach it by day 14
+- Subscribers [official]: **359 / 1,000** — [plan] 641.0/day to reach it by day 14
 - Public long-form watch hours, last 365 d [own]: **30.2 / 4,000** — [plan] 3969.8/day
 - Public Shorts views, last 90 d [own]: 3,248 / 10,000,000 (the alternative YPP path)
-- For contrast, NOT the YPP counters: all-content watch hours 365 d incl. Shorts and private/removed videos [own] 156.1 h; lifetime views of public Shorts [official] 9,101
+- For contrast, NOT the YPP counters: all-content watch hours 365 d incl. Shorts and private/removed videos [own] 156.1 h; lifetime views of public Shorts [official] 10,259
 - Classification of long vs Shorts: duration <= 180 s (Analytics content type unavailable)
-- Public videos [official]: 44; total channel views 8,920
+- Public videos [official]: 45; total channel views 10,391
 
 ## Short -> long funnel (each public long, last 90 d, by traffic source)
 | long | views | from Shorts | share | avg view s (Shorts / other) | verdict |
@@ -36,18 +36,18 @@ the YPP counter, which only YouTube Studio shows and which can differ); [plan] o
 ## Latest public videos
 | published | views | watch h | avg view % | subs gained | title |
 |---|---|---|---|---|---|
-| 2026-11-04T23:30 | 228 | - | - | - | Before Building a House, Noah Built an Altar | Genesis 8 (KJV) #shorts |
-| 2026-11-04T22:16 | 2 | - | - | - | Why Did God Scatter the Builders of Babel? | Tower of Babel | Genesis  |
-| 2026-11-04T18:30 | 439 | - | - | - | Noah Opened the Window and Sent Out a Raven | Genesis 8 (KJV) #shorts |
-| 2026-11-04T13:30 | 2 | - | - | - | The Complete Story of Noah (Genesis 5-9) KJV |
-| 2026-11-04T13:30 | 972 | - | - | - | The Ark Hit Rock. Everyone Froze | Genesis 8 (KJV) #shorts |
-| 2026-11-04T05:30 | 907 | - | - | - | What if You Were Shut Inside a Ship for a Year? | Noah's Ark (KJV) #sh |
+| 2026-11-05T05:30 | 349 | - | - | - | Grace Did Not Make Noah a God. It Made Him Carried. | Genesis 9 (KJV)  |
+| 2026-11-04T23:30 | 600 | - | - | - | Before Building a House, Noah Built an Altar | Genesis 8 (KJV) #shorts |
+| 2026-11-04T22:16 | 7 | - | - | - | Why Did God Scatter the Builders of Babel? | Tower of Babel | Genesis  |
+| 2026-11-04T18:30 | 705 | - | - | - | Noah Opened the Window and Sent Out a Raven | Genesis 8 (KJV) #shorts |
+| 2026-11-04T13:30 | 11 | - | - | - | The Complete Story of Noah (Genesis 5-9) KJV |
+| 2026-11-04T13:30 | 989 | - | - | - | The Ark Hit Rock. Everyone Froze | Genesis 8 (KJV) #shorts |
+| 2026-11-04T05:30 | 914 | - | - | - | What if You Were Shut Inside a Ship for a Year? | Noah's Ark (KJV) #sh |
 | 2026-11-04T05:20 | 8 | - | - | - | Before You Sleep, Let Your Shepherd Carry Today 🌙 | Night Prayer with  |
-| 2026-11-03T23:30 | 699 | - | - | - | Noah Opened the Window After 40 Days 🕊️ | The Raven and the Dove, Gene |
-| 2026-11-03T18:30 | 563 | - | - | - | Noah Saw Dry Ground and Still Waited | Genesis 8 (KJV) #shorts |
-| 2026-11-03T13:30 | 502 | - | - | - | God Hung Up His Own Bow 🌈 | The Rainbow Covenant, Genesis 9 (KJV) #sho |
-| 2026-11-03T13:05 | 194 | - | - | - | Eight People Passed One Green Leaf Like Treasure | Noah, Genesis 8 (KJ |
-| 2026-11-03T05:30 | 124 | 0.9 | 71.5 | 0 | One Green Leaf After the Flood 🕊️ | The Dove and the Olive Leaf, Genes |
+| 2026-11-03T23:30 | 730 | - | - | - | Noah Opened the Window After 40 Days 🕊️ | The Raven and the Dove, Gene |
+| 2026-11-03T18:30 | 626 | - | - | - | Noah Saw Dry Ground and Still Waited | Genesis 8 (KJV) #shorts |
+| 2026-11-03T13:30 | 517 | - | - | - | God Hung Up His Own Bow 🌈 | The Rainbow Covenant, Genesis 9 (KJV) #sho |
+| 2026-11-03T13:05 | 205 | - | - | - | Eight People Passed One Green Leaf Like Treasure | Noah, Genesis 8 (KJ |
 
 ## Public videos with fear-bait/prophecy-style titles (4; 1.6 of the channel's watch hours)
 - The 2026 Warning: What They DON’T Want You to Know. ⚠️📖 #prophecy #christianmoti — 0.1 h, 21 views
@@ -132,18 +132,18 @@ Impressions: thumbnail shown > 1 s, >= 50 % visible. CTR: clicks / impressions. 
 
 ## Audience retention and traffic sources (YouTube Analytics API; Short -> long funnel)
 Source: YouTube Analytics API, last 90 days, same credential as the goal report. Retention is the share of the audience still watching at that point of the video (audienceWatchRatio). Browse = the API's SUBSCRIBER type.
-- Short -> long: 2 long views, 0 from the Shorts feed, 0 from our own Shorts as related referrers (share 0 %); mean Short retention at the end 57 % over 13 Shorts.
+- Short -> long: 18 long views, 0 from the Shorts feed, 0 from our own Shorts as related referrers (share 0 %); mean Short retention at the end 57 % over 13 Shorts.
 
 | video | type | views | Shorts feed | related | browse | search | other | ret 25 / 50 / 75 / end |
 |---|---|---|---|---|---|---|---|---|
 | One Green Leaf After the Flood 🕊️ / The  (ESuoDa9sGng) | short | 124 | 98 % | 0 % | 0 % | 0 % | 0 % | 82 % / 66 % / 55 % / 46 % |
 | Seven Days Before the Rain 🌧️ / The Floo (IYSxVKTikSs) | short | 690 | 96 % | 0 % | 0 % | 1 % | 0 % | 111 % / 103 % / 97 % / 65 % |
-| Noah Built a Ship on Dry Ground 🔨 / Noah (jPNjgf-PWHM) | short | 329 | 94 % | 0 % | 0 % | 5 % | 1 % | 77 % / 70 % / 64 % / 43 % |
 | Why Did God Regret Making Man? 💔 / God S (Vvfw4W4nV7M) | short | 534 | 96 % | 0 % | 0 % | 3 % | 0 % | 93 % / 81 % / 74 % / 56 % |
-| The Man Who Never Died? ☁️ / Enoch Walke (dyuqBS_FXew) | short | 157 | 94 % | 0 % | 0 % | 4 % | 0 % | 98 % / 83 % / 72 % / 57 % |
+| Noah Built a Ship on Dry Ground 🔨 / Noah (jPNjgf-PWHM) | short | 329 | 94 % | 0 % | 0 % | 5 % | 1 % | 77 % / 70 % / 64 % / 43 % |
 | Am I My Brother's Keeper? 🐑 / Cain and A (OYijqQdQq0o) | short | 187 | 91 % | 0 % | 0 % | 7 % | 0 % | 86 % / 75 % / 63 % / 37 % |
-| Where Art Thou? 🔥 / Driven Out of Eden,  (s9YK37YErRc) | short | 128 | 98 % | 0 % | 0 % | 1 % | 0 % | 70 % / 61 % / 56 % / 14 % |
+| The Man Who Never Died? ☁️ / Enoch Walke (dyuqBS_FXew) | short | 157 | 94 % | 0 % | 0 % | 4 % | 0 % | 98 % / 83 % / 72 % / 57 % |
 | Did God Really Say That? 🐍 / The Serpent (K_ZwsCt-Wg4) | short | 124 | 88 % | 0 % | 0 % | 10 % | 0 % | 47 % / 36 % / 31 % / 14 % |
+| Where Art Thou? 🔥 / Driven Out of Eden,  (s9YK37YErRc) | short | 128 | 98 % | 0 % | 0 % | 1 % | 0 % | 70 % / 61 % / 56 % / 14 % |
 | God Breathed Into the Dust 🌿 / Garden of (hwq4qgjreh0) | short | 302 | 96 % | 0 % | 0 % | 4 % | 0 % | 87 % / 74 % / 66 % / 47 % |
 | Before There Was Light, God Spoke ✨ / Ge (ku2MTQKmXaU) | short | 129 | 89 % | 0 % | 0 % | 5 % | 0 % | 85 % / 67 % / 58 % / 55 % |
 | A Prayer for Peace in Your Relationships (VEbS6pvirTA) | short | 28 | 75 % | 0 % | 0 % | 7 % | 0 % | 110 % / 80 % / 70 % / 50 % |
@@ -156,40 +156,42 @@ Source: YouTube Analytics API, last 90 days, same credential as the goal report.
 | STOP! What Angels REALLY Look Like 👁️🛡️  (hhJGujSiScM) | short | 0 | - | - | - | - | - | - |
 | The 2026 Prophecy: What They Are Hiding  (ucf6p67sijw) | short | 2 | 0 % | 0 % | 0 % | 0 % | 0 % | - |
 | The Flood Ends: The Raven, the Dove and  (1m-NUJhkdMY) | long | 2 | 0 % | 50 % | 0 % | 0 % | 50 % | - |
+| Noah's Ark and the Flood Begins: Genesis (X2LPFriRn3M) | long | 16 | 0 % | 12 % | 81 % | 0 % | 0 % | - |
 - The Flood Ends: The Raven, the Dove and : related referrers 1 views, 0 from our Shorts
+- Noah's Ark and the Flood Begins: Genesis: related referrers 2 views, 0 from our Shorts
 
 ## Scheduler health (heartbeat.yml; GitHub drops crons, the heartbeat catches up)
-- all scheduled work ran
+- ⚠ runner: no run for 6:31:18
 | workflow | last run (UTC) | result |
 |---|---|---|
 | nightly-images.yml | 2026-10-24T14:50 | success |
-| market-panel.yml | 2026-11-04T08:15 | success |
-| reconcile.yml | 2026-11-04T20:15 | success |
-| goal-report.yml | 2026-11-05T01:48 | in_progress |
-| tiktok.yml | 2026-11-04T23:36 | success |
+| market-panel.yml | 2026-11-05T07:19 | success |
+| reconcile.yml | 2026-11-05T08:15 | success |
+| goal-report.yml | 2026-11-05T08:15 | in_progress |
+| tiktok.yml | 2026-11-05T07:15 | success |
 | arc-links.yml | - | - |
-| comment-replies.yml | 2026-11-04T21:15 | success |
-| heartbeat.yml | 2026-11-05T00:30 | success |
-| runner | 2026-11-05T01:45 | success |
+| comment-replies.yml | 2026-11-05T05:15 | success |
+| heartbeat.yml | 2026-11-05T08:15 | success |
+| runner | 2026-11-05T01:45 | success ⚠ |
 
 ## Actions minutes (speed only; public repo: standard runners free)
-- last 24 h 844 · last 7 d 4552 · last 30 d 6181 min of runner time
+- last 24 h 807 · last 7 d 4616 · last 30 d 6172 min of runner time
 | workflow (30 d) | minutes | runs | min per run |
 |---|---|---|---|
-| HeroVerse PR checks (unit tests + pilot acceptance) | 2240 | 493 | 4.5 |
+| HeroVerse PR checks (unit tests + pilot acceptance) | 2226 | 486 | 4.6 |
 | footage: queries=migration/production/pilot-015/beats-6.json per_theme=3 | 550 | 2 | 275.0 |
 | footage: queries=migration/production/pilot-015/beats-5.json per_theme=3 | 302 | 1 | 302.0 |
-| HeroVerse render smoke (a ~1 minute cut through the whole render path) | 282 | 27 | 10.4 |
+| HeroVerse render smoke (a ~1 minute cut through the whole render path) | 241 | 20 | 12.1 |
 | episode: plan=migration/production/bible/plans/flood-ends-long.json resume_run= | 181 | 4 | 45.2 |
-| HeroVerse heartbeat (the engine's scheduler) | 117 | 74 | 1.6 |
+| HeroVerse heartbeat (the engine's scheduler) | 122 | 79 | 1.5 |
 | footage: queries=migration/production/footage/queries-shorts-g09.json per_theme=2 | 103 | 2 | 51.5 |
 | compilation-build: plan=migration/production/bible/compilations/arc-02-noah-complete-compilation.json | 100 | 3 | 33.3 |
 
 ## Long runway (Bible-story arc deadlines, next 6 days and overdue uploads; prayer longs stopped 2026-10-26)
-- ⚠ 2026-10-29 22:00 UTC (-7 days, 20:09:22 left): arc-01-long is at 'planned'
-- ⚠ 2026-10-31 10:00 UTC (-5 days, 8:09:22 left): arc-02-long is at 'planned'
-- ⚠ 2026-11-02 10:00 UTC (-3 days, 8:09:22 left): NO BIBLE-STORY LONG is at 'missing'
-- ⚠ 2026-11-04 10:00 UTC (-1 day, 8:09:22 left): NO BIBLE-STORY LONG is at 'missing'
+- ⚠ 2026-10-29 22:00 UTC (-7 days, 13:42:08 left): arc-01-long is at 'planned'
+- ⚠ 2026-10-31 10:00 UTC (-5 days, 1:42:08 left): arc-02-long is at 'planned'
+- ⚠ 2026-11-02 10:00 UTC (-3 days, 1:42:08 left): NO BIBLE-STORY LONG is at 'missing'
+- ⚠ 2026-11-04 10:00 UTC (-1 day, 1:42:08 left): NO BIBLE-STORY LONG is at 'missing'
 | slot (UTC) | pilot | stage |
 |---|---|---|
 | 2026-10-29T22:00Z | arc-01-long | planned ⚠ |
