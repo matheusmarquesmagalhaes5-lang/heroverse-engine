@@ -1,0 +1,550 @@
+{
+ "version": "bible-compilation-manifest-v1",
+ "pilot_id": "pilot-023",
+ "compilation": "genesis-part1-compilation",
+ "output_sha256": "c6fb23ae9372fb97676e7c698a7b3fa06e18aaa3d61422751881d61727f9d036",
+ "output_seconds": 2249.447,
+ "criteria_version": "compilation-qa-criteria-v2",
+ "burned_captions": "kept from the Shorts",
+ "sources": [
+  {
+   "short": "genesis-02-short",
+   "asset": "bible-genesis-02-short-sha256-48ce69512a8562373b98b623eb21e1b8627ee797bce550b178cdce4f7bf737dd.mp4",
+   "sha256": "48ce69512a8562373b98b623eb21e1b8627ee797bce550b178cdce4f7bf737dd",
+   "video_id": "hwq4qgjreh0",
+   "seconds": 51.9
+  },
+  {
+   "short": "genesis-03-short",
+   "asset": "bible-genesis-03-short-sha256-9b10e1a0bedc00577d43021e52ecfe0c568230110b9a92b2f3aad231f6cf40bf.mp4",
+   "sha256": "9b10e1a0bedc00577d43021e52ecfe0c568230110b9a92b2f3aad231f6cf40bf",
+   "video_id": "K_ZwsCt-Wg4",
+   "seconds": 46.6
+  },
+  {
+   "short": "genesis-04-short",
+   "asset": "bible-genesis-04-short-sha256-c3784ad58400989feca750772c53ac2b97c0e5a86c412c94b3dc625ae913707b.mp4",
+   "sha256": "c3784ad58400989feca750772c53ac2b97c0e5a86c412c94b3dc625ae913707b",
+   "video_id": "s9YK37YErRc",
+   "seconds": 48.0
+  },
+  {
+   "short": "genesis-05-short",
+   "asset": "bible-genesis-05-short-sha256-d3b092a48f077869fa364b62e753ba660f494596f4b0837f51cc5887a0088b3d.mp4",
+   "sha256": "d3b092a48f077869fa364b62e753ba660f494596f4b0837f51cc5887a0088b3d",
+   "video_id": "OYijqQdQq0o",
+   "seconds": 62.6
+  },
+  {
+   "short": "genesis-06-short",
+   "asset": "bible-genesis-06-short-sha256-e9e6aacaab5564ddf691e09e63909ddfa57df810b36b5c239c0dd63eed43b609.mp4",
+   "sha256": "e9e6aacaab5564ddf691e09e63909ddfa57df810b36b5c239c0dd63eed43b609",
+   "video_id": "dyuqBS_FXew",
+   "seconds": 85.5
+  },
+  {
+   "short": "genesis-07-short",
+   "asset": "bible-genesis-07-short-sha256-da4c5f629dd8e8715a2a840395635b779beeda0917fcf2bc7860964b6cbcd6ea.mp4",
+   "sha256": "da4c5f629dd8e8715a2a840395635b779beeda0917fcf2bc7860964b6cbcd6ea",
+   "video_id": "Vvfw4W4nV7M",
+   "seconds": 173.8
+  },
+  {
+   "short": "genesis-08-short",
+   "asset": "bible-genesis-08-short-sha256-00462a4c1d9de5c3dfd7c8cf8e131f52f462ced71e97598b066fcf4a3d500a23.mp4",
+   "sha256": "00462a4c1d9de5c3dfd7c8cf8e131f52f462ced71e97598b066fcf4a3d500a23",
+   "video_id": "jPNjgf-PWHM",
+   "seconds": 175.11
+  },
+  {
+   "short": "genesis-09-short",
+   "asset": "bible-genesis-09-short-sha256-57e8768c53fd572b92750908fabdab37297ce74ec0438d3ed1ab3665e3a41829.mp4",
+   "sha256": "57e8768c53fd572b92750908fabdab37297ce74ec0438d3ed1ab3665e3a41829",
+   "video_id": "IYSxVKTikSs",
+   "seconds": 174.79
+  },
+  {
+   "short": "flood-ends-long",
+   "asset": "bible-flood-ends-long-sha256-9a2d0f24e74c7117eedcbdd73992fbc284efb9402b6f82dba98f096a64635692.mp4",
+   "sha256": "9a2d0f24e74c7117eedcbdd73992fbc284efb9402b6f82dba98f096a64635692",
+   "video_id": "1m-NUJhkdMY",
+   "seconds": 501.832
+  },
+  {
+   "short": "genesis-10-11-long",
+   "asset": "bible-genesis-10-11-long-sha256-0386d34a1501477d6ea487b3c3cf53caedb0a898d70e7b15feb90e36bad09937.mp4",
+   "sha256": "0386d34a1501477d6ea487b3c3cf53caedb0a898d70e7b15feb90e36bad09937",
+   "video_id": "KwFjnZ20yGA",
+   "seconds": 483.86
+  }
+ ],
+ "segments": [
+  {
+   "kind": "hook",
+   "name": "hook",
+   "seconds": 33.854,
+   "spoken_seconds": 31.833,
+   "beats": 2,
+   "start": 0.0,
+   "end": 33.854
+  },
+  {
+   "kind": "interlude",
+   "name": "i1",
+   "seconds": 107.154,
+   "spoken_seconds": 102.139,
+   "beats": 5,
+   "chapter": "In the Beginning",
+   "start": 33.854,
+   "end": 141.008
+  },
+  {
+   "kind": "short",
+   "name": "genesis-02-short",
+   "seconds": 48.3,
+   "source_sha256": "48ce69512a8562373b98b623eb21e1b8627ee797bce550b178cdce4f7bf737dd",
+   "chapter": "God Breathed Into the Dust",
+   "end_s": 48.3,
+   "start": 141.008,
+   "end": 189.308
+  },
+  {
+   "kind": "short",
+   "name": "genesis-03-short",
+   "seconds": 42.8,
+   "source_sha256": "9b10e1a0bedc00577d43021e52ecfe0c568230110b9a92b2f3aad231f6cf40bf",
+   "chapter": "The Serpent: Did God Really Say?",
+   "end_s": 42.8,
+   "start": 189.308,
+   "end": 232.108
+  },
+  {
+   "kind": "short",
+   "name": "genesis-04-short",
+   "seconds": 43.667,
+   "source_sha256": "c3784ad58400989feca750772c53ac2b97c0e5a86c412c94b3dc625ae913707b",
+   "chapter": "Where Art Thou? Driven Out of Eden",
+   "end_s": 43.65,
+   "start": 232.108,
+   "end": 275.775
+  },
+  {
+   "kind": "interlude",
+   "name": "i2",
+   "seconds": 45.154,
+   "spoken_seconds": 43.113,
+   "beats": 2,
+   "chapter": "Outside the Garden",
+   "start": 275.775,
+   "end": 320.929
+  },
+  {
+   "kind": "short",
+   "name": "genesis-05-short",
+   "seconds": 57.667,
+   "source_sha256": "d3b092a48f077869fa364b62e753ba660f494596f4b0837f51cc5887a0088b3d",
+   "chapter": "Cain and Abel",
+   "end_s": 57.65,
+   "start": 320.929,
+   "end": 378.596
+  },
+  {
+   "kind": "interlude",
+   "name": "i3",
+   "seconds": 88.921,
+   "spoken_seconds": 84.89,
+   "beats": 4,
+   "chapter": "From Cain to Seth",
+   "start": 378.596,
+   "end": 467.517
+  },
+  {
+   "kind": "short",
+   "name": "genesis-06-short",
+   "seconds": 70.6,
+   "source_sha256": "e9e6aacaab5564ddf691e09e63909ddfa57df810b36b5c239c0dd63eed43b609",
+   "chapter": "Enoch Walked With God",
+   "end_s": 70.6,
+   "start": 467.517,
+   "end": 538.117
+  },
+  {
+   "kind": "short",
+   "name": "genesis-07-short",
+   "seconds": 165.9,
+   "source_sha256": "da4c5f629dd8e8715a2a840395635b779beeda0917fcf2bc7860964b6cbcd6ea",
+   "chapter": "God Sees the Earth Corrupt",
+   "end_s": 165.9,
+   "start": 538.117,
+   "end": 704.017
+  },
+  {
+   "kind": "short",
+   "name": "genesis-08-short",
+   "seconds": 168.0,
+   "source_sha256": "00462a4c1d9de5c3dfd7c8cf8e131f52f462ced71e97598b066fcf4a3d500a23",
+   "chapter": "Noah Builds the Ark",
+   "end_s": 168.0,
+   "start": 704.017,
+   "end": 872.017
+  },
+  {
+   "kind": "short",
+   "name": "genesis-09-short",
+   "seconds": 165.7,
+   "source_sha256": "57e8768c53fd572b92750908fabdab37297ce74ec0438d3ed1ab3665e3a41829",
+   "chapter": "The Flood Begins",
+   "end_s": 165.7,
+   "start": 872.017,
+   "end": 1037.717
+  },
+  {
+   "kind": "interlude",
+   "name": "i4",
+   "seconds": 66.888,
+   "spoken_seconds": 63.87,
+   "beats": 3,
+   "chapter": "Older Flood Stories",
+   "start": 1037.717,
+   "end": 1104.605
+  },
+  {
+   "kind": "long",
+   "name": "flood-ends-long",
+   "seconds": 493.767,
+   "source_sha256": "9a2d0f24e74c7117eedcbdd73992fbc284efb9402b6f82dba98f096a64635692",
+   "chapter": "The Flood Ends: The Raven and the Dove",
+   "end_s": 493.74,
+   "start": 1104.605,
+   "end": 1598.372
+  },
+  {
+   "kind": "interlude",
+   "name": "i5",
+   "seconds": 80.454,
+   "spoken_seconds": 76.414,
+   "beats": 4,
+   "chapter": "The Same Heart",
+   "start": 1598.372,
+   "end": 1678.826
+  },
+  {
+   "kind": "long",
+   "name": "genesis-10-11-long",
+   "seconds": 476.3,
+   "source_sha256": "0386d34a1501477d6ea487b3c3cf53caedb0a898d70e7b15feb90e36bad09937",
+   "chapter": "The Tower of Babel",
+   "end_s": 476.3,
+   "start": 1678.826,
+   "end": 2155.126
+  },
+  {
+   "kind": "close",
+   "name": "close",
+   "seconds": 94.321,
+   "spoken_seconds": 90.317,
+   "beats": 4,
+   "start": 2155.126,
+   "end": 2249.447
+  }
+ ],
+ "chapters": [
+  [
+   0,
+   "The Keeper's question"
+  ],
+  [
+   33.854,
+   "In the Beginning"
+  ],
+  [
+   141.008,
+   "God Breathed Into the Dust"
+  ],
+  [
+   189.308,
+   "The Serpent: Did God Really Say?"
+  ],
+  [
+   232.108,
+   "Where Art Thou? Driven Out of Eden"
+  ],
+  [
+   275.775,
+   "Outside the Garden"
+  ],
+  [
+   320.929,
+   "Cain and Abel"
+  ],
+  [
+   378.596,
+   "From Cain to Seth"
+  ],
+  [
+   467.517,
+   "Enoch Walked With God"
+  ],
+  [
+   538.117,
+   "God Sees the Earth Corrupt"
+  ],
+  [
+   704.017,
+   "Noah Builds the Ark"
+  ],
+  [
+   872.017,
+   "The Flood Begins"
+  ],
+  [
+   1037.717,
+   "Older Flood Stories"
+  ],
+  [
+   1104.605,
+   "The Flood Ends: The Raven and the Dove"
+  ],
+  [
+   1378.105,
+   "Out of the Ark"
+  ],
+  [
+   1509.605,
+   "The Rainbow Covenant"
+  ],
+  [
+   1598.372,
+   "The Same Heart"
+  ],
+  [
+   1678.826,
+   "The Tower of Babel"
+  ],
+  [
+   1924.326,
+   "The Lord Came Down"
+  ],
+  [
+   2021.826,
+   "Scattered Abroad"
+  ],
+  [
+   2155.126,
+   "The Keeper's honest question"
+  ]
+ ],
+ "keeper_clips": {
+  "hook": {
+   "quote": "0 credits (no generation: Kokoro voice-over on approved stills)",
+   "voice": {
+    "voice_id": "am_michael",
+    "speed": 1.0
+   },
+   "lipsync": {
+    "used": false,
+    "reason": "No stored silent 16:9 Keeper clip exists (the silent Pavo clips are 9:16 Short shots, 8 s), and lipsync.yml costs 2-4.7 runner minutes per second of picture, about 30 hours for this much new Keeper speech; the task makes lip-sync optional, so the Keeper speaks over his approved 16:9 portraits."
+   },
+   "beats": [
+    {
+     "still": "arc-01-long-k-promise-2",
+     "still_sha256": "fd3ffd3708872b1b662c649649b917cfc95f9f2c49f6d047b3105c2d98542065",
+     "reference": "Genesis 3:9"
+    },
+    {
+     "still": "flood-ends-long-k-insight",
+     "still_sha256": "fd3ffd3708872b1b662c649649b917cfc95f9f2c49f6d047b3105c2d98542065",
+     "reference": null
+    }
+   ]
+  },
+  "i1": {
+   "quote": "0 credits (no generation: Kokoro voice-over on approved stills)",
+   "voice": {
+    "voice_id": "am_michael",
+    "speed": 1.0
+   },
+   "lipsync": {
+    "used": false,
+    "reason": "No stored silent 16:9 Keeper clip exists (the silent Pavo clips are 9:16 Short shots, 8 s), and lipsync.yml costs 2-4.7 runner minutes per second of picture, about 30 hours for this much new Keeper speech; the task makes lip-sync optional, so the Keeper speaks over his approved 16:9 portraits."
+   },
+   "beats": [
+    {
+     "still": "arc-01-long-k-promise-3",
+     "still_sha256": "d06d4d2eb4d0120dc4dfdab01b737d4d14a57dd52759e60e3284826973e5636f",
+     "reference": "Genesis 1:1-3"
+    },
+    {
+     "still": "arc-01-long-s-c1-river",
+     "still_sha256": "996f2d0e72769f97ed5ce49fb28645e4e09abb844919582f073198e4a83fa830",
+     "reference": null
+    },
+    {
+     "still": "arc-01-long-s-c1-adam-light",
+     "still_sha256": "9fc84238d4f2494b949959d625db118085c2520de81d4fa6d9f17322b64443a6",
+     "reference": "Genesis 1:27"
+    },
+    {
+     "still": "arc-01-long-s-c1-both",
+     "still_sha256": "1b3c1b0b7b4d9b6c4ee2d76c8b29a327bd6e6b1b99130b11c5b2048bd9662761",
+     "reference": "Genesis 1:31"
+    },
+    {
+     "still": "arc-01-long-s-c1-stars",
+     "still_sha256": "be0b5cda512f273b00774512ba3a1cfef34112ee057610f5f90a6aaef48eb789",
+     "reference": "Genesis 2:2"
+    }
+   ]
+  },
+  "i2": {
+   "quote": "0 credits (no generation: Kokoro voice-over on approved stills)",
+   "voice": {
+    "voice_id": "am_michael",
+    "speed": 1.0
+   },
+   "lipsync": {
+    "used": false,
+    "reason": "No stored silent 16:9 Keeper clip exists (the silent Pavo clips are 9:16 Short shots, 8 s), and lipsync.yml costs 2-4.7 runner minutes per second of picture, about 30 hours for this much new Keeper speech; the task makes lip-sync optional, so the Keeper speaks over his approved 16:9 portraits."
+   },
+   "beats": [
+    {
+     "still": "arc-01-long-s-co-exile",
+     "still_sha256": "4dee48faa110087798d099132e03f74157c4f8bdc5939afb878557205498d959",
+     "reference": "Genesis 3:15"
+    },
+    {
+     "still": "flood-ends-long-k-insight",
+     "still_sha256": "fd3ffd3708872b1b662c649649b917cfc95f9f2c49f6d047b3105c2d98542065",
+     "reference": null
+    }
+   ]
+  },
+  "i3": {
+   "quote": "0 credits (no generation: Kokoro voice-over on approved stills)",
+   "voice": {
+    "voice_id": "am_michael",
+    "speed": 1.0
+   },
+   "lipsync": {
+    "used": false,
+    "reason": "No stored silent 16:9 Keeper clip exists (the silent Pavo clips are 9:16 Short shots, 8 s), and lipsync.yml costs 2-4.7 runner minutes per second of picture, about 30 hours for this much new Keeper speech; the task makes lip-sync optional, so the Keeper speaks over his approved 16:9 portraits."
+   },
+   "beats": [
+    {
+     "still": "arc-01-long-k-promise-2",
+     "still_sha256": "fd3ffd3708872b1b662c649649b917cfc95f9f2c49f6d047b3105c2d98542065",
+     "reference": "Hebrews 11:4"
+    },
+    {
+     "still": "flood-ends-long-k-insight",
+     "still_sha256": "fd3ffd3708872b1b662c649649b917cfc95f9f2c49f6d047b3105c2d98542065",
+     "reference": "Genesis 4:10"
+    },
+    {
+     "still": "arc-01-long-k-promise-3",
+     "still_sha256": "d06d4d2eb4d0120dc4dfdab01b737d4d14a57dd52759e60e3284826973e5636f",
+     "reference": "Genesis 4:15"
+    },
+    {
+     "still": "flood-ends-long-k-bow",
+     "still_sha256": "d06d4d2eb4d0120dc4dfdab01b737d4d14a57dd52759e60e3284826973e5636f",
+     "reference": "Genesis 4:26"
+    }
+   ]
+  },
+  "i4": {
+   "quote": "0 credits (no generation: Kokoro voice-over on approved stills)",
+   "voice": {
+    "voice_id": "am_michael",
+    "speed": 1.0
+   },
+   "lipsync": {
+    "used": false,
+    "reason": "No stored silent 16:9 Keeper clip exists (the silent Pavo clips are 9:16 Short shots, 8 s), and lipsync.yml costs 2-4.7 runner minutes per second of picture, about 30 hours for this much new Keeper speech; the task makes lip-sync optional, so the Keeper speaks over his approved 16:9 portraits."
+   },
+   "beats": [
+    {
+     "still": "flood-ends-long-k-insight",
+     "still_sha256": "fd3ffd3708872b1b662c649649b917cfc95f9f2c49f6d047b3105c2d98542065",
+     "reference": null
+    },
+    {
+     "still": "arc-01-long-k-promise-2",
+     "still_sha256": "fd3ffd3708872b1b662c649649b917cfc95f9f2c49f6d047b3105c2d98542065",
+     "reference": null
+    },
+    {
+     "still": "arc-01-long-k-promise-3",
+     "still_sha256": "d06d4d2eb4d0120dc4dfdab01b737d4d14a57dd52759e60e3284826973e5636f",
+     "reference": null
+    }
+   ]
+  },
+  "i5": {
+   "quote": "0 credits (no generation: Kokoro voice-over on approved stills)",
+   "voice": {
+    "voice_id": "am_michael",
+    "speed": 1.0
+   },
+   "lipsync": {
+    "used": false,
+    "reason": "No stored silent 16:9 Keeper clip exists (the silent Pavo clips are 9:16 Short shots, 8 s), and lipsync.yml costs 2-4.7 runner minutes per second of picture, about 30 hours for this much new Keeper speech; the task makes lip-sync optional, so the Keeper speaks over his approved 16:9 portraits."
+   },
+   "beats": [
+    {
+     "still": "arc-01-long-k-promise-2",
+     "still_sha256": "fd3ffd3708872b1b662c649649b917cfc95f9f2c49f6d047b3105c2d98542065",
+     "reference": "Genesis 6:5"
+    },
+    {
+     "still": "flood-ends-long-k-insight",
+     "still_sha256": "fd3ffd3708872b1b662c649649b917cfc95f9f2c49f6d047b3105c2d98542065",
+     "reference": "Genesis 8:21"
+    },
+    {
+     "still": "arc-01-long-k-promise-3",
+     "still_sha256": "d06d4d2eb4d0120dc4dfdab01b737d4d14a57dd52759e60e3284826973e5636f",
+     "reference": null
+    },
+    {
+     "still": "flood-ends-long-k-bow",
+     "still_sha256": "d06d4d2eb4d0120dc4dfdab01b737d4d14a57dd52759e60e3284826973e5636f",
+     "reference": null
+    }
+   ]
+  },
+  "close": {
+   "quote": "0 credits (no generation: Kokoro voice-over on approved stills)",
+   "voice": {
+    "voice_id": "am_michael",
+    "speed": 1.0
+   },
+   "lipsync": {
+    "used": false,
+    "reason": "No stored silent 16:9 Keeper clip exists (the silent Pavo clips are 9:16 Short shots, 8 s), and lipsync.yml costs 2-4.7 runner minutes per second of picture, about 30 hours for this much new Keeper speech; the task makes lip-sync optional, so the Keeper speaks over his approved 16:9 portraits."
+   },
+   "beats": [
+    {
+     "still": "flood-ends-long-k-insight",
+     "still_sha256": "fd3ffd3708872b1b662c649649b917cfc95f9f2c49f6d047b3105c2d98542065",
+     "reference": null
+    },
+    {
+     "still": "arc-01-long-k-promise-2",
+     "still_sha256": "fd3ffd3708872b1b662c649649b917cfc95f9f2c49f6d047b3105c2d98542065",
+     "reference": "Genesis 11:30"
+    },
+    {
+     "still": "flood-ends-long-k-bow",
+     "still_sha256": "d06d4d2eb4d0120dc4dfdab01b737d4d14a57dd52759e60e3284826973e5636f",
+     "reference": null
+    },
+    {
+     "still": "arc-01-long-k-promise-3",
+     "still_sha256": "d06d4d2eb4d0120dc4dfdab01b737d4d14a57dd52759e60e3284826973e5636f",
+     "reference": null
+    }
+   ]
+  }
+ }
+}
