@@ -125,10 +125,45 @@
         "source": "github",
         "repo": "DietrichGebert/ponytail"
       }
+    },
+    "claude-plugins-official": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-plugins-official"
+      }
+    },
+    "cartographer-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "kingbootoshi/cartographer"
+      }
+    },
+    "thedotmack": {
+      "source": {
+        "source": "github",
+        "repo": "thedotmack/claude-mem"
+      }
+    },
+    "manifold": {
+      "source": {
+        "source": "github",
+        "repo": "manifoldmcp/marketing-skills"
+      }
+    },
+    "advisorppc": {
+      "source": {
+        "source": "github",
+        "repo": "advisorppc/advisorppc-plugin"
+      }
     }
   },
   "enabledPlugins": {
     "agent-skills@addy-agent-skills": true,
-    "ponytail@ponytail": true
+    "ponytail@ponytail": true,
+    "cartographer@cartographer-marketplace": true,
+    "claude-mem@thedotmack": false,
+    "manifold@manifold": true,
+    "advisorppc@advisorppc": true,
+    "claude-code-setup@claude-plugins-official": true
   }
 }
