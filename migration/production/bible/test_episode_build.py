@@ -3231,6 +3231,11 @@ class LipsyncedClips(unittest.TestCase):
         self.assertEqual(eb.compose_shots(self.plan, self.layout, clips, {"k-a": 7.2})[0]["kind"], "keeper-vo")
         with self.assertRaisesRegex(SystemExit, "KEEPER_CLIP_SHORT k-a"):     # never slowed: the lips would drift
             eb.compose_shots(self.plan, self.layout, clips, {"k-a": 5.5}, {"k-a"})
+        # a lip-sync shot sharing its run is refused at plan time (compose_prediction), not at the build
+        self.assertEqual(eb.lipsync_run_problems(self.plan), [])
+        shared = json.loads(json.dumps(self.plan))
+        shared["shots"].append(dict(shared["shots"][0], id="k-b"))
+        self.assertTrue(eb.lipsync_run_problems(shared)[0].startswith("LIPSYNC_NOT_ON_HIS_LINE k-a"))
 
     def test_compose_keeps_every_lip_synced_keeper_on_his_line_between_scenes(self):
         plan = json.loads(json.dumps(VO_EXAMPLE))

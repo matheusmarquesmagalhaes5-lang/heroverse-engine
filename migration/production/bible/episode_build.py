@@ -467,9 +467,12 @@ def compose_prediction(plan, layout, clip_seconds=None):
                 clip_seconds[s["id"]] = max(clip_seconds[s["id"]], float(talk_record(layout, s)["seconds"]))
     if plan_check.reflection(plan):   # its clips are never composed here: reflection_shorts joins them with crossfades
         return []
+    alone = lipsync_run_problems(plan)
     if is_long(plan):   # LONG_DESIGN slice 3: one cut a shot at the story QA's 4-7 s holds, windows on their source
         import long_build
-        return long_build.compose_problems(plan, layout, clip_seconds)
+        return alone + long_build.compose_problems(plan, layout, clip_seconds)
+    if alone:
+        return alone
     try:
         shots = compose_shots(plan, layout, {s["id"]: s["id"] for s in plan["shots"]}, clip_seconds)
     except SystemExit as exc:
@@ -485,6 +488,15 @@ def compose_prediction(plan, layout, clip_seconds=None):
     if share > plan_check.ESTABLISHING_SHARE_MAX:
         problems.append(f"ESTABLISHING_SHARE {share:.3f} (composed)")
     return problems
+
+
+def lipsync_run_problems(plan):
+    """The compose lays a lip-synced clip alone in its run, from its line's first word (compose_shots,
+    long_build.compose_long_shots: LIPSYNC_NOT_ON_HIS_LINE): predicted here for every lip-sync shot of the plan."""
+    _, carried = plan_check.sequence(plan)
+    return [f"LIPSYNC_NOT_ON_HIS_LINE {plan['shots'][a]['id']} (a lip-synced clip is the only shot of its run)"
+            for a, b, _ in plan_check.groups(plan["shots"], carried)
+            if b != a and any(lipsync_shot(plan["shots"][k]) for k in range(a, b + 1))]
 
 
 def establishing_share(plan, shots, total):
@@ -1275,6 +1287,11 @@ def review_problems(plan, digests, approvals=None, needs=None):
     if changed:
         out.append("SHOT_REQUEST_CHANGED " + " ".join(changed) + " (the plan's request is no longer the one the "
                    "approved clip was made from: probe and approve again)")
+    unplanned = [i for i in ids if i in approvals and approvals[i].get("lipsync") is not None
+                 and not lipsync_shot(plan["shots"][index[i]])]
+    if unplanned:   # owner 2026-11-05: a lip-synced clip ships only on a shot whose plan asks for the lip-sync
+        out.append("LIPSYNC_NOT_PLANNED " + " ".join(unplanned) + " (the approval is a lip-synced clip; the plan shot "
+                   "has no valid `lipsync`)")
     unknown = [i for i in ids if i in approvals and not reviewer_identity.valid(approvals[i])]
     if unknown:
         out.append("SHOT_REVIEWER_REFUSED " + " ".join(unknown) + " (unknown explicit reviewer identity)")
