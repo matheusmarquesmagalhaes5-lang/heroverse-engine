@@ -60,9 +60,10 @@ f5f9f375…e105.
 Steps (Desktop Commander + `C:\HeroVerse\ui.ps1`; screen 1366x768; take one screenshot to confirm each layout before
 trusting the coordinates):
 1. Open or focus the app: `Start-Process "shell:AppsFolder\OpenAI.Codex_2p2nqsd0c76g0!App"`. Owner, 2026-11-01: ONE
-   chat for all the stills. Never open a new chat per image. Select the chat "HeroVerse — stills" in the sidebar and
-   create it with "Novo chat" only if it does not exist. Every image prompt goes into that same chat; the composer shows
-   the "Criar imagem" chip. Never delete the owner's other chats.
+   chat for all the stills. Never open a new chat per image. Every image prompt goes into the chat "HeroVerse — stills"
+   (the app shows it with an em dash; a hyphen or en dash is accepted too), and only after `select_chat.ps1` answers
+   `OK` (see "Chat lock" below). No script creates a chat: when the guard cannot find that chat the run stops. Never
+   delete the owner's other chats.
 2. Put the prompt on the clipboard (`Set-Clipboard`). It starts with "Create an image, 16:9 landscape, no text." and
    then the still's exact plan prompt, which says "centred in the frame". Click the composer, `type '^v'`, then click
    the send arrow. Clear the clipboard with `Set-Clipboard ' '`.
@@ -83,3 +84,28 @@ handle, restore it if minimized, `AttachThreadInput` + `BringWindowToTop` + `Set
 click/type/scroll checks again just before acting (`FOCUS_LOST`). `-nofocus` is only for the "Salvar como" dialog (typing the path),
 never for clicks. If the foreground keeps changing within seconds the owner is using the PC: wait 5 minutes and retry; report
 to the coordinator when it persists more than 30 minutes.
+
+### Chat lock (E305, 2026-11-05)
+
+Owner, 2026-11-05: a still was generated in the WRONG chat. `send2.ps1` clicked the composer at fixed coordinates,
+pasted and pressed Enter without knowing which conversation was open. Rule: **every still goes to the one chat
+"HeroVerse — stills", and that chat is identified before anything is pasted or sent.** `select_chat.ps1` (repo copy
+`desktop-app/select_chat.ps1`, deployed to `C:\HeroVerse`) does it with Windows UI Automation:
+
+1. `OWNER_ACTIVE` (exit 3): `GetLastInputInfo` shows input in the last 120 s that this route did not make (`ui.ps1`
+   writes the tick of its own last action to `lastact.txt`). Nothing is clicked, typed or invoked.
+2. Unless `-verifyOnly`: a UIA Invoke on the sidebar button named exactly for the chat. When the virtualized sidebar does
+   not hold it, the app's own search palette (Ctrl+K, a new focused ComboBox) gets `stills` and the one row named exactly
+   `<chat> ChatGPT Alt+<n>` is invoked. A prefix match ("HeroVerse: …") never counts; Enter is never pressed; a new
+   chat is never created.
+3. Verification, all required: the page document is named exactly for the chat; the sidebar row is selected (its
+   `bg-primary-ghost-hover` class) or the conversation header shows that name; and the conversation, outside every
+   input box, holds this project's prompt marker ("Create an image, 16:9 landscape, no text." or "…9:16 vertical
+   portrait…"). Two sidebar rows with that name are ambiguous. Any failure is `WRONG_CHAT` (exit 4).
+
+`send2.ps1` puts the prompt on the clipboard only after `OK`, and runs `select_chat.ps1 -verifyOnly` again after the
+paste and before Enter (a failure leaves the draft unsent and untouched). `one2.ps1` phase 1 verifies before any
+download click. `drive.ps1` STOPS the run (log line `STOP <still> WRONG_CHAT|OWNER_ACTIVE`, exit 2) instead of retrying.
+PRIVACY: the owner uses the app for unrelated conversations; the guard prints only the stills name, booleans and
+counts, and nothing of another conversation is copied, logged or committed. Test the guard alone (`select_chat.ps1`,
+`-verifyOnly`, `-viaSearch`) only while the owner has been idle for at least 120 s; it never sends a prompt.
