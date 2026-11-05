@@ -155,7 +155,7 @@
     "agent-skills@addy-agent-skills": true,
     "ponytail@ponytail": true,
     "cartographer@cartographer-marketplace": true,
-    "claude-mem@thedotmack": true,
+    "claude-mem@thedotmack": false,
     "manifold@manifold": true,
     "advisorppc@advisorppc": true,
     "claude-code-setup@claude-plugins-official": true
