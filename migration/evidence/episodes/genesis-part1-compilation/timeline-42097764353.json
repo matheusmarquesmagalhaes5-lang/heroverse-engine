@@ -1,0 +1,173 @@
+{
+ "output_sha256": "c6fb23ae9372fb97676e7c698a7b3fa06e18aaa3d61422751881d61727f9d036",
+ "segments": [
+  {
+   "kind": "hook",
+   "name": "hook",
+   "seconds": 33.854,
+   "spoken_seconds": 31.833,
+   "beats": 2,
+   "start": 0.0,
+   "end": 33.854
+  },
+  {
+   "kind": "interlude",
+   "name": "i1",
+   "seconds": 107.154,
+   "spoken_seconds": 102.139,
+   "beats": 5,
+   "chapter": "In the Beginning",
+   "start": 33.854,
+   "end": 141.008
+  },
+  {
+   "kind": "short",
+   "name": "genesis-02-short",
+   "seconds": 48.3,
+   "source_sha256": "48ce69512a8562373b98b623eb21e1b8627ee797bce550b178cdce4f7bf737dd",
+   "chapter": "God Breathed Into the Dust",
+   "end_s": 48.3,
+   "start": 141.008,
+   "end": 189.308
+  },
+  {
+   "kind": "short",
+   "name": "genesis-03-short",
+   "seconds": 42.8,
+   "source_sha256": "9b10e1a0bedc00577d43021e52ecfe0c568230110b9a92b2f3aad231f6cf40bf",
+   "chapter": "The Serpent: Did God Really Say?",
+   "end_s": 42.8,
+   "start": 189.308,
+   "end": 232.108
+  },
+  {
+   "kind": "short",
+   "name": "genesis-04-short",
+   "seconds": 43.667,
+   "source_sha256": "c3784ad58400989feca750772c53ac2b97c0e5a86c412c94b3dc625ae913707b",
+   "chapter": "Where Art Thou? Driven Out of Eden",
+   "end_s": 43.65,
+   "start": 232.108,
+   "end": 275.775
+  },
+  {
+   "kind": "interlude",
+   "name": "i2",
+   "seconds": 45.154,
+   "spoken_seconds": 43.113,
+   "beats": 2,
+   "chapter": "Outside the Garden",
+   "start": 275.775,
+   "end": 320.929
+  },
+  {
+   "kind": "short",
+   "name": "genesis-05-short",
+   "seconds": 57.667,
+   "source_sha256": "d3b092a48f077869fa364b62e753ba660f494596f4b0837f51cc5887a0088b3d",
+   "chapter": "Cain and Abel",
+   "end_s": 57.65,
+   "start": 320.929,
+   "end": 378.596
+  },
+  {
+   "kind": "interlude",
+   "name": "i3",
+   "seconds": 88.921,
+   "spoken_seconds": 84.89,
+   "beats": 4,
+   "chapter": "From Cain to Seth",
+   "start": 378.596,
+   "end": 467.517
+  },
+  {
+   "kind": "short",
+   "name": "genesis-06-short",
+   "seconds": 70.6,
+   "source_sha256": "e9e6aacaab5564ddf691e09e63909ddfa57df810b36b5c239c0dd63eed43b609",
+   "chapter": "Enoch Walked With God",
+   "end_s": 70.6,
+   "start": 467.517,
+   "end": 538.117
+  },
+  {
+   "kind": "short",
+   "name": "genesis-07-short",
+   "seconds": 165.9,
+   "source_sha256": "da4c5f629dd8e8715a2a840395635b779beeda0917fcf2bc7860964b6cbcd6ea",
+   "chapter": "God Sees the Earth Corrupt",
+   "end_s": 165.9,
+   "start": 538.117,
+   "end": 704.017
+  },
+  {
+   "kind": "short",
+   "name": "genesis-08-short",
+   "seconds": 168.0,
+   "source_sha256": "00462a4c1d9de5c3dfd7c8cf8e131f52f462ced71e97598b066fcf4a3d500a23",
+   "chapter": "Noah Builds the Ark",
+   "end_s": 168.0,
+   "start": 704.017,
+   "end": 872.017
+  },
+  {
+   "kind": "short",
+   "name": "genesis-09-short",
+   "seconds": 165.7,
+   "source_sha256": "57e8768c53fd572b92750908fabdab37297ce74ec0438d3ed1ab3665e3a41829",
+   "chapter": "The Flood Begins",
+   "end_s": 165.7,
+   "start": 872.017,
+   "end": 1037.717
+  },
+  {
+   "kind": "interlude",
+   "name": "i4",
+   "seconds": 66.888,
+   "spoken_seconds": 63.87,
+   "beats": 3,
+   "chapter": "Older Flood Stories",
+   "start": 1037.717,
+   "end": 1104.605
+  },
+  {
+   "kind": "long",
+   "name": "flood-ends-long",
+   "seconds": 493.767,
+   "source_sha256": "9a2d0f24e74c7117eedcbdd73992fbc284efb9402b6f82dba98f096a64635692",
+   "chapter": "The Flood Ends: The Raven and the Dove",
+   "end_s": 493.74,
+   "start": 1104.605,
+   "end": 1598.372
+  },
+  {
+   "kind": "interlude",
+   "name": "i5",
+   "seconds": 80.454,
+   "spoken_seconds": 76.414,
+   "beats": 4,
+   "chapter": "The Same Heart",
+   "start": 1598.372,
+   "end": 1678.826
+  },
+  {
+   "kind": "long",
+   "name": "genesis-10-11-long",
+   "seconds": 476.3,
+   "source_sha256": "0386d34a1501477d6ea487b3c3cf53caedb0a898d70e7b15feb90e36bad09937",
+   "chapter": "The Tower of Babel",
+   "end_s": 476.3,
+   "start": 1678.826,
+   "end": 2155.126
+  },
+  {
+   "kind": "close",
+   "name": "close",
+   "seconds": 94.321,
+   "spoken_seconds": 90.317,
+   "beats": 4,
+   "start": 2155.126,
+   "end": 2249.447
+  }
+ ]
+}

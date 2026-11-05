@@ -1,0 +1,21 @@
+{
+ "version": "compilation-handoff-v1",
+ "pilot_id": "pilot-023",
+ "episode": "genesis-part1-compilation",
+ "output_sha256": "c6fb23ae9372fb97676e7c698a7b3fa06e18aaa3d61422751881d61727f9d036",
+ "source_plan": {
+  "file": "migration/production/bible/compilations/genesis-part1-compilation.json",
+  "sha256": "e9bb7ecf3675abf525be7fa79a4cee9c28ca59c241a9c0f964e2069f2d5c36a5"
+ },
+ "release_asset": "pilot-023-sha256-c6fb23ae9372fb97676e7c698a7b3fa06e18aaa3d61422751881d61727f9d036.mp4",
+ "files": {
+  "script.json": "982bab2ba8a7f712aad144c4bf2545a73042023aa8e86e1a92a08cf53f2b59a9",
+  "schedule.json": "f3159f8e8578383b7c1acb00e96c71e6950d3d19af8c860390f3e981d78e9503",
+  "out/manifest.json": "2d1d143c64a813904c7cb75cfb49767f7ac9ed7a79cfe5519846258fa86bca16",
+  "out/timeline.json": "e8731294a3ab5345170ba880c68a7e40f36421fde947aa5a1ed2ded94174f6ae",
+  "out/package.json": "dee3befdaa902fb2713103af1735c21978c86a319b2fea494d5c300dba78fce0",
+  "inspection/thumbnail.jpg": "14f252bb7e6b8e913cc44414d0a5628aa554014199976c4c404933923ab21911"
+ },
+ "review_status": "AWAITING_REVIEW",
+ "approval_created": false
+}
