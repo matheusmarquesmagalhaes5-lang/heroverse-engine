@@ -2987,5 +2987,127 @@ class UnapprovedStillIsNamed(unittest.TestCase):
         self.assertTrue(out[0].startswith("STILL_NOT_APPROVED s-x"), out)
 
 
+class SilentPavoClips(unittest.TestCase):
+    """Owner 2026-11-04: "Pode continuar fazendo com pavo mais coloca só vídeos sem narração.. e coloca a narração por
+    fora..": Pavo clips are silent acting clips (`pavo_mode` "silent", pavo_audio "none"); our Kokoro audio is the voice
+    track over them. shot-probe allows them, one generation per line per prompt revision (E296)."""
+
+    SETTING = "Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him."
+
+    def plan(self, action="watches the fire, then slowly nods", **extra):
+        plan = {"episode": "ep-x", "aspect_ratio": "16:9",
+                "narration": [{"text": "What if obeying God meant building a ship with no rain in sight?"}],
+                "shots": [dict({"id": "k-a", "kind": "keeper", "lines": [0], "pavo_mode": "silent", "pavo_audio": "none",
+                                "pavo": {"action": action, "wardrobe": "fire", "setting": self.SETTING,
+                                         "mood": "Tender and grave"}}, **extra)]}
+        plan["shots"][0]["prompt"] = eb.pavo_prompt.build(plan["shots"][0], plan)
+        return plan
+
+    def test_a_silent_shot_is_not_a_talking_shot_and_the_probe_does_not_refuse_it_as_ours(self):
+        plan = self.plan()
+        shot = plan["shots"][0]
+        self.assertFalse(eb.plan_check.talking(shot))
+        self.assertTrue(eb.plan_check.silent(shot) and eb.plan_check.voiceover(shot))   # the line is our voice track
+        self.assertEqual(eb.pavo_audio.route_of(shot), eb.pavo_audio.NONE)
+        self.assertEqual(eb.probe_ids(plan, "k-a", "1", regen_path=Path("/nonexistent")), (["k-a"], 1))
+        with self.assertRaises(SystemExit) as err:                      # still one round, as every Pavo line (E264)
+            eb.probe_ids(plan, "k-a", "2", regen_path=Path("/nonexistent"))
+        self.assertIn("PROBE_ATTEMPTS_REFUSED k-a", str(err.exception))
+        # the E296 refusal of an "ours" TALKING line is unchanged beside it
+        import tempfile
+        with tempfile.TemporaryDirectory() as r:
+            regen = Path(r) / "owner_regen.json"
+            regen.write_text(json.dumps({"standing_rule": {"owner_quote": "as regras são fixas", "since_run": 100,
+                                                           "max_extra_per_line": 3, "per_prompt_revision": 1,
+                                                           "pavo_audio": "pavo"}}))
+            self.assertEqual(eb.probe_ids(plan, "k-a", "1", regen_path=regen), (["k-a"], 1))   # silent: no PROBE_PAVO_AUDIO_OURS
+            talk = {"episode": "ep-x", "aspect_ratio": "16:9", "narration": plan["narration"], "shots": [
+                {"id": "k-t", "kind": "keeper", "lines": [0], "pavo_audio": "ours"}]}
+            with self.assertRaises(SystemExit) as err:
+                eb.probe_ids(talk, "k-t", "1", regen_path=regen)
+            self.assertIn("PROBE_PAVO_AUDIO_OURS k-t", str(err.exception))
+
+    def test_a_silent_line_takes_one_generation_per_prompt_revision_and_a_clean_clip_is_used_not_regenerated(self):
+        import tempfile
+        plan = self.plan()
+        shot = plan["shots"][0]
+        rule = {"owner_quote": "as regras são fixas", "since_run": 100, "max_extra_per_line": 3, "per_prompt_revision": 1,
+                "pavo_audio": "pavo"}
+
+        def store(root, name, prompt, flags):
+            (Path(root) / f"{name}.json").write_text(json.dumps({"shots": {"k-a": {
+                "request": {"prompt": prompt, "silent": eb.pavo_prompt.SILENT_VERSION},
+                "clips": [{"clip_sha256": name.encode().hex().ljust(64, "0")[:64], "flags": flags}]}}}))
+
+        with tempfile.TemporaryDirectory() as d, tempfile.TemporaryDirectory() as r:
+            regen, lessons = Path(r) / "owner_regen.json", Path(r) / "lessons.md"
+            regen.write_text(json.dumps({"authorizations": [], "standing_rule": rule}))
+            lessons.write_text("# l\n\n## 2026-11-04\n- **rule** seed. Evidence: E296\n")
+            store(d, "50", shot["prompt"], ["FACE_NOT_FOUND"])           # the picture failed (face lost)
+            with self.assertRaises(SystemExit) as err:                   # one generation per revision, even on a visual flag
+                eb.probe_ids(plan, "k-a", "1", d, regen, lessons)
+            self.assertIn("PROBE_SAME_PROMPT k-a", str(err.exception))
+            new = self.plan(action="lowers his eyes to the scroll in his hands")
+            rev = eb.prompt_revision(new["shots"][0]["prompt"])
+            self.assertEqual(eb.probe_ids(new, "k-a", "1", d, regen, lessons), (["k-a"], 1))   # a changed prompt: one more
+            self.assertIn("PROBE_STANDING_LESSON", eb.standing_rule_verdict(new, "k-a", d, regen, lessons)[1])
+            eb.pavo_prompt.append_lesson("2026-11-04", "rule", f"k-a silent revision {rev}: the passing Keeper framing "
+                                         "with an action in place of speech.", "E301", lessons)
+            self.assertEqual(eb.standing_rule_verdict(new, "k-a", d, regen, lessons), (True, ""))
+            store(d, "51", shot["prompt"], [])                           # a clean silent clip is used, never regenerated
+            with self.assertRaises(SystemExit) as err:
+                eb.probe_ids(new, "k-a", "1", d, regen, lessons)
+            self.assertIn("k-a", str(err.exception))
+            (Path(d) / "51.json").unlink()
+            self.assertIn(eb.stored_template_version({"request": {"silent": eb.pavo_prompt.SILENT_VERSION}}),
+                          (eb.pavo_prompt.SILENT_VERSION,))
+            self.assertTrue(eb.current_template(eb.pavo_prompt.SILENT_VERSION) and eb.current_template(eb.pavo_prompt.VERSION))
+            self.assertFalse(eb.current_template(None) or eb.current_template("pavo-talk-v1"))
+            bad = json.loads(json.dumps(new))                            # a silent shot that asks for speech is refused
+            bad["shots"][0]["prompt"] += " He speaks."
+            self.assertIn("PROBE_STANDING_NOT_STANDARD", eb.standing_rule_verdict(bad, "k-a", d, regen, lessons)[1])
+
+    def test_the_request_identity_carries_the_silent_template_and_no_audio(self):
+        plan = self.plan()
+        shot = plan["shots"][0]
+        req = {"prompt": shot["prompt"], "aspect_ratio": "16:9", "sound": False, "references": None, "audios": None}
+        digest, canonical = eb.request_digest(req, shot)
+        self.assertIsNone(canonical["audio"])
+        self.assertEqual(canonical["silent"], eb.pavo_prompt.SILENT_VERSION)
+        plain = dict(shot)
+        plain.pop("pavo_mode")
+        self.assertNotIn("silent", eb.request_digest(req, plain)[1])     # every earlier request digests as before
+
+    def test_compose_lays_our_line_under_a_silent_keeper_clip_held_to_the_line(self):
+        plan = json.loads(json.dumps(VO_EXAMPLE))
+        for n, s in enumerate(x for x in plan["shots"] if x["kind"] == "keeper"):
+            s.pop("voiceover")
+            s.update(pavo_mode="silent", pavo_audio="none", pavo={
+                "action": ("watches the fire, then slowly nods", "lowers his eyes to the scroll in his hands",
+                           "looks up from the scroll toward the stars")[n], "wardrobe": "fire", "setting": self.SETTING,
+                "mood": "Tender and grave"})
+            s["prompt"] = eb.pavo_prompt.build(s, plan)
+        layout = layout_for(plan, DURATIONS)
+        self.assertEqual(set(layout["keeper"]), {"k-insight", "k-question", "k-close"})
+        self.assertTrue(all(r.get("voiceover") and "wav" not in r for r in layout["keeper"].values()))
+        clips = {s["id"]: f"{s['id']}.mp4" for s in plan["shots"]}
+        seconds = {s["id"]: (s.get("seconds") or 12) + 0.59 for s in plan["shots"]}
+        for i, s in enumerate(plan["shots"]):
+            if s["kind"] == "keeper":
+                covered = eb.plan_check.vo_covered(layout["keeper"][s["id"]]["seconds"], plan["shots"], i)
+                seconds[s["id"]] = float(eb.plan_check.vo_clip_seconds(covered))
+        shots = eb.compose_shots(plan, layout, clips, seconds)
+        self.assertEqual(short_engine.check_shots(shots, layout["total"]), [])
+        vo = [c for c in shots if c["shot"].startswith("k-")]
+        self.assertEqual([c["kind"] for c in vo], ["keeper-vo"] * 3)
+        for c in vo:                                                     # no lips to align: the line is the voice track
+            self.assertNotIn("talk", c)
+            self.assertEqual(c["src_start"], 0.0)
+        # a clip shorter than its line is slowed at most MAX_SLOW, else the build refuses it (the existing rules)
+        with self.assertRaises(SystemExit) as err:
+            eb.compose_shots(plan, layout, clips, dict(seconds, **{"k-close": 4.0}))
+        self.assertIn("KEEPER_CLIP_SHORT k-close", str(err.exception))
+
+
 if __name__ == "__main__":
     unittest.main()

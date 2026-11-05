@@ -126,6 +126,17 @@ the approval records it. `reflection_shorts.py check` repeats it per segment (`S
 `SEGMENT_CLIP_WORDS_UNPROVEN`, `SEGMENT_CLIP_WRONG_WORDS`). A Keeper segment that fails both generations falls back to the
 DECISIONS ladder only for a long; a reflection without all its clips is not made that day (the cuts and bridge Shorts go on).
 
+Silent Pavo clips, narration over them (owner 2026-11-04 ~22:50Z: "Pode continuar fazendo com pavo mais coloca só vídeos sem
+narração.. e coloca a narração por fora.."; E301; PROMPT_GUIDE "Pavo silent-clip standard"). For NEW plans a Pavo clip is
+silent: `"pavo_mode": "silent"`, `"pavo_audio": "none"`, `"pavo": {action, setting, mood, wardrobe?, view?, camera?}`, prompt =
+`pavo_prompt.build` (`pavo-silent-v1`). The request carries no audio; Pavo's track is stripped; our Kokoro line (the Keeper's,
+or the character's own `characters.voice`) is the voice track under it, composed by the existing keeper-vo / scene rules
+(slowed at most `MAX_SLOW`, last frame held). `plan_check --strict` and `episode_build.check_plan` accept it for the hook,
+character-line and Keeper-line coverage; shot-probe takes it with no `pavo_audio` ("ours"/"pavo") refusal and one generation
+per line per prompt revision. Reviewers still watch and listen to the real clip: `silent_warnings` in a clip's measures
+(`WARN_MOUTH_NOT_CLOSED`, `WARN_FACE_NOT_FOUND_PROFILE`) are for them. The talking `pavo_audio` routes below remain for
+approvals recorded under them.
+
 Pavo's audio is Pavo's, in full (owner 2026-11-03: "Quero com o audio do pavo tambem.. quero o video do pavo na integra. A
 narracao feita vai ser pras imagens.. aproveitar tudo que o pavo pode oferecer dentro das capacidades"). This reverses E287's
 default: `pavo_audio` is a per-shot setting whose DEFAULT is `"pavo"` on every track (long compose, reflection, compilation,

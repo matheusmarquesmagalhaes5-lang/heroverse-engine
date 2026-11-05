@@ -292,6 +292,14 @@ class RemuxOurAudioOverAStoredClip(unittest.TestCase):
 
 
 class RouteAndLoudness(unittest.TestCase):
+    def test_a_silent_clip_has_no_audio_route_and_none_is_only_for_it(self):
+        self.assertEqual(pavo_audio.route_of({"pavo_mode": "silent", "pavo_audio": "none"}), pavo_audio.NONE)
+        self.assertNotIn(pavo_audio.NONE, pavo_audio.ROUTES)
+        with self.assertRaises(SystemExit) as err:
+            pavo_audio.route_of({"pavo_audio": "none"})
+        self.assertIn("PAVO_AUDIO_ROUTE_INVALID", str(err.exception))
+
+
     """Owner 2026-11-03: "pavo" (Pavo's own audio, the clip in full) is the default; "ours" is an explicit option."""
     def test_the_default_is_pavo_and_ours_is_only_explicit_or_recorded(self):
         with unittest.mock.patch.object(pavo_audio, "DEFAULT", pavo_audio.PAVO):
@@ -357,6 +365,93 @@ class RouteAndLoudness(unittest.TestCase):
 
 
 @unittest.skipUnless(HAS_FFMPEG, "ffmpeg required")
+@unittest.skipUnless(HAS_FFMPEG, "ffmpeg required")
+class SilentPavoClipInTheEngine(unittest.TestCase):
+    """Owner 2026-11-04: "Pode continuar fazendo com pavo mais coloca só vídeos sem narração.. e coloca a narração por
+    fora..": a silent clip is generated with no input audio, Pavo's own track is dropped, and its mouth is checked for
+    speech-like motion (not lip-synced)."""
+
+    SET = "Dawn on the wet hillside, pale gold light on his face, mist behind him."
+
+    def setUp(self):
+        import test_episode_build as t
+        self.t = t
+        self.tmp = Path(tempfile.mkdtemp(dir=eb.REPO, prefix=".test-silent-"))
+        self.addCleanup(shutil.rmtree, self.tmp, True)
+        self.raw = pavo_clip(self.tmp / "raw.mp4", seconds=3.0)
+        self.saved = (eb.clip_flags, eb.lipsync_flags, eb.face_flags, eb.still_mouth_flags)
+        self.addCleanup(lambda: [setattr(eb, n, v) for n, v in zip(("clip_flags", "lipsync_flags", "face_flags",
+                                                                    "still_mouth_flags"), self.saved)])
+
+    def silent_plan(self, **pavo):
+        plan = self.t.dialogue_plan()
+        layout = self.t.layout_for(plan, [2.4, 3.0, 2.5, 3.1])
+        shot = next(s for s in plan["shots"] if s["id"] == "s-eve")
+        shot.update(pavo_mode="silent", pavo_audio="none", seconds=6, pavo=dict(
+            {"action": "kneels by the water, hands in the clay", "view": "profile", "setting": self.SET,
+             "mood": "Solemn and grave"}, **pavo))
+        shot["prompt"] = eb.pavo_prompt.build(shot, plan)
+        layout = self.t.layout_for(plan, [2.4, 3.0, 2.5, 3.1])
+        return plan, layout, shot
+
+    def test_a_silent_line_is_a_voice_over_the_clip_has_no_audio_and_the_request_sends_none(self):
+        plan, layout, shot = self.silent_plan()
+        self.assertNotIn("s-eve", layout["speakers"])            # no talking record, no input WAV
+        self.assertIn("s-eve", layout["voice_over"])             # her line is our voice track
+        refs = {"keeper": ["k.jpg"], "eve": ["eve.jpg"]}
+        req = eb.request(shot, plan["shots"].index(shot), plan, layout, refs)
+        self.assertIsNone(req["audios"])
+        self.assertIs(req["sound"], False)
+        self.assertEqual(req["references"], ["eve.jpg"])
+        self.assertEqual(req["prompt"], shot["prompt"])
+        self.assertEqual(eb.pavo_audio.route_of(shot), pavo_audio.NONE)
+        self.assertEqual((eb.attempts_for(shot), eb.probe_rounds_cap(shot)), (eb.TALK_ATTEMPTS_MAX, eb.TALK_PROBE_ROUNDS_MAX))
+        # a hand-written or speaking prompt is refused before any Pavo call
+        for bad in (shot["prompt"].replace("kneels", "kneels, speaks and"), shot["prompt"] + " Her lips move in sync."):
+            with self.assertRaises(SystemExit) as err:
+                eb.request(dict(shot, prompt=bad), plan["shots"].index(shot), plan, layout, refs)
+            self.assertIn("PAVO_PROMPT_NOT_STANDARD", str(err.exception))
+        with self.assertRaises(SystemExit) as err:     # even when the builder's own fields ask for speech
+            eb.request(dict(shot, pavo=dict(shot["pavo"], action="speaks the words aloud")), 0, plan, layout, refs)
+        self.assertIn("PAVO_SILENT_SPEECH", str(err.exception))
+
+    def test_the_kept_clip_drops_pavos_track_and_is_checked_for_a_speaking_mouth_not_for_sync(self):
+        plan, layout, shot = self.silent_plan()
+        eb.clip_flags = lambda path, aspect=None: []
+        eb.lipsync_flags = lambda *a: self.fail("a silent clip is never lip-synced")
+        eb.face_flags = lambda *a: self.fail("a silent clip is judged by its mouth, not as God's face-free shot")
+        seen = []
+        eb.still_mouth_flags = lambda py, model, clip: (seen.append(Path(clip)) or ["MOUTH_NOT_CLOSED"], {"still_mouth": {
+            "window_motion": 0.001}})
+        refs = {"keeper": ["k.jpg"], "eve": ["eve.jpg"]}
+        client = self.t.FakeClient([{"conversation_id": "1", "status": "submitted"}], {"1": [self.t.done("1")]})
+        req, attempt, check, raw, final = eb.shot_runner(shot, plan["shots"].index(shot), plan, layout, refs, self.tmp, client,
+                                                         lambda url, dst: shutil.copyfile(self.raw, dst), "py", "model",
+                                                         lambda s: None)
+        record, path = attempt(1)
+        self.assertNotIn("audio", record)                               # nothing of Pavo's audio is recorded or used
+        streams = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "stream=codec_type", "-of", "csv=p=0",
+                                  str(final)], capture_output=True, text=True, check=True).stdout.split()
+        self.assertEqual(streams, ["video"])                            # Pavo's AAC track is stripped
+        flags, measures = check(path)
+        self.assertEqual((flags, seen), ([], [final]))                  # an acting mouth that is not closed is a WARN
+        self.assertEqual(measures["still_mouth"]["silent_warnings"], ["WARN_MOUTH_NOT_CLOSED"])
+
+    def test_a_speech_like_mouth_or_a_lost_face_is_still_a_hard_flag(self):
+        shot = {"pavo": {"view": "three-quarter"}}
+        for flags in (["MOUTH_TALKING"], ["FACE_NOT_FOUND"], ["MOUTH_TALKING", "MOUTH_NOT_CLOSED"]):
+            eb.still_mouth_flags = lambda py, model, clip, f=flags: (list(f), {"still_mouth": {}})
+            kept, m = eb.silent_mouth_flags("py", "model", "x.mp4", shot)
+            self.assertEqual(kept, [f for f in flags if f != "MOUTH_NOT_CLOSED"])
+            self.assertTrue(eb.visual_defect(kept))
+        # a profile view is not read by the frontal landmarker: the missing face is a note for the reviewer's real look
+        eb.still_mouth_flags = lambda py, model, clip: (["FACE_NOT_FOUND"], {"still_mouth": {}})
+        kept, m = eb.silent_mouth_flags("py", "model", "x.mp4", {"pavo": {"view": "profile"}})
+        self.assertEqual((kept, m["still_mouth"]["silent_warnings"]), ([], ["WARN_FACE_NOT_FOUND_PROFILE"]))
+        kept, m = eb.silent_mouth_flags("py", "model", "x.mp4", {"pavo": {"view": "profile"}, "kind": "keeper"})
+        self.assertEqual(m["still_mouth"]["silent_warnings"], ["WARN_FACE_NOT_FOUND_PROFILE"])
+
+
 class PavoRouteInTheEngine(unittest.TestCase):
     def setUp(self):
         import test_episode_build as t

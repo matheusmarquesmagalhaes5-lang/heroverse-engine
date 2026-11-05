@@ -4963,6 +4963,34 @@
      "instrument"
     ]
    }
+  },
+  {
+   "id": "E301",
+   "date": "2026-11-04",
+   "class": [
+    "process"
+   ],
+   "prior": [
+    "E287",
+    "E288",
+    "E290",
+    "E291",
+    "E292",
+    "E293",
+    "E295",
+    "E296",
+    "E297",
+    "E298"
+   ],
+   "error": "Pavo's own speech garbled the KJV words in 3 longs and its talking shots failed repeatedly: the Noah/Babel hook and Keeper lines came back with invented, dropped or repeated words on Pavo's re-synthesized track (E287, E290, E292, E293), each regeneration needed a per-line decision (E295, E296), and the k-restrain line hit FACE_NOT_FOUND after three revisions. Root cause: we kept asking Pavo to SPEAK our line, a capability it does not do exactly, and then judged and regenerated the clip for its words; the picture was never the problem. The owner's order (2026-11-04 ~22:50Z, \"Pode continuar fazendo com pavo mais coloca só vídeos sem narração.. e coloca a narração por fora..\") removes the cause: Pavo clips are silent acting clips and every spoken word is our Kokoro audio laid over them.",
+   "fix": "pavo_prompt.TEMPLATE_SILENT (SILENT_VERSION pavo-silent-v1): Image 1 is the character, \"centred in the frame\", what he does, mouth closed, \"No talking, no lip movement, no dialogue.\", from shot fields pavo_mode \"silent\" + pavo_audio \"none\" + pavo {action, setting, mood, wardrobe, view, camera}. plan_check: silent() shots are a Keeper voice-over path (voiceover) or a speaking character who is not talking; PAVO_SILENT_SPEECH / PAVO_SILENT_FRONTAL / PAVO_SILENT_AUDIO / PAVO_SILENT_FRAMES / PAVO_SILENT_GOD / PAVO_SILENT_SECONDS refusals; the E290 hook, character-line and Keeper-line coverage is satisfied by a silent Pavo clip of that character and still refuses a plain still or God's sky. episode_build: the request sends no audio and the builder's prompt only, the kept clip has Pavo's track stripped, and silent_mouth_flags (lipsync_check --still-mouth) keeps MOUTH_TALKING and FACE_NOT_FOUND as hard flags while MOUTH_NOT_CLOSED and a profile view's missing face are WARN notes for the reviewer; shot-probe allows silent shots (no PROBE_PAVO_AUDIO_OURS), one generation per line per prompt revision (PROBE_SAME_PROMPT) with the template version recorded. The compose lays our voice track under the silent picture by the existing keeper-vo / scene rules.",
+   "antidote": {
+    "file": "migration/production/bible/test_pavo_prompt.py",
+    "contains": "def test_a_silent_prompt_never_asks_for_speech_or_lip_sync",
+    "covers": [
+     "process"
+    ]
+   }
   }
  ]
 }

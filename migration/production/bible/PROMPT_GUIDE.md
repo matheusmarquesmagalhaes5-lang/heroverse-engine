@@ -312,6 +312,54 @@ Approved reused clips are selected by their exact hashes and the supported reque
 revocations, aspect, character identity, source coverage and the changed context. Reuse does not imply generation
 and does not create a new review score. Whether repeated imagery harms the episode is judged in the complete result.
 
+## Pavo silent-clip standard
+
+Owner, 2026-11-04 ~22:50Z: "Pode continuar fazendo com pavo mais coloca só vídeos sem narração.. e coloca a narração por
+fora..". Pavo stays our video engine, but its clips are SILENT acting clips: nobody speaks on camera, there is no lip-sync,
+and every spoken word (Keeper line, a character's KJV line, narration) is our Kokoro audio laid over the picture ("por
+fora"). This replaces the talking-shot / Pavo-audio route (E290-E296) for new plans; Pavo's own audio is never used.
+
+**Fields.** A silent shot carries `"pavo_mode": "silent"`, `"pavo_audio": "none"` and `"pavo": {"action", "setting",
+"mood", "wardrobe"?, "view"?, "camera"?}`; its `prompt` is exactly `pavo_prompt.build`'s (`PAVO_PROMPT_NOT_STANDARD`
+otherwise). `action` is what the character does or how he reacts (looks, works, walks, kneels, gestures), lower case, no
+full stop; `view` is `frontal` (default, the Keeper's established mouth-closed narration look), `three-quarter` or
+`profile`; `camera` is `static camera` (default), `slow push-in` or `slow pan`. The builder fills
+`pavo_prompt.TEMPLATE_SILENT` (`SILENT_VERSION` `pavo-silent-v1`; the talking `VERSION` does not move, approved digests carry it):
+
+> Image 1 is *the narrator | Noah*. *STYLE* Close-up from the chest up, his face large in the centre of the frame |
+> Medium close-up, static camera. *Name*, *look*, *wardrobe*, seen in profile, centred in the frame, *action*, his mouth
+> closed. *setting* *Mood.* [*period setting, exclusion*] No talking, no lip movement, no dialogue. No text, no logos.
+
+Framing, identity, setting, mood and period sentences are the passing talking prompt's (E293); only the speech clause is
+replaced by an action and the silence sentence. The same character reference as Image 1 (the Keeper's `talk_refs` frame,
+a character's approved refs); the character stays "centred in the frame"; no text or logos; God is never shown
+(`PAVO_SILENT_GOD`, and `pavo_prompt.field_problems` refuses him as the speaker).
+
+**Refusals** (`plan_check`, `pavo_prompt`, `episode_build.request`): `PAVO_SILENT_SPEECH` (the prompt or a field asks for
+speech or lip-sync: speak, say, words, audio, lips moving, sing, shout...), `PAVO_SILENT_FRONTAL` (a CHARACTER's line is
+voiced over a clip in which he is not visibly mouthing it: working, looking away, three-quarter or profile, never a
+frontal face or a look into the lens), `PAVO_SILENT_AUDIO` (`pavo_audio` is `"none"`, never `"pavo"` or `"ours"`),
+`PAVO_SILENT_FRAMES` (a silent clip is Pavo's video from the references, never a plain still, a first/last frame or a
+window), `PAVO_SILENT_SECONDS` (a character's silent clip is 4-12 s; beyond that it would be a still).
+
+**Coverage.** The E290 hook, character-line and Keeper-line gates are satisfied by a silent Pavo clip of that character
+under the line (`plan_check.pavo_silent`); a plain still, a clip without the builder's fields, God's sky or a hand-written
+prompt still fails them. A silent Keeper shot is a voice-over Keeper shot with the new template (his clip covers his line
+and the gap, slowed at most `MAX_SLOW`, his words from the voice track); a silent character shot is a speaking scene
+shot (`speaker` + `line` + `characters` [him] + `seconds`) whose line is his Kokoro voice (`characters.voice`).
+
+**Checks.** Visual gates stay: clip checks (artifacts), the face (`FACE_NOT_FOUND`), and no speech-like mouth motion while
+our line plays: `lipsync_check --still-mouth` measures the lip opening over the whole clip, a superset of the line's time, so
+`MOUTH_TALKING` is a hard flag (`episode_build.silent_mouth_flags`). `MOUTH_NOT_CLOSED` (an acting mouth may breathe) and the
+missing face of a `profile` view (the landmarker reads frontal faces) are NOT flags: they are `silent_warnings`
+(`WARN_MOUTH_NOT_CLOSED`, `WARN_FACE_NOT_FOUND_PROFILE`) in the clip's measures for the reviewer's real look, which stays the
+authority. No SyncNet, no `speech-check`, no words flag exist for a silent clip.
+
+**Generation.** The request sends no audio and `sound: false`; Pavo's returned track is stripped at download. One generation
+per line per prompt revision (`PROBE_SAME_PROMPT`; a second only for a visual defect inside the run, `TALK_ATTEMPTS_MAX`), one
+probe round, at the exact zero-credit quote. Probe records keep the template version (`request.silent`), so a silent clip is
+not "older" than the talking template. `PROBE_PAVO_AUDIO_OURS` never refuses a silent shot.
+
 ## Keeper voice-over: authorized Plan B
 
 A Keeper shot may explicitly carry `voiceover:true`. It shows him silent, with his lips closed, while the accepted

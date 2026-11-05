@@ -188,5 +188,80 @@ class Lessons(unittest.TestCase):
                 pp.LESSONS = old
 
 
+class SilentClips(unittest.TestCase):
+    """Owner 2026-11-04: "Pode continuar fazendo com pavo mais coloca só vídeos sem narração.. e coloca a narração por
+    fora..": a silent Pavo clip is an acting clip with no speech and no lip-sync; our Kokoro audio goes over it."""
+
+    SET = "Dawn on the wet hillside, pale gold light on his face, mist behind him."
+
+    def noah(self, **pavo):
+        f = {"action": "shapes the clay with both hands, eyes on his work", "view": "profile", "setting": self.SET,
+             "mood": "Solemn and grave"}
+        return {"id": "n-hook", "kind": "scene", "speaker": "noah", "characters": ["noah"], "pavo_mode": "silent",
+                "pavo_audio": "none", "line": "Make thee an ark of gopher wood.", "reference": "Genesis 6:14 (KJV)",
+                "pavo": dict(f, **pavo)}
+
+    def keeper(self, **pavo):
+        f = {"action": "watches the fire, then slowly nods", "setting": SETTING, "wardrobe": "fire",
+             "mood": "Tender and grave"}
+        return {"id": "k-a", "kind": "keeper", "lines": [0], "pavo_mode": "silent", "pavo_audio": "none",
+                "pavo": dict(f, **pavo)}
+
+    def test_the_silent_template_is_the_passing_framing_with_an_action_and_the_silence_sentence(self):
+        plan = {"aspect_ratio": "9:16", "narration": [{"text": "x"}]}
+        built = pp.build(self.noah(), plan, CHARS)
+        self.assertTrue(built.startswith("Image 1 is Noah. " + pp.STYLE + " Medium close-up, static camera. Noah, "))
+        for must in ("seen in profile, centred in the frame, shapes the clay with both hands, eyes on his work, his mouth "
+                     "closed.", self.SET + " Solemn and grave.", "No talking, no lip movement, no dialogue. No text, "
+                     "no logos."):
+            self.assertIn(must, built)
+        self.assertIsNone(pp.silent_speech(built))
+        self.assertEqual(pp.SILENT_VERSION, "pavo-silent-v1")
+        self.assertEqual(pp.VERSION, "pavo-talk-v2")   # approved talking digests carry it: it does not move
+        # the Keeper keeps his 16:9 chest-up framing; at 9:16 the medium close-up
+        wide = pp.build(self.keeper(), {"aspect_ratio": "16:9", "narration": [{"text": "x"}]}, CHARS)
+        self.assertIn("Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator",
+                      wide)
+        self.assertIn("facing the camera, centred in the frame, watches the fire, then slowly nods",
+                      wide)
+        # a talking shot is untouched by the new mode
+        self.assertIn("speaks the words of the audio clip", pp.build(keeper_shot(), flood_plan(), CHARS))
+
+    def test_a_silent_prompt_never_asks_for_speech_or_lip_sync(self):
+        plan = {"aspect_ratio": "9:16", "narration": [{"text": "x"}]}
+        for action in ("speaks the words to the camera", "says his piece slowly", "moves his lips in sync with the voice",
+                       "whispers a prayer aloud", "sings by the fire", "opens his mouth and shouts"):
+            with self.assertRaisesRegex(SystemExit, "PAVO_SILENT_SPEECH"):
+                pp.build(self.noah(action=action), plan, CHARS)
+        with self.assertRaisesRegex(SystemExit, "PAVO_SILENT_SPEECH"):
+            pp.build(self.keeper(mood="Tender and speaking"), plan, CHARS)
+        self.assertIsNone(pp.silent_speech("Image 1 is the narrator. No talking, no lip movement, no dialogue."))
+        self.assertIn("lipsync", pp.silent_speech("lipsync to the voice"))
+
+    def test_a_characters_voiced_line_is_never_a_frontal_face_visibly_mouthing_it(self):
+        plan = {"aspect_ratio": "9:16", "narration": [{"text": "x"}]}
+        for bad in ({"view": "frontal"}, {"action": "looks into the camera with grave eyes"}):
+            with self.assertRaisesRegex(SystemExit, "PAVO_SILENT_FRONTAL"):
+                pp.build(self.noah(**bad), plan, CHARS)
+        self.assertIn("turned three-quarters from the camera", pp.build(self.noah(view="three-quarter"), plan, CHARS))
+        # the Keeper's own frontal, mouth-closed narration clip is the established voice-over look
+        self.assertIn("facing the camera", pp.build(self.keeper(), plan, CHARS))
+
+    def test_god_is_never_shown_and_pavo_audio_is_never_used(self):
+        plan = {"aspect_ratio": "9:16", "narration": [{"text": "x"}]}
+        god = dict(self.noah(), speaker="god", characters=[])
+        with self.assertRaisesRegex(SystemExit, "God is never shown"):
+            pp.build(god, plan, CHARS)
+        for audio in ("pavo", "ours"):
+            with self.assertRaisesRegex(SystemExit, "PAVO_SILENT_AUDIO"):
+                pp.build(dict(self.noah(), pavo_audio=audio), plan, CHARS)
+        for bad in ({"view": "behind"}, {"camera": "whip pan"}, {"mood": "grave"}, {"action": "Works."}, {"extra": "x"},
+                    {"wardrobe": "armour"}):
+            with self.assertRaisesRegex(SystemExit, "PAVO_FIELDS_INVALID"):
+                pp.build(self.noah(**bad), plan, CHARS)
+        with self.assertRaisesRegex(SystemExit, "PAVO_FIELDS_INVALID"):
+            pp.build(self.keeper(wardrobe=None), plan, CHARS)
+
+
 if __name__ == "__main__":
     unittest.main()

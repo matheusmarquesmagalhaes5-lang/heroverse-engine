@@ -585,10 +585,20 @@ def talk_retime(words, gaps=0.0):
     return (round(best, 3), stretch) if abs(stretch - 1) <= TALK_RETIME_MAX + 1e-9 else None
 
 
+SILENT_MODE = "silent"
+
+
+def silent(shot):
+    """Owner 2026-11-04 ("só vídeos sem narração.. e coloca a narração por fora"): `"pavo_mode": "silent"` is a Pavo clip
+    in which nobody speaks (no lip-sync, no Pavo audio, pavo_audio "none"); the shot's line is our Kokoro audio over it."""
+    return isinstance(shot, dict) and shot.get("pavo_mode") == SILENT_MODE
+
+
 def voiceover(shot):
     """Plan B (owner, 2026-10-26): a Keeper shot flagged `"voiceover": true` shows him silent, mouth closed, while his
-    line plays from the voice track (no input audio, no retime, no lipsync; lipsync_check --still-mouth instead)."""
-    return isinstance(shot, dict) and shot.get("kind") == "keeper" and shot.get("voiceover") is True
+    line plays from the voice track (no input audio, no retime, no lipsync; lipsync_check --still-mouth instead).
+    A silent Keeper clip (`pavo_mode` "silent") takes the same path: his line is our audio over his silent picture."""
+    return isinstance(shot, dict) and shot.get("kind") == "keeper" and (shot.get("voiceover") is True or silent(shot))
 
 
 def vo_cover(shots, i, long=False):
@@ -622,7 +632,8 @@ def talking(shot):
     """A shot whose clip carries its own words with the speaker's lips on them (Pavo input audio, lipsync_check):
     the Keeper (unless his shot is a voice-over, plan B), or a scene where a character speaks. God's line is a
     voice-over: not a talking clip."""
-    return (shot["kind"] == "keeper" and not voiceover(shot)) or (speaking(shot) and shot["speaker"] != ch.GOD)
+    return (shot["kind"] == "keeper" and not voiceover(shot)) or (speaking(shot) and shot["speaker"] != ch.GOD
+                                                                  and not silent(shot))
 
 
 def god_problem(prompt):
@@ -646,6 +657,32 @@ def prompt_problems(i, shot):
     god = god_problem(p)
     if god:
         out.append(f"{god} shot {i} {shot['id']}")
+    if silent(shot):
+        out += silent_problems(i, shot)
+    return out
+
+
+def silent_problems(i, shot):
+    """Owner 2026-11-04: a silent Pavo clip asks for no speech and no lip-sync (PAVO_SILENT_SPEECH), takes no Pavo audio
+    (PAVO_SILENT_AUDIO), is generated from character references, never from a plain still (PAVO_SILENT_FRAMES), and is a
+    Pavo clip of 4-12 s (PAVO_SILENT_SECONDS); God is never shown (PAVO_SILENT_GOD)."""
+    import pavo_prompt
+    sid, out = shot.get("id"), []
+    heard = pavo_prompt.silent_speech(shot.get("prompt"))
+    if heard:
+        out.append(f"PAVO_SILENT_SPEECH shot {i} {sid} (the prompt asks for speech or lip-sync: {heard!r}; nobody speaks in "
+                   "a silent clip, the words are our audio laid over it)")
+    if shot.get("pavo_audio") not in (None, "none"):
+        out.append(f"PAVO_SILENT_AUDIO shot {i} {sid} (a silent clip has pavo_audio \"none\", not "
+                   f"{shot.get('pavo_audio')!r}: Pavo's own audio is never used)")
+    if any(k in shot for k in ("first_frame", "last_frame", "still", "window_of")):
+        out.append(f"PAVO_SILENT_FRAMES shot {i} {sid} (a silent clip is Pavo's video from the character's references, "
+                   "never a plain still, a first/last frame or a window)")
+    if shot.get("speaker") == ch.GOD:
+        out.append(f"PAVO_SILENT_GOD shot {i} {sid} (God is never shown: His voice is a voice-over, not a silent clip)")
+    if shot.get("kind") != "keeper" and type(shot.get("seconds")) is int and shot["seconds"] > SCENE_SECONDS[1]:
+        out.append(f"PAVO_SILENT_SECONDS shot {i} {sid} (a silent Pavo clip is {SCENE_SECONDS[0]}-{SCENE_SECONDS[1]} s: "
+                   "beyond that it would be a still)")
     return out
 
 
@@ -1231,7 +1268,8 @@ def _speaker_problems(i, s, chars, span, span_slowest):
     if span_slowest > TALK_LINE_MAX:
         out.append(f"SPEAKER_LINE_TOO_LONG shot {i} {sid} (~{span_slowest:.1f} s at the slowest pace; <= {TALK_LINE_MAX:.2f} s: "
                    "the line and Pavo's 0.45 s fit one 12 s clip, E95)")
-    low = SPEAKER_AUDIO[0] if who == ch.GOD else TALK_MIN
+    quiet = silent(s) and who not in (ch.GOD, ch.NARRATOR)   # owner 2026-11-04: our voice over a silent clip
+    low = SPEAKER_AUDIO[0] if who == ch.GOD or quiet else TALK_MIN
     if span < low:
         out.append(f"SPEAKER_LINE_TOO_SHORT shot {i} {sid} (>= {low:.2f} s{'' if who == ch.GOD else ': a talking line fills a 4 s clip, E95'})")
     if who == ch.NARRATOR:
@@ -1258,6 +1296,8 @@ def _speaker_problems(i, s, chars, span, span_slowest):
                    "its first talking line)")
     if who not in (s.get("characters") or []):
         out.append(f"SPEAKER_NOT_IN_SHOT shot {i} {sid}: {who} (in `characters`, its look in the prompt)")
+    if quiet:
+        return out   # a silent clip: its length is its `seconds` (a scene's), its prompt names no speech (silent_problems)
     if s.get("seconds") is not None:
         out.append(f"SPEAKER_SHOT_FIELDS shot {i} {sid} (the clip's length comes from the line)")
     if not SPEAKS.search(s.get("prompt", "")):
@@ -1376,8 +1416,9 @@ def pavo_prompt_problems(i, shot, plan, chars):
     """E290: a talking shot's prompt is the one pavo_prompt.build composes from its `pavo` fields, word for word."""
     import pavo_prompt
     bad = pavo_prompt.field_problems(shot, chars, plan)
-    if bad:
-        return [f"PAVO_PROMPT_NOT_STANDARD shot {i} {b.split(' ', 1)[1]}" for b in bad]
+    if bad:   # a silent clip's own refusals (PAVO_SILENT_*) keep their code
+        return [f"{b.split()[0]} shot {i} {b.split(' ', 1)[1]}" if b.startswith("PAVO_SILENT_")
+                else f"PAVO_PROMPT_NOT_STANDARD shot {i} {b.split(' ', 1)[1]}" for b in bad]
     try:
         built = pavo_prompt.build(shot, plan, chars)
     except SystemExit as exc:
@@ -1388,9 +1429,21 @@ def pavo_prompt_problems(i, shot, plan, chars):
     return []
 
 
+def pavo_silent(shot):
+    """A silent Pavo clip of a character (the Keeper, or a human character who is not God) that covers a line: it counts
+    for HOOK / CHARACTER_LINE / KEEPER_LINE coverage like a talking shot (owner 2026-11-04), but only with the builder's
+    `pavo` fields; a plain still, God's sky or a clip without them never does."""
+    return (silent(shot) and isinstance(shot.get("pavo"), dict) and "first_frame" not in shot
+            and (shot.get("kind") == "keeper" or (speaking(shot) and shot.get("speaker") not in (ch.GOD, ch.NARRATOR))))
+
+
 def pavo_coverage_problems(plan, chars=None, root=None):
     """E290, plan_check --strict (and episode_build.check_plan) for every long-first long and bridge Short that is not
     grandfathered:
+    - Owner 2026-11-04: a SILENT Pavo clip of that character (`pavo_mode` "silent", our Kokoro line over it, pavo_audio
+      "none") satisfies the hook, character-line and Keeper-line coverage below; a plain still never does, and a silent
+      shot's prompt asks for no speech (PAVO_SILENT_SPEECH), no frontal mouthing of a character's line
+      (PAVO_SILENT_FRONTAL), no Pavo audio, frames or window (PAVO_SILENT_AUDIO, PAVO_SILENT_FRAMES).
     - HOOK_NOT_PAVO: the first shot is a Pavo talking shot, the Keeper chest-up or a speaking human character. God is
       never shown with a face, so a hook that quotes God is said by the Keeper or a character, never God's sky.
     - CHARACTER_LINE_NOT_PAVO: a character's quoted KJV speech is never narration; it is a speaking shot of that
@@ -1413,7 +1466,7 @@ def pavo_coverage_problems(plan, chars=None, root=None):
     except SystemExit as exc:
         out.append(str(exc))
     first = shots[0]
-    hook_talks = talking(first) and (first.get("kind") == "keeper" or speaking(first))
+    hook_talks = ((talking(first) or pavo_silent(first)) and (first.get("kind") == "keeper" or speaking(first)))
     if not hook_talks and pavo_fallback_problem(plan, first, root):
         why = ("God's voice over a sky is not a talking shot: God is never shown with a face, so the Keeper says it "
                "(\"And God said...\") or a human character speaks" if speaking(first) and first.get("speaker") == ch.GOD
@@ -1437,12 +1490,12 @@ def pavo_coverage_problems(plan, chars=None, root=None):
             if c.get("status") != "APPROVED" or not c.get("refs"):
                 out.append(f"CHARACTER_LINE_NOT_PAVO shot {i} {s.get('id')} ({who} needs APPROVED kept reference images "
                            "for its Pavo talking shot)")
-        if s.get("kind") == "keeper" and voiceover(s):
+        if s.get("kind") == "keeper" and voiceover(s) and not pavo_silent(s):
             why = pavo_fallback_problem(plan, s, root)
             if why:
                 out.append(f"KEEPER_LINE_NOT_PAVO shot {i} {s.get('id')} (the Keeper's insight and close are Pavo talking "
                            f"shots; {why})")
-        if talking(s):
+        if talking(s) or silent(s):
             out += pavo_prompt_problems(i, s, plan, chars)
         if s.get("kind") == "keeper" and talking(s) and i < len(carried):
             out += keeper_line_pace_problems(i, s, [items[k] for k in carried[i]])
@@ -1767,6 +1820,8 @@ def keeper_prompt_problems(i, s, keeper, aspect=None):
         problems.append(f"CHARACTER_LOOK_CHANGED shot {i}: keeper (the prompt must carry its look word for word)")
     if not any(w in s.get("prompt", "") for w in keeper.get("wardrobe", {}).values()):
         problems.append(f"KEEPER_WARDROBE shot {i} {s['id']} (one wardrobe variant word for word: same room)")
+    if silent(s):   # owner 2026-11-04: he acts, silent; the builder's prompt (checked in pavo_prompt_problems) is the rule
+        return problems
     if voiceover(s):
         return problems + vo_prompt_problems(i, s)
     if not SPEAKS.search(s.get("prompt", "")):

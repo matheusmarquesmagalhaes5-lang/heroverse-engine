@@ -8,6 +8,10 @@ records its proof (pavo_proof: the decoded audio digest, its loudness and true p
 narration's integrated LUFS within LOUDNESS_TOL with a true-peak limit. "ours" (E287, below) stays only as an explicit
 per-shot option and for approvals recorded under it (route_of reads the recorded proof, so those digests do not move).
 
+Owner 2026-11-04 ("só vídeos sem narração.. e coloca a narração por fora"): a shot with `pavo_mode: "silent"` has
+`pavo_audio: "none"`: Pavo makes a silent acting clip (its track is stripped at generation), our Kokoro audio is laid
+over it by the build's voice track, and Pavo's own audio is never used. Neither "pavo" nor "ours" applies to it.
+
 E287: the audio of a Pavo talking clip is OURS (`pavo_audio: "ours"`, an explicit option).
 
 We send Pavo our exact Kokoro line (the request's input audio, sound false) and keep only what it makes of it: the
@@ -34,6 +38,7 @@ ROUTE = "ours"                  # E287's route name (proofs recorded under it ca
 OURS = ROUTE
 PAVO = "pavo"
 ROUTES = (PAVO, OURS)
+NONE = "none"                   # owner 2026-11-04: a silent Pavo clip (`pavo_mode` "silent"): no Pavo audio, ours goes over it
 DEFAULT = PAVO                  # owner 2026-11-03
 LOUDNESS_TOL = 1.0              # dB: the Pavo audio's integrated LUFS within this of the narration's
 TRUE_PEAK_MAX = -1.5            # dBTP ceiling of a Pavo track laid in the mix
@@ -108,6 +113,10 @@ def route_of(shot=None, recorded=None):
     """The route of one shot: its explicit `pavo_audio`, else the route its approval's audio proof recorded (an
     approval made under E287 keeps "ours", so its digests never move), else DEFAULT ("pavo"). Anything else is refused."""
     want = (shot or {}).get("pavo_audio")
+    if want == NONE:
+        if (shot or {}).get("pavo_mode") != "silent":
+            _fail("PAVO_AUDIO_ROUTE_INVALID", "pavo_audio \"none\" belongs to a silent clip (pavo_mode \"silent\")")
+        return NONE
     if want is not None:
         if want not in ROUTES:
             _fail("PAVO_AUDIO_ROUTE_INVALID", f"pavo_audio {want!r} (one of {', '.join(ROUTES)})")
