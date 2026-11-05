@@ -1,0 +1,1281 @@
+{
+ "source_policy": "pavo_speech_stock",
+ "track": "buzzy-long",
+ "version": "bible-plan-v2",
+ "episode": "abraham-call-long",
+ "part": 1,
+ "passage": "Genesis 12-13 (KJV, public domain)",
+ "period": {
+  "setting": "The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing.",
+  "exclude": "No glass, iron, machinery, modern buildings, modern clothing or paved roads.",
+  "avoid": [
+   "streets?",
+   "roads?",
+   "lanterns?",
+   "kerosene",
+   "glass",
+   "windows?",
+   "chimneys?",
+   "castles?",
+   "domes?",
+   "churches",
+   "church",
+   "steeples?",
+   "spires?",
+   "iron",
+   "steel",
+   "machinery",
+   "cranes?",
+   "concrete",
+   "stone (?:temples?|buildings?|walls?|columns?)",
+   "marble",
+   "columns?",
+   "pyramids?",
+   "coats?",
+   "hats?",
+   "(?:peaked|flat|baseball|cloth) caps?",
+   "swords?",
+   "armou?r",
+   "horses?"
+  ]
+ },
+ "aspect_ratio": "16:9",
+ "story": "The call of Abram: God tells a childless old man to leave everything; he goes, then fails in Egypt, comes back to the altar and gives Lot the first choice of the land (Genesis 12-13; arc 4)",
+ "people": "Abram (characters.json `abram`, DRAFT until his reference is approved) speaks only his own KJV words (Genesis 12:11-13, 13:8-9) in silent Pavo clips, alone on screen, with our Kokoro line over them; the hook and the line to Lot are lip-synced (musetalk-1.5), the others are three-quarter or profile. In the stills he, Sarai, Lot, Pharaoh and the Egyptians are anonymous figures in silhouette or seen from behind (Abram always in the same striped brown-and-cream cloak, Sarai in a dark veil, Lot in a brown tunic). Pharaoh's KJV words (Genesis 12:18-19) are read by the Keeper. God is never shown: His words (Genesis 12:1-3, 12:7, 13:14-17) are read by the Keeper over light, wind, sky and land, never a face or a figure. The Keeper appears on camera only after the climax: two insights and the close, each a silent Pavo clip lip-synced to our line.",
+ "beats": "structure bible-story long (viral map 2026-11-04, rule 1): hook 0-25 s = Abram's own KJV plea 'Say, I pray thee, thou art my sister' (danger + identity reversal) and the reveal that this is the father of faith; return device and title promise by ~50 s; chapter 1 the call in Haran (Genesis 12:1-5); chapter 2 the land, the altars, tent and altar (12:6-9); chapter 3 famine and Egypt, the lie, Sarai taken, the plagues, Pharaoh's questions (12:10-20); chapter 4 back to the altar, the strife, Abram gives Lot the choice (13:1-10); climax s-separate (13:11, the planned Buzzy shot); payoff the promise of the land and the dust (13:12-18); Keeper insights and close (next: Genesis 14).",
+ "criteria": "story-qa-criteria-v5",
+ "audio_route": "kokoro",
+ "sources_v5": "Stills from the ChatGPT desktop app (or FLUX via stills_fit), each animated by the cinematic still engine; God's words in the Keeper's voice over light, wind and land, never a figure; the hook, Abram's lines and the Keeper's insights and close are Pavo SILENT clips (pavo-silent-v1) with our Kokoro audio over them, lip-synced where `lipsync` is set; one planned Buzzy image-to-video shot (s-separate, the climax) for the buzzy-long QA's buzzy_shot_in_episode row, generated only under the owner's Buzzy rule with the ledger.",
+ "long": {
+  "pilot": "pilot-021",
+  "title": "Why Did Abraham Leave Everything? | The Full Story of Abram's Call | Genesis 12-13 (KJV)",
+  "description": "Genesis 12-13 (King James Version, public domain), dramatized with AI-generated visuals; the scenes are imagined, the quoted words are the KJV.\n\n{chapters}\n\nWhat would you have to let go of to follow God? Tell me in the comments.",
+  "tags": [
+   "abraham",
+   "abram",
+   "call of abraham",
+   "genesis 12",
+   "genesis 13",
+   "bible story",
+   "kjv",
+   "abraham and lot",
+   "abraham in egypt",
+   "full bible story"
+  ],
+  "first_comment": "In Egypt he asked his wife to lie to save himself. On the hill he gave Lot the best land. Which Abram are you more like today?",
+  "chapters": [
+   {
+    "shot": "a-sister",
+    "title": "Say you are my sister"
+   },
+   {
+    "shot": "s-terah",
+    "title": "The call in Haran"
+   },
+   {
+    "shot": "s-moreh",
+    "title": "Tent and altar"
+   },
+   {
+    "shot": "s-famine",
+    "title": "Famine and Egypt"
+   },
+   {
+    "shot": "s-court",
+    "title": "Sarai taken"
+   },
+   {
+    "shot": "s-pharaoh",
+    "title": "Pharaoh's questions"
+   },
+   {
+    "shot": "s-return",
+    "title": "Back to the altar"
+   },
+   {
+    "shot": "s-strife",
+    "title": "Let there be no strife"
+   },
+   {
+    "shot": "s-separate",
+    "title": "Lot chooses"
+   },
+   {
+    "shot": "s-alone",
+    "title": "Lift up now thine eyes"
+   },
+   {
+    "shot": "k-insight",
+    "title": "From fear to trust"
+   }
+  ],
+  "thumbnail": {
+   "at": 1.0,
+   "line1": "ABRAHAM",
+   "line2": "Genesis 12"
+  },
+  "reflection_window": {
+   "start": 549,
+   "end": 574
+  }
+ },
+ "narration": [
+  {
+   "kind": "story",
+   "text": "That is not a coward in some story you have never heard. That is Abram, the man the whole Bible calls the father of faith."
+  },
+  {
+   "kind": "story",
+   "text": "Only a few months earlier, God had promised to bless him and to make his name great. Now, at the border of Egypt, he is afraid for his life, and he is asking his wife to lie for him."
+  },
+  {
+   "kind": "story",
+   "text": "How does a man go from hearing the voice of God to this? To understand it, we have to go back to the day he left everything without knowing where he was going."
+  },
+  {
+   "kind": "story",
+   "text": "This is the full story of the call of Abram, Genesis twelve and thirteen, word for word from the King James Bible. And it is far more honest than most of us remember."
+  },
+  {
+   "kind": "story",
+   "text": "Abram lived in Haran, a trading town far to the north. His father had died there. He was seventy-five, and his wife Sarai had never had a child."
+  },
+  {
+   "kind": "story",
+   "text": "Remember where we left the world. At Babel, people tried to make a name for themselves, and God scattered them. Now, out of all those scattered nations, God speaks to one old man with no son."
+  },
+  {
+   "kind": "scripture",
+   "text": "Now the Lord had said unto Abram, Get thee out of thy country, and from thy kindred, and from thy father’s house, unto a land that I will shew thee:",
+   "reference": "Genesis 12:1 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Notice what God does not tell him. He does not name the land. He does not say how far, or how long, or what it will cost. He only says: go, and I will show you."
+  },
+  {
+   "kind": "scripture",
+   "text": "And I will make of thee a great nation, and I will bless thee, and make thy name great; and thou shalt be a blessing:",
+   "reference": "Genesis 12:2 (KJV)"
+  },
+  {
+   "kind": "scripture",
+   "text": "And I will bless them that bless thee, and curse him that curseth thee: and in thee shall all families of the earth be blessed.",
+   "reference": "Genesis 12:3 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Seven promises. And one word to hold on to: all."
+  },
+  {
+   "kind": "story",
+   "text": "In that world your father's house was your name, your land and your protection. To leave it was to become a stranger with no rights."
+  },
+  {
+   "kind": "story",
+   "text": "And God asked him to leave exactly that."
+  },
+  {
+   "kind": "scripture",
+   "text": "So Abram departed, as the Lord had spoken unto him; and Lot went with him: and Abram was seventy and five years old when he departed out of Haran.",
+   "reference": "Genesis 12:4 (KJV)"
+  },
+  {
+   "kind": "scripture",
+   "text": "And Abram took Sarai his wife, and Lot his brother’s son, and all their substance that they had gathered, and the souls that they had gotten in Haran; and they went forth to go into the land of Canaan; and into the land of Canaan they came.",
+   "reference": "Genesis 12:5 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Here is an honest question. Would you go, to a place God has only promised to show you?"
+  },
+  {
+   "kind": "scripture",
+   "text": "And Abram passed through the land unto the place of Sichem, unto the plain of Moreh. And the Canaanite was then in the land.",
+   "reference": "Genesis 12:6 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "That last sentence matters. The land was not empty. It was full of other people, with their own towns, their own gods and their own claims. Abram arrived as a guest in the land that was promised to him."
+  },
+  {
+   "kind": "scripture",
+   "text": "And the Lord appeared unto Abram, and said, Unto thy seed will I give this land: and there builded he an altar unto the Lord, who appeared unto him.",
+   "reference": "Genesis 12:7 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Unto thy seed. But Abram had no child at all. So he answered the only way he could: he built an altar, a heap of field stones that said, here God spoke to me, and I believed."
+  },
+  {
+   "kind": "scripture",
+   "text": "And he removed from thence unto a mountain on the east of Beth–el, and pitched his tent, having Beth–el on the west, and Hai on the east: and there he builded an altar unto the Lord, and called upon the name of the Lord.",
+   "reference": "Genesis 12:8 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Tent and altar. The tent says he is only passing through. The altar says Who he is passing through with."
+  },
+  {
+   "kind": "scripture",
+   "text": "And Abram journeyed, going on still toward the south.",
+   "reference": "Genesis 12:9 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "And then, in the land of promise, the rain stopped."
+  },
+  {
+   "kind": "scripture",
+   "text": "And there was a famine in the land: and Abram went down into Egypt to sojourn there; for the famine was grievous in the land.",
+   "reference": "Genesis 12:10 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "God brought him here. And here, there is no food."
+  },
+  {
+   "kind": "story",
+   "text": "Notice what is missing. No altar. No prayer. No word from God. For the first time since Haran, Abram decides on his own."
+  },
+  {
+   "kind": "story",
+   "text": "Egypt had the great river, and when the rain failed, the hungry went down there to buy grain."
+  },
+  {
+   "kind": "scripture",
+   "text": "And it came to pass, when he was come near to enter into Egypt, that he said unto Sarai his wife,",
+   "reference": "Genesis 12:11 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "And then he said the words you heard at the very beginning. Say you are my sister."
+  },
+  {
+   "kind": "story",
+   "text": "And the strange part is, it was half true. Later Abram explains that Sarai was his father's daughter, but not his mother's. Not quite a lie. A truth used to hide a lie."
+  },
+  {
+   "kind": "story",
+   "text": "Be honest. How many of our own lies are built exactly like that?"
+  },
+  {
+   "kind": "scripture",
+   "text": "And it came to pass, that, when Abram was come into Egypt, the Egyptians beheld the woman that she was very fair.",
+   "reference": "Genesis 12:14 (KJV)"
+  },
+  {
+   "kind": "scripture",
+   "text": "The princes also of Pharaoh saw her, and commended her before Pharaoh: and the woman was taken into Pharaoh’s house.",
+   "reference": "Genesis 12:15 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Feel that sentence. The woman was taken, and her husband stood outside, alive, exactly as he had planned."
+  },
+  {
+   "kind": "scripture",
+   "text": "And he entreated Abram well for her sake: and he had sheep, and oxen, and he asses, and menservants, and maidservants, and she asses, and camels.",
+   "reference": "Genesis 12:16 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "He walked into Egypt hungry, and now he is getting rich from his own lie. Every animal in his herd was a payment for his wife. It is one of the most uncomfortable verses in the whole book."
+  },
+  {
+   "kind": "story",
+   "text": "So where is God in this? The man meant to bless the nations has carried a lie into a king's house."
+  },
+  {
+   "kind": "scripture",
+   "text": "And the Lord plagued Pharaoh and his house with great plagues because of Sarai Abram’s wife.",
+   "reference": "Genesis 12:17 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "God stepped in, not for Abram's cleverness, but because of Sarai, the one person in this story who never gets a single word."
+  },
+  {
+   "kind": "scripture",
+   "text": "And Pharaoh called Abram, and said, What is this that thou hast done unto me? why didst thou not tell me that she was thy wife?",
+   "reference": "Genesis 12:18 (KJV)"
+  },
+  {
+   "kind": "scripture",
+   "text": "Why saidst thou, She is my sister? so I might have taken her to me to wife: now therefore behold thy wife, take her, and go thy way.",
+   "reference": "Genesis 12:19 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Three questions from a king, and every one of them is fair."
+  },
+  {
+   "kind": "story",
+   "text": "The pagan king asks the moral questions. The man of God has no answer."
+  },
+  {
+   "kind": "scripture",
+   "text": "And Pharaoh commanded his men concerning him: and they sent him away, and his wife, and all that he had.",
+   "reference": "Genesis 12:20 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "He failed, and God did not let go of him. Faith here is not a perfect man holding on to God. It is God holding on to an imperfect man."
+  },
+  {
+   "kind": "scripture",
+   "text": "And Abram went up out of Egypt, he, and his wife, and all that he had, and Lot with him, into the south.",
+   "reference": "Genesis 13:1 (KJV)"
+  },
+  {
+   "kind": "scripture",
+   "text": "And Abram was very rich in cattle, in silver, and in gold.",
+   "reference": "Genesis 13:2 (KJV)"
+  },
+  {
+   "kind": "scripture",
+   "text": "And he went on his journeys from the south even to Beth–el, unto the place where his tent had been at the beginning, between Beth–el and Hai;",
+   "reference": "Genesis 13:3 (KJV)"
+  },
+  {
+   "kind": "scripture",
+   "text": "Unto the place of the altar, which he had made there at the first: and there Abram called on the name of the Lord.",
+   "reference": "Genesis 13:4 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "He went down hungry and came back rich, and the first thing he does is go back to the old altar."
+  },
+  {
+   "kind": "story",
+   "text": "Sometimes the way forward after a failure is the last place you were honest with God."
+  },
+  {
+   "kind": "scripture",
+   "text": "And Lot also, which went with Abram, had flocks, and herds, and tents.",
+   "reference": "Genesis 13:5 (KJV)"
+  },
+  {
+   "kind": "scripture",
+   "text": "And the land was not able to bear them, that they might dwell together: for their substance was great, so that they could not dwell together.",
+   "reference": "Genesis 13:6 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Here is the irony. Egypt made them rich, and the riches are what now drive them apart. Too many animals and too little grass."
+  },
+  {
+   "kind": "scripture",
+   "text": "And there was a strife between the herdmen of Abram’s cattle and the herdmen of Lot’s cattle: and the Canaanite and the Perizzite dwelled then in the land.",
+   "reference": "Genesis 13:7 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Read the last line again. The Canaanite and the Perizzite were watching. The family meant to bless the nations was fighting over water in front of them."
+  },
+  {
+   "kind": "scripture",
+   "text": "And Abram said unto Lot,",
+   "reference": "Genesis 13:8 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Read that slowly. Abram is the elder. He is the head of the family. By every custom of his world he had the right to choose first, and he gives the choice away."
+  },
+  {
+   "kind": "story",
+   "text": "The man who lied in Egypt to save himself now risks the best of everything to keep the peace. That is what has changed in Abram. Not his talent. His trust."
+  },
+  {
+   "kind": "scripture",
+   "text": "And Lot lifted up his eyes, and beheld all the plain of Jordan, that it was well watered every where, before the Lord destroyed Sodom and Gomorrah, even as the garden of the Lord, like the land of Egypt, as thou comest unto Zoar.",
+   "reference": "Genesis 13:10 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Lot looked, and saw Egypt again: green, watered and rich. And the Bible slips in a warning he could not hear."
+  },
+  {
+   "kind": "scripture",
+   "text": "Then Lot chose him all the plain of Jordan; and Lot journeyed east: and they separated themselves the one from the other.",
+   "reference": "Genesis 13:11 (KJV)"
+  },
+  {
+   "kind": "scripture",
+   "text": "Abram dwelled in the land of Canaan, and Lot dwelled in the cities of the plain, and pitched his tent toward Sodom.",
+   "reference": "Genesis 13:12 (KJV)"
+  },
+  {
+   "kind": "scripture",
+   "text": "But the men of Sodom were wicked and sinners before the Lord exceedingly.",
+   "reference": "Genesis 13:13 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Lot chose with his eyes. He pitched his tent toward Sodom. Not inside it yet. Just facing it. That is how most drifting begins."
+  },
+  {
+   "kind": "insight",
+   "text": "Two men looked at the same land. One chose what looked like Egypt and called it wisdom. The other let God choose, and waited to be shown."
+  },
+  {
+   "kind": "story",
+   "text": "And Abram is left in the hard hill country with the poorer land. An old man, still without a son, and now without his nephew too. He has given away the best of everything."
+  },
+  {
+   "kind": "scripture",
+   "text": "And the Lord said unto Abram, after that Lot was separated from him, Lift up now thine eyes, and look from the place where thou art northward, and southward, and eastward, and westward:",
+   "reference": "Genesis 13:14 (KJV)"
+  },
+  {
+   "kind": "insight",
+   "text": "Notice when God speaks again. Not in Egypt, and not while Abram was grabbing. Only after he had let go of the best land, and stood alone on the poorer hill."
+  },
+  {
+   "kind": "story",
+   "text": "Lift up now thine eyes. Lot lifted up his eyes to choose for himself. Now God tells Abram to lift up his eyes and see what God has chosen for him. North, south, east and west."
+  },
+  {
+   "kind": "scripture",
+   "text": "For all the land which thou seest, to thee will I give it, and to thy seed for ever.",
+   "reference": "Genesis 13:15 (KJV)"
+  },
+  {
+   "kind": "scripture",
+   "text": "And I will make thy seed as the dust of the earth: so that if a man can number the dust of the earth, then shall thy seed also be numbered.",
+   "reference": "Genesis 13:16 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Try to count the dust on one hillside. You cannot. That is what God promised to a man of seventy-five who still had no child."
+  },
+  {
+   "kind": "insight",
+   "text": "Faith is not counting what you can already see. It is trusting the One who promised you what you cannot count, even when your hands are still empty."
+  },
+  {
+   "kind": "scripture",
+   "text": "Arise, walk through the land in the length of it and in the breadth of it; for I will give it unto thee.",
+   "reference": "Genesis 13:17 (KJV)"
+  },
+  {
+   "kind": "scripture",
+   "text": "Then Abram removed his tent, and came and dwelt in the plain of Mamre, which is in Hebron, and built there an altar unto the Lord.",
+   "reference": "Genesis 13:18 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Tent and altar. The man who went down to Egypt without a prayer ends at his third altar."
+  },
+  {
+   "kind": "insight",
+   "text": "He left everything without knowing where. But the real journey was never across a map. It was from fear to trust, and it took a failure in Egypt for it to begin."
+  },
+  {
+   "kind": "insight",
+   "text": "In Egypt he grabbed at his own life and lost his honour. On that hill he let go of the best land, and God gave him everything he could see."
+  },
+  {
+   "kind": "cta",
+   "text": "What would you have to let go of to follow God? Tell me below. Next: kings at war, Lot taken captive, and Abram goes after him. Subscribe."
+  }
+ ],
+ "shots": [
+  {
+   "id": "a-sister",
+   "kind": "scene",
+   "speaker": "abram",
+   "reference": "Genesis 12:13 (KJV)",
+   "line": "Say, I pray thee, thou art my sister:",
+   "characters": [
+    "abram"
+   ],
+   "seconds": 5,
+   "pavo_mode": "silent",
+   "pavo_audio": "none",
+   "pavo": {
+    "action": "leans in close with fear in his eyes, his hands clasped tight against his chest",
+    "setting": "Night at the edge of a desert camp, one oil lamp's warm glow on his face, deep blue darkness behind him.",
+    "mood": "Afraid and pleading",
+    "wardrobe": "journey",
+    "view": "frontal",
+    "camera": "slow push-in"
+   },
+   "lipsync": "musetalk-1.5",
+   "prompt": "Image 1 is Abram. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium close-up, slow push-in. Abram, a tall lean man of about seventy-five with Middle Eastern features, deep-bronzed skin lined by sun and wind, a high forehead, steady dark brown eyes under heavy grey brows, a long full salt-and-pepper beard, long grey hair under a pale undyed linen head cloth bound with a plain dark brown cord, a long striped brown-and-cream wool cloak over a plain undyed linen tunic, a worn wooden shepherd's staff in one hand, facing the camera, centred in the frame, leans in close with fear in his eyes, his hands clasped tight against his chest, his mouth closed. Night at the edge of a desert camp, one oil lamp's warm glow on his face, deep blue darkness behind him. Afraid and pleading. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No talking, no lip movement, no dialogue. No text, no logos."
+  },
+  {
+   "id": "a-soul",
+   "kind": "scene",
+   "speaker": "abram",
+   "reference": "Genesis 12:13 (KJV)",
+   "line": "that it may be well with me for thy sake; and my soul shall live because of thee.",
+   "characters": [
+    "abram"
+   ],
+   "seconds": 8,
+   "pavo_mode": "silent",
+   "pavo_audio": "none",
+   "pavo": {
+    "action": "turns away toward the dark and grips his staff with both hands, his eyes shut tight",
+    "setting": "Night at the edge of a desert camp, one oil lamp's warm glow on his face, deep blue darkness behind him.",
+    "mood": "Desperate and ashamed",
+    "wardrobe": "journey",
+    "view": "profile"
+   },
+   "prompt": "Image 1 is Abram. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium close-up, static camera. Abram, a tall lean man of about seventy-five with Middle Eastern features, deep-bronzed skin lined by sun and wind, a high forehead, steady dark brown eyes under heavy grey brows, a long full salt-and-pepper beard, long grey hair under a pale undyed linen head cloth bound with a plain dark brown cord, a long striped brown-and-cream wool cloak over a plain undyed linen tunic, a worn wooden shepherd's staff in one hand, seen in profile, centred in the frame, turns away toward the dark and grips his staff with both hands, his eyes shut tight, his mouth closed. Night at the edge of a desert camp, one oil lamp's warm glow on his face, deep blue darkness behind him. Desperate and ashamed. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No talking, no lip movement, no dialogue. No text, no logos."
+  },
+  {
+   "id": "s-veil",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow push-in. A woman in a long dark veil stands alone at the edge of a desert camp at dusk, looking toward a distant green river valley, her husband's tall shadow behind her, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Last red light of dusk on the veil. Tense and uneasy. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    0,
+    1
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-veil",
+   "figures": "anonymous",
+   "motion": "push_in"
+  },
+  {
+   "id": "s-haran",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow pull-back. A small mud-brick trading town on a dry plain at dawn, goat-hair tents and flocks outside its low walls, one tall old man in a striped cloak standing apart on a rise, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Cold blue dawn turning gold on the horizon. Quiet and expectant. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    2,
+    3
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-haran",
+   "figures": "anonymous",
+   "motion": "pull_back"
+  },
+  {
+   "id": "s-terah",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow drift. An old man in a striped cloak kneels beside a fresh burial cairn of field stones outside a mud-brick town, a childless woman in a dark veil standing a few steps behind him, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Grey overcast morning, soft and flat. Grieving and still. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    4,
+    5
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-terah",
+   "figures": "anonymous",
+   "motion": "drift",
+   "atmosphere": [
+    "mist"
+   ]
+  },
+  {
+   "id": "s-voice",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow push-in. A single goat-hair tent glowing on a dark plain under a vast night sky, a sudden wind bending the grass, a pale shaft of light falling from the clouds, one tiny figure standing at the tent door, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Pale silver light from above, deep blue night. Awe and hush. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    6,
+    7
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-voice",
+   "figures": "anonymous",
+   "motion": "hold_then_push",
+   "atmosphere": [
+    "god_rays",
+    "film_grain"
+   ]
+  },
+  {
+   "id": "s-stars",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow push-in. An old man in a striped cloak stands on a rocky hill at night with his arms at his sides, looking up at a sky crowded with stars, the camp asleep below him, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Starlight and a faint glow on the horizon. Awe and wonder. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    8,
+    9,
+    10
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-stars",
+   "figures": "anonymous",
+   "motion": "push_in",
+   "atmosphere": [
+    "film_grain",
+    "vignette"
+   ]
+  },
+  {
+   "id": "s-leaving",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium wide shot, slow drift. An old man in a striped cloak ties the last bundle onto a loaded donkey at dawn while servants fold a goat-hair tent behind him, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Soft first light, dust in the air. Resolute and heavy. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    11,
+    12,
+    13
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-leaving",
+   "figures": "anonymous",
+   "motion": "drift"
+  },
+  {
+   "id": "s-caravan",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow pan. A long caravan of donkeys, sheep and goats with people on foot leaving a mud-brick town behind and heading south across open steppe, an old man with a staff walking at the front, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Low morning sun and long blue shadows. Brave and uncertain. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    14,
+    15
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-caravan",
+   "figures": "anonymous",
+   "motion": "pan_left"
+  },
+  {
+   "id": "s-moreh",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow drift. A great old terebinth tree on a green hillside at Shechem, the travellers resting in its shade, a walled hill town of strangers watching from the far slope, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Warm late-afternoon light through the leaves. Peaceful and uncertain. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    16,
+    17
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-moreh",
+   "figures": "anonymous",
+   "motion": "drift"
+  },
+  {
+   "id": "s-appeared",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow push-in. Rolling green hills at dawn with a single shaft of brilliant light breaking through low clouds onto the land, one small figure kneeling in the grass below, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Brilliant gold light through grey cloud. Solemn and majestic. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    18,
+    19
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-appeared",
+   "figures": "anonymous",
+   "motion": "hold_then_push",
+   "atmosphere": [
+    "god_rays",
+    "mist"
+   ]
+  },
+  {
+   "id": "s-altar",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow push-in. An old man in a striped cloak sets the last rough field stone on a small altar on a mountain ridge, his goat-hair tent pitched beside it, thin smoke rising into the evening air, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Clear morning light and drifting smoke. Reverent and quiet. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    20,
+    21
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-altar",
+   "figures": "anonymous",
+   "motion": "push_in",
+   "atmosphere": [
+    "embers",
+    "film_grain"
+   ]
+  },
+  {
+   "id": "s-famine",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow drift. Cracked dry earth and dead grass under a white sky, thin sheep standing around an empty well, a herdsman crouching beside it with an empty water skin, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Harsh flat light and heat haze. Dread and drought. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    22,
+    23,
+    24,
+    25
+   ],
+   "seconds": 18,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-famine",
+   "figures": "anonymous",
+   "motion": "drift",
+   "atmosphere": [
+    "dust",
+    "vignette"
+   ]
+  },
+  {
+   "id": "s-descent",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow tilt down. The caravan halted at dusk on a dry ridge above a vast green river valley, fields and palm groves along the water, an old man and a veiled woman standing apart at the front, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Golden afternoon haze over the green valley. Tempting and uneasy. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    26,
+    27,
+    28
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-descent",
+   "figures": "anonymous",
+   "motion": "tilt_down"
+  },
+  {
+   "id": "a-fair",
+   "kind": "scene",
+   "speaker": "abram",
+   "reference": "Genesis 12:11 (KJV)",
+   "line": "Behold now, I know that thou art a fair woman to look upon:",
+   "characters": [
+    "abram"
+   ],
+   "seconds": 6,
+   "pavo_mode": "silent",
+   "pavo_audio": "none",
+   "pavo": {
+    "action": "turns his head away and lowers his eyes, worry deep in his face, his hand tight on his staff",
+    "setting": "Dusk on a dry ridge above a green river valley, the last red light on his face.",
+    "mood": "Worried and tender",
+    "wardrobe": "journey",
+    "view": "three-quarter"
+   },
+   "prompt": "Image 1 is Abram. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium close-up, static camera. Abram, a tall lean man of about seventy-five with Middle Eastern features, deep-bronzed skin lined by sun and wind, a high forehead, steady dark brown eyes under heavy grey brows, a long full salt-and-pepper beard, long grey hair under a pale undyed linen head cloth bound with a plain dark brown cord, a long striped brown-and-cream wool cloak over a plain undyed linen tunic, a worn wooden shepherd's staff in one hand, turned three-quarters from the camera, centred in the frame, turns his head away and lowers his eyes, worry deep in his face, his hand tight on his staff, his mouth closed. Dusk on a dry ridge above a green river valley, the last red light on his face. Worried and tender. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No talking, no lip movement, no dialogue. No text, no logos."
+  },
+  {
+   "id": "a-egyptians",
+   "kind": "scene",
+   "speaker": "abram",
+   "reference": "Genesis 12:12 (KJV)",
+   "line": "Therefore it shall come to pass, when the Egyptians shall see thee, that they shall say, This is his wife:",
+   "characters": [
+    "abram"
+   ],
+   "seconds": 8,
+   "pavo_mode": "silent",
+   "pavo_audio": "none",
+   "pavo": {
+    "action": "stares down at the distant city lights, his breath quick and his jaw tight",
+    "setting": "Dusk on a dry ridge above a green river valley, distant fires glowing below.",
+    "mood": "Anxious and grave",
+    "wardrobe": "journey",
+    "view": "profile"
+   },
+   "prompt": "Image 1 is Abram. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium close-up, static camera. Abram, a tall lean man of about seventy-five with Middle Eastern features, deep-bronzed skin lined by sun and wind, a high forehead, steady dark brown eyes under heavy grey brows, a long full salt-and-pepper beard, long grey hair under a pale undyed linen head cloth bound with a plain dark brown cord, a long striped brown-and-cream wool cloak over a plain undyed linen tunic, a worn wooden shepherd's staff in one hand, seen in profile, centred in the frame, stares down at the distant city lights, his breath quick and his jaw tight, his mouth closed. Dusk on a dry ridge above a green river valley, distant fires glowing below. Anxious and grave. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No talking, no lip movement, no dialogue. No text, no logos."
+  },
+  {
+   "id": "a-kill",
+   "kind": "scene",
+   "speaker": "abram",
+   "reference": "Genesis 12:12 (KJV)",
+   "line": "and they will kill me, but they will save thee alive.",
+   "characters": [
+    "abram"
+   ],
+   "seconds": 5,
+   "pavo_mode": "silent",
+   "pavo_audio": "none",
+   "pavo": {
+    "action": "closes his eyes and bows his head, one hand pressed flat against his chest",
+    "setting": "Dusk on a dry ridge, cold blue shadow falling across him.",
+    "mood": "Afraid and ashamed",
+    "wardrobe": "journey",
+    "view": "three-quarter",
+    "camera": "slow push-in"
+   },
+   "prompt": "Image 1 is Abram. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium close-up, slow push-in. Abram, a tall lean man of about seventy-five with Middle Eastern features, deep-bronzed skin lined by sun and wind, a high forehead, steady dark brown eyes under heavy grey brows, a long full salt-and-pepper beard, long grey hair under a pale undyed linen head cloth bound with a plain dark brown cord, a long striped brown-and-cream wool cloak over a plain undyed linen tunic, a worn wooden shepherd's staff in one hand, turned three-quarters from the camera, centred in the frame, closes his eyes and bows his head, one hand pressed flat against his chest, his mouth closed. Dusk on a dry ridge, cold blue shadow falling across him. Afraid and ashamed. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No talking, no lip movement, no dialogue. No text, no logos."
+  },
+  {
+   "id": "s-sarai",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Close shot, slow push-in. A veiled woman seen from behind looks down at the great river city below, her hand slowly drawing the veil across her face, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Cold blue dusk, a faint warm glow from the city. Silent and afraid. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    29,
+    30,
+    31
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-sarai",
+   "figures": "anonymous",
+   "motion": "push_in"
+  },
+  {
+   "id": "s-court",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow drift. Egyptian princes in white linen kilts at a city gate of mud brick and painted plaster turn to stare at a veiled woman, while palace servants lead her inside and an old man in a striped cloak stands alone in the dust, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Bright Egyptian sun and hard shadows. Charged and dangerous. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    32,
+    33,
+    34
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-court",
+   "figures": "anonymous",
+   "motion": "drift"
+  },
+  {
+   "id": "s-gifts",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow pan. Royal herdsmen drive flocks of sheep, oxen, donkeys and camels into a tent camp beside the river, an old man watching from his tent door with his head lowered, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Hazy gold afternoon over the river. Hollow and uneasy. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    35,
+    36
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-gifts",
+   "figures": "anonymous",
+   "motion": "pan_right"
+  },
+  {
+   "id": "s-plague",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow push-in. A royal bedchamber of painted mud brick at night, servants rushing with oil lamps, sick figures lying on mats, a heavy storm wind tearing the linen curtains, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Flickering lamplight and deep shadow. Dread and chaos. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    37,
+    38,
+    39
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-plague",
+   "figures": "anonymous",
+   "motion": "push_in",
+   "atmosphere": [
+    "torch_flicker",
+    "vignette"
+   ]
+  },
+  {
+   "id": "s-pharaoh",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow drift. A king on a carved wooden throne seen from behind in a great hall of painted mud brick, an old man in a striped cloak standing small and alone before him, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Shafts of hard sunlight through high openings. Stern and shameful. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    40,
+    41,
+    42
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-pharaoh",
+   "figures": "anonymous",
+   "motion": "drift"
+  },
+  {
+   "id": "s-sentaway",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow pull-back. The caravan, now huge with herds and camels, leaves the green river valley escorted by royal guards with spears, the old man and the veiled woman walking together at the front, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Pale morning light and rising dust. Humbled and quiet. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    43,
+    44,
+    45
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-sentaway",
+   "figures": "anonymous",
+   "motion": "pull_back"
+  },
+  {
+   "id": "s-return",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow tilt up. The rich caravan climbing out of the dry south into the hill country, camels and donkeys loaded with goods, the old man leaning on his staff at the front, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Clear morning and long shadows on the hills. Sober and searching. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    46,
+    47,
+    48
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-return",
+   "figures": "anonymous",
+   "motion": "tilt_up"
+  },
+  {
+   "id": "s-oldaltar",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow push-in. An old man in a striped cloak kneels before a weathered heap of field stones on a mountain ridge, the ashes of an old fire at its foot, his tent pitched behind him, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Soft evening gold and a gentle wind. Humble and repentant. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    49,
+    50,
+    51
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-oldaltar",
+   "figures": "anonymous",
+   "motion": "push_in"
+  },
+  {
+   "id": "s-herds",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow pan. Two great herds of sheep, goats and cattle crowding one narrow green valley, two tent camps facing each other across a single stream, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Dusty gold light at midday. Crowded and tense. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    52,
+    53,
+    54
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-herds",
+   "figures": "anonymous",
+   "motion": "pan_left"
+  },
+  {
+   "id": "s-strife",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Medium shot, slow push-in. Herdsmen in rough wool shove and shout at each other around a stone well, staffs raised, sheep scattering, strangers watching from a nearby hill, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Harsh noon light and kicked-up dust. Angry and bitter. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    55,
+    56,
+    57
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-strife",
+   "figures": "anonymous",
+   "motion": "push_in",
+   "atmosphere": [
+    "dust"
+   ]
+  },
+  {
+   "id": "a-strife",
+   "kind": "scene",
+   "speaker": "abram",
+   "reference": "Genesis 13:8 (KJV)",
+   "line": "Let there be no strife, I pray thee, between me and thee, and between my herdmen and thy herdmen; for we be brethren.",
+   "characters": [
+    "abram"
+   ],
+   "seconds": 10,
+   "pavo_mode": "silent",
+   "pavo_audio": "none",
+   "pavo": {
+    "action": "holds out both open hands, his face gentle and steady, his eyes kind",
+    "setting": "Late afternoon on a ridge above two tent camps, warm low sun on his face, dust in the air.",
+    "mood": "Gentle and earnest",
+    "wardrobe": "camp",
+    "view": "frontal"
+   },
+   "lipsync": "musetalk-1.5",
+   "prompt": "Image 1 is Abram. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium close-up, static camera. Abram, a tall lean man of about seventy-five with Middle Eastern features, deep-bronzed skin lined by sun and wind, a high forehead, steady dark brown eyes under heavy grey brows, a long full salt-and-pepper beard, long grey hair under a pale undyed linen head cloth bound with a plain dark brown cord, a plain undyed linen tunic with a woven brown belt, the striped brown-and-cream wool cloak loose on his shoulders, facing the camera, centred in the frame, holds out both open hands, his face gentle and steady, his eyes kind, his mouth closed. Late afternoon on a ridge above two tent camps, warm low sun on his face, dust in the air. Gentle and earnest. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No talking, no lip movement, no dialogue. No text, no logos."
+  },
+  {
+   "id": "a-land",
+   "kind": "scene",
+   "speaker": "abram",
+   "reference": "Genesis 13:9 (KJV)",
+   "line": "Is not the whole land before thee? separate thyself, I pray thee, from me:",
+   "characters": [
+    "abram"
+   ],
+   "seconds": 6,
+   "pavo_mode": "silent",
+   "pavo_audio": "none",
+   "pavo": {
+    "action": "turns and sweeps one arm slowly across the wide valley below",
+    "setting": "A high ridge in the late afternoon, the green valley spread out behind him, warm light and haze.",
+    "mood": "Generous and calm",
+    "wardrobe": "camp",
+    "view": "three-quarter",
+    "camera": "slow pan"
+   },
+   "prompt": "Image 1 is Abram. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium close-up, slow pan. Abram, a tall lean man of about seventy-five with Middle Eastern features, deep-bronzed skin lined by sun and wind, a high forehead, steady dark brown eyes under heavy grey brows, a long full salt-and-pepper beard, long grey hair under a pale undyed linen head cloth bound with a plain dark brown cord, a plain undyed linen tunic with a woven brown belt, the striped brown-and-cream wool cloak loose on his shoulders, turned three-quarters from the camera, centred in the frame, turns and sweeps one arm slowly across the wide valley below, his mouth closed. A high ridge in the late afternoon, the green valley spread out behind him, warm light and haze. Generous and calm. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No talking, no lip movement, no dialogue. No text, no logos."
+  },
+  {
+   "id": "a-left",
+   "kind": "scene",
+   "speaker": "abram",
+   "reference": "Genesis 13:9 (KJV)",
+   "line": "if thou wilt take the left hand, then I will go to the right;",
+   "characters": [
+    "abram"
+   ],
+   "seconds": 6,
+   "pavo_mode": "silent",
+   "pavo_audio": "none",
+   "pavo": {
+    "action": "points with his staff toward the far hills, his gaze steady on the horizon",
+    "setting": "A high ridge in the late afternoon, wind moving his cloak, the hill country behind him.",
+    "mood": "Steady and selfless",
+    "wardrobe": "journey",
+    "view": "profile"
+   },
+   "prompt": "Image 1 is Abram. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium close-up, static camera. Abram, a tall lean man of about seventy-five with Middle Eastern features, deep-bronzed skin lined by sun and wind, a high forehead, steady dark brown eyes under heavy grey brows, a long full salt-and-pepper beard, long grey hair under a pale undyed linen head cloth bound with a plain dark brown cord, a long striped brown-and-cream wool cloak over a plain undyed linen tunic, a worn wooden shepherd's staff in one hand, seen in profile, centred in the frame, points with his staff toward the far hills, his gaze steady on the horizon, his mouth closed. A high ridge in the late afternoon, wind moving his cloak, the hill country behind him. Steady and selfless. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No talking, no lip movement, no dialogue. No text, no logos."
+  },
+  {
+   "id": "a-right",
+   "kind": "scene",
+   "speaker": "abram",
+   "reference": "Genesis 13:9 (KJV)",
+   "line": "or if thou depart to the right hand, then I will go to the left.",
+   "characters": [
+    "abram"
+   ],
+   "seconds": 6,
+   "pavo_mode": "silent",
+   "pavo_audio": "none",
+   "pavo": {
+    "action": "lowers the staff and nods slowly, a quiet peace settling on his face",
+    "setting": "A high ridge at the golden hour, the low sun behind him and soft haze over the valley.",
+    "mood": "Peaceful and resolved",
+    "wardrobe": "journey",
+    "view": "three-quarter"
+   },
+   "prompt": "Image 1 is Abram. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium close-up, static camera. Abram, a tall lean man of about seventy-five with Middle Eastern features, deep-bronzed skin lined by sun and wind, a high forehead, steady dark brown eyes under heavy grey brows, a long full salt-and-pepper beard, long grey hair under a pale undyed linen head cloth bound with a plain dark brown cord, a long striped brown-and-cream wool cloak over a plain undyed linen tunic, a worn wooden shepherd's staff in one hand, turned three-quarters from the camera, centred in the frame, lowers the staff and nods slowly, a quiet peace settling on his face, his mouth closed. A high ridge at the golden hour, the low sun behind him and soft haze over the valley. Peaceful and resolved. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No talking, no lip movement, no dialogue. No text, no logos."
+  },
+  {
+   "id": "s-elder",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow push-in. An old man in a striped cloak and a younger man in a brown tunic stand side by side on a high ridge, seen from behind, looking out over the green land below, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Golden afternoon light and haze. Tense and hopeful. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    58,
+    59
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-elder",
+   "figures": "anonymous",
+   "motion": "push_in"
+  },
+  {
+   "id": "s-jordan",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow tilt down. A young man in a brown tunic seen from behind on a ridge, looking down at a lush green river plain full of palms, water and walled cities shining in the distance, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Rich gold light over the green plain. Tempting and ominous. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    60,
+    61
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-jordan",
+   "figures": "anonymous",
+   "motion": "tilt_down"
+  },
+  {
+   "id": "s-separate",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow pull-back. Two caravans split apart on a high plateau, one long line of herds and tents winding east down into the green river plain, the other turning back toward the dry hills, an old man standing still between them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Low gold sun and long shadows across the plateau. Painful and final. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    62
+   ],
+   "seconds": 8,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-separate",
+   "figures": "anonymous",
+   "climax": true
+  },
+  {
+   "id": "s-sodom",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow push-in. A young man's tent camp pitched on the green plain at dusk, its doorway facing a walled city on the horizon, smoke and torchlight rising from the city, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Dusky red sky and orange torchlight. Ominous and heavy. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    63,
+    64,
+    65
+   ],
+   "seconds": 19,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-sodom",
+   "figures": "anonymous",
+   "motion": "push_in",
+   "atmosphere": [
+    "embers",
+    "vignette"
+   ]
+  },
+  {
+   "id": "k-eyes",
+   "kind": "keeper",
+   "lines": [
+    66
+   ],
+   "ambience": "the open desert at night: a small campfire crackling softly and a light night wind",
+   "audio_route": "kokoro",
+   "pavo_mode": "silent",
+   "pavo_audio": "none",
+   "pavo": {
+    "action": "sits very still by the fire with the scroll in his lap, his head level and his eyes grave on the lens",
+    "setting": "Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him.",
+    "mood": "Quiet and grave",
+    "wardrobe": "fire",
+    "view": "frontal",
+    "camera": "static camera"
+   },
+   "lipsync": "musetalk-1.5",
+   "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, facing the camera, centred in the frame, sits very still by the fire with the scroll in his lap, his head level and his eyes grave on the lens, his mouth closed. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Quiet and grave. No talking, no lip movement, no dialogue. No text, no logos."
+  },
+  {
+   "id": "s-alone",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, slow pull-back. An old man in a striped cloak stands alone on a bare rocky hill at dusk, seen from behind, the dust of a departing caravan fading far away on the plain, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Cold fading dusk and a first star. Lonely and still. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    67,
+    68
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-alone",
+   "figures": "anonymous",
+   "motion": "pull_back"
+  },
+  {
+   "id": "k-after",
+   "kind": "keeper",
+   "lines": [
+    69
+   ],
+   "ambience": "the open desert at night: a small campfire crackling softly and a light night wind",
+   "audio_route": "kokoro",
+   "pavo_mode": "silent",
+   "pavo_audio": "none",
+   "pavo": {
+    "action": "lowers his eyes to the fire, then lifts them back to the lens, the scroll held still in his lap",
+    "setting": "Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him.",
+    "mood": "Tender and grave",
+    "wardrobe": "fire",
+    "view": "frontal",
+    "camera": "static camera"
+   },
+   "lipsync": "musetalk-1.5",
+   "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, facing the camera, centred in the frame, lowers his eyes to the fire, then lifts them back to the lens, the scroll held still in his lap, his mouth closed. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Tender and grave. No talking, no lip movement, no dialogue. No text, no logos."
+  },
+  {
+   "id": "s-lookup",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Extreme wide shot, slow tilt up. Endless hills and valleys stretching to every horizon at sunrise, a vast sky of light breaking open above them, one tiny figure on the highest hill with his arms open, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Brilliant sunrise light pouring over the land. Awe and wonder. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    70,
+    71
+   ],
+   "seconds": 18,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-lookup",
+   "figures": "anonymous",
+   "motion": "tilt_up",
+   "atmosphere": [
+    "god_rays",
+    "dust"
+   ]
+  },
+  {
+   "id": "s-dust",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Close shot, slow push-in. An old weathered hand lets fine golden dust run through its fingers in the wind on a hilltop, the land blurred far below, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Warm low sunlight catching the dust. Tender and amazed. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    72,
+    73
+   ],
+   "seconds": 18,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-dust",
+   "figures": "anonymous",
+   "motion": "push_in",
+   "atmosphere": [
+    "dust"
+   ]
+  },
+  {
+   "id": "k-dust",
+   "kind": "keeper",
+   "lines": [
+    74
+   ],
+   "ambience": "the open desert at night: a small campfire crackling softly and a light night wind",
+   "audio_route": "kokoro",
+   "pavo_mode": "silent",
+   "pavo_audio": "none",
+   "pavo": {
+    "action": "turns the rolled scroll slowly in his hands, his head level and his eyes kind on the lens",
+    "setting": "Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him.",
+    "mood": "Warm and searching",
+    "wardrobe": "fire",
+    "view": "frontal",
+    "camera": "static camera"
+   },
+   "lipsync": "musetalk-1.5",
+   "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, facing the camera, centred in the frame, turns the rolled scroll slowly in his hands, his head level and his eyes kind on the lens, his mouth closed. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and searching. No talking, no lip movement, no dialogue. No text, no logos."
+  },
+  {
+   "id": "s-walk",
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain, a wide 16:9 frame. Wide shot, tracking shot. An old man in a striped cloak walks with his staff toward a goat-hair tent among great oak trees at sunrise, seen from behind, a small stone altar smoking beside the tent, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Fresh morning gold under the oaks. Free and hopeful. The ancient Near East in the days of Abram: open hill country and desert, goat-hair tents, flocks and herds, rough field-stone altars, mud-brick towns and the green river valley of Egypt, rough undyed linen and wool clothing. No glass, iron, machinery, modern buildings, modern clothing or paved roads. No text, no logos.",
+   "lines": [
+    75,
+    76,
+    77
+   ],
+   "seconds": 20,
+   "kind": "scene",
+   "characters": [],
+   "first_frame": "abraham-call-long-s-walk",
+   "figures": "anonymous",
+   "motion": "pan_right"
+  },
+  {
+   "id": "k-insight",
+   "kind": "keeper",
+   "lines": [
+    78
+   ],
+   "ambience": "the open desert at night: a small campfire crackling softly and a light night wind",
+   "audio_route": "kokoro",
+   "pavo_mode": "silent",
+   "pavo_audio": "none",
+   "pavo": {
+    "action": "sits by the fire with the rolled scroll resting in his lap, his head level and his eyes on the lens",
+    "setting": "Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him.",
+    "mood": "Tender and grave",
+    "wardrobe": "fire",
+    "view": "frontal",
+    "camera": "static camera"
+   },
+   "lipsync": "musetalk-1.5",
+   "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, facing the camera, centred in the frame, sits by the fire with the rolled scroll resting in his lap, his head level and his eyes on the lens, his mouth closed. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Tender and grave. No talking, no lip movement, no dialogue. No text, no logos."
+  },
+  {
+   "id": "k-letgo",
+   "kind": "keeper",
+   "lines": [
+    79
+   ],
+   "ambience": "the open desert at night: a small campfire crackling softly and a light night wind",
+   "audio_route": "kokoro",
+   "pavo_mode": "silent",
+   "pavo_audio": "none",
+   "pavo": {
+    "action": "rests both hands on the scroll in his lap, his head level and his eyes calm on the lens",
+    "setting": "Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him.",
+    "mood": "Warm and searching",
+    "wardrobe": "fire",
+    "view": "frontal",
+    "camera": "static camera"
+   },
+   "lipsync": "musetalk-1.5",
+   "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, facing the camera, centred in the frame, rests both hands on the scroll in his lap, his head level and his eyes calm on the lens, his mouth closed. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and searching. No talking, no lip movement, no dialogue. No text, no logos."
+  },
+  {
+   "id": "k-close",
+   "kind": "keeper",
+   "lines": [
+    80
+   ],
+   "ambience": "the open desert at night: a small campfire crackling softly and a light night wind",
+   "audio_route": "kokoro",
+   "pavo_mode": "silent",
+   "pavo_audio": "none",
+   "pavo": {
+    "action": "holds the scroll in both hands by the fire, his head level and a faint warm look in his eyes on the lens",
+    "setting": "Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him.",
+    "mood": "Warm and expectant",
+    "wardrobe": "fire",
+    "view": "frontal",
+    "camera": "static camera"
+   },
+   "lipsync": "musetalk-1.5",
+   "prompt": "Image 1 is the narrator. Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up from the chest up, his face large in the centre of the frame, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, facing the camera, centred in the frame, holds the scroll in both hands by the fire, his head level and a faint warm look in his eyes on the lens, his mouth closed. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and expectant. No talking, no lip movement, no dialogue. No text, no logos."
+  }
+ ]
+}
