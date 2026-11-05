@@ -1,0 +1,107 @@
+{
+ "version": "bible-compilation-script-v1",
+ "pilot_id": "pilot-023",
+ "archetype": "bible-compilation-long",
+ "series": "compilation",
+ "episode": "genesis-part1-compilation",
+ "working_title": "The Book of Genesis, Part 1: Creation to Babel | Full Story (KJV)",
+ "criteria_version": "compilation-qa-criteria-v2",
+ "shorts": [
+  "genesis-02-short",
+  "genesis-03-short",
+  "genesis-04-short",
+  "genesis-05-short",
+  "genesis-06-short",
+  "genesis-07-short",
+  "genesis-08-short",
+  "genesis-09-short",
+  "flood-ends-long",
+  "genesis-10-11-long"
+ ],
+ "hook": {
+  "text": "Eleven chapters. A perfect world, a murder, a flood that covered the mountains, and a tower that tried to reach heaven. And running through all of it, the very first question God ever asked a human being. Where art thou? I am the Keeper. Tonight we walk the first eleven chapters of Genesis, from creation to Babel, in the words of the King James Bible. And between the stories I will stop, and tell you what I see, and what I still honestly wonder about."
+ },
+ "close": {
+  "text": "So here is the first movement of Genesis in one breath. A very good world. A man hiding, and a God who comes looking. A brother's blood crying from the ground. A flood. A rainbow. A tower. And every time people fall, God judges, and then, before the scene is over, he gives a gift. Clothes for the exiles. A mark of protection for Cain. An ark, and a bow in the cloud. But look at how Babel ends. Scattered families, an unfinished city, and for the first time in these chapters, no gift at the end of the scene. Instead, the story turns to one small family, and to a line that sounds like a dead end. But Sarai was barren; she had no child. That is where God chooses to begin again. Not with a tower, and not with a nation, but with an old couple who could not have a child. Genesis one to eleven asks what is wrong with the human heart. Genesis twelve begins God's answer, with a promise to people who had nothing to build with. So here is my honest question for you. In these eleven chapters, people hid from God, ran from God, and built toward heaven without him. Which of the three do you recognize in yourself? Tell me in the comments. And coming next on this channel: the call of Abraham, the man who left everything without knowing where he was going."
+ },
+ "segments": [
+  {
+   "kind": "hook",
+   "text": "Eleven chapters. A perfect world, a murder, a flood that covered the mountains, and a tower that tried to reach heaven. And running through all of it, the very first question God ever asked a human being. Where art thou? I am the Keeper. Tonight we walk the first eleven chapters of Genesis, from creation to Babel, in the words of the King James Bible. And between the stories I will stop, and tell you what I see, and what I still honestly wonder about."
+  },
+  {
+   "kind": "interlude",
+   "text": "Before Eden, before the serpent, before any of it, the Bible opens with God speaking into the dark. In the beginning God created the heaven and the earth. And the earth was without form and void; and darkness was upon the face of the deep. And the Spirit of God moved upon the face of the waters. And God said, Let there be light: and there was light. Listen to the rhythm of this chapter. God speaks, it is so, and God sees that it is good. Light, water, land, every living thing. Again and again, good. Nothing in this world begins as an accident, and nothing in it begins as evil. That matters, because everything you will see tonight is the story of a good world being bent, and of a God who will not let it go. Then, on the sixth day, something new. So God created man in his own image, in the image of God created he him; male and female created he them. And God saw every thing that he had made, and, behold, it was very good. Here is an honest question I sit with. If the first thing God ever said about people is that they are very good, why do so many of us begin with everything that is wrong with us? And on the seventh day God ended his work which he had made; and he rested on the seventh day from all his work which he had made. The first week does not end with a man at work. It ends with God at rest, and a world at peace with him. Hold on to that picture. Everything that follows is about how that peace was lost, and how God set out to bring it back."
+  },
+  {
+   "kind": "short",
+   "short": "genesis-02-short",
+   "text": "God Breathed Into the Dust"
+  },
+  {
+   "kind": "short",
+   "short": "genesis-03-short",
+   "text": "The Serpent: Did God Really Say?"
+  },
+  {
+   "kind": "short",
+   "short": "genesis-04-short",
+   "text": "Where Art Thou? Driven Out of Eden"
+  },
+  {
+   "kind": "interlude",
+   "text": "Before they left the garden, God spoke a sentence to the serpent that the rest of the Bible keeps coming back to. And I will put enmity between thee and the woman, and between thy seed and her seed; it shall bruise thy head, and thou shalt bruise his heel. For centuries, Christians have read this as the first promise of a rescuer: a child of the woman, wounded, and still winning. Now notice how the questions change. In the garden, God asked the man, where art thou? In the next story he asks a different question, about a brother. The first sin hid a man from God. The second turns a man against his own brother. Watch how fast it spreads."
+  },
+  {
+   "kind": "short",
+   "short": "genesis-05-short",
+   "text": "Cain and Abel"
+  },
+  {
+   "kind": "interlude",
+   "text": "Why did God accept Abel's offering, and not Cain's? I will be honest with you: Genesis never says plainly. The letter to the Hebrews gives one answer. By faith Abel offered unto God a more excellent sacrifice than Cain. The story itself cares less about the lamb and the grain, and more about what Cain did next. The Short you just watched stops at Cain's question. But God answers him. What hast thou done? the voice of thy brother's blood crieth unto me from the ground. Abel never speaks a single word in Genesis. The first time we hear from him, it is his blood, and God is listening. Then something surprising. Cain is driven out, but he is not abandoned. And the Lord set a mark upon Cain, lest any finding him should kill him. The first murderer is protected by the God he defied. Honestly, that troubles me and comforts me at the same time. And almost hidden at the end of the chapter, a quiet turning point. Adam and Eve have another child, Seth. And then, in one short line, the text says: then began men to call upon the name of the Lord. Cain's family builds a city and works in brass and iron. Seth's family prays. The Bible does not call tools evil. But it notices who is calling on God."
+  },
+  {
+   "kind": "short",
+   "short": "genesis-06-short",
+   "text": "Enoch Walked With God"
+  },
+  {
+   "kind": "short",
+   "short": "genesis-07-short",
+   "text": "The end of all flesh is come before me; for the earth is filled with violence through them. I will destroy man whom I have created from the face of the earth; For it repenteth me that I have made them."
+  },
+  {
+   "kind": "short",
+   "short": "genesis-08-short",
+   "text": "And, behold, I, even I, do bring a flood of waters upon the earth, to destroy all flesh But with thee will I establish my covenant; and thou shalt come into the ark,"
+  },
+  {
+   "kind": "short",
+   "short": "genesis-09-short",
+   "text": "For yet seven days, and I will cause it to rain upon the earth forty days and forty nights;"
+  },
+  {
+   "kind": "interlude",
+   "text": "Before we see how the waters end, a piece of history that surprises many people. Genesis is not the only ancient book with a great flood. Clay tablets from old Mesopotamia, in stories like Atrahasis and the epic of Gilgamesh, also tell of a flood, a man warned to build a boat, and birds sent out to look for dry land. So what makes Genesis different? In Atrahasis, the gods send the flood because human beings are too noisy and keep them awake. In Genesis, as you heard, the reason is violence, and God's grief at his heart. The God of Genesis is not annoyed by people. He is heartbroken over what they do to each other. And one more difference. In the old tablets, the hero survives because a god leaks the secret. In Genesis, Noah lives because God himself warns him, and because Noah does what God says, board by board. Now watch how this God brings the flood to an end."
+  },
+  {
+   "kind": "long",
+   "short": "flood-ends-long",
+   "text": "The Flood Ends: The Raven and the Dove"
+  },
+  {
+   "kind": "interlude",
+   "text": "Did you catch the strangest thing in that story? Before the flood, Genesis said this about us: every imagination of the thoughts of his heart was only evil continually. After the flood, with the altar still smoking, God says almost the same thing again. For the imagination of man's heart is evil from his youth. The water was real, but it did not wash the human heart clean. Only one thing changed, and it was not us. It was God's promise to bear with us. Keep listening for that word. At Babel you will hear God speak of what the builders have imagined to do. The same heart that filled the earth with violence before the flood is now stacking bricks toward heaven. Same heart, new tools. Genesis is honest about us like that. One more thing about how this book is built. Genesis marks its sections with a phrase that repeats, these are the generations. Of the heavens and the earth. Of Adam. Of Noah. Of the sons of Noah. Each time, the story moves forward, and the question gets sharper: through which family will God mend what went wrong? Hold that question as we go to Babel."
+  },
+  {
+   "kind": "long",
+   "short": "genesis-10-11-long",
+   "text": "The Tower of Babel"
+  },
+  {
+   "kind": "close",
+   "text": "So here is the first movement of Genesis in one breath. A very good world. A man hiding, and a God who comes looking. A brother's blood crying from the ground. A flood. A rainbow. A tower. And every time people fall, God judges, and then, before the scene is over, he gives a gift. Clothes for the exiles. A mark of protection for Cain. An ark, and a bow in the cloud. But look at how Babel ends. Scattered families, an unfinished city, and for the first time in these chapters, no gift at the end of the scene. Instead, the story turns to one small family, and to a line that sounds like a dead end. But Sarai was barren; she had no child. That is where God chooses to begin again. Not with a tower, and not with a nation, but with an old couple who could not have a child. Genesis one to eleven asks what is wrong with the human heart. Genesis twelve begins God's answer, with a promise to people who had nothing to build with. So here is my honest question for you. In these eleven chapters, people hid from God, ran from God, and built toward heaven without him. Which of the three do you recognize in yourself? Tell me in the comments. And coming next on this channel: the call of Abraham, the man who left everything without knowing where he was going."
+  }
+ ]
+}

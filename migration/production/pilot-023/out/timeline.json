@@ -1,0 +1,211 @@
+{
+ "output_sha256": "43bd2b99f091edb9b1f9d5e021a3a35064b922fce18032b7a6d45150807d2aa9",
+ "segments": [
+  {
+   "kind": "hook",
+   "name": "hook",
+   "seconds": 33.888,
+   "spoken_seconds": 31.855,
+   "beats": 2,
+   "line_starts": {
+    "hook-01": 0.5,
+    "hook-02": 17.133
+   },
+   "start": 0.0,
+   "end": 33.888
+  },
+  {
+   "kind": "interlude",
+   "name": "i1",
+   "seconds": 107.288,
+   "spoken_seconds": 102.245,
+   "beats": 5,
+   "line_starts": {
+    "i1-01": 0.5,
+    "i1-02": 26.033,
+    "i1-03": 52.633,
+    "i1-04": 64.567,
+    "i1-05": 82.433
+   },
+   "chapter": "In the Beginning",
+   "start": 33.888,
+   "end": 141.176
+  },
+  {
+   "kind": "short",
+   "name": "genesis-02-short",
+   "seconds": 48.3,
+   "source_sha256": "48ce69512a8562373b98b623eb21e1b8627ee797bce550b178cdce4f7bf737dd",
+   "chapter": "God Breathed Into the Dust",
+   "end_s": 48.3,
+   "start": 141.176,
+   "end": 189.476
+  },
+  {
+   "kind": "short",
+   "name": "genesis-03-short",
+   "seconds": 42.8,
+   "source_sha256": "9b10e1a0bedc00577d43021e52ecfe0c568230110b9a92b2f3aad231f6cf40bf",
+   "chapter": "The Serpent: Did God Really Say?",
+   "end_s": 42.8,
+   "start": 189.476,
+   "end": 232.276
+  },
+  {
+   "kind": "short",
+   "name": "genesis-04-short",
+   "seconds": 43.667,
+   "source_sha256": "c3784ad58400989feca750772c53ac2b97c0e5a86c412c94b3dc625ae913707b",
+   "chapter": "Where Art Thou? Driven Out of Eden",
+   "end_s": 43.65,
+   "start": 232.276,
+   "end": 275.943
+  },
+  {
+   "kind": "interlude",
+   "name": "i2",
+   "seconds": 45.154,
+   "spoken_seconds": 43.135,
+   "beats": 2,
+   "line_starts": {
+    "i2-01": 0.5,
+    "i2-02": 26.4
+   },
+   "chapter": "Outside the Garden",
+   "start": 275.943,
+   "end": 321.097
+  },
+  {
+   "kind": "short",
+   "name": "genesis-05-short",
+   "seconds": 57.667,
+   "source_sha256": "d3b092a48f077869fa364b62e753ba660f494596f4b0837f51cc5887a0088b3d",
+   "chapter": "Cain and Abel",
+   "end_s": 57.65,
+   "start": 321.097,
+   "end": 378.764
+  },
+  {
+   "kind": "interlude",
+   "name": "i3",
+   "seconds": 88.954,
+   "spoken_seconds": 84.91,
+   "beats": 4,
+   "line_starts": {
+    "i3-01": 0.5,
+    "i3-02": 24.1,
+    "i3-03": 44.033,
+    "i3-04": 63.167
+   },
+   "chapter": "From Cain to Seth",
+   "start": 378.764,
+   "end": 467.718
+  },
+  {
+   "kind": "short",
+   "name": "genesis-06-short",
+   "seconds": 70.6,
+   "source_sha256": "e9e6aacaab5564ddf691e09e63909ddfa57df810b36b5c239c0dd63eed43b609",
+   "chapter": "Enoch Walked With God",
+   "end_s": 70.6,
+   "start": 467.718,
+   "end": 538.318
+  },
+  {
+   "kind": "short",
+   "name": "genesis-07-short",
+   "seconds": 165.9,
+   "source_sha256": "da4c5f629dd8e8715a2a840395635b779beeda0917fcf2bc7860964b6cbcd6ea",
+   "chapter": "God Sees the Earth Corrupt",
+   "end_s": 165.9,
+   "start": 538.318,
+   "end": 704.218
+  },
+  {
+   "kind": "short",
+   "name": "genesis-08-short",
+   "seconds": 168.0,
+   "source_sha256": "00462a4c1d9de5c3dfd7c8cf8e131f52f462ced71e97598b066fcf4a3d500a23",
+   "chapter": "Noah Builds the Ark",
+   "end_s": 168.0,
+   "start": 704.218,
+   "end": 872.218
+  },
+  {
+   "kind": "short",
+   "name": "genesis-09-short",
+   "seconds": 165.7,
+   "source_sha256": "57e8768c53fd572b92750908fabdab37297ce74ec0438d3ed1ab3665e3a41829",
+   "chapter": "The Flood Begins",
+   "end_s": 165.7,
+   "start": 872.218,
+   "end": 1037.918
+  },
+  {
+   "kind": "interlude",
+   "name": "i4",
+   "seconds": 66.888,
+   "spoken_seconds": 63.85,
+   "beats": 3,
+   "line_starts": {
+    "i4-01": 0.5,
+    "i4-02": 24.767,
+    "i4-03": 47.733
+   },
+   "chapter": "Older Flood Stories",
+   "start": 1037.918,
+   "end": 1104.806
+  },
+  {
+   "kind": "long",
+   "name": "flood-ends-long",
+   "seconds": 493.767,
+   "source_sha256": "9a2d0f24e74c7117eedcbdd73992fbc284efb9402b6f82dba98f096a64635692",
+   "chapter": "The Flood Ends: The Raven and the Dove",
+   "end_s": 493.74,
+   "start": 1104.806,
+   "end": 1598.573
+  },
+  {
+   "kind": "interlude",
+   "name": "i5",
+   "seconds": 80.454,
+   "spoken_seconds": 76.434,
+   "beats": 4,
+   "line_starts": {
+    "i5-01": 0.5,
+    "i5-02": 18.933,
+    "i5-03": 34.467,
+    "i5-04": 53.9
+   },
+   "chapter": "The Same Heart",
+   "start": 1598.573,
+   "end": 1679.027
+  },
+  {
+   "kind": "long",
+   "name": "genesis-10-11-long",
+   "seconds": 476.3,
+   "source_sha256": "0386d34a1501477d6ea487b3c3cf53caedb0a898d70e7b15feb90e36bad09937",
+   "chapter": "The Tower of Babel",
+   "end_s": 476.3,
+   "start": 1679.027,
+   "end": 2155.327
+  },
+  {
+   "kind": "close",
+   "name": "close",
+   "seconds": 94.288,
+   "spoken_seconds": 90.296,
+   "beats": 4,
+   "line_starts": {
+    "close-01": 0.5,
+    "close-02": 30.4,
+    "close-03": 50.6,
+    "close-04": 71.533
+   },
+   "start": 2155.327,
+   "end": 2249.615
+  }
+ ]
+}

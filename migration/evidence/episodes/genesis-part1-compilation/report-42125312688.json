@@ -1,0 +1,2707 @@
+{
+ "version": "compilation-report-v1",
+ "source": "compilation_long.py build",
+ "composed": {
+  "output_sha256": "43bd2b99f091edb9b1f9d5e021a3a35064b922fce18032b7a6d45150807d2aa9",
+  "sentences": [
+   {
+    "segment": "hook-01",
+    "text": "Eleven chapters.",
+    "start": 0.5,
+    "end": 2.015,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "hook-01",
+    "text": "A perfect world, a murder, a flood that covered the mountains, and a tower that tried to reach heaven.",
+    "start": 2.195,
+    "end": 8.787,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "hook-01",
+    "text": "And running through all of it, the very first question God ever asked a human being.",
+    "start": 8.967,
+    "end": 14.513,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "hook-01",
+    "text": "Where art thou?",
+    "start": 14.693,
+    "end": 16.123,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "hook-02",
+    "text": "I am the Keeper.",
+    "start": 17.133,
+    "end": 18.562,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "hook-02",
+    "text": "Tonight we walk the first eleven chapters of Genesis, from creation to Babel, in the words of the King James Bible.",
+    "start": 18.742,
+    "end": 26.593,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "hook-02",
+    "text": "And between the stories I will stop, and tell you what I see, and what I still honestly wonder about.",
+    "start": 26.773,
+    "end": 33.365,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i1-01",
+    "text": "Before Eden, before the serpent, before any of it, the Bible opens with God speaking into the dark.",
+    "start": 34.388,
+    "end": 41.385,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i1-01",
+    "text": "In the beginning God created the heaven and the earth.",
+    "start": 41.565,
+    "end": 45.021,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i1-01",
+    "text": "And the earth was without form and void;",
+    "start": 45.201,
+    "end": 47.825,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i1-01",
+    "text": "and darkness was upon the face of the deep.",
+    "start": 48.005,
+    "end": 50.928,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i1-01",
+    "text": "And the Spirit of God moved upon the face of the waters.",
+    "start": 51.108,
+    "end": 54.713,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i1-01",
+    "text": "And God said, Let there be light:",
+    "start": 54.893,
+    "end": 57.304,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i1-01",
+    "text": "and there was light.",
+    "start": 57.484,
+    "end": 58.934,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i1-02",
+    "text": "Listen to the rhythm of this chapter.",
+    "start": 59.921,
+    "end": 62.289,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i1-02",
+    "text": "God speaks, it is so, and God sees that it is good.",
+    "start": 62.469,
+    "end": 66.267,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i1-02",
+    "text": "Light, water, land, every living thing.",
+    "start": 66.447,
+    "end": 69.22,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i1-02",
+    "text": "Again and again, good.",
+    "start": 69.4,
+    "end": 71.192,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i1-02",
+    "text": "Nothing in this world begins as an accident, and nothing in it begins as evil.",
+    "start": 71.372,
+    "end": 76.684,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i1-02",
+    "text": "That matters, because everything you will see tonight is the story of a good world being bent, and of a God who will not let it go.",
+    "start": 76.864,
+    "end": 85.525,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i1-03",
+    "text": "Then, on the sixth day, something new.",
+    "start": 86.521,
+    "end": 88.868,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i1-03",
+    "text": "So God created man in his own image, in the image of God created he him;",
+    "start": 89.048,
+    "end": 94.765,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i1-03",
+    "text": "male and female created he them.",
+    "start": 94.945,
+    "end": 97.441,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i1-04",
+    "text": "And God saw every thing that he had made, and, behold, it was very good.",
+    "start": 98.455,
+    "end": 103.341,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i1-04",
+    "text": "Here is an honest question I sit with.",
+    "start": 103.521,
+    "end": 106.251,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i1-04",
+    "text": "If the first thing God ever said about people is that they are very good, why do so many of us begin with everything that is wrong with us?",
+    "start": 106.431,
+    "end": 115.306,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i1-05",
+    "text": "And on the seventh day God ended his work which he had made;",
+    "start": 116.321,
+    "end": 120.332,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i1-05",
+    "text": "and he rested on the seventh day from all his work which he had made.",
+    "start": 120.512,
+    "end": 124.714,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i1-05",
+    "text": "The first week does not end with a man at work.",
+    "start": 124.894,
+    "end": 128.03,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i1-05",
+    "text": "It ends with God at rest, and a world at peace with him.",
+    "start": 128.21,
+    "end": 132.221,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i1-05",
+    "text": "Hold on to that picture.",
+    "start": 132.401,
+    "end": 134.236,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i1-05",
+    "text": "Everything that follows is about how that peace was lost, and how God set out to bring it back.",
+    "start": 134.416,
+    "end": 140.645,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i2-01",
+    "text": "Before they left the garden, God spoke a sentence to the serpent that the rest of the Bible keeps coming back to.",
+    "start": 276.443,
+    "end": 283.44,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i2-01",
+    "text": "And I will put enmity between thee and the woman, and between thy seed and her seed;",
+    "start": 283.62,
+    "end": 289.039,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i2-01",
+    "text": "it shall bruise thy head, and thou shalt bruise his heel.",
+    "start": 289.219,
+    "end": 293.016,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i2-01",
+    "text": "For centuries, Christians have read this as the first promise of a rescuer:",
+    "start": 293.196,
+    "end": 297.975,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i2-01",
+    "text": "a child of the woman, wounded, and still winning.",
+    "start": 298.155,
+    "end": 301.355,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i2-02",
+    "text": "Now notice how the questions change.",
+    "start": 302.343,
+    "end": 304.839,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i2-02",
+    "text": "In the garden, God asked the man, where art thou?",
+    "start": 305.019,
+    "end": 308.304,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i2-02",
+    "text": "In the next story he asks a different question, about a brother.",
+    "start": 308.484,
+    "end": 312.623,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i2-02",
+    "text": "The first sin hid a man from God.",
+    "start": 312.803,
+    "end": 315.15,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i2-02",
+    "text": "The second turns a man against his own brother.",
+    "start": 315.33,
+    "end": 318.38,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i2-02",
+    "text": "Watch how fast it spreads.",
+    "start": 318.56,
+    "end": 320.566,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i3-01",
+    "text": "Why did God accept Abel's offering, and not Cain's?",
+    "start": 379.264,
+    "end": 383.018,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i3-01",
+    "text": "I will be honest with you:",
+    "start": 383.198,
+    "end": 384.969,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i3-01",
+    "text": "Genesis never says plainly.",
+    "start": 385.149,
+    "end": 387.474,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i3-01",
+    "text": "The letter to the Hebrews gives one answer.",
+    "start": 387.654,
+    "end": 390.556,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i3-01",
+    "text": "By faith Abel offered unto God a more excellent sacrifice than Cain.",
+    "start": 390.736,
+    "end": 395.706,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i3-01",
+    "text": "The story itself cares less about the lamb and the grain, and more about what Cain did next.",
+    "start": 395.886,
+    "end": 401.86,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i3-02",
+    "text": "The Short you just watched stops at Cain's question.",
+    "start": 402.864,
+    "end": 406.064,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i3-02",
+    "text": "But God answers him.",
+    "start": 406.244,
+    "end": 407.972,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i3-02",
+    "text": "What hast thou done?",
+    "start": 408.152,
+    "end": 409.73,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i3-02",
+    "text": "the voice of thy brother's blood crieth unto me from the ground.",
+    "start": 409.91,
+    "end": 413.622,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i3-02",
+    "text": "Abel never speaks a single word in Genesis.",
+    "start": 413.802,
+    "end": 417.088,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i3-02",
+    "text": "The first time we hear from him, it is his blood, and God is listening.",
+    "start": 417.268,
+    "end": 421.79,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i3-03",
+    "text": "Then something surprising.",
+    "start": 422.797,
+    "end": 424.696,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i3-03",
+    "text": "Cain is driven out, but he is not abandoned.",
+    "start": 424.876,
+    "end": 427.82,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i3-03",
+    "text": "And the Lord set a mark upon Cain, lest any finding him should kill him.",
+    "start": 428.0,
+    "end": 432.907,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i3-03",
+    "text": "The first murderer is protected by the God he defied.",
+    "start": 433.087,
+    "end": 436.735,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i3-03",
+    "text": "Honestly, that troubles me and comforts me at the same time.",
+    "start": 436.915,
+    "end": 440.925,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i3-04",
+    "text": "And almost hidden at the end of the chapter, a quiet turning point.",
+    "start": 441.931,
+    "end": 446.198,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i3-04",
+    "text": "Adam and Eve have another child, Seth.",
+    "start": 446.378,
+    "end": 449.045,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i3-04",
+    "text": "And then, in one short line, the text says:",
+    "start": 449.225,
+    "end": 452.169,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i3-04",
+    "text": "then began men to call upon the name of the Lord.",
+    "start": 452.349,
+    "end": 455.698,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i3-04",
+    "text": "Cain's family builds a city and works in brass and iron.",
+    "start": 455.878,
+    "end": 459.825,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i3-04",
+    "text": "Seth's family prays.",
+    "start": 460.005,
+    "end": 461.583,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i3-04",
+    "text": "The Bible does not call tools evil.",
+    "start": 461.763,
+    "end": 464.366,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i3-04",
+    "text": "But it notices who is calling on God.",
+    "start": 464.546,
+    "end": 467.191,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i4-01",
+    "text": "Before we see how the waters end, a piece of history that surprises many people.",
+    "start": 1038.418,
+    "end": 1043.773,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i4-01",
+    "text": "Genesis is not the only ancient book with a great flood.",
+    "start": 1043.953,
+    "end": 1048.092,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i4-01",
+    "text": "Clay tablets from old Mesopotamia, in stories like Atrahasis and the epic of Gilgamesh, also tell of a flood, a man warned to build a boat, and birds sent out to look for dry land.",
+    "start": 1048.272,
+    "end": 1061.669,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i4-02",
+    "text": "So what makes Genesis different?",
+    "start": 1062.685,
+    "end": 1064.968,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i4-02",
+    "text": "In Atrahasis, the gods send the flood because human beings are too noisy and keep them awake.",
+    "start": 1065.148,
+    "end": 1071.953,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i4-02",
+    "text": "In Genesis, as you heard, the reason is violence, and God's grief at his heart.",
+    "start": 1072.133,
+    "end": 1077.637,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i4-02",
+    "text": "The God of Genesis is not annoyed by people.",
+    "start": 1077.817,
+    "end": 1081.273,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i4-02",
+    "text": "He is heartbroken over what they do to each other.",
+    "start": 1081.453,
+    "end": 1084.653,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i4-03",
+    "text": "And one more difference.",
+    "start": 1085.651,
+    "end": 1087.336,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i4-03",
+    "text": "In the old tablets, the hero survives because a god leaks the secret.",
+    "start": 1087.516,
+    "end": 1092.316,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i4-03",
+    "text": "In Genesis, Noah lives because God himself warns him, and because Noah does what God says, board by board.",
+    "start": 1092.496,
+    "end": 1100.688,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i4-03",
+    "text": "Now watch how this God brings the flood to an end.",
+    "start": 1100.868,
+    "end": 1104.282,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Go forth of the ark, thou, and thy wife, and thy sons, and thy sons’ wives with thee.",
+    "start": 1104.806,
+    "end": 1110.459,
+    "speaker": "god"
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "What if you had been shut inside a wooden ship for more than a year, with every animal on earth breathing around you in the dark?",
+    "start": 1110.809,
+    "end": 1118.596,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "What if the water finally began to fall, and still nobody told you when you could walk out?",
+    "start": 1118.776,
+    "end": 1124.6,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Eight people.",
+    "start": 1124.95,
+    "end": 1126.145,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "One door, shut by God Himself.",
+    "start": 1126.325,
+    "end": 1128.821,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And outside, nothing but grey water to every horizon.",
+    "start": 1129.001,
+    "end": 1132.99,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Stay with me, because the way this story ends will change what waiting means.",
+    "start": 1133.17,
+    "end": 1137.949,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And God remembered Noah, and every living thing, and all the cattle that was with him in the ark:",
+    "start": 1138.299,
+    "end": 1144.677,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "and God made a wind to pass over the earth, and the waters asswaged;",
+    "start": 1144.857,
+    "end": 1149.444,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Remembered.",
+    "start": 1149.794,
+    "end": 1150.839,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Not because God had forgotten them, but because the next move was His.",
+    "start": 1151.019,
+    "end": 1155.478,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "A wind swept over the earth, and the great ocean began, slowly, to sink.",
+    "start": 1155.658,
+    "end": 1160.735,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "The fountains also of the deep and the windows of heaven were stopped, and the rain from heaven was restrained;",
+    "start": 1161.085,
+    "end": 1168.019,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "A hundred and fifty days of water.",
+    "start": 1168.369,
+    "end": 1170.865,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Imagine counting every one of them in the dark, the hull creaking, never knowing if it would end.",
+    "start": 1171.045,
+    "end": 1177.125,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And the waters returned from off the earth continually:",
+    "start": 1177.475,
+    "end": 1180.589,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "and after the end of the hundred and fifty days the waters were abated.",
+    "start": 1180.769,
+    "end": 1185.079,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "The water went down, not in a day, but in a long steady retreat.",
+    "start": 1185.429,
+    "end": 1189.653,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And then, one morning, something shuddered through the whole ark.",
+    "start": 1189.833,
+    "end": 1193.63,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "It stopped moving.",
+    "start": 1193.81,
+    "end": 1195.282,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And the ark rested in the seventh month, on the seventeenth day of the month, upon the mountains of Ararat.",
+    "start": 1195.632,
+    "end": 1202.437,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "The ark scraped rock and stopped.",
+    "start": 1202.787,
+    "end": 1205.091,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Everyone froze.",
+    "start": 1205.271,
+    "end": 1206.829,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "They had landed.",
+    "start": 1207.009,
+    "end": 1208.374,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "But when they looked out, there was still nothing but water, and no ground to stand on.",
+    "start": 1208.554,
+    "end": 1213.802,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And the waters decreased continually until the tenth month:",
+    "start": 1214.152,
+    "end": 1217.907,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "in the tenth month, on the first day of the month, were the tops of the mountains seen.",
+    "start": 1218.087,
+    "end": 1223.313,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Two more months of waiting, and then the first grey peaks rose out of the water like islands.",
+    "start": 1223.663,
+    "end": 1229.381,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "The world was coming back.",
+    "start": 1229.561,
+    "end": 1231.395,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "But coming back is not the same as being ready.",
+    "start": 1231.575,
+    "end": 1234.818,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And it came to pass at the end of forty days, that Noah opened the window of the ark which he had made:",
+    "start": 1235.168,
+    "end": 1241.525,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Forty days later Noah did something small and brave.",
+    "start": 1241.875,
+    "end": 1245.353,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "He opened the window.",
+    "start": 1245.533,
+    "end": 1247.154,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And what he sent out first was a raven.",
+    "start": 1247.334,
+    "end": 1249.958,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And he sent forth a raven, which went forth to and fro, until the waters were dried up from off the earth.",
+    "start": 1250.308,
+    "end": 1257.156,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "It flew back and forth over the water, and it never came home.",
+    "start": 1257.506,
+    "end": 1261.709,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "No answer.",
+    "start": 1261.889,
+    "end": 1263.062,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "No news.",
+    "start": 1263.242,
+    "end": 1264.394,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Only the sound of wings, and then silence.",
+    "start": 1264.574,
+    "end": 1267.603,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Also he sent forth a dove from him, to see if the waters were abated from off the face of the ground;",
+    "start": 1267.953,
+    "end": 1274.332,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "So he took the gentlest bird he had.",
+    "start": 1274.682,
+    "end": 1277.306,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "A dove.",
+    "start": 1277.486,
+    "end": 1278.489,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "If there was any dry place left in the world, she would find it.",
+    "start": 1278.669,
+    "end": 1282.829,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Hour after hour the family watched the sky.",
+    "start": 1283.179,
+    "end": 1286.464,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Nothing came back, until the evening.",
+    "start": 1286.644,
+    "end": 1289.268,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And the dove did return, but with nothing at all.",
+    "start": 1289.448,
+    "end": 1292.776,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "But the dove found no rest for the sole of her foot, and she returned unto him into the ark, for the waters were on the face of the whole earth:",
+    "start": 1293.126,
+    "end": 1301.83,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "then he put forth his hand, and took her, and pulled her in unto him into the ark.",
+    "start": 1302.01,
+    "end": 1306.853,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Still only water.",
+    "start": 1307.203,
+    "end": 1308.824,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Still no place to land.",
+    "start": 1309.004,
+    "end": 1310.839,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And yet Noah did not shout, and did not give up.",
+    "start": 1311.019,
+    "end": 1314.283,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "He waited.",
+    "start": 1314.463,
+    "end": 1315.572,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And he stayed yet other seven days;",
+    "start": 1315.922,
+    "end": 1318.482,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "and again he sent forth the dove out of the ark;",
+    "start": 1318.662,
+    "end": 1321.947,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Seven more days.",
+    "start": 1322.297,
+    "end": 1323.727,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "He counted them one by one.",
+    "start": 1323.907,
+    "end": 1326.061,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Then he let her go again, and the whole family held their breath.",
+    "start": 1326.241,
+    "end": 1330.017,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And the dove came in to him in the evening;",
+    "start": 1330.367,
+    "end": 1332.906,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "and, lo, in her mouth was an olive leaf pluckt off:",
+    "start": 1333.086,
+    "end": 1336.265,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "so Noah knew that the waters were abated from off the earth.",
+    "start": 1336.445,
+    "end": 1340.242,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "One green leaf.",
+    "start": 1340.592,
+    "end": 1341.979,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Somewhere out there, something was growing again.",
+    "start": 1342.159,
+    "end": 1345.337,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And when Noah held it, he knew:",
+    "start": 1345.517,
+    "end": 1347.565,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "the waters were really going.",
+    "start": 1347.745,
+    "end": 1349.623,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Eight people who had not smiled in months passed that leaf from hand to hand like treasure.",
+    "start": 1349.973,
+    "end": 1355.455,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "A single leaf.",
+    "start": 1355.635,
+    "end": 1357.043,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "It was the first word of the new world.",
+    "start": 1357.223,
+    "end": 1359.634,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And he stayed yet other seven days;",
+    "start": 1359.984,
+    "end": 1362.544,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "and sent forth the dove;",
+    "start": 1362.724,
+    "end": 1364.516,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "which returned not again unto him any more.",
+    "start": 1364.696,
+    "end": 1367.811,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Seven days later he sent her out one last time.",
+    "start": 1368.161,
+    "end": 1371.617,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And she never came back.",
+    "start": 1371.797,
+    "end": 1373.567,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "That silence was the best news of all:",
+    "start": 1373.747,
+    "end": 1376.414,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "the dove had found a home.",
+    "start": 1376.594,
+    "end": 1378.429,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And it came to pass in the six hundredth and first year, in the first month, the first day of the month, the waters were dried up from off the earth:",
+    "start": 1378.779,
+    "end": 1387.781,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "and Noah removed the covering of the ark, and looked, and, behold, the face of the ground was dry.",
+    "start": 1387.961,
+    "end": 1394.169,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Dry ground at last, right before his eyes.",
+    "start": 1394.519,
+    "end": 1397.655,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And still the door stayed shut.",
+    "start": 1397.835,
+    "end": 1399.947,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "The One who closed it had not yet said open.",
+    "start": 1400.127,
+    "end": 1403.327,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Most miss this:",
+    "start": 1403.677,
+    "end": 1405.147,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Noah saw dry ground and still waited.",
+    "start": 1405.333,
+    "end": 1408.031,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "He stepped out when God said go.",
+    "start": 1408.216,
+    "end": 1410.628,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "The One who shut the door opened it.",
+    "start": 1410.814,
+    "end": 1413.227,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Two months more, until the earth was fully dry.",
+    "start": 1413.577,
+    "end": 1416.713,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Then, at last, the voice came.",
+    "start": 1416.893,
+    "end": 1418.962,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Not a shout.",
+    "start": 1419.142,
+    "end": 1420.422,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "A word.",
+    "start": 1420.602,
+    "end": 1421.669,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And with it, the door that no one else could open.",
+    "start": 1421.849,
+    "end": 1425.028,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And God spake unto Noah, saying,",
+    "start": 1425.378,
+    "end": 1427.831,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And Noah went forth, and his sons, and his wife, and his sons’ wives with him:",
+    "start": 1428.181,
+    "end": 1433.493,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Out they walked, a whole world of animals, one by one, down onto the washed new earth.",
+    "start": 1433.843,
+    "end": 1439.518,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Noah was the last of his family to step off the boat.",
+    "start": 1439.698,
+    "end": 1443.196,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And Noah builded an altar unto the Lord;",
+    "start": 1443.546,
+    "end": 1446.512,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "and took of every clean beast, and of every clean fowl, and offered burnt offerings on the altar.",
+    "start": 1446.692,
+    "end": 1453.241,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Before building a house, before planting a field, Noah built an altar.",
+    "start": 1453.591,
+    "end": 1458.071,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "The first thing he did on the new earth was say thank you.",
+    "start": 1458.251,
+    "end": 1461.686,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And the Lord smelled a sweet savour;",
+    "start": 1462.036,
+    "end": 1464.34,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "and the Lord said in his heart, I will not again curse the ground any more for man’s sake;",
+    "start": 1464.52,
+    "end": 1470.024,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "for the imagination of man’s heart is evil from his youth;",
+    "start": 1470.204,
+    "end": 1474.214,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "neither will I again smite any more every thing living, as I have done.",
+    "start": 1474.394,
+    "end": 1479.045,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And God answered with a promise.",
+    "start": 1479.395,
+    "end": 1481.656,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "He knew the human heart was still broken.",
+    "start": 1481.836,
+    "end": 1484.567,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "He chose mercy anyway.",
+    "start": 1484.747,
+    "end": 1486.71,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And God blessed Noah and his sons, and said unto them, Be fruitful, and multiply, and replenish the earth.",
+    "start": 1487.06,
+    "end": 1494.057,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "A blessing.",
+    "start": 1494.407,
+    "end": 1495.538,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "The very words God spoke to Adam at the beginning:",
+    "start": 1495.718,
+    "end": 1499.067,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "be fruitful and multiply.",
+    "start": 1499.247,
+    "end": 1501.466,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "A second beginning for a broken world.",
+    "start": 1501.646,
+    "end": 1504.227,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "But the first time a dark cloud gathered over the hills, imagine the fear.",
+    "start": 1504.577,
+    "end": 1509.462,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Would the water come back?",
+    "start": 1509.642,
+    "end": 1511.328,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Every child who had heard the stories would look up and wonder.",
+    "start": 1511.508,
+    "end": 1515.476,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And I will establish my covenant with you;",
+    "start": 1515.826,
+    "end": 1518.642,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "neither shall all flesh be cut off any more by the waters of a flood;",
+    "start": 1518.822,
+    "end": 1523.28,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "neither shall there any more be a flood to destroy the earth.",
+    "start": 1523.46,
+    "end": 1527.13,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "I do set my bow in the cloud, and it shall be for a token of a covenant between me and the earth.",
+    "start": 1527.48,
+    "end": 1533.752,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And there it was, for the very first time:",
+    "start": 1534.102,
+    "end": 1536.832,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "a bow of colour, bending over the whole sky.",
+    "start": 1537.012,
+    "end": 1540.084,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Not a weapon pointed at us.",
+    "start": 1540.264,
+    "end": 1542.334,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "A war bow, hung up.",
+    "start": 1542.514,
+    "end": 1544.114,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And the bow shall be in the cloud;",
+    "start": 1544.464,
+    "end": 1546.533,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "and I will look upon it, that I may remember the everlasting covenant between God and every living creature of all flesh that is upon the earth.",
+    "start": 1546.713,
+    "end": 1556.42,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Read that again.",
+    "start": 1556.77,
+    "end": 1558.178,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "The sign is not only for us to see.",
+    "start": 1558.358,
+    "end": 1561.174,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "God says He Himself will look upon it, and remember.",
+    "start": 1561.354,
+    "end": 1565.066,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "He holds the promise in His own hands.",
+    "start": 1565.246,
+    "end": 1567.912,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Notice what the rainbow is.",
+    "start": 1568.262,
+    "end": 1570.246,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "God hung up His own bow, pointing at the sky and not at us.",
+    "start": 1570.426,
+    "end": 1574.65,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Mercy is His idea.",
+    "start": 1574.83,
+    "end": 1576.644,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "The Bible does not pretend Noah became perfect.",
+    "start": 1576.994,
+    "end": 1580.386,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Later he planted a vineyard, and failed again, the way people do.",
+    "start": 1580.566,
+    "end": 1584.875,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "Grace did not make him a god.",
+    "start": 1585.055,
+    "end": 1587.316,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "It made him a man who was carried.",
+    "start": 1587.496,
+    "end": 1589.886,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "And all the days of Noah were nine hundred and fifty years:",
+    "start": 1590.236,
+    "end": 1594.118,
+    "speaker": null
+   },
+   {
+    "segment": "flood-ends-long",
+    "text": "and he died.",
+    "start": 1594.298,
+    "end": 1595.514,
+    "speaker": null
+   },
+   {
+    "segment": "i5-01",
+    "text": "Did you catch the strangest thing in that story?",
+    "start": 1599.073,
+    "end": 1601.995,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i5-01",
+    "text": "Before the flood, Genesis said this about us:",
+    "start": 1602.175,
+    "end": 1605.247,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i5-01",
+    "text": "every imagination of the thoughts of his heart was only evil continually.",
+    "start": 1605.427,
+    "end": 1610.569,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i5-01",
+    "text": "After the flood, with the altar still smoking, God says almost the same thing again.",
+    "start": 1610.749,
+    "end": 1616.509,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i5-02",
+    "text": "For the imagination of man's heart is evil from his youth.",
+    "start": 1617.506,
+    "end": 1621.538,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i5-02",
+    "text": "The water was real, but it did not wash the human heart clean.",
+    "start": 1621.718,
+    "end": 1625.963,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i5-02",
+    "text": "Only one thing changed, and it was not us.",
+    "start": 1626.143,
+    "end": 1629.322,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i5-02",
+    "text": "It was God's promise to bear with us.",
+    "start": 1629.502,
+    "end": 1632.04,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i5-03",
+    "text": "Keep listening for that word.",
+    "start": 1633.04,
+    "end": 1635.003,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i5-03",
+    "text": "At Babel you will hear God speak of what the builders have imagined to do.",
+    "start": 1635.183,
+    "end": 1639.791,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i5-03",
+    "text": "The same heart that filled the earth with violence before the flood is now stacking bricks toward heaven.",
+    "start": 1639.971,
+    "end": 1646.435,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i5-03",
+    "text": "Same heart, new tools.",
+    "start": 1646.615,
+    "end": 1648.386,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i5-03",
+    "text": "Genesis is honest about us like that.",
+    "start": 1648.566,
+    "end": 1651.467,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i5-04",
+    "text": "One more thing about how this book is built.",
+    "start": 1652.473,
+    "end": 1655.353,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i5-04",
+    "text": "Genesis marks its sections with a phrase that repeats, these are the generations.",
+    "start": 1655.533,
+    "end": 1661.058,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i5-04",
+    "text": "Of the heavens and the earth.",
+    "start": 1661.238,
+    "end": 1663.158,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i5-04",
+    "text": "Of Adam.",
+    "start": 1663.338,
+    "end": 1664.469,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i5-04",
+    "text": "Of Noah.",
+    "start": 1664.649,
+    "end": 1665.737,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i5-04",
+    "text": "Of the sons of Noah.",
+    "start": 1665.917,
+    "end": 1667.624,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i5-04",
+    "text": "Each time, the story moves forward, and the question gets sharper:",
+    "start": 1667.804,
+    "end": 1672.113,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i5-04",
+    "text": "through which family will God mend what went wrong?",
+    "start": 1672.293,
+    "end": 1675.493,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "i5-04",
+    "text": "Hold that question as we go to Babel.",
+    "start": 1675.673,
+    "end": 1678.51,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "One language.",
+    "start": 1679.027,
+    "end": 1680.325,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "One plan.",
+    "start": 1680.505,
+    "end": 1681.677,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "One tower to reach the sky.",
+    "start": 1681.856,
+    "end": 1684.049,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Then God came down.",
+    "start": 1684.229,
+    "end": 1686.038,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Why?",
+    "start": 1686.218,
+    "end": 1687.027,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Rewind to the days after the flood.",
+    "start": 1687.377,
+    "end": 1689.894,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Eight survivors had become families, and families were becoming nations.",
+    "start": 1690.074,
+    "end": 1694.853,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "These are the families of the sons of Noah, after their generations, in their nations:",
+    "start": 1695.203,
+    "end": 1700.835,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "and by these were the nations divided in the earth after the flood.",
+    "start": 1701.015,
+    "end": 1705.495,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "But first, for a little while, they were still together.",
+    "start": 1705.845,
+    "end": 1708.96,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "And the whole earth was of one language, and of one speech.",
+    "start": 1709.31,
+    "end": 1713.192,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Think about what that means.",
+    "start": 1713.542,
+    "end": 1715.441,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "No translators.",
+    "start": 1715.621,
+    "end": 1717.114,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "No strangers whose words you cannot understand.",
+    "start": 1717.294,
+    "end": 1720.665,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Every mother, every trader and every child spoke the same tongue, and nothing they said was ever lost between them.",
+    "start": 1720.845,
+    "end": 1728.248,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "And among those first nations rose a man the Bible remembers by a single word:",
+    "start": 1728.598,
+    "end": 1734.294,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "mighty.",
+    "start": 1734.474,
+    "end": 1735.391,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "And Cush begat Nimrod:",
+    "start": 1735.741,
+    "end": 1737.533,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "he began to be a mighty one in the earth.",
+    "start": 1737.713,
+    "end": 1740.465,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "He was a mighty hunter before the Lord:",
+    "start": 1740.815,
+    "end": 1743.439,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "wherefore it is said, Even as Nimrod the mighty hunter before the Lord.",
+    "start": 1743.619,
+    "end": 1748.675,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "And the beginning of his kingdom was Babel, and Erech, and Accad, and Calneh, in the land of Shinar.",
+    "start": 1749.025,
+    "end": 1755.34,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "The Bible does not say that he built the tower.",
+    "start": 1755.69,
+    "end": 1758.698,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "It only says that his kingdom began at Babel.",
+    "start": 1758.878,
+    "end": 1762.035,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Remember that name, because this story is about to break right there.",
+    "start": 1762.215,
+    "end": 1766.61,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "And it came to pass, as they journeyed from the east, that they found a plain in the land of Shinar;",
+    "start": 1766.96,
+    "end": 1773.509,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "and they dwelt there.",
+    "start": 1773.689,
+    "end": 1775.14,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "A wide, flat plain between two rivers.",
+    "start": 1775.49,
+    "end": 1778.348,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Rich mud, endless reeds and the sky stretching down to every horizon.",
+    "start": 1778.528,
+    "end": 1783.435,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "It was a perfect place to live, and it had one problem.",
+    "start": 1783.615,
+    "end": 1787.434,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "There was no stone anywhere.",
+    "start": 1787.614,
+    "end": 1789.619,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "So they used what they had.",
+    "start": 1789.969,
+    "end": 1791.996,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "They dug the river clay with their bare hands, pressed it into wooden moulds, and set the soft bricks out in rows under the burning sun.",
+    "start": 1792.176,
+    "end": 1800.645,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Hundreds, then thousands, then more than anyone could count.",
+    "start": 1800.825,
+    "end": 1804.921,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Then they learned the secret of fire.",
+    "start": 1805.271,
+    "end": 1807.618,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "A brick baked hard in a kiln is no longer soft mud.",
+    "start": 1807.798,
+    "end": 1811.595,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "It is as strong as rock, and it will last for thousands of years.",
+    "start": 1811.775,
+    "end": 1816.212,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "And they said one to another, Go to, let us make brick, and burn them throughly.",
+    "start": 1816.562,
+    "end": 1821.298,
+    "speaker": "builder"
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "And they had brick for stone, and slime had they for morter.",
+    "start": 1821.648,
+    "end": 1825.467,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Slime is the old word for bitumen, the black, sticky tar that seeped out of the ground in that land.",
+    "start": 1825.817,
+    "end": 1832.238,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "It glued every brick to the next one.",
+    "start": 1832.418,
+    "end": 1835.0,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Nothing they built there would ever fall apart on its own.",
+    "start": 1835.18,
+    "end": 1838.87,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Now picture the whole human race standing on one plain at dusk.",
+    "start": 1839.22,
+    "end": 1843.636,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Not one voice raised against another.",
+    "start": 1843.816,
+    "end": 1846.504,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "One people, with one language, and one idea, and then someone said it out loud.",
+    "start": 1846.684,
+    "end": 1851.868,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Go to, let us build us a city and a tower, whose top may reach unto heaven;",
+    "start": 1852.218,
+    "end": 1856.869,
+    "speaker": "builder"
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "and let us make us a name, lest we be scattered abroad upon the face of the whole earth.",
+    "start": 1857.219,
+    "end": 1862.385,
+    "speaker": "builder"
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "The foundation alone took years:",
+    "start": 1862.735,
+    "end": 1865.039,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "a platform of fired brick wider than a village, every brick carried in by hand.",
+    "start": 1865.219,
+    "end": 1870.425,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Thousands of people, all working toward one plan, because every one of them understood every word.",
+    "start": 1870.775,
+    "end": 1877.345,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "That is what one language gives:",
+    "start": 1877.525,
+    "end": 1879.808,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "speed, trust and strength.",
+    "start": 1879.988,
+    "end": 1881.844,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Then it began to climb.",
+    "start": 1882.194,
+    "end": 1884.007,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Terrace upon terrace, with long ramps winding up its sides like a road to the clouds, and a line of workers on every ramp, from the first light to the last.",
+    "start": 1884.187,
+    "end": 1894.769,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "A tower like that takes millions of bricks.",
+    "start": 1895.119,
+    "end": 1897.849,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Each one was baked, carried and set by someone who believed that this would make them great.",
+    "start": 1898.029,
+    "end": 1903.683,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Higher than the birds, higher than the hills.",
+    "start": 1904.033,
+    "end": 1906.763,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Men worked on ropes and reed scaffolds, passing bricks from hand to hand, and every time one looked down, the whole plain looked smaller.",
+    "start": 1906.943,
+    "end": 1916.01,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "And every brick laid was an answer to one quiet question:",
+    "start": 1916.36,
+    "end": 1920.392,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "do we really need God, when we can reach the heavens ourselves?",
+    "start": 1920.572,
+    "end": 1924.583,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Then the sky above the tower began to change.",
+    "start": 1924.933,
+    "end": 1928.026,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "The clouds thickened, the light turned grey, and the wind stopped.",
+    "start": 1928.206,
+    "end": 1932.153,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Something was coming, and it was not a storm.",
+    "start": 1932.333,
+    "end": 1935.255,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Up on the top terrace the builders felt dizzy with what they had done.",
+    "start": 1935.605,
+    "end": 1940.085,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Nobody had ever stood so high.",
+    "start": 1940.265,
+    "end": 1942.612,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "And the Lord came down to see the city and the tower, which the children of men builded.",
+    "start": 1942.962,
+    "end": 1948.423,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Read that verse slowly.",
+    "start": 1948.773,
+    "end": 1950.565,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "They said their tower would reach unto heaven, and the Lord still had to come down to see it.",
+    "start": 1950.745,
+    "end": 1956.164,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "And the Lord said, Behold, the people is one, and they have all one language;",
+    "start": 1956.514,
+    "end": 1961.357,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "and this they begin to do:",
+    "start": 1961.537,
+    "end": 1963.499,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "and now nothing will be restrained from them, which they have imagined to do.",
+    "start": 1963.679,
+    "end": 1968.607,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Hear the diagnosis in His words:",
+    "start": 1968.957,
+    "end": 1971.432,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "a people with one tongue and one purpose, and no one left to say stop.",
+    "start": 1971.612,
+    "end": 1976.177,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Go to, let us go down, and there confound their language, that they may not understand one another’s speech.",
+    "start": 1976.527,
+    "end": 1983.461,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "No lightning.",
+    "start": 1983.811,
+    "end": 1985.048,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "No flood.",
+    "start": 1985.228,
+    "end": 1986.423,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Not one brick was struck.",
+    "start": 1986.603,
+    "end": 1988.459,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "God did not knock down the tower.",
+    "start": 1988.639,
+    "end": 1991.028,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "He quietly took away their words.",
+    "start": 1991.208,
+    "end": 1993.64,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "He said nothing would be restrained from them.",
+    "start": 1993.99,
+    "end": 1996.763,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "So after water, He chose distance.",
+    "start": 1996.943,
+    "end": 1999.439,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Picture the moment it happened.",
+    "start": 1999.789,
+    "end": 2001.816,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "A man on the scaffold calls down for more clay, and the man below hears sounds he has never heard in his life.",
+    "start": 2001.996,
+    "end": 2009.121,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "He shouts louder.",
+    "start": 2009.301,
+    "end": 2010.773,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "The words come back as noise.",
+    "start": 2010.953,
+    "end": 2013.087,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Imagine waking up the next morning.",
+    "start": 2013.437,
+    "end": 2016.146,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "You turn to the person beside you, and you cannot say good morning.",
+    "start": 2016.326,
+    "end": 2020.635,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "You cannot ask for water.",
+    "start": 2020.815,
+    "end": 2022.757,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "You cannot even say sorry.",
+    "start": 2022.937,
+    "end": 2025.027,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "A father cannot understand his own brother.",
+    "start": 2025.377,
+    "end": 2028.236,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "A mother calls her child, and a stranger answers.",
+    "start": 2028.416,
+    "end": 2031.957,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Hands that had worked as one stopped in the middle of the air.",
+    "start": 2032.307,
+    "end": 2036.019,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Friends became strangers in the middle of a sentence.",
+    "start": 2036.199,
+    "end": 2039.655,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "And the great chain of bricks, which had never once broken, went still.",
+    "start": 2039.835,
+    "end": 2044.187,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "The tower was still standing, every brick in its place.",
+    "start": 2044.537,
+    "end": 2048.1,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "But the one thing that had built it, a single shared voice, was gone.",
+    "start": 2048.28,
+    "end": 2052.589,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "So the Lord scattered them abroad from thence upon the face of all the earth:",
+    "start": 2052.939,
+    "end": 2057.718,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "and they left off to build the city.",
+    "start": 2057.898,
+    "end": 2060.159,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Families picked up their children and walked away, each one toward the few voices they could still understand.",
+    "start": 2060.509,
+    "end": 2067.443,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Some went west, toward the sea and the sunset.",
+    "start": 2067.793,
+    "end": 2070.886,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Some went east, toward the mountains.",
+    "start": 2071.236,
+    "end": 2073.711,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "And some followed the great river south into the unknown.",
+    "start": 2074.061,
+    "end": 2077.73,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Therefore is the name of it called Babel;",
+    "start": 2078.08,
+    "end": 2080.875,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "because the Lord did there confound the language of all the earth:",
+    "start": 2081.055,
+    "end": 2084.873,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "and from thence did the Lord scatter them abroad upon the face of all the earth.",
+    "start": 2085.053,
+    "end": 2090.109,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Babel.",
+    "start": 2090.459,
+    "end": 2091.419,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "They wanted to make a name that would reach the heavens, and they got one that sounds like babble.",
+    "start": 2091.599,
+    "end": 2097.231,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "The name they built for themselves became the name of their confusion.",
+    "start": 2097.411,
+    "end": 2101.849,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Centuries later a great city called Babylon would rise near this very plain.",
+    "start": 2102.199,
+    "end": 2107.468,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Babylon is simply Babel, said in Greek.",
+    "start": 2107.648,
+    "end": 2110.528,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "They built the tower to avoid being scattered.",
+    "start": 2110.878,
+    "end": 2113.304,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "The tower is what scattered them.",
+    "start": 2113.468,
+    "end": 2115.428,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "And yet the story did not end there.",
+    "start": 2115.778,
+    "end": 2118.232,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Generations later, down the same great river, in a city called Ur, a man named Abram was born.",
+    "start": 2118.412,
+    "end": 2125.686,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Now these are the generations of Terah:",
+    "start": 2126.036,
+    "end": 2128.938,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Terah begat Abram, Nahor, and Haran;",
+    "start": 2129.118,
+    "end": 2132.062,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "and Haran begat Lot.",
+    "start": 2132.242,
+    "end": 2134.055,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "Here is the answer that Babel was waiting for.",
+    "start": 2134.405,
+    "end": 2137.498,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "The builders tried to make their own name great.",
+    "start": 2137.678,
+    "end": 2140.366,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "But to this one quiet man God would say something very different.",
+    "start": 2140.546,
+    "end": 2144.664,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "and I will make of thee a great nation, and I will bless thee, and make thy name great;",
+    "start": 2145.014,
+    "end": 2150.603,
+    "speaker": null
+   },
+   {
+    "segment": "genesis-10-11-long",
+    "text": "and thou shalt be a blessing:",
+    "start": 2150.783,
+    "end": 2152.788,
+    "speaker": null
+   },
+   {
+    "segment": "close-01",
+    "text": "So here is the first movement of Genesis in one breath.",
+    "start": 2155.827,
+    "end": 2159.774,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "close-01",
+    "text": "A very good world.",
+    "start": 2159.954,
+    "end": 2161.597,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "close-01",
+    "text": "A man hiding, and a God who comes looking.",
+    "start": 2161.777,
+    "end": 2164.934,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "close-01",
+    "text": "A brother's blood crying from the ground.",
+    "start": 2165.114,
+    "end": 2167.589,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "close-01",
+    "text": "A flood.",
+    "start": 2167.769,
+    "end": 2168.814,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "close-01",
+    "text": "A rainbow.",
+    "start": 2168.994,
+    "end": 2170.231,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "close-01",
+    "text": "A tower.",
+    "start": 2170.411,
+    "end": 2171.499,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "close-01",
+    "text": "And every time people fall, God judges, and then, before the scene is over, he gives a gift.",
+    "start": 2171.679,
+    "end": 2178.122,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "close-01",
+    "text": "Clothes for the exiles.",
+    "start": 2178.302,
+    "end": 2179.987,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "close-01",
+    "text": "A mark of protection for Cain.",
+    "start": 2180.167,
+    "end": 2182.365,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "close-01",
+    "text": "An ark, and a bow in the cloud.",
+    "start": 2182.545,
+    "end": 2184.742,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "close-02",
+    "text": "But look at how Babel ends.",
+    "start": 2185.727,
+    "end": 2187.69,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "close-02",
+    "text": "Scattered families, an unfinished city, and for the first time in these chapters, no gift at the end of the scene.",
+    "start": 2187.87,
+    "end": 2195.166,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "close-02",
+    "text": "Instead, the story turns to one small family, and to a line that sounds like a dead end.",
+    "start": 2195.346,
+    "end": 2201.234,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "close-02",
+    "text": "But Sarai was barren;",
+    "start": 2201.414,
+    "end": 2203.12,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "close-02",
+    "text": "she had no child.",
+    "start": 2203.3,
+    "end": 2204.943,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "close-03",
+    "text": "That is where God chooses to begin again.",
+    "start": 2205.927,
+    "end": 2208.871,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "close-03",
+    "text": "Not with a tower, and not with a nation, but with an old couple who could not have a child.",
+    "start": 2209.051,
+    "end": 2214.918,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "close-03",
+    "text": "Genesis one to eleven asks what is wrong with the human heart.",
+    "start": 2215.098,
+    "end": 2219.599,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "close-03",
+    "text": "Genesis twelve begins God's answer, with a promise to people who had nothing to build with.",
+    "start": 2219.779,
+    "end": 2225.859,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "close-04",
+    "text": "So here is my honest question for you.",
+    "start": 2226.86,
+    "end": 2229.633,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "close-04",
+    "text": "In these eleven chapters, people hid from God, ran from God, and built toward heaven without him.",
+    "start": 2229.813,
+    "end": 2236.619,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "close-04",
+    "text": "Which of the three do you recognize in yourself?",
+    "start": 2236.799,
+    "end": 2239.956,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "close-04",
+    "text": "Tell me in the comments.",
+    "start": 2240.136,
+    "end": 2241.757,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "close-04",
+    "text": "And coming next on this channel:",
+    "start": 2241.937,
+    "end": 2243.964,
+    "speaker": "keeper"
+   },
+   {
+    "segment": "close-04",
+    "text": "the call of Abraham, the man who left everything without knowing where he was going.",
+    "start": 2244.144,
+    "end": 2249.093,
+    "speaker": "keeper"
+   }
+  ],
+  "untimed_segments": [
+   "genesis-02-short",
+   "genesis-03-short",
+   "genesis-04-short",
+   "genesis-05-short",
+   "genesis-06-short",
+   "genesis-07-short",
+   "genesis-08-short",
+   "genesis-09-short"
+  ]
+ }
+}
