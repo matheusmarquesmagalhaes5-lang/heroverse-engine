@@ -2,6 +2,25 @@
  "id": "genesis-12-short-s-gathered",
  "episode": "genesis-12-short",
  "shot": "s-gathered",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. A crowd of thousands gathered at dusk around a great pile of bricks and torches on the plain, all faces turned up toward the darkening sky, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Dusk and torchlight, sparks rising. Ambitious and ominous. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. A crowd of thousands gathered at dusk around a great pile of bricks and torches on the plain, all faces turned up toward the darkening sky, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Dusk and torchlight, sparks rising. Ambitious and ominous. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-12-short-s-gathered.jpg",
+ "sha256": "0da3980c83914d4a366fa9cf30834fa3140fe29b8730475b920b01e0e1ef1e69",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-12-short-s-gathered-42067935234-1",
+ "engine": "cloudflare-workers-ai:@cf/black-forest-labs/flux-1-schnell",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-05",
+  "score": 9.5,
+  "note": "Contact-sheet look: subject centred, period-correct Babel brickwork, no text, no God face; frame review only.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "a25080a737f32b3dfde761351e8f2b586df6eae1dca2c1dbcb8cc702b04891d5",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }
