@@ -1,4 +1,10 @@
 {
+  "env": {
+    "PONYTAIL_DEFAULT_MODE": "full",
+    "PONYTAIL_MAP": "0",
+    "GRAPHIFY_BACKEND": "none",
+    "CLAUDE_MEM_WORKER_AUTOSTART": "false"
+  },
   "permissions": {
     "allow": [
       "Bash(git push -u origin claude/*)",
