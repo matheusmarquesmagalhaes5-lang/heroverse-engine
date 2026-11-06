@@ -1,0 +1,62 @@
+{
+ "event": "all 11 in-progress lipsync.yml runs of claude/genesis-part1-lipsync cancelled at 2026-11-06T05:19-05:20Z, together with PR-check runs of other branches (claude/g13-published, claude/nifty-babbage-*), right after publish-episode genesis-13-short succeeded (05:18Z)",
+ "actor": "unknown (not this executor; the coordinator did not cancel them and knows of no session that did)",
+ "runs": [
+  {
+   "line": "close-01.wav",
+   "run_id": 42160387106,
+   "updated_at": "2026-11-06T05:20:15Z"
+  },
+  {
+   "line": "i3-04.wav",
+   "run_id": 42158686804,
+   "updated_at": "2026-11-06T05:20:52Z"
+  },
+  {
+   "line": "i4-02.wav",
+   "run_id": 42158199918,
+   "updated_at": "2026-11-06T05:20:17Z"
+  },
+  {
+   "line": "hook-02.wav",
+   "run_id": 42157733279,
+   "updated_at": "2026-11-06T05:20:25Z"
+  },
+  {
+   "line": "close-04.wav",
+   "run_id": 42157281234,
+   "updated_at": "2026-11-06T05:21:00Z"
+  },
+  {
+   "line": "i5-04.wav",
+   "run_id": 42157275065,
+   "updated_at": "2026-11-06T05:21:00Z"
+  },
+  {
+   "line": "i5-03.wav",
+   "run_id": 42157269361,
+   "updated_at": "2026-11-06T05:20:30Z"
+  },
+  {
+   "line": "i1-01.wav",
+   "run_id": 42157245786,
+   "updated_at": "2026-11-06T05:20:30Z"
+  },
+  {
+   "line": "i2-02.wav",
+   "run_id": 42157129320,
+   "updated_at": "2026-11-06T05:20:30Z"
+  },
+  {
+   "line": "i4-01.wav",
+   "run_id": 42156770686,
+   "updated_at": "2026-11-06T05:20:13Z"
+  },
+  {
+   "line": "i3-01.wav",
+   "run_id": 42156768115,
+   "updated_at": "2026-11-06T05:20:17Z"
+  }
+ ],
+ "action": "lines over 18 s re-dispatched as two sample-exact parts (splits.json); the rest re-dispatched whole"
+}
