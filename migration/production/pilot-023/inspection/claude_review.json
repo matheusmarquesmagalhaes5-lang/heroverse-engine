@@ -1,0 +1,97 @@
+{
+ "version": "claude-review-compilation-v1",
+ "model": "claude-session-reviewer",
+ "pilot_id": "pilot-023",
+ "output_sha256": "43bd2b99f091edb9b1f9d5e021a3a35064b922fce18032b7a6d45150807d2aa9",
+ "reviewed_at": "2026-11-06T02:10:00Z",
+ "native_review": {
+  "run_id": 42134316434,
+  "model": "local:faster-whisper-small.en+ffmpeg",
+  "status": "EVIDENCE_COMPLETE",
+  "duration_seconds": 2249.635
+ },
+ "defect_scan": {
+  "run_id": 42134319445,
+  "status": "COMPLETE",
+  "warn": 6
+ },
+ "human_listener": null,
+ "how_heard": "No human listener (owner 2026-11-06 delegated the listen). Heard = the pinned local ASR only: a whole-file small.en word-level pass with word probabilities aligned to the script (evidence machine-review-43bd2b99/asr-alignment.json), small.en + medium.en re-decodes of every flagged window (redecode.txt), local-review and defect-scan measures. Claude did not hear the audio with ears.",
+ "how_seen": "Claude viewed frame sheets every 30 s of the whole master and every join; SyncNet + MediaPipe (lipsync_check, pinned weights) on every Keeper or character face span (lipsync.json).",
+ "rubric_information_only": {
+  "audio_and_voice": 8.5,
+  "script_and_kjv": 9.5,
+  "picture": 8.0,
+  "lip_sync": 4.0,
+  "structure_and_originality": 9.0,
+  "overall": 8.0,
+  "note": "Claude's own judgement of this file from the measures and frames above; not copied from any other media. Below 9.5 because of issues 0 and 1."
+ },
+ "evidence": [
+  "asr-alignment.json, redecode.txt, lipsync.json under migration/evidence/episodes/genesis-part1-compilation/machine-review-43bd2b99/",
+  "local-review 42134316434 and defect-scan 42134319445 on this sha256"
+ ],
+ "issues": [
+  "05:13.72 [a] new Keeper line i2-02 'The first sin hid a man from God': the pinned Kokoro voice says 'hit' (full pass small.en p=0.60; window re-decodes small.en 'hit' p=0.95, medium.en 'hit' p=0.89; defect-scan WARN). TTS defect in our new audio; fix at the plan line (reword) and rebuild.",
+  "00:00-37:29 [b] 19 new Keeper beats (hook-01/02, i1-01, i2-02, i3-01..04, i4-01..03, i5-01..04, close-01..04; about 6.8 min) show the Keeper's face in close-up, mouth closed (still-mouth clean, face found 90-100 %), while his voice speaks: a speaking face without lip-sync (SyncNet conf 0.06-0.15 against the 2.7 floor). Owner 2026-11-06: 'não esqueça do lip sync'. Fix: lip-synced Keeper clips or no Keeper face under his voice.",
+  "30:16.6 [b] inherited from the public Babel long (pilot-020): b-brick talking builder SyncNet conf 2.467 < 2.7 (owner had accepted its lag for that long).",
+  "30:52.2-31:02.4 [d] inherited Babel b-tower / b-name: SyncNet conf 7.46 / 8.79 but offsets -8 / -9 frames measured on the compilation mix (outside the -1.5 +-1.5 band); spans taken from the source build timeline.",
+  "23:23.7, 26:08.3 [d] inherited flood-ends long Keeper segments k-insight / k-bow read as still-mouth faces under the Keeper's voice (conf 0.54 / 0.37).",
+  "35:10.9 [d] inherited Babel k-irony conf 2.709 offset -1 with the face found in only 52 % of frames; 35:53.1 Babel k-close only 1.9 s in the cut (conf 1.90, too short to judge).",
+  "11:31-17:17 [info] Shorts genesis-07..09 Keeper clips: face not found in the 9:16-over-blur framing (unmeasured by SyncNet).",
+  "[info] Every other divergence of the whole-file alignment is an ASR mishearing confirmed by isolated small.en and medium.en re-decodes or by spelling only (King, the God cold open at 18:30, 'coming next on this channel', 'Cain did next', grey/gray, any more/anymore, Erech/Accad/Calneh, Terah, bow/bell in the public flood long). Shorts 02-06 have no script on record: compared with the KJV passage only.",
+  "[info] Audio measures (local-review 42134316434): -14.2 LUFS, LRA 2.3, -1.3 dBTP, no silence >= 0.8 s, voice over music +8.9 dB (defect-scan clash min margin 6.4 dB); signal scan PASS (black 0.15 s, silence 0)."
+ ],
+ "defects": [
+  {
+   "issue": 0,
+   "category": "a",
+   "resolved": false
+  },
+  {
+   "issue": 1,
+   "category": "b",
+   "resolved": false
+  },
+  {
+   "issue": 2,
+   "category": "b",
+   "resolved": false
+  },
+  {
+   "issue": 3,
+   "category": "d",
+   "resolved": false
+  },
+  {
+   "issue": 4,
+   "category": "d",
+   "resolved": false
+  },
+  {
+   "issue": 5,
+   "category": "d",
+   "resolved": false
+  },
+  {
+   "issue": 6,
+   "category": "info",
+   "resolved": false
+  },
+  {
+   "issue": 7,
+   "category": "info",
+   "resolved": false
+  },
+  {
+   "issue": 8,
+   "category": "info",
+   "resolved": false
+  }
+ ],
+ "publish_decision": {
+  "decision": "hold",
+  "by": "claude-session-reviewer",
+  "note": "Not published: 05:13.72 TTS 'hid'->'hit' in our new line, and 19 Keeper beats show his face speaking without lip-sync; inherited lip-sync defects of the public Babel and flood-ends longs listed. Fix plan in CURRENT."
+ }
+}

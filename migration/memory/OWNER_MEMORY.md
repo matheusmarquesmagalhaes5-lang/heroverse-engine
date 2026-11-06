@@ -51,6 +51,7 @@ when short) and republish the private log when the conversation moves.
   owner: "não pode acontecer de novo"). Never touch his other chats; never act while he is using the PC.
 - Buzzy: lowest-credit model, balance read before/after, ≤100 credits/day average; he also uses Buzzy himself.
 - He listens to a long when no agent can: send a 540p proxy with bit-identical audio and record him as listener.
+- Longs (2026-11-06, "Tem que ser um teste que preste então de seu jeito e não esqueça do lip sync"): he delegates the listen to the rigorous machine route (whole-file ASR word alignment to the script + SyncNet lip-sync on every speaking face + audio measures + frame review); do not send him proxies.
 
 ## Accounts and spending
 - No new spending. Ads and the digital product on hold. Buffer free mirror only for public Shorts.

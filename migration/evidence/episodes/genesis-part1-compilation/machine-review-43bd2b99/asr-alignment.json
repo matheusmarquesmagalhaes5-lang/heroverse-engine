@@ -1,0 +1,974 @@
+[
+ {
+  "segment": "hook",
+  "kind": "hook",
+  "start": 0.0,
+  "end": 33.89,
+  "reference": "timed build report",
+  "script_words": 85,
+  "heard_words": 84,
+  "ratio": 0.994,
+  "divergences": [
+   {
+    "t": 25.44,
+    "op": "delete",
+    "script": "king",
+    "heard": "",
+    "min_prob": null
+   }
+  ]
+ },
+ {
+  "segment": "i1",
+  "kind": "interlude",
+  "start": 33.89,
+  "end": 141.18,
+  "reference": "timed build report",
+  "script_words": 296,
+  "heard_words": 295,
+  "ratio": 0.995,
+  "divergences": [
+   {
+    "t": 99.34,
+    "op": "replace",
+    "script": "every thing",
+    "heard": "everything",
+    "min_prob": 0.933
+   }
+  ]
+ },
+ {
+  "segment": "genesis-02-short",
+  "kind": "short",
+  "start": 141.18,
+  "end": 189.48,
+  "reference": "KJV passage Genesis 2:7-22 (KJV, public domain) (no script on record)",
+  "script_words": 413,
+  "heard_words": 136,
+  "ratio": 0.335,
+  "divergences": [
+   {
+    "t": 141.32,
+    "op": "insert",
+    "script": "",
+    "heard": "before man ever took a breath god bent down to the dust",
+    "min_prob": 0.582
+   },
+   {
+    "t": 162.42,
+    "op": "delete",
+    "script": "out of the ground made the lord god to grow every tree that is pleasant to the sight and good for food the tree of life ",
+    "heard": "",
+    "min_prob": null
+   },
+   {
+    "t": 165.92,
+    "op": "replace",
+    "script": "and from thence it was parted and became into four heads the name of the first is pison that is it which compasseth the ",
+    "heard": "then",
+    "min_prob": 0.985
+   },
+   {
+    "t": 170.34,
+    "op": "replace",
+    "script": "i will make him an help meet for him and out of the ground the lord god formed every beast of the field and every fowl o",
+    "heard": "so",
+    "min_prob": 0.965
+   },
+   {
+    "t": 174.66,
+    "op": "insert",
+    "script": "",
+    "heard": "from his side",
+    "min_prob": 0.918
+   },
+   {
+    "t": 175.74,
+    "op": "delete",
+    "script": "slept and he took one of his ribs and closed up the flesh instead thereof and the rib which the lord god had taken from ",
+    "heard": "",
+    "min_prob": null
+   },
+   {
+    "t": 175.9,
+    "op": "delete",
+    "script": "he",
+    "heard": "",
+    "min_prob": null
+   },
+   {
+    "t": 179.42,
+    "op": "insert",
+    "script": "",
+    "heard": "before you ever did anything at all god breathed his life into you and made a place for you lord breathe new life into m",
+    "min_prob": 0.015
+   }
+  ]
+ },
+ {
+  "segment": "genesis-03-short",
+  "kind": "short",
+  "start": 189.48,
+  "end": 232.28,
+  "reference": "KJV passage Genesis 3:1-7 (KJV, public domain) (no script on record)",
+  "script_words": 204,
+  "heard_words": 129,
+  "ratio": 0.577,
+  "divergences": [
+   {
+    "t": 189.66,
+    "op": "insert",
+    "script": "",
+    "heard": "one question that s all it took",
+    "min_prob": 0.876
+   },
+   {
+    "t": 193.54,
+    "op": "replace",
+    "script": "subtil",
+    "heard": "subtle",
+    "min_prob": 0.997
+   },
+   {
+    "t": 204.26,
+    "op": "delete",
+    "script": "woman said unto the serpent we may eat of the fruit of the trees of the garden but of the fruit of the tree which is in ",
+    "heard": "",
+    "min_prob": null
+   },
+   {
+    "t": 208.08,
+    "op": "delete",
+    "script": "for god doth know that in the day ye eat thereof then your eyes shall be opened and ye shall be as gods knowing good and",
+    "heard": "",
+    "min_prob": null
+   },
+   {
+    "t": 211.22,
+    "op": "delete",
+    "script": "that it was",
+    "heard": "",
+    "min_prob": null
+   },
+   {
+    "t": 212.16,
+    "op": "delete",
+    "script": "and a tree to be desired to make one wise",
+    "heard": "",
+    "min_prob": null
+   },
+   {
+    "t": 221.38,
+    "op": "replace",
+    "script": "and",
+    "heard": "the enemy still asks the same question did god really say that lord let your word be louder than every lie i hear today ",
+    "min_prob": 0.267
+   },
+   {
+    "t": 231.6,
+    "op": "delete",
+    "script": "knew that they were naked and they sewed fig leaves together and made themselves aprons",
+    "heard": "",
+    "min_prob": null
+   }
+  ]
+ },
+ {
+  "segment": "genesis-04-short",
+  "kind": "short",
+  "start": 232.28,
+  "end": 275.94,
+  "reference": "KJV passage Genesis 3:8-24 (KJV, public domain) (no script on record)",
+  "script_words": 492,
+  "heard_words": 126,
+  "ratio": 0.32,
+  "divergences": [
+   {
+    "t": 232.62,
+    "op": "insert",
+    "script": "",
+    "heard": "hid from god he came looking anyway",
+    "min_prob": 0.98
+   },
+   {
+    "t": 243.14,
+    "op": "delete",
+    "script": "from the presence of the lord god",
+    "heard": "",
+    "min_prob": null
+   },
+   {
+    "t": 250.6,
+    "op": "delete",
+    "script": "and he said i heard thy voice in the garden and i was afraid because i was naked and i hid myself and he said who told t",
+    "heard": "",
+    "min_prob": null
+   },
+   {
+    "t": 256.9,
+    "op": "delete",
+    "script": "and the lord god said behold the man is become as one of us to know good and evil and now lest he put forth his hand and",
+    "heard": "",
+    "min_prob": null
+   },
+   {
+    "t": 267.3,
+    "op": "insert",
+    "script": "",
+    "heard": "even on the day of judgment god clothed them lord when i hide from you call my name again amen",
+    "min_prob": 0.415
+   }
+  ]
+ },
+ {
+  "segment": "i2",
+  "kind": "interlude",
+  "start": 275.94,
+  "end": 321.1,
+  "reference": "timed build report",
+  "script_words": 122,
+  "heard_words": 123,
+  "ratio": 0.98,
+  "divergences": [
+   {
+    "t": 306.38,
+    "op": "replace",
+    "script": "asked",
+    "heard": "asks",
+    "min_prob": 0.645
+   },
+   {
+    "t": 313.72,
+    "op": "replace",
+    "script": "hid",
+    "heard": "hit",
+    "min_prob": 0.603
+   },
+   {
+    "t": 320.88,
+    "op": "insert",
+    "script": "",
+    "heard": "two",
+    "min_prob": 0.166
+   }
+  ]
+ },
+ {
+  "segment": "genesis-05-short",
+  "kind": "short",
+  "start": 321.1,
+  "end": 378.76,
+  "reference": "KJV passage Genesis 4:2-9 (KJV, public domain) (no script on record)",
+  "script_words": 193,
+  "heard_words": 147,
+  "ratio": 0.6,
+  "divergences": [
+   {
+    "t": 320.88,
+    "op": "replace",
+    "script": "and she again bare his brother abel",
+    "heard": "two brothers brought god an offering only one walked away angry genesis chapter 4",
+    "min_prob": 0.166
+   },
+   {
+    "t": 333.86,
+    "op": "delete",
+    "script": "and in process of time it came to pass that cain brought of the fruit of the ground an offering unto the lord and abel h",
+    "heard": "",
+    "min_prob": null
+   },
+   {
+    "t": 345.14,
+    "op": "replace",
+    "script": "and the lord said unto cain why art thou wroth and why is thy countenance fallen",
+    "heard": "god warned him",
+    "min_prob": 0.993
+   },
+   {
+    "t": 354.28,
+    "op": "replace",
+    "script": "and unto thee shall be his desire and thou shalt rule over him and cain talked with abel his brother and it came to pass",
+    "heard": "but",
+    "min_prob": 0.962
+   },
+   {
+    "t": 355.12,
+    "op": "delete",
+    "script": "that",
+    "heard": "",
+    "min_prob": null
+   },
+   {
+    "t": 367.96,
+    "op": "insert",
+    "script": "",
+    "heard": "anger knocked and god still offered cain way back he offers you that same way today lord when anger waits at my door hel",
+    "min_prob": 0.098
+   }
+  ]
+ },
+ {
+  "segment": "i3",
+  "kind": "interlude",
+  "start": 378.76,
+  "end": 467.72,
+  "reference": "timed build report",
+  "script_words": 232,
+  "heard_words": 232,
+  "ratio": 0.991,
+  "divergences": [
+   {
+    "t": 398.58,
+    "op": "replace",
+    "script": "and",
+    "heard": "in",
+    "min_prob": 0.173
+   },
+   {
+    "t": 404.0,
+    "op": "replace",
+    "script": "watched",
+    "heard": "watch",
+    "min_prob": 0.985
+   }
+  ]
+ },
+ {
+  "segment": "genesis-06-short",
+  "kind": "short",
+  "start": 467.72,
+  "end": 538.32,
+  "reference": "KJV passage Genesis 5:21-24 (KJV, public domain) (no script on record)",
+  "script_words": 53,
+  "heard_words": 170,
+  "ratio": 0.377,
+  "divergences": [
+   {
+    "t": 468.52,
+    "op": "insert",
+    "script": "",
+    "heard": "genesis five reads like a list of funerals name after name the same three words close every life and all the days that a",
+    "min_prob": 0.201
+   },
+   {
+    "t": 488.74,
+    "op": "replace",
+    "script": "sixty",
+    "heard": "60",
+    "min_prob": 0.777
+   },
+   {
+    "t": 498.7,
+    "op": "replace",
+    "script": "and all the days of enoch were",
+    "heard": "he did not leave his family to find god he walked with god while raising one for",
+    "min_prob": 0.654
+   },
+   {
+    "t": 505.72,
+    "op": "replace",
+    "script": "sixty and five",
+    "heard": "100",
+    "min_prob": 0.163
+   },
+   {
+    "t": 506.54,
+    "op": "insert",
+    "script": "",
+    "heard": "one ordinary day at a time",
+    "min_prob": 0.916
+   },
+   {
+    "t": 514.86,
+    "op": "insert",
+    "script": "",
+    "heard": "notice what the text never gives enoch no miracle no battle no famous speech only a walk walking with someone means keep",
+    "min_prob": 0.044
+   }
+  ]
+ },
+ {
+  "segment": "genesis-07-short",
+  "kind": "short",
+  "start": 538.32,
+  "end": 704.22,
+  "reference": "plan narration + shot lines (order not timed)",
+  "script_words": 454,
+  "heard_words": 439,
+  "ratio": 0.885,
+  "divergences": [
+   {
+    "t": 538.66,
+    "op": "insert",
+    "script": "",
+    "heard": "the end of all flesh is come before me for the earth is filled with violence through them",
+    "min_prob": 0.098
+   },
+   {
+    "t": 575.7,
+    "op": "replace",
+    "script": "every one",
+    "heard": "everyone",
+    "min_prob": 0.732
+   },
+   {
+    "t": 636.2,
+    "op": "replace",
+    "script": "writer",
+    "heard": "rider",
+    "min_prob": 0.476
+   },
+   {
+    "t": 644.14,
+    "op": "insert",
+    "script": "",
+    "heard": "story",
+    "min_prob": 0.006
+   },
+   {
+    "t": 647.98,
+    "op": "insert",
+    "script": "",
+    "heard": "i will destroy man whom i have created from the face of the earth",
+    "min_prob": 0.071
+   },
+   {
+    "t": 661.22,
+    "op": "insert",
+    "script": "",
+    "heard": "for it repenteth me that i have made them",
+    "min_prob": 0.597
+   },
+   {
+    "t": 703.62,
+    "op": "delete",
+    "script": "the full story is in the long video part eight tomorrow noah builds the ark the end of all flesh is come before me for t",
+    "heard": "",
+    "min_prob": null
+   }
+  ]
+ },
+ {
+  "segment": "genesis-08-short",
+  "kind": "short",
+  "start": 704.22,
+  "end": 872.22,
+  "reference": "plan narration + shot lines (order not timed)",
+  "script_words": 458,
+  "heard_words": 448,
+  "ratio": 0.894,
+  "divergences": [
+   {
+    "t": 704.56,
+    "op": "insert",
+    "script": "",
+    "heard": "and behold i even i do bring a flood of waters upon the earth to destroy all flesh",
+    "min_prob": 0.265
+   },
+   {
+    "t": 736.26,
+    "op": "replace",
+    "script": "neighbours",
+    "heard": "neighbors",
+    "min_prob": 0.647
+   },
+   {
+    "t": 768.14,
+    "op": "replace",
+    "script": "hull",
+    "heard": "hall",
+    "min_prob": 0.947
+   },
+   {
+    "t": 782.78,
+    "op": "replace",
+    "script": "noe",
+    "heard": "noh",
+    "min_prob": 0.516
+   },
+   {
+    "t": 796.56,
+    "op": "replace",
+    "script": "stones",
+    "heard": "stone",
+    "min_prob": 0.66
+   },
+   {
+    "t": 803.92,
+    "op": "replace",
+    "script": "longsuffering",
+    "heard": "long suffering",
+    "min_prob": 0.806
+   },
+   {
+    "t": 818.0,
+    "op": "insert",
+    "script": "",
+    "heard": "but with thee will i establish my covenant and thou shalt come into the ark",
+    "min_prob": 0.388
+   },
+   {
+    "t": 856.54,
+    "op": "insert",
+    "script": "",
+    "heard": "he",
+    "min_prob": 0.04
+   },
+   {
+    "t": 860.32,
+    "op": "replace",
+    "script": "noah never",
+    "heard": "no one ever",
+    "min_prob": 0.815
+   },
+   {
+    "t": 871.44,
+    "op": "delete",
+    "script": "the full story is in the long video part nine tomorrow the flood and behold i even i do bring a flood of waters upon the",
+    "heard": "",
+    "min_prob": null
+   }
+  ]
+ },
+ {
+  "segment": "genesis-09-short",
+  "kind": "short",
+  "start": 872.22,
+  "end": 1037.92,
+  "reference": "plan narration + shot lines (order not timed)",
+  "script_words": 468,
+  "heard_words": 452,
+  "ratio": 0.93,
+  "divergences": [
+   {
+    "t": 872.64,
+    "op": "insert",
+    "script": "",
+    "heard": "for yet seven days and i will cause it to rain upon the earth forty days and forty nights",
+    "min_prob": 0.401
+   },
+   {
+    "t": 912.4,
+    "op": "replace",
+    "script": "herded",
+    "heard": "heard",
+    "min_prob": 0.83
+   },
+   {
+    "t": 919.7,
+    "op": "replace",
+    "script": "camps",
+    "heard": "camp",
+    "min_prob": 0.949
+   },
+   {
+    "t": 969.0,
+    "op": "replace",
+    "script": "bare",
+    "heard": "bear",
+    "min_prob": 0.763
+   },
+   {
+    "t": 1011.12,
+    "op": "replace",
+    "script": "an",
+    "heard": "and",
+    "min_prob": 0.542
+   },
+   {
+    "t": 1037.8,
+    "op": "replace",
+    "script": "follow the full story as this series continues next part ten the dove and the olive leaf for yet seven days and i will c",
+    "heard": "before",
+    "min_prob": 0.388
+   }
+  ]
+ },
+ {
+  "segment": "i4",
+  "kind": "interlude",
+  "start": 1037.92,
+  "end": 1104.81,
+  "reference": "timed build report",
+  "script_words": 165,
+  "heard_words": 165,
+  "ratio": 1.0,
+  "divergences": []
+ },
+ {
+  "segment": "flood-ends-long",
+  "kind": "long",
+  "start": 1104.81,
+  "end": 1598.57,
+  "reference": "timed build report",
+  "script_words": 1363,
+  "heard_words": 1349,
+  "ratio": 0.972,
+  "divergences": [
+   {
+    "t": 1110.38,
+    "op": "delete",
+    "script": "go forth of the ark thou and thy wife and thy sons and thy sons wives with thee",
+    "heard": "",
+    "min_prob": null
+   },
+   {
+    "t": 1131.16,
+    "op": "replace",
+    "script": "grey",
+    "heard": "gray",
+    "min_prob": 0.649
+   },
+   {
+    "t": 1148.82,
+    "op": "replace",
+    "script": "asswaged",
+    "heard": "assuaged",
+    "min_prob": 0.761
+   },
+   {
+    "t": 1185.98,
+    "op": "insert",
+    "script": "",
+    "heard": "the",
+    "min_prob": 0.263
+   },
+   {
+    "t": 1217.42,
+    "op": "replace",
+    "script": "tenth",
+    "heard": "10th",
+    "min_prob": 0.704
+   },
+   {
+    "t": 1218.86,
+    "op": "replace",
+    "script": "tenth",
+    "heard": "10th",
+    "min_prob": 0.977
+   },
+   {
+    "t": 1222.36,
+    "op": "replace",
+    "script": "mountains seen",
+    "heard": "mountain scene",
+    "min_prob": 0.866
+   },
+   {
+    "t": 1226.5,
+    "op": "replace",
+    "script": "grey",
+    "heard": "gray",
+    "min_prob": 0.732
+   },
+   {
+    "t": 1331.6,
+    "op": "replace",
+    "script": "in to",
+    "heard": "into",
+    "min_prob": 0.873
+   },
+   {
+    "t": 1335.84,
+    "op": "replace",
+    "script": "pluckt",
+    "heard": "plucked",
+    "min_prob": 0.993
+   },
+   {
+    "t": 1337.08,
+    "op": "replace",
+    "script": "noah",
+    "heard": "no one",
+    "min_prob": 0.772
+   },
+   {
+    "t": 1346.14,
+    "op": "insert",
+    "script": "",
+    "heard": "when",
+    "min_prob": 0.994
+   },
+   {
+    "t": 1367.24,
+    "op": "replace",
+    "script": "any more",
+    "heard": "anymore",
+    "min_prob": 0.894
+   },
+   {
+    "t": 1380.62,
+    "op": "replace",
+    "script": "six hundredth",
+    "heard": "600th",
+    "min_prob": 0.722
+   },
+   {
+    "t": 1404.44,
+    "op": "replace",
+    "script": "miss",
+    "heard": "missed",
+    "min_prob": 0.454
+   },
+   {
+    "t": 1438.24,
+    "op": "replace",
+    "script": "onto",
+    "heard": "unto",
+    "min_prob": 0.965
+   },
+   {
+    "t": 1468.64,
+    "op": "replace",
+    "script": "any more",
+    "heard": "anymore",
+    "min_prob": 0.629
+   },
+   {
+    "t": 1476.8,
+    "op": "replace",
+    "script": "every thing",
+    "heard": "everything",
+    "min_prob": 0.948
+   },
+   {
+    "t": 1521.3,
+    "op": "replace",
+    "script": "any more",
+    "heard": "anymore",
+    "min_prob": 0.636
+   },
+   {
+    "t": 1524.76,
+    "op": "replace",
+    "script": "any more",
+    "heard": "anymore",
+    "min_prob": 0.691
+   },
+   {
+    "t": 1538.0,
+    "op": "replace",
+    "script": "colour",
+    "heard": "color",
+    "min_prob": 0.915
+   },
+   {
+    "t": 1543.34,
+    "op": "replace",
+    "script": "bow",
+    "heard": "bell",
+    "min_prob": 0.501
+   },
+   {
+    "t": 1596.42,
+    "op": "insert",
+    "script": "",
+    "heard": "what are you waiting for god to open",
+    "min_prob": 0.864
+   }
+  ]
+ },
+ {
+  "segment": "i5",
+  "kind": "interlude",
+  "start": 1598.57,
+  "end": 1679.03,
+  "reference": "timed build report",
+  "script_words": 201,
+  "heard_words": 201,
+  "ratio": 1.0,
+  "divergences": []
+ },
+ {
+  "segment": "genesis-10-11-long",
+  "kind": "long",
+  "start": 1679.03,
+  "end": 2155.33,
+  "reference": "timed build report",
+  "script_words": 1259,
+  "heard_words": 1267,
+  "ratio": 0.98,
+  "divergences": [
+   {
+    "t": 1722.5,
+    "op": "replace",
+    "script": "trader",
+    "heard": "traitor",
+    "min_prob": 0.494
+   },
+   {
+    "t": 1751.98,
+    "op": "replace",
+    "script": "erech",
+    "heard": "a wretch",
+    "min_prob": 0.762
+   },
+   {
+    "t": 1752.76,
+    "op": "replace",
+    "script": "accad",
+    "heard": "a cadd",
+    "min_prob": 0.731
+   },
+   {
+    "t": 1753.54,
+    "op": "replace",
+    "script": "calneh",
+    "heard": "calne",
+    "min_prob": 0.453
+   },
+   {
+    "t": 1771.94,
+    "op": "replace",
+    "script": "plain",
+    "heard": "plane",
+    "min_prob": 0.517
+   },
+   {
+    "t": 1776.92,
+    "op": "replace",
+    "script": "plain",
+    "heard": "plane",
+    "min_prob": 0.82
+   },
+   {
+    "t": 1796.48,
+    "op": "replace",
+    "script": "moulds",
+    "heard": "molds",
+    "min_prob": 0.913
+   },
+   {
+    "t": 1825.1,
+    "op": "replace",
+    "script": "morter",
+    "heard": "mortar",
+    "min_prob": 0.993
+   },
+   {
+    "t": 1842.66,
+    "op": "replace",
+    "script": "plain",
+    "heard": "plane",
+    "min_prob": 0.89
+   },
+   {
+    "t": 1867.24,
+    "op": "replace",
+    "script": "wider",
+    "heard": "whiter",
+    "min_prob": 0.712
+   },
+   {
+    "t": 1930.62,
+    "op": "replace",
+    "script": "grey",
+    "heard": "gray",
+    "min_prob": 0.741
+   },
+   {
+    "t": 1979.12,
+    "op": "replace",
+    "script": "there",
+    "heard": "they're",
+    "min_prob": 0.738
+   },
+   {
+    "t": 1983.1,
+    "op": "delete",
+    "script": "s",
+    "heard": "",
+    "min_prob": null
+   },
+   {
+    "t": 2003.84,
+    "op": "replace",
+    "script": "calls",
+    "heard": "called",
+    "min_prob": 0.849
+   },
+   {
+    "t": 2096.84,
+    "op": "replace",
+    "script": "babble",
+    "heard": "babel",
+    "min_prob": 0.771
+   },
+   {
+    "t": 2122.76,
+    "op": "replace",
+    "script": "ur",
+    "heard": "urr",
+    "min_prob": 0.414
+   },
+   {
+    "t": 2128.56,
+    "op": "replace",
+    "script": "terah terah",
+    "heard": "terra terra",
+    "min_prob": 0.486
+   },
+   {
+    "t": 2131.24,
+    "op": "replace",
+    "script": "nahor",
+    "heard": "nahr",
+    "min_prob": 0.705
+   },
+   {
+    "t": 2131.64,
+    "op": "replace",
+    "script": "haran",
+    "heard": "harran",
+    "min_prob": 0.449
+   },
+   {
+    "t": 2132.92,
+    "op": "replace",
+    "script": "haran",
+    "heard": "harran",
+    "min_prob": 0.994
+   },
+   {
+    "t": 2153.6,
+    "op": "insert",
+    "script": "",
+    "heard": "what are you building your name on",
+    "min_prob": 0.984
+   }
+  ]
+ },
+ {
+  "segment": "close",
+  "kind": "close",
+  "start": 2155.33,
+  "end": 2249.62,
+  "reference": "timed build report",
+  "script_words": 244,
+  "heard_words": 235,
+  "ratio": 0.981,
+  "divergences": [
+   {
+    "t": 2215.88,
+    "op": "delete",
+    "script": "genesis",
+    "heard": "",
+    "min_prob": null
+   },
+   {
+    "t": 2216.52,
+    "op": "delete",
+    "script": "to",
+    "heard": "",
+    "min_prob": null
+   },
+   {
+    "t": 2245.04,
+    "op": "delete",
+    "script": "coming next on this channel the call",
+    "heard": "",
+    "min_prob": null
+   }
+  ]
+ }
+]
