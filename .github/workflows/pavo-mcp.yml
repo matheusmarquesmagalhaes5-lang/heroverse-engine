@@ -14,6 +14,9 @@ on:
         default: ''
 permissions:
   contents: read
+concurrency:
+  group: heroverse-pavo-mcp
+  cancel-in-progress: false
 jobs:
   offline:
     runs-on: ubuntu-24.04

@@ -17,6 +17,9 @@ on:
 permissions:
   actions: read   # E116: the dispatch guard reads runs (read-only)
   contents: write
+concurrency:
+  group: heroverse-cf-images
+  cancel-in-progress: false
 jobs:
   images:
     concurrency:   # E116: one run per subject across the guarded workflows
