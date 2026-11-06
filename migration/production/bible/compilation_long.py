@@ -510,7 +510,7 @@ def card_overlay(card, files):
             + dt(files[1], 78, 112, "white") + dt(files[2], 44, 212, "0xc9d3e6"))
 
 
-def render_short(src, out, end=None, card=None):
+def render_short(src, out, end=None, card=None, patches=()):
     d = duration(src) if end is None else min(duration(src), float(end))
     v, a = fades(d)
     files = []
@@ -518,10 +518,15 @@ def render_short(src, out, end=None, card=None):
         p = Path(f"{Path(out).with_suffix('')}.card{n}.txt")
         p.write_text(t)
         files.append(p)
+    fg = f"[b]scale=-2:{H},fps={FPS}[f0];"   # E309: a patch lays its lip-synced 9:16 picture over the Short's own span
+    for n, (_, at, secs) in enumerate(patches, 1):
+        fg += (f"[{n}:v]scale=-2:{H},setsar=1,fps={FPS},trim=duration={secs:.3f},setpts=PTS-STARTPTS+{at:.3f}/TB[p{n}];"
+               f"[f{n - 1}][p{n}]overlay=enable='between(t,{at:.3f},{at + secs:.3f})':eof_action=pass[f{n}];")
     graph = (f"[0:v]split[a][b];[a]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=40:6,"
-             f"eq=brightness=-0.28[bg];[b]scale=-2:{H}[fg];[bg][fg]overlay=(W-w)/2:0,setsar=1{card_overlay(card, files)},{v}[v];"
+             f"eq=brightness=-0.28[bg];{fg}[bg][f{len(patches)}]overlay=(W-w)/2:0,setsar=1{card_overlay(card, files)},{v}[v];"
              f"[0:a]aresample=48000,aformat=channel_layouts=stereo,{gain_filter(src)},{a}[a]")
-    run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", src, "-filter_complex", graph, "-map", "[v]", "-map", "[a]",
+    ins = [x for clip, _, _ in patches for x in ("-i", clip)]
+    run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", src, *ins, "-filter_complex", graph, "-map", "[v]", "-map", "[a]",
          "-t", f"{d:.3f}", *ENC, out])
     for p in files:
         p.unlink()
@@ -813,7 +818,8 @@ def build(plan_path, src_dir, out_dir, voice_dir=None):
             patches = [(src_dir / x["lipsync"]["clip"], float(x["at"]), float(x["seconds"])) for x in c.get("patches") or []]
             render_long(master, seg / f"{k:02d}b-short.mp4", c.get("end_s"), card, patches)
         else:
-            render_short(master, seg / f"{k:02d}b-short.mp4", c.get("end_s"), card)
+            patches = [(src_dir / x["lipsync"]["clip"], float(x["at"]), float(x["seconds"])) for x in c.get("patches") or []]
+            render_short(master, seg / f"{k:02d}b-short.mp4", c.get("end_s"), card, patches)
         add(kind, sid, seg / f"{k:02d}b-short.mp4", source_sha256=sha, chapter=c["title"],
             **({"end_s": c["end_s"]} if c.get("end_s") else {}))
         interlude(k)
