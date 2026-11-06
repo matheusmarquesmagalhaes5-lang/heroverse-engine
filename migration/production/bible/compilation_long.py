@@ -51,6 +51,9 @@ BEATS_QUOTE = "0 credits (no generation: Kokoro voice-over on approved stills)"
 MOTIONS = ("in", "out", "left", "right")
 ZOOM = 0.06                     # a beat's camera move: 6 % over the whole beat (never a still hold after the move ends)
 BEATS_MAX = 12
+LIPSYNC_CONF_MIN = 2.7          # lipsync_check.SYNC_CONF_MIN, the SyncNet floor every speaking face meets (E309)
+LIPSYNC_OFFSET_MAX = 2          # |AV offset| in frames at 25 fps a lip-synced segment may keep (coordinator 2026-11-06)
+SRC_DIR = None                  # build(): where the release assets (masters and lip-synced clips) were downloaded
 MUSIC = "music.flac"            # E308: the owned bed (release asset original-rest-music.lossless.flac) next to the voice lines
 MUSIC_SHA256 = "1a90714dce83ce5919230a420f56cd17d81d82437303b360244d0fe0f22bbd0c"   # episode.yml's pin
 BED_LUFS = -30.0                # the bed's own loudness before ducking: 16 LU under the Keeper's -14 LUFS voice
@@ -168,6 +171,13 @@ def plan_problems(plan, episodes=EPISODES, root=ROOT):
                     and ats[-1] <= limit - 10 and all(b - a >= 10 for a, b in zip(ats, ats[1:]))
                     and all(isinstance(x.get("title"), str) and 0 < len(x["title"]) <= 80 for x in subs)):
                 bad.append(f"{cid} subchapters must be [{{at, title}}], 10 s apart, inside the chapter")
+        for n, x in enumerate(c.get("patches") or [], 1):   # E309: a lip-synced picture over a speaking face, audio untouched
+            limit = float(c.get("end_s") or ep.get("seconds") or 0)
+            if not (isinstance(x, dict) and type(x.get("at")) in (int, float) and type(x.get("seconds")) in (int, float)
+                    and 0 <= x["at"] and 0.5 <= x["seconds"] <= 30 and x["at"] + x["seconds"] <= limit):
+                bad.append(f"{cid} patch {n} must be {{at, seconds}} inside the chapter")
+                continue
+            bad += lipsync_problems(f"{cid} patch {n}", x.get("lipsync"), root)
         end = c.get("end_s")   # E254: cut the Short's own series CTA ("the full story is in the long video", "part N tomorrow")
         if end is not None and not (type(end) in (int, float) and 10 <= end < float(ep.get("seconds") or 0)):
             bad.append(f"{cid} end_s must be a number from 10 s up to the Short's length")
@@ -290,8 +300,8 @@ def beats_problems(label, k, root=ROOT):
     if k.get("voice") != {"voice_id": VOICE_ID, "speed": 1.0}:
         out.append(f"{label} voice is not the pinned voice")
     lip = k.get("lipsync")
-    if not (isinstance(lip, dict) and lip.get("used") is False and isinstance(lip.get("reason"), str) and lip["reason"].strip()):
-        out.append(f"{label} needs the lipsync record (used false and the reason)")
+    if not (isinstance(lip, dict) and type(lip.get("used")) is bool and isinstance(lip.get("reason"), str) and lip["reason"].strip()):
+        out.append(f"{label} needs the lipsync record (used and the reason)")
     for j, b in enumerate(beats, 1):
         where = f"{label} beat {j}"
         if not isinstance(b, dict):
@@ -304,11 +314,58 @@ def beats_problems(label, k, root=ROOT):
             out.append(f"{where} motion must be one of {', '.join(MOTIONS)}")
         still = b.get("still") if isinstance(b.get("still"), dict) else {}
         out += still_problems(where, still.get("path"), still.get("sha256"), still.get("approved_still"), root)
+        if b.get("lipsync") is not None:
+            out += lipsync_problems(where, b["lipsync"], root)
+        elif keeper_face(still.get("approved_still"), root):   # E309: the Keeper's face never speaks without lip-sync
+            out.append(f"{where} speaks over the Keeper's face without lip-sync (a lip-synced clip of this line is required)")
         ref = b.get("reference")
         if ref is not None:
             p = kjv_problem(ref, text) if isinstance(ref, str) and isinstance(text, str) else "reference must be text"
             if p:
                 out.append(f"{where} {p}")
+    return out
+
+
+def keeper_face(approved_id, root=ROOT):
+    """True when an approved still shows the Keeper (its approval names a Keeper reference record, ch-keeper*)."""
+    f = Path(root) / "migration/production/bible/stills" / f"{approved_id}.json"
+    if not (isinstance(approved_id, str) and f.is_file()):
+        return False
+    rec = load(f)
+    return any(str((r or {}).get("record", "")).startswith("ch-keeper") for r in rec.get("references") or []) \
+        or "-k-" in approved_id
+
+
+def lipsync_problems(where, lip, root=ROOT):
+    """E309: a lip-synced clip of a speaking face (lipsync.yml, MuseTalk 1.5): the release asset named by its sha256, the
+    exact line it carries (repo WAV by sha256), the silent source it was made from, and the measured SyncNet of the
+    reviewed clip at or above the floor with the offset inside LIPSYNC_OFFSET_MAX."""
+    out = []
+    if not isinstance(lip, dict):
+        return [where + " lipsync record is not a record"]
+    sha = str(lip.get("sha256", ""))
+    if not (re.fullmatch(r"[0-9a-f]{64}", sha) and re.fullmatch(r"shot-genesis-[a-z0-9-]+-sha256-" + sha + r"\.mp4", str(lip.get("clip", "")))):
+        out.append(where + " lipsync clip must be the release asset shot-...-sha256-<sha256>.mp4")
+    for f in ("line", "source"):
+        q = Path(root) / str(lip.get(f, ""))
+        if not lip.get(f) or not q.is_file() or sha256(q) != lip.get(f + "_sha256"):
+            out.append(f"{where} lipsync {f} missing or changed")
+    sync = lip.get("sync") if isinstance(lip.get("sync"), dict) else {}
+    conf, off = sync.get("conf"), sync.get("offset")
+    if not (type(conf) in (int, float) and conf >= LIPSYNC_CONF_MIN and type(off) is int and abs(off) <= LIPSYNC_OFFSET_MAX):
+        out.append(f"{where} lipsync SyncNet must be conf >= {LIPSYNC_CONF_MIN} and |offset| <= {LIPSYNC_OFFSET_MAX}")
+    if not (type(lip.get("run_id")) is int and isinstance(lip.get("review"), str) and lip["review"].strip()):
+        out.append(where + " lipsync needs its run id and the reviewer's note")
+    return out
+
+
+def lipsync_assets(plan):
+    """[(asset, sha256)] of every lip-synced clip the plan uses: Keeper beats and chapter patches."""
+    out = []
+    for _, k in keeper_sections(plan) if all(plan.get(x) for x in ("hook", "close")) else []:
+        out += [(b["lipsync"]["clip"], b["lipsync"]["sha256"]) for b in k.get("beats") or [] if isinstance(b.get("lipsync"), dict)]
+    for c in plan.get("chapters") or []:
+        out += [(x["lipsync"]["clip"], x["lipsync"]["sha256"]) for x in c.get("patches") or [] if isinstance(x.get("lipsync"), dict)]
     return out
 
 
@@ -371,7 +428,8 @@ def voice_script(plan_path, work):
     segs = [{"id": key, "text": plan[key]["text"], "pause_after": 0.0} for key in ("hook", "close") if "voiceover" in plan[key]]
     for key, k in keeper_sections(plan):
         if "beats" in k:
-            segs += [{"id": i, "text": b["text"], "pause_after": 0.0} for i, b in zip(beat_ids(key, k), k["beats"])]
+            segs += [{"id": i, "text": b["text"], "pause_after": 0.0} for i, b in zip(beat_ids(key, k), k["beats"])
+                     if "lipsync" not in b]   # E309: a lip-synced beat speaks the exact line its clip carries
     save(Path(work) / "voice-script.json", {"voice": {"voice_id": VOICE_ID, "speed": 1.0}, "segments": segs})
 
 
@@ -383,7 +441,7 @@ def voice_cut(plan_path, work, voice_dir):
     lines = [key for key in ("hook", "close") if "voiceover" in plan[key]]
     for key, k in keeper_sections(plan):
         if "beats" in k:
-            lines += beat_ids(key, k)
+            lines += [i for i, b in zip(beat_ids(key, k), k["beats"]) if "lipsync" not in b]
     offsets = {}
     for key in lines:
         mine = [x for x in tl["sentences"] if x["segment"] == key]
@@ -469,8 +527,10 @@ def render_short(src, out, end=None, card=None):
         p.unlink()
 
 
-def render_long(src, out, end=None, card=None):
-    """A public 16:9 long as a chapter: no blurred framing (it already is 1920x1080), same card, fades and gain."""
+def render_long(src, out, end=None, card=None, patches=()):
+    """A public 16:9 long as a chapter: no blurred framing (it already is 1920x1080), same card, fades and gain.
+    E309: `patches` [(clip, at, seconds)] lay a lip-synced picture over a speaking face for its span; the chapter's own
+    audio is never touched."""
     d = duration(src) if end is None else min(duration(src), float(end))
     v, a = fades(d)
     files = []
@@ -478,10 +538,14 @@ def render_long(src, out, end=None, card=None):
         p = Path(f"{Path(out).with_suffix('')}.card{n}.txt")
         p.write_text(t)
         files.append(p)
-    graph = (f"[0:v]scale={W}:{H}:force_original_aspect_ratio=decrease,pad={W}:{H}:(ow-iw)/2:(oh-ih)/2,setsar=1"
-             f"{card_overlay(card, files)},{v}[v];"
+    base = f"[0:v]scale={W}:{H}:force_original_aspect_ratio=decrease,pad={W}:{H}:(ow-iw)/2:(oh-ih)/2,setsar=1,fps={FPS}[b0];"
+    for n, (_, at, secs) in enumerate(patches, 1):
+        base += (f"[{n}:v]scale={W}:{H},setsar=1,fps={FPS},trim=duration={secs:.3f},setpts=PTS-STARTPTS+{at:.3f}/TB[p{n}];"
+                 f"[b{n - 1}][p{n}]overlay=enable='between(t,{at:.3f},{at + secs:.3f})':eof_action=pass[b{n}];")
+    graph = (base + f"[b{len(patches)}]null{card_overlay(card, files)},{v}[v];"
              f"[0:a]aresample=48000,aformat=channel_layouts=stereo,{gain_filter(src)},{a}[a]")
-    run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", src, "-filter_complex", graph, "-map", "[v]", "-map", "[a]",
+    ins = [x for clip, _, _ in patches for x in ("-i", clip)]
+    run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", src, *ins, "-filter_complex", graph, "-map", "[v]", "-map", "[a]",
          "-t", f"{d:.3f}", *ENC, out])
     for p in files:
         p.unlink()
@@ -591,16 +655,43 @@ def music_bed(segment, music, offset, out):
          "-t", f"{d:.3f}", "-movflags", "+faststart", out])
 
 
+def render_beat_clip(clip, out, motion, card=None):
+    """E309: a lip-synced Keeper beat: the clip's picture (our line already on it, bit-exact, with its picture tail) after a
+    still beat (BEAT), the same camera move, card, audio chain and fades as a still beat."""
+    d = duration(clip) + BEAT
+    v, a = fades(d)
+    files = []
+    for n, t in enumerate(card or ()):
+        p = Path(f"{Path(out).with_suffix('')}.card{n}.txt")
+        p.write_text(t)
+        files.append(p)
+    graph = (f"[0:v]fps={FPS},scale={W}:{H},tpad=start_mode=clone:start_duration={BEAT},{motion_filter(motion, d)},setsar=1"
+             f"{card_overlay(card, files)},{v}[v];"
+             f"[0:a]aresample=48000,aformat=channel_layouts=stereo,{gain_filter(clip)},adelay={int(BEAT * 1000)}:all=1,"
+             f"apad=whole_dur={d:.3f},{a}[a]")
+    run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", clip, "-filter_complex", graph, "-map", "[v]", "-map", "[a]",
+         "-t", f"{d:.3f}", *ENC, out])
+    for p in files:
+        p.unlink()
+
+
 def render_beats(key, k, voice_dir, out, card=None):
     """A v2 Keeper segment: its beats rendered one by one and joined (same encoder settings, stream copy).
     Returns the seconds of our spoken lines (the no_padding and original-share measures)."""
     parts, spoken, starts, t = [], 0.0, {}, 0.0
     for j, (i, b) in enumerate(zip(beat_ids(key, k), k["beats"])):
-        wav = Path(voice_dir or "") / f"{i}.wav"
-        if not wav.is_file():
-            raise SystemExit(f"VOICE_LINE_MISSING {i} (compilation_long.py voice-cut first)")
         part = Path(f"{Path(out).with_suffix('')}.{j:02d}.mp4")
-        spoken += render_beat(ROOT / b["still"]["path"], wav, part, b["motion"], card if j == 0 else None)
+        if "lipsync" in b:   # E309: the lip-synced clip of this exact line
+            clip = Path(SRC_DIR or "") / b["lipsync"]["clip"]
+            if not clip.is_file() or sha256(clip) != b["lipsync"]["sha256"]:
+                raise SystemExit(f"LIPSYNC_CLIP_MISSING {i}")
+            render_beat_clip(clip, part, b["motion"], card if j == 0 else None)
+            spoken += round(duration(ROOT / b["lipsync"]["line"]), 3)
+        else:
+            wav = Path(voice_dir or "") / f"{i}.wav"
+            if not wav.is_file():
+                raise SystemExit(f"VOICE_LINE_MISSING {i} (compilation_long.py voice-cut first)")
+            spoken += render_beat(ROOT / b["still"]["path"], wav, part, b["motion"], card if j == 0 else None)
         starts[i] = round(t + BEAT, 3)   # E307: where this beat's line starts inside the segment
         t += duration(part)
         parts.append(part)
@@ -674,9 +765,14 @@ def clock(t):
 
 
 def build(plan_path, src_dir, out_dir, voice_dir=None):
+    global SRC_DIR
     plan = load(plan_path)
     refuse(plan_problems(plan))
     src_dir, out = Path(src_dir), Path(out_dir)
+    SRC_DIR = src_dir
+    for asset, sha in lipsync_assets(plan):
+        if not (src_dir / asset).is_file() or sha256(src_dir / asset) != sha:
+            raise SystemExit(f"SOURCE_SHA256_MISMATCH {asset}")
     out.mkdir(parents=True, exist_ok=True)
     segs, rows = [], []
 
@@ -713,7 +809,11 @@ def build(plan_path, src_dir, out_dir, voice_dir=None):
         c = plan["chapters"][k - 1]
         card = (f"PART {k} OF {len(plan['chapters'])}", c["title"], c["reference"] + " (KJV)")
         kind = "long" if is_long(c) else "short"
-        (render_long if is_long(c) else render_short)(master, seg / f"{k:02d}b-short.mp4", c.get("end_s"), card)
+        if is_long(c):
+            patches = [(src_dir / x["lipsync"]["clip"], float(x["at"]), float(x["seconds"])) for x in c.get("patches") or []]
+            render_long(master, seg / f"{k:02d}b-short.mp4", c.get("end_s"), card, patches)
+        else:
+            render_short(master, seg / f"{k:02d}b-short.mp4", c.get("end_s"), card)
         add(kind, sid, seg / f"{k:02d}b-short.mp4", source_sha256=sha, chapter=c["title"],
             **({"end_s": c["end_s"]} if c.get("end_s") else {}))
         interlude(k)
@@ -761,6 +861,10 @@ def timed_reference(plan, timeline, sha, voice_dir=None, root=ROOT):
     segment + the sentence's offset in the cut line), and each chapter's sentences from its source's build report,
     shifted to the chapter's start and cut at its end_s. A chapter with no timed source report is listed as untimed."""
     offsets = load(Path(voice_dir) / "sentences.json") if voice_dir and (Path(voice_dir) / "sentences.json").is_file() else {}
+    for key, k in keeper_sections(plan):   # E309: a lip-synced line's sentences, recorded with its clip
+        for i, b in zip(beat_ids(key, k), k.get("beats") or []):
+            if isinstance(b.get("lipsync"), dict) and b["lipsync"].get("sentences"):
+                offsets[i] = b["lipsync"]["sentences"]
     sentences, untimed = [], []
     for r in timeline:
         if r.get("line_starts"):
@@ -968,6 +1072,8 @@ def main(argv):
         plan = load(argv[2])
         refuse(plan_problems(plan))
         for _, asset, sha, _ in sources(plan):
+            print(asset, sha)
+        for asset, sha in lipsync_assets(plan):   # E309: the lip-synced clips, downloaded and checked the same way
             print(asset, sha)
     elif cmd == "build" and len(argv) in (5, 6):
         build(*argv[2:])

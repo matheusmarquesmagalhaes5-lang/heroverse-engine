@@ -1,0 +1,37 @@
+[
+ {
+  "id": "g07-k-insight",
+  "chapter": "genesis-07-short",
+  "short_start": 152.802,
+  "short_end": 161.597,
+  "source_frame": "short-k-insight"
+ },
+ {
+  "id": "g07-k-question",
+  "chapter": "genesis-07-short",
+  "short_start": 161.597,
+  "short_end": 165.6,
+  "source_frame": "short-k-question"
+ },
+ {
+  "id": "g08-k-insight",
+  "chapter": "genesis-08-short",
+  "short_start": 153.983,
+  "short_end": 162.991,
+  "source_frame": "short-k-insight"
+ },
+ {
+  "id": "g08-k-question",
+  "chapter": "genesis-08-short",
+  "short_start": 162.991,
+  "short_end": 167.7,
+  "source_frame": "short-k-question"
+ },
+ {
+  "id": "g09-k-question",
+  "chapter": "genesis-09-short",
+  "short_start": 160.054,
+  "short_end": 165.4,
+  "source_frame": "short-k-question"
+ }
+]

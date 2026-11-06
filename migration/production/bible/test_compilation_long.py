@@ -357,6 +357,48 @@ class OriginalKeeperV2Tests(unittest.TestCase):
                 cl.build(GENESIS, t, t / "out", t / "no-voice-dir")
             self.assertIn("MUSIC_MISSING", str(e.exception))
 
+    def test_e309_the_keepers_face_never_speaks_without_lip_sync(self):
+        plan = cl.load(GENESIS)
+        bare = copy.deepcopy(plan)
+        for _, k in cl.keeper_sections(bare):
+            for b in k["beats"]:
+                b.pop("lipsync", None)
+        faces = [x for x in cl.plan_problems(bare) if "without lip-sync" in x]
+        self.assertEqual(len(faces), 19)        # every Keeper-portrait beat; the scene-still beats are voice-over
+        self.assertTrue(cl.keeper_face("flood-ends-long-k-bow"))
+        self.assertFalse(cl.keeper_face("arc-01-long-s-c1-river"))
+        lip = {"clip": "shot-genesis-part1-compilation-hook-01-sha256-" + "a" * 64 + ".mp4", "sha256": "a" * 64,
+               "line": "migration/evidence/lipsync/genesis-part1/lines/hook-01.wav",
+               "source": "migration/evidence/lipsync/genesis-part1/sources/arc-01-long-k-promise-2-static30.mp4",
+               "sync": {"conf": 6.0, "offset": 0}, "run_id": 1, "review": "frames viewed"}
+        lip["line_sha256"] = cl.sha256(ROOT / lip["line"])
+        lip["source_sha256"] = cl.sha256(ROOT / lip["source"])
+        self.assertEqual(cl.lipsync_problems("x", lip), [])
+        for mutate, text in ((lambda l: l["sync"].update(conf=2.69), "SyncNet"), (lambda l: l["sync"].update(offset=-3), "SyncNet"),
+                             (lambda l: l.update(line_sha256="0" * 64), "line missing or changed"),
+                             (lambda l: l.update(clip="other.mp4"), "release asset"), (lambda l: l.pop("review"), "note")):
+            bad = copy.deepcopy(lip)
+            mutate(bad)
+            self.assertTrue(any(text in x for x in cl.lipsync_problems("x", bad)), text)
+
+    @unittest.skipUnless(FFMPEG, "ffmpeg")
+    def test_e309_a_patch_replaces_only_the_picture_of_its_span(self):
+        with tempfile.TemporaryDirectory() as t:
+            t = Path(t)
+            ff("-f", "lavfi", "-i", "color=c=black:s=1920x1080:r=30:d=6", "-f", "lavfi", "-i", "sine=f=300:r=48000:d=6",
+               "-c:v", "libx264", "-pix_fmt", "yuv420p", "-c:a", "aac", "-shortest", t / "long.mp4")
+            ff("-f", "lavfi", "-i", "color=c=white:s=1920x1080:r=30:d=2", "-c:v", "libx264", "-pix_fmt", "yuv420p", t / "p.mp4")
+            cl.render_long(t / "long.mp4", t / "a.mp4")
+            cl.render_long(t / "long.mp4", t / "b.mp4", patches=[(t / "p.mp4", 2.0, 2.0)])
+            luma = lambda f, at: float(cl.run(["ffmpeg", "-nostdin", "-hide_banner", "-ss", str(at), "-i", f, "-frames:v", "1",
+                                              "-vf", "signalstats,metadata=print:key=lavfi.signalstats.YAVG", "-f", "null", "-"]
+                                             ).stderr.split("YAVG=")[1].split()[0])
+            self.assertLess(luma(t / "b.mp4", 1.0), 40)
+            self.assertGreater(luma(t / "b.mp4", 3.0), 200)   # the patch's picture inside its span
+            self.assertLess(luma(t / "b.mp4", 4.6), 40)
+            pcm = lambda f: cl.run(["ffmpeg", "-nostdin", "-v", "error", "-i", f, "-map", "0:a", "-f", "md5", "-"]).stdout
+            self.assertEqual(pcm(t / "a.mp4"), pcm(t / "b.mp4"))   # the chapter's own audio is untouched
+
     def test_e306_v2_qa_rows(self):
         plan = cl.load(GENESIS)
         src = [{"short": cid, "sha256": "a" * 64, "seconds": 1.0} for cid in map(cl.chapter_id, plan["chapters"])]

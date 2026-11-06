@@ -5290,6 +5290,59 @@
      "instrument"
     ]
    }
+  },
+  {
+   "id": "E309",
+   "date": "2026-11-06",
+   "class": [
+    "instrument"
+   ],
+   "prior": [
+    "E120",
+    "E131",
+    "E137",
+    "E139",
+    "E148",
+    "E152",
+    "E166",
+    "E169",
+    "E185",
+    "E186",
+    "E231",
+    "E233",
+    "E238",
+    "E253",
+    "E255",
+    "E262",
+    "E266",
+    "E267",
+    "E273",
+    "E275",
+    "E279",
+    "E280",
+    "E281",
+    "E282",
+    "E283",
+    "E284",
+    "E285",
+    "E286",
+    "E289",
+    "E299",
+    "E300",
+    "E302",
+    "E306",
+    "E307",
+    "E308"
+   ],
+   "error": "The Genesis Part 1 compilation (pilot-023, master 43bd2b99) shipped 19 new Keeper beats (about 6.8 min) with the Keeper's face in close-up, mouth closed, while his voice spoke (SyncNet conf 0.06-0.15 against the 2.7 floor), and it re-used inherited Babel / flood-ends segments whose faces were out of sync (b-brick 2.47; b-tower/b-name offsets -8/-9; k-irony 2.71 on 52 % face frames; flood-ends k-insight/k-bow still-mouth faces under speech). Root cause: compilation v2 beats were designed as voice-over on approved stills and nothing checked whether a still showed the speaker's face (owner rule: lip-sync on the Keeper always); the only lip-sync check lived in the episode route, and lipsync.yml's single concurrency group allowed one run at a time, so a long's worth of segments could not be lip-synced.",
+   "fix": "compilation_long.beats_problems refuses a beat over a Keeper still (approval reference ch-keeper*) without a lip-synced clip record; a beat or a chapter patch carries that record (release asset by sha256, the exact line and silent source by sha256, run id, reviewer note, SyncNet conf >= 2.7 and |offset| <= 2); render_beat_clip renders the lip-synced beat, render_long lays a patch's lip-synced picture over its span with the chapter audio untouched, and inputs downloads every clip. lipsync.yml's concurrency is one queue per clip+line so segments run side by side. The i2-02 line was re-voiced with a TTS-only respelling ('hidd,') so it is heard as 'hid'.",
+   "antidote": {
+    "file": "migration/production/bible/test_compilation_long.py",
+    "contains": "def test_e309_the_keepers_face_never_speaks_without_lip_sync",
+    "covers": [
+     "instrument"
+    ]
+   }
   }
  ]
 }
