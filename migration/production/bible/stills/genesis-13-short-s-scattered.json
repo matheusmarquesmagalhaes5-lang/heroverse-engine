@@ -2,6 +2,25 @@
  "id": "genesis-13-short-s-scattered",
  "episode": "genesis-13-short",
  "shot": "s-scattered",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. One single black goat-hair tent glowing warm from inside on a dark plain at night, an old man sitting at its door beside a small fire, centred in the frame. The tent and the old man stand together in the exact middle of the frame, soft blue moonlight showing the open plain around them on both sides, the foreground lit, never black. The figures are in silhouette, seen from behind. The subject is centred in the frame. Small and tender. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. One single black goat-hair tent glowing warm from inside on a dark plain at night, an old man sitting at its door beside a small fire, centred in the frame. The tent and the old man stand together in the exact middle of the frame, soft blue moonlight showing the open plain around them on both sides, the foreground lit, never black. The figures are in silhouette, seen from behind. The subject is centred in the frame. Small and tender. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-13-short-s-scattered.jpg",
+ "sha256": "65ad1aea8584b1e67b2534938da00bc6d2987dbc17da829fc1cd555034485a4a",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-13-short-s-scattered-2026110601-1",
+ "engine": "chatgpt-desktop",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-06",
+  "score": 9.5,
+  "note": "Full-image look (ChatGPT desktop): Abram alone from behind, seated by a fire inside a goat-hair tent at night, moon, oaks, stony ground visible in the lower third (dim but readable, not black); adult, centred; no text, nothing modern; frame review only.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "55513e6bef92401589b5ebeacce845f8b11de772b57e3f41c53affe5af150d93",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }
