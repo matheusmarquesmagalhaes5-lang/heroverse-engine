@@ -1,0 +1,208 @@
+{
+ "plan": "migration/production/bible/plans/genesis-13-short.json",
+ "episode": "genesis-13-short",
+ "checked_at": "2026-11-06T04:25:49Z",
+ "plan_check": {
+  "problems": [],
+  "pending": [],
+  "estimate": {
+   "seconds": 176.8,
+   "keeper_share": 0.134,
+   "lesson_share": 0.138,
+   "establishing_share": 0.0,
+   "lines": 19,
+   "shots": 20,
+   "spoken_lines": 1,
+   "words": 468
+  }
+ },
+ "characters": [
+  {
+   "id": "keeper",
+   "status": "APPROVED",
+   "refs": [
+    "front"
+   ],
+   "talk_refs": [
+    "talk"
+   ],
+   "voice": "am_michael",
+   "image_records": [
+    "ch-keeper-front",
+    "ch-keeper-talk"
+   ]
+  }
+ ],
+ "cf_images": {
+  "recorded_today": 0,
+  "daily_allocation": 44,
+  "sheets_needed": {},
+  "fits_today": true
+ },
+ "voice": {
+  "ran": true,
+  "reused": false,
+  "checkpoint_sha256": "774e4b208b1d549c3f8a8da85edd3e2007322239804d95c83d9ae752ceede796",
+  "problems": [],
+  "pace": {
+   "god": [
+    3.38
+   ],
+   "narration": [
+    2.56,
+    2.78,
+    3.22,
+    2.89,
+    3.15,
+    2.42,
+    2.69,
+    2.92,
+    2.9,
+    2.55,
+    3.02,
+    2.69,
+    2.97,
+    3.02,
+    2.57,
+    2.94,
+    3.29,
+    2.81
+   ]
+  },
+  "measured": {
+   "total": 170.251,
+   "keeper_share": 0.128,
+   "lesson_share": 0.132,
+   "retimed": {}
+  }
+ },
+ "requests": {
+  "ran": true,
+  "problems": [],
+  "digests": {
+   "s-voice": "6be9098b02ba2e19c991329a058b8410609432682de1cc642b79c56f28d448e9",
+   "s-haran": "f2755b6fbafd81eb9c743293bd70ab3229005f5a65cabff55634eb7c7f6013a4",
+   "s-call": "7cf9e0834f78f1bdda95ad4e524766ae121426e508c995083dd34f269b8bc36c",
+   "s-promise": "d2f534914b5ce4ba84f26e2a6a895785a26cacb4729814ed423d524908e83112",
+   "s-name": "62d796949b49c3b349a01651fa36d068c7037ce046a958341c7f51f0087ffdf1",
+   "s-families": "ed924e59823cb3dd6e3b540e6f0284fb4ce67aa9ca92b489318d06f4540765a7",
+   "s-scattered": "ac9e0e5baf25f2243d681054f3e9d735a999b429c1d40becfd1ecba85a341f83",
+   "s-departed": "cbf044928a55a7aad664d0cbc057c2fbd70cc063b2edb6e8c998c5c75ae35d9d",
+   "s-packing": "22bc936735d86730e26c5b5bbcf1ab3888db45428db9eb6ac0a7c65fe0b60607",
+   "s-caravan": "47368b9f1b68a28a6a721e8bde1797bca26b78940ed70f3a04da1ec6613bbe64",
+   "s-sarai": "7644fb9b2e27c554b0188825c4cfd2801faa8ed77c74c1085b8e8433b9bd2281",
+   "s-road": "336ca6de828741818632cd0b20be99f71fbef706ed3f15abc6ab86cbc5ac35ee",
+   "s-moreh": "962d50aff34e51630f66d88d72b7ee627a6817ad31ca72d92034a3695c70237b",
+   "s-strangers": "060cb2d7a062f29ba55a77fab987054c8b5052613c2fa5bb1c95d7a6f4ed0de8",
+   "s-appeared": "59519c0efe84d79ce8ac4b184f733341fd028e231478e61f18bd74bacbe425ee",
+   "s-altar": "343a0d836897d37f63395338042d46fa9dd4aacaf8c67342fccd94c8f61bafe4",
+   "s-south": "b059f752efa19375cfdd7b737463325c779f7669e66ae6a6eb1d861cf6c9ae59",
+   "k-insight": "d6139213b1d6fe3a9d7059b65000d7155f2a3e532042a29bb222fee8836f587e",
+   "k-question": "9915d0105b03aee1fb2b3e1bafcd66bbc5bb82d434d570cc24430d2f3e06ff99",
+   "k-close": "fcd3f420eadf01dfbccbc5a6fc7758f45d036e077daf293f6eaf8bcf637723e3"
+  },
+  "needs": {
+   "s-voice": 8,
+   "s-haran": 11,
+   "s-call": 12,
+   "s-promise": 9,
+   "s-name": 10,
+   "s-families": 9,
+   "s-scattered": 9,
+   "s-departed": 11,
+   "s-packing": 9,
+   "s-caravan": 9,
+   "s-sarai": 9,
+   "s-road": 9,
+   "s-moreh": 10,
+   "s-strangers": 9,
+   "s-appeared": 11,
+   "s-altar": 10,
+   "s-south": 9,
+   "k-insight": 11,
+   "k-question": 5,
+   "k-close": 8
+  }
+ },
+ "setups": {
+  "shots": [
+   {
+    "kind": "god_voice_over",
+    "shot": "s-voice",
+    "probe": "none needed: generated right after the talking shots (risk_order), face check"
+   },
+   {
+    "kind": "still_mouth",
+    "speaker": "keeper",
+    "references": {
+     "ch-keeper-talk": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
+    },
+    "shot": "k-insight",
+    "check": "lipsync_check --still-mouth",
+    "probe": [
+     "migration/evidence/pavo/20261026/keeper-vo/calibration.json"
+    ],
+    "passed": "2 of 2",
+    "shot_chance": 0.938
+   },
+   {
+    "kind": "still_mouth",
+    "speaker": "keeper",
+    "references": {
+     "ch-keeper-talk": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
+    },
+    "shot": "k-question",
+    "check": "lipsync_check --still-mouth",
+    "probe": [
+     "migration/evidence/pavo/20261026/keeper-vo/calibration.json"
+    ],
+    "passed": "2 of 2",
+    "shot_chance": 0.938
+   },
+   {
+    "kind": "still_mouth",
+    "speaker": "keeper",
+    "references": {
+     "ch-keeper-talk": "575e726ffb4cb43faaad15bfa2aa7c6e022cb0d03678ace6da7e4c81b0c29c4a"
+    },
+    "shot": "k-close",
+    "check": "lipsync_check --still-mouth",
+    "probe": [
+     "migration/evidence/pavo/20261026/keeper-vo/calibration.json"
+    ],
+    "passed": "2 of 2",
+    "shot_chance": 0.938
+   }
+  ],
+  "probes_required": [],
+  "rate_low": [],
+  "talk_attempts": 2,
+  "min_shot_chance": 0.9,
+  "run_chance_all_talking_shots": 0.824
+ },
+ "shot_review": [
+  "SHOT_NOT_REVIEWED s-voice s-haran s-call s-promise s-name s-families s-scattered s-departed s-packing s-caravan s-sarai s-road s-moreh s-strangers s-appeared s-altar s-south k-insight k-question k-close (shot-probe.yml, Claude's frame review >= 9.5, episode_build.py approve-shot, by PR)"
+ ],
+ "binding": {
+  "plan": "4bf5146f9667cbbfd2928a504ec20c13c816d7aa1f114f4a07e3909379a0beda",
+  "characters": "4fa2cce1dc2029a424336c09a7f2b0272aaa0681023b7010d55a44847ca4d047",
+  "image_records": {
+   "ch-keeper-front.json": "666eb65f6fc26529aa71af95bba873ac4bdb123c599b30d7e2fe7e1986399932",
+   "ch-keeper-talk.json": "c431a6013669385cb236c64158160cc6966337cdfb8ada711ed98f58b509b6cc"
+  },
+  "setups": "386110cf6909cea8ed1edcfe0f6476ea1b4ae528e6a3399e1861a7396d808a95",
+  "code": {
+   "episode_build.py": "bb5ec22c44d8d22de398adf8018e554512b0b4adffeac33dc6ab87d9d8e70b8d",
+   "plan_check.py": "79c25921f0980fb7513a0ae698ac5bb1545a9f37bc610a1b1762a19495b09e5c",
+   "voice_pace.py": "881aa746bbb235db382845b2d00555b02f63677478c4eab87c1150c1addaad31",
+   "lipsync_check.py": "5fa7aed2dbe007c556fd3e693ae31d0ef9c5bd11a4132773aa06eb78bf552983",
+   "syncnet.py": "0f6e65316b50850629e488e6167ad7159efc3b2480d27ced3166311e054633f7",
+   "episode_preflight.py": "0a3037f95dcf5ac1cfac307391a1cd96e6825e1a60b4d0d28181f6aea0d0f65c",
+   "clip_timing.py": "44626ba6ea7f807a62a99dcabcca3751d55c01ce452718efe1fc1b9e6db73509",
+   "reviewer_identity.py": "b813ceb46a450e21f7fd3fd08b38fe77094f1b3fafaec8db3251f56f954be24d",
+   "owner_quality_policy.py": "093de8b9883d18d6e6f8eb08989696d180bb890556cc89de34aecb5fdcedb3ca"
+  }
+ },
+ "blockers": [],
+ "status": "PASS"
+}
