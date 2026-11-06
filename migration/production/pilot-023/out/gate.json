@@ -2,7 +2,7 @@
  "version": "prepublish-gate-v1",
  "pilot_id": "pilot-023",
  "output_sha256": "43bd2b99f091edb9b1f9d5e021a3a35064b922fce18032b7a6d45150807d2aa9",
- "decision": "UNKNOWN",
+ "decision": "FAIL",
  "eligible_for_automatic_publication": false,
  "dimensions": {
   "binding": "PASS",
@@ -12,7 +12,7 @@
   "rights": "PASS",
   "structure": "PASS",
   "originality": "PASS",
-  "defect_review": "UNKNOWN",
+  "defect_review": "FAIL",
   "full_file_scan": "PASS",
   "preflight": "PASS"
  },
@@ -130,20 +130,20 @@
    {
     "source": "review",
     "item": "designated_reviewer_bound_to_file",
-    "state": "UNKNOWN",
-    "detail": "review AWAITING_REVIEW: REVIEW_NOT_OBJECT"
+    "state": "FAIL",
+    "detail": "REVIEW_DECISION_MISSING REVIEW_DEFECT_UNRESOLVED"
    },
    {
     "source": "review",
     "item": "publish_decision",
-    "state": "UNKNOWN",
-    "detail": "review AWAITING_REVIEW: REVIEW_NOT_OBJECT"
+    "state": "FAIL",
+    "detail": "REVIEW_DECISION_MISSING REVIEW_DEFECT_UNRESOLVED"
    },
    {
     "source": "review",
     "item": "no_unresolved_a_b_e",
-    "state": "UNKNOWN",
-    "detail": "review AWAITING_REVIEW: REVIEW_NOT_OBJECT"
+    "state": "FAIL",
+    "detail": "REVIEW_DECISION_MISSING REVIEW_DEFECT_UNRESOLVED"
    }
   ],
   "full_file_scan": [

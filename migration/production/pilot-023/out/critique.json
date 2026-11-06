@@ -1,7 +1,7 @@
 {
  "version": "critique-v1",
- "model": "gemini-3.5-flash-lite",
+ "model": "gemini-3.6-flash",
  "findings": [],
- "narrative_value": "The script demonstrates genuine narrative and teaching value, offering thoughtful reflections, historical context (comparing Genesis to Mesopotamian flood epics), and structural analysis of the text rather than mass-produced template filler.",
+ "narrative_value": "High narrative and teaching value. The script provides insightful, original commentary on Genesis 1-11, accurately citing Scripture and offering thoughtful contextual background, such as comparisons to Ancient Near Eastern flood narratives like Atrahasis and the Epic of Gilgamesh.",
  "status": "PASS"
 }
