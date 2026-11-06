@@ -1,4 +1,10 @@
 {
+ "close-01": {
+  "id": "close-01",
+  "run_id": 42160387106,
+  "status": "in_progress",
+  "conclusion": null
+ },
  "i3-04": {
   "id": "i3-04",
   "run_id": 42158686804,
@@ -26,8 +32,18 @@
  "hook-01": {
   "id": "hook-01",
   "run_id": 42157727443,
-  "status": "in_progress",
-  "conclusion": null
+  "status": "completed",
+  "conclusion": "success",
+  "sync": {
+   "offset": -1,
+   "conf": 7.733,
+   "min_dist": 7.561,
+   "windows": 398
+  },
+  "face": 1.0,
+  "flags": [],
+  "final": "c2ddcc6ebf7a385a87ce6c040a4be4cdf2a513ce7e75bbc29393bd3b90274e07",
+  "clip_flags": []
  },
  "close-04": {
   "id": "close-04",
@@ -50,14 +66,34 @@
  "i5-01": {
   "id": "i5-01",
   "run_id": 42157263296,
-  "status": "in_progress",
-  "conclusion": null
+  "status": "completed",
+  "conclusion": "success",
+  "sync": {
+   "offset": -1,
+   "conf": 7.723,
+   "min_dist": 7.547,
+   "windows": 443
+  },
+  "face": 1.0,
+  "flags": [],
+  "final": "9fb5a86b0f873c7bf5b3999e73b77a30eff5a465a1102cf33e6e8f564ff8fbf7",
+  "clip_flags": []
  },
  "i4-03": {
   "id": "i4-03",
   "run_id": 42157257615,
-  "status": "in_progress",
-  "conclusion": null
+  "status": "completed",
+  "conclusion": "success",
+  "sync": {
+   "offset": -1,
+   "conf": 6.817,
+   "min_dist": 8.474,
+   "windows": 472
+  },
+  "face": 1.0,
+  "flags": [],
+  "final": "9c4bc84c0c908ed015602fb70440ad8f9e7c5f860eaf427672884493499b54f8",
+  "clip_flags": []
  },
  "i3-03": {
   "id": "i3-03",
@@ -128,8 +164,18 @@
  "g07-k-insight": {
   "id": "g07-k-insight",
   "run_id": 42157134814,
-  "status": "in_progress",
-  "conclusion": null
+  "status": "completed",
+  "conclusion": "success",
+  "sync": {
+   "offset": -1,
+   "conf": 3.123,
+   "min_dist": 10.76,
+   "windows": 226
+  },
+  "face": 1.0,
+  "flags": [],
+  "final": "a9124153652eaa5ef2ed20e5238f5dfe8fc35393d48a49b483e2b49c45da2fb9",
+  "clip_flags": []
  },
  "i2-02": {
   "id": "i2-02",
@@ -260,17 +306,6 @@
   "flags": [],
   "final": "5a5052ed6aba9abc13f5a32900a66504ce40dfc15bd1462af543172be72f7182",
   "clip_flags": []
- },
- "close-01": {
-  "id": "close-01",
-  "run_id": 42150347155,
-  "status": "completed",
-  "conclusion": "failure",
-  "sync": null,
-  "face": null,
-  "flags": null,
-  "final": null,
-  "clip_flags": null
  },
  "i5-02": {
   "id": "i5-02",

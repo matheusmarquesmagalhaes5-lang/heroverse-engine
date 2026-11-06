@@ -72,5 +72,5 @@ for f, key_at in (('inherited.json', 'long_start'), ('inherited-shorts.json', 's
             p['captions'] = timed(text, words(str(W / p['lipsync']['line'])), at)
         c['patches'] = [y for y in c.get('patches') or [] if y.get('id') != i] + [p]
         c['patches'].sort(key=lambda y: y['at']); done.append(i)
-P.write_text(json.dumps(plan, indent=2, ensure_ascii=False) + '\n')
+P.write_text(json.dumps(plan, indent=1, ensure_ascii=False) + '\n')
 print(json.dumps({'wired': done, 'missing': missing}))
