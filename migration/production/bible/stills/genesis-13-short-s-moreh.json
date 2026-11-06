@@ -2,6 +2,25 @@
  "id": "genesis-13-short-s-moreh",
  "episode": "genesis-13-short",
  "shot": "s-moreh",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. A huge ancient oak tree alone on a green plain between hills, the caravan arriving beneath its spreading branches in the afternoon light, centred in the frame. Only adults, no children anywhere in the scene. The figures are in silhouette, seen from behind. The subject is centred in the frame. Arrival. Wonder. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Wide shot. A huge ancient oak tree alone on a green plain between hills, the caravan arriving beneath its spreading branches in the afternoon light, centred in the frame. Only adults, no children anywhere in the scene. The figures are in silhouette, seen from behind. The subject is centred in the frame. Arrival. Wonder. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-13-short-s-moreh.jpg",
+ "sha256": "b7a13d646ec167d630606463afc84170f7afe6f2962232ee5e12163c03ae0e12",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-13-short-s-moreh-42134247404-1",
+ "engine": "cloudflare-workers-ai:@cf/black-forest-labs/flux-1-schnell",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-06",
+  "score": 9.5,
+  "note": "Contact sheet + full-size look (FLUX): the huge ancient oak centred on a green plain between hills, adult travellers and donkeys arriving in its shade in afternoon light, no child, nothing modern; frame review only.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "1ed194ed0d4ee77724b04f7e3b79e2f8abe7e0c6df925ebeeb0706bd171dd2c7",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }
