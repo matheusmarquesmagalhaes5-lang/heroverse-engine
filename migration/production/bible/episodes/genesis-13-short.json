@@ -214,5 +214,6 @@
    "by": "claude-session-reviewer",
    "note": "Local review 42166154899 (ASR heard the whole audio: coverage 0.993, no dropout, -14.5 LUFS, -1.2 dBTP, no black/freeze) and the frame sheet of this exact master (sha256 2009c8e3...): no speech cut, coherent scenes, Genesis 12 KJV captions, no face on God, adult figures only, no policy problem. Audio NOT heard by an agent by ear; ASR transcript matches the script."
   }
- }
+ },
+ "video_id": "nCZfgUlaooI"
 }
