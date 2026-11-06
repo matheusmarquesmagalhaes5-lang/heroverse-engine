@@ -5,12 +5,13 @@
  },
  "_dispatch": {
   "version": "request-claim-v1",
-  "state": "claimed",
+  "state": "acknowledged",
   "request_sha256": "11d1cf349b5ae0a2ab947dfdcace79d7c3785808bc530cea2599fb7c2b818b82",
   "original_path": "migration/requests/production-build-genesis-12-short-456cef9fb2efa907.json",
   "base_commit": "eb3a996cef051443f220195fa76a06e25f39b27d",
   "dispatcher_run_id": "42135479726",
   "dispatcher_attempt": "1",
-  "claimed_at": "2026-11-06T00:16:11.780537+00:00"
+  "claimed_at": "2026-11-06T00:16:11.780537+00:00",
+  "acknowledged_at": "2026-11-06T00:16:14.784770+00:00"
  }
 }
