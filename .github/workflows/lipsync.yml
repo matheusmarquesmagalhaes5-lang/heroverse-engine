@@ -50,7 +50,9 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: heroverse-lipsync
+  # E309: one queue per clip and line, so the segments of one long run side by side (a single group kept one pending run
+  # and cancelled the rest); the same clip + line still never runs twice at once
+  group: heroverse-lipsync-${{ inputs.clip_sha256 }}-${{ inputs.audio_sha256 || inputs.shot }}
   cancel-in-progress: false
 jobs:
   lipsync:

@@ -1,0 +1,68 @@
+[
+ {
+  "id": "fe-k-insight",
+  "chapter": "flood-ends-long",
+  "chapter_start": 1104.806,
+  "start": 1403.68,
+  "end": 1413.23,
+  "long_start": 298.874,
+  "long_end": 308.424,
+  "frame_t": 299.433,
+  "opening": 0.0003
+ },
+ {
+  "id": "fe-k-bow",
+  "chapter": "flood-ends-long",
+  "chapter_start": 1104.806,
+  "start": 1568.26,
+  "end": 1576.64,
+  "long_start": 463.454,
+  "long_end": 471.834,
+  "frame_t": 464.8,
+  "opening": 0.0044
+ },
+ {
+  "id": "b-brick",
+  "chapter": "genesis-10-11-long",
+  "chapter_start": 1679.027,
+  "start": 1816.56,
+  "end": 1821.3,
+  "long_start": 137.533,
+  "long_end": 142.273,
+  "frame_t": 141.167,
+  "opening": 0.0001
+ },
+ {
+  "id": "b-tower",
+  "chapter": "genesis-10-11-long",
+  "chapter_start": 1679.027,
+  "start": 1852.22,
+  "end": 1857.22,
+  "long_start": 173.193,
+  "long_end": 178.193,
+  "frame_t": 176.367,
+  "opening": 0.0003
+ },
+ {
+  "id": "b-name",
+  "chapter": "genesis-10-11-long",
+  "chapter_start": 1679.027,
+  "start": 1857.22,
+  "end": 1862.38,
+  "long_start": 178.193,
+  "long_end": 183.353,
+  "frame_t": 178.833,
+  "opening": 0.0005
+ },
+ {
+  "id": "k-irony",
+  "chapter": "genesis-10-11-long",
+  "chapter_start": 1679.027,
+  "start": 2110.88,
+  "end": 2115.43,
+  "long_start": 431.853,
+  "long_end": 436.403,
+  "frame_t": 434.1,
+  "opening": 0.0221
+ }
+]
