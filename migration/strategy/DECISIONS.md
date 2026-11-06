@@ -869,3 +869,10 @@ approves and no score is copied to other media.
   floor still applies to a long measured by them. The only other bound is YouTube's 12 h upload limit.
 - Shorts keep their bands unchanged. This supersedes the length lines of "Long length and cadence" (13-20 min, floor
   13:00) and of "Long-first" (about 8-12 minutes).
+
+## 2026-11-06 — Inteligência Viva
+- Moment M4 begins; M3 triggers still HIT on thin samples (views from Shorts 0, Bible longs 4-21 views each, measured). Actions: unblock pilot-023 (Genesis Part 1, 37:30), title repackage of X2LPFriRn3M and 1m-NUJhkdMY, merge or recheck the Abraham plans (#895, not on main).
+- Goal: subs 384 (measured live, +12 in ~14 h, 8.6/day over 12 d); long hours 30.2 (own estimate, 11-05 report, no newer). Gap 616 subs / 3,970 h; needs 68.4 and 441 h/day for 11-15, 24.6 and 159 h/day for 12-01. Hours bind; deadline unchanged.
+- H2 validated in-niche (evidence/vidiq/2026-11-06/h2-fullmovie-pool.json): 15 'Full Movie' Bible/book longs of 28 min-4 h with >=15K views from 12 channels, 7 on channels of 4.6-14.2K subs (660K, 463K, 410K, 77K). Only 2 weak contrasts, so the kill threshold stays on our own pilot-023 results. Static read-along stays killed.
+- Lessons (non-Pavo): a "Full Movie" compilation is not done at a shorter length than the winner band (our Noah compilation 18:03); machine review of pilot-023 found a Keeper face with a closed mouth under voice-over and a 'hit'/'hid' slip, both recorded in pavo_lessons. No search form repeated.
+- vidIQ 10 credits this run (2,914 before, 10 of 150 today).

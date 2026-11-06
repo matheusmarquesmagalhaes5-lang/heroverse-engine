@@ -1372,7 +1372,7 @@
    "kind": "read",
    "tool": "vidiq_outliers",
    "credits": 5,
-   "purpose": "cross-niche long emotional-narrative outliers (second Intelig\u00eancia Viva run)",
+   "purpose": "cross-niche long emotional-narrative outliers (second Inteligência Viva run)",
    "saved_to": "evidence/vidiq/20261102/cross-niche-outliers.json"
   },
   {
@@ -1519,6 +1519,28 @@
    "purpose": "balance 2,934 after the morning 10; 2,914 after the 4 searches (20); day total 30 of 150; user_channels free: subs 372 live",
    "saved_to": "-",
    "outcome": "reconciled"
+  },
+  {
+   "date": "2026-11-06",
+   "kind": "account",
+   "tool": "vidiq_balance + vidiq_user_channels",
+   "credits": 0,
+   "purpose": "balance 2,914; subs 384 live"
+  },
+  {
+   "date": "2026-11-06",
+   "kind": "research",
+   "tool": "vidiq_get_videos_by_ids",
+   "credits": 5,
+   "purpose": "live views of Babel, Flood Ends, Noah compilation, Noah-begins"
+  },
+  {
+   "date": "2026-11-06",
+   "kind": "research",
+   "tool": "vidiq_youtube_search",
+   "credits": 5,
+   "purpose": "H2 'genesis full movie KJV bible story' long since 2026-08-01, 20 results",
+   "saved_to": "evidence/vidiq/2026-11-06/h2-fullmovie-pool.json"
   }
  ]
 }
