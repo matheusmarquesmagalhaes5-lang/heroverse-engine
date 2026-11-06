@@ -178,7 +178,8 @@ jobs:
           export OMP_NUM_THREADS=4 MKL_NUM_THREADS=4 PYTHONUNBUFFERED=1
           "$RUNNER_TEMP/mt/bin/python" -I -B "$GITHUB_WORKSPACE/migration/production/bible/keeper_lipsync.py" coords "$W" "$RUNNER_TEMP/MuseTalk" | tee "$RUNNER_TEMP/out/coords.json"
           echo "COORD_SECONDS=$(( $(date +%s) - s ))" >> "$GITHUB_ENV"
-          timeout 3000s "$RUNNER_TEMP/mt/bin/python" -m scripts.inference --inference_config "$W/task.yaml" --result_dir "$W/result" \
+          # E309: about 110 s of CPU per second of line; a 29 s Keeper line needs about 55 min (the job allows 300)
+          timeout 7200s "$RUNNER_TEMP/mt/bin/python" -m scripts.inference --inference_config "$W/task.yaml" --result_dir "$W/result" \
             --unet_model_path models/musetalkV15/unet.pth --unet_config models/musetalkV15/musetalk.json \
             --whisper_dir models/whisper --vae_type sd-vae --version v15 --batch_size 4 --use_saved_coord --saved_coord > "$W/musetalk.raw" 2>&1 &
           pid=$!

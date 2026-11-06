@@ -360,12 +360,15 @@ def lipsync_problems(where, lip, root=ROOT):
 
 
 def lipsync_assets(plan):
-    """[(asset, sha256)] of every lip-synced clip the plan uses: Keeper beats and chapter patches."""
+    """[(asset, sha256, run_id)] of every lip-synced clip the plan uses: Keeper beats and chapter patches. The run id
+    lets the build promote a clip from that lipsync.yml run's artifact into the release when it is not there yet."""
     out = []
     for _, k in keeper_sections(plan) if all(plan.get(x) for x in ("hook", "close")) else []:
-        out += [(b["lipsync"]["clip"], b["lipsync"]["sha256"]) for b in k.get("beats") or [] if isinstance(b.get("lipsync"), dict)]
+        out += [(b["lipsync"]["clip"], b["lipsync"]["sha256"], b["lipsync"].get("run_id"))
+                for b in k.get("beats") or [] if isinstance(b.get("lipsync"), dict)]
     for c in plan.get("chapters") or []:
-        out += [(x["lipsync"]["clip"], x["lipsync"]["sha256"]) for x in c.get("patches") or [] if isinstance(x.get("lipsync"), dict)]
+        out += [(x["lipsync"]["clip"], x["lipsync"]["sha256"], x["lipsync"].get("run_id"))
+                for x in c.get("patches") or [] if isinstance(x.get("lipsync"), dict)]
     return out
 
 
@@ -519,17 +522,31 @@ def render_short(src, out, end=None, card=None, patches=()):
         p.write_text(t)
         files.append(p)
     fg = f"[b]scale=-2:{H},fps={FPS}[f0];"   # E309: a patch lays its lip-synced 9:16 picture over the Short's own span
-    for n, (_, at, secs) in enumerate(patches, 1):
-        fg += (f"[{n}:v]scale=-2:{H},setsar=1,fps={FPS},trim=duration={secs:.3f},setpts=PTS-STARTPTS+{at:.3f}/TB[p{n}];"
+    for n, (_, at, secs, caps) in enumerate(patches, 1):
+        fg += (f"[{n}:v]scale=1080:1920,setsar=1,fps={FPS}{patch_input(None, at, secs, caps, out, n, (1080, 1920))},"
+               f"scale=-2:{H},trim=duration={secs:.3f},setpts=PTS-STARTPTS+{at:.3f}/TB[p{n}];"
                f"[f{n - 1}][p{n}]overlay=enable='between(t,{at:.3f},{at + secs:.3f})':eof_action=pass[f{n}];")
     graph = (f"[0:v]split[a][b];[a]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=40:6,"
              f"eq=brightness=-0.28[bg];{fg}[bg][f{len(patches)}]overlay=(W-w)/2:0,setsar=1{card_overlay(card, files)},{v}[v];"
              f"[0:a]aresample=48000,aformat=channel_layouts=stereo,{gain_filter(src)},{a}[a]")
-    ins = [x for clip, _, _ in patches for x in ("-i", clip)]
+    ins = [x for clip, *_ in patches for x in ("-i", clip)]
     run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", src, *ins, "-filter_complex", graph, "-map", "[v]", "-map", "[a]",
          "-t", f"{d:.3f}", *ENC, out])
-    for p in files:
+    for p in files + sorted(Path(out).parent.glob(f"{Path(out).stem}.patch*.ass")):
         p.unlink()
+
+
+def patch_input(clip, at, secs, captions, out, n, frame):
+    """A patch's picture as an ffmpeg chain head: its own captions (the chapter's sentences inside the span, in the
+    chapter's caption style) burned on it, since the chapter's burned captions are covered by the patch."""
+    rows = [dict(x, start=max(0.0, x["start"] - at), end=min(secs, x["end"] - at)) for x in captions or ()
+            if x["end"] > at and x["start"] < at + secs]
+    if not rows:
+        return ""
+    import short_engine
+    f = Path(f"{Path(out).with_suffix('')}.patch{n}.ass")
+    f.write_text(short_engine.build_ass(rows, short_engine.caption_style(*frame)))
+    return f",subtitles='{f}'"
 
 
 def render_long(src, out, end=None, card=None, patches=()):
@@ -544,15 +561,16 @@ def render_long(src, out, end=None, card=None, patches=()):
         p.write_text(t)
         files.append(p)
     base = f"[0:v]scale={W}:{H}:force_original_aspect_ratio=decrease,pad={W}:{H}:(ow-iw)/2:(oh-ih)/2,setsar=1,fps={FPS}[b0];"
-    for n, (_, at, secs) in enumerate(patches, 1):
-        base += (f"[{n}:v]scale={W}:{H},setsar=1,fps={FPS},trim=duration={secs:.3f},setpts=PTS-STARTPTS+{at:.3f}/TB[p{n}];"
+    for n, (_, at, secs, caps) in enumerate(patches, 1):
+        base += (f"[{n}:v]scale={W}:{H},setsar=1,fps={FPS}{patch_input(None, at, secs, caps, out, n, (W, H))},"
+                 f"trim=duration={secs:.3f},setpts=PTS-STARTPTS+{at:.3f}/TB[p{n}];"
                  f"[b{n - 1}][p{n}]overlay=enable='between(t,{at:.3f},{at + secs:.3f})':eof_action=pass[b{n}];")
     graph = (base + f"[b{len(patches)}]null{card_overlay(card, files)},{v}[v];"
              f"[0:a]aresample=48000,aformat=channel_layouts=stereo,{gain_filter(src)},{a}[a]")
-    ins = [x for clip, _, _ in patches for x in ("-i", clip)]
+    ins = [x for clip, *_ in patches for x in ("-i", clip)]
     run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", src, *ins, "-filter_complex", graph, "-map", "[v]", "-map", "[a]",
          "-t", f"{d:.3f}", *ENC, out])
-    for p in files:
+    for p in files + sorted(Path(out).parent.glob(f"{Path(out).stem}.patch*.ass")):
         p.unlink()
 
 
@@ -775,7 +793,7 @@ def build(plan_path, src_dir, out_dir, voice_dir=None):
     refuse(plan_problems(plan))
     src_dir, out = Path(src_dir), Path(out_dir)
     SRC_DIR = src_dir
-    for asset, sha in lipsync_assets(plan):
+    for asset, sha, _ in lipsync_assets(plan):
         if not (src_dir / asset).is_file() or sha256(src_dir / asset) != sha:
             raise SystemExit(f"SOURCE_SHA256_MISMATCH {asset}")
     out.mkdir(parents=True, exist_ok=True)
@@ -814,11 +832,13 @@ def build(plan_path, src_dir, out_dir, voice_dir=None):
         c = plan["chapters"][k - 1]
         card = (f"PART {k} OF {len(plan['chapters'])}", c["title"], c["reference"] + " (KJV)")
         kind = "long" if is_long(c) else "short"
-        if is_long(c):
-            patches = [(src_dir / x["lipsync"]["clip"], float(x["at"]), float(x["seconds"])) for x in c.get("patches") or []]
+        if is_long(c):   # E309: a long's patch re-draws the long's own timed captions of its span
+            caps = source_sentences(c["long"]["sha256"]) or []
+            patches = [(src_dir / x["lipsync"]["clip"], float(x["at"]), float(x["seconds"]), caps) for x in c.get("patches") or []]
             render_long(master, seg / f"{k:02d}b-short.mp4", c.get("end_s"), card, patches)
         else:
-            patches = [(src_dir / x["lipsync"]["clip"], float(x["at"]), float(x["seconds"])) for x in c.get("patches") or []]
+            patches = [(src_dir / x["lipsync"]["clip"], float(x["at"]), float(x["seconds"]), x.get("captions") or [])
+                       for x in c.get("patches") or []]   # a Short's patch: its recorded captions (chapter time)
             render_short(master, seg / f"{k:02d}b-short.mp4", c.get("end_s"), card, patches)
         add(kind, sid, seg / f"{k:02d}b-short.mp4", source_sha256=sha, chapter=c["title"],
             **({"end_s": c["end_s"]} if c.get("end_s") else {}))
@@ -1079,8 +1099,8 @@ def main(argv):
         refuse(plan_problems(plan))
         for _, asset, sha, _ in sources(plan):
             print(asset, sha)
-        for asset, sha in lipsync_assets(plan):   # E309: the lip-synced clips, downloaded and checked the same way
-            print(asset, sha)
+        for asset, sha, run_id in lipsync_assets(plan):   # E309: the lip-synced clips, downloaded and checked the same way
+            print(asset, sha, run_id)
     elif cmd == "build" and len(argv) in (5, 6):
         build(*argv[2:])
     elif cmd == "voice-needed" and len(argv) == 3:

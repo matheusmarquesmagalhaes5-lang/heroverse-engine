@@ -24,6 +24,7 @@ jobs:
     timeout-minutes: 120
     permissions:
       contents: write   # release assets (assets.sh, release_video.sh) and the evidence branch; no secret in this job
+      actions: read     # E309: a lip-synced clip's lipsync.yml artifact (gh run download)
     env:
       PLAN: ${{ inputs.plan }}
       GH_TOKEN: ${{ github.token }}
@@ -39,8 +40,17 @@ jobs:
         run: |
           APT_UPDATE_TIMEOUT=300s APT_INSTALL_TIMEOUT=600s bash migration/ci/apt_install.sh ffmpeg fonts-dejavu-core
           mkdir -p "$RUNNER_TEMP/src"
-          while read -r name sha; do
-            bash migration/ci/assets.sh download --repo "$GITHUB_REPOSITORY" --pattern "$name" -O "$RUNNER_TEMP/src/$name" --clobber
+          while read -r name sha run; do
+            if [ -n "$run" ] && ! bash migration/ci/assets.sh download --repo "$GITHUB_REPOSITORY" --pattern "$name" -O "$RUNNER_TEMP/src/$name" --clobber; then
+              # E309: a lip-synced clip not yet in the release comes from its lipsync.yml run's artifact, by sha256 only
+              [[ "$run" =~ ^[0-9]+$ && "$name" =~ ^shot-genesis-[a-z0-9-]+-sha256-[0-9a-f]{64}\.mp4$ ]] || { echo "LIPSYNC_ASSET_REFUSED $name"; exit 1; }
+              rm -rf "$RUNNER_TEMP/lip" && gh run download "$run" --repo "$GITHUB_REPOSITORY" -n "keeper-lipsync-$run" -D "$RUNNER_TEMP/lip"
+              echo "$sha  $RUNNER_TEMP/lip/keeper-lipsync.mp4" | sha256sum -c -
+              cp "$RUNNER_TEMP/lip/keeper-lipsync.mp4" "$RUNNER_TEMP/src/$name"
+              bash migration/ci/assets.sh upload "$RUNNER_TEMP/src/$name" --repo "$GITHUB_REPOSITORY" --clobber
+            elif [ -z "$run" ]; then
+              bash migration/ci/assets.sh download --repo "$GITHUB_REPOSITORY" --pattern "$name" -O "$RUNNER_TEMP/src/$name" --clobber
+            fi
             echo "$sha  $RUNNER_TEMP/src/$name" | sha256sum -c -
           done < "$RUNNER_TEMP/inputs.txt"
       - name: Kokoro voice-over lines of a voice-over Keeper segment (E281, the pinned voice runtime of shot-probe.yml, skipped for Pavo clips)

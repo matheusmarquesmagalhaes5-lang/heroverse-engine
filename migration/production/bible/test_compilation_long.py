@@ -389,7 +389,7 @@ class OriginalKeeperV2Tests(unittest.TestCase):
                "-c:v", "libx264", "-pix_fmt", "yuv420p", "-c:a", "aac", "-shortest", t / "long.mp4")
             ff("-f", "lavfi", "-i", "color=c=white:s=1920x1080:r=30:d=2", "-c:v", "libx264", "-pix_fmt", "yuv420p", t / "p.mp4")
             cl.render_long(t / "long.mp4", t / "a.mp4")
-            cl.render_long(t / "long.mp4", t / "b.mp4", patches=[(t / "p.mp4", 2.0, 2.0)])
+            cl.render_long(t / "long.mp4", t / "b.mp4", patches=[(t / "p.mp4", 2.0, 2.0, [])])
             luma = lambda f, at: float(cl.run(["ffmpeg", "-nostdin", "-hide_banner", "-ss", str(at), "-i", f, "-frames:v", "1",
                                               "-vf", "signalstats,metadata=print:key=lavfi.signalstats.YAVG", "-f", "null", "-"]
                                              ).stderr.split("YAVG=")[1].split()[0])
