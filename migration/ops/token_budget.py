@@ -3,7 +3,8 @@
 
 Sums assistant `usage` from ~/.claude/projects/*heroverse*/**/*.jsonl (subagents included) inside the current
 weekly window, merges with the persisted ledger (max per session), and stops the session over budget.
-Commands: status | pace | plan [--write] | costs [--write] | check [--action T] | record [--action T --actual N].
+Commands: status | pace | plan [--write] | costs [--write] | check [--action T] | record [--action T --actual N]
+| route [--task T] | omni | omni-save RAW (OmniRoute free pool, owner 2026-11-06).
 Offline, deterministic. There is no warn-only path: over the budget (or the activity's allocation) is exit 2.
 See migration/SYSTEM.md "Token budget"."""
 import json
@@ -357,6 +358,174 @@ def pace_text(p):
     return "\n".join(rows)
 
 
+# ---- OmniRoute pool and task routing (owner 2026-11-06: "administre os tokens agora junto com o omniroute") ----
+# Two pools: the Claude weekly budget above, and the free OmniRoute combo on the owner's PC (C:\HeroVerse\
+# claude-fallback.ps1). The PC writes a sanitized usage summary (migration/ops/omniroute_usage.mjs); `omni-save`
+# re-sanitizes it into migration/evidence/omniroute/usage-YYYYMMDD.json; `route` decides where a task class runs.
+# Quality-critical work never routes to OmniRoute; see OPERATIONS "Model routing and weekly pacing".
+CRITICAL_TASKS = ("plan", "script", "kjv_text", "review", "gate", "publication", "code_pr", "approval", "generation",
+                  "coordination")
+OFFLOAD_TASKS = ("comment_draft", "log_summary", "evidence_summary", "research_notes", "translation_internal")
+NOSPEND_TASKS = ("cut_approved_media", "scheduling")   # PC fallback only while Claude is exhausted or rate-limited
+TASKS = CRITICAL_TASKS + OFFLOAD_TASKS + NOSPEND_TASKS
+OMNI_STALE_HOURS = 26
+OMNI_PROVIDER_FIELDS = {"connections": int, "quota_used": float, "quota_pct_remaining": float, "token_status": str,
+                        "requests_24h": int, "errors_24h": int, "rate_limited_24h": int, "success_rate_pct_today": float,
+                        "tokens_today": int, "exhausted": bool}
+OMNI_WINDOW_FIELDS = {"used": float, "total": float, "remaining": float, "remaining_pct": float, "reset_at": str,
+                      "unlimited": bool}
+SECRET_RX = re.compile(r"(sk-[A-Za-z0-9_-]{8,}|Bearer\s|[0-9a-fA-F]{32,}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-"
+                       r"[0-9a-f]{12}|[^\s@\"]+@[^\s@\"]+\.[a-z]{2,}|AIza[0-9A-Za-z_-]{20,}|gsk_[A-Za-z0-9]{8,})")
+NAME_RX = re.compile(r"^[a-z0-9][a-z0-9._-]{0,40}$")
+FALLBACK_CMD = ("powershell -NoProfile -ExecutionPolicy Bypass -File C:\\HeroVerse\\claude-fallback.ps1 -p \"<task>\" "
+                "(Desktop Commander, device Matheus; write the .ps1 with write_file, inline $ is stripped)")
+
+
+def omni_dir():
+    return Path(os.environ.get("TOKEN_BUDGET_OMNI_DIR") or ROOT / "migration/evidence/omniroute")
+
+
+def _clean(v, kind):
+    if v is None:
+        return None
+    if kind is bool:
+        return bool(v) if isinstance(v, bool) else None
+    if kind in (int, float):
+        return v if isinstance(v, (int, float)) and not isinstance(v, bool) else None
+    return v[:40] if isinstance(v, str) and not SECRET_RX.search(v) else None
+
+
+def sanitize_omni(raw):
+    """Rebuild the PC summary from an allowlist: anything not named here (ids, accounts, keys) is dropped."""
+    if not isinstance(raw, dict) or raw.get("schema") != "omniroute-usage-v1":
+        raise ValueError("not an omniroute-usage-v1 summary")
+    gen = datetime.fromisoformat(str(raw["generated_at"]).replace("Z", "+00:00")).astimezone(timezone.utc)
+    provs = {}
+    for name, p in (raw.get("providers") or {}).items():
+        if not isinstance(p, dict) or not NAME_RX.match(str(name)):
+            continue
+        q = {k: _clean(p.get(k), t) for k, t in OMNI_PROVIDER_FIELDS.items()}
+        q["windows"] = {w: {k: _clean(v.get(k), t) for k, t in OMNI_WINDOW_FIELDS.items()}
+                        for w, v in (p.get("windows") or {}).items() if isinstance(v, dict) and NAME_RX.match(str(w))}
+        q["lockouts"] = [{"model": _clean(l.get("model"), str), "reason": _clean(l.get("reason"), str),
+                          "remaining_s": _clean(l.get("remaining_s"), int)} for l in (p.get("lockouts") or [])[:20]
+                         if isinstance(l, dict)]
+        provs[name] = q
+    tot = raw.get("totals_24h") or {}
+    ft = raw.get("free_tier") or {}
+    out = {"schema": "omniroute-usage-v1", "generated_at": gen.isoformat(timespec="seconds"),
+           "combo": _clean(raw.get("combo"), str), "up": raw.get("up") is True,
+           "errors": [e for e in (_clean(e, str) for e in (raw.get("errors") or [])[:20]) if e],
+           "providers": provs,
+           "totals_24h": {k: _clean(tot.get(k), int) for k in ("requests", "errors", "rate_limited")},
+           "free_tier": {"steady_recurring_tokens_month": _clean(ft.get("steady_recurring_tokens_month"), int),
+                         "model_count": _clean(ft.get("model_count"), int)},
+           "alerts": [a for a in (_clean(a, str) if not str(a).startswith("PROVIDER_EXHAUSTED:") else str(a)[:200]
+                                  for a in (raw.get("alerts") or [])[:10]) if a]}
+    text = json.dumps(out, sort_keys=True)
+    if SECRET_RX.search(text.replace(out["generated_at"], "")):
+        raise ValueError("secret-like string survived sanitizing; refusing to save")
+    return out
+
+
+def omni_save(raw_path):
+    out = sanitize_omni(json.loads(Path(raw_path).read_text()))
+    d = omni_dir()
+    d.mkdir(parents=True, exist_ok=True)
+    p = d / f"usage-{datetime.fromisoformat(out['generated_at']):%Y%m%d}.json"
+    p.write_text(json.dumps(out, indent=1, sort_keys=True) + "\n")
+    return p
+
+
+def omni_latest(now):
+    """(snapshot or None, state): state is OK, MISSING, STALE, DOWN or EXHAUSTED."""
+    files = sorted(omni_dir().glob("usage-*.json"))
+    if not files:
+        return None, "MISSING"
+    try:
+        snap = json.loads(files[-1].read_text())
+        age = (now - datetime.fromisoformat(snap["generated_at"])).total_seconds() / 3600
+    except (OSError, ValueError, KeyError):
+        return None, "MISSING"
+    if age > OMNI_STALE_HOURS:
+        return snap, "STALE"
+    if not snap.get("up") or "OMNIROUTE_DOWN" in snap.get("alerts", []):
+        return snap, "DOWN"
+    if "FREE_QUOTAS_EXHAUSTED" in snap.get("alerts", []):
+        return snap, "EXHAUSTED"
+    return snap, "OK"
+
+
+def omni_text(snap, state):
+    if snap is None:
+        return f"omniroute {state}: no usage snapshot in migration/evidence/omniroute/ (refresh it from the PC)"
+    rows = [f"omniroute {state}: snapshot {snap['generated_at'][:16]}Z, combo {snap.get('combo')}, 24 h requests "
+            f"{snap['totals_24h'].get('requests')}, errors {snap['totals_24h'].get('errors')}, 429s "
+            f"{snap['totals_24h'].get('rate_limited')}"]
+    for name, p in sorted(snap["providers"].items()):
+        if not p.get("connections"):
+            continue
+        win = ", ".join(f"{w} {v.get('remaining')}/{v.get('total')}" for w, v in p.get("windows", {}).items()
+                        if v.get("total"))
+        rows.append(f"  {name}: {'EXHAUSTED' if p.get('exhausted') else 'ok'}, quota left "
+                    f"{p.get('quota_pct_remaining')}%{', ' + win if win else ''}, 24 h {p.get('requests_24h')} req / "
+                    f"{p.get('errors_24h')} err / {p.get('rate_limited_24h')} 429, locked models {len(p.get('lockouts') or [])}")
+    alerts = list(snap.get("alerts") or []) + ([f"OMNIROUTE_{state}"] if state != "OK" else [])
+    rows.append("alerts: " + (", ".join(dict.fromkeys(alerts)) if alerts else "none"))
+    return "\n".join(rows)
+
+
+def route_decision(task, verdict, claude_out, omni_state, pc="unknown"):
+    """(route, reason). route: CLAUDE, OMNIROUTE_PC (claude-fallback.ps1 on the PC) or HOLD.
+    claude_out = the project budget is spent or Claude is rate-limited. Unknown tasks count as critical."""
+    omni_ok = omni_state == "OK" and pc != "offline"
+    if task not in OFFLOAD_TASKS + NOSPEND_TASKS:
+        if claude_out:
+            return "HOLD", "quality-critical: never OmniRoute; it waits for Claude (limit window or the weekly reset)"
+        return "CLAUDE", "quality-critical work stays on Claude"
+    if claude_out:
+        if omni_ok:
+            return "OMNIROUTE_PC", "Claude exhausted/rate-limited: no-spend work continues on the PC through OmniRoute"
+        return "HOLD", f"Claude exhausted/rate-limited and OmniRoute not usable ({omni_state}, PC {pc}): record as pending"
+    if task in OFFLOAD_TASKS and verdict == "AHEAD":
+        if omni_ok:
+            return "OMNIROUTE_PC", "pace AHEAD: offload this low-risk, verifiable task to the free pool; Claude keeps critical work"
+        return "CLAUDE", f"pace AHEAD but OmniRoute not usable ({omni_state}, PC {pc}): Claude, lowest model tier"
+    if verdict == "AHEAD":
+        return "CLAUDE", "pace AHEAD: production step stays on Claude at the lowest fitting tier; PC fallback only once Claude is out"
+    return "CLAUDE", (f"pace {verdict}: keep it on Claude (owner wants ~100% used at the reset); "
+                      "OmniRoute only if a Claude call fails")
+
+
+def route_cmd(argv, cfg, projects):
+    arg = lambda n: argv[argv.index(n) + 1] if n in argv and argv.index(n) + 1 < len(argv) else None
+    now = now_utc()
+    state = compute(cfg, now, use_cache=False)
+    recs = message_records(projects, datetime.fromisoformat(state["window_start"]), now + timedelta(seconds=1))
+    p = pace(cfg, state, recs, now)
+    limited = "--claude-limited" in argv or os.environ.get("TOKEN_BUDGET_CLAUDE_LIMITED") == "1"
+    claude_out = p["remaining"] <= 0 or limited
+    pc = arg("--pc") or "unknown"
+    snap, omni_state = omni_latest(now)
+    tasks = [arg("--task")] if arg("--task") else list(TASKS)
+    claude = "EXHAUSTED" if p["remaining"] <= 0 else "RATE_LIMITED" if limited else p["verdict"]
+    rows = [f"claude {claude}: remaining {p['remaining'] / 1e6:.2f}M of {p['budget'] / 1e6:.2f}M, reset {p['reset']}, "
+            f"spare {p['spare_tokens'] / 1e6:.2f}M; omniroute {omni_state}; pc {pc}"]
+    result = {}
+    for t in tasks:
+        r, why = route_decision(t, p["verdict"], claude_out, omni_state, pc)
+        result[t] = {"route": r, "reason": why}
+        rows.append(f"{t}: {r} - {why}")
+    if any(v["route"] == "OMNIROUTE_PC" for v in result.values()):
+        rows.append("OMNIROUTE_PC = " + FALLBACK_CMD + "; first confirm list_devices shows Matheus online, else HOLD. "
+                    "Its output passes the same checks (comment checks, PR, CI); it never approves, generates or publishes.")
+    if "--json" in argv:
+        print(json.dumps({"claude": claude, "omniroute": omni_state, "pc": pc, "routes": result}, indent=1))
+    else:
+        print("\n".join(rows))
+    return 0
+
+
 def hook_input():
     if sys.stdin is None or sys.stdin.isatty():
         return {}
@@ -465,8 +634,18 @@ def main(argv):
                 plan = build_plan(cfg, load_json("TOKEN_BUDGET_COSTS", "token_costs.json"), plan)
                 (HERE / "token_plan.json").write_text(json.dumps(plan, indent=1) + "\n")
             print(plan_text(compute(use_cache=False), plan))
+        elif cmd == "route":
+            return route_cmd(argv, cfg, projects)
+        elif cmd == "omni":
+            snap, st = omni_latest(now_utc())
+            print(omni_text(snap, st))
+        elif cmd == "omni-save":
+            print(f"saved {omni_save(argv[2])}")
+            snap, st = omni_latest(now_utc())
+            print(omni_text(snap, st))
         else:
-            print("usage: token_budget.py status|pace|plan|costs|check|record", file=sys.stderr)
+            print("usage: token_budget.py status|pace|plan|costs|check|record|route [--task T] [--pc online|offline] "
+                  "[--claude-limited] [--json]|omni|omni-save RAW.json", file=sys.stderr)
             return 64
         return 0
     except Exception as e:   # a broken meter is said aloud (exit 1 = non-blocking) and never looks like a green budget

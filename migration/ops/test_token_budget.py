@@ -253,3 +253,70 @@ class ClassifyToolingTest(unittest.TestCase):
         self.assertEqual(tb.classify("Calibrate and run new tools now: the Short->long funnel report"), "agent_other")
         self.assertEqual(tb.ACTIVITY_OF["agent_other"], "reviews_prs")
         self.assertEqual(tb.classify("Build the Shorts cut from the Babel long"), "agent_short")
+
+
+class RouteTest(unittest.TestCase):
+    """Owner 2026-11-06: one token manager for Claude and the free OmniRoute pool. Critical work never leaves Claude;
+    an exhausted/rate-limited Claude sends only no-spend work to the PC fallback; BEHIND keeps everything on Claude."""
+
+    def test_critical_tasks_never_route_to_omniroute(self):
+        for task in tb.CRITICAL_TASKS + ("something_new",):
+            for verdict in ("AHEAD", "ON_PACE", "BEHIND"):
+                for out in (False, True):
+                    for omni in ("OK", "STALE", "DOWN", "EXHAUSTED", "MISSING"):
+                        for pc in ("online", "offline", "unknown"):
+                            r, _ = tb.route_decision(task, verdict, out, omni, pc)
+                            self.assertIn(r, ("CLAUDE", "HOLD"), (task, verdict, out, omni, pc))
+                            self.assertEqual(r, "HOLD" if out else "CLAUDE")
+
+    def test_exhausted_triggers_pc_fallback_for_no_spend_work(self):
+        for task in tb.OFFLOAD_TASKS + tb.NOSPEND_TASKS:
+            for verdict in ("AHEAD", "ON_PACE", "BEHIND"):
+                self.assertEqual(tb.route_decision(task, verdict, True, "OK", "online")[0], "OMNIROUTE_PC")
+                self.assertEqual(tb.route_decision(task, verdict, True, "OK", "offline")[0], "HOLD")
+                self.assertEqual(tb.route_decision(task, verdict, True, "DOWN", "online")[0], "HOLD")
+                self.assertEqual(tb.route_decision(task, verdict, True, "EXHAUSTED", "online")[0], "HOLD")
+
+    def test_behind_and_on_pace_keep_claude(self):
+        for task in tb.TASKS:
+            for verdict in ("BEHIND", "ON_PACE"):
+                self.assertEqual(tb.route_decision(task, verdict, False, "OK", "online")[0], "CLAUDE")
+
+    def test_ahead_offloads_only_low_risk(self):
+        for task in tb.OFFLOAD_TASKS:
+            self.assertEqual(tb.route_decision(task, "AHEAD", False, "OK", "online")[0], "OMNIROUTE_PC")
+            self.assertEqual(tb.route_decision(task, "AHEAD", False, "STALE", "online")[0], "CLAUDE")
+        for task in tb.NOSPEND_TASKS:
+            self.assertEqual(tb.route_decision(task, "AHEAD", False, "OK", "online")[0], "CLAUDE")
+
+    def test_sanitize_drops_ids_and_refuses_secrets(self):
+        raw = {"schema": "omniroute-usage-v1", "generated_at": "2026-11-06T00:06:47.647Z", "combo": "heroverse-fallback",
+               "up": True, "account": "me@example.com",
+               "providers": {"groq": {"connections": 1, "connectionId": "fa09c2eb-ff43-402a-809c-7d8df6611b02",
+                                      "token_status": "valid", "windows": {}, "lockouts": []},
+                             "Bad Name@x.com": {"connections": 1}},
+               "totals_24h": {"requests": 3}, "alerts": []}
+        out = tb.sanitize_omni(raw)
+        text = json.dumps(out)
+        self.assertNotIn("fa09c2eb", text)
+        self.assertNotIn("example.com", text)
+        self.assertEqual(list(out["providers"]), ["groq"])
+        raw["providers"]["groq"]["token_status"] = "sk-or-v1-abcdefghijklmnop"
+        self.assertIsNone(tb.sanitize_omni(raw)["providers"]["groq"]["token_status"])
+
+    def test_omni_state_stale_down_exhausted(self):
+        with tempfile.TemporaryDirectory() as d:
+            os.environ["TOKEN_BUDGET_OMNI_DIR"] = d
+            try:
+                now = datetime(2026, 11, 6, 12, tzinfo=UTC)
+                self.assertEqual(tb.omni_latest(now)[1], "MISSING")
+                snap = {"generated_at": "2026-11-06T00:00:00+00:00", "up": True, "alerts": []}
+                (Path(d) / "usage-20261106.json").write_text(json.dumps(snap))
+                self.assertEqual(tb.omni_latest(now)[1], "OK")
+                self.assertEqual(tb.omni_latest(now + timedelta(hours=30))[1], "STALE")
+                (Path(d) / "usage-20261106.json").write_text(json.dumps(dict(snap, alerts=["FREE_QUOTAS_EXHAUSTED"])))
+                self.assertEqual(tb.omni_latest(now)[1], "EXHAUSTED")
+                (Path(d) / "usage-20261106.json").write_text(json.dumps(dict(snap, up=False)))
+                self.assertEqual(tb.omni_latest(now)[1], "DOWN")
+            finally:
+                del os.environ["TOKEN_BUDGET_OMNI_DIR"]

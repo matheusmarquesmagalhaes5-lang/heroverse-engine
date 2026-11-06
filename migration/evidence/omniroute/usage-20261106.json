@@ -1,0 +1,153 @@
+{
+ "alerts": [],
+ "combo": "heroverse-fallback",
+ "errors": [],
+ "free_tier": {
+  "model_count": 467,
+  "steady_recurring_tokens_month": 1623225000
+ },
+ "generated_at": "2026-11-06T00:06:47+00:00",
+ "providers": {
+  "cloudflare-ai": {
+   "connections": 1,
+   "errors_24h": 5,
+   "exhausted": false,
+   "lockouts": [],
+   "quota_pct_remaining": 100,
+   "quota_used": 0,
+   "rate_limited_24h": 0,
+   "requests_24h": 14,
+   "success_rate_pct_today": 44.44,
+   "token_status": "valid",
+   "tokens_today": 26785,
+   "windows": {}
+  },
+  "cloudflare-playground": {
+   "connections": 0,
+   "errors_24h": 4,
+   "exhausted": false,
+   "lockouts": [],
+   "quota_pct_remaining": null,
+   "quota_used": null,
+   "rate_limited_24h": 0,
+   "requests_24h": 4,
+   "success_rate_pct_today": 0,
+   "token_status": null,
+   "tokens_today": 0,
+   "windows": {}
+  },
+  "cohere": {
+   "connections": 1,
+   "errors_24h": 0,
+   "exhausted": false,
+   "lockouts": [],
+   "quota_pct_remaining": 100,
+   "quota_used": 0,
+   "rate_limited_24h": 0,
+   "requests_24h": 7,
+   "success_rate_pct_today": 100,
+   "token_status": "valid",
+   "tokens_today": 26182,
+   "windows": {}
+  },
+  "gemini": {
+   "connections": 1,
+   "errors_24h": 28,
+   "exhausted": false,
+   "lockouts": [
+    {
+     "model": "gemini-4-argon",
+     "reason": "rate_limit_exceeded",
+     "remaining_s": 28392
+    },
+    {
+     "model": "gemini-3.1-pro-preview",
+     "reason": "rate_limit_exceeded",
+     "remaining_s": 28391
+    }
+   ],
+   "quota_pct_remaining": 100,
+   "quota_used": 0,
+   "rate_limited_24h": 11,
+   "requests_24h": 48,
+   "success_rate_pct_today": 28.21,
+   "token_status": "valid",
+   "tokens_today": 58798,
+   "windows": {}
+  },
+  "groq": {
+   "connections": 1,
+   "errors_24h": 4,
+   "exhausted": false,
+   "lockouts": [],
+   "quota_pct_remaining": 100,
+   "quota_used": 0,
+   "rate_limited_24h": 0,
+   "requests_24h": 15,
+   "success_rate_pct_today": 42.86,
+   "token_status": "valid",
+   "tokens_today": 252,
+   "windows": {}
+  },
+  "openrouter": {
+   "connections": 1,
+   "errors_24h": 12,
+   "exhausted": false,
+   "lockouts": [],
+   "quota_pct_remaining": 100,
+   "quota_used": 0,
+   "rate_limited_24h": 12,
+   "requests_24h": 25,
+   "success_rate_pct_today": 40,
+   "token_status": "valid",
+   "tokens_today": 72616,
+   "windows": {
+    "credits": {
+     "remaining": 0,
+     "remaining_pct": 100,
+     "reset_at": null,
+     "total": 0,
+     "unlimited": false,
+     "used": 0
+    },
+    "free_daily": {
+     "remaining": 50,
+     "remaining_pct": 100,
+     "reset_at": "2026-11-06T00:00:00.000Z",
+     "total": 50,
+     "unlimited": false,
+     "used": 0
+    },
+    "free_rpm": {
+     "remaining": 20,
+     "remaining_pct": 100,
+     "reset_at": null,
+     "total": 20,
+     "unlimited": false,
+     "used": 0
+    }
+   }
+  },
+  "uncloseai": {
+   "connections": 0,
+   "errors_24h": 2,
+   "exhausted": false,
+   "lockouts": [],
+   "quota_pct_remaining": null,
+   "quota_used": null,
+   "rate_limited_24h": 0,
+   "requests_24h": 2,
+   "success_rate_pct_today": 0,
+   "token_status": null,
+   "tokens_today": 0,
+   "windows": {}
+  }
+ },
+ "schema": "omniroute-usage-v1",
+ "totals_24h": {
+  "errors": 55,
+  "rate_limited": 23,
+  "requests": 115
+ },
+ "up": true
+}

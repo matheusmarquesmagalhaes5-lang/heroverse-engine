@@ -448,6 +448,31 @@ heavy agents; it prints AHEAD / ON_PACE / BEHIND, the target tokens per hour and
   cadence cap in `token_plan.json`). Never lower quality or skip a review to use tokens.
 - ON_PACE: keep the rhythm. Re-run `pace` after any large agent; the 24 h rate drives the verdict.
 
+### Two pools: Claude and OmniRoute (owner 2026-11-06: "administre os tokens agora junto com o omniroute")
+
+`python3 migration/ops/token_budget.py route [--task T] [--pc online|offline] [--claude-limited]` prints, per task
+class, where it runs: CLAUDE, OMNIROUTE_PC (the PC's Claude Code on the free OmniRoute combo `heroverse-fallback`,
+`C:\HeroVerse\claude-fallback.ps1`, through Desktop Commander) or HOLD (record it as pending). Unknown classes count as
+critical. Pass `--claude-limited` after a Claude rate-limit error.
+
+| Class | Tasks | Route |
+| --- | --- | --- |
+| Critical | plan, script, kjv_text, review, gate, publication, code_pr, approval, generation, coordination | Always Claude; HOLD while Claude is out. Never OmniRoute. |
+| Low-risk, verifiable | comment_draft, log_summary, evidence_summary, research_notes, translation_internal | AHEAD: OmniRoute. ON_PACE/BEHIND: Claude (OmniRoute only if a Claude call fails). Claude out: OmniRoute. |
+| No-spend production | cut_approved_media, scheduling | Claude; OmniRoute on the PC only while Claude is exhausted or rate-limited. |
+
+- BEHIND keeps everything on Claude: the owner wants ~100% of the week used at the reset.
+- OmniRoute output passes the same checks as Claude output (both comment checks, PR, CI). The PC fallback never spends
+  on generation, approves, or makes a publishing decision. Confirm `list_devices` shows Matheus online first; offline,
+  OmniRoute down, stale (over 26 h) or its free quotas exhausted means HOLD.
+- OmniRoute usage: on the PC `node C:\HeroVerse\omni-usage.mjs` (source `ops/omniroute_usage.mjs`) reads OmniRoute's
+  local management API with OmniRoute's own per-install CLI token and writes the sanitized
+  `C:\HeroVerse\bridge\omni-usage.json` (provider names, requests, errors, 429s, quota windows, lockouts; no keys,
+  ids or accounts). A cloud session reads it with Desktop Commander `read_file`, saves it locally and runs
+  `token_budget.py omni-save <file>`, which re-sanitizes it by allowlist into `evidence/omniroute/usage-YYYYMMDD.json`.
+  The production routine refreshes it once a day and commits it in its PR. `token_budget.py omni` prints the state
+  and alerts (OMNIROUTE_DOWN, FREE_QUOTAS_EXHAUSTED, HIGH_429_RATE, OMNIROUTE_STALE/MISSING).
+
 ## Shared Claude Code / ChatGPT execution: token budget
 
 The token budget (`SYSTEM.md` "Token budget") counts Claude Code only, from the local Claude transcripts. ChatGPT/Codex
