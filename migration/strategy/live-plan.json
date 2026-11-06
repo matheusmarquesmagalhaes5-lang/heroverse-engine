@@ -1,40 +1,40 @@
 {
- "date": "2026-11-05",
- "run": "extra run 11-05 ~15:30Z (owner request, pace BEHIND, 463.6M spare); supersedes the ~03:00Z plan. Subs read live via vidIQ user_channels (free). vidIQ 20 credits this run, 30 of 150 today (2,914 left, renewal 11-18).",
+ "date": "2026-11-06",
+ "run": "daily 11-06 ~05:30Z; supersedes the 11-05 extra-run plan. vidIQ 10 credits this run (2,914 -> 2,904), 10 of 150 today. Subs live (free). No newer daily report than 11-05 08:16Z, so hours are the same own estimate.",
  "deadline": {
   "target": "2026-11-15",
   "max": "2026-12-01"
  },
  "goal": {
-  "subs_now": 372,
-  "subs_rate_7d": "~8.3/day (measured: 281 on 10-25 -> 372 on 11-05 15:30Z, 91 in 11 d); last ~34 h +62 (310 on 11-04 05:30Z -> 372, ~44/day, measured, driven by Shorts at 900-1,000 views)",
+  "subs_now": 384,
+  "subs_rate_7d": "~8.6/day (measured: 281 on 10-25 -> 384 on 11-06 ~05:30Z, 103 in 12 d); last ~14 h +12 (372 -> 384, ~20/day, measured, thin)",
   "subs_rate_28d": "not available (channel history only from 10-18)",
-  "long_hours_365d": "30.2 (own estimate from Analytics rows, daily report 11-05 01:49Z; Studio counter not read)",
-  "hours_rate_7d": "~1.2 long h/day (ESTIMATE: 27.9 on the 11-03 report -> 30.2 on the 11-05 report; windows differ); new longs: Babel 7, Flood Ends 4, Noah compilation 6 views (measured, vidIQ 11-05)",
+  "long_hours_365d": "30.2 (own estimate, daily report 11-05 08:16Z; Studio counter not read; no newer report)",
+  "hours_rate_7d": "~1.2 long h/day (ESTIMATE, unchanged); live long views 11-06: Babel 12, Flood Ends 4, Noah compilation 21, Noah-begins 15 (measured, vidIQ)",
   "hours_rate_28d": "not available",
   "gap": {
-   "subs": 628,
+   "subs": 616,
    "long_hours": 3969.8
   },
   "required_rates_target": {
-   "subs_per_day": 62.8,
-   "long_hours_per_day": 397.0,
-   "basis": "10 days 11-05..11-15"
+   "subs_per_day": 68.4,
+   "long_hours_per_day": 441.1,
+   "basis": "9 days 11-06..11-15"
   },
   "required_rates_max": {
-   "subs_per_day": 24.2,
-   "long_hours_per_day": 152.7,
-   "basis": "26 days 11-05..12-01"
+   "subs_per_day": 24.6,
+   "long_hours_per_day": 158.8,
+   "basis": "25 days 11-06..12-01"
   },
-  "binding_constraint": "long watch hours (needs ~100x the estimated ~1.2 h/day pace). Subs: 628 to go, ETA ~14 d (11-19) at the last-34 h pace of ~44/day (thin), ~76 d at the 11-d pace of 8.3/day",
+  "binding_constraint": "long watch hours (needs ~130x the estimated ~1.2 h/day). Subs: 616 to go, ~72 d at 8.6/day, ~31 d at the thin 20/day.",
   "weakest_factor": "long IMPRESSIONS: Bible longs get 47-280 thumbnail impressions each (measured) vs 889-1,500 for the old prayer longs; CTR (1.8-3.4%) and views (4-7) follow. Shorts send 0 viewers to longs (measured).",
   "eta_days_current_pace": {
-   "subs": "~14 at 44/day (34 h basis) or ~76 at 8.3/day (11 d basis)",
+   "subs": "~31 at 20/day (14 h basis) or ~72 at 8.6/day (12 d basis)",
    "long_hours": "~3,300 (estimate)"
   },
   "on_track": false,
   "honesty": "Hours cannot reach 4,000 by 11-15 or 12-01 at any pace we produce unless a breakout long/compilation gets thousands of views: 4,000 h at ~25 min per compilation view needs ~9,600 views, at ~6 min per long view ~40,000. Our public longs have ~450 views in total (measured). Deadline unchanged (owner).",
-  "asof": "2026-11-05 15:30Z: subs vidIQ live 372; hours = own estimate 30.2 from the 11-05 08:16Z daily report (unchanged; Studio counter not read)"
+  "asof": "2026-11-06 ~05:30Z: subs vidIQ live 384 (channel views 12,265, 63 videos); hours own estimate 30.2 (11-05 report)"
  },
  "decomposition": {
   "long": "impressions 7,832 x CTR 1.94% = 152 clicks (lifetime, 14 longs, measured); AVD of Bible longs: Noah-begins 176 s of 8:22 (measured, 16 views); Flood Ends 28 s (2 views, noise)",
@@ -50,7 +50,7 @@
    "metric": "7-d CTR and views in Studio",
    "success_threshold": "CTR >=3% and >=50 views in 7 d",
    "kill_threshold": "no CTR change after 1,000 impressions",
-   "status": "new (M3 trigger fired, thin sample)"
+   "status": "keep; titles still to apply"
   },
   {
    "lever": "Short -> long funnel moved to end screen, playlist and pinned comment",
@@ -65,12 +65,12 @@
   {
    "lever": "H2 marathon: 'Genesis Complete Story' FULL MOVIE KJV compilation, real length >=30 min (target 45-60), chapter timestamps",
    "action": "Production builds it from approved media only (Noah compilation 18:03, Babel 8:04, Flood Begins 8:22, Flood Ends, approved Genesis 1-4 minutes), pulled forward from 11-08 to as soon as stock allows (compilation_long.py preflight first, state the real length; no double counting of Noah media already inside the 18:03 compilation); timestamps every ~5 min in the description; end screen to the next long",
-   "evidence": "measured 2026-11-05: 10 in-niche winners 1.1-5.9 h and 12 weak small-channel read-alongs (pool JSON); PicVersion 4:40 'FULL MOVIE KJV' 657K views on 12.1K subs; our Noah compilation 6 views at ~12 h",
+   "evidence": "measured 2026-11-06 (evidence/vidiq/2026-11-06/h2-fullmovie-pool.json): 'Full Movie' Bible/Genesis longs since 2026-08 -- 20 results, 15 with >=15K views from 12 channels, 7 of them on channels of 4.6K-14.2K subs (PicVersion 4:40 660K on 12.1K; Bible Stories TV Noah 27:54 410K on 9.9K; Cinematic Series 1:33 463K on 6.7K; Gospel Salt Genesis 1:30 77K on 4.6K); weak contrasts: 580 (23 subs) and 665 (2.7K subs, 2 days old). Our Noah compilation 18:03 has 21 views at 40 h (measured)",
    "expected_effect": "ESTIMATE ~2-10 h per compilation at today's impressions; the 4,000 h goal needs a breakout",
    "metric": "compilation views and AVD at 72 h and 7 d",
    "success_threshold": ">=300 views and >=10 min AVD in 7 d",
    "kill_threshold": "<100 views in 7 d (then stop compilations; only longs + Shorts)",
-   "status": "keep, priority 1, pulled forward"
+   "status": "keep, priority 1; VALIDATED form, our build pilot-023 (37:30) on machine-review HOLD"
   },
   {
    "lever": "Shorts as subscriber engine, hook variant A",
@@ -93,21 +93,21 @@
   }
  ],
  "experiments_review": [
-  "Noah compilation (1zsZZgDCAG0, 18:03): no new read (72 h on 11-07). KEEP.",
-  "Flood Ends long (1m-NUJhkdMY) and Babel long (KwFjnZ20yGA): no new read since 03:00Z; KEEP; Babel 7-day read 11-12 (question-title hypothesis, success >=300).",
-  "Title repackage of X2LPFriRn3M and 1m-NUJhkdMY: still to be applied by production/Studio; KEEP.",
-  "Short -> long funnel (description line, pinned comment, end screen): 0 from Shorts so far (measured); read 11-12.",
-  "Hook variant A vs B Shorts: stake/question Shorts keep 600-990 views (11-04/05: 989, 914, 705, 600, 349); subs +62 in ~34 h (measured). KEEP, scale variant A to 2 of 4 a day.",
-  "H1 read-along hypothesis (new 11-05 morning): KILLED in static form today, narrowed to the 'Full Movie' compilation (H2)."
+  "Noah compilation 1zsZZgDCAG0 (18:03): 21 views at ~40 h (measured, 11-05: 6). 72 h read 11-07. KEEP; 18 min is below the 28 min floor of the Full Movie winners.",
+  "Babel long KwFjnZ20yGA: 12 views, 1 comment (measured). Question-title test, 7-day read 11-11/12. KEEP.",
+  "Flood Ends 1m-NUJhkdMY: 4 views (measured); X2LPFriRn3M: 15 views. Title repackage still not applied: apply it (title only). KEEP.",
+  "Short -> long funnel: still 0 from Shorts as of the 11-05 report (no newer funnel table); read 11-12. KEEP.",
+  "Hook variant A Shorts: subs +12 in ~14 h; no per-Short table newer than 11-05. KEEP.",
+  "H1 static read-along: stays KILLED. H1/H2 'Full Movie' cinematic form: VALIDATED today by the accumulation rule (>=6 winners, >=4 channels, max share 4/15 = 27%); 2 weak contrasts only, so the contrast count is short of 6 -- treat as validated for the winners and keep the kill threshold on our own results."
  ],
  "quantities": {
   "longs": 1,
-  "compilations": 0,
+  "compilations": 1,
   "short_cuts": 3,
   "bridge_shorts": 1,
   "keeper_reflections": 1,
   "shorts_per_day": 4,
-  "note": "1 long a day is NOT being met: longs went out 11-01 and 11-04 (about every 2-3 days, measured from the published list). Capacity binds on the long's script/stills (runway 0.0 days) and the shared stills allowances, not on Shorts. Shorts are covered to 11-06 13:30Z (Babel cuts 11-05 23:30Z, 11-06 05:30Z, 11-06 13:30Z; genesis-11 bridge 11-05 18:30Z); 11-06 18:30Z and 23:30Z are free (48 h buffer is met until 11-06 13:30Z, ~36 h)."
+  "note": "1 long a day is still NOT met (last long 11-04). Binds on the long script/stills runway; abraham-call-long and abram-covenant-long plans (#895, 11-05) are not on main yet. Shorts covered to 11-06 18:30Z (genesis-12); genesis-13 built, scheduled for 11-06 23:30Z; 11-07 slots free -> 48 h buffer NOT met."
  },
  "slots_utc": [
   "05:30",
@@ -120,19 +120,20 @@
    "story": "abraham-call-long (Genesis 12-13)",
    "title": "He Left Everything Without Knowing Where | The Call of Abraham | Genesis 12 (KJV)",
    "target_length_s": 900,
-   "blocking": "script not written (runway 0.0 days); hook per map rule 1 (danger or identity reversal in 0-25 s); floor 13:00"
+   "blocking": "plans abraham-call-long / abram-covenant-long from PR #895 are not on main (not found in plans/); merge or recheck, then stills"
   }
  ],
  "next_compilations": [
   {
    "title": "The Book of Genesis, Part 1: Creation to Babel | FULL MOVIE (KJV)",
    "priority": 1,
-   "due": "as soon as stock allows; no later than 2026-11-08",
-   "length_min": ">=30 real (target 45-60); say the real length",
-   "slot": "first free long slot after Abraham long script is not blocked; 13:30Z",
-   "sources": "approved media only: Genesis 1-4 minutes, Noah compilation, Babel 8:04, Flood Begins 8:22, Flood Ends; exact KJV text, Kokoro voices, Keeper critical layer between arcs; chapter timestamps every ~5 min",
-   "zero_generation_cost": true,
-   "honest_packaging": "'Full Movie' only if length and visuals match; title states the real scope"
+   "due": "2026-11-07",
+   "pilot": "pilot-023 (master 43bd2b99, 37:30, QA v2 PASS)",
+   "status": "machine-review HOLD 11-06 02:15Z: (1) 'hit' for 'hid' at 05:13.72 (i2-02); (2) 19 Keeper beats (~6.8 min) with a closed-mouth face under voice-over (SyncNet 0.06-0.15)",
+   "action": "reword i2-02; replace the Keeper faces under voice-over with approved scene stills without a face (zero cost, fastest) or lip-synced clips; keep or trim the inherited Babel/flood faces; rebuild, rerun machine review, approve.yml; chapter timestamps every ~5 min; title states real length",
+   "packaging": "'Full Movie' + book name + hero list (PicVersion: 'Adam and Eve | Noah | Nephilim'); 4K only if true",
+   "slot": "13:30Z, first slot after the gate passes (owner: do not hold for polish)",
+   "zero_generation_cost": true
   }
  ],
  "cuts_first": [
@@ -185,9 +186,10 @@
    "Babel question title (success >=300 views / 7 d, read 11-07 and 11-12)",
    "Variant A vs B Shorts (7 d, started 11-04)",
    "Title repackage of X2LPFriRn3M and 1m-NUJhkdMY (7 d)",
-   "H2 Genesis Full Movie compilation (success >=300 views and >=10 min AVD / 7 d)"
+   "H2 Genesis Full Movie compilation (success >=300 views and >=10 min AVD / 7 d)",
+   "Full Movie form (pilot-023) first public read 72 h after upload"
   ],
-  "map_update": "No structure file edited. 2026-11-05 pool (evidence/vidiq/2026-11-05/h1-h2-pool.json): session-length formats win on channel size or cinematic 'Full Movie' packaging; static read-alongs from <3K-sub channels do not. Candidate rule for the map after a second day of data: 'book/arc Full Movie + chapter timestamps' for compilations."
+  "map_update": "2026-11-06 pool: 'Full Movie' cinematic Bible/book longs of 28 min-4 h win on small channels (4.6-14K subs, 77K-660K views). Candidate rule for the map (needs one more day to add to structures/): length >=28 min, 'Full Movie' + book/hero list in the title, chapter timestamps."
  },
  "capacity": {
   "lease": "not read in this run",
@@ -201,18 +203,17 @@
   "plugins_removing_bottleneck_tomorrow": "PC bridge (Desktop Commander, device Matheus online at 12:25Z) + chat-lock: fixes the ChatGPT stills route that failed on chat selection (genesis-12-short); defect-scan.yml (free listening review, removes the 'no listening reviewer' wait); lipsync.yml for the Keeper; compilation_long.py needs no plugin"
  },
  "battle_plan": {
-  "moment": "M3 (11-05 48 h checkpoint) continuing; M4 starts 11-06 (one story long a day + Creation to Cain compilation, now widened to Genesis 1-11 'Full Movie')",
+  "moment": "M4 (starts 11-06): one story long a day + Genesis 'Full Movie' compilation",
   "triggers_hit": [
-   "M3 views from Shorts = 0: HIT (0 of 2 long views in the window, measured)",
-   "M3 CTR <2%: HIT on Noah-begins (1.79%, 280 impressions) and Flood Ends (0%, 47 impressions), thin sample",
-   "M3 AVD <3 min: HIT on Noah-begins (176 s, 16 views), thin sample"
+   "M3 views from Shorts = 0: still HIT (11-05 funnel table, no newer)",
+   "M3 CTR <2% / AVD <3 min on Bible longs: HIT, thin samples",
+   "Long views remain 4-21 per long (measured)"
   ],
   "actions": [
-   "H2 compilation pulled forward and widened (priority 1, real length stated)",
-   "Repackage titles of X2LPFriRn3M, 1m-NUJhkdMY and 1zsZZgDCAG0 (after its 11-07 read)",
-   "Abraham long script first, then stills",
-   "Do not build static read-alongs",
-   "Chapter timestamps in the description of every long and compilation"
+   "Unblock pilot-023 today: reword i2-02, cover Keeper closed-mouth beats with faceless approved stills, rebuild, machine review, approve.yml, publish at 13:30Z",
+   "Apply title repackage to X2LPFriRn3M and 1m-NUJhkdMY (title only)",
+   "Merge or recheck the Abraham plans, then stills",
+   "Schedule genesis Shorts for 11-07 (buffer short by ~1 slot)"
   ]
  },
  "slots_note": "estimate, thin data: 13:30 and 23:30 UTC have the most data; this week's top Shorts (972, 907) came from 13:30 and 05:30 slots, so 05:30 is no longer only exploration.",
@@ -220,26 +221,27 @@
   "E292/E295: no re-probe of spent shots",
   "no repeated passages between Shorts of one long (11-03 rule)",
   "E302: faster-whisper alignment IndexError is intermittent; rerun only after the #861/#862 fix",
-  "no Pavo lesson added: no new shot-probe/lipsync/defect-scan result in this run's window beyond those already recorded"
+  "no Pavo lesson added: no new shot-probe/lipsync/defect-scan result in this run's window beyond those already recorded",
+  "2026-11-06 lessons added: Keeper closed-mouth face under voice-over; 'hit'/'hid' ASR slip"
  ],
- "why": "Hours bind at 30.2/4,000 (estimate). Market data shows session-length formats win, but only with packaging or channel reach we lack; the zero-cost test is a Genesis 'Full Movie' compilation from approved media. Subs are the nearer goal (372, ~44/day on the last 34 h).",
+ "why": "Hours bind (30.2/4,000, estimate). The Full Movie form is validated on channels our size; the only thing between us and a 37-minute upload is two reviewed defects. Subs 384 (+12 in 14 h).",
  "confidence": {
   "goal_numbers": "subs measured live; hours own estimate",
   "strategy": "low-medium",
   "slots": "low",
   "H1_H2": "medium on the pattern, low on hours per day"
  },
- "cross_niche_status": "2026-11-05 extra run: no cross-niche call (pool counts from 11-04 stand); 4 in-niche searches (20 credits).",
+ "cross_niche_status": "2026-11-06: no cross-niche call (pool counts from 11-04 stand); focus on H2 validation.",
  "hours_levers": {
   "H1": {
-   "verdict": "PARTLY VALIDATED, NARROWED. Accumulation rule counts met (10 winners >=50K views since 2026-05 from 9 channels, max share 2/10; 12 weak contrasts, 10 channels; evidence/vidiq/2026-11-05/h1-h2-pool.json). But the split is by channel size and visuals: static/imagery read-alongs and sleep readings from channels under ~3K subs got 8-710 views (median ~190, 12 videos, 1.1-11.9 h long); the winners are 48K-809K-sub channels, plus two small ones with cinematic or documentary packaging (PicVersion 'Genesis FULL MOVIE KJV' 4:40, 657K views, 12.1K subs, 50 chapter timestamps; G. Wilkinson 1:31 doc, 438K). A pure audio read-along does NOT lift a 372-sub channel: KILL that form. KEEP the 'FULL MOVIE KJV' cinematic book/arc form with chapter timestamps (= H2).",
+   "verdict": "Static read-along: KILLED (small-channel evidence, 11-05). The cinematic 'Full Movie' form: VALIDATED 11-06 (15 winners >=15K views, 12 channels, 7 on <=14.2K-sub channels). Folds into H2.",
    "est_hours_per_day": "~0 for a static read-along (kill); folds into H2",
    "basis": "12 small-channel read-alongs median ~190 views; our Bible longs get 47-280 impressions each (measured)",
    "cost": "read-along: low generation cost but needs a 3+ h KJV text read in our Kokoro voice; not worth capacity until a compilation proves session demand"
   },
   "H2": {
-   "verdict": "PRIORITY 1 (only zero-source-cost lever). In-niche evidence: compilation/marathon formats of 1.5-2.6 h win at scale on big channels (Bible In a Nutshell 2:33 133K views, My First Bible 2:12 296K, EyeBible 1:30 62K on 42.8K subs, Minno 1:07-1:29 340K), and a 12.1K-sub channel got 657K with a 'Full Movie' book-length package. Our own Noah compilation (18:03) has 6 views at ~12 h (measured): too early, 72 h read 11-07.",
-   "est_hours_per_day": "~0.5-3 (ESTIMATE: 1 compilation x 60-150 views/week x 25 min AVD = 25-60 h/week if impressions reach ~3,000; at today's ~300 impressions: ~2-10 h per compilation over its life)",
+   "verdict": "PRIORITY 1 and now validated in-niche: our pilot-023 is 37:30, inside the 28 min-4 h winner band. Our Noah compilation (18:03) has 21 views at ~40 h (measured).",
+   "est_hours_per_day": "~0.5-3 (ESTIMATE, unchanged; unproven until pilot-023 gets impressions)",
    "basis": "measured impressions per Bible long 47-280; CTR 1.8-3.4%; AVD assumption 25 min unproven (our best long AVD 176 s on 16 views)",
    "cost": "0 generation; compilation_long.py + chapter timestamps + title/thumbnail; one render"
   },
@@ -257,7 +259,7 @@
   }
  },
  "bottleneck": {
-  "single": "the next long's script + stills runway is 0.0 days (no long since 11-04; stills for genesis-12-short blocked: ChatGPT chat selection failed, FLUX allocation used)",
-  "action": "Production 16:43Z: (1) write the Abraham long script first (13:00 floor, strongest beat in 30 s); (2) fix drive.ps1 chat selection with a screenshot check of the pinned 'HeroVerse - stills' chat while the PC is online, else scene-stills with fewer shots; (3) meanwhile build the H2 Genesis compilation (zero stills needed) so a long-form upload happens in the next 24 h"
+  "single": "pilot-023 is on HOLD for two concrete defects, and the long script runway is still 0 (Abraham plans not on main)",
+  "action": "Fix pilot-023 now (reword i2-02; faceless approved stills instead of closed-mouth Keeper faces; rebuild; machine review; approve.yml) and publish it as the next long-form upload; in parallel merge the Abraham plans and start stills through the chat-lock"
  }
 }
