@@ -1,0 +1,356 @@
+{
+ "source_policy": "pavo_speech_stock",
+ "version": "bible-plan-v2",
+ "episode": "genesis-14-short",
+ "part": 14,
+ "passage": "Genesis 13:1-18 (KJV, public domain)",
+ "period": {
+  "setting": "The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing.",
+  "exclude": "No stone temples, glass, iron, machinery, cranes, modern clothing or roads.",
+  "avoid": [
+   "streets?",
+   "roads?",
+   "lanterns?",
+   "kerosene",
+   "glass",
+   "windows?",
+   "chimneys?",
+   "castles?",
+   "domes?",
+   "churches",
+   "church",
+   "steeples?",
+   "spires?",
+   "iron",
+   "steel",
+   "machinery",
+   "cranes?",
+   "concrete",
+   "stone (?:temples?|buildings?|walls?|columns?)",
+   "marble",
+   "columns?",
+   "coats?",
+   "hats?",
+   "(?:peaked|flat|baseball|cloth) caps?"
+  ]
+ },
+ "aspect_ratio": "9:16",
+ "story": "Abram and Lot part ways (SERIES.md episode 14; arc 4, Genesis 13)",
+ "people": "No character from characters.json speaks or is shown by face: Abram, Lot and their herdsmen are silhouettes seen from behind, God is only a voice over a scene with no person, and the Keeper narrates in voice-over.",
+ "beats": "structure bible-story-short: cold_open s-voice (God's Genesis 13:14-15 call, voice-over, over an empty horizon); stake (two rich families, one pasture); escalation (strife, Abram's offer, Lot chooses the plain and pitches toward Sodom); climax s-lookround (the promise to Abram, 'lift up now thine eyes'); payoff (altar at Mamre); keeper_close (insight, question, part 15).",
+ "narration": [
+  {
+   "kind": "story",
+   "text": "Abram came back from Egypt rich in sheep, goats, silver and gold. And his nephew Lot was rich too."
+  },
+  {
+   "kind": "scripture",
+   "text": "And there was a strife between the herdmen of Abram’s cattle and the herdmen of Lot’s cattle: and the Canaanite and the Perizzite dwelled then in the land.",
+   "reference": "Genesis 13:7 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Two families, one pasture. The shepherds were fighting over every well, and the neighbours were watching."
+  },
+  {
+   "kind": "scripture",
+   "text": "And Abram said unto Lot, Let there be no strife, I pray thee, between me and thee, and between my herdmen and thy herdmen; for we be brethren.",
+   "reference": "Genesis 13:8 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Abram was the older man. God had promised the land to him. He could have claimed the best of it. He did not."
+  },
+  {
+   "kind": "scripture",
+   "text": "Is not the whole land before thee? separate thyself, I pray thee, from me: if thou wilt take the left hand, then I will go to the right; or if thou depart to the right hand, then I will go to the left.",
+   "reference": "Genesis 13:9 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "He gave his nephew first choice. Peace mattered more to him than the best pasture."
+  },
+  {
+   "kind": "scripture",
+   "text": "And Lot lifted up his eyes, and beheld all the plain of Jordan, that it was well watered every where, before the Lord destroyed Sodom and Gomorrah, even as the garden of the Lord, like the land of Egypt, as thou comest unto Zoar.",
+   "reference": "Genesis 13:10 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Green fields, running water, easy wealth. Lot chose with his eyes, and it looked like paradise."
+  },
+  {
+   "kind": "scripture",
+   "text": "Abram dwelled in the land of Canaan, and Lot dwelled in the cities of the plain, and pitched his tent toward Sodom. But the men of Sodom were wicked and sinners before the Lord exceedingly.",
+   "reference": "Genesis 13:12-13 (KJV)"
+  },
+  {
+   "kind": "story",
+   "text": "Lot did not move into Sodom at once. He only pitched his tent toward it. That is how the slow road begins. One tent door, one direction, one small choice at a time."
+  },
+  {
+   "kind": "story",
+   "text": "And Abram was left on the dry hills with the smaller share. Then God spoke to him again. He had given up the green valley, and he had given it up for peace."
+  },
+  {
+   "kind": "story",
+   "text": "Look in every direction, God said. All that you see I will give to you and to your children for ever."
+  },
+  {
+   "kind": "scripture",
+   "text": "Then Abram removed his tent, and came and dwelt in the plain of Mamre, which is in Hebron, and built there an altar unto the Lord.",
+   "reference": "Genesis 13:18 (KJV)"
+  },
+  {
+   "kind": "insight",
+   "text": "Lot chose by what he could see, and slowly walked toward ruin. Abram let go of the best, and received everything God had promised."
+  },
+  {
+   "kind": "cta",
+   "text": "Would you give up the better share to keep the peace? Tell me below."
+  },
+  {
+   "kind": "cta",
+   "text": "The full story of Abram is coming in the long video. Follow so you do not miss part fifteen."
+  }
+ ],
+ "shots": [
+  {
+   "id": "s-voice",
+   "kind": "scene",
+   "seconds": 12,
+   "characters": [],
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Extreme wide shot, slow push-in. A vast open horizon at dawn from a stony hilltop, the land falling away in every direction in gold and blue haze, a warm wind bending the dry grass, no people, centred in the frame. The subject is centred in the frame. Vast and silent. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "first_frame": "genesis-14-short-s-voice",
+   "speaker": "god",
+   "reference": "Genesis 13:14 (KJV)",
+   "line": "Lift up now thine eyes, and look from the place where thou art northward, and southward, and eastward, and westward:"
+  },
+  {
+   "id": "s-herds",
+   "kind": "scene",
+   "lines": [
+    0
+   ],
+   "seconds": 12,
+   "characters": [],
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Extreme wide shot, slow pan. Large flocks of sheep and goats and a long line of donkeys moving across wide green-brown pastureland at morning, two groups of tents on the plain, centred in the frame. The figures are in silhouette, seen from behind. Only adults, no children. The subject is centred in the frame. Abundant and restless. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "first_frame": "genesis-14-short-s-herds",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-strife",
+   "kind": "scene",
+   "lines": [
+    1
+   ],
+   "seconds": 9,
+   "characters": [],
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Wide shot, slow push-in. Two groups of herdsmen standing apart at a stone well, shouting and pointing, their sheep crowding the water, dust in the air, centred in the frame. The figures are in silhouette, seen from behind. Only adults, no children. The subject is centred in the frame. Tense and loud. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "first_frame": "genesis-14-short-s-strife",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-brother",
+   "kind": "scene",
+   "lines": [
+    2
+   ],
+   "seconds": 9,
+   "characters": [],
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Extreme wide shot, static camera. A narrow valley between two hills with two flocks mixing and pressing against each other, shepherds with staffs on both slopes, centred in the frame. The figures are in silhouette, seen from behind. Only adults, no children. The subject is centred in the frame. Crowded and tense. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "first_frame": "genesis-14-short-s-brother",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-plea",
+   "kind": "scene",
+   "lines": [
+    3
+   ],
+   "seconds": 10,
+   "characters": [],
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Wide shot, slow push-in. An old man with a staff, seen from behind, standing on a hill and facing a younger man seen from behind, the two of them side by side above the valley, open palms, centred in the frame. The figures are in silhouette, seen from behind. Only adults, no children. The subject is centred in the frame. Calm and gentle. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "first_frame": "genesis-14-short-s-plea",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-choice",
+   "kind": "scene",
+   "lines": [
+    4
+   ],
+   "seconds": 10,
+   "characters": [],
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Extreme wide shot, slow tilt up. A tall old man seen from behind on a hilltop, his tent small behind him, the whole land spread before him in morning light, centred in the frame. The figures are in silhouette, seen from behind. Only adults, no children. The subject is centred in the frame. Humble and generous. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "first_frame": "genesis-14-short-s-choice",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-leftright",
+   "kind": "scene",
+   "lines": [
+    5
+   ],
+   "seconds": 8,
+   "characters": [],
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Extreme wide shot, slow pan. A hilltop at a fork of two paths, one running east towards a bright green valley and one running west towards dry brown hills, two men seen from behind at the fork, centred in the frame. The figures are in silhouette, seen from behind. Only adults, no children. The subject is centred in the frame. Open and weighty. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "first_frame": "genesis-14-short-s-leftright",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-fork2",
+   "kind": "scene",
+   "lines": [
+    5
+   ],
+   "seconds": 8,
+   "characters": [],
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Extreme wide shot, slow pan. Close view of two pairs of sandals and two staffs planted on a stony hilltop, one path of stones dropping toward a green valley below and the other toward dry brown hills, no faces, centred in the frame. The figures are in silhouette, seen from behind. Only adults, no children. The subject is centred in the frame. Open and weighty. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "first_frame": "genesis-14-short-s-fork2",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-plain",
+   "kind": "scene",
+   "lines": [
+    6
+   ],
+   "seconds": 11,
+   "characters": [],
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Extreme wide shot, slow push-in. A young man with a staff, seen from behind, standing on a ridge looking down at a wide river plain, lush and shining in the sun, with a river winding through it, centred in the frame. The figures are in silhouette, seen from behind. Only adults, no children. The subject is centred in the frame. Dazzling and tempting. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "first_frame": "genesis-14-short-s-plain",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-green",
+   "kind": "scene",
+   "lines": [
+    7
+   ],
+   "seconds": 8,
+   "characters": [],
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Wide shot, slow pan. Lush green fields, date palms and a bright river, flocks drinking, a warm golden haze over the plain, centred in the frame. The figures are in silhouette, seen from behind. Only adults, no children. The subject is centred in the frame. Lush and inviting. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "first_frame": "genesis-14-short-s-green",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-green2",
+   "kind": "scene",
+   "lines": [
+    7
+   ],
+   "seconds": 8,
+   "characters": [],
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Wide shot, slow pan. Close view of a flock of sheep drinking at a bright river among tall reeds and date palms, warm golden haze, centred in the frame. The figures are in silhouette, seen from behind. Only adults, no children. The subject is centred in the frame. Lush and inviting. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "first_frame": "genesis-14-short-s-green2",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-sodom",
+   "kind": "scene",
+   "lines": [
+    8
+   ],
+   "seconds": 9,
+   "characters": [],
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Extreme wide shot, slow push-in. A tent pitched on a hillside at dusk, its flap facing a distant walled city of mud-brick houses glowing with lamplight in the valley, a lone man seen from behind standing at the tent door, centred in the frame. The figures are in silhouette, seen from behind. Only adults, no children. The subject is centred in the frame. Uneasy and quiet. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "first_frame": "genesis-14-short-s-sodom",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-sodom2",
+   "kind": "scene",
+   "lines": [
+    9
+   ],
+   "seconds": 12,
+   "characters": [],
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Extreme wide shot, slow push-in. The walled city of mud-brick houses at night, torches burning along its gate and lamplight glowing in the wall, a dark empty plain before it, centred in the frame. The figures are in silhouette, seen from behind. Only adults, no children. The subject is centred in the frame. Uneasy and quiet. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "first_frame": "genesis-14-short-s-sodom2",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-alone",
+   "kind": "scene",
+   "lines": [
+    10
+   ],
+   "seconds": 12,
+   "characters": [],
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Extreme wide shot, slow tilt. A lone old man with a staff, seen from behind, walking back up a dry stony hillside at dusk, his small caravan waiting at the top, brown hills all around, centred in the frame. The figures are in silhouette, seen from behind. Only adults, no children. The subject is centred in the frame. Lonely and still. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "first_frame": "genesis-14-short-s-alone",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-stars",
+   "kind": "scene",
+   "lines": [
+    11
+   ],
+   "seconds": 12,
+   "characters": [],
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Wide shot, slow tilt up. A lone old man seen from behind sitting by his tent at dusk, looking up at a sky just beginning to fill with stars, a faint golden light in the east, centred in the frame. The figures are in silhouette, seen from behind. Only adults, no children. The subject is centred in the frame. Waiting. Hushed. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "first_frame": "genesis-14-short-s-stars",
+   "figures": "anonymous",
+   "climax": true
+  },
+  {
+   "id": "s-lookround",
+   "kind": "scene",
+   "lines": [
+    12
+   ],
+   "seconds": 12,
+   "characters": [],
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Extreme wide shot, slow orbit. A stony hilltop at sunrise, an old man seen from behind with his arm slowly lifted, pointing across a vast land that opens in every direction in gold light, centred in the frame. The figures are in silhouette, seen from behind. Only adults, no children. The subject is centred in the frame. Awe and promise. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "first_frame": "genesis-14-short-s-lookround",
+   "figures": "anonymous"
+  },
+  {
+   "id": "s-mamre",
+   "kind": "scene",
+   "lines": [
+    13
+   ],
+   "seconds": 10,
+   "characters": [],
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Wide shot, slow push-in. A heap of rough stones forming an altar beneath great oak trees on a hillside, a small tent beside it, thin smoke rising, golden light through the leaves, centred in the frame. The figures are in silhouette, seen from behind. Only adults, no children. The subject is centred in the frame. Grateful and quiet. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+   "first_frame": "genesis-14-short-s-mamre",
+   "figures": "anonymous"
+  },
+  {
+   "id": "k-insight",
+   "kind": "keeper",
+   "voiceover": true,
+   "lines": [
+    14
+   ],
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium shot, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, holds his head level and looks straight into the camera, his lips closed, silent, a calm kind look, breathing slowly. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Tender and grave. No text, no logos.",
+   "still_from": "arc-01-long-k-promise-2"
+  },
+  {
+   "id": "k-question",
+   "kind": "keeper",
+   "voiceover": true,
+   "lines": [
+    15
+   ],
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium shot, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, holds his head level, looks straight into the camera and slowly rolls the old scroll closed in his hands, his lips closed, silent, a gentle questioning look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and searching. No text, no logos.",
+   "clip_from": "genesis-08-short#k-question"
+  },
+  {
+   "id": "k-close",
+   "kind": "keeper",
+   "voiceover": true,
+   "lines": [
+    16
+   ],
+   "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium shot, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, holds his head level and looks straight into the camera, his lips closed, silent, a faint warm smile, breathing slowly. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and expectant. No text, no logos.",
+   "still_from": "arc-01-long-k-promise-3"
+  }
+ ],
+ "criteria": "story-qa-criteria-v5",
+ "audio_route": "kokoro",
+ "sources_v5": "Under story QA v5: God's line on Kokoro over the s-voice FLUX still; no human face; the Keeper from arc-01 stills and genesis-08's approved clip; every other scene its own FLUX still in motion."
+}
