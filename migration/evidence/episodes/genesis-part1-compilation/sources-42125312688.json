@@ -1,0 +1,72 @@
+[
+ {
+  "short": "genesis-02-short",
+  "asset": "bible-genesis-02-short-sha256-48ce69512a8562373b98b623eb21e1b8627ee797bce550b178cdce4f7bf737dd.mp4",
+  "sha256": "48ce69512a8562373b98b623eb21e1b8627ee797bce550b178cdce4f7bf737dd",
+  "video_id": "hwq4qgjreh0",
+  "seconds": 51.9
+ },
+ {
+  "short": "genesis-03-short",
+  "asset": "bible-genesis-03-short-sha256-9b10e1a0bedc00577d43021e52ecfe0c568230110b9a92b2f3aad231f6cf40bf.mp4",
+  "sha256": "9b10e1a0bedc00577d43021e52ecfe0c568230110b9a92b2f3aad231f6cf40bf",
+  "video_id": "K_ZwsCt-Wg4",
+  "seconds": 46.6
+ },
+ {
+  "short": "genesis-04-short",
+  "asset": "bible-genesis-04-short-sha256-c3784ad58400989feca750772c53ac2b97c0e5a86c412c94b3dc625ae913707b.mp4",
+  "sha256": "c3784ad58400989feca750772c53ac2b97c0e5a86c412c94b3dc625ae913707b",
+  "video_id": "s9YK37YErRc",
+  "seconds": 48.0
+ },
+ {
+  "short": "genesis-05-short",
+  "asset": "bible-genesis-05-short-sha256-d3b092a48f077869fa364b62e753ba660f494596f4b0837f51cc5887a0088b3d.mp4",
+  "sha256": "d3b092a48f077869fa364b62e753ba660f494596f4b0837f51cc5887a0088b3d",
+  "video_id": "OYijqQdQq0o",
+  "seconds": 62.6
+ },
+ {
+  "short": "genesis-06-short",
+  "asset": "bible-genesis-06-short-sha256-e9e6aacaab5564ddf691e09e63909ddfa57df810b36b5c239c0dd63eed43b609.mp4",
+  "sha256": "e9e6aacaab5564ddf691e09e63909ddfa57df810b36b5c239c0dd63eed43b609",
+  "video_id": "dyuqBS_FXew",
+  "seconds": 85.5
+ },
+ {
+  "short": "genesis-07-short",
+  "asset": "bible-genesis-07-short-sha256-da4c5f629dd8e8715a2a840395635b779beeda0917fcf2bc7860964b6cbcd6ea.mp4",
+  "sha256": "da4c5f629dd8e8715a2a840395635b779beeda0917fcf2bc7860964b6cbcd6ea",
+  "video_id": "Vvfw4W4nV7M",
+  "seconds": 173.8
+ },
+ {
+  "short": "genesis-08-short",
+  "asset": "bible-genesis-08-short-sha256-00462a4c1d9de5c3dfd7c8cf8e131f52f462ced71e97598b066fcf4a3d500a23.mp4",
+  "sha256": "00462a4c1d9de5c3dfd7c8cf8e131f52f462ced71e97598b066fcf4a3d500a23",
+  "video_id": "jPNjgf-PWHM",
+  "seconds": 175.11
+ },
+ {
+  "short": "genesis-09-short",
+  "asset": "bible-genesis-09-short-sha256-57e8768c53fd572b92750908fabdab37297ce74ec0438d3ed1ab3665e3a41829.mp4",
+  "sha256": "57e8768c53fd572b92750908fabdab37297ce74ec0438d3ed1ab3665e3a41829",
+  "video_id": "IYSxVKTikSs",
+  "seconds": 174.79
+ },
+ {
+  "short": "flood-ends-long",
+  "asset": "bible-flood-ends-long-sha256-9a2d0f24e74c7117eedcbdd73992fbc284efb9402b6f82dba98f096a64635692.mp4",
+  "sha256": "9a2d0f24e74c7117eedcbdd73992fbc284efb9402b6f82dba98f096a64635692",
+  "video_id": "1m-NUJhkdMY",
+  "seconds": 501.832
+ },
+ {
+  "short": "genesis-10-11-long",
+  "asset": "bible-genesis-10-11-long-sha256-0386d34a1501477d6ea487b3c3cf53caedb0a898d70e7b15feb90e36bad09937.mp4",
+  "sha256": "0386d34a1501477d6ea487b3c3cf53caedb0a898d70e7b15feb90e36bad09937",
+  "video_id": "KwFjnZ20yGA",
+  "seconds": 483.86
+ }
+]
