@@ -1,0 +1,307 @@
+{
+ "i3-04": {
+  "id": "i3-04",
+  "run_id": 42158686804,
+  "status": "in_progress",
+  "conclusion": null
+ },
+ "close-02": {
+  "id": "close-02",
+  "run_id": 42158205856,
+  "status": "in_progress",
+  "conclusion": null
+ },
+ "i4-02": {
+  "id": "i4-02",
+  "run_id": 42158199918,
+  "status": "in_progress",
+  "conclusion": null
+ },
+ "hook-02": {
+  "id": "hook-02",
+  "run_id": 42157733279,
+  "status": "in_progress",
+  "conclusion": null
+ },
+ "hook-01": {
+  "id": "hook-01",
+  "run_id": 42157727443,
+  "status": "in_progress",
+  "conclusion": null
+ },
+ "close-04": {
+  "id": "close-04",
+  "run_id": 42157281234,
+  "status": "in_progress",
+  "conclusion": null
+ },
+ "i5-04": {
+  "id": "i5-04",
+  "run_id": 42157275065,
+  "status": "in_progress",
+  "conclusion": null
+ },
+ "i5-03": {
+  "id": "i5-03",
+  "run_id": 42157269361,
+  "status": "in_progress",
+  "conclusion": null
+ },
+ "i5-01": {
+  "id": "i5-01",
+  "run_id": 42157263296,
+  "status": "in_progress",
+  "conclusion": null
+ },
+ "i4-03": {
+  "id": "i4-03",
+  "run_id": 42157257615,
+  "status": "in_progress",
+  "conclusion": null
+ },
+ "i3-03": {
+  "id": "i3-03",
+  "run_id": 42157251463,
+  "status": "in_progress",
+  "conclusion": null
+ },
+ "i1-01": {
+  "id": "i1-01",
+  "run_id": 42157245786,
+  "status": "in_progress",
+  "conclusion": null
+ },
+ "g09-k-question": {
+  "id": "g09-k-question",
+  "run_id": 42157157561,
+  "status": "completed",
+  "conclusion": "success",
+  "sync": {
+   "offset": -1,
+   "conf": 3.346,
+   "min_dist": 11.082,
+   "windows": 140
+  },
+  "face": 1.0,
+  "flags": [],
+  "final": "74680bbea846d73dd21bee63292e9c5666b328be526d5991830ca9d1817309c9",
+  "clip_flags": []
+ },
+ "g08-k-question": {
+  "id": "g08-k-question",
+  "run_id": 42157151986,
+  "status": "completed",
+  "conclusion": "success",
+  "sync": {
+   "offset": -1,
+   "conf": 2.784,
+   "min_dist": 12.203,
+   "windows": 125
+  },
+  "face": 1.0,
+  "flags": [],
+  "final": "f17dd34101a8142a65c75c9166aacd2ab2a4c585359c01279eab11fec0539303",
+  "clip_flags": []
+ },
+ "g08-k-insight": {
+  "id": "g08-k-insight",
+  "run_id": 42157146053,
+  "status": "in_progress",
+  "conclusion": null
+ },
+ "g07-k-question": {
+  "id": "g07-k-question",
+  "run_id": 42157140415,
+  "status": "completed",
+  "conclusion": "success",
+  "sync": {
+   "offset": -1,
+   "conf": 3.357,
+   "min_dist": 11.558,
+   "windows": 107
+  },
+  "face": 1.0,
+  "flags": [],
+  "final": "ef5ce1730159faf5c38db2c60b304303e6e7f12a257ae9842db5384f8795c07e",
+  "clip_flags": []
+ },
+ "g07-k-insight": {
+  "id": "g07-k-insight",
+  "run_id": 42157134814,
+  "status": "in_progress",
+  "conclusion": null
+ },
+ "i2-02": {
+  "id": "i2-02",
+  "run_id": 42157129320,
+  "status": "in_progress",
+  "conclusion": null
+ },
+ "i4-01": {
+  "id": "i4-01",
+  "run_id": 42156770686,
+  "status": "in_progress",
+  "conclusion": null
+ },
+ "i3-01": {
+  "id": "i3-01",
+  "run_id": 42156768115,
+  "status": "in_progress",
+  "conclusion": null
+ },
+ "k-irony": {
+  "id": "k-irony",
+  "run_id": 42150403913,
+  "status": "completed",
+  "conclusion": "success",
+  "sync": {
+   "offset": -1,
+   "conf": 4.757,
+   "min_dist": 10.613,
+   "windows": 120
+  },
+  "face": 0.98,
+  "flags": [],
+  "final": "92fa5cfd66212121e678fe7d3e4a32db35ea4683ef6ba092e2476c065dfbe9b2",
+  "clip_flags": []
+ },
+ "b-name": {
+  "id": "b-name",
+  "run_id": 42150397306,
+  "status": "completed",
+  "conclusion": "success",
+  "sync": {
+   "offset": -3,
+   "conf": 6.134,
+   "min_dist": 8.15,
+   "windows": 135
+  },
+  "face": 1.0,
+  "flags": [],
+  "final": "fa7fd89fd33a3814431ddb8216f51ae8d5192412124538cb08d7981eae1ff4ef",
+  "clip_flags": []
+ },
+ "b-tower": {
+  "id": "b-tower",
+  "run_id": 42150390899,
+  "status": "completed",
+  "conclusion": "success",
+  "sync": {
+   "offset": -3,
+   "conf": 6.861,
+   "min_dist": 7.312,
+   "windows": 132
+  },
+  "face": 1.0,
+  "flags": [],
+  "final": "d646e378ec01f19e2401dc108aa483e46dcf7340cb4ac0adfa4acbbcba2a0b4b",
+  "clip_flags": []
+ },
+ "b-brick": {
+  "id": "b-brick",
+  "run_id": 42150385102,
+  "status": "completed",
+  "conclusion": "success",
+  "sync": {
+   "offset": -3,
+   "conf": 5.676,
+   "min_dist": 8.61,
+   "windows": 125
+  },
+  "face": 1.0,
+  "flags": [],
+  "final": "df052a265a254ededa00638242ee296c7b61b2ca777d8f939837f5a9f6c200ba",
+  "clip_flags": []
+ },
+ "fe-k-bow": {
+  "id": "fe-k-bow",
+  "run_id": 42150378938,
+  "status": "completed",
+  "conclusion": "success",
+  "sync": {
+   "offset": -1,
+   "conf": 4.777,
+   "min_dist": 9.439,
+   "windows": 216
+  },
+  "face": 1.0,
+  "flags": [],
+  "final": "2ad60629b09fc0bbbad390b76f893a294c3ea7467aeefaeb28c301e3f3f9f512",
+  "clip_flags": []
+ },
+ "fe-k-insight": {
+  "id": "fe-k-insight",
+  "run_id": 42150372904,
+  "status": "completed",
+  "conclusion": "success",
+  "sync": {
+   "offset": -1,
+   "conf": 5.512,
+   "min_dist": 9.036,
+   "windows": 245
+  },
+  "face": 1.0,
+  "flags": [],
+  "final": "db64f612f28a179fa3c509b3272fefcfcf0776f522fd9eb093cd13db749970a4",
+  "clip_flags": []
+ },
+ "close-03": {
+  "id": "close-03",
+  "run_id": 42150360296,
+  "status": "completed",
+  "conclusion": "success",
+  "sync": {
+   "offset": -1,
+   "conf": 6.806,
+   "min_dist": 8.587,
+   "windows": 505
+  },
+  "face": 1.0,
+  "flags": [],
+  "final": "5a5052ed6aba9abc13f5a32900a66504ce40dfc15bd1462af543172be72f7182",
+  "clip_flags": []
+ },
+ "close-01": {
+  "id": "close-01",
+  "run_id": 42150347155,
+  "status": "completed",
+  "conclusion": "failure",
+  "sync": null,
+  "face": null,
+  "flags": null,
+  "final": null,
+  "clip_flags": null
+ },
+ "i5-02": {
+  "id": "i5-02",
+  "run_id": 42150327731,
+  "status": "completed",
+  "conclusion": "success",
+  "sync": {
+   "offset": -1,
+   "conf": 7.64,
+   "min_dist": 7.737,
+   "windows": 369
+  },
+  "face": 1.0,
+  "flags": [],
+  "final": "2f5e0f04767a32cf06a4d39a3dcd71eb32130c9608f03da8301ddd1eeb781388",
+  "clip_flags": []
+ },
+ "i3-02": {
+  "id": "i3-02",
+  "run_id": 42150285171,
+  "status": "completed",
+  "conclusion": "success",
+  "sync": {
+   "offset": -1,
+   "conf": 8.098,
+   "min_dist": 7.342,
+   "windows": 480
+  },
+  "face": 1.0,
+  "flags": [],
+  "final": "a29b0ea822a4ee9b7952a00629e8eccc8f9fb8395e3efe2188279df5ce404089",
+  "clip_flags": []
+ }
+}

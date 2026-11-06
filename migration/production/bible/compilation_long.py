@@ -354,6 +354,9 @@ def lipsync_problems(where, lip, root=ROOT):
     conf, off = sync.get("conf"), sync.get("offset")
     if not (type(conf) in (int, float) and conf >= LIPSYNC_CONF_MIN and type(off) is int and abs(off) <= LIPSYNC_OFFSET_MAX):
         out.append(f"{where} lipsync SyncNet must be conf >= {LIPSYNC_CONF_MIN} and |offset| <= {LIPSYNC_OFFSET_MAX}")
+    delay = lip.get("picture_delay_s", 0)
+    if not (type(delay) in (int, float) and 0 <= delay <= 0.2):
+        out.append(where + " lipsync picture_delay_s must be 0-0.2 (the SyncNet above is measured with it applied)")
     if not (type(lip.get("run_id")) is int and isinstance(lip.get("review"), str) and lip["review"].strip()):
         out.append(where + " lipsync needs its run id and the reviewer's note")
     return out
@@ -522,8 +525,10 @@ def render_short(src, out, end=None, card=None, patches=()):
         p.write_text(t)
         files.append(p)
     fg = f"[b]scale=-2:{H},fps={FPS}[f0];"   # E309: a patch lays its lip-synced 9:16 picture over the Short's own span
-    for n, (_, at, secs, caps) in enumerate(patches, 1):
+    for n, (_, at, secs, caps, *rest) in enumerate(patches, 1):
+        delay = rest[0] if rest else 0.0   # E309: the measured picture delay that brings the clip inside the offset limit
         fg += (f"[{n}:v]scale=1080:1920,setsar=1,fps={FPS}{patch_input(None, at, secs, caps, out, n, (1080, 1920))},"
+               f"tpad=start_mode=clone:start_duration={delay:.3f},"
                f"scale=-2:{H},trim=duration={secs:.3f},setpts=PTS-STARTPTS+{at:.3f}/TB[p{n}];"
                f"[f{n - 1}][p{n}]overlay=enable='between(t,{at:.3f},{at + secs:.3f})':eof_action=pass[f{n}];")
     graph = (f"[0:v]split[a][b];[a]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=40:6,"
@@ -561,8 +566,10 @@ def render_long(src, out, end=None, card=None, patches=()):
         p.write_text(t)
         files.append(p)
     base = f"[0:v]scale={W}:{H}:force_original_aspect_ratio=decrease,pad={W}:{H}:(ow-iw)/2:(oh-ih)/2,setsar=1,fps={FPS}[b0];"
-    for n, (_, at, secs, caps) in enumerate(patches, 1):
+    for n, (_, at, secs, caps, *rest) in enumerate(patches, 1):
+        delay = rest[0] if rest else 0.0   # E309: the measured picture delay that brings the clip inside the offset limit
         base += (f"[{n}:v]scale={W}:{H},setsar=1,fps={FPS}{patch_input(None, at, secs, caps, out, n, (W, H))},"
+                 f"tpad=start_mode=clone:start_duration={delay:.3f},"
                  f"trim=duration={secs:.3f},setpts=PTS-STARTPTS+{at:.3f}/TB[p{n}];"
                  f"[b{n - 1}][p{n}]overlay=enable='between(t,{at:.3f},{at + secs:.3f})':eof_action=pass[b{n}];")
     graph = (base + f"[b{len(patches)}]null{card_overlay(card, files)},{v}[v];"
@@ -834,10 +841,12 @@ def build(plan_path, src_dir, out_dir, voice_dir=None):
         kind = "long" if is_long(c) else "short"
         if is_long(c):   # E309: a long's patch re-draws the long's own timed captions of its span
             caps = source_sentences(c["long"]["sha256"]) or []
-            patches = [(src_dir / x["lipsync"]["clip"], float(x["at"]), float(x["seconds"]), caps) for x in c.get("patches") or []]
+            patches = [(src_dir / x["lipsync"]["clip"], float(x["at"]), float(x["seconds"]), caps,
+                        float(x["lipsync"].get("picture_delay_s", 0))) for x in c.get("patches") or []]
             render_long(master, seg / f"{k:02d}b-short.mp4", c.get("end_s"), card, patches)
         else:
-            patches = [(src_dir / x["lipsync"]["clip"], float(x["at"]), float(x["seconds"]), x.get("captions") or [])
+            patches = [(src_dir / x["lipsync"]["clip"], float(x["at"]), float(x["seconds"]), x.get("captions") or [],
+                        float(x["lipsync"].get("picture_delay_s", 0)))
                        for x in c.get("patches") or []]   # a Short's patch: its recorded captions (chapter time)
             render_short(master, seg / f"{k:02d}b-short.mp4", c.get("end_s"), card, patches)
         add(kind, sid, seg / f"{k:02d}b-short.mp4", source_sha256=sha, chapter=c["title"],
