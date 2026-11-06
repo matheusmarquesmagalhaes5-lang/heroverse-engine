@@ -7,6 +7,9 @@ on:
 permissions:
   contents: read
   actions: write
+concurrency:
+  group: heroverse-nightly-images
+  cancel-in-progress: false
 jobs:
   images:
     if: github.repository == 'matheusmagah-cpu/heroverse-engine' && github.ref == 'refs/heads/main'

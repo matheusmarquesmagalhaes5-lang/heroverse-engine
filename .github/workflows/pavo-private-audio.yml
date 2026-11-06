@@ -28,6 +28,9 @@ on:
 permissions:
   contents: read
   actions: read
+concurrency:
+  group: heroverse-pavo-private-audio
+  cancel-in-progress: false
 jobs:
   talk:
     if: github.repository == 'matheusmagah-cpu/heroverse-engine' && github.ref == 'refs/heads/main'
