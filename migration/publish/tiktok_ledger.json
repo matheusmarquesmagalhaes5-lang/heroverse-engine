@@ -142,11 +142,18 @@
    "at": "2026-11-05T15:19:09.495201+00:00"
   },
   "bible:genesis-11-short:705f7eb7b7e52d2399593184a4c83f0b4c7ddaae3b56a9d449a8a7ebb9a40563": {
-   "status": "QUEUED",
+   "status": "SENT",
    "buffer_post_id": "6aecd30e0a3dd0f3ff1a22bb",
-   "buffer_status": "sending",
+   "buffer_status": "sent",
    "youtube_video_id": "2OwoWRx3thE",
    "at": "2026-11-05T19:03:41.857806+00:00"
+  },
+  "bible:babel-confound-cut:a001b8cd58bfef7726bda8f1c2f2614e687ff45a9b75ee17871eccab9d609223": {
+   "status": "QUEUED",
+   "buffer_post_id": "6aed1b1f07f945cca92dd8f9",
+   "buffer_status": "sending",
+   "youtube_video_id": "oCLyzfDe4fY",
+   "at": "2026-11-06T00:11:10.287549+00:00"
   }
  },
  "buffer_channel_id": "6ade2e0f2f1f5ed648cab8f0"
