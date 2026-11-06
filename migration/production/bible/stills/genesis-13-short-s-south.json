@@ -2,6 +2,25 @@
  "id": "genesis-13-short-s-south",
  "episode": "genesis-13-short",
  "shot": "s-south",
- "status": "DRAFT",
- "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. The small caravan moving south along a ridge of dry hills at golden hour, long shadows, the land opening endlessly ahead of them, centred in the frame. Only adults, no children anywhere in the scene. The figures are in silhouette, seen from behind. The subject is centred in the frame. Steady and hopeful. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos."
+ "status": "APPROVED",
+ "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, fine film grain. Extreme wide shot. The small caravan moving south along a ridge of dry hills at golden hour, long shadows, the land opening endlessly ahead of them, centred in the frame. Only adults, no children anywhere in the scene. The figures are in silhouette, seen from behind. The subject is centred in the frame. Steady and hopeful. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+ "repo_path": "migration/production/bible/stills/genesis-13-short-s-south.jpg",
+ "sha256": "607e235125ef82ad0cc9faa70d872c9e482b781ff6fd3e2243e4e00723b6102d",
+ "size": [
+  1080,
+  1920
+ ],
+ "candidate": "genesis-13-short-s-south-42134247404-1",
+ "engine": "cloudflare-workers-ai:@cf/black-forest-labs/flux-1-schnell",
+ "references": [],
+ "pavo": null,
+ "approved": {
+  "date": "2026-11-06",
+  "score": 9.5,
+  "note": "Contact sheet + full-size look (FLUX): the small caravan of adults and donkeys moving along a dry ridge at golden hour with long shadows, seen from behind, the land opening ahead; no child, nothing modern; frame review only.",
+  "by": "claude-session-reviewer",
+  "model": "claude-session-reviewer",
+  "prompt_sha256": "1c6c70f53d0477a548e07ee4447acfb15d05186d677da870b81bda07c5914ecb",
+  "references_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
 }
