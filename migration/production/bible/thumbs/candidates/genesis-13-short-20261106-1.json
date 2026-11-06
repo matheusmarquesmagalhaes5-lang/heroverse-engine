@@ -1,0 +1,89 @@
+{
+ "id": "genesis-13-short-20261106-1",
+ "episode": "genesis-13-short",
+ "run": "20261106",
+ "status": "DRAFT",
+ "format": "short",
+ "size": [
+  1080,
+  1920
+ ],
+ "spec_sha256": "f3bceada20c99d6040cf302f8a5e638888bda70a5c21bec5a5dab1ebbaa1b110",
+ "prompt": "Extreme close-up portrait, his face filling the frame from brow to chin, nothing else in the picture: a tall lean man of about seventy-five with Middle Eastern features, deep-bronzed skin lined by sun and wind, a high forehead, steady dark brown eyes under heavy grey brows, a long full salt-and-pepper beard, long grey hair under a pale undyed linen head cloth bound with a plain dark brown cord, a steady, grave, resolute look straight into the camera, his mouth closed. Behind his head there is only a softly blurred warm dark background. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. Warm amber light on his face, photorealistic cinematic film still, sharp focus on the eyes, film grain, no text, no logos.",
+ "text": "ABRAM HAD NO MAP",
+ "text_by": "thumbs.py overlay (DejaVu Sans Bold), never the image model",
+ "source": "approved reference ch-abram-front (reused, no new generation)",
+ "model": "existing approved reference (ChatGPT desktop route)",
+ "ratio": "16:9",
+ "resolution": "1920x1080",
+ "conversation_id": null,
+ "quote": null,
+ "references": [],
+ "references_live": null,
+ "source_size": [
+  1920,
+  1080
+ ],
+ "source_sha256": "f2415002a3376b552265a52c53df82e2548bc049fe87048c885bbb3da36741a5",
+ "crop": {
+  "box": [
+   686,
+   0,
+   608,
+   1080
+  ],
+  "source_size": [
+   1920,
+   1080
+  ],
+  "source_sha256": "f2415002a3376b552265a52c53df82e2548bc049fe87048c885bbb3da36741a5",
+  "cropped_sha256": "f2061d97ed61e0fd5230e2dfcc65013f2416763a8ca07388f6558851e0ab4335",
+  "upscale": 1.778,
+  "resize": "crop [686, 0, 608, 1080], Lanczos to 1080x1920"
+ },
+ "grade": {
+  "factors": {
+   "saturation": 1.15,
+   "contrast": 1.05
+  },
+  "order": [
+   "saturation",
+   "contrast"
+  ],
+  "bounds": {
+   "saturation": [
+    1.0,
+    1.6
+   ],
+   "contrast": [
+    1.0,
+    1.2
+   ]
+  },
+  "by": "thumbs.py apply_grade (PIL ImageEnhance), after crop/resize, before the text",
+  "pre_grade_path": "migration/production/bible/thumbs/candidates/genesis-13-short-20261106-1-ungraded.jpg",
+  "pre_grade_sha256": "f2061d97ed61e0fd5230e2dfcc65013f2416763a8ca07388f6558851e0ab4335",
+  "graded_sha256": "d411bd2431a66c3492b45474491ee5a564906226386b6d9040a0f3cbd9c0631c"
+ },
+ "base_path": "migration/production/bible/thumbs/candidates/genesis-13-short-20261106-1-base.jpg",
+ "base_sha256": "d411bd2431a66c3492b45474491ee5a564906226386b6d9040a0f3cbd9c0631c",
+ "repo_path": "migration/production/bible/thumbs/candidates/genesis-13-short-20261106-1.jpg",
+ "sha256": "3139223c4f458a522f184a62a3f2093ff0ddd0aab2fdde079fb0235f7daa7dbf",
+ "r16": {
+  "status": "PASS",
+  "fails": [],
+  "metrics": {
+   "brightness": 0.325,
+   "contrast": 0.214,
+   "saturation": 0.65,
+   "colourfulness": 0.182,
+   "edge_density": 0.182,
+   "warm_share": 0.707,
+   "blue_share": 0.0,
+   "dark_share": 0.238,
+   "bright_share": 0.031,
+   "yellow_text_like": 0.0
+  }
+ },
+ "generated_by": "HeroVerse pipeline (AI-generated image)"
+}

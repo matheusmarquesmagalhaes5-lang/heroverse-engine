@@ -1,0 +1,1139 @@
+{
+ "episode": "genesis-13-short",
+ "shots": {
+  "s-voice": {
+   "kind": "scene",
+   "lines": null,
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Extreme wide shot, slow tilt up. A vast night sky full of stars above an empty desert plain, a warm wind bending the dry grass, a faint glow on the far horizon, no people, centred in the frame. The subject is centred in the frame. Vast and silent. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 8,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-13-short-s-voice.jpg"
+   },
+   "speaker": "god",
+   "line": "Get thee out of thy country, and from thy kindred, and from thy father’s house, unto a land that I will shew thee:",
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "0663f624b7189fa65ba66f6fc99675a839167e0f5f3329e8ffd6391455e6f390",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-13-short-s-voice",
+    "still_sha256": "9c49f580ab5f7683f3eeafaa0adbb6bdeef9a2f1f8628b9d25d2beb09c3a31bc",
+    "repo_path": "migration/production/bible/stills/genesis-13-short-s-voice.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 8,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-haran": {
+   "kind": "scene",
+   "lines": [
+    0
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Extreme wide shot, slow push-in. A small mud-brick village beside a slow river at dusk, smoke rising from cooking fires, one old man with a staff standing alone on a low hill above it, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Quiet and still. Waiting. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 11,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-13-short-s-haran.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "e0e580a3dc9279c887775841aa75a081bfcc2ad415af2d9d52de33c73796b8ba",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-13-short-s-haran",
+    "still_sha256": "53590a12a6a039a47a3307d45810365aa9122ff57053293413f4679da07f2bca",
+    "repo_path": "migration/production/bible/stills/genesis-13-short-s-haran.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 11,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-call": {
+   "kind": "scene",
+   "lines": [
+    1
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Wide shot, slow tilt up. An old man standing alone outside a black goat-hair tent at night, looking up at a sky crowded with stars, his robe moving in the wind, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Vast and silent. Awe. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 12,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-13-short-s-call.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "f9d73b96e76f48c7552357fa1698067318a395216f38b40fdd975ed587b93226",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-13-short-s-call",
+    "still_sha256": "73de1eb2753b42781b811e7800e2d86d9e6ac948e4ca5e6b45797e10299ce53b",
+    "repo_path": "migration/production/bible/stills/genesis-13-short-s-call.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 12,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-promise": {
+   "kind": "scene",
+   "lines": [
+    2
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Extreme wide shot, slow push-in. An old man on a rocky ridge at dawn looking out over an endless land of hills and valleys, the first light breaking through the clouds in long golden rays, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Hopeful and grand. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 9,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-13-short-s-promise.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "5398e8f9c197dc0e67028ba203b9bac1081af8b90a5c0b564b2150bd159f00a4",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-13-short-s-promise",
+    "still_sha256": "dc0f57b643a08510fecfe95ec885122fd1f3fb810cbae0baf39e05487e9d11c6",
+    "repo_path": "migration/production/bible/stills/genesis-13-short-s-promise.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 9,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-name": {
+   "kind": "scene",
+   "lines": [
+    3
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Extreme wide shot, slow pan. Far away on the flat horizon the abandoned brick tower of Babel with empty scaffolds, a lone traveller with a staff in the foreground looking toward it, sunset, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Thoughtful and solemn. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 10,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-13-short-s-name.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "76508e09f8b20fe7a7d6a4da8481b156cbfda2191b76a046f6f44e5786f1405c",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-13-short-s-name",
+    "still_sha256": "242a2c32abb9379dd8fde4c13e75ee64992afd4843376163f2c0eae1c6a9167c",
+    "repo_path": "migration/production/bible/stills/genesis-13-short-s-name.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 10,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-families": {
+   "kind": "scene",
+   "lines": [
+    4
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Extreme wide shot, slow pan. Many small camps of tents scattered across a vast plain to the horizon, thin trails of smoke from their fires, a few tiny families walking between them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Wide and lonely. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 9,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-13-short-s-families.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "ff9badaff55fcfff61c07ba156b670beaeaccb86c3385cac15212997430c59d1",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-13-short-s-families",
+    "still_sha256": "ff4dfcfe77c35805f8a7389161507613a88cb9e9d21ec8ff470bfca4bd2f0f07",
+    "repo_path": "migration/production/bible/stills/genesis-13-short-s-families.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 9,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-scattered": {
+   "kind": "scene",
+   "lines": [
+    5
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Wide shot, slow push-in. One single black goat-hair tent glowing warm from inside on a dark plain at night, an old man sitting at its door beside a small fire, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Small and tender. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 9,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-13-short-s-scattered.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "cfc0001eafe6e94ca4252ac85f345d52d94bdd37fb4cd89b482d7e9e48b1b78a",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-13-short-s-scattered",
+    "still_sha256": "65ad1aea8584b1e67b2534938da00bc6d2987dbc17da829fc1cd555034485a4a",
+    "repo_path": "migration/production/bible/stills/genesis-13-short-s-scattered.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 9,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-departed": {
+   "kind": "scene",
+   "lines": [
+    6
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Wide shot, slow push-in. An old man with a staff leading a loaded donkey out of a mud-brick village gate at sunrise, a few people following him, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Resolute. Morning. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 11,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-13-short-s-departed.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "068dd2886b867e43d5fad2b39880812345c831ebcbd1bcd54d17bde63493f451",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-13-short-s-departed",
+    "still_sha256": "34aac16b1f4747bd1b23caa3f669301871682ac353e8255ba578e00c81f73f0d",
+    "repo_path": "migration/production/bible/stills/genesis-13-short-s-departed.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 11,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-packing": {
+   "kind": "scene",
+   "lines": [
+    7
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium shot, static camera. An old man rolling up a goat-hair tent and tying bundles onto a donkey in the early light, sheep waiting nearby, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Calm and decided. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 9,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-13-short-s-packing.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "8a2800f6314f72f66018b747c3cac4a0da02aaf2ceefda94ac7aeac5b3d94bbb",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-13-short-s-packing",
+    "still_sha256": "af309f3adefdf4e5e5c8cf8f3ec76919c8e16e2e99eab4ade0e2c1fb2108feeb",
+    "repo_path": "migration/production/bible/stills/genesis-13-short-s-packing.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 9,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-caravan": {
+   "kind": "scene",
+   "lines": [
+    8
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Extreme wide shot, slow pan. A long caravan of people, donkeys, sheep and goats winding across the desert under a high sun, dust rising behind them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Long and patient. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 9,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-13-short-s-caravan.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "1a638de4025b82fc53ddb397b2502cc68cb1f156033c3520948324baa5fb3101",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-13-short-s-caravan",
+    "still_sha256": "45881210a16cd536af18774f2e71aa298030211e50adf7c7e64de1902b443270",
+    "repo_path": "migration/production/bible/stills/genesis-13-short-s-caravan.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 9,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-sarai": {
+   "kind": "scene",
+   "lines": [
+    8
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium wide shot, tracking. A woman in a long head-cloth riding a donkey beside an old man walking with a staff, a younger man leading sheep behind them, desert hills around, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Faithful and weary. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 9,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-13-short-s-sarai.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "f79172bdad45a60626f5a41c768d169353c522eac974adffe266fde7856d8f6a",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-13-short-s-sarai",
+    "still_sha256": "d7b26b143e86bab47f808d090d0beb2d216df5426e26e3af4728e22ddbbc1c4b",
+    "repo_path": "migration/production/bible/stills/genesis-13-short-s-sarai.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 9,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-road": {
+   "kind": "scene",
+   "lines": [
+    9
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Extreme wide shot, slow push-in. The caravan camped for the night in the open desert, a ring of tents and small fires under the Milky Way, donkeys resting, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Peaceful. Far from home. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 9,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-13-short-s-road.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "d4457ca384672967bfca062f0fcffcb6c529ab6f4a1e1e023c5d429dddc7c451",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-13-short-s-road",
+    "still_sha256": "56c7857af4bdcc65fb7edbe24ec653872c3e9dcda713dc28e8160e3fdedb600d",
+    "repo_path": "migration/production/bible/stills/genesis-13-short-s-road.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 9,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-moreh": {
+   "kind": "scene",
+   "lines": [
+    10
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Wide shot, slow push-in. A huge ancient oak tree alone on a green plain between hills, the caravan arriving beneath its spreading branches in the afternoon light, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Arrival. Wonder. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 10,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-13-short-s-moreh.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "760234bc705b53bab36c68a3d0cf486084d78489883014c9a17c92cd7bba8214",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-13-short-s-moreh",
+    "still_sha256": "b7a13d646ec167d630606463afc84170f7afe6f2962232ee5e12163c03ae0e12",
+    "repo_path": "migration/production/bible/stills/genesis-13-short-s-moreh.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 10,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-strangers": {
+   "kind": "scene",
+   "lines": [
+    11
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Wide shot, slow pan. From a hillside the travellers look across a valley at a distant village of mud-brick houses with herds and fields already around it, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Uneasy. A land already taken. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 9,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-13-short-s-strangers.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "a2dc94a76fb807450c57029ee970cb791648a4a244f076407ef2bbf978f464be",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-13-short-s-strangers",
+    "still_sha256": "f629a51f19c0460470e0fb07c7084d8bfbe067c6c41bb8b64961d619638266f5",
+    "repo_path": "migration/production/bible/stills/genesis-13-short-s-strangers.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 9,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-appeared": {
+   "kind": "scene",
+   "lines": [
+    12
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Wide shot, slow push-in. A great shaft of white-gold light pouring down from the sky beside the ancient oak, an old man kneeling before it with his head bowed low, his face hidden, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Holy and overwhelming. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 11,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-13-short-s-appeared.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "90d2b23fefd3e76ef6ed0318c168d1af57b5d724076d38f7669479ebbea2552e",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-13-short-s-appeared",
+    "still_sha256": "94bd860ada9d595d2267178b8383e65a7bea1c5524aa3ec0e66a9015cf9eaad5",
+    "repo_path": "migration/production/bible/stills/genesis-13-short-s-appeared.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 11,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-altar": {
+   "kind": "scene",
+   "lines": [
+    13
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium shot, slow push-in. An old man kneeling as he sets the last rough fieldstone on a small altar of piled stones, a thin line of smoke rising straight up into the dusk, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Reverent and grateful. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 10,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-13-short-s-altar.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "01697c9764e962d5e4d5684f91a6849f888c3e8e665ef5297d4e4417f1ea5c5e",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-13-short-s-altar",
+    "still_sha256": "d11df44a05cf4ad574f82abe3fb51be2e53405c9017e260d6cc656c7be38e415",
+    "repo_path": "migration/production/bible/stills/genesis-13-short-s-altar.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 10,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-south": {
+   "kind": "scene",
+   "lines": [
+    14
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Extreme wide shot, slow pan. The small caravan moving south along a ridge of dry hills at golden hour, long shadows, the land opening endlessly ahead of them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Steady and hopeful. The ancient Near East in the days of Abram: open hill country and desert, great oak trees, stony pasture, mud-brick villages, black goat-hair tents, flocks of sheep and goats, donkeys, rough undyed wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 9,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-13-short-s-south.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "29362bf16fbc88ab121e0af83de654b459e91b51f58791c7bf363b44bea14265",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-13-short-s-south",
+    "still_sha256": "607e235125ef82ad0cc9faa70d872c9e482b781ff6fd3e2243e4e00723b6102d",
+    "repo_path": "migration/production/bible/stills/genesis-13-short-s-south.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 9,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "k-insight": {
+   "kind": "keeper",
+   "lines": [
+    15
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium shot, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, holds his head level and looks straight into the camera, his lips closed, silent, a calm kind look, breathing slowly. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Tender and grave. No text, no logos.",
+    "seconds": 11,
+    "aspect_ratio": "9:16",
+    "references": [
+     ".episode/genesis-13-short/refs/ch-keeper-talk.jpg"
+    ],
+    "audios": null,
+    "sound": false
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "3f73792adaa67f5d5d31244b6e128f5d3fde1179e23719a0e32f1032a199711d",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "arc-01-long-k-promise-2",
+    "still_sha256": "fd3ffd3708872b1b662c649649b917cfc95f9f2c49f6d047b3105c2d98542065",
+    "repo_path": "migration/production/bible/stills/arc-01-long-k-promise-2.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "still_from": "arc-01-long-k-promise-2",
+    "clip_seconds": 12,
+    "licence": "Pavo generated (owner-owned)"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "k-question": {
+   "kind": "keeper",
+   "lines": [
+    16
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium shot, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, holds his head level, looks straight into the camera and slowly rolls the old scroll closed in his hands, his lips closed, silent, a gentle questioning look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and searching. No text, no logos.",
+    "seconds": 5,
+    "aspect_ratio": "9:16",
+    "references": [
+     ".episode/genesis-13-short/refs/ch-keeper-talk.jpg"
+    ],
+    "audios": null,
+    "sound": false
+   },
+   "source": "pavo_reuse",
+   "approved": {
+    "asset": "shot-genesis-08-short-k-question-sha256-0977ad37cde590ab7cdc86c0193635a723f1dcf6652d6e7b21d1306e83ac4ead.mp4",
+    "clip_sha256": "0977ad37cde590ab7cdc86c0193635a723f1dcf6652d6e7b21d1306e83ac4ead",
+    "request_sha256": "834bd8196dbb5cfb688e9bbe49931740023ae6055579529438ad9371dc5cc972",
+    "score": 9.5,
+    "source": "pavo_reuse",
+    "clip_from": "genesis-08-short#k-question",
+    "clip_seconds": 6
+   },
+   "checks": {
+    "flags": [],
+    "measures": {
+     "still_mouth": {
+      "opening_range": 0.0542,
+      "opening_motion": 0.00059,
+      "window_motion": 0.00216,
+      "closed_opening": 0.00376,
+      "face_frames": 1.0,
+      "frames": 158
+     }
+    }
+   }
+  },
+  "k-close": {
+   "kind": "keeper",
+   "lines": [
+    17
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium shot, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, holds his head level and looks straight into the camera, his lips closed, silent, a faint warm smile, breathing slowly. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and expectant. No text, no logos.",
+    "seconds": 8,
+    "aspect_ratio": "9:16",
+    "references": [
+     ".episode/genesis-13-short/refs/ch-keeper-talk.jpg"
+    ],
+    "audios": null,
+    "sound": false
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "9cc496f3fef0e7c059964b086f70d85bdda5224950ebd29132a0b3261e56443e",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "arc-01-long-k-promise-3",
+    "still_sha256": "d06d4d2eb4d0120dc4dfdab01b737d4d14a57dd52759e60e3284826973e5636f",
+    "repo_path": "migration/production/bible/stills/arc-01-long-k-promise-3.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "still_from": "arc-01-long-k-promise-3",
+    "clip_seconds": 12,
+    "licence": "Pavo generated (owner-owned)"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  }
+ },
+ "composed": {
+  "output_sha256": "2009c8e36a9579e6169d7f88bf5138070178c0540508b474c63826257ee342f5",
+  "seconds": 170.29,
+  "frame": [
+   1080,
+   1920
+  ],
+  "black_check": {
+   "black_starts": [],
+   "unexpected": [],
+   "intended_dips": [
+    169.49
+   ]
+  },
+  "lufs": -14.5,
+  "keeper_share": 0.128,
+  "lesson_share": 0.132,
+  "spoken": {
+   "s-voice": {
+    "start": 0.0,
+    "end": 6.805,
+    "seconds": 6.805,
+    "speaker": "god"
+   }
+  },
+  "establishing_share": 0.0,
+  "cuts": 49,
+  "crossfades": [],
+  "timeline": [
+   {
+    "shot": "s-voice",
+    "kind": "scene",
+    "start": 0.0,
+    "end": 3.578,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-voice",
+    "kind": "scene",
+    "start": 3.578,
+    "end": 7.155,
+    "src_start": 4.422,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-haran",
+    "kind": "scene",
+    "start": 7.155,
+    "end": 11.036,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-haran",
+    "kind": "scene",
+    "start": 11.036,
+    "end": 14.917,
+    "src_start": 7.119,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-call",
+    "kind": "scene",
+    "start": 14.917,
+    "end": 18.151,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-call",
+    "kind": "scene",
+    "start": 18.151,
+    "end": 21.384,
+    "src_start": 4.383,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-call",
+    "kind": "scene",
+    "start": 21.384,
+    "end": 24.618,
+    "src_start": 8.766,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-promise",
+    "kind": "scene",
+    "start": 24.618,
+    "end": 27.326,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-promise",
+    "kind": "scene",
+    "start": 27.326,
+    "end": 30.035,
+    "src_start": 3.146,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-promise",
+    "kind": "scene",
+    "start": 30.035,
+    "end": 32.743,
+    "src_start": 6.292,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-name",
+    "kind": "scene",
+    "start": 32.743,
+    "end": 36.322,
+    "src_start": 0.0,
+    "speed": 1.0736
+   },
+   {
+    "shot": "s-name",
+    "kind": "scene",
+    "start": 36.322,
+    "end": 39.9,
+    "src_start": 3.333,
+    "speed": 1.0736
+   },
+   {
+    "shot": "s-name",
+    "kind": "scene",
+    "start": 39.9,
+    "end": 43.479,
+    "src_start": 6.667,
+    "speed": 1.0736
+   },
+   {
+    "shot": "s-families",
+    "kind": "scene",
+    "start": 43.479,
+    "end": 46.244,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-families",
+    "kind": "scene",
+    "start": 46.244,
+    "end": 49.01,
+    "src_start": 3.117,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-families",
+    "kind": "scene",
+    "start": 49.01,
+    "end": 51.775,
+    "src_start": 6.235,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-scattered",
+    "kind": "scene",
+    "start": 51.775,
+    "end": 55.197,
+    "src_start": 0.0,
+    "speed": 1.1408
+   },
+   {
+    "shot": "s-scattered",
+    "kind": "scene",
+    "start": 55.197,
+    "end": 58.62,
+    "src_start": 3.0,
+    "speed": 1.1408
+   },
+   {
+    "shot": "s-scattered",
+    "kind": "scene",
+    "start": 58.62,
+    "end": 62.042,
+    "src_start": 6.0,
+    "speed": 1.1408
+   },
+   {
+    "shot": "s-departed",
+    "kind": "scene",
+    "start": 62.042,
+    "end": 65.749,
+    "src_start": 0.0,
+    "speed": 1.011
+   },
+   {
+    "shot": "s-departed",
+    "kind": "scene",
+    "start": 65.749,
+    "end": 69.456,
+    "src_start": 3.667,
+    "speed": 1.011
+   },
+   {
+    "shot": "s-departed",
+    "kind": "scene",
+    "start": 69.456,
+    "end": 73.163,
+    "src_start": 7.333,
+    "speed": 1.011
+   },
+   {
+    "shot": "s-packing",
+    "kind": "scene",
+    "start": 73.163,
+    "end": 76.016,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-packing",
+    "kind": "scene",
+    "start": 76.016,
+    "end": 78.87,
+    "src_start": 3.073,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-packing",
+    "kind": "scene",
+    "start": 78.87,
+    "end": 81.723,
+    "src_start": 6.147,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-caravan",
+    "kind": "scene",
+    "start": 81.723,
+    "end": 84.487,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-caravan",
+    "kind": "scene",
+    "start": 84.487,
+    "end": 87.25,
+    "src_start": 3.118,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-caravan",
+    "kind": "scene",
+    "start": 87.25,
+    "end": 90.014,
+    "src_start": 6.236,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-sarai",
+    "kind": "scene",
+    "start": 90.014,
+    "end": 92.778,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-sarai",
+    "kind": "scene",
+    "start": 92.778,
+    "end": 95.541,
+    "src_start": 3.118,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-sarai",
+    "kind": "scene",
+    "start": 95.541,
+    "end": 98.305,
+    "src_start": 6.236,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-road",
+    "kind": "scene",
+    "start": 98.305,
+    "end": 102.016,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-road",
+    "kind": "scene",
+    "start": 102.016,
+    "end": 105.726,
+    "src_start": 5.29,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-moreh",
+    "kind": "scene",
+    "start": 105.726,
+    "end": 108.491,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-moreh",
+    "kind": "scene",
+    "start": 108.491,
+    "end": 111.256,
+    "src_start": 3.617,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-moreh",
+    "kind": "scene",
+    "start": 111.256,
+    "end": 114.021,
+    "src_start": 7.235,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-strangers",
+    "kind": "scene",
+    "start": 114.021,
+    "end": 117.116,
+    "src_start": 0.0,
+    "speed": 1.0318
+   },
+   {
+    "shot": "s-strangers",
+    "kind": "scene",
+    "start": 117.116,
+    "end": 120.212,
+    "src_start": 3.0,
+    "speed": 1.0318
+   },
+   {
+    "shot": "s-strangers",
+    "kind": "scene",
+    "start": 120.212,
+    "end": 123.307,
+    "src_start": 6.0,
+    "speed": 1.0318
+   },
+   {
+    "shot": "s-appeared",
+    "kind": "scene",
+    "start": 123.307,
+    "end": 126.677,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-appeared",
+    "kind": "scene",
+    "start": 126.677,
+    "end": 130.046,
+    "src_start": 3.815,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-appeared",
+    "kind": "scene",
+    "start": 130.046,
+    "end": 133.416,
+    "src_start": 7.63,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-altar",
+    "kind": "scene",
+    "start": 133.416,
+    "end": 136.508,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-altar",
+    "kind": "scene",
+    "start": 136.508,
+    "end": 139.601,
+    "src_start": 3.454,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-altar",
+    "kind": "scene",
+    "start": 139.601,
+    "end": 142.693,
+    "src_start": 6.908,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-south",
+    "kind": "scene",
+    "start": 142.693,
+    "end": 146.541,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "k-insight",
+    "kind": "keeper-vo",
+    "start": 146.541,
+    "end": 157.397,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "k-question",
+    "kind": "keeper-vo",
+    "start": 157.397,
+    "end": 162.321,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "k-close",
+    "kind": "keeper-vo",
+    "start": 162.321,
+    "end": 170.293,
+    "src_start": 0.0,
+    "speed": 1.0
+   }
+  ],
+  "release_asset": "bible-genesis-13-short-sha256-2009c8e36a9579e6169d7f88bf5138070178c0540508b474c63826257ee342f5.mp4",
+  "release_tag": "v0.0.0-cloud-assets-20261025",
+  "run_id": "42164375014"
+ }
+}
