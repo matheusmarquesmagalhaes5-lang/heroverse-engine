@@ -1,0 +1,689 @@
+[
+ {
+  "src": "flood-ends-long",
+  "shot": "k-insight",
+  "start": 1403.68,
+  "end": 1413.23,
+  "sync": {
+   "offset": -15,
+   "conf": 0.537,
+   "min_dist": 16.141,
+   "windows": 233
+  },
+  "face_frames": 0.93,
+  "flags": [
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [],
+  "opening_range": 0.0013
+ },
+ {
+  "src": "flood-ends-long",
+  "shot": "k-bow",
+  "start": 1568.26,
+  "end": 1576.64,
+  "sync": {
+   "offset": -15,
+   "conf": 0.367,
+   "min_dist": 16.918,
+   "windows": 204
+  },
+  "face_frames": 0.88,
+  "flags": [
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [],
+  "opening_range": 0.0014
+ },
+ {
+  "src": "flood-ends-long",
+  "shot": "k-close",
+  "start": 1595.86,
+  "end": 1598.27,
+  "sync": null,
+  "face_frames": 0.0,
+  "flags": [
+   "FACE_NOT_FOUND",
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [
+   "FACE_NOT_FOUND",
+   "MOUTH_UNMEASURED",
+   "MOUTH_NOT_CLOSED"
+  ],
+  "opening_range": null
+ },
+ {
+  "src": "genesis-10-11-long",
+  "shot": "k-hook",
+  "start": 1679.03,
+  "end": 1687.03,
+  "sync": {
+   "offset": 0,
+   "conf": 7.672,
+   "min_dist": 7.992,
+   "windows": 195
+  },
+  "face_frames": 0.6,
+  "flags": [
+   "FACE_NOT_FOUND"
+  ],
+  "still_mouth_flags": [
+   "FACE_NOT_FOUND",
+   "MOUTH_TALKING",
+   "MOUTH_NOT_CLOSED"
+  ],
+  "opening_range": 0.1302
+ },
+ {
+  "src": "genesis-10-11-long",
+  "shot": "b-brick",
+  "start": 1816.56,
+  "end": 1821.3,
+  "sync": {
+   "offset": 0,
+   "conf": 2.467,
+   "min_dist": 12.91,
+   "windows": 113
+  },
+  "face_frames": 1.0,
+  "flags": [
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [
+   "MOUTH_TALKING",
+   "MOUTH_NOT_CLOSED"
+  ],
+  "opening_range": 0.0706
+ },
+ {
+  "src": "genesis-10-11-long",
+  "shot": "b-tower",
+  "start": 1852.22,
+  "end": 1857.22,
+  "sync": {
+   "offset": -8,
+   "conf": 7.463,
+   "min_dist": 8.139,
+   "windows": 120
+  },
+  "face_frames": 0.99,
+  "flags": [
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [
+   "MOUTH_TALKING",
+   "MOUTH_NOT_CLOSED"
+  ],
+  "opening_range": 0.11
+ },
+ {
+  "src": "genesis-10-11-long",
+  "shot": "b-name",
+  "start": 1857.22,
+  "end": 1862.38,
+  "sync": {
+   "offset": -9,
+   "conf": 8.79,
+   "min_dist": 7.136,
+   "windows": 124
+  },
+  "face_frames": 0.98,
+  "flags": [
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [
+   "MOUTH_TALKING",
+   "MOUTH_NOT_CLOSED"
+  ],
+  "opening_range": 0.093
+ },
+ {
+  "src": "genesis-10-11-long",
+  "shot": "k-irony",
+  "start": 2110.88,
+  "end": 2115.43,
+  "sync": {
+   "offset": -1,
+   "conf": 2.709,
+   "min_dist": 13.171,
+   "windows": 108
+  },
+  "face_frames": 0.52,
+  "flags": [
+   "FACE_NOT_FOUND"
+  ],
+  "still_mouth_flags": [
+   "FACE_NOT_FOUND",
+   "MOUTH_TALKING",
+   "MOUTH_NOT_CLOSED"
+  ],
+  "opening_range": 0.1049
+ },
+ {
+  "src": "genesis-10-11-long",
+  "shot": "k-close",
+  "start": 2153.14,
+  "end": 2155.03,
+  "sync": {
+   "offset": 12,
+   "conf": 1.897,
+   "min_dist": 13.542,
+   "windows": 42
+  },
+  "face_frames": 0.98,
+  "flags": [
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [
+   "MOUTH_TALKING",
+   "MOUTH_NOT_CLOSED"
+  ],
+  "opening_range": 0.0573
+ },
+ {
+  "src": "genesis-07-short",
+  "shot": "k-insight",
+  "start": 691.12,
+  "end": 699.91,
+  "sync": null,
+  "face_frames": 0.0,
+  "flags": [
+   "FACE_NOT_FOUND",
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [
+   "FACE_NOT_FOUND",
+   "MOUTH_UNMEASURED",
+   "MOUTH_NOT_CLOSED"
+  ],
+  "opening_range": null
+ },
+ {
+  "src": "genesis-07-short",
+  "shot": "k-question",
+  "start": 699.91,
+  "end": 703.92,
+  "sync": null,
+  "face_frames": 0.0,
+  "flags": [
+   "FACE_NOT_FOUND",
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [
+   "FACE_NOT_FOUND",
+   "MOUTH_UNMEASURED",
+   "MOUTH_NOT_CLOSED"
+  ],
+  "opening_range": null
+ },
+ {
+  "src": "genesis-08-short",
+  "shot": "k-insight",
+  "start": 858.2,
+  "end": 867.21,
+  "sync": null,
+  "face_frames": 0.0,
+  "flags": [
+   "FACE_NOT_FOUND",
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [
+   "FACE_NOT_FOUND",
+   "MOUTH_UNMEASURED",
+   "MOUTH_NOT_CLOSED"
+  ],
+  "opening_range": null
+ },
+ {
+  "src": "genesis-08-short",
+  "shot": "k-question",
+  "start": 867.21,
+  "end": 871.92,
+  "sync": null,
+  "face_frames": 0.0,
+  "flags": [
+   "FACE_NOT_FOUND",
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [
+   "FACE_NOT_FOUND",
+   "MOUTH_UNMEASURED",
+   "MOUTH_NOT_CLOSED"
+  ],
+  "opening_range": null
+ },
+ {
+  "src": "genesis-09-short",
+  "shot": "k-insight",
+  "start": 1021.82,
+  "end": 1025.31,
+  "sync": null,
+  "face_frames": 0.0,
+  "flags": [
+   "FACE_NOT_FOUND",
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [
+   "FACE_NOT_FOUND",
+   "MOUTH_UNMEASURED",
+   "MOUTH_NOT_CLOSED"
+  ],
+  "opening_range": null
+ },
+ {
+  "src": "genesis-09-short",
+  "shot": "k-insight",
+  "start": 1025.31,
+  "end": 1028.79,
+  "sync": null,
+  "face_frames": 0.0,
+  "flags": [
+   "FACE_NOT_FOUND",
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [
+   "FACE_NOT_FOUND",
+   "MOUTH_UNMEASURED",
+   "MOUTH_NOT_CLOSED"
+  ],
+  "opening_range": null
+ },
+ {
+  "src": "genesis-09-short",
+  "shot": "k-insight",
+  "start": 1028.79,
+  "end": 1032.27,
+  "sync": null,
+  "face_frames": 0.0,
+  "flags": [
+   "FACE_NOT_FOUND",
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [
+   "FACE_NOT_FOUND",
+   "MOUTH_UNMEASURED",
+   "MOUTH_NOT_CLOSED"
+  ],
+  "opening_range": null
+ },
+ {
+  "src": "genesis-09-short",
+  "shot": "k-question",
+  "start": 1032.27,
+  "end": 1037.62,
+  "sync": null,
+  "face_frames": 0.0,
+  "flags": [
+   "FACE_NOT_FOUND",
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [
+   "FACE_NOT_FOUND",
+   "MOUTH_UNMEASURED",
+   "MOUTH_NOT_CLOSED"
+  ],
+  "opening_range": null
+ },
+ {
+  "src": "hook",
+  "shot": "hook-01:arc-01-long-k-promise-2",
+  "start": 0.3,
+  "end": 16.33,
+  "portrait": true,
+  "sync": {
+   "offset": 15,
+   "conf": 0.152,
+   "min_dist": 17.746,
+   "windows": 395
+  },
+  "face_frames": 1.0,
+  "flags": [
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [],
+  "opening_range": 0.0005
+ },
+ {
+  "src": "hook",
+  "shot": "hook-02:flood-ends-long-k-insight",
+  "start": 16.93,
+  "end": 33.59,
+  "portrait": true,
+  "sync": {
+   "offset": -15,
+   "conf": 0.134,
+   "min_dist": 17.514,
+   "windows": 411
+  },
+  "face_frames": 1.0,
+  "flags": [
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [],
+  "opening_range": 0.0006
+ },
+ {
+  "src": "i1",
+  "shot": "i1-01:arc-01-long-k-promise-3",
+  "start": 34.19,
+  "end": 59.12,
+  "portrait": true,
+  "sync": {
+   "offset": -15,
+   "conf": 0.06,
+   "min_dist": 17.208,
+   "windows": 618
+  },
+  "face_frames": 0.9,
+  "flags": [
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [],
+  "opening_range": 0.0008
+ },
+ {
+  "src": "i2",
+  "shot": "i2-02:flood-ends-long-k-insight",
+  "start": 302.14,
+  "end": 320.8,
+  "portrait": true,
+  "sync": {
+   "offset": -15,
+   "conf": 0.095,
+   "min_dist": 16.179,
+   "windows": 461
+  },
+  "face_frames": 1.0,
+  "flags": [
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [],
+  "opening_range": 0.0006
+ },
+ {
+  "src": "i3",
+  "shot": "i3-01:arc-01-long-k-promise-2",
+  "start": 379.06,
+  "end": 402.06,
+  "portrait": true,
+  "sync": {
+   "offset": 15,
+   "conf": 0.096,
+   "min_dist": 17.766,
+   "windows": 570
+  },
+  "face_frames": 1.0,
+  "flags": [
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [],
+  "opening_range": 0.0011
+ },
+ {
+  "src": "i3",
+  "shot": "i3-02:flood-ends-long-k-insight",
+  "start": 402.66,
+  "end": 422.0,
+  "portrait": true,
+  "sync": {
+   "offset": -15,
+   "conf": 0.121,
+   "min_dist": 17.613,
+   "windows": 478
+  },
+  "face_frames": 1.0,
+  "flags": [
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [],
+  "opening_range": 0.0006
+ },
+ {
+  "src": "i3",
+  "shot": "i3-03:arc-01-long-k-promise-3",
+  "start": 422.6,
+  "end": 441.13,
+  "portrait": true,
+  "sync": {
+   "offset": -15,
+   "conf": 0.095,
+   "min_dist": 17.93,
+   "windows": 458
+  },
+  "face_frames": 1.0,
+  "flags": [
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [],
+  "opening_range": 0.0011
+ },
+ {
+  "src": "i3",
+  "shot": "i3-04:flood-ends-long-k-bow",
+  "start": 441.73,
+  "end": 467.42,
+  "portrait": true,
+  "sync": {
+   "offset": -15,
+   "conf": 0.08,
+   "min_dist": 17.265,
+   "windows": 637
+  },
+  "face_frames": 1.0,
+  "flags": [
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [],
+  "opening_range": 0.0007
+ },
+ {
+  "src": "i4",
+  "shot": "i4-01:flood-ends-long-k-insight",
+  "start": 1038.22,
+  "end": 1061.88,
+  "portrait": true,
+  "sync": {
+   "offset": -15,
+   "conf": 0.102,
+   "min_dist": 17.263,
+   "windows": 586
+  },
+  "face_frames": 1.0,
+  "flags": [
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [],
+  "opening_range": 0.001
+ },
+ {
+  "src": "i4",
+  "shot": "i4-02:arc-01-long-k-promise-2",
+  "start": 1062.48,
+  "end": 1084.85,
+  "portrait": true,
+  "sync": {
+   "offset": -15,
+   "conf": 0.123,
+   "min_dist": 16.215,
+   "windows": 554
+  },
+  "face_frames": 1.0,
+  "flags": [
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [],
+  "opening_range": 0.0006
+ },
+ {
+  "src": "i4",
+  "shot": "i4-03:arc-01-long-k-promise-3",
+  "start": 1085.45,
+  "end": 1104.51,
+  "portrait": true,
+  "sync": {
+   "offset": -15,
+   "conf": 0.131,
+   "min_dist": 17.355,
+   "windows": 471
+  },
+  "face_frames": 1.0,
+  "flags": [
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [],
+  "opening_range": 0.0009
+ },
+ {
+  "src": "i5",
+  "shot": "i5-01:arc-01-long-k-promise-2",
+  "start": 1598.87,
+  "end": 1616.71,
+  "portrait": true,
+  "sync": {
+   "offset": -15,
+   "conf": 0.065,
+   "min_dist": 16.23,
+   "windows": 441
+  },
+  "face_frames": 0.99,
+  "flags": [
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [],
+  "opening_range": 0.001
+ },
+ {
+  "src": "i5",
+  "shot": "i5-02:flood-ends-long-k-insight",
+  "start": 1617.31,
+  "end": 1632.24,
+  "portrait": true,
+  "sync": {
+   "offset": -15,
+   "conf": 0.146,
+   "min_dist": 16.766,
+   "windows": 368
+  },
+  "face_frames": 1.0,
+  "flags": [
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [],
+  "opening_range": 0.0007
+ },
+ {
+  "src": "i5",
+  "shot": "i5-03:arc-01-long-k-promise-3",
+  "start": 1632.84,
+  "end": 1651.67,
+  "portrait": true,
+  "sync": {
+   "offset": -15,
+   "conf": 0.127,
+   "min_dist": 17.702,
+   "windows": 465
+  },
+  "face_frames": 1.0,
+  "flags": [
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [],
+  "opening_range": 0.0011
+ },
+ {
+  "src": "i5",
+  "shot": "i5-04:flood-ends-long-k-bow",
+  "start": 1652.27,
+  "end": 1678.73,
+  "portrait": true,
+  "sync": {
+   "offset": -15,
+   "conf": 0.06,
+   "min_dist": 17.149,
+   "windows": 656
+  },
+  "face_frames": 1.0,
+  "flags": [
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [],
+  "opening_range": 0.0008
+ },
+ {
+  "src": "close",
+  "shot": "close-01:flood-ends-long-k-insight",
+  "start": 2155.63,
+  "end": 2184.93,
+  "portrait": true,
+  "sync": {
+   "offset": -15,
+   "conf": 0.097,
+   "min_dist": 15.824,
+   "windows": 727
+  },
+  "face_frames": 1.0,
+  "flags": [
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [],
+  "opening_range": 0.0006
+ },
+ {
+  "src": "close",
+  "shot": "close-02:arc-01-long-k-promise-2",
+  "start": 2185.53,
+  "end": 2205.13,
+  "portrait": true,
+  "sync": {
+   "offset": -15,
+   "conf": 0.092,
+   "min_dist": 16.443,
+   "windows": 485
+  },
+  "face_frames": 1.0,
+  "flags": [
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [],
+  "opening_range": 0.0006
+ },
+ {
+  "src": "close",
+  "shot": "close-03:flood-ends-long-k-bow",
+  "start": 2205.73,
+  "end": 2226.06,
+  "portrait": true,
+  "sync": {
+   "offset": 15,
+   "conf": 0.09,
+   "min_dist": 17.802,
+   "windows": 503
+  },
+  "face_frames": 1.0,
+  "flags": [
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [],
+  "opening_range": 0.0009
+ },
+ {
+  "src": "close",
+  "shot": "close-04:arc-01-long-k-promise-3",
+  "start": 2226.66,
+  "end": 2249.32,
+  "portrait": true,
+  "sync": {
+   "offset": 15,
+   "conf": 0.091,
+   "min_dist": 17.487,
+   "windows": 561
+  },
+  "face_frames": 1.0,
+  "flags": [
+   "MOUTH_NOT_IN_SYNC"
+  ],
+  "still_mouth_flags": [],
+  "opening_range": 0.0008
+ }
+]
