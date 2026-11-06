@@ -1,0 +1,1139 @@
+{
+ "episode": "genesis-12-short",
+ "shots": {
+  "s-voice": {
+   "kind": "scene",
+   "lines": null,
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Extreme wide shot, slow tilt up. The unfinished brick tower alone on the empty plain at dawn with open scaffolds and cold ashes, long mist across the ground, no people, centred in the frame. The subject is centred in the frame. Vast and silent. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 8,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-12-short-s-voice.jpg"
+   },
+   "speaker": "god",
+   "line": "and now nothing will be restrained from them, which they have imagined to do.",
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "30e64e30a7291890af6858efe63f5b5e2c756c13b1f3a1fd87518072eb6ff7c6",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-12-short-s-voice",
+    "still_sha256": "6a6b10e294b9cf3f9a6078a95a98c0de3e1581ed78dc06d442f59f24057fbcfa",
+    "repo_path": "migration/production/bible/stills/genesis-12-short-s-voice.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 8,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-nations": {
+   "kind": "scene",
+   "lines": [
+    0
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Extreme wide shot, slow push-in. A vast green river valley at dawn with many small family camps and cooking fires scattered across it, mist on the water, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Soft golden dawn, mist and woodsmoke. Hopeful. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 10,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-12-short-s-nations.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "b565ba48d51513c1eda960c7f62f87512ebdcbfd7d049c1606dbff3bcfd65b0c",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-12-short-s-nations",
+    "still_sha256": "c6171b5431c2a92a8c24ee2ed9315eea00e4f2c03db8625db67fb4bc2d04c67c",
+    "repo_path": "migration/production/bible/stills/genesis-12-short-s-nations.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 10,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-onetongue": {
+   "kind": "scene",
+   "lines": [
+    1
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium shot, slow push-in. A crowded market at a river landing, men and women trading grain and cloth under reed awnings, a child laughing on a man's shoulders, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Warm morning light, dust in the air. Joyful. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 8,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-12-short-s-onetongue.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "d582a9db311b59ebb8c64eea0238644b67b4073cb9b16d1a203f7c89789d0207",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-12-short-s-onetongue",
+    "still_sha256": "023071601a6f52894abf78bb0410fb61c700bc9a28d71badd989bc89dd3b9275",
+    "repo_path": "migration/production/bible/stills/genesis-12-short-s-onetongue.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 8,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-plain": {
+   "kind": "scene",
+   "lines": [
+    2
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Wide shot, slow pan. Workers knee-deep in wet grey clay pressing it into wooden moulds, rows of raw clay bricks drying in the sun behind them on a flat river plain, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Hard midday sun, wet clay glistening. Busy and determined. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 10,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-12-short-s-plain.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "86f68a0d64ab40f52eb897bc9ed57d2710f9fe2740494eef04cb61889afc9184",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-12-short-s-plain",
+    "still_sha256": "f0a3e8f287dce25f64541e5fc6e6a448d01983cc1b1c00bb7c6f0d57294c8059",
+    "repo_path": "migration/production/bible/stills/genesis-12-short-s-plain.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 10,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-kiln": {
+   "kind": "scene",
+   "lines": [
+    3
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium shot, slow push-in. A great beehive kiln roaring with orange fire, a worker raking glowing coals, stacks of finished red-brown bricks beside it, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Orange firelight and heat shimmer. Intense. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 11,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-12-short-s-kiln.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "7c271dd60064ae2ea7405ec83b038b48d8bc276f97e1ad2377b8e06d05be405a",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-12-short-s-kiln",
+    "still_sha256": "7f213f2b05b29e2fdd9d25b8437c088e1d37f8071c94e1cc8d5196b47346597f",
+    "repo_path": "migration/production/bible/stills/genesis-12-short-s-kiln.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 11,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-hands": {
+   "kind": "scene",
+   "lines": [
+    4
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium shot, slow push-in. A line of workers passing fired bricks hand to hand beside a pot of steaming black pitch, a tall wall of brick rising behind them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Warm low firelight. Driven, with a hint of unease. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 12,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-12-short-s-hands.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "aa2ed8a4012e0c5bf452c3c35ae2c02e4002316ae5ddc0b744905439736b75f3",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-12-short-s-hands",
+    "still_sha256": "243205a67e1268fe0bcad579df4f38cce8e3134d0e56f9747fd294bd9b14c9ae",
+    "repo_path": "migration/production/bible/stills/genesis-12-short-s-hands.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 12,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-gathered": {
+   "kind": "scene",
+   "lines": [
+    5
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Extreme wide shot, slow tilt up. A crowd of thousands gathered at dusk around a great pile of bricks and torches on the plain, all faces turned up toward the darkening sky, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Dusk and torchlight, sparks rising. Ambitious and ominous. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 12,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-12-short-s-gathered.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "3a29d9764d1ebeed93958d25a1d1ea5c0679f121ae5820bdc65fa83285f12bc0",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-12-short-s-gathered",
+    "still_sha256": "0da3980c83914d4a366fa9cf30834fa3140fe29b8730475b920b01e0e1ef1e69",
+    "repo_path": "migration/production/bible/stills/genesis-12-short-s-gathered.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 12,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-foundation": {
+   "kind": "scene",
+   "lines": [
+    6
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Wide shot, slow push-in. A vast square foundation of fired brick on the empty plain with thousands of tiny workers laying the first courses, a few torches burning at its corners, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Cold blue dusk with orange torches. Proud and cold. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 12,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-12-short-s-foundation.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "cd4bdfee8802c0ef42482d39e3ae5ab6e8f54d5c24b8360b3d275762531de957",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-12-short-s-foundation",
+    "still_sha256": "0650478c7a299d00d5f2205ce871fb6c9fa28f2a99f525982e6831f69ab609a7",
+    "repo_path": "migration/production/bible/stills/genesis-12-short-s-foundation.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 12,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-down": {
+   "kind": "scene",
+   "lines": [
+    7
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Wide shot, slow tilt up. A single broad shaft of brilliant white light falling through a hole in thick clouds onto the plain, lighting the whole stepped brick tower from above, tiny workers on the ramps frozen and looking up, no figure in the light, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Heavy storm light breaking open. Awe. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 9,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-12-short-s-down.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "a08e21a0b0767b920a248479ec247a8d9de896e575ecffa1b585f810dd0031d2",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-12-short-s-down",
+    "still_sha256": "60977c0d1e5abbb5a887805d12e58078ff73ee2560749ce0a030d3f94cc59c34",
+    "repo_path": "migration/production/bible/stills/genesis-12-short-s-down.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 9,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-top": {
+   "kind": "scene",
+   "lines": [
+    8
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Wide shot, slow tilt up. The unfinished top terrace of the tall brick tower against huge dark storm clouds gathering above it, a few tiny workers frozen at its edge looking up, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Heavy grey light, wind. Humbled. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 12,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-12-short-s-top.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "a3b2ccc6741fa899ac90b63c6d4f3dc570ea3cb7cc8fa0b82083d436de5447da",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-12-short-s-top",
+    "still_sha256": "68a03e9b2f9983910923e775867ffef6df58697e50cef31a4ab7b3836dedfb0d",
+    "repo_path": "migration/production/bible/stills/genesis-12-short-s-top.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 12,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-behold": {
+   "kind": "scene",
+   "lines": [
+    9
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Extreme wide shot, slow push-in. A circle of clouds opening above the tower, slow churning grey and gold, one great shaft of light pouring down over the plain, a crowd of tiny workers below with their faces turned up, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Majestic and grave. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 11,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-12-short-s-behold.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "b9b3c712180d162f3a52409474d810f251cbcaf7e83745578af6cf437dfa1ab4",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-12-short-s-behold",
+    "still_sha256": "8a8e1815348332ee1c45ebb2894beffffd75621856340a5dc6e5cb459c5a04b7",
+    "repo_path": "migration/production/bible/stills/genesis-12-short-s-behold.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 11,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-mercy": {
+   "kind": "scene",
+   "lines": [
+    10
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Wide shot, slow push-in. The great brick tower at dusk with the first soft rain starting to fall on the crowd below, torches flickering, a lone worker setting down a brick, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Quiet and heavy. Still. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 12,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-12-short-s-mercy.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "9f3f1f8ebe1345c5ba268b37d4f20790c51f8279bddafc7566d7638631431f9a",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-12-short-s-mercy",
+    "still_sha256": "ec53906ce41255350a79dc43b37797b335a74035bab32d0f614ded1305d20f72",
+    "repo_path": "migration/production/bible/stills/genesis-12-short-s-mercy.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 12,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-confound": {
+   "kind": "scene",
+   "lines": [
+    11
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Extreme wide shot, slow push-in. A great wind sweeping across the plain, tearing the reeds flat and whirling dust around the foot of the tower under a sky of boiling clouds, a crowd of tiny workers bracing against it, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Violent grey light and swirling dust. Dread. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 10,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-12-short-s-confound.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "5bd188afd621268d2a0a1d264da32a779727d4191921af17f2ea9ca74061e83b",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-12-short-s-confound",
+    "still_sha256": "0293c2bb39a212a9e44bffd6c650377c9a7edc461c2816fca15decdaa03e249d",
+    "repo_path": "migration/production/bible/stills/genesis-12-short-s-confound.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 10,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-babble": {
+   "kind": "scene",
+   "lines": [
+    12
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium shot, slow push-in. Two workers on a ramp seen from behind and in deep shadow, one pointing up, the other shaking his head, both with their faces turned away from us, a stack of bricks between them, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Flat grey light. Confused and tense. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 11,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-12-short-s-babble.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "3c9586a6697ee53a1b719d8ee64bb75fc6397b1af23ebb155590d46022f6ede6",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-12-short-s-babble",
+    "still_sha256": "778cf6652d7380e12f00152d74c999ac70e8eef19661cfc5d025930fb8052c45",
+    "repo_path": "migration/production/bible/stills/genesis-12-short-s-babble.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 11,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-parting": {
+   "kind": "scene",
+   "lines": [
+    13
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium shot, slow push-in. A man, a woman and two children gathering bundles and turning away from the crowd toward a distant trail at dusk, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Low amber dusk light. Heartbreaking and quiet. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 10,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-12-short-s-parting.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "3bf5cc60e98dfa34fde682d003e05a9eb19e1cde01668abf1f6d61785621cc37",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-12-short-s-parting",
+    "still_sha256": "f927354ba36d3561df761e786727cd9b52003803147802c734b2f2b443a75be2",
+    "repo_path": "migration/production/bible/stills/genesis-12-short-s-parting.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 10,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-unfinished": {
+   "kind": "scene",
+   "lines": [
+    14
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Extreme wide shot, slow pull-back. The unfinished tower alone on the empty plain at dawn with open scaffolds, a few dropped bricks and cold ashes, long mist across the ground, one lone figure in the distance walking away, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Cold pale dawn. Desolate and still. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 12,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-12-short-s-unfinished.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "01d672dac91912c3abcf8b712ecc315bea07b25157c9353b422896baaed8ea4c",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-12-short-s-unfinished",
+    "still_sha256": "fe145a01bff03c88b5fd3bc5034d67172297cf51b786a9aeb787f316717044d5",
+    "repo_path": "migration/production/bible/stills/genesis-12-short-s-unfinished.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 12,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "s-babel": {
+   "kind": "scene",
+   "lines": [
+    15
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Close-up, slow push-in. A single worn brick lying in the dust at the foot of the empty tower with long grass already growing through the cracks, early light behind, centred in the frame. The figures are in silhouette, seen from behind. The subject is centred in the frame. Early light. Solemn. The plain of Shinar soon after the flood: flat river land, wet clay, reeds, open fires and brick kilns, sun-baked bricks and black pitch, rough undyed linen and wool clothing. No stone temples, glass, iron, machinery, cranes, modern clothing or roads. No text, no logos.",
+    "seconds": 11,
+    "aspect_ratio": "9:16",
+    "references": null,
+    "audios": null,
+    "sound": false,
+    "first_frame": "migration/production/bible/stills/genesis-12-short-s-babel.jpg"
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "d8e50e6a264b3117ab766f8d076d52cd51874d814cb4c7f1cdf245a8bf9ad777",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "genesis-12-short-s-babel",
+    "still_sha256": "c5e3f80dba6efdf25ed79f8b2de8a27016eb3dbf6cc94a4a067cb7917c3c582b",
+    "repo_path": "migration/production/bible/stills/genesis-12-short-s-babel.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "clip_seconds": 11,
+    "licence": "apache-2.0"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "k-insight": {
+   "kind": "keeper",
+   "lines": [
+    16
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium shot, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, holds his head level and looks straight into the camera, his lips closed, silent, a calm kind look, breathing slowly. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Tender and grave. No text, no logos.",
+    "seconds": 10,
+    "aspect_ratio": "9:16",
+    "references": [
+     ".episode/genesis-12-short/refs/ch-keeper-talk.jpg"
+    ],
+    "audios": null,
+    "sound": false
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "48792c72bfa20c5d7338024a700621ec4b747738aed3523ee33214d1b2af72fd",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "arc-01-long-k-promise-2",
+    "still_sha256": "fd3ffd3708872b1b662c649649b917cfc95f9f2c49f6d047b3105c2d98542065",
+    "repo_path": "migration/production/bible/stills/arc-01-long-k-promise-2.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "still_from": "arc-01-long-k-promise-2",
+    "clip_seconds": 12,
+    "licence": "Pavo generated (owner-owned)"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  },
+  "k-question": {
+   "kind": "keeper",
+   "lines": [
+    17
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium shot, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, holds his head level, looks straight into the camera and slowly rolls the old scroll closed in his hands, his lips closed, silent, a gentle questioning look. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and searching. No text, no logos.",
+    "seconds": 6,
+    "aspect_ratio": "9:16",
+    "references": [
+     ".episode/genesis-12-short/refs/ch-keeper-talk.jpg"
+    ],
+    "audios": null,
+    "sound": false
+   },
+   "source": "pavo_reuse",
+   "approved": {
+    "asset": "shot-genesis-08-short-k-question-sha256-0977ad37cde590ab7cdc86c0193635a723f1dcf6652d6e7b21d1306e83ac4ead.mp4",
+    "clip_sha256": "0977ad37cde590ab7cdc86c0193635a723f1dcf6652d6e7b21d1306e83ac4ead",
+    "request_sha256": "f17e82122d2e2cadcf2c1d8968c2e71fc0a0c4dccde2cf3d0550188a4337103a",
+    "score": 9.5,
+    "source": "pavo_reuse",
+    "clip_from": "genesis-08-short#k-question",
+    "clip_seconds": 6
+   },
+   "checks": {
+    "flags": [],
+    "measures": {
+     "still_mouth": {
+      "opening_range": 0.0542,
+      "opening_motion": 0.00059,
+      "window_motion": 0.00216,
+      "closed_opening": 0.00376,
+      "face_frames": 1.0,
+      "frames": 158
+     }
+    }
+   }
+  },
+  "k-close": {
+   "kind": "keeper",
+   "lines": [
+    18
+   ],
+   "request": {
+    "prompt": "Painterly cinematic realism with Old-Master light, one warm grade, cinema camera, fine film grain. Medium shot, static camera. The narrator, an original elderly storyteller of about seventy with Middle Eastern features, weathered warm olive skin with deep lines on the forehead, kind deep-set brown eyes, a very long silver-white beard and long silver hair under a hooded brown wool robe, seated cross-legged by a small campfire at night under a starry desert sky, holding an old rolled scroll in both hands, holds his head level and looks straight into the camera, his lips closed, silent, a faint warm smile, breathing slowly. Night in the open desert, the campfire's warm flicker on his face, deep blue darkness and stars behind him. Warm and expectant. No text, no logos.",
+    "seconds": 8,
+    "aspect_ratio": "9:16",
+    "references": [
+     ".episode/genesis-12-short/refs/ch-keeper-talk.jpg"
+    ],
+    "audios": null,
+    "sound": false
+   },
+   "source": "still_motion",
+   "approved": {
+    "clip_sha256": null,
+    "request_sha256": "c8b80d480cacf24a351cc898807aec4e256e913c84bbc202ea551c3b27985f81",
+    "score": 9.5,
+    "source": "still_motion",
+    "still": "arc-01-long-k-promise-3",
+    "still_sha256": "d06d4d2eb4d0120dc4dfdab01b737d4d14a57dd52759e60e3284826973e5636f",
+    "repo_path": "migration/production/bible/stills/arc-01-long-k-promise-3.jpg",
+    "frame": [
+     1080,
+     1920
+    ],
+    "still_from": "arc-01-long-k-promise-3",
+    "clip_seconds": 12,
+    "licence": "Pavo generated (owner-owned)"
+   },
+   "checks": {
+    "flags": [],
+    "measures": null
+   }
+  }
+ },
+ "composed": {
+  "output_sha256": "74dbf6fdc63b3904be9be2c5a327faf7477aebcc9fe41c423e60f8c7bfb84764",
+  "seconds": 172.29,
+  "frame": [
+   1080,
+   1920
+  ],
+  "black_check": {
+   "black_starts": [],
+   "unexpected": [],
+   "intended_dips": [
+    171.49
+   ]
+  },
+  "lufs": -14.5,
+  "keeper_share": 0.117,
+  "lesson_share": 0.122,
+  "spoken": {
+   "s-voice": {
+    "start": 0.0,
+    "end": 4.693,
+    "seconds": 4.693,
+    "speaker": "god"
+   }
+  },
+  "establishing_share": 0.0,
+  "cuts": 49,
+  "crossfades": [],
+  "timeline": [
+   {
+    "shot": "s-voice",
+    "kind": "scene",
+    "start": 0.0,
+    "end": 2.522,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-voice",
+    "kind": "scene",
+    "start": 2.522,
+    "end": 5.043,
+    "src_start": 5.479,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-nations",
+    "kind": "scene",
+    "start": 5.043,
+    "end": 8.85,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-nations",
+    "kind": "scene",
+    "start": 8.85,
+    "end": 12.656,
+    "src_start": 6.193,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-onetongue",
+    "kind": "scene",
+    "start": 12.656,
+    "end": 14.762,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-onetongue",
+    "kind": "scene",
+    "start": 14.762,
+    "end": 16.867,
+    "src_start": 5.894,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-plain",
+    "kind": "scene",
+    "start": 16.867,
+    "end": 19.547,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-plain",
+    "kind": "scene",
+    "start": 19.547,
+    "end": 22.227,
+    "src_start": 3.66,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-plain",
+    "kind": "scene",
+    "start": 22.227,
+    "end": 24.907,
+    "src_start": 7.32,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-kiln",
+    "kind": "scene",
+    "start": 24.907,
+    "end": 27.985,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-kiln",
+    "kind": "scene",
+    "start": 27.985,
+    "end": 31.063,
+    "src_start": 3.961,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-kiln",
+    "kind": "scene",
+    "start": 31.063,
+    "end": 34.141,
+    "src_start": 7.922,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-hands",
+    "kind": "scene",
+    "start": 34.141,
+    "end": 38.007,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-hands",
+    "kind": "scene",
+    "start": 38.007,
+    "end": 41.874,
+    "src_start": 4.067,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-hands",
+    "kind": "scene",
+    "start": 41.874,
+    "end": 45.74,
+    "src_start": 8.134,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-gathered",
+    "kind": "scene",
+    "start": 45.74,
+    "end": 48.742,
+    "src_start": 0.0,
+    "speed": 1.0006
+   },
+   {
+    "shot": "s-gathered",
+    "kind": "scene",
+    "start": 48.742,
+    "end": 51.743,
+    "src_start": 3.0,
+    "speed": 1.0006
+   },
+   {
+    "shot": "s-gathered",
+    "kind": "scene",
+    "start": 51.743,
+    "end": 54.745,
+    "src_start": 6.0,
+    "speed": 1.0006
+   },
+   {
+    "shot": "s-gathered",
+    "kind": "scene",
+    "start": 54.745,
+    "end": 57.747,
+    "src_start": 9.0,
+    "speed": 1.0006
+   },
+   {
+    "shot": "s-foundation",
+    "kind": "scene",
+    "start": 57.747,
+    "end": 61.08,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-foundation",
+    "kind": "scene",
+    "start": 61.08,
+    "end": 64.414,
+    "src_start": 4.333,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-foundation",
+    "kind": "scene",
+    "start": 64.414,
+    "end": 67.747,
+    "src_start": 8.667,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-down",
+    "kind": "scene",
+    "start": 67.747,
+    "end": 70.653,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-down",
+    "kind": "scene",
+    "start": 70.653,
+    "end": 73.558,
+    "src_start": 6.094,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-top",
+    "kind": "scene",
+    "start": 73.558,
+    "end": 76.966,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-top",
+    "kind": "scene",
+    "start": 76.966,
+    "end": 80.375,
+    "src_start": 4.296,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-top",
+    "kind": "scene",
+    "start": 80.375,
+    "end": 83.783,
+    "src_start": 8.592,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-behold",
+    "kind": "scene",
+    "start": 83.783,
+    "end": 87.461,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-behold",
+    "kind": "scene",
+    "start": 87.461,
+    "end": 91.139,
+    "src_start": 7.322,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-mercy",
+    "kind": "scene",
+    "start": 91.139,
+    "end": 94.267,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-mercy",
+    "kind": "scene",
+    "start": 94.267,
+    "end": 97.395,
+    "src_start": 4.436,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-mercy",
+    "kind": "scene",
+    "start": 97.395,
+    "end": 100.523,
+    "src_start": 8.872,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-confound",
+    "kind": "scene",
+    "start": 100.523,
+    "end": 104.165,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-confound",
+    "kind": "scene",
+    "start": 104.165,
+    "end": 107.806,
+    "src_start": 6.358,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-babble",
+    "kind": "scene",
+    "start": 107.806,
+    "end": 110.957,
+    "src_start": 0.0,
+    "speed": 1.1456
+   },
+   {
+    "shot": "s-babble",
+    "kind": "scene",
+    "start": 110.957,
+    "end": 114.107,
+    "src_start": 2.75,
+    "speed": 1.1456
+   },
+   {
+    "shot": "s-babble",
+    "kind": "scene",
+    "start": 114.107,
+    "end": 117.257,
+    "src_start": 5.5,
+    "speed": 1.1456
+   },
+   {
+    "shot": "s-babble",
+    "kind": "scene",
+    "start": 117.257,
+    "end": 120.408,
+    "src_start": 8.25,
+    "speed": 1.1456
+   },
+   {
+    "shot": "s-parting",
+    "kind": "scene",
+    "start": 120.408,
+    "end": 124.193,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-parting",
+    "kind": "scene",
+    "start": 124.193,
+    "end": 127.978,
+    "src_start": 6.215,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-unfinished",
+    "kind": "scene",
+    "start": 127.978,
+    "end": 131.734,
+    "src_start": 0.0,
+    "speed": 1.2521
+   },
+   {
+    "shot": "s-unfinished",
+    "kind": "scene",
+    "start": 131.734,
+    "end": 135.49,
+    "src_start": 3.0,
+    "speed": 1.2521
+   },
+   {
+    "shot": "s-unfinished",
+    "kind": "scene",
+    "start": 135.49,
+    "end": 139.247,
+    "src_start": 6.0,
+    "speed": 1.2521
+   },
+   {
+    "shot": "s-unfinished",
+    "kind": "scene",
+    "start": 139.247,
+    "end": 143.003,
+    "src_start": 9.0,
+    "speed": 1.2521
+   },
+   {
+    "shot": "s-babel",
+    "kind": "scene",
+    "start": 143.003,
+    "end": 146.575,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "s-babel",
+    "kind": "scene",
+    "start": 146.575,
+    "end": 150.146,
+    "src_start": 7.428,
+    "speed": 1.0
+   },
+   {
+    "shot": "k-insight",
+    "kind": "keeper-vo",
+    "start": 150.146,
+    "end": 159.231,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "k-question",
+    "kind": "keeper-vo",
+    "start": 159.231,
+    "end": 164.539,
+    "src_start": 0.0,
+    "speed": 1.0
+   },
+   {
+    "shot": "k-close",
+    "kind": "keeper-vo",
+    "start": 164.539,
+    "end": 172.286,
+    "src_start": 0.0,
+    "speed": 1.0
+   }
+  ],
+  "release_asset": "bible-genesis-12-short-sha256-74dbf6fdc63b3904be9be2c5a327faf7477aebcc9fe41c423e60f8c7bfb84764.mp4",
+  "release_tag": "v0.0.0-cloud-assets-20261025",
+  "run_id": "42142686914"
+ }
+}
