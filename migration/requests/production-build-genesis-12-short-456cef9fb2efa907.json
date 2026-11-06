@@ -1,0 +1,6 @@
+{
+ "workflow": "episode.yml",
+ "inputs": {
+  "plan": "migration/production/bible/plans/genesis-12-short.json"
+ }
+}
