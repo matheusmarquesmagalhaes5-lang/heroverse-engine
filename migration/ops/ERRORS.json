@@ -5290,6 +5290,51 @@
      "instrument"
     ]
    }
+  },
+  {
+   "id": "E309",
+   "date": "2026-11-07",
+   "class": [
+    "drift"
+   ],
+   "prior": [
+    "E100",
+    "E102",
+    "E126",
+    "E130",
+    "E132",
+    "E133",
+    "E145",
+    "E146",
+    "E147",
+    "E149",
+    "E150",
+    "E151",
+    "E152",
+    "E153",
+    "E166",
+    "E167",
+    "E168",
+    "E169",
+    "E189",
+    "E218",
+    "E236",
+    "E243",
+    "E245",
+    "E270",
+    "E274",
+    "E276",
+    "E277"
+   ],
+   "error": "pr-checks failed on main and on PR #1 in two tests that read live repository data: test_autopilot_plan expected the next unplanned Short to be genesis-14-short from the live plans/ (it became genesis-15-short once genesis-14-short was planned, #928), and test_pavo_prompt appended a lesson dated 2026-11-04 to a copy of the live pavo_lessons.md, which by then ended with a 2026-11-06 section; append_lesson wrote the out-of-order section first and only then rejected the file, so a real call with an old date would leave pavo_lessons.md broken.",
+   "fix": "test_autopilot_plan checks next_episode on a fixed arc list, the sandbox plans and an empty episodes dir; test_pavo_prompt appends under a far-future date; pavo_prompt.append_lesson refuses a date before the last dated section before writing (PAVO_LESSONS_INVALID), so the file is left untouched.",
+   "antidote": {
+    "file": "migration/production/bible/test_autopilot_plan.py",
+    "contains": "# E309: a fixed arc list and an empty episodes dir",
+    "covers": [
+     "drift"
+    ]
+   }
   }
  ]
 }

@@ -307,7 +307,9 @@ def append_lesson(date, kind, text, evidence, path=None):
     """Add one lesson under its date (a new '## DATE' section at the end when the date is new); the file is checked
     again after the write."""
     path = Path(path) if path else LESSONS
-    lessons(path)
+    rows = lessons(path)
+    if rows and date < rows[-1]["date"]:  # E309: refuse before the write, never leave a broken file
+        raise SystemExit(f"PAVO_LESSONS_INVALID {date} is before the last dated section {rows[-1]['date']}")
     line = f"- **{kind}** {text.strip()} Evidence: {evidence.strip()}"
     if not LESSON_LINE.match(line) or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date):
         raise SystemExit("PAVO_LESSONS_INVALID the new lesson (DATE YYYY-MM-DD, KIND worked|failed|rule, TEXT, EVIDENCE)")

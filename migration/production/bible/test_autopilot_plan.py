@@ -67,7 +67,11 @@ class Planner(unittest.TestCase):
         return ap.draft(self.sb.ledger, 'k', 'genesis-11-short', self.sb.plans, NOW, self.sb.post(replies), **kw)
 
     def test_s1_picks_first_unplanned_short_in_arc_order(self):
-        self.assertEqual(ap.next_episode(plans_dir=HERE / 'plans')[0], 'genesis-14-short')
+        # E309: a fixed arc list and an empty episodes dir, so newly planned live episodes cannot move the answer
+        arcs = {'arcs': [{'shorts': ['genesis-10-short', 'genesis-11-short', 'genesis-12-short']}]}
+        with tempfile.TemporaryDirectory() as empty:
+            self.assertEqual(ap.next_episode(arcs, self.sb.plans, empty)[:2], ('genesis-11-short', 11))
+            self.assertIsNone(ap.next_episode({'arcs': [{'shorts': ['genesis-10-short']}]}, self.sb.plans, empty))
         self.assertEqual(ap.series_row(12), ('The tower of Babel', 'Genesis 11:1-9'))
         self.assertEqual(ap.series_row(14)[1], 'Genesis 12-19')
 
