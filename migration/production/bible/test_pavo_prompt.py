@@ -170,13 +170,17 @@ class Lessons(unittest.TestCase):
             path = Path(t) / "pavo_lessons.md"
             path.write_text(pp.LESSONS.read_text())
             n = len(pp.lessons(path))
-            rows = pp.append_lesson("2026-11-04", "worked", "Chest-up hook with the pad: no tail.", "shot-probe 1234567",
-                                    path)
-            self.assertEqual((len(rows), rows[-1]["date"], rows[-1]["kind"]), (n + 1, "2026-11-04", "worked"))
-            self.assertEqual(len(pp.append_lesson("2026-11-04", "rule", "Keep it.", "E290", path)), n + 2)
-            self.assertEqual(path.read_text().count("## 2026-11-04"), 1)
+            day = "2999-01-01"  # E309: after any real dated section, so live lessons cannot make it out of order
+            rows = pp.append_lesson(day, "worked", "Chest-up hook with the pad: no tail.", "shot-probe 1234567", path)
+            self.assertEqual((len(rows), rows[-1]["date"], rows[-1]["kind"]), (n + 1, day, "worked"))
+            self.assertEqual(len(pp.append_lesson(day, "rule", "Keep it.", "E290", path)), n + 2)
+            self.assertEqual(path.read_text().count(f"## {day}"), 1)
             with self.assertRaises(SystemExit):
-                pp.append_lesson("2026-11-04", "maybe", "A guess.", "none", path)
+                pp.append_lesson(day, "maybe", "A guess.", "none", path)
+            before = path.read_text()
+            with self.assertRaisesRegex(SystemExit, "PAVO_LESSONS_INVALID"):
+                pp.append_lesson("2000-01-01", "rule", "Too old.", "E290", path)
+            self.assertEqual(path.read_text(), before)  # an out-of-order date is refused before the write
             path.write_text(path.read_text() + "- an unstructured note\n")
             with self.assertRaisesRegex(SystemExit, "PAVO_LESSONS_INVALID"):
                 pp.lessons(path)
